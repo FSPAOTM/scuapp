@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>岗位提交</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".click").click(function(){
+                $(".tip").fadeIn(200);
+            });
+
+            $(".tiptop a").click(function(){
+                $(".tip").fadeOut(200);
+            });
+
+            $(".sure").click(function(){
+                $(".tip").fadeOut(100);
+            });
+
+            $(".cancel").click(function(){
+                $(".tip").fadeOut(100);
+            });
+
+        });
+    </script>
+</head>
+<body>
+<div class="formbody">
+
+    <div class="formtitle"><span>岗位提交（带*为必填）</span></div>
+
+    <ul class="forminfo">
+        <li><label>岗位名称</label><input name="" type="text" class="dfinput" required/><i>*</i></li>
+        <li><label>用人部门</label><input name="" type="text" class="dfinput" required/><i>*</i></li>
+        <li><label>工作时间</label><input name="" type="text" class="dfinput" /></li>
+        <li><label>工作地点</label><input name="" type="text" class="dfinput" /></li>
+        <li><label>工作内容</label><textarea name="" cols="" rows="3" class="textinput"></textarea><i>*</i></li>
+        <li><label>薪酬</label><input name="" type="text" class="dfinput" /></li>
+        <li><label>招聘要求</label><input name="" type="text" class="dfinput" /></li>
+        <li><label>招聘人数</label><input name="" type="text" class="dfinput" /></li>
+        <li><label>报名截止时间</label><input name="" type="datetime-local" value="2020-10-18T12:00:00" class="dfinput" /></li>
+        <li><label>信息发布时间</label><input name="" type="datetime-local" value="2020-10-18T12:00:00" class="dfinput" /></li>
+        <li><label>备注</label><textarea name="" cols="" rows="" class="textinput"></textarea></li>
+
+        <li><label>&nbsp;</label><input name="" type="button" class="btn" value="提交"/></li>
+    </ul>
+
+
+</div>
+
+</body>
+</html>
