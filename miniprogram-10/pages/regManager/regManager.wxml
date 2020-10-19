@@ -1,0 +1,39 @@
+<!--pages/regManager/regManager.wxml-->
+<view>
+
+<view class="manager_type">
+  <view class="man_manager {{managerParam?'selected':'unselected'}}" bindtap="manManager">工号注册</view>
+</view>
+
+<view>
+  <form bindsubmit="formSubmit">
+    <view class="man_number input_view {{focusManNumber?'focus':'blur'}}">
+      <input type="number" data-model="ManNumber" placeholder="请输入工号" focus="focus" bindfocus="focusManNumber" bindblur="blurManNumber" bindinput="inputwatch"></input>
+    </view>
+
+
+    <view class="phone_num input_view {{focusName?'focus':'blur'}}">
+      <input placeholder="请输入姓名" data-model="Name" bindinput="inputwatch" bindfocus="focusName" bindblur="blurName"></input>
+    </view>
+    
+    <view class="phone_num input_view {{focusPhoneNum?'focus':'blur'}}">
+      <input type="number" data-model="phoneNum" bindinput="inputwatch" placeholder="请输入手机号" bindfocus="focusPhoneNum" bindblur="blurPhoneNum"></input>
+    </view>
+
+    <view class="password input_view {{focusPassword?'focus':'blur'}}">
+      <input type="password" data-model="password" bindinput="inputwatch" placeholder="请输入密码" bindfocus="focusPassword" bindblur="blurPassword"></input>
+    </view>
+
+    <view class="repassword input_view {{focusRePassword?'focus':'blur'}}">
+      <input type="password" data-model="repassword" bindinput="inputwatch" placeholder="确认密码" bindfocus="focusRePassword" bindblur="blurRePassword"></input>
+    </view>
+    <button class="submit" form-type="submit" bindtap="submit" disabled="{{disabled}}">注册</button>
+  </form>
+</view>
+
+</view>
+
+
+
+
+

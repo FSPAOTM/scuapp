@@ -1,0 +1,25 @@
+{
+  "pages": [
+    "pages/infoFill/infoFill",
+    "pages/repwd1/repwd1",
+    "pages/repwd2/repwd2",
+    "pages/infoModify/infoModify",
+    "pages/infoShow/infoShow",
+    "pages/login/login",
+    "pages/selectID/selectID",
+    "pages/login-try/login-try",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/regCompany/regCompany",
+    "pages/regManager/regManager",
+    "pages/regStudent/regStudent"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#a3d3d6",
+    "navigationBarTitleText": "SCU掌上兼职",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
