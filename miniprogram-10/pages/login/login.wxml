@@ -1,0 +1,55 @@
+<!--pages/login/login.wxml-->
+<view class="container"> 
+  <view class="login-icon">  
+    <image class="login-img" src="/wx_login.png"></image>  
+  </view>  
+  <view class="login-from">  
+  <form bindsubmit="formSubmit" class='form'>
+  <view class="userTotal">
+    <image class="lock-img" src="/lock.png"></image>
+    <view class="yhm">用户名</view>
+    <view class="userno">
+    <!-- 学号 -->
+      <view class="weui-cell weui-cell_input">
+          <!-- <view class="weui-cell__hd">
+              <view class="weui-label">学号</view>
+          </view> -->
+          <view class="weui-cell__bd">
+              <input class="weui-input" name="no" bindinput="noinput" value='{{no}}' placeholder="请输入学号/工号/手机号" minlength="9" maxlength="13" value='{{no}}'/>
+          </view>
+      </view>
+    </view>
+  </view>
+  <view class="pwdTotal">
+    <image class='lock-img' src="/lock.png"></image>
+    <view class="mm">
+      <text decode="true">密&nbsp;&nbsp;&nbsp;码</text>
+    </view>
+    <view class="userpwd">
+      <!-- 密码 -->
+      <view class="weui-cell weui-cell_input">
+          <!-- <view class="weui-cell__hd">
+              <view class="weui-label">密码</view>
+          </view> -->
+          <view class="weui-cell__bd">
+              <input class="weui-input" type="password" name="pwd" bindinput="pwdinput" placeholder="请输入8-18位密码" minlength="8" maxlength="18" value='{{pwd}}'/><!--为什么最大最小长度此处设置无效-->
+          </view>
+      </view>
+    </view>
+  </view>
+ 
+     <!--按钮-->  
+    <view class="loginBtnView">  
+      <button class="loginBtn" type="primary" form-type='submit' disabled='{{disabled}}'>登录</button>  
+      <!--<view class='info'>{{result}}</view>-->
+    </view>  
+    
+    <view class="registerBtView">
+        <navigator class="forgetPwd" url="../login-try/login-try">忘记密码？</navigator>
+        <navigator class="registerBt" url="../selectID/selectID">还没有账户？去注册</navigator>
+    </view>
+
+    </form>
+  
+  </view>  
+</view>  

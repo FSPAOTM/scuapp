@@ -1,0 +1,62 @@
+<!--pages/infoShow/infoShow.wxml-->
+<view>
+ <form>
+
+<view class='item'>
+  <text style="padding-left:30rpx">姓名：</text><text class='right'>{{myinfo.name}}</text>
+    </view>
+
+   <view  class="xian"></view>
+
+    <view class='item'>
+      <text style="padding-left:30rpx">年龄：</text> <text class='right'>{{myinfo.age}}</text>
+    </view>
+
+    <view  class="xian"></view>
+
+    <view class="section section_gap">
+      <text class="item" style="padding-left:30rpx">性别:</text> <text class='right'>{{myinfo.sex}}</text>
+    </view>
+
+    <view  class="xian"></view>
+
+    <view class='item'>
+      <text style="padding-left:30rpx">教育背景：</text> <text class='right'>{{myinfo.edu}}</text>
+    </view>
+
+    <view class="section">
+  <view class="jieshang" >技能自评</view>
+  <view  class="xian"></view>
+  <text class='right'>{{myinfo.ass}}</text>
+        </view>
+
+  <view class="section">
+  <view class="jieshang" >工作经历</view>
+  <view  class="xian"></view>
+  <text class='right'>{{myinfo.work}}</text>
+        </view>
+
+        <view class="section">
+  <view class="jieshang" >项目经历</view>
+  <view  class="xian"></view>
+  <text class='right'>{{myinfo.proj}}</text>
+        </view>
+
+        <view class="section">
+  <view class="jieshang" >课外实践</view>
+  <view  class="xian"></view>
+  <text class='right'>{{myinfo.ext}}</text>
+        </view>
+
+        <view class="shopstore">
+    <view class="shopstore_log">
+    <text style="padding-left:30rpx">个人作品</text>
+    <text class='right'>{{myinfo.per}}</text>
+    </view>
+</view>
+
+ <button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>修改</button>
+
+   </form>
+</view>
+

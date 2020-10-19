@@ -1,0 +1,85 @@
+<!--pages/infoFill/infoFill.wxml-->
+<view>
+  <view class="title">在线个人简历</view>
+  <form bindsubmit="formSubmit">
+    <!--简历-->
+    <view class='item'>
+      <text style="padding-left:30rpx;font-size:15px">姓名：</text>
+      <input placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='请填写真实姓名' class="in"
+        name="name" value="{{name}}" />
+      <view class="xian"></view>
+    </view>
+
+    <view class='item'>
+      <text style="padding-left:30rpx;font-size:15px">年龄：</text>
+      <input placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='请填写真实年龄' class="in"
+        name="age" value="{{age}}" />
+      <view class="xian"></view>
+    </view>
+
+    <view class="section section_gap">
+      <view class="section__title" style="padding-left:30rpx;font-size:15px">性别:</view>
+      <view class='form-group'>
+        <radio-group name="gender">
+          <label>
+            <radio value="1" style="padding-left:30rpx" />男</label>
+          <label>
+            <radio value="0" style="padding-left:30rpx" />女</label>
+        </radio-group>
+      </view>
+    </view>
+
+    <view class='item1'>
+      <text style="padding-left:30rpx;margin-top:10rpx;font-size:15px">教育背景：</text>
+      <picker bindchange="bindPickerChange" name="edu" value="{{edu}}" range="{{array}}">
+        <view class="fb-type">
+          <view class="type-label">{{array[index]}}</view>
+          <image class="type-icon"
+            src="http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/pickerArrow-a8b918f05f.png">
+          </image>
+        </view>
+      </picker>
+    </view>
+    <view class="xian"></view>
+
+    <view class="section">
+      <view class="jieshang">技能自评</view>
+      <view class="xian"></view>
+      <textarea placeholder-style='font-size:28rpx;' style="font-size:30rpx;margin-left:30rpx" maxlength='150'
+        placeholder="请简述自己的技能(选填/150字以内)" name="tech" value="{{tech}}" />
+      </view>
+
+    <view class="section">
+      <view class="jieshang" >工作经历</view>
+      <view  class="xian"></view>
+      <textarea placeholder-style='font-size:28rpx;' style="font-size:30rpx;margin-left:30rpx" maxlength='150' placeholder="请简述自己的工作经历(选填/150字以内)" name="job" value="{{job}}"/>
+    </view>
+
+    <view class="section">
+      <view class="jieshang" >项目经历</view>
+      <view  class="xian"></view>
+      <textarea placeholder-style='font-size:28rpx;' style="font-size:30rpx;margin-left:30rpx" maxlength='150' placeholder="请简述自己的项目经历(选填/150字以内)" name="project" value="{{project}}"/>
+    </view>
+
+    <view class="section">
+      <view class="jieshang" >课外实践</view>
+      <view class="xian"></view>
+      <textarea placeholder-style='font-size:28rpx;' style="font-size:30rpx;margin-left:30rpx" maxlength='150' placeholder="请简述自己的课外实践经历(选填/150字以内)" name="practice" value="{{practice}}"/>
+    </view>
+
+
+    <view class="shopstore">
+      <view class="shopstore_log">
+        <text style="padding-left:30rpx">个人作品</text>
+        <input placeholder-class='placeholder' placeholder-style='font-size:26rpx;' placeholder='选填' class="works" name="works" value="{{works}}"/>
+      </view>
+    </view>
+
+  <view class="tishi">
+    <text style="margin-right:20rpx">以上信息请如实认证填写</text>  
+  </view>
+
+  <button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>保存</button>
+
+  </form>
+</view>

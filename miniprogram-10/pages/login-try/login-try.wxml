@@ -1,0 +1,5 @@
+<!--pages/login/login.wxml-->
+<input type="text" placeholder="手机号/学工号/企业编号" maxlength="13" placehoolder-style="color:grey"></input>
+<input placeholder="密码" placeholder-style="color:grey" password minlength="8" maxlength="18"></input>
+<button form-type="submit" type="primary" bindtap="register">注册</button>
+<button form-type="submit" type="default" bindtap="login">登录</button>

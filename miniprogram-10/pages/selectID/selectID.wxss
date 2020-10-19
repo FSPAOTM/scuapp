@@ -1,0 +1,61 @@
+/* pages/selectID/selectID.wxss */
+page{
+  height: 100%;
+  background-size:100%;
+  background-color:#f9fafa;
+}
+
+.container {
+  height: 100%;
+  width:300px;
+  margin-top: 50px;
+  margin-left:auto;
+  margin-right:auto;
+  display: block;
+  padding: 0;
+  box-sizing: border-box;
+  /* background-color: #f2f2f2;*/
+} 
+
+.pointText{
+  text-align: center;
+  font-weight:bolder ;
+  font-size: x-large;
+}
+
+.Total{
+  margin-top: 40px;
+  display:flex;
+  flex-direction: row;
+}
+
+.bTotal{
+  border: 1px solid #c3c9c9; 
+  border-radius: 20px;  
+  height:116px;
+  display:flex;
+  flex-direction: column;
+}
+
+.Icon1{
+  padding-left: 18px;
+  width:80px;
+  height:80px;
+}
+
+.Icon2{
+  padding-left: 11.5px;
+  width:80px;
+  height:80px;
+}
+
+.Icon3{
+  padding-left: 28px;
+  width:80px;
+  height:80px;
+}
+
+.wsui-btn__hover_list{
+  opacity: 0.9;
+  background: #d1e9eb;
+}
