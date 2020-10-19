@@ -10,6 +10,12 @@ urlpatterns = [
     path('Manage_register/', views.Manage_register, name='Manage_register'),
     path('Student_register/', views.Student_register, name='Student_register'),
     path('Company_register/', views.Company_register, name='Company_register'),
+    path('Insert_resume/', views.Insert_resume, name='Insert_resume'),
+    path('Reset_password/', views.Reset_password, name='Reset_password'),
+    path('Reset_myinfo_name/', views.Reset_myinfo_name, name='Reset_myinfo_name'),
+    path('Reset_myinfo_nickname/', views.Reset_myinfo_nickname, name='Reset_myinfo_nickname'),
+    path('Reset_myinfo_phonenumber/', views.Reset_myinfo_phonenumber, name='Reset_myinfo_phonenumber'),
+    path('Reset_myinfo_e_mail/', views.Reset_myinfo_e_mail, name='Reset_myinfo_e_mail'),
     #path('<CharField:manager_id>/results/', views.results, name='results'),
     #path('<CharField:manager_id/vote/', views.vote, name='vote'),
 ]

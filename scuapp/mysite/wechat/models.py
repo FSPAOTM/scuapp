@@ -22,7 +22,7 @@ class Tbcompany(models.Model):
     com_leader = models.CharField(db_column='Com_Leader', max_length=20, null=True)  # Field name made lowercase.
     e_mail = models.CharField(db_column='E_mail', max_length=60, blank=True, null=True)  # Field name made lowercase.
     com_address = models.CharField(db_column='Com_Address', max_length=60, null=True)  # Field name made lowercase.
-    com_license = models.CharField(db_column='Com_License', max_length=20)  # Field name made lowercase.
+    com_license = models.CharField(db_column='Com_License', max_length=18)  # Field name made lowercase.
 
     class Meta:
         managed = False
