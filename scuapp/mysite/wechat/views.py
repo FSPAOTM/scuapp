@@ -2,6 +2,9 @@ from django.shortcuts import HttpResponse
 from django.template import loader
 from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork
 from django.views.decorators.csrf import csrf_exempt
+#from django.http import JsonResponse
+#import json
+
 #from  django.http import HttpResponse (暂时不清楚http和shortcuts的区别）
 
 
@@ -115,6 +118,7 @@ def Company_register(request):
                 user = Tbcompany.objects.create(com_license=account_num, com_name=account_name, phone_num=account_phone, password=passwd_1)
                 user.save()
                 qualify = Tbqualify.objects.create(com_license=account_num)
+                qualify.save()
                 return HttpResponse("注册成功")
     else:
         return HttpResponse("请求错误")
@@ -122,7 +126,7 @@ def Company_register(request):
 @csrf_exempt
 def Insert_resume(request):
     if request.method == "POST":
-        res_id = request.POST.getlist('js传数据的全局变量')  # 唯一标识简历的全局变量
+        stu_id = request.POST.getlist('stuNumber') # 唯一标识简历的全局变量
         account_name = request.POST.getlist('js传数据的名字') #获取表单数据用getlist
         age = request.POST.getlist('js传数据的名字')
         sex = request.POST.getlist('js传数据的名字')
@@ -132,8 +136,14 @@ def Insert_resume(request):
         res_proj = request.POST.getlist('js传数据的名字')
         res_extra = request.POST.getlist('js传数据的名字')
         res_per = request.POST.getlist('js传数据的名字')
-        #a  a a a
-        Tbresume.objects.get(id=res_id).update(name=account_name, age=age, sex=sex, res_asses=res_asses, res_edu=res_edu, res_work=res_work, res_proj=res_proj, res_extra=res_extra, res_per=res_per)
+        filterResult1 = Tbcompany.objects.filter(stu_id=stu_id)
+        if len(filterResult1) > 0:
+           user = Tbstudent.objects.get(stu_id=stu_id)
+           return HttpResponse &user.name
+        else:
+            return HttpResponse("查询不到此学号")
+        res_id = user.res_id
+        Tbresume.objects.get(res_id=res_id).update(name=account_name, age=age, sex=sex, res_asses=res_asses, res_edu=res_edu, res_work=res_work, res_proj=res_proj, res_extra=res_extra, res_per=res_per)
         #resume.save()  好像update这种更新方式并不需要save
         return HttpResponse("填写完成")
     else:
@@ -227,26 +237,40 @@ def management_inWork_release(request):
         return HttpResponse("校内兼职信息已保存")
     else:
         return HttpResponse("请求错误")
-    
+
 @csrf_exempt
-def management_inWork_release(request):
+def management_inWork_show(request):
     if request.method == "POST":
-        iw_post=request.POST.getlist('html传数据的名字')
-        iw_depart=request.POST.getlist('html传数据的名字')
-        w_time=request.POST.getlist('html传数据的名字')
-        w_place=request.POST.getlist('html传数据的名字')
-        work=request.POST.getlist('html传数据的名字')
-        w_salary=request.POST.getlist('html传数据的名字')
-        w_reuire=request.POST.getlist('html传数据的名字')
-        w_amount=request.POST.getlist('html传数据的名字')
-        ddl_time=request.POST.getlist('html传数据的名字')
-        inpub_time=request.POST.getlist('html传数据的名字')
-        w_ps=request.POST.getlist('html传数据的名字')
-        inWork=TbinWork.objects.create(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
+
+        return HttpResponse("值")
+
+    else:
+        return HttpResponse("请求错误")
+
+
+@csrf_exempt
+def management_inWork_reset(request):
+    if request.method == "POST":
+        iw_number=request.POST.get('html传的岗位编号')
+
+        inWork=TbinWork.objects.get(iw_number=iw_number)
+
+        return HttpResponse("值")
+
+        iw_post = request.POST.getlist('html传数据的名字')
+        iw_depart = request.POST.getlist('html传数据的名字')
+        w_time = request.POST.getlist('html传数据的名字')
+        w_place = request.POST.getlist('html传数据的名字')
+        work = request.POST.getlist('html传数据的名字')
+        w_salary = request.POST.getlist('html传数据的名字')
+        w_reuire = request.POST.getlist('html传数据的名字')
+        w_amount = request.POST.getlist('html传数据的名字')
+        ddl_time = request.POST.getlist('html传数据的名字')
+        inpub_time = request.POST.getlist('html传数据的名字')
+        w_ps = request.POST.getlist('html传数据的名字')
+        TbinWork.objects.get(iw_number=iw_number).update(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
                                        w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
-        #空值如何处理，是否对传入传出有影响
-        inWork.save()
-        return HttpResponse("校内兼职信息已保存")
+        return HttpResponse("校内工作信息修改成功")
     else:
         return HttpResponse("请求错误")
 
