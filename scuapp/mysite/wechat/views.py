@@ -231,21 +231,9 @@ def management_inWork_release(request):
 @csrf_exempt
 def management_inWork_release(request):
     if request.method == "POST":
-        iw_post=request.POST.getlist('html传数据的名字')
-        iw_depart=request.POST.getlist('html传数据的名字')
-        w_time=request.POST.getlist('html传数据的名字')
-        w_place=request.POST.getlist('html传数据的名字')
-        work=request.POST.getlist('html传数据的名字')
-        w_salary=request.POST.getlist('html传数据的名字')
-        w_reuire=request.POST.getlist('html传数据的名字')
-        w_amount=request.POST.getlist('html传数据的名字')
-        ddl_time=request.POST.getlist('html传数据的名字')
-        inpub_time=request.POST.getlist('html传数据的名字')
-        w_ps=request.POST.getlist('html传数据的名字')
-        inWork=TbinWork.objects.create(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
-                                       w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
-        #空值如何处理，是否对传入传出有影响
-        inWork.save()
+        iw_number=request.POST.get('html传的岗位编号')
+
+        inWork=TbinWork.objects.get(iw_number=iw_number)
         return HttpResponse("校内兼职信息已保存")
     else:
         return HttpResponse("请求错误")
