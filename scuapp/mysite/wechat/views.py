@@ -1,6 +1,6 @@
 from django.shortcuts import HttpResponse
 from django.template import loader
-from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify
+from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork
 from django.views.decorators.csrf import csrf_exempt
 #from  django.http import HttpResponse (暂时不清楚http和shortcuts的区别）
 
@@ -12,6 +12,7 @@ def index(request):
 def detail(request, manager_id):
     return HttpResponse("You're looking at managerid %s." % manager_id)
 
+#小程序界面
 @csrf_exempt
 def dengluzhuce_login(request):
     if request.method == "POST":
@@ -201,3 +202,51 @@ def Reset_myinfo_e_mail(request):
         return HttpResponse("邮箱修改成功")
     else:
         return HttpResponse("请求错误")
+
+
+
+#后台管理界面（网页）
+@csrf_exempt
+def management_inWork_release(request):
+    if request.method == "POST":
+        iw_post=request.POST.getlist('html传数据的名字')
+        iw_depart=request.POST.getlist('html传数据的名字')
+        w_time=request.POST.getlist('html传数据的名字')
+        w_place=request.POST.getlist('html传数据的名字')
+        work=request.POST.getlist('html传数据的名字')
+        w_salary=request.POST.getlist('html传数据的名字')
+        w_reuire=request.POST.getlist('html传数据的名字')
+        w_amount=request.POST.getlist('html传数据的名字')
+        ddl_time=request.POST.getlist('html传数据的名字')
+        inpub_time=request.POST.getlist('html传数据的名字')
+        w_ps=request.POST.getlist('html传数据的名字')
+        inWork=TbinWork.objects.create(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
+                                       w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
+        #空值如何处理，是否对传入传出有影响
+        inWork.save()
+        return HttpResponse("校内兼职信息已保存")
+    else:
+        return HttpResponse("请求错误")
+    
+@csrf_exempt
+def management_inWork_release(request):
+    if request.method == "POST":
+        iw_post=request.POST.getlist('html传数据的名字')
+        iw_depart=request.POST.getlist('html传数据的名字')
+        w_time=request.POST.getlist('html传数据的名字')
+        w_place=request.POST.getlist('html传数据的名字')
+        work=request.POST.getlist('html传数据的名字')
+        w_salary=request.POST.getlist('html传数据的名字')
+        w_reuire=request.POST.getlist('html传数据的名字')
+        w_amount=request.POST.getlist('html传数据的名字')
+        ddl_time=request.POST.getlist('html传数据的名字')
+        inpub_time=request.POST.getlist('html传数据的名字')
+        w_ps=request.POST.getlist('html传数据的名字')
+        inWork=TbinWork.objects.create(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
+                                       w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
+        #空值如何处理，是否对传入传出有影响
+        inWork.save()
+        return HttpResponse("校内兼职信息已保存")
+    else:
+        return HttpResponse("请求错误")
+
