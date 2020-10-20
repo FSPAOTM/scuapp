@@ -118,6 +118,7 @@ def Company_register(request):
                 user = Tbcompany.objects.create(com_license=account_num, com_name=account_name, phone_num=account_phone, password=passwd_1)
                 user.save()
                 qualify = Tbqualify.objects.create(com_license=account_num)
+                qualify.save()
                 return HttpResponse("注册成功")
     else:
         return HttpResponse("请求错误")
@@ -236,14 +237,40 @@ def management_inWork_release(request):
         return HttpResponse("校内兼职信息已保存")
     else:
         return HttpResponse("请求错误")
-    
+
 @csrf_exempt
-def management_inWork_release(request):
+def management_inWork_show(request):
+    if request.method == "POST":
+
+        return HttpResponse("值")
+
+    else:
+        return HttpResponse("请求错误")
+
+
+@csrf_exempt
+def management_inWork_reset(request):
     if request.method == "POST":
         iw_number=request.POST.get('html传的岗位编号')
 
         inWork=TbinWork.objects.get(iw_number=iw_number)
-        return HttpResponse("校内兼职信息已保存")
+
+        return HttpResponse("值")
+
+        iw_post = request.POST.getlist('html传数据的名字')
+        iw_depart = request.POST.getlist('html传数据的名字')
+        w_time = request.POST.getlist('html传数据的名字')
+        w_place = request.POST.getlist('html传数据的名字')
+        work = request.POST.getlist('html传数据的名字')
+        w_salary = request.POST.getlist('html传数据的名字')
+        w_reuire = request.POST.getlist('html传数据的名字')
+        w_amount = request.POST.getlist('html传数据的名字')
+        ddl_time = request.POST.getlist('html传数据的名字')
+        inpub_time = request.POST.getlist('html传数据的名字')
+        w_ps = request.POST.getlist('html传数据的名字')
+        TbinWork.objects.get(iw_number=iw_number).update(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
+                                       w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
+        return HttpResponse("校内工作信息修改成功")
     else:
         return HttpResponse("请求错误")
 
