@@ -2,6 +2,9 @@ from django.shortcuts import HttpResponse
 from django.template import loader
 from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork
 from django.views.decorators.csrf import csrf_exempt
+#from django.http import JsonResponse
+#import json
+
 #from  django.http import HttpResponse (暂时不清楚http和shortcuts的区别）
 
 
@@ -122,7 +125,7 @@ def Company_register(request):
 @csrf_exempt
 def Insert_resume(request):
     if request.method == "POST":
-        res_id = request.POST.getlist('js传数据的全局变量')  # 唯一标识简历的全局变量
+        stu_id = request.POST.getlist('stuNumber') # 唯一标识简历的全局变量
         account_name = request.POST.getlist('js传数据的名字') #获取表单数据用getlist
         age = request.POST.getlist('js传数据的名字')
         sex = request.POST.getlist('js传数据的名字')
@@ -132,8 +135,14 @@ def Insert_resume(request):
         res_proj = request.POST.getlist('js传数据的名字')
         res_extra = request.POST.getlist('js传数据的名字')
         res_per = request.POST.getlist('js传数据的名字')
-        #a  a a a
-        Tbresume.objects.get(id=res_id).update(name=account_name, age=age, sex=sex, res_asses=res_asses, res_edu=res_edu, res_work=res_work, res_proj=res_proj, res_extra=res_extra, res_per=res_per)
+        filterResult1 = Tbcompany.objects.filter(stu_id=stu_id)
+        if len(filterResult1) > 0:
+           user = Tbstudent.objects.get(stu_id=stu_id)
+           return HttpResponse &user.name
+        else:
+            return HttpResponse("查询不到此学号")
+        res_id = user.res_id
+        Tbresume.objects.get(res_id=res_id).update(name=account_name, age=age, sex=sex, res_asses=res_asses, res_edu=res_edu, res_work=res_work, res_proj=res_proj, res_extra=res_extra, res_per=res_per)
         #resume.save()  好像update这种更新方式并不需要save
         return HttpResponse("填写完成")
     else:
