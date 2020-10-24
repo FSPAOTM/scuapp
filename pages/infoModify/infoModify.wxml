@@ -1,0 +1,49 @@
+<!--pages/infoModify/infoModify.wxml-->
+<view>
+
+<view class='item'>
+  <text style="padding-left:30rpx">学号：</text>
+  <text class='right'>{{myinfo.stuid}}</text>
+</view>
+
+<view class='item'>
+  <text style="padding-left:30rpx">姓名：</text>
+  <text class='right'>{{myinfo.name}}</text>
+  <view class='arrow' bindtap="modalinput"></view>
+</view>
+
+
+<view class='item'>
+ <text style="padding-left:30rpx"> 昵称：</text>
+ <text class='right'>{{myinfo.nickname}}</text>
+ <view class='arrow' bindtap="modalinput"></view>
+</view>
+
+
+<view class='item'>
+  <text style="padding-left:30rpx">手机号码：</text>
+  <text class='right'>{{myinfo.phonum}}</text>
+  <view class='arrow' bindtap="modalinput"></view>
+</view>
+
+
+<view class='item'>
+ <text style="padding-left:30rpx"> 邮箱：</text>
+ <text class='right'>{{myinfo.email}}</text>
+ <view class='arrow' bindtap="modalinput"></view>
+</view>
+
+<modal id="modal" hidden="{{hiddenmodalput}}" title="信息完善" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+<input type='text' placeholder="请填写修改后的信息" auto-focus/>
+</modal>
+
+
+<view class='item' bindtap='exit'>
+  <text style="padding-left:30rpx">退出：</text><text class='right'>>>></text>
+</view>
+
+<button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>密码重置</button>
+
+</view>
+
+

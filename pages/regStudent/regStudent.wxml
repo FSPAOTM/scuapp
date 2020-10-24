@@ -1,0 +1,49 @@
+<!--pages/regStudent/regStudent.wxml-->
+<view>
+
+<view class="content">
+	<image class='background' src="/背景stu.JPG" mode="aspectFill"></image>
+</view>
+
+  <view class="title">学号注册</view>
+
+<view>
+  <form bindsubmit="formSubmit">
+    <text class="a1" style="padding-left:50rpx">学号：</text>
+    <view class="stu_number input_view {{focusStuNumber?'focus':'blur'}}">
+      <input type="number" data-model="stuNumber" placeholder="请输入学号" focus="focus" bindfocus="focusStuNumber" bindblur="blurStuNumber" bindinput="inputwatch"></input>
+    </view>
+
+    <text class="a1" style="padding-left:50rpx">姓名：</text>
+    <view class="phone_num input_view {{focusName?'focus':'blur'}}">
+      <input placeholder="请输入姓名" data-model="Name" bindfocus="focusName" bindblur="blurName" bindinput="inputwatch"></input>
+    </view>
+
+    <text class="a1" style="padding-left:50rpx">昵称：</text>
+    <view class="phone_num input_view {{focusNickName?'focus':'blur'}}">
+      <input placeholder="请输入昵称" data-model="NickName" bindfocus="focusNickName" bindblur="blurNickName" bindinput="inputwatch"></input>
+    </view>
+    
+    <text class="a1" style="padding-left:50rpx">手机号：</text>
+    <view class="phone_num input_view {{focusPhoneNum?'focus':'blur'}}">
+      <input type="number" data-model="phoneNum" placeholder="请输入手机号" bindfocus="focusPhoneNum" bindblur="blurPhoneNum" bindinput="inputwatch"></input>
+    </view>
+
+    <text class="a1" style="padding-left:50rpx">密码：</text>
+    <view class="password input_view {{focusPassword?'focus':'blur'}}">
+      <input type="password" data-model="password" placeholder="请输入密码" bindfocus="focusPassword" bindblur="blurPassword" bindinput="inputwatch"></input>
+    </view>
+
+    <text class="a1" style="padding-left:50rpx">确认密码：</text>
+    <view class="repassword input_view {{focusRePassword?'focus':'blur'}}">
+      <input type="password" data-model="rePassword" placeholder="确认密码" bindfocus="focusRePassword" bindblur="blurRePassword" bindinput="inputwatch"></input>
+    </view>
+
+    <button class="submit" form-type="submit" bindtap="submit" disabled="{{disabled}}">注册</button>
+  </form>
+</view>
+</view>
+
+
+
+

@@ -1,0 +1,41 @@
+/* pages/infoModify/infoModify.wxss */
+.nav{
+  background-color: #fff;
+}
+
+.nickname{
+margin-bottom: 10rpx;
+text-align: center;
+}
+.item{
+height: 70rpx;
+background-color: #fff;
+margin: 20rpx;
+display: flex;
+border-radius: 20rpx;
+}
+.left{
+display: flex;
+justify-content: flex-start;
+flex-grow: 1;
+}
+.right{
+display: flex;
+justify-content: flex-end;
+flex-grow: 1;
+color: #ccc;
+margin-right: 20rpx;
+}
+
+.arrow{ 
+  width: 10px;  
+  height: 10px;  
+  border-top: 2px solid #999; 
+  border-right: 2px solid #999;
+  position: absolute;
+  right: 20rpx;
+  transform: rotate(45deg);
+  margin-top:10rpx;
+  }
+  
+  
