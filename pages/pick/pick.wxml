@@ -1,0 +1,19 @@
+<!--pages/button-select/button-select.wxml-->
+<view class="title">请选择兼职类型</view>
+
+<view style="padding-left:50rpx; padding-right:50rpx">
+<view class='button_container'>
+  <block wx:for="{{buttons}}" wx:key="buttons">
+  <button class='{{item.checked?"checked_button":"normal_button"}}' data-id='{{item.id}}' bindtap='radioButtonTap'>
+    {{item.name}}
+  </button>
+  </block>
+</view>
+
+</view>
+
+<view class='pbottom'>
+  <button class="weui-btn" type="primary" bindtap='sumbit'>下一步</button>
+</view>
+
+ 
