@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99d57d48-74b0-4311-9299-7aeb08baa89f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scuapp/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scuapp/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/djangogit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/djangogit.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_submit.html" beforeDir="false" afterPath="$PROJECT_DIR$/work_submit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../scuapp/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../scuapp/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../scuapp/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../scuapp/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../scuapp/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../scuapp/.idea/scuapp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../scuapp/.idea/scuapp.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="JupyterTrust" id="e9e0615d-5fb8-4f91-83f0-80401808df17" />
   <component name="ProjectId" id="1j2fSJrrRSsQKMtjrR3iBQhWJwq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -50,6 +58,7 @@
       <workItem from="1603012031917" duration="25000" />
       <workItem from="1603175016536" duration="116000" />
       <workItem from="1603435783696" duration="65000" />
+      <workItem from="1603788678348" duration="89000" />
     </task>
     <servers />
   </component>
