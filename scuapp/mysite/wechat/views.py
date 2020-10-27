@@ -2,14 +2,14 @@ from django.shortcuts import HttpResponse
 from django.template import loader
 from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork
 from django.views.decorators.csrf import csrf_exempt
-#from django.http import JsonResponse
-#import json
+from django.http import JsonResponse
+import json
 
 #from  django.http import HttpResponse (暂时不清楚http和shortcuts的区别）
 
 
 def index(request):
-    return HttpResponse("hello")
+    return JsonResponse("hello")
 
 
 def detail(request, manager_id):
@@ -241,8 +241,8 @@ def management_inWork_release(request):
 @csrf_exempt
 def management_inWork_show(request):
     if request.method == "POST":
-
-        return HttpResponse("值")
+#列表？数组？
+        return HttpResponse("数组值")
 
     else:
         return HttpResponse("请求错误")
@@ -252,10 +252,11 @@ def management_inWork_show(request):
 def management_inWork_reset(request):
     if request.method == "POST":
         iw_number=request.POST.get('html传的岗位编号')
+        inWork = TbinWork.objects.get(iw_number=iw_number)
+        # 列表？数组？
 
-        inWork=TbinWork.objects.get(iw_number=iw_number)
 
-        return HttpResponse("值")
+        return HttpResponse("数组值")
 
         iw_post = request.POST.getlist('html传数据的名字')
         iw_depart = request.POST.getlist('html传数据的名字')
