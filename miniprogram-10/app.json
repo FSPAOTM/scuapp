@@ -1,11 +1,12 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/infoFill/infoFill",
     "pages/repwd1/repwd1",
     "pages/repwd2/repwd2",
     "pages/infoModify/infoModify",
     "pages/infoShow/infoShow",
-    "pages/login/login",
+    
     "pages/selectID/selectID",
     "pages/login-try/login-try",
     "pages/index/index",

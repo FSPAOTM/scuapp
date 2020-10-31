@@ -9,13 +9,14 @@ import json
 
 
 def index(request):
-    return JsonResponse("hello")
+    return HttpResponse("hello")
 
 
 def detail(request, manager_id):
     return HttpResponse("You're looking at managerid %s." % manager_id)
 
 #小程序界面
+#登录功能
 @csrf_exempt
 def dengluzhuce_login(request):
     if request.method == "POST":
@@ -61,6 +62,7 @@ def dengluzhuce_login(request):
     else:
         return HttpResponse("请求错误")
 
+#注册功能
 @csrf_exempt
 def Manage_register(request):
     #curtime=time.strftime("%Y-%m-%d %H:%M:%S",time.localtime());注册时间？
@@ -123,6 +125,7 @@ def Company_register(request):
     else:
         return HttpResponse("请求错误")
 
+#简历提交功能
 @csrf_exempt
 def Insert_resume(request):
     if request.method == "POST":
@@ -149,6 +152,7 @@ def Insert_resume(request):
     else:
         return HttpResponse("请求错误")
 
+#修改密码
 @csrf_exempt
 def Reset_password(request):
     if request.method == "POST":
@@ -165,6 +169,7 @@ def Reset_password(request):
     else:
         return HttpResponse("请求错误")
 
+#修改姓名
 @csrf_exempt
 def Reset_myinfo_name(request):
     if request.method == "POST":
@@ -176,6 +181,7 @@ def Reset_myinfo_name(request):
     else:
         return HttpResponse("请求错误")
 
+#修改昵称
 @csrf_exempt
 def Reset_myinfo_nickname(request):
     if request.method == "POST":
@@ -187,6 +193,7 @@ def Reset_myinfo_nickname(request):
     else:
         return HttpResponse("请求错误")
 
+#修改手机号码
 @csrf_exempt
 def Reset_myinfo_phonenumber(request):
     if request.method == "POST":
@@ -202,6 +209,7 @@ def Reset_myinfo_phonenumber(request):
     else:
         return HttpResponse("请求错误")
 
+#修改邮箱
 @csrf_exempt
 def Reset_myinfo_e_mail(request):
     if request.method == "POST":
@@ -216,20 +224,21 @@ def Reset_myinfo_e_mail(request):
 
 
 #后台管理界面（网页）
+#校内信息发布
 @csrf_exempt
 def management_inWork_release(request):
     if request.method == "POST":
-        iw_post=request.POST.getlist("IW_post")
-        iw_depart=request.POST.getlist("IW_depart")
-        w_time=request.POST.getlist("W_Time")
-        w_place=request.POST.getlist("W_place")
-        work=request.POST.getlist("Work")
-        w_salary=request.POST.getlist("W_salary")
-        w_reuire=request.POST.getlist("W_require")
-        w_amount=request.POST.getlist("W_amount")
-        ddl_time=request.POST.getlist("Ddl_time")
-        inpub_time=request.POST.getlist("Inpub_time")
-        w_ps=request.POST.getlist("W_ps")
+        iw_post=request.POST.get("IW_post")
+        iw_depart=request.POST.get("IW_depart")
+        w_time=request.POST.get("W_Time")
+        w_place=request.POST.get("W_place")
+        work=request.POST.get("Work")
+        w_salary=request.POST.get("W_salary")
+        w_reuire=request.POST.get("W_require")
+        w_amount=request.POST.get("W_amount")
+        ddl_time=request.POST.get("Ddl_time")
+        inpub_time=request.POST.get("Inpub_time")
+        w_ps=request.POST.get("W_ps")
         inWork=TbinWork.objects.create(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
                                        w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
         #空值如何处理，是否对传入传出有影响
@@ -238,6 +247,7 @@ def management_inWork_release(request):
     else:
         return HttpResponse("请求错误")
 
+#校内兼职信息展示
 @csrf_exempt
 def management_inWork_show(request):
     if request.method == "POST":
@@ -247,7 +257,7 @@ def management_inWork_show(request):
     else:
         return HttpResponse("请求错误")
 
-
+#校内兼职信息修改
 @csrf_exempt
 def management_inWork_reset(request):
     if request.method == "POST":
