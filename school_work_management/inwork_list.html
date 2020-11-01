@@ -96,6 +96,38 @@
               </a>
             </td>
           </tr>
+        {% for line in inwork_list %}
+        <tr>
+            <td>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <td>{{ line.iw_number }}</td>
+            <td>{{ line.iw_post }}</td>
+            <td>{{ line.iw_depart }}</td>
+            <td>{{ line.w_time }}</td>
+            <td>{{ line.w_place }}</td>
+            <td>{{ line.work }}</td>
+            <td>{{ line.w_salary }}</td>
+            <td>{{ line.w_reuire }}</td>
+            <td>{{ line.w_amount }}</td>
+            <td>{{ line.ddl_time }}</td>
+            <td>{{ line.inpub_time }}</td>
+            <td>{{ line.w_ps }}</td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
+            <td class="td-manage">
+              <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
+                <i class="layui-icon">&#xe601;</i>
+              </a>
+              <a title="编辑"  onclick="x_admin_show('编辑','inwork_add.html',600,400)" href="javascript:;">
+                <i class="layui-icon">&#xe642;</i>
+              </a>
+              <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+                <i class="layui-icon">&#xe640;</i>
+              </a>
+            </td>
+        </tr>
+        {% endfor %}
         </tbody>
       </table>
       <div class="page">

@@ -1,4 +1,4 @@
-from django.shortcuts import HttpResponse
+from django.shortcuts import HttpResponse,render
 from django.template import loader
 from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork
 from django.views.decorators.csrf import csrf_exempt
@@ -250,12 +250,17 @@ def management_inWork_release(request):
 #校内兼职信息展示
 @csrf_exempt
 def management_inWork_show(request):
-    if request.method == "POST":
-#列表？数组？
-        return HttpResponse("数组值")
+    inwork_list=TbinWork.objects.all()
+    return render(request, 'inwork_list.html', {'inwork_list':inwork_list})
 
-    else:
-        return HttpResponse("请求错误")
+
+    #if request.method == "POST":
+
+#列表？数组？
+        #return HttpResponse("数组值")
+
+    #else:
+        #return HttpResponse("请求错误")
 
 #校内兼职信息修改
 @csrf_exempt

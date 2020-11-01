@@ -20,6 +20,7 @@ urlpatterns = [
 
     #后台管理界面（网页）
     path('management_inWork_release/', views.management_inWork_release, name='management_inWork_release'),
+    path('management_inWork_show/', views.management_inWork_show, name='management_inWork_show'),
     #path('<CharField:manager_id>/results/', views.results, name='results'),
     #path('<CharField:manager_id/vote/', views.vote, name='vote'),
 ]
