@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="99d57d48-74b0-4311-9299-7aeb08baa89f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../scuapp/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../scuapp/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/djangogit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/djangogit.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work_submit.html" beforeDir="false" afterPath="$PROJECT_DIR$/work_submit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../scuapp/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../scuapp/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../scuapp/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../scuapp/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../scuapp/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../scuapp/.idea/scuapp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../scuapp/.idea/scuapp.iml" afterDir="false" />
-    </list>
+    <list default="true" id="0ff63147-3c36-4c47-bcf4-16947479f1de" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,12 +14,7 @@
       </list>
     </option>
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="JupyterTrust" id="e9e0615d-5fb8-4f91-83f0-80401808df17" />
-  <component name="ProjectId" id="1j2fSJrrRSsQKMtjrR3iBQhWJwq" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1jg4ZkJR5RcUejJJzCqjuiTsZhP" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -38,27 +24,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="99d57d48-74b0-4311-9299-7aeb08baa89f" name="Default Changelist" comment="" />
-      <created>1603007105940</created>
+      <changelist id="0ff63147-3c36-4c47-bcf4-16947479f1de" name="Default Changelist" comment="" />
+      <created>1604212460137</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1603007105940</updated>
-      <workItem from="1603007107002" duration="4826000" />
-      <workItem from="1603012031917" duration="25000" />
-      <workItem from="1603175016536" duration="116000" />
-      <workItem from="1603435783696" duration="65000" />
-      <workItem from="1603788678348" duration="89000" />
+      <updated>1604212460137</updated>
+      <workItem from="1604212461365" duration="718000" />
+      <workItem from="1604213217768" duration="153000" />
     </task>
     <servers />
   </component>
