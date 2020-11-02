@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/login/login",
+    "pages/infoModify/infoModify",
     "pages/infoFill/infoFill",
     "pages/cjobRelease/cjobRelease",
     "pages/cjobSelect/cjobSelect",
@@ -9,7 +10,6 @@
     "pages/infoShow/infoShow",
     "pages/repwd1/repwd1",
     "pages/repwd2/repwd2",
-    "pages/infoModify/infoModify",
     "pages/selectID/selectID",
     "pages/login-try/login-try",
     "pages/index/index",
