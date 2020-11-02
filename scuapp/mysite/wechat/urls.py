@@ -13,6 +13,7 @@ urlpatterns = [
     path('Company_register/', views.Company_register, name='Company_register'),
     path('Insert_resume_show/', views.Insert_resume_show, name='Insert_resume_show'),
     path('Insert_resume_change/', views.Insert_resume_change, name='Insert_resume_change'),
+    path('Reset_show/', views.Reset_show, name='Reset_show'),
     path('Reset_password/', views.Reset_password, name='Reset_password'),
     path('Reset_myinfo_name/', views.Reset_myinfo_name, name='Reset_myinfo_name'),
     path('Reset_myinfo_nickname/', views.Reset_myinfo_nickname, name='Reset_myinfo_nickname'),

@@ -158,11 +158,21 @@ def Insert_resume_change(request):
     else:
         return HttpResponse("请求错误")
 
+#修改个人信息总界面
+@csrf_exempt
+def Reset_show(request):
+    if request.method == "POST":
+        stu_id = request.POST.get('stuNumber') # 唯一标识简历的全局变量
+        user = Tbstudent.objects.get(stu_id=stu_id)
+        return JsonResponse(json.loads(user))
+    else:
+        return HttpResponse("请求错误")
+
 #修改密码
 @csrf_exempt
 def Reset_password(request):
     if request.method == "POST":
-        stu_id=request.POST.get('js传数据的全局变量')
+        stu_id=request.POST.get('stuNumber')
         origin_password=request.POST.get('js传数据的原密码')
         new_password=request.POST.get('js传数据的原密码')
 
