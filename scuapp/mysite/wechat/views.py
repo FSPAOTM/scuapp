@@ -264,7 +264,9 @@ def Reset_myinfo_e_mail(request):
     else:
         return HttpResponse("请求错误")
 
-#
+#企业信息修改？（未写）
+
+#校外兼职信息发布功能
 @csrf_exempt
 def Part_time_post(request):
     if request.method == "POST":
@@ -289,6 +291,7 @@ def Part_time_post(request):
         else:
             return HttpResponse("请求错误")
 
+#企业兼职信息发布记录
 @csrf_exempt
 def Get_outwork_info(request):
     if request.method == "POST":
@@ -301,6 +304,7 @@ def Get_outwork_info(request):
         else:
             return HttpResponse("请求错误")
 
+#企业兼职信息修改总显示界面
 @csrf_exempt
 def Get_outwork_detail_info(request):
     if request.method == "POST":
@@ -313,6 +317,7 @@ def Get_outwork_detail_info(request):
         else:
             return HttpResponse("请求错误")
 
+#企业兼职信息修改界面
 @csrf_exempt
 def Modify_outwork_info(request):
     if request.method == "POST":
@@ -334,6 +339,7 @@ def Modify_outwork_info(request):
     else:
         return HttpResponse("请求错误")
 
+#企业兼职信息状态修改界面
 @csrf_exempt
 def Stop_outwork(request):
     if request.method == "POST":
