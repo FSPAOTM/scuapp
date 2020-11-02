@@ -164,7 +164,15 @@ def Reset_show(request):
     if request.method == "POST":
         stu_id = request.POST.get('stuNumber') # 唯一标识简历的全局变量
         user = Tbstudent.objects.get(stu_id=stu_id)
-        return JsonResponse(json.loads(user))
+        name=user.name
+        nickname=user.nickname
+        phonenumber=user.phonenumber_phonenumberphonenumber_phonenumber
+        e_mail=user.e_mail
+        return HttpResponse(json.dumps(
+            {"name":name ,
+             "nickname": nickname,
+             "phonenumber":phonenumber,
+             "e_mail":e_mail}))
     else:
         return HttpResponse("请求错误")
 
