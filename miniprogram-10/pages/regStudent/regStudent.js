@@ -90,7 +90,7 @@ Page({
         duration: 2000
       })
     }
-    app.globalData.stuNumber=e.detail.value;
+    app.globalData.stuNumber = e.detail.value;
     console.log(app.globalData.stuNumber);
   },
   blurName: function (e) {
@@ -158,22 +158,23 @@ Page({
 
   //提交时验证
   formSubmit: function (e) {
-    wx.request({
-      url: 'http://127.0.0.1:8000/wechat/Student_register/',
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      data: {
-        phoneNum: e.detail.value.phoneNum,
-        stuNumber: e.detail.value.stuNumber,
-        Name: e.detail.value.Name,
-        NickName: e.detail.value.NickName,
-        password: e.detail.value.password
-      },
-      success: (res) => {
-        console.log(res);
-        console.log(this.data.stuNumber);
+    if (this.data.password = this.data.rePassword) {
+      wx.request({
+        url: 'http://127.0.0.1:8000/wechat/Student_register/',
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: {
+          phoneNum: this.data.phoneNum,
+          stuNumber: this.data.stuNumber,
+          Name: this.data.Name,
+          NickName: this.data.NickName,
+          password: this.data.password
+        },
+        success: (res) => {
+          console.log(res);
+          console.log(this.data.stuNumber);
           if (res.statusCode == 200) {
             this.setData({
               result: res.data
@@ -209,9 +210,16 @@ Page({
                 })
               };
             }
+          }
         }
-      }
-    })
+      })
+    } else {
+      wx.showToast({
+        title: '两次输入密码不同，请再次确认密码',
+        icon: 'none',
+        duration: 2000
+      })
+    }
   },
 
 

@@ -35,7 +35,7 @@ Page({
       focusComLicense: true
     })
   },
-  
+
   focusPassword: function () {
     this.setData({
       focusPassword: true
@@ -141,73 +141,80 @@ Page({
 
   //提交时验证
   formSubmit: function (e) {
-    wx.request({
-      url: 'http://127.0.0.1:8000/wechat/Company_register/',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      data: {
-        ComName: e.detail.value.ComName,
-        phoneNum: e.detail.value.phoneNum,
-        ComLicense: e.detail.value.ComLicense,
-        password: e.detail.value.password,
-        rePassword: e.detail.value.rePassword
-      },
-      success: (res) => {
-        console.log(res);
-        console.log(this.data.ComLicense);
-        if (res.statusCode == 200) {
-          this.setData({
-            result: res.data
-          })
-          if (res.data == "电话号码已注册") {
-            wx.showToast({
-              title: "电话号码已注册",
-              icon: 'none',
-              duration: 2000
+    if (this.data.password = this.data.rePassword) {
+      wx.request({
+        url: 'http://127.0.0.1:8000/wechat/Company_register/',
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: {
+          ComName: this.data.ComName,
+          phoneNum: this.data.phoneNum,
+          ComLicense: this.data.ComLicense,
+          password: this.data.password
+        },
+        success: (res) => {
+          console.log(res);
+          console.log(this.data.ComLicense);
+          if (res.statusCode == 200) {
+            this.setData({
+              result: res.data
             })
-            setTimeout(function () {
-              wx.navigateTo({
-                url: '../regCompany/regCompany',
-              })
-            }, 2000)
-          } else {
-            if (res.data == "统一信用代码已注册") {
+            if (res.data == "电话号码已注册") {
               wx.showToast({
-                title: "统一信用代码已注册",
+                title: "电话号码已注册",
                 icon: 'none',
                 duration: 2000
               })
               setTimeout(function () {
                 wx.navigateTo({
-                  url: '../login/login',
+                  url: '../regCompany/regCompany',
                 })
               }, 2000)
             } else {
-              if (res.data == "注册成功") {
+              if (res.data == "统一信用代码已注册") {
                 wx.showToast({
-                  title: '注册成功',
-                  icon: 'success',
-                  duration: 2000
-                })
-                setTimeout(function () {
-                  wx.redirectTo({
-                    url: '../index/index',
-                  })
-                }, 2000)
-              } else {
-                wx.showToast({
-                  title: '请求错误',
+                  title: "统一信用代码已注册",
                   icon: 'none',
                   duration: 2000
                 })
-              };
+                setTimeout(function () {
+                  wx.navigateTo({
+                    url: '../login/login',
+                  })
+                }, 2000)
+              } else {
+                if (res.data == "注册成功") {
+                  wx.showToast({
+                    title: '注册成功',
+                    icon: 'success',
+                    duration: 2000
+                  })
+                  setTimeout(function () {
+                    wx.redirectTo({
+                      url: '../index/index',
+                    })
+                  }, 2000)
+                } else {
+                  wx.showToast({
+                    title: '请求错误',
+                    icon: 'none',
+                    duration: 2000
+                  })
+                };
+              }
             }
           }
         }
-      }
-    })
+      })
+    } else {
+      wx.showToast({
+        title: '两次输入密码不同，请再次确认密码',
+        icon: 'none',
+        duration: 2000
+      })
+    }
   },
 
   /**

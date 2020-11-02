@@ -241,13 +241,12 @@ def management_inWork_release(request):
         w_ps=request.POST.get("W_ps")
         inWork=TbinWork.objects.create(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
                                        w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
-        #空值如何处理，是否对传入传出有影响
         inWork.save()
         return HttpResponse("校内兼职信息已保存")
     else:
         return HttpResponse("请求错误")
 
-#校内兼职信息展示
+#校内兼职信息展示（全部）
 @csrf_exempt
 def management_inWork_show(request):
     inwork_list=TbinWork.objects.all()

@@ -1,27 +1,48 @@
-// pages/infoShow/infoShow.js
-const app = getApp();
+// pages/cjobShow/cjobShow.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    edu: app.globalData.edu,
-    name: app.globalData.user,
-    age: app.globalData.age,
-    gender: app.globalData.gender,
-    tech: app.globalData.tech,
-    job: app.globalData.job,
-    project: app.globalData.project,
-    practice: app.globalData.practice,
-    works: app.globalData.works,
+    myinfo:null,
+    hiddenmodalput: true,
   },
 
-  change:function(){
-    wx.redirectTo({
-      url: '../infoModify/infoModify',
-    })
+//点击按钮痰喘指定的hiddenmodalput弹出框
+
+modalinput: function () {
+ 
+  this.setData({
+   
+  hiddenmodalput:!this.data.hiddenmodalput,
+  })
+   
   },
+   
+  //取消按钮
+   
+  cancel: function () {
+   
+  this.setData({
+   
+  hiddenmodalput: true,
+  });
+   
+  },
+   
+  //确认
+   
+  confirm: function () {
+   
+  this.setData({
+   
+  hiddenmodalput: true,
+  
+  })
+   
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

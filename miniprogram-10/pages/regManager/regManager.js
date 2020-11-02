@@ -143,60 +143,68 @@ Page({
 
   //提交时验证
   formSubmit: function (e) {
-    wx.request({
-      url: 'http://127.0.0.1:8000/wechat/Manage_register/',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      data: {
-        phoneNum: e.detail.value.phoneNum,
-        ManNumber: e.detail.value.ManNumber,
-        Name: e.detail.value.Name,
-        password: e.detail.value.password,
-        repassword: e.detail.value.repassword
-      },
-      success: (res) => {
-        console.log(res);
-        console.log(this.data.ManNumber);
-        if (res.statusCode == 200) {
-          this.setData({
-            result: res.data
-          })
-          if (res.data == "用户已存在") {
-            wx.showToast({
-              title: "用户已存在",
-              icon: 'none',
-              duration: 2000
+    if (this.data.password = this.data.repassword) {
+      wx.request({
+        url: 'http://127.0.0.1:8000/wechat/Manage_register/',
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: {
+          phoneNum: this.data.phoneNum,
+          ManNumber: this.data.ManNumber,
+          Name: this.data.Name,
+          password: this.data.password,
+          repassword: this.data.repassword
+        },
+        success: (res) => {
+          console.log(res);
+          console.log(this.data.ManNumber);
+          if (res.statusCode == 200) {
+            this.setData({
+              result: res.data
             })
-            setTimeout(function () {
-              wx.navigateTo({
-                url: '../login/login',
-              })
-            }, 2000)
-          } else {
-            if (res.data == "注册成功") {
+            if (res.data == "用户已存在") {
               wx.showToast({
-                title: '注册成功',
-                icon: 'success',
-                duration: 2000
-              })
-              setTimeout(function () {
-                wx.redirectTo({
-                  url: '../index/index',
-                })
-              }, 2000)
-            } else {
-              wx.showToast({
-                title: '请求错误',
+                title: "用户已存在",
                 icon: 'none',
                 duration: 2000
               })
-            };
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '../login/login',
+                })
+              }, 2000)
+            } else {
+              if (res.data == "注册成功") {
+                wx.showToast({
+                  title: '注册成功',
+                  icon: 'success',
+                  duration: 2000
+                })
+                setTimeout(function () {
+                  wx.redirectTo({
+                    url: '../index/index',
+                  })
+                }, 2000)
+              } else {
+                wx.showToast({
+                  title: '请求错误',
+                  icon: 'none',
+                  duration: 2000
+                })
+              };
+            }
           }
         }
-      }
-    })
+      })
+    } else {
+      wx.showToast({
+        title: '两次输入密码不同，请再次确认密码',
+        icon: 'none',
+        duration: 2000
+      })
+    }
   },
 
   /**
