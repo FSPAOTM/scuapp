@@ -1,27 +1,13 @@
-// pages/infoShow/infoShow.js
-const app = getApp();
+// pages/cjobManage/cjobManage.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    edu: app.globalData.edu,
-    name: app.globalData.user,
-    age: app.globalData.age,
-    gender: app.globalData.gender,
-    tech: app.globalData.tech,
-    job: app.globalData.job,
-    project: app.globalData.project,
-    practice: app.globalData.practice,
-    works: app.globalData.works,
+
   },
 
-  change:function(){
-    wx.redirectTo({
-      url: '../infoModify/infoModify',
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */

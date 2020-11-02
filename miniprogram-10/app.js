@@ -36,6 +36,14 @@ App({
   globalData: {
     userInfo: null,
     user:"",
+    age:"",
+    gender:"",
+    edu:"",
+    tech:"",
+    job:"",
+    project:"",
+    practice:"",
+    works:"",
     stuNumber:"",
   }
 })

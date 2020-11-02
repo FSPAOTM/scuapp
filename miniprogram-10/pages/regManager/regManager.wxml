@@ -8,7 +8,7 @@
 <view>
   <form bindsubmit="formSubmit">
     <view class="man_number input_view {{focusManNumber?'focus':'blur'}}">
-      <input type="number" data-model="ManNumber" placeholder="请输入工号" focus="focus" bindfocus="focusManNumber" bindblur="blurManNumber" bindinput="inputwatch"></input>
+      <input type="number" data-model="ManNumber" placeholder="请输入工号" focus="focus" bindfocus="focusManNumber" bindblur="blurManNumber" bindinput="inputwatch" maxlength="8"></input>
     </view>
 
 
@@ -17,7 +17,7 @@
     </view>
     
     <view class="phone_num input_view {{focusPhoneNum?'focus':'blur'}}">
-      <input type="number" data-model="phoneNum" bindinput="inputwatch" placeholder="请输入手机号" bindfocus="focusPhoneNum" bindblur="blurPhoneNum"></input>
+      <input type="number" data-model="phoneNum" bindinput="inputwatch" placeholder="请输入手机号" bindfocus="focusPhoneNum" bindblur="blurPhoneNum" maxlength="11"></input>
     </view>
 
     <view class="password input_view {{focusPassword?'focus':'blur'}}">

@@ -22,7 +22,7 @@ Page({
       },
 
     ],
-    edu: 0,
+    edu: '请选择学历',
     name: "",
     age: "",
     gender: "",
@@ -31,50 +31,67 @@ Page({
     project: "",
     practice: "",
     works: "",
-    stuNumber:"",
+    stuNumber: "",
   },
 
   onLoad: function (e) {
     console.log(e);
     wx.request({
-      url: 'http://127.0.0.1:8000/wechat/Insert_resume/',
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      method: "POST",
-      data: {
-        stuNumber:app.globalData.stuNumber,
-      },
-    }),
-    wx.request({
-      url: 'http://127.0.0.1:8000/wechat/Insert_resume/',
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      method: "GET",
-      success: function (res) {
-        console.log(res.data);
-        app.globalData.user = res.data;
-        console.log(app.globalData.user);
-        this.setData({
-          name: app.globalData.user,
-        })
-      }
-    })
+        url: 'http://127.0.0.1:8000/wechat/Insert_resume/',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: "POST",
+        data: {
+          stuNumber: app.globalData.stuNumber,
+        },
+      }),
+      wx.request({
+        url: 'http://127.0.0.1:8000/wechat/Insert_resume/',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: "GET",
+        success: function (res) {
+          console.log(res.data);
+          app.globalData.user = res.data;
+          console.log(app.globalData.user);
+          this.setData({
+            name: app.globalData.user,
+          })
+        }
+      })
   },
 
   bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    console.log('picker发送选择改变，携带值为', this.data.edu)
     this.setData({
-      edu: e.detail.value
+      edu: this.data.edu//这里有问题，查怎么传值
     })
+    console.log(this.data.array[e.detail.value])
+    app.globalData.edu=this.data.array[e.detail.value];
+    console.log(app.globalData.edu);
   },
 
   formSubmit: function (e) {
     //console.log(e.detail.value);
+    app.globalData.age=e.detail.value.age;
+    console.log(app.globalData.age);
+    app.globalData.gender=e.detail.value.gender;
+    console.log(app.globalData.gender);
+    app.globalData.tech=e.detail.value.tech;
+    console.log(app.globalData.tech);
+    app.globalData.job=e.detail.value.job;
+    console.log(app.globalData.job);
+    app.globalData.project=e.detail.value.project;
+    console.log(app.globalData.project);
+    app.globalData.practice=e.detail.value.practice;
+    console.log(app.globalData.practice);
+    app.globalData.works=e.detail.value.works;
+    console.log(app.globalData.works);
     if (e.detail.value.age.length == 0) {
       wx.showToast({
-        title: '性别不能为空!',
+        title: '年龄不能为空!',
         icon: 'none',
         duration: 2000
       })
@@ -108,7 +125,7 @@ Page({
         },
         method: "POST",
         data: {
-          stuNumber:app.globalData.stuNumber,
+          stuNumber: app.globalData.stuNumber,
           name: e.detail.value.name,
           age: e.detail.value.age,
           gender: e.detail.value.gender,
@@ -148,7 +165,7 @@ Page({
 
 
   // 上传图片
-  logo: function () {
+  /*logo: function () {
     var self = this
     wx.chooseImage({
       count: 1,
@@ -190,7 +207,7 @@ Page({
         console.log('chooseImage fail, err is', errMsg)
       }
     })
-  },
+  },*/
 
   /**
    * 生命周期函数--监听页面初次渲染完成

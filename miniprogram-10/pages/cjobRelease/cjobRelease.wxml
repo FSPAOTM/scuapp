@@ -1,0 +1,80 @@
+<!--pages/cjobRelease/cjobRelease.wxml-->
+<view>
+ 
+ <view class="title">兼职信息发布</view>
+ <form bindsubmit="formSubmit">
+   <!--简历-->
+   <view class='item'>
+     <text class='a1' style="padding-left:50rpx;font-size:15px">兼职岗位</text>
+     <input placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='请填写兼职岗位' class="in"
+       name="age" value="{{age}}" />
+     <view class="xian"></view>
+   </view>
+
+
+   <view class='item'>
+     <text class='a1' style="padding-left:50rpx;font-size:15px">工作时间</text>
+     <input placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='请填写工作时间' class="in"
+       name="age" value="{{age}}" />
+     <view class="xian"></view>
+   </view>
+
+   <view class='item'>
+     <text class='a1' style="padding-left:50rpx;font-size:15px">工作地点</text>
+     <input placeholder-class='placeholder' placeholder-style='font-size:12px;' maxlength='60' placeholder='请填写工作地点' class="in"
+       name="age" value="{{age}}" />
+     <view class="xian"></view>
+   </view>
+
+
+
+   <view class="section">
+     <view class="jieshang">职位描述</view>
+     <textarea placeholder-style='font-size:28rpx;' style="font-size:30rpx;margin-left:50rpx" minlength='20' maxlength='200'
+       placeholder="请输入相关工作内容等细节，(200字以内)" name="tech" value="{{tech}}" />
+     </view>
+
+     <view class='item'>
+     <text class='a1' style="padding-left:50rpx;font-size:15px">薪酬</text>
+     <input placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='请填写将会给出的薪酬' class="in"
+       name="age" value="{{age}}" />
+     <view class="xian"></view>
+   </view>
+
+   <view class="section">
+     <view class="jieshang">招聘要求</view>
+     <textarea placeholder-style='font-size:28rpx;' style="font-size:30rpx;margin-left:50rpx" minlength='20' maxlength='200'
+       placeholder="请输入岗位要求等细节，(200字以内)" name="tech" value="{{tech}}" />
+     </view>
+
+   <view class='item'>
+     <text class='a1' style="padding-left:50rpx;font-size:15px">招聘人数</text>
+     <input placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='请填写招聘人数' class="in"
+       name="age" value="{{age}}" />
+     <view class="xian"></view>
+   </view>
+
+   <view class='item'>
+     <text class='a1' style="padding-left:50rpx;font-size:15px">报名截止时间</text>
+     <input placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='请填写报名截止时间，如2020-XX-XX' class="in"
+       name="age" value="{{age}}" />
+     <view class="xian"></view>
+   </view>
+
+   <view class='item'>
+     <text class='a1' style="padding-left:50rpx;font-size:15px">备注</text>
+     <input placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='选填' class="in"
+       name="age" value="{{age}}" />
+     <view class="xian"></view>
+   </view>
+
+ 
+
+ <button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>发布</button>
+
+
+ </form>
+</view>
+
+
+

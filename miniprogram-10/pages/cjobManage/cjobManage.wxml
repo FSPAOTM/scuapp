@@ -1,0 +1,25 @@
+<!--pages/cjobManage/cjobManage.wxml-->
+
+<view class="title">发布管理</view>
+
+<navigator url="../cjobShow/cjobShow" class='nav-class'>
+    <view class='detailView'>
+      <text>岗位：</text>
+      <text>{{myinfo.post}}</text>
+    </view>
+
+    <!--状态显示,如正在招聘、等待审核等-->
+      <text class="state">{{myinfo.show}}</text>
+    <view class='guide'></view>
+  </navigator>
+
+  <navigator url="../cjobShow/cjobShow"  class='nav-class'>
+    <view class='detailView'>
+      <text>岗位：</text>
+      <text>{{myinfo.post}}</text>
+    </view>
+
+    <!--状态显示,如正在招聘、等待审核等-->
+      <text class="state">{{myinfo.show}}</text>
+    <view class='guide'></view>
+  </navigator>

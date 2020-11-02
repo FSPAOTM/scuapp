@@ -1,5 +1,5 @@
 // pages/login/login.js
-const app = getApp()
+var app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -61,8 +61,8 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        no: e.detail.value.no,
-        pwd: e.detail.value.pwd
+        no: this.data.no,
+        pwd: this.data.pwd
       },
       success: function (res) {
         console.log(res);
@@ -106,6 +106,8 @@ Page({
                     url: '../index/index',
                   })
                 }, 2000)
+                app.globalData.user = self.data.no;
+                console.log(app.globalData.user);
               } else {
                 wx.showToast({
                   title: '请求错误',
