@@ -125,11 +125,22 @@ def Company_register(request):
     else:
         return HttpResponse("请求错误")
 
-#简历提交功能
+#简历修改功能
 @csrf_exempt
-def Insert_resume(request):
+def Insert_resume_show(request):
     if request.method == "POST":
-        stu_id = request.POST.getlist('stuNumber') # 唯一标识简历的全局变量
+        stu_id = request.POST.get('stuNumber') # 唯一标识简历的全局变量
+        user = Tbstudent.objects.get(stu_id=stu_id)
+        resume= Tbresume.objects.get(res_id=user.res_id)
+        return JsonResponse(json.loads(resume))
+    else:
+        return HttpResponse("请求错误")
+
+
+@csrf_exempt
+def Insert_resume_change(request):
+    if request.method == "POST":
+        stu_id = request.POST.get('stuNumber')  # 唯一标识简历的全局变量
         account_name = request.POST.getlist('js传数据的名字') #获取表单数据用getlist
         age = request.POST.getlist('js传数据的名字')
         sex = request.POST.getlist('js传数据的名字')
@@ -224,6 +235,7 @@ def Reset_myinfo_e_mail(request):
 
 
 #后台管理界面（网页）
+
 #校内信息发布
 @csrf_exempt
 def management_inWork_release(request):
@@ -242,15 +254,16 @@ def management_inWork_release(request):
         inWork=TbinWork.objects.create(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
                                        w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
         inWork.save()
-        return HttpResponse("校内兼职信息已保存")
+        inwork_list = TbinWork.objects.all()
+        return render(request, '../templates/inwork_list.html', {'inwork_list': inwork_list})
     else:
         return HttpResponse("请求错误")
 
-#校内兼职信息展示（全部）
-@csrf_exempt
-def management_inWork_show(request):
-    inwork_list=TbinWork.objects.all()
-    return render(request, '../templates/inwork_list.html', {'inwork_list':inwork_list})
+#校内兼职信息展示
+#@csrf_exempt
+#def management_inWork_show(request):
+    #inwork_list=TbinWork.objects.all()
+    #return render(request, '../templates/inwork_list.html', {'inwork_list':inwork_list})
 
 
     #if request.method == "POST":
@@ -263,15 +276,18 @@ def management_inWork_show(request):
 
 #校内兼职信息修改
 @csrf_exempt
-def management_inWork_reset(request):
+def management_inWork_reset_show(request):
     if request.method == "POST":
         iw_number=request.POST.get('html传的岗位编号')
         inWork = TbinWork.objects.get(iw_number=iw_number)
-        # 列表？数组？
+        return render(request, '../templates/daitianjia.html', { })
+    else:
+        return HttpResponse("请求错误")
 
-
-        return HttpResponse("数组值")
-
+@csrf_exempt
+def management_inWork_reset(request):
+    if request.method == "POST":
+        iw_number = request.POST.get('html传的岗位编号')
         iw_post = request.POST.getlist('html传数据的名字')
         iw_depart = request.POST.getlist('html传数据的名字')
         w_time = request.POST.getlist('html传数据的名字')
