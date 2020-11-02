@@ -73,7 +73,7 @@
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <td id="iwnumber">{{ line.iw_number }}</td>
+            <form name="iwnumber" method="post" action=""><td>{{ line.iw_number }}</td></form>
             <td>{{ line.iw_post }}</td>
             <td>{{ line.iw_depart }}</td>
             <td>{{ line.w_time }}</td>
@@ -91,9 +91,9 @@
               <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
                 <i class="layui-icon">&#xe601;</i>
               </a>
-              <form method="post" action="inwork_change.html"><a id="bianji_button" title="编辑"  onclick="x_admin_show('编辑','inwork_change.html',600,400)" href="javascript:;">
+              <a id="bianji_button" title="编辑"  onclick="x_admin_show('编辑','inwork_change.html',600,400)" href="javascript:;">
                 <i class="layui-icon">&#xe642;</i>
-              </a></form>
+              </a>
                 <div><p id="res"></p></div>
                 <script>
     $("#bianji_button").onclick(function () {
