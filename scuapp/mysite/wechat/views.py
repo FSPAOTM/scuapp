@@ -145,6 +145,7 @@ def Insert_resume_change(request):
         sex = request.POST.get('js传数据的名字')
         res_asses = request.POST.get('js传数据的名字')
         res_edu = request.POST.get('js传数据的名字')
+        res_proj = request.POST.get('js传数据的名字')
         res_work = request.POST.get('js传数据的名字')
         res_proj = request.POST.get('js传数据的名字')
         res_extra = request.POST.get('js传数据的名字')

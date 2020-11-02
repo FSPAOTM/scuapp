@@ -1,6 +1,5 @@
 // pages/infoFill/infoFill.js
 const app = getApp();
-//var uploadFileUrl = app.d.ceshiUrl + "/Api/Renzheng/uploadimg";
 Page({
   data: {
     array: ['请选择学历', '专科', '本科', '研究生'],
@@ -35,61 +34,63 @@ Page({
   },
 
   onLoad: function (e) {
-    console.log(e);
     wx.request({
-        url: 'http://127.0.0.1:8000/wechat/Insert_resume/',
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        method: "POST",
-        data: {
-          stuNumber: app.globalData.stuNumber,
-        },
-      }),
-      wx.request({
-        url: 'http://127.0.0.1:8000/wechat/Insert_resume/',
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        method: "GET",
-        success: function (res) {
+      url: 'http://127.0.0.1:8000/wechat/Insert_resume_show/',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      data: {
+        stuNumber: app.globalData.user,
+      },
+      success: (res) => {
+        console.log(res);
+        console.log(this.data.stuNumber);
+        if (res.statusCode == 200) {
           console.log(res.data);
-          app.globalData.user = res.data;
-          console.log(app.globalData.user);
           this.setData({
-            name: app.globalData.user,
+            name: res.data.name,
+            age:res.data.age,
+            gender:res.data.sex,
+            tech:res.data.res_asses,
+            edu:res.data.res_edu,
+            job:res.data.res_work,
+            project:res.data.res_proj,
+            practice:res.data.res_extra,
+            works:res.data.res_per,
           })
         }
-      })
+      }
+    })
   },
 
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', this.data.edu)
     this.setData({
-      edu: this.data.edu//这里有问题，查怎么传值
+      edu: this.data.edu //这里有问题，查怎么传值
     })
     console.log(this.data.array[e.detail.value])
-    app.globalData.edu=this.data.array[e.detail.value];
+    app.globalData.edu = this.data.array[e.detail.value];
     console.log(app.globalData.edu);
   },
 
   formSubmit: function (e) {
     //console.log(e.detail.value);
-    app.globalData.age=e.detail.value.age;
+    app.globalData.age = this.data.age;
     console.log(app.globalData.age);
-    app.globalData.gender=e.detail.value.gender;
+    app.globalData.gender = this.data.gender;
     console.log(app.globalData.gender);
-    app.globalData.tech=e.detail.value.tech;
+    app.globalData.tech = this.data.tech;
     console.log(app.globalData.tech);
-    app.globalData.job=e.detail.value.job;
+    app.globalData.job = this.data.job;
     console.log(app.globalData.job);
-    app.globalData.project=e.detail.value.project;
+    app.globalData.project = this.data.project;
     console.log(app.globalData.project);
-    app.globalData.practice=e.detail.value.practice;
+    app.globalData.practice = this.data.practice;
     console.log(app.globalData.practice);
-    app.globalData.works=e.detail.value.works;
+    app.globalData.works = this.data.works;
     console.log(app.globalData.works);
-    if (e.detail.value.age.length == 0) {
+    if (this.data.age.length == 0) {
       wx.showToast({
         title: '年龄不能为空!',
         icon: 'none',
@@ -98,7 +99,7 @@ Page({
       setTimeout(function () {
         wx.hideToast()
       }, 2000)
-    } else if (e.detail.value.gender != 0 && e.detail.value.gender != 1) {
+    } else if (this.data.gender != 0 && this.data.gender != 1) {
       wx.showToast({
         title: '性别不能为空!',
         icon: 'none',
@@ -107,7 +108,7 @@ Page({
       setTimeout(function () {
         wx.hideToast()
       }, 2000)
-    } else if (e.detail.value.edu != 0 && e.detail.value.edu != 1 && e.detail.value.edu != 2 && e.detail.value.edu != 3) {
+    } else if (this.data.edu != 0 && this.data.edu != 1 && this.data.edu != 2 && this.data.edu != 3) {
       wx.showToast({
         title: '教育背景不能为空!',
         icon: 'none',
@@ -119,42 +120,47 @@ Page({
     } else {
 
       wx.request({
-        url: 'http://127.0.0.1:8000/wechat/Insert_resume/',
+        url: 'http://127.0.0.1:8000/wechat/Insert_resume_change/',
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
         method: "POST",
         data: {
-          stuNumber: app.globalData.stuNumber,
-          name: e.detail.value.name,
-          age: e.detail.value.age,
-          gender: e.detail.value.gender,
-          edu: e.detail.value.edu,
-          tech: e.detail.value.tech,
-          job: e.detail.value.job,
-          project: e.detail.value.project,
-          practice: e.detail.value.practice,
-          works: e.detail.value.works
+          stuNumber: app.globalData.user,
+          name: this.data.name,
+          age: this.data.age,
+          gender: this.data.gender,
+          edu: this.data.edu.name,
+          tech: this.data.tech,
+          job: this.data.job,
+          project: this.data.project,
+          practice: this.data.practice,
+          works: this.data.works
         },
         success: function (res) {
           console.log(res.data);
-          if (res.data.status == 0) {
-            wx.showToast({
-              title: '提交失败！！！',
-              icon: 'loading',
-              duration: 1500
-            })
-          } else {
-            wx.showToast({
-              title: '提交成功！！！', //这里打印出登录成功
-              icon: 'success',
-              duration: 1000
-            })
-            setTimeout(function () {
-              wx.redirectTo({
-                url: '../infoShow/infoShow',
+          if (res.data.status == 200) {
+            this.setData({
+              result: res.data
+            });
+            if (res.data = "填写完成") {
+              wx.showToast({
+                title: '提交成功！！！', //这里打印出登录成功
+                icon: 'success',
+                duration: 1000
               })
-            }, 2000)
+              setTimeout(function () {
+                wx.redirectTo({
+                  url: '../infoShow/infoShow',
+                })
+              }, 2000)
+            } else {
+              wx.showToast({
+                title: '请求错误',
+                icon: 'none',
+                duration: 1000
+              })
+            }
           }
         }
       })

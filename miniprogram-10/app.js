@@ -45,5 +45,6 @@ App({
     practice:"",
     works:"",
     stuNumber:"",
+    jobType:"",
   }
 })

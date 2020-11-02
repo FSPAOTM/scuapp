@@ -1,63 +1,54 @@
 /* pages/cjobRelease/cjobRelease.wxss */
 
-.title{
-  font-family:"黑体" ;
+.title {
+  font-family: "黑体";
   font-weight: 1000;
   font-size: 38rpx;
   text-align: center;
   margin-top: 5px;
   margin-bottom: 15px;
 }
-.shopstore{
-   display: flex;
-   width: 100%;
-   background: #fff;
-   padding: 20rpx 0;
-   font-size: 32rpx;
 
-}
-.shopstore_log{
-   width: 100%;
-   display: flex;
 
-}
-.item{
-  margin-top:1px;
+
+.item {
+  margin-top: 1px;
 }
 
-.item1{
+.item1 {
   display: flex;
   flex-direction: row;
 }
 
-.in{
+.in {
   width: 60%;
   padding-left: 50rpx;
   margin-top: 10px;
-  font-family: "黑体"; 
-  line-height:20px; 
+  font-family: "黑体";
+  line-height: 20px;
 }
 
-.section_gap{
+.section_gap {
   display: flex;
   flex-direction: row;
 }
 
 
-.xian{
+.xian {
   width: 90%;
   background: #ccc;
   height: 1rpx;
-  margin-left:25rpx; 
+  margin-left: 25rpx;
   margin-bottom: 20rpx;
 }
-.jieshang{
-  margin-left:50rpx; 
+
+.jieshang {
+  margin-left: 50rpx;
   padding: 20rpx 0;
   font-size: 30rpx;
 }
 
-.fb-type{
+.fb-type {
   height: 60rpx;
   width: 100%;
   background: #fff;
@@ -66,7 +57,7 @@
   align-items: center;
 }
 
-.fb-type .type-label{
+.fb-type .type-label {
   height: 36rpx;
   flex: 1;
   color: #333;
@@ -74,11 +65,12 @@
   margin-left: 10px;
 }
 
-.fb-type .type-icon{
+.fb-type .type-icon {
   height: 36rpx;
   width: 36rpx;
 }
-button{
+
+button {
   background: #7e8ef0;
   color: #fff;
   width: 80%;
@@ -86,16 +78,14 @@ button{
   margin-bottom: 20px;
 }
 
-.a1{
-  line-height:20px;
-  }
+.a1 {
+  line-height: 20px;
+}
 
-  .a2{
-    line-height:30px;
-    }
-  
-    .a3{
-      line-height:35px;
-      }
-  
-      
+.a2 {
+  line-height: 30px;
+}
+
+.a3 {
+  line-height: 35px;
+}

@@ -5,7 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    Name:"",
+    jobtime:"",
+    location:"",
+    description:"",
+    salary:"",
+    ask:"",
+    num:"",
+    endingtime:"",
+    ps:"", 
   },
 
   /**

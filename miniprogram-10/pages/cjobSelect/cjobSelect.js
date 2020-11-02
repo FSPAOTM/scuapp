@@ -1,4 +1,5 @@
 // pages/cjobSelect/cjobSelect.js
+var app = getApp();
 Page({
 
   /**
@@ -91,28 +92,29 @@ Page({
    * e是获取e.currentTarget.dataset.id所以是必备的，跟前端的data-id获取的方式差不多
    */
 
-   submit(){
-     wx.navigateTo({
-       url: '../cjobRelease/cjobRelease',
-     })
-   },
+
 
   radioButtonTap: function (e) {
-    console.log(e)
-    let id = e.currentTarget.dataset.id
-    console.log(id)
+    console.log(e);
+    let id = this.data.buttons;
+    console.log(id);
     for (let i = 0; i < this.data.buttons.length; i++) {
       if (this.data.buttons[i].id == id) {
         //当前点击的位置为true即选中
         this.data.buttons[i].checked = true;
+        app.globalData.jobType = this.data.buttons[i].name;
       } else {
         //其他的位置为false
         this.data.buttons[i].checked = false;
       }
     }
-    this.setData({
-      buttons: this.data.buttons,
-      msg: "id:" + id
+
+  },
+
+  submit() {
+    console.log(app.globalData.jobType);
+    wx.navigateTo({
+      url: '../cjobRelease/cjobRelease',
     })
   },
 
