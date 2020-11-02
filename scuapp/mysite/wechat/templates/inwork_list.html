@@ -94,11 +94,10 @@
               <a id="bianji_button" title="编辑"  onclick="x_admin_show('编辑','inwork_change.html',600,400)" href="javascript:;">
                 <i class="layui-icon">&#xe642;</i>
               </a>
-                <div><p id="res"></p></div>
                 <script>
     $("#bianji_button").onclick(function () {
         $.ajax({
-            url: 'inwork_change.html',
+            url: '', //暂时不清楚
             type: 'post',
             contentType:'application/x-www-form-urlencoded',
             // 指定urlencoded，其实默认的也是这个
@@ -106,9 +105,8 @@
                 // 因为不是json格式的数据，data就不需要用JSON转格式了，转了反而有问题
                 'iw_number': $("#iwnumber").val(),
             },
-            success: function (res) {
-                $('#res').text(res.iw_number);
-                console.log(res)
+            success: function (data) {
+                console.log("success")
             }
 
         })

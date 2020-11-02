@@ -17,6 +17,8 @@
     <!--[if lt IE 9]>
       <script src="js/js2.js"></script>
       <script src="js/js3.js"></script>
+{% load static %}
+    <script type="text/javascript" src="{% static 'jQuery/jQuery-3.4.1.js' %}"></script>
     <![endif]-->
   </head>
   
@@ -71,7 +73,7 @@
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <td>{{ line.iw_number }}</td>
+            <form name="iwnumber" method="post" action=""><td>{{ line.iw_number }}</td></form>
             <td>{{ line.iw_post }}</td>
             <td>{{ line.iw_depart }}</td>
             <td>{{ line.w_time }}</td>
@@ -89,9 +91,27 @@
               <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
                 <i class="layui-icon">&#xe601;</i>
               </a>
-              <a title="编辑"  onclick="x_admin_show('编辑','inwork_add.html',600,400)" href="javascript:;">
+              <a id="bianji_button" title="编辑"  onclick="x_admin_show('编辑','inwork_change.html',600,400)" href="javascript:;">
                 <i class="layui-icon">&#xe642;</i>
               </a>
+                <script>
+    $("#bianji_button").onclick(function () {
+        $.ajax({
+            url: '', //暂时不清楚
+            type: 'post',
+            contentType:'application/x-www-form-urlencoded',
+            // 指定urlencoded，其实默认的也是这个
+            data:{
+                // 因为不是json格式的数据，data就不需要用JSON转格式了，转了反而有问题
+                'iw_number': $("#iwnumber").val(),
+            },
+            success: function (data) {
+                console.log("success")
+            }
+
+        })
+    });
+</script>
               <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
                 <i class="layui-icon">&#xe640;</i>
               </a>
