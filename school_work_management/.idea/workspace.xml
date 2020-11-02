@@ -1,45 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0ff63147-3c36-4c47-bcf4-16947479f1de" name="Default Changelist" comment="" />
+    <list default="true" id="f5c05f04-6aac-4f98-83ae-dd4791e11ab0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../school_work_management/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/css/font.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/font.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/css/pintuer.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/pintuer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/css/xadmin.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/xadmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/fonts/iconfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/fonts/iconfont.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/fonts/iconfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/fonts/iconfont.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/fonts/iconfont.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/fonts/iconfont.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/fonts/iconfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/fonts/iconfont.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/images/aiwrap.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/aiwrap.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/images/bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/bg.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/images/bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/bg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/images/btnbg.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/btnbg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/images/btnbg1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/btnbg1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/images/btnbg2.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/btnbg2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/images/inputbg.gif" beforeDir="false" afterPath="$PROJECT_DIR$/images/inputbg.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/images/righttop.gif" beforeDir="false" afterPath="$PROJECT_DIR$/images/righttop.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/images/th.gif" beforeDir="false" afterPath="$PROJECT_DIR$/images/th.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/images/toolbg.gif" beforeDir="false" afterPath="$PROJECT_DIR$/images/toolbg.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/inwork_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/inwork_add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/inwork_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/inwork_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/js/xadmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/xadmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../school_work_management/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-      </list>
-    </option>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
   </component>
-  <component name="ProjectId" id="1jg4ZkJR5RcUejJJzCqjuiTsZhP" />
+  <component name="ProjectId" id="1jjYXGeC59t37gFpi7jyGHZKZbi" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" nameIsGenerated="true" path="">
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0ff63147-3c36-4c47-bcf4-16947479f1de" name="Default Changelist" comment="" />
-      <created>1604212460137</created>
+      <changelist id="f5c05f04-6aac-4f98-83ae-dd4791e11ab0" name="Default Changelist" comment="" />
+      <created>1604319006594</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1604212460137</updated>
-      <workItem from="1604212461365" duration="718000" />
-      <workItem from="1604213217768" duration="153000" />
+      <updated>1604319006594</updated>
+      <workItem from="1604319007805" duration="56000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="223" y="67" width="1089" height="740" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604319060729">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="67" width="1089" height="740" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1604319060729" />
   </component>
 </project>

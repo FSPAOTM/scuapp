@@ -8,15 +8,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="./css/font.css">
-    <link rel="stylesheet" href="./css/xadmin.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="./js/xadmin.js"></script>
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/xadmin.css">
+    <script type="text/javascript" src="js/js1.js"></script>
+    <script type="text/javascript" src="lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/xadmin.js"></script>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
-      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+      <script src="js/js2.js"></script>
+      <script src="js/js3.js"></script>
+{% load static %}
+    <script type="text/javascript" src="{% static 'jQuery/jQuery-3.4.1.js' %}"></script>
     <![endif]-->
   </head>
   
@@ -66,42 +68,12 @@
             <th>操作</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
-            </td>
-            <td>7000000001</td>
-            <td>办公室值班</td>
-            <td>公管学院楼办公室</td>
-            <td>每周三-周五14:00-18:00</td>
-            <td>公管学院楼206</td>
-            <td>值班</td>
-            <td>14元/小时</td>
-            <td>公管学院2017级、2018级本科生</td>
-            <td>3</td>
-            <td>2020年10月18日</td>
-            <td>2020年9月18日</td>
-            <td>无</td>
-            <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
-            <td class="td-manage">
-              <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
-                <i class="layui-icon">&#xe601;</i>
-              </a>
-              <a title="编辑"  onclick="x_admin_show('编辑','inwork_add.html',600,400)" href="javascript:;">
-                <i class="layui-icon">&#xe642;</i>
-              </a>
-              <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
-                <i class="layui-icon">&#xe640;</i>
-              </a>
-            </td>
-          </tr>
         {% for line in inwork_list %}
         <tr>
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <td>{{ line.iw_number }}</td>
+            <td id="iwnumber">{{ line.iw_number }}</td>
             <td>{{ line.iw_post }}</td>
             <td>{{ line.iw_depart }}</td>
             <td>{{ line.w_time }}</td>
@@ -119,9 +91,29 @@
               <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
                 <i class="layui-icon">&#xe601;</i>
               </a>
-              <a title="编辑"  onclick="x_admin_show('编辑','inwork_add.html',600,400)" href="javascript:;">
+              <form method="post" action="inwork_change.html"><a id="bianji_button" title="编辑"  onclick="x_admin_show('编辑','inwork_change.html',600,400)" href="javascript:;">
                 <i class="layui-icon">&#xe642;</i>
-              </a>
+              </a></form>
+                <div><p id="res"></p></div>
+                <script>
+    $("#bianji_button").onclick(function () {
+        $.ajax({
+            url: 'inwork_change.html',
+            type: 'post',
+            contentType:'application/x-www-form-urlencoded',
+            // 指定urlencoded，其实默认的也是这个
+            data:{
+                // 因为不是json格式的数据，data就不需要用JSON转格式了，转了反而有问题
+                'iw_number': $("#iwnumber").val(),
+            },
+            success: function (res) {
+                $('#res').text(res.iw_number);
+                console.log(res)
+            }
+
+        })
+    });
+</script>
               <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
                 <i class="layui-icon">&#xe640;</i>
               </a>

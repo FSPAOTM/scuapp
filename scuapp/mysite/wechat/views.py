@@ -251,7 +251,7 @@ def management_inWork_release(request):
 @csrf_exempt
 def management_inWork_show(request):
     inwork_list=TbinWork.objects.all()
-    return render(request, 'inwork_list.html', {'inwork_list':inwork_list})
+    return render(request, '../templates/inwork_list.html', {'inwork_list':inwork_list})
 
 
     #if request.method == "POST":
