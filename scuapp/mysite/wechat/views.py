@@ -131,31 +131,25 @@ def Insert_resume_show(request):
     if request.method == "POST":
         stu_id = request.POST.get('stuNumber') # 唯一标识简历的全局变量
         user = Tbstudent.objects.get(stu_id=stu_id)
-        resume= Tbresume.objects.get(res_id=user.res_id)
+        res_id = user.res_id
+        resume= Tbresume.objects.get(res_id = res_id)
         return JsonResponse(json.loads(resume))
     else:
         return HttpResponse("请求错误")
-
 
 @csrf_exempt
 def Insert_resume_change(request):
     if request.method == "POST":
         stu_id = request.POST.get('stuNumber')  # 唯一标识简历的全局变量
-        account_name = request.POST.getlist('js传数据的名字') #获取表单数据用getlist
-        age = request.POST.getlist('js传数据的名字')
-        sex = request.POST.getlist('js传数据的名字')
-        res_asses = request.POST.getlist('js传数据的名字')
-        res_edu = request.POST.getlist('js传数据的名字')
-        res_work = request.POST.getlist('js传数据的名字')
-        res_proj = request.POST.getlist('js传数据的名字')
-        res_extra = request.POST.getlist('js传数据的名字')
-        res_per = request.POST.getlist('js传数据的名字')
-        filterResult1 = Tbcompany.objects.filter(stu_id=stu_id)
-        if len(filterResult1) > 0:
-           user = Tbstudent.objects.get(stu_id=stu_id)
-           return HttpResponse &user.name
-        else:
-            return HttpResponse("查询不到此学号")
+        account_name = request.POST.get('js传数据的名字') #获取表单数据用getlist
+        age = request.POST.get('js传数据的名字')
+        sex = request.POST.get('js传数据的名字')
+        res_asses = request.POST.get('js传数据的名字')
+        res_edu = request.POST.get('js传数据的名字')
+        res_work = request.POST.get('js传数据的名字')
+        res_extra = request.POST.get('js传数据的名字')
+        res_per = request.POST.get('js传数据的名字')
+        user = Tbstudent.objects.get(stu_id=stu_id)
         res_id = user.res_id
         Tbresume.objects.get(res_id=res_id).update(name=account_name, age=age, sex=sex, res_asses=res_asses, res_edu=res_edu, res_work=res_work, res_proj=res_proj, res_extra=res_extra, res_per=res_per)
         #resume.save()  好像update这种更新方式并不需要save
