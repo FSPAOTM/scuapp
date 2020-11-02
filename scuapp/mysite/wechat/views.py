@@ -131,8 +131,27 @@ def Insert_resume_show(request):
     if request.method == "POST":
         stu_id = request.POST.get('stuNumber') # 唯一标识简历的全局变量
         user = Tbstudent.objects.get(stu_id=stu_id)
-        resume= Tbresume.objects.filter(res_id = user.res_id)
-        return JsonResponse(json.loads(resume))
+        res_id = user.res_id
+        resume= Tbresume.objects.get(res_id = res_id)
+        name=resume.name
+        age=resume.age
+        sex=resume.sex
+        res_asses=resume.res_asses
+        res_edu=resume.res_edu
+        res_work=resume.res_work
+        res_proj=resume.res_proj
+        res_extra=resume.res_extra
+        res_per=resume.res_per
+        return HttpResponse(json.dumps(
+            {"name": name,
+             "age": age,
+             "sex": sex,
+             "res_asses": res_asses,
+             "res_edu": res_edu,
+             "res_work": res_work,
+             "res_proj": res_proj,
+             "res_extra": res_extra,
+             "res_per": res_per}))
     else:
         return HttpResponse("请求错误")
 
@@ -176,7 +195,7 @@ def Reset_show(request):
     else:
         return HttpResponse("请求错误")
 
-#修改密码
+#修改密码（未改）
 @csrf_exempt
 def Reset_password(request):
     if request.method == "POST":
@@ -197,9 +216,8 @@ def Reset_password(request):
 @csrf_exempt
 def Reset_myinfo_name(request):
     if request.method == "POST":
-        stu_id=request.POST.get('js传数据的全局变量')
-        name=request.POST.get('js传数据的名字')
-
+        stu_id=request.POST.get('stuNumber')
+        name=request.POST.get('name')
         Tbstudent.objects.get(stu_id=stu_id ).update(name=name)
         return HttpResponse("姓名修改成功")
     else:
@@ -209,9 +227,8 @@ def Reset_myinfo_name(request):
 @csrf_exempt
 def Reset_myinfo_nickname(request):
     if request.method == "POST":
-        stu_id=request.POST.get('js传数据的全局变量')
-        nickname=request.POST.get('js传数据的名字')
-
+        stu_id=request.POST.get('stuNumber')
+        nickname=request.POST.get('nickname')
         Tbstudent.objects.get(stu_id=stu_id ).update(nickname=nickname)
         return HttpResponse("昵称修改成功")
     else:
@@ -221,15 +238,14 @@ def Reset_myinfo_nickname(request):
 @csrf_exempt
 def Reset_myinfo_phonenumber(request):
     if request.method == "POST":
-        stu_id=request.POST.get('js传数据的全局变量')
-        phonenumber=request.POST.get('js传数据的名字')
-
+        stu_id=request.POST.get('stuNumber')
+        phonenumber=request.POST.get('phonenumber')
         filterResult1 = Tbstudent.objects.filter(phonenumber_phonenumberphonenumber_phonenumber=phonenumber)
         if len(filterResult1) > 0:
             return HttpResponse("手机号码已注册")
         else:
             Tbstudent.objects.get(stu_id=stu_id ).update(phonenumber_phonenumberphonenumber_phonenumber=phonenumber)
-        return HttpResponse("电话号码修改成功")
+            return HttpResponse("电话号码修改成功")
     else:
         return HttpResponse("请求错误")
 
@@ -237,11 +253,14 @@ def Reset_myinfo_phonenumber(request):
 @csrf_exempt
 def Reset_myinfo_e_mail(request):
     if request.method == "POST":
-        stu_id=request.POST.get('js传数据的全局变量')
-        e_mail=request.POST.get('js传数据的名字')
-
-        Tbstudent.objects.get(stu_id=stu_id ).update(e_mail=e_mail)
-        return HttpResponse("邮箱修改成功")
+        stu_id=request.POST.get('stuNumber')
+        e_mail=request.POST.get('e_mail')
+        filterResult1 = Tbstudent.objects.filter(e_mail=e_mail)
+        if len(filterResult1) > 0:
+            return HttpResponse("邮箱已被占用")
+        else:
+            Tbstudent.objects.get(stu_id=stu_id ).update(e_mail=e_mail)
+            return HttpResponse("邮箱修改成功")
     else:
         return HttpResponse("请求错误")
 
