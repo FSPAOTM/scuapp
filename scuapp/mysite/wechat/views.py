@@ -131,7 +131,7 @@ def Insert_resume_show(request):
     if request.method == "POST":
         stu_id = request.POST.get('stuNumber') # 唯一标识简历的全局变量
         user = Tbstudent.objects.get(stu_id=stu_id)
-        resume= Tbresume.objects.get(res_id = user)
+        resume= Tbresume.objects.get(res_id = int(user.res_id))
         return JsonResponse(json.loads(resume))
     else:
         return HttpResponse("请求错误")
