@@ -228,7 +228,7 @@ def Reset_myinfo_name(request):
 def Reset_myinfo_nickname(request):
     if request.method == "POST":
         stu_id=request.POST.get('stuNumber')
-        nickname=request.POST.get('nickname')
+        nickname=request.POST.get('nickName')
         Tbstudent.objects.get(stu_id=stu_id ).update(nickname=nickname)
         return HttpResponse("昵称修改成功")
     else:
@@ -239,7 +239,7 @@ def Reset_myinfo_nickname(request):
 def Reset_myinfo_phonenumber(request):
     if request.method == "POST":
         stu_id=request.POST.get('stuNumber')
-        phonenumber=request.POST.get('phonenumber')
+        phonenumber=request.POST.get('phoneNum')
         filterResult1 = Tbstudent.objects.filter(phonenumber_phonenumberphonenumber_phonenumber=phonenumber)
         if len(filterResult1) > 0:
             return HttpResponse("手机号码已注册")
@@ -254,7 +254,7 @@ def Reset_myinfo_phonenumber(request):
 def Reset_myinfo_e_mail(request):
     if request.method == "POST":
         stu_id=request.POST.get('stuNumber')
-        e_mail=request.POST.get('e_mail')
+        e_mail=request.POST.get('eMail')
         filterResult1 = Tbstudent.objects.filter(e_mail=e_mail)
         if len(filterResult1) > 0:
             return HttpResponse("邮箱已被占用")
