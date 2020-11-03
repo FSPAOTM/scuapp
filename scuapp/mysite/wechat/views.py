@@ -1,6 +1,6 @@
 from django.shortcuts import HttpResponse,render
 from django.template import loader
-from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork
+from .models import Tbcompany, Tbmanager, Tbstudent, Tbresume, Tbqualify, TbinWork, TboutWork
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
@@ -288,4 +288,10 @@ def management_inWork_reset(request):
         return HttpResponse("校内工作信息修改成功")
     else:
         return HttpResponse("请求错误")
+
+#校外兼职信息展示
+@csrf_exempt
+def management_outWork_show(request):
+    outwork_list = TboutWork.objects.all()
+    return render(request, '../templates/outwork_list.html', {'outwork_list':outwork_list})
 
