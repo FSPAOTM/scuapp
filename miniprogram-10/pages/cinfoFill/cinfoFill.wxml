@@ -1,0 +1,54 @@
+<!--pages/cinfoFill/cinfoFill.wxml-->
+<!--企业信息完善表单-->
+<view>
+  <view class="title">企业信息完善</view>
+
+<view class='item'>
+  <text style="padding-left:30rpx">统一社会信用代码：</text>
+  <text class='right'>{{myinfo.comlicense}}</text>
+</view>
+
+<view class='item'>
+  <text style="padding-left:30rpx">联系电话：</text>
+  <text class='right'>{{myinfo.phonenum}}</text>
+</view>
+
+
+<view class='item'>
+ <text style="padding-left:30rpx"> 企业名称：</text>
+ <text class='right'>{{myinfo.comname}}</text>
+</view>
+
+<view class='item'>
+  <text style="padding-left:30rpx">负责人：</text>
+  <input placeholder-class='placeholder' placeholder-style='font-size:30rpx;' placeholder='请填写负责人姓名' class="in" comleader="comleader" comleader="{{comleader}}"/>
+</view>
+
+
+<view class='item'>
+ <text style="padding-left:30rpx"> 邮箱：</text>
+ <input placeholder-class='placeholder' placeholder-style='font-size:30rpx;' placeholder='请填写邮箱地址' class="in" email="email" email="{{email}}"/>
+</view>
+
+<view class='item'>
+ <text style="padding-left:30rpx"> 公司地址：</text>
+ <input placeholder-class='placeholder' placeholder-style='font-size:30rpx;' placeholder='请填写公司详细地址' class="in" comadress="comadress" value="{{comadress}}"/>
+</view>
+
+<view class="section">
+  <view style="padding-left:50rpx" >公司业务</view>
+  <view  class="xian"></view>
+       <textarea placeholder-style='font-size:30rpx;' style="font-size:30rpx; padding-left:50rpx; margin-top:10rpx;" maxlength='150'   placeholder="请简述公司业务(150字以内)" combusiness="combusiness" value="{{combusiness}}"/>
+        </view>
+
+<view class="section">
+  <view style="padding-left:50rpx" >经营状况</view>
+  <view  class="xian"></view>
+       <textarea placeholder-style='font-size:30rpx;'style="font-size:30rpx; padding-left:50rpx; margin-top:10rpx;" maxlength='150'   placeholder="请简述公司经营状况(150字以内)" comcondition="comcondition" value="{{comcondition}}"/>
+        </view>
+
+<button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>确认提交</button>
+
+</view>
+
+

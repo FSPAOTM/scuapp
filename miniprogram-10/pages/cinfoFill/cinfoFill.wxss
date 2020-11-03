@@ -1,0 +1,47 @@
+/* pages/cinfoFill/cinfoFill.wxss */
+/* pages/companylist/companylist.wxss */
+.nav{
+  background-color: #fff;
+}
+
+.nickname{
+margin-bottom: 10rpx;
+text-align: center;
+}
+.item{
+height: 70rpx;
+background-color: #fff;
+margin: 20rpx;
+display: flex;
+border-radius: 20rpx;
+}
+.left{
+display: flex;
+justify-content: flex-start;
+flex-grow: 1;
+}
+.right{
+display: flex;
+justify-content: flex-end;
+flex-grow: 1;
+color: #ccc;
+margin-right: 20rpx;
+}
+
+.xian{
+  width: 90%;
+  background: #ccc;
+  height: 2rpx;
+}
+
+.section{
+  background: #fff
+}
+.title{
+  font-family:"黑体" ;
+  font-weight: 1000;
+  font-size: 34rpx;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
