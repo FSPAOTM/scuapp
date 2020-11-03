@@ -1,0 +1,45 @@
+<!--pages/center/center.wxml-->
+<view class="summary">      
+        <image src="7.png" class="avatar" />
+        <view class="nickname">王雨欣</view>
+        </view>
+
+
+<view class="hr"></view>
+<view class='item'>
+  <image src="8.png" class="a1"/>
+  <view class="title">个人信息完善</view>
+  <view class="detail2">
+    <text>></text>
+  </view>
+</view>
+<view class="line"></view>
+
+<view class='item'>
+  <image src="9.png" class="a1"/>
+  <view class="title">我的简历</view>
+  <view class="detail2">
+    <text>></text>
+  </view>
+</view>
+
+<view class="hr"></view>
+
+<view class="line"></view>
+<view class="item">
+  <image src="10.png" class="a1"/>
+  <view class="title">意见反馈</view>
+  <view class="detail2">
+    <text> ></text>
+  </view>
+</view>
+<view class="line"></view>
+<view class="item">
+  <image src="11.png" class="a1"/>
+  <view class="title">设置</view>
+  <view class="detail2">
+    <text> ></text>
+  </view>
+</view>
+<view class="hr"></view>
+
