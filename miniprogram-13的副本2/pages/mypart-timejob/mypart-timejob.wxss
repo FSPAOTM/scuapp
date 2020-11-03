@@ -1,0 +1,39 @@
+.tab-h{  
+  width: 100%;  
+  border-bottom: 1px solid #eee;  
+  text-align: center;  
+  line-height: 80rpx;
+  background: #fff;  
+  position: fixed;
+  top: 0;  
+  z-index: 999;
+  }  
+
+.swiper-tab-list{  
+font-size: 12px;  
+display: inline-block;  
+width: 20%;  
+color: #666;  
+}  
+.swiper_tab_view{
+  width: 100%;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.on{ 
+color: #dd2727;  
+border-bottom: 5rpx solid #dd2727;
+}  
+
+.swiper-box{ 
+display: block; 
+height:100%; 
+width: 100%; 
+overflow: hidden; 
+}  
+
+
+.swiper-box view{
+  text-align: center;
+}

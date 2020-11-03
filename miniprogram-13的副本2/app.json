@@ -1,0 +1,46 @@
+{
+  "pages":[
+    "pages/mypart-timejob/mypart-timejob",
+    "pages/filtrate/filtrate",
+    "pages/center/center",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+ 
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "2.png",
+        "iconPath": "1.png",
+        "pagePath":"pages/filtrate/filtrate",
+        "text": " 全部兼职"
+      },
+      {
+        "selectedIconPath": "4.png",
+        "iconPath": "3.png",
+        "pagePath": "pages/mypart-timejob/mypart-timejob",
+        "text": "我的兼职"
+      },
+      {
+        "selectedIconPath": "6.png",
+        "iconPath": "5.png",
+        "pagePath": "pages/center/center",
+        "text": "个人中心"
+      }
+    ]
+  }
+ 
+
+}
