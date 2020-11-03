@@ -96,8 +96,8 @@ Page({
 
   radioButtonTap: function (e) {
     console.log(e);
-    let id = this.data.buttons;
-    console.log(id);
+    let id = e.currentTarget.dataset.id;
+    console.log(id);//打印不出来
     for (let i = 0; i < this.data.buttons.length; i++) {
       if (this.data.buttons[i].id == id) {
         //当前点击的位置为true即选中
