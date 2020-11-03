@@ -7,14 +7,14 @@
 <view style="padding-left:50rpx; padding-right:50rpx">
 
   <view class='button_container'>
-  <block wx:for="{{buttons}}" wx:key="buttons"  wx:if="{{index<3}}" >
+  <block wx:for="{{buttons}}" wx:key="name"  wx:if="{{index<3}}" >
   <button class='{{item.checked?"checked_button":"normal_button"}}' data-id='{{item.id}}' bindtap='radioButtonTap'>{{item.name}}</button>
   </block>
   </view>
 
 
 <view class='button_container'>
-  <block wx:for="{{buttons}}" wx:key="buttons"  wx:if="{{2<index&&index<6}}" >
+  <block wx:for="{{buttons}}" wx:key="name"  wx:if="{{2<index&&index<6}}" >
   <button class='{{item.checked?"checked_button":"normal_button"}}' data-id='{{item.id}}' bindtap='radioButtonTap'>{{item.name}}</button>
   </block>
   </view>

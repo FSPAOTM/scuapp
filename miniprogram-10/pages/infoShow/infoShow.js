@@ -7,7 +7,7 @@ Page({
    */
   data: {
     edu: app.globalData.edu,
-    name: app.globalData.user,
+    name: app.globalData.name,
     age: app.globalData.age,
     gender: app.globalData.gender,
     tech: app.globalData.tech,
