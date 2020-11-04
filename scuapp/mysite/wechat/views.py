@@ -131,7 +131,7 @@ def Insert_resume_show(request):
     if request.method == "POST":
         stu_id = request.POST.get('stuNumber') # 唯一标识简历的全局变量
         user = Tbstudent.objects.get(stu_id=stu_id)
-        res_id = user.res_id
+        res_id = user.res_id.res_id
         resume= Tbresume.objects.get(res_id = res_id)
         name=resume.name
         age=resume.age
