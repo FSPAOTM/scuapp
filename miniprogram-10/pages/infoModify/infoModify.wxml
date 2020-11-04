@@ -58,6 +58,6 @@
     <text style="padding-left:30rpx">退出：</text><text class='right'>>>></text>
   </view>
 
-  <button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>密码重置</button>
+  <button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su' bindtap='repwd'>密码重置</button>
 
 </view>

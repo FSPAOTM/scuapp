@@ -103,7 +103,7 @@ Page({
                 })
                 setTimeout(function () {
                   wx.navigateTo({
-                    url: '../infoModify/infoModify',
+                    url: '../infoFill/infoFill',
                   })
                 }, 2000)
                 app.globalData.user = self.data.no;

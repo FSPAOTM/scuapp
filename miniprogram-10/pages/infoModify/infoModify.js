@@ -243,6 +243,12 @@ Page({
 
     })
 
+  },
+
+  repwd:function(){
+    wx.navigateTo({
+      url: '../repwd1/repwd1',
+    })
   }
 
 })

@@ -1,13 +1,13 @@
 {
   "pages": [
+    "pages/login/login",
+    "pages/infoFill/infoFill",
+    "pages/cjobSelect/cjobSelect",
     "pages/cresumeReview/cresumeReview",
     "pages/cresumeManage/cresumeManage",
     "pages/cinfoFill/cinfoFill",
-    "pages/login/login",
     "pages/infoModify/infoModify",
-    "pages/infoFill/infoFill",
     "pages/cjobRelease/cjobRelease",
-    "pages/cjobSelect/cjobSelect",
     "pages/cjobManage/cjobManage",
     "pages/cjobShow/cjobShow",
     "pages/infoShow/infoShow",

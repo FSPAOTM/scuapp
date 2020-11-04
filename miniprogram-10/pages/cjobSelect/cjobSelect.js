@@ -96,7 +96,7 @@ Page({
 
   radioButtonTap: function (e) {
     console.log(e);
-    let id = e.currentTarget.dataset.id;
+    let id = e.currentTarget.dataset[0].id;
     console.log(id);//打印不出来
     for (let i = 0; i < this.data.buttons.length; i++) {
       if (this.data.buttons[i].id == id) {

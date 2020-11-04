@@ -65,9 +65,9 @@ Page({
   },
 
   bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', this.data.edu)
+    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      edu: this.data.edu //这里有问题，查怎么传值
+      edu: this.data.array[e.detail.value]
     })
     console.log(this.data.array[e.detail.value])
     app.globalData.edu = this.data.array[e.detail.value];
