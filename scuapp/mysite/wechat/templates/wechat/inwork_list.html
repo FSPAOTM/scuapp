@@ -74,7 +74,7 @@
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <form name="iw_number" method="post" action="../management_inWork_reset_show/"><td>{{ line.iw_number }}</td></form>
+            <form name="iw_number"><td>{{ line.iw_number }}</td></form><!--method="post" action="../management_inWork_reset_show/"-->
             <td>{{ line.iw_post }}</td>
             <td>{{ line.iw_depart }}</td>
             <td>{{ line.w_time }}</td>
@@ -92,27 +92,26 @@
               <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
                 <i class="layui-icon">&#xe601;</i>
               </a>
-              <a id="bianji_button" title="编辑"  onclick="x_admin_show('编辑','inwork_change.html',600,400)" href="javascript:;">
+              <a id="bianji_button" title="编辑" onclick="post_show()" href="javascript:;">
                 <i class="layui-icon">&#xe642;</i>
               </a>
 
                 <script>
-    $("#bianji_button").click(function () {
+    function post_show() {
         $.ajax({
-            url: '',
-            type: 'post',
+            url: '../management_inWork_reset_show/',
+            type: "post",
             data:{
                 // 因为不是json格式的数据，data就不需要用JSON转格式了，转了反而有问题
                 'iw_number': $("#iw_number").val(),
-            },
-            success: function (data) {
-                console.log("success")
             }
-
         })
-    });
+    };
 </script>
 
+            <!--success: function (data) {
+                console.log("success")
+            }-->
               <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
                 <i class="layui-icon">&#xe640;</i>
               </a>

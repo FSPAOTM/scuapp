@@ -22,12 +22,12 @@ urlpatterns = [
 
 
     #后台管理界面
-    path('management_inwork_list/', views01.management_inwork_list, name='management_inwork_list'),
+    path('management_inwork_add/', views01.management_inwork_add, name='management_inwork_add'),
     # path('management_inWork_release_html/', views.management_inWork_release_html, name='management_inWork_release_html'),
     path('management_inWork_release/', views01.management_inWork_release, name='management_inWork_release'),
     # path('management_inWork_show/', views.management_inWork_show, name='management_inWork_show'),
     path('management_inWork_reset_show/', views01.management_inWork_reset_show, name='management_inWork_reset_show'),
-
+    path('management_inWork_reset/', views01.management_inWork_reset, name='management_inWork_reset'),
     # path('<CharField:manager_id>/results/', views.results, name='results'),
     # path('<CharField:manager_id/vote/', views.vote, name='vote'),
 

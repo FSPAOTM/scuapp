@@ -39,8 +39,9 @@
 
 
 
-    <form action="http://127.0.0.1:8000/wechat/management_inWork_reset/" method="post">
+    <form action="../management_inWork_reset/" method="post">
         <ul class="forminfo">
+            <li><label>岗位编号</label><input value="{{ inWork.iw_number }}" name="IW_number" type="text" class="dfinput" required/><i>*</i></li>
             <li><label>岗位名称</label><input value="{{ inWork.iw_post }}" name="IW_post" type="text" class="dfinput" required/><i>*</i></li>
             <li><label>用人部门</label><input value="{{ inWork.iw_depart }}" name="IW_depart" type="text" class="dfinput" required/><i>*</i></li>
             <li><label>工作时间</label><input value="{{ inWork.w_time }}" name="W_Time" type="text" class="dfinput" /></li>
