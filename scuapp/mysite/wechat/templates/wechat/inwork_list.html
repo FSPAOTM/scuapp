@@ -92,11 +92,11 @@
               <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
                 <i class="layui-icon">&#xe601;</i>
               </a>
-              <a id="bianji_button" title="编辑" onclick="post_show()" href="javascript:;">
+              <a id="bianji_button" title="编辑" href="../management_inWork_reset_show/?re_num={{ line.iw_number }}">
                 <i class="layui-icon">&#xe642;</i>
               </a>
 
-                <script>
+                <!--<script>
     function post_show() {
         $.ajax({
             url: '../management_inWork_reset_show/',
@@ -107,7 +107,7 @@
             }
         })
     };
-</script>
+</script>-->
 
             <!--success: function (data) {
                 console.log("success")

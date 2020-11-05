@@ -53,12 +53,13 @@ def management_inWork_release(request):
 #校内兼职信息修改
 @csrf_exempt
 def management_inWork_reset_show(request):
-    if request.method == "POST":
-        iw_number=request.POST.get('iw_number')
-        inWork = TbinWork.objects.get(iw_number=iw_number)
-        return render(request, 'wechat/inwork_change.html', {'inWork': inWork})
-    else:
-        return HttpResponse("请求错误")
+    #if request.method == "POST":
+        #iw_number=request.POST.get('re_num')
+    iw_number=request.GET.get('re_num')
+    inWork = TbinWork.objects.get(iw_number=iw_number)
+    return render(request, 'wechat/inwork_change.html', {'inWork': inWork})
+    #else:
+        #return HttpResponse("请求错误")
 
 @csrf_exempt
 def management_inWork_reset(request):
