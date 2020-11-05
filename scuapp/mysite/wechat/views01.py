@@ -79,7 +79,6 @@ def management_inWork_reset(request):
                                        w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
         inwork_list = TbinWork.objects.all()
         return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
-        return HttpResponse("校内工作信息修改成功")
     else:
         return HttpResponse("请求错误")
 
