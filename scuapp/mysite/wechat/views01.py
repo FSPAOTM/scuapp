@@ -7,12 +7,28 @@ import json
 
 #后台管理界面
 
-#校内信息发布界面导入
+#一大波界面导入
+#首页
 @csrf_exempt
-def management_inwork_add(request):
+def index(request):
+    return render(request, 'wechat/index.html')
+#登录界面
+@csrf_exempt
+def login(request):
+    return render(request, 'wechat/login.html')
+#校内兼职信息展示界面
+@csrf_exempt
+def inwork_list(request):
+    inwork_list = TbinWork.objects.all()
+    return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+
+#校内兼职信息发布界面
+@csrf_exempt
+def inwork_add(request):
     return render(request, 'wechat/inwork_add.html')
 
-#校内信息发布
+#功能接口
+#校内兼职信息发布
 @csrf_exempt
 def management_inWork_release(request):
     if request.method == "POST":
@@ -35,31 +51,13 @@ def management_inWork_release(request):
     else:
         return HttpResponse("请求错误")
 
-#校内兼职信息展示
-#@csrf_exempt
-#def management_inWork_show(request):
-    #inwork_list=TbinWork.objects.all()
-    #return render(request, '../templates/inwork_list.html', {'inwork_list':inwork_list})
-
-
-    #if request.method == "POST":
-
-#列表？数组？
-        #return HttpResponse("数组值")
-
-    #else:
-        #return HttpResponse("请求错误")
-
 #校内兼职信息修改
 @csrf_exempt
 def management_inWork_reset_show(request):
-    #if request.method == "POST":
-        #iw_number=request.POST.get('re_num')
-    iw_number=request.GET.get('re_num')
+    iw_number=request.GET.get("re_num")
     inWork = TbinWork.objects.get(iw_number=iw_number)
     return render(request, 'wechat/inwork_change.html', {'inWork': inWork})
-    #else:
-        #return HttpResponse("请求错误")
+
 
 @csrf_exempt
 def management_inWork_reset(request):
@@ -76,18 +74,18 @@ def management_inWork_reset(request):
         ddl_time = request.POST.get('Ddl_time')
         inpub_time = request.POST.get('Inpub_time')
         w_ps = request.POST.get('W_ps')
-        TbinWork.objects.get(iw_number=iw_number).update(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
+        TbinWork.objects.filter(iw_number=iw_number).update(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
                                        w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
         inwork_list = TbinWork.objects.all()
         return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
     else:
         return HttpResponse("请求错误")
 
-
+#校内兼职信息删除
 @csrf_exempt
 def management_inWork_delete(request):
     iw_number = request.GET.get('delete_num')
-    TbinWork.objects.filter(iw_number=iw_number).delete()  # 批量删除
+    TbinWork.objects.filter(iw_number=iw_number).delete()  #批量删除
     inwork_list = TbinWork.objects.all()
     return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
 

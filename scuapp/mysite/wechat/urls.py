@@ -5,7 +5,6 @@ from . import views,views01
 app_name = 'wechat'
 urlpatterns = [
     #小程序界面
-    path('', views.index, name='index'),
     path('detail/<manager_id>/', views.detail, name='detail'),
     path('dengluzhuce_login/', views.dengluzhuce_login, name='dengluzhuce_login'),
     path('Manage_register/', views.Manage_register, name='Manage_register'),
@@ -22,7 +21,10 @@ urlpatterns = [
 
 
     #后台管理界面
-    path('management_inwork_add/', views01.management_inwork_add, name='management_inwork_add'),
+    path('', views01.index, name='index'),
+    path('login/', views01.login, name='login'),
+    path('inwork_list/', views01.inwork_list, name='inwork_list'),
+    path('inwork_add/', views01.inwork_add, name='inwork_add'),
     # path('management_inWork_release_html/', views.management_inWork_release_html, name='management_inWork_release_html'),
     path('management_inWork_release/', views01.management_inWork_release, name='management_inWork_release'),
     # path('management_inWork_show/', views.management_inWork_show, name='management_inWork_show'),

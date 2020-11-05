@@ -7,10 +7,6 @@ import json
 #小程序界面
 
 
-def index(request):
-    return HttpResponse("hello")
-
-
 def detail(request, manager_id):
     return HttpResponse("You're looking at managerid %s." % manager_id)
 
@@ -169,7 +165,7 @@ def Insert_resume_change(request):
         res_per = request.POST.get('works')
         user = Tbstudent.objects.get(stu_id=stu_id)
         res_id = user.res_id.res_id
-        Tbresume.objects.get(res_id=res_id).update(name=account_name, age=age, sex=sex, res_asses=res_asses, res_edu=res_edu, res_work=res_work, res_proj=res_proj, res_extra=res_extra, res_per=res_per)
+        Tbresume.objects.filter(res_id=res_id).update(name=account_name, age=age, sex=sex, res_asses=res_asses, res_edu=res_edu, res_work=res_work, res_proj=res_proj, res_extra=res_extra, res_per=res_per)
         return HttpResponse("填写完成")
     else:
         return HttpResponse("请求错误")
@@ -202,7 +198,7 @@ def Reset_password(request):
 
         filterResult1 = Tbstudent.objects.filter(password=origin_password)
         if len(filterResult1) > 0:
-            Tbstudent.objects.get(stu_id=stu_id ).update(password=new_password)
+            Tbstudent.objects.filter(stu_id=stu_id ).update(password=new_password)
             return HttpResponse("密码修改成功")
         else:
             return HttpResponse("原密码输入不正确，请重新输入")
@@ -215,7 +211,7 @@ def Reset_myinfo_name(request):
     if request.method == "POST":
         stu_id=request.POST.get('stuNumber')
         name=request.POST.get('name')
-        Tbstudent.objects.get(stu_id=stu_id ).update(name=name)
+        Tbstudent.objects.filter(stu_id=stu_id ).update(name=name)
         return HttpResponse("姓名修改成功")
     else:
         return HttpResponse("请求错误")
@@ -226,7 +222,7 @@ def Reset_myinfo_nickname(request):
     if request.method == "POST":
         stu_id=request.POST.get('stuNumber')
         nickname=request.POST.get('nickName')
-        Tbstudent.objects.get(stu_id=stu_id ).update(nickname=nickname)
+        Tbstudent.objects.filter(stu_id=stu_id ).update(nickname=nickname)
         return HttpResponse("昵称修改成功")
     else:
         return HttpResponse("请求错误")
@@ -241,7 +237,7 @@ def Reset_myinfo_phonenumber(request):
         if len(filterResult1) > 0:
             return HttpResponse("手机号码已注册")
         else:
-            Tbstudent.objects.get(stu_id=stu_id ).update(phonenumber_phonenumberphonenumber_phonenumber=phonenumber)
+            Tbstudent.objects.filter(stu_id=stu_id ).update(phonenumber_phonenumberphonenumber_phonenumber=phonenumber)
             return HttpResponse("电话号码修改成功")
     else:
         return HttpResponse("请求错误")
@@ -256,7 +252,7 @@ def Reset_myinfo_e_mail(request):
         if len(filterResult1) > 0:
             return HttpResponse("邮箱已被占用")
         else:
-            Tbstudent.objects.get(stu_id=stu_id ).update(e_mail=e_mail)
+            Tbstudent.objects.filter(stu_id=stu_id ).update(e_mail=e_mail)
             return HttpResponse("邮箱修改成功")
     else:
         return HttpResponse("请求错误")
@@ -283,7 +279,7 @@ def Part_time_post(request):
         filterResult1 = Tbcompany.objects.filter(com_license=com_license)
         if len(filterResult1) > 0:
             com_number = filterResult1.objects.values("com_number").first()
-            TboutWork.objects.get(com_number=com_number).update(ow_status = 'waiting', )#1.不认识TboutWork？2.后面加传过来的值并更新
+            TboutWork.objects.filter(com_number=com_number).update(ow_status = 'waiting', )#1.不认识TboutWork？2.后面加传过来的值并更新
             return HttpResponse("发布成功")
         else:
             return HttpResponse("请求错误")
@@ -331,7 +327,7 @@ def Modify_outwork_info(request):
         ipub_time = request.POST.getlist('')
         w_ps = request.POST.getlist('')
 
-        TboutWork.objects.get(ow_number=ow_number ).update(w_time=w_time, w_place=w_place, work=work, w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, ipub_time=ipub_time, w_ps=w_ps)
+        TboutWork.objects.filter(ow_number=ow_number ).update(w_time=w_time, w_place=w_place, work=work, w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, ipub_time=ipub_time, w_ps=w_ps)
         return HttpResponse("修改成功")
     else:
         return HttpResponse("请求错误")
@@ -343,7 +339,7 @@ def Stop_outwork(request):
         ow_number = request.POST.get('XXXXX')
         filterResult1 = TboutWork.objects.filter(ow_number=ow_number)
         if len(filterResult1) > 0:
-            TboutWork.objects.get(ow_number=ow_number ).update(ow_status = 'stop')
+            TboutWork.objects.filter(ow_number=ow_number ).update(ow_status = 'stop')
             return HttpResponse("该招聘已停止")
         else:
             return HttpResponse("请求错误")
