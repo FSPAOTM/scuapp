@@ -1,6 +1,6 @@
 from django.urls import path
 
-from . import views
+from . import views,views01
 
 app_name = 'wechat'
 urlpatterns = [
@@ -20,13 +20,15 @@ urlpatterns = [
     path('Reset_myinfo_phonenumber/', views.Reset_myinfo_phonenumber, name='Reset_myinfo_phonenumber'),
     path('Reset_myinfo_e_mail/', views.Reset_myinfo_e_mail, name='Reset_myinfo_e_mail'),
 
-    #后台管理界面（网页）
-    path('management_inwork_list/', views.management_inwork_list, name='management_inwork_list'),
-    #path('management_inWork_release_html/', views.management_inWork_release_html, name='management_inWork_release_html'),
-    path('management_inWork_release/', views.management_inWork_release, name='management_inWork_release'),
-    #path('management_inWork_show/', views.management_inWork_show, name='management_inWork_show'),
-    path('management_inWork_reset_show/', views.management_inWork_reset_show, name='management_inWork_reset_show'),
 
-    #path('<CharField:manager_id>/results/', views.results, name='results'),
-    #path('<CharField:manager_id/vote/', views.vote, name='vote'),
+    #后台管理界面
+    path('management_inwork_list/', views01.management_inwork_list, name='management_inwork_list'),
+    # path('management_inWork_release_html/', views.management_inWork_release_html, name='management_inWork_release_html'),
+    path('management_inWork_release/', views01.management_inWork_release, name='management_inWork_release'),
+    # path('management_inWork_show/', views.management_inWork_show, name='management_inWork_show'),
+    path('management_inWork_reset_show/', views01.management_inWork_reset_show, name='management_inWork_reset_show'),
+
+    # path('<CharField:manager_id>/results/', views.results, name='results'),
+    # path('<CharField:manager_id/vote/', views.vote, name='vote'),
+
 ]
