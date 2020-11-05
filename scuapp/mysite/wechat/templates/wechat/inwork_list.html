@@ -13,6 +13,7 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="../../static/wechat/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="../../static/wechat/js/xadmin.js"></script>
+      <script type="text/javascript" src="../../static/wechat/js/jquery-3.4.1.min.js"></script>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
       <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -73,7 +74,7 @@
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <form name="iwnumber" method="post" action=""><td>{{ line.iw_number }}</td></form>
+            <form name="iw_number" method="post" action="../management_inWork_reset_show/"><td>{{ line.iw_number }}</td></form>
             <td>{{ line.iw_post }}</td>
             <td>{{ line.iw_depart }}</td>
             <td>{{ line.w_time }}</td>
@@ -94,16 +95,15 @@
               <a id="bianji_button" title="编辑"  onclick="x_admin_show('编辑','inwork_change.html',600,400)" href="javascript:;">
                 <i class="layui-icon">&#xe642;</i>
               </a>
+
                 <script>
-    $("#bianji_button").onclick(function () {
+    $("#bianji_button").click(function () {
         $.ajax({
-            url: '', //暂时不清楚
+            url: '',
             type: 'post',
-            contentType:'application/x-www-form-urlencoded',
-            // 指定urlencoded，其实默认的也是这个
             data:{
                 // 因为不是json格式的数据，data就不需要用JSON转格式了，转了反而有问题
-                'iw_number': $("#iwnumber").val(),
+                'iw_number': $("#iw_number").val(),
             },
             success: function (data) {
                 console.log("success")
@@ -112,6 +112,7 @@
         })
     });
 </script>
+
               <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
                 <i class="layui-icon">&#xe640;</i>
               </a>
