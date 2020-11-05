@@ -159,20 +159,18 @@ def Insert_resume_show(request):
 def Insert_resume_change(request):
     if request.method == "POST":
         stu_id = request.POST.get('stuNumber')  # 唯一标识简历的全局变量
-        account_name = request.POST.get('js传数据的名字') #获取表单数据用getlist
-        age = request.POST.get('js传数据的名字')
-        sex = request.POST.get('js传数据的名字')
-        res_asses = request.POST.get('js传数据的名字')
-        res_edu = request.POST.get('js传数据的名字')
-        res_proj = request.POST.get('js传数据的名字')
-        res_work = request.POST.get('js传数据的名字')
-        res_proj = request.POST.get('js传数据的名字')
-        res_extra = request.POST.get('js传数据的名字')
-        res_per = request.POST.get('js传数据的名字')
+        account_name = request.POST.get('name') #获取表单数据用getlist
+        age = request.POST.get('age')
+        sex = request.POST.get('gender')
+        res_asses = request.POST.get('tech')
+        res_edu = request.POST.get('edu')
+        res_work = request.POST.get('job')
+        res_proj = request.POST.get('project')
+        res_extra = request.POST.get('practice')
+        res_per = request.POST.get('works')
         user = Tbstudent.objects.get(stu_id=stu_id)
-        res_id = user.res_id
+        res_id = user.res_id.res_id
         Tbresume.objects.get(res_id=res_id).update(name=account_name, age=age, sex=sex, res_asses=res_asses, res_edu=res_edu, res_work=res_work, res_proj=res_proj, res_extra=res_extra, res_per=res_per)
-        #resume.save()  好像update这种更新方式并不需要save
         return HttpResponse("填写完成")
     else:
         return HttpResponse("请求错误")
@@ -354,6 +352,11 @@ def Stop_outwork(request):
 
 #后台管理界面（网页）
 
+#校内信息发布界面导入
+@csrf_exempt
+def management_inwork_list(request):
+    return render(request, 'wechat/inwork_add.html')
+
 #校内信息发布
 @csrf_exempt
 def management_inWork_release(request):
@@ -373,7 +376,7 @@ def management_inWork_release(request):
                                        w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
         inWork.save()
         inwork_list = TbinWork.objects.all()
-        return render(request, '../templates/inwork_list.html', {'inwork_list': inwork_list})
+        return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
     else:
         return HttpResponse("请求错误")
 

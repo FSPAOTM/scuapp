@@ -21,7 +21,7 @@ urlpatterns = [
     path('Reset_myinfo_e_mail/', views.Reset_myinfo_e_mail, name='Reset_myinfo_e_mail'),
 
     #后台管理界面（网页）
-
+    path('management_inwork_list/', views.management_inwork_list, name='management_inwork_list'),
     #path('management_inWork_release_html/', views.management_inWork_release_html, name='management_inWork_release_html'),
     path('management_inWork_release/', views.management_inWork_release, name='management_inWork_release'),
     #path('management_inWork_show/', views.management_inWork_show, name='management_inWork_show'),
