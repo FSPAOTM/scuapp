@@ -127,14 +127,7 @@ navigator{
   margin-top: 25rpx;
   padding-top:10rpx; 
 }
-.xiangqing_img{
-  width: 40%;
-  padding: 25rpx;
-}
-.xiangqing_img image{
-  width: 100%;
-  height: 220rpx;
-}
+
 .xiangqing_info{
   width: 50%;
   padding-top: 25rpx;

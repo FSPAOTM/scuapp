@@ -1,8 +1,9 @@
 {
   "pages":[
+    "pages/message/message",
+    "pages/center/center",
     "pages/mypart-timejob/mypart-timejob",
     "pages/filtrate/filtrate",
-    "pages/center/center",
     "pages/index/index",
     "pages/logs/logs"
   ],

@@ -10,8 +10,23 @@ data: {
  
   scrollleft: 0,
   currentTab: 0,
- 
+
+
+  details: [
+    {      
+      company: 'XX公司',
+      title: 'XXX服务员',     
+    },
+    
+    {      
+      company: 'XX公司',
+      title: 'XXX销售',     
+    },
+  ],
 },
+
+
+
 
 /** 
  * 点击tab切换 方法一
