@@ -85,8 +85,8 @@ def management_inWork_reset(request):
 
 @csrf_exempt
 def management_inWork_delete(request):
-    delete_num = request.GET.get('delete_num')
-    TbinWork.objects.filter(iw_number=delete_num).delete()  # 批量删除
+    iw_number = request.GET.get('delete_num')
+    TbinWork.objects.filter(iw_number=iw_number).delete()  # 批量删除
     inwork_list = TbinWork.objects.all()
     return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
 
