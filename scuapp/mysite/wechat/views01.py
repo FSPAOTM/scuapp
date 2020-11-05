@@ -80,3 +80,11 @@ def management_inWork_reset(request):
         return HttpResponse("校内工作信息修改成功")
     else:
         return HttpResponse("请求错误")
+
+
+@csrf_exempt
+def management_inWork_delete(request):
+    delete_num = request.GET.get('delete_num')
+    TbinWork.objects.filter(iw_number=delete_num).delete()  # 批量删除
+    return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+
