@@ -11,17 +11,31 @@ Page({
     hasUserInfo: openid == ""
   },
 
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
+
+  
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
+  },
+
+  infoModify() {
+    wx.navigateTo({
+      url: '../sinfoModify/sinfoModify'
+    })
+  },
+
+  infoFill() {
+      wx.navigateTo({
+        url: '../sinfoShow/sinfoShow'
+      })
   },
 
   /**

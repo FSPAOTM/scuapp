@@ -54,7 +54,7 @@
     </view>
 
 
-    <button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su' bindtap="change">修改</button>
+    <button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su' bindtap="change">去完善</button>
 
   </form>
 </view>

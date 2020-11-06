@@ -6,22 +6,22 @@
 
 
 <view class="hr"></view>
-<navigator class='item' url="../sinfoFill/sinfoFill">
+<view class='item' bindtap="infoModify">
   <image src="8.png" class="a1"/>
-  <view class="title">个人信息完善</view>
+  <view class="title">个人信息修改</view>
   <view class="detail2">
     <text>></text>
   </view>
-</navigator>
+</view>
 <view class="line"></view>
 
-<navigator class='item' url="../sinfoShow/sinfoShow">
+<view class='item' bindtap="infoFill">
   <image src="9.png" class="a1"/>
   <view class="title">我的简历</view>
   <view class="detail2">
     <text>></text>
   </view>
-</navigator>
+</view>
 
 <view class="hr"></view>
 

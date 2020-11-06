@@ -101,7 +101,7 @@ Page({
                   icon: 'success',
                   duration: 1000
                 })
-                if (self.data.no.length = 13) {
+                if (self.data.no.length == 13) {
                   setTimeout(function () {
                     wx.switchTab({
                       url: '../sallJob/sallJob',
