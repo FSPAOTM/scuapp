@@ -45,7 +45,7 @@
     </view>  
     
     <view class="registerBtView">
-        <navigator class="forgetPwd" url="../login-try/login-try">忘记密码？</navigator>
+        <navigator class="forgetPwd" url="../repwd1/repwd1">忘记密码？</navigator>
         <navigator class="registerBt" url="../selectID/selectID">还没有账户？去注册</navigator>
     </view>
 

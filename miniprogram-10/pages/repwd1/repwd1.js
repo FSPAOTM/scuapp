@@ -1,4 +1,5 @@
 // pages/repwd1/repwd1.js
+var app=getApp();
 Page({
 
   /**
@@ -8,6 +9,55 @@ Page({
     user:"",
     phone:"",
   },
+
+  usser(e){
+    this.setData({
+      user:e.detail.value
+    });
+    app.globalData.user=this.data.user;
+  },
+
+  phhone(e){
+    this.setData({
+      phone:e.detail.value
+    })
+  },
+
+formSubmit(){
+  wx.request({
+    url: 'http://127.0.0.1:8000/wechat/Insert_resume_show/',/*待修改*/
+    header: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    method: "POST",
+    data: {
+      user: this.data.user,
+      phone:this.data.phone,
+    },
+    success: (res) => {
+      if (res.statusCode == 200) {
+        console.log(res.data);
+        if(res.data="身份信息有误"){
+          wx.showToast({
+            title: '身份信息有误，请重新输入！',
+            icon: 'none',
+            duration: 1000
+          })
+          wx.redirectTo({
+            url: '../repwd1/repwd1',
+          })
+        }else{
+          if(res.data="信息核验正确"){
+            wx.redirectTo({
+              url: '../repwd1-1/repwd1-1',
+            })
+          }
+        }
+      }
+    }
+  })
+},
+
 
   /**
    * 生命周期函数--监听页面加载

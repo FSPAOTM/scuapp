@@ -48,33 +48,47 @@ Page({
   },
 
   confirm1: function (e) {
-    this.setData({
-      mName:e.detail
-    })
-    console.log(this.data.mName)
-    wx.request({
-      url: 'http://127.0.0.1:8000/wechat/Reset_myinfo_name/',
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      method: "POST",
-      data: {
-        stuNumber:app.globalData.user,
-        name: this.data.name,
-      },
-      success: (res) => {
-        if (res.statusCode == 200) {
-          wx.showToast({
-            title: '修改成功',
-            icon: 'success',
-            duration: 1000
+    wx.showModal({//有问题，查弹出框组件
+      title: '提示',
+      content: '是否确认退出',
+      success: function (res) {
+        if (res.confirm) {
+          // console.log('用户点击确定')
+          this.setData({
+            mName: e.detail//待修改部分
+          })
+          console.log(this.data.mName)
+          wx.request({
+            url: 'http://127.0.0.1:8000/wechat/Reset_myinfo_name/',
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            method: "POST",
+            data: {
+              stuNumber: app.globalData.user,
+              name: this.data.name,
+            },
+            success: (res) => {
+              if (res.statusCode == 200) {
+                wx.showToast({
+                  title: '修改成功',
+                  icon: 'success',
+                  duration: 1000
+                })
+              }
+              this.setData({
+                hiddenmodalput1: true,
+              })
+            }
+          })
+        } else if (res.cancel) {
+          this.setData({
+            hiddenmodalput1: true,
           })
         }
-        this.setData({
-          hiddenmodalput1: true,
-        })
       }
     })
+
 
   },
 
@@ -89,7 +103,7 @@ Page({
       },
       method: "POST",
       data: {
-        stuNumber:app.globalData.user,
+        stuNumber: app.globalData.user,
         nickName: this.data.nickName,
       },
       success: (res) => {
@@ -109,7 +123,7 @@ Page({
 
   confirm3: function (e) {
     this.setData({
-      stuNumber:app.globalData.user,
+      stuNumber: app.globalData.user,
       phoneNum: this.data.mPhone
     })
     wx.request({
@@ -138,7 +152,7 @@ Page({
 
   confirm4: function (e) {
     this.setData({
-      stuNumber:app.globalData.user,
+      stuNumber: app.globalData.user,
       eMail: this.data.mEmail
     })
     wx.request({
@@ -172,10 +186,9 @@ Page({
       success: function (res) {
         if (res.confirm) {
           // console.log('用户点击确定')
-          wx.removeStorageSync('student');
           //页面跳转
-          wx.redirectTo({
-            url: '../login/login',
+          wx.switchTab({
+            url: '../scenter/scenter',
           })
         } else if (res.cancel) {
           console.log('用户点击取消')
@@ -245,7 +258,7 @@ Page({
 
   },
 
-  repwd:function(){
+  repwd: function () {
     wx.navigateTo({
       url: '../repwd1/repwd1',
     })

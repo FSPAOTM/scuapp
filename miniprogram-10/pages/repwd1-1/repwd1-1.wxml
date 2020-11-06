@@ -1,0 +1,14 @@
+<!--pages/repwd1-1/repwd1-1.wxml-->
+<form bindsubmit='formSubmit'>
+  <view class="imply">②密码重置</view>
+<view class='new'>
+  <text>新密码</text>
+  <input password='true' name='newpwd' placeholder='请输入新密码' bindblur="new"/>
+</view>
+<view class='ok'>
+  <text>确认新密码</text>
+  <input password='true' name='newpwd2' placeholder='请确认一遍新密码' bindblur="again"/>
+</view>
+<button type='primary' form-type='submit'>提交</button>
+</form>
+

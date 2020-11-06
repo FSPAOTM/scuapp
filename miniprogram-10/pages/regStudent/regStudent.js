@@ -128,9 +128,9 @@ Page({
         icon: 'none',
         duration: 2000
       })
-    } else if (e.detail.value.length < 6) {
+    } else if (e.detail.value.length < 8) {
       wx.showToast({
-        title: '密码不得少于6位',
+        title: '密码不得少于8位',
         icon: 'none',
         duration: 2000
       })
@@ -232,7 +232,7 @@ Page({
     this.setData({
       [item]: e.detail.value
     });
-    if (this.data.phoneNum.length >= 11 && this.data.stuNumber.length == 13 && this.data.password.length >= 6 && this.data.rePassword.length >= 6 && this.data.Name && this.data.NickName) {
+    if (this.data.phoneNum.length >= 11 && this.data.stuNumber.length == 13 && this.data.password.length >= 8 && this.data.rePassword.length >= 8 && this.data.Name && this.data.NickName) {
       this.setData({
         disabled: false
       })

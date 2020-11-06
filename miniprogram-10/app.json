@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/login/login",
+    "pages/repwd1/repwd1",
+    "pages/repwd1-1/repwd1-1",
     "pages/scenter/scenter",
     "pages/smyJob/smyJob",
     "pages/sallJob/sallJob",
@@ -14,7 +16,6 @@
     "pages/cjobManage/cjobManage",
     "pages/cjobShow/cjobShow",
     "pages/sinfoShow/sinfoShow",
-    "pages/repwd1/repwd1",
     "pages/repwd2/repwd2",
     "pages/selectID/selectID",
     "pages/login-try/login-try",
