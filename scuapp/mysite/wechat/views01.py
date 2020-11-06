@@ -112,6 +112,7 @@ def management_inWork_delete(request):
     inwork_list = TbinWork.objects.all()
     return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
 
+#校内兼职信息搜索
 def management_inwork_search(request):
     s_iw_number = request.GET.get("s_iw_number")
     s_iw_post = request.GET.get("s_iw_post")
@@ -126,6 +127,28 @@ def management_inwork_search(request):
     inwork_search = TbinWork.objects.filter(iw_post__contains=s_iw_post, iw_depart__contains=s_iw_depart, w_time__contains=s_w_time, w_place__contains=s_w_place,
                             work__contains=s_work, w_salary__contains=s_w_salary, w_reuire__contains=s_w_salary )
     return render(request, 'wechat/inwork_search.html', {'inwork_search': inwork_search})
+
+
+#后台管理界面登录
+def management_inwork_login(request):
+    error_msg = ""
+    if request.method == "POST":
+        manager_id = request.POST.get("manager_id")
+        password = request.POST.get("password")
+
+
+#注册管理者
+def management_inwork_register(request):
+    if request.method == "POST":
+        manager_id = request.POST.get("manager_id")
+        name = request.POST.get("name")
+        phonenumber = request.POST.get("phonenumber")
+        password = request.POST.get("password")
+        school = request.POST.get("school")
+        sex = request.POST.get("sex")
+        e_mail =request.POST.get("e_mail")
+
+
 
 
 
