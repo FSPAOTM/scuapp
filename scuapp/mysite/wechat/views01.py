@@ -1,4 +1,5 @@
 from django.shortcuts import HttpResponse,render
+from django.utils import timezone
 from django.template import loader
 from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork
 from django.views.decorators.csrf import csrf_exempt
@@ -40,7 +41,7 @@ def management_login(request):
         w_reuire=request.POST.get("W_require")
         w_amount=request.POST.get("W_amount")
         ddl_time=request.POST.get("Ddl_time")
-        inpub_time=request.POST.get("Inpub_time")
+        inpub_time=timezone.now()
         w_ps=request.POST.get("W_ps")
         inWork=TbinWork.objects.create(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
                                        w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
@@ -49,6 +50,7 @@ def management_login(request):
         return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
     else:
         return HttpResponse("请求错误")
+
 #校内兼职信息发布
 @csrf_exempt
 def management_inWork_release(request):
@@ -62,7 +64,7 @@ def management_inWork_release(request):
         w_reuire=request.POST.get("W_require")
         w_amount=request.POST.get("W_amount")
         ddl_time=request.POST.get("Ddl_time")
-        inpub_time=request.POST.get("Inpub_time")
+        inpub_time=timezone.now()
         w_ps=request.POST.get("W_ps")
         inWork=TbinWork.objects.create(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
                                        w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
@@ -93,7 +95,7 @@ def management_inWork_reset(request):
         w_reuire = request.POST.get('W_require')
         w_amount = request.POST.get('W_amount')
         ddl_time = request.POST.get('Ddl_time')
-        inpub_time = request.POST.get('Inpub_time')
+        inpub_time=timezone.now()
         w_ps = request.POST.get('W_ps')
         TbinWork.objects.filter(iw_number=iw_number).update(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
                                        w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
