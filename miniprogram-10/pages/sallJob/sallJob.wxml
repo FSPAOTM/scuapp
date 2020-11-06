@@ -1,0 +1,57 @@
+<!--pages/sallJob/sallJob.wxml-->
+<view class="tabTit box">
+  <view class="flex1{{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="type" data-index="{{index}}" bindtap="filterTab">
+    <text>{{item}}</text>
+  </view>
+</view>
+<!--筛选项-->
+<view class="tabLayer" hidden="{{tab[0]}}">
+    <text class="{{pinpai_id==0?'active':''}}" data-id="0" data-index="0" data-txt="类型" bindtap="filter">不限</text>
+    
+    <text class="{{pinpai_id==item.id?'active':''}}" wx:for="{{pinpaiList}}" wx:key="pp" wx:for-item="item" data-id="{{item.id}}" data-index="0" data-txt="{{item.title}}" bindtap="filter">{{item.title}}</text>
+</view>
+
+<view class="tabLayer" hidden="{{tab[1]}}">
+    <text class="{{paixu_id==0?'active':''}}" data-id="0" data-index="1" data-txt="综合排序" bindtap="filter">综合排序</text>
+
+    <text class="{{paixu_id==1?'active':''}}" data-id="1" data-index="1" data-txt="最新发布" bindtap="filter">最新发布</text>
+
+    <text class="{{paixu_id==2?'active':''}}" data-id="2" data-index="1" data-txt="距离排序" bindtap="filter">距离排序</text>
+</view>
+
+<view class="tabLayer" hidden="{{tab[2]}}">
+<text class="{{xiaoliang_id==0?'active':''}}" data-id="0" data-index="2" data-txt="区域" bindtap="filter">不限</text>
+    <text class="{{xiaoliang_id==1?'active':''}}" data-id="1" data-index="2" data-txt="锦江" bindtap="filter">锦江</text>
+    <text class="{{xiaoliang_id==2?'active':''}}" data-id="2" data-index="2" data-txt="武侯" bindtap="filter">武侯</text>
+    <text class="{{xiaoliang_id==2?'active':''}}" data-id="2" data-index="2" data-txt="青羊" bindtap="filter">青羊</text>
+    <text class="{{xiaoliang_id==2?'active':''}}" data-id="2" data-index="2" data-txt="龙泉驿" bindtap="filter">龙泉驿</text>
+   
+  </view>  
+
+
+
+
+ <!-- 下面列表 -->
+<view class="container">
+ 
+  <view class='xiangqing' wx:for="{{details}}"  wx:key="key" bindtap="navigateTo">
+    
+    <view class='xiangqing_info' style=" padding-left:30rpx;">
+      <text class='zi' >自营</text>
+      <text class='title'>{{item.title}}</text>
+      
+      <view class='house' style=" padding-left:30rpx;">{{item.settlement}}|{{item.sex}}</view>
+      <view class='prix'>
+        <text class='prix1' style=" padding-left:30rpx;">{{item.salary}}</text>
+        <text>{{item.company}}</text>
+
+        <view class='arrow' bindtap="modalput"></view>
+
+      </view>
+    </view>
+   
+  </view>
+ 
+</view>
+
+

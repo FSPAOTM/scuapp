@@ -1,0 +1,51 @@
+<!--pages/smyJob/smyJob.wxml-->
+<view class="swiper_tab_view">
+  <scroll-view scroll-x='true' scroll-left="{{scrollleft}}" class='tab-h'>
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">已报名</view>
+ 
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">面试中</view>
+ 
+    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">已录用</view>
+ 
+    <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">已到岗</view>
+ 
+    <view class="swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-current="4" bindtap="swichNav">已结算</view>
+ 
+  </scroll-view>
+</view>
+
+<view class="container">
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}rpx" >
+  <swiper-item>
+
+    <view class='xiangqing' wx:for="{{details}}"  wx:key="key" bindtap="navigateTo">
+    <view class='xiangqing_info' style="padding-left:40rpx;">
+      <text class='zi' >自营</text>
+      <text class='title'>{{item.title}}</text>
+      <view class='prix'>
+        <text class='prix1'>{{item.company}}</text>   
+      </view>      
+    </view>
+  </view>
+       
+  </swiper-item>
+
+  <swiper-item>
+    <view>模块2</view>
+  </swiper-item>
+ 
+  <swiper-item>
+    <view>模块3</view>
+  </swiper-item>
+ 
+  <swiper-item>
+    <view>模块4</view>
+  </swiper-item>
+ 
+  <swiper-item>
+    <view>模块5</view>
+  </swiper-item>
+ 
+</swiper>
+</view>
+
