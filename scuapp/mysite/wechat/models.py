@@ -8,6 +8,7 @@ class Tbapplication(models.Model):
     ap_abletime = models.CharField(db_column='AP_AbleTime', max_length=60, blank=True, null=True)  # Field name made lowercase.
     ow_number = models.ForeignKey('TboutWork', models.DO_NOTHING, db_column='OW_Number')  # Field name made lowercase.
     stu = models.ForeignKey('Tbstudent', models.DO_NOTHING, db_column='Stu_ID')  # Field name made lowercase.
+    apply_status = models.CharField(db_column='apply_status', max_length=255, default='待审核')
 
     class Meta:
         managed = False
@@ -81,7 +82,7 @@ class TbinWork(models.Model):
     ddl_time = models.DateTimeField(db_column='Ddl_Time')  # Field name made lowercase.
     inpub_time = models.DateTimeField(db_column='Inpub_time')  # Field name made lowercase.
     w_ps = models.CharField(db_column='W_Ps', max_length=200, blank=True, null=True)  # Field name made lowercase.
-
+    In_status = models.CharField(db_column='In_status', max_length=255, default='报名中')
     class Meta:
         managed = False
         db_table = 'tbin_work'
@@ -94,6 +95,7 @@ class TbinterviewApply(models.Model):
     phonenumber = models.CharField(db_column='PhoneNumber', max_length=12)  # Field name made lowercase.
     a_time = models.DateTimeField(db_column='A_Time')  # Field name made lowercase.
     ow_number = models.ForeignKey('TboutWork', models.DO_NOTHING, db_column='Ow_Number')  # Field name made lowercase.
+    apply_status= models.CharField(db_column='apply_status', max_length=255, default='待审核')
 
     class Meta:
         managed = False
@@ -152,6 +154,7 @@ class TboutWork(models.Model):
     ipub_time = models.DateTimeField(db_column='Ipub_Time')  # Field name made lowercase.
     w_ps = models.CharField(db_column='W_Ps', max_length=200, blank=True, null=True)  # Field name made lowercase.
     com_number = models.ForeignKey('Tbcompany', models.DO_NOTHING, db_column='Com_Number')  # Field name made lowercase.
+    ow_status = models.CharField(db_column='ow_status', max_length=255, default='待审核')
 
     class Meta:
         managed = False

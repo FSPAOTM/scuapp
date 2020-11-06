@@ -28,6 +28,27 @@ def inwork_add(request):
     return render(request, 'wechat/inwork_add.html')
 
 #功能接口
+#登录
+def management_login(request):
+    if request.method == "POST":
+        iw_post=request.POST.get("IW_post")
+        iw_depart=request.POST.get("IW_depart")
+        w_time=request.POST.get("W_Time")
+        w_place=request.POST.get("W_place")
+        work=request.POST.get("Work")
+        w_salary=request.POST.get("W_salary")
+        w_reuire=request.POST.get("W_require")
+        w_amount=request.POST.get("W_amount")
+        ddl_time=request.POST.get("Ddl_time")
+        inpub_time=request.POST.get("Inpub_time")
+        w_ps=request.POST.get("W_ps")
+        inWork=TbinWork.objects.create(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
+                                       w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
+        inWork.save()
+        inwork_list = TbinWork.objects.all()
+        return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+    else:
+        return HttpResponse("请求错误")
 #校内兼职信息发布
 @csrf_exempt
 def management_inWork_release(request):
