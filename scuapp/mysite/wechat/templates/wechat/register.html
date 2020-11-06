@@ -10,13 +10,24 @@
     <link rel="stylesheet" href="../../static/wechat/css/admin.css">
     <script src="../static/wechat/js/jquery_login.js"></script>
     <script src="../static/wechat/js/pintuer.js"></script>
+
+    <script>
+        function check2pwd(){
+            if ( pwd1.value != pwd2.value){
+                alert("两次输入密码不一致")
+                pwd1.value=""
+                pwd2.value=""
+            }
+        }
+    </script>
+
 </head>
 <body>
 <div class="bg"></div>
 <div class="container">
     <div class="line bouncein">
         <div class="xs6 xm4 xs3-move xm4-move">
-            <div style="height:80px;"></div>
+            <!--<div style="height:20px;"></div>-->
             <div class="media media-y margin-big-bottom">
             </div>
             <form action="../management_inwork_register" method="post">
@@ -40,7 +51,12 @@
                     </div>
                     <div class="form-group">
                         <div class="field field-icon-right">
-                            <input type="password" class="input input-big" name="password" placeholder="密码" data-validate="required:请填写密码" required/>
+                            <input type="password" class="input input-big" id="pwd1" name="password" placeholder="密码" data-validate="required:请填写密码" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                            <input type="password" class="input input-big" id="pwd2" name="password" onblur="check2pwd()" placeholder="请确认密码" data-validate="required:请填写密码" required/>
                         </div>
                     </div>
                     <div class="form-group">

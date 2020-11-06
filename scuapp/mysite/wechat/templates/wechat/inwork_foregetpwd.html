@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>登录</title>
+    <link rel="stylesheet" href="../../static/wechat/css/pintuer.css">
+    <link rel="stylesheet" href="../../static/wechat/css/admin.css">
+    <script src="../../static/wechat/js/jquery_login.js"></script>
+    <script src="../../static/wechat/js/pintuer.js"></script>
+
+    <script>
+        function check2pwd(){
+            if ( pwd1.value != pwd2.value){
+                alert("两次输入密码不一致")
+                pwd1.value=""
+                pwd2.value=""
+            }
+        }
+    </script>
+
+</head>
+<body>
+<div class="bg"></div>
+<div class="container">
+    <div class="line bouncein">
+        <div class="xs6 xm4 xs3-move xm4-move">
+            <div style="height:150px;"></div>
+            <div class="media media-y margin-big-bottom">
+            </div>
+            <form action="../management_forgetpwd/" method="post">
+            <div class="panel loginbox">
+                <div class="text-center margin-big padding-big-top"><h1>重置密码</h1></div>
+                <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                            <input type="text" class="input input-big" name="manager_id" placeholder="请输入工号" data-validate="required:请输入工号" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                            <input type="text" class="input input-big" name="phonenumber" placeholder="请输入手机号" data-validate="required:请输入手机号" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                            <input type="password" id="pwd1" class="input input-big" name="password" placeholder="请输入新密码" data-validate="required:请填写密码" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                            <input type="password" id="pwd2" class="input input-big" name="password" onblur="check2pwd()" placeholder="请再次输入新密码" data-validate="required:请填写密码" required/>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div style="padding:30px;"><input  type="submit" class="button button-block bg-main text-big input-big" value="重置"></div>
+                <div style="padding-left: 170px;"><a href="../login/">返回登录</a></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
