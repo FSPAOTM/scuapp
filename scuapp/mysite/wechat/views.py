@@ -3,6 +3,7 @@ from django.template import loader
 from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+from django.utils import timezone
 import json
 #小程序界面
 
@@ -11,7 +12,7 @@ def detail(request, manager_id):
     return HttpResponse("You're looking at managerid %s." % manager_id)
 
 
-#登录功能
+#登录功能  login界面
 @csrf_exempt
 def dengluzhuce_login(request):
     if request.method == "POST":
@@ -120,7 +121,7 @@ def Company_register(request):
     else:
         return HttpResponse("请求错误")
 
-#简历修改功能
+#简历显示功能
 @csrf_exempt
 def Insert_resume_show(request):
     if request.method == "POST":
@@ -150,11 +151,12 @@ def Insert_resume_show(request):
     else:
         return HttpResponse("请求错误")
 
+#简历修改功能 #改到这里了和前端还未调试
 @csrf_exempt
 def Insert_resume_change(request):
     if request.method == "POST":
         stu_id = request.POST.get('stuNumber')  # 唯一标识简历的全局变量
-        account_name = request.POST.get('name') #获取表单数据用getlist
+        account_name = request.POST.get('name')
         age = request.POST.get('age')
         sex = request.POST.get('gender')
         res_asses = request.POST.get('tech')
@@ -166,7 +168,7 @@ def Insert_resume_change(request):
         user = Tbstudent.objects.get(stu_id=stu_id)
         res_id = user.res_id.res_id
         Tbresume.objects.filter(res_id=res_id).update(name=account_name, age=age, sex=sex, res_asses=res_asses, res_edu=res_edu, res_work=res_work, res_proj=res_proj, res_extra=res_extra, res_per=res_per)
-        return HttpResponse("填写完成")
+        return HttpResponse("填写完成") #这里用filter get没有update
     else:
         return HttpResponse("请求错误")
 
@@ -188,13 +190,13 @@ def Reset_show(request):
     else:
         return HttpResponse("请求错误")
 
-#修改密码（未改）
+#修改密码
 @csrf_exempt
 def Reset_password(request):
     if request.method == "POST":
-        stu_id=request.POST.get('stuNumber')
+        stu_id = request.POST.get('stuNumber')
         origin_password=request.POST.get('js传数据的原密码')
-        new_password=request.POST.get('js传数据的原密码')
+        new_password=request.POST.get('js传数据的新密码')
 
         filterResult1 = Tbstudent.objects.filter(password=origin_password)
         if len(filterResult1) > 0:
@@ -259,32 +261,32 @@ def Reset_myinfo_e_mail(request):
 
 #企业信息修改？（未写）
 
-#校外兼职信息发布功能
+#企业兼职信息发布功能 对应cjobrelease界面
 @csrf_exempt
 def Part_time_post(request):
     if request.method == "POST":
-        ow_number = request.POST.getlist('') #不确定这个传不传，前端知道？
-        ow_post = request.POST.getlist('')
-        w_time = request.POST.getlist('')
-        w_place = request.POST.getlist('')
-        work  = request.POST.getlist('')
-        w_salary = request.POST.getlist('')
-        w_reuire = request.POST.getlist('')
-        w_amount = request.POST.getlist('')
-        ddl_time = request.POST.getlist('')
-        ipub_time = request.POST.getlist('')
-        w_ps = request.POST.getlist('')
-        com_license = request.POST.getlist('')#传的是企业工商号？
+        phone_num = request.POST.get('') #前端加全局变量，企业的注册手机号，改数据库
+        ow_post = request.POST.get('Name')
+        w_time = request.POST.get('jobtime')
+        w_place = request.POST.get('location')
+        work = request.POST.get('description')
+        w_salary = request.POST.get('salary')
+        w_reuire = request.POST.get('ask')
+        w_amount = request.POST.get('num')
+        ddl_time = request.POST.get('endingtim')
+        inpub_time = timezone.now()
+        w_ps = request.POST.getlist('ps')
 
-        filterResult1 = Tbcompany.objects.filter(com_license=com_license)
+        filterResult1 = Tbcompany.objects.filter(phone_num=phone_num)
         if len(filterResult1) > 0:
-            com_number = filterResult1.objects.values("com_number").first()
-            TboutWork.objects.filter(com_number=com_number).update(ow_status = 'waiting', )#1.不认识TboutWork？2.后面加传过来的值并更新
+            com_number = filterResult1.com_number
+            outwork = TboutWork.objects.create(ow_post=ow_post,w_time=w_time,w_place=w_place,work=work,w_salary=w_salary,w_reuire=w_reuire,w_amount=w_amount,ddl_time=ddl_time,inpub_time=inpub_time,w_ps=w_ps,com_number=com_number,ow_status = 'waiting')
+            outwork.save()
             return HttpResponse("发布成功")
         else:
             return HttpResponse("请求错误")
 
-#企业兼职信息发布记录
+#企业兼职信息展示功能
 @csrf_exempt
 def Get_outwork_info(request):
     if request.method == "POST":
@@ -297,7 +299,7 @@ def Get_outwork_info(request):
         else:
             return HttpResponse("请求错误")
 
-#企业兼职信息修改总显示界面
+#企业“单条”兼职信息展示功能
 @csrf_exempt
 def Get_outwork_detail_info(request):
     if request.method == "POST":
@@ -331,6 +333,86 @@ def Modify_outwork_info(request):
         return HttpResponse("修改成功")
     else:
         return HttpResponse("请求错误")
+
+@csrf_exempt
+def Part_time_post(request):
+    if request.method == "POST":
+        ow_number = request.POST.getlist('') #不确定这个传不传，前端知道？
+        ow_post = request.POST.getlist('')
+        w_time = request.POST.getlist('')
+        w_place = request.POST.getlist('')
+        work  = request.POST.getlist('')
+        w_salary = request.POST.getlist('')
+        w_reuire = request.POST.getlist('')
+        w_amount = request.POST.getlist('')
+        ddl_time = request.POST.getlist('')
+        ipub_time = request.POST.getlist('')
+        w_ps = request.POST.getlist('')
+        com_license = request.POST.getlist('')#传的是企业工商号？
+
+        filterResult1 = Tbcompany.objects.filter(com_license=com_license)
+        if len(filterResult1) > 0:
+            com_number = filterResult1.objects.values("com_number").first()
+            TboutWork.objects.get(com_number=com_number).update(ow_status = 'waiting', )#1.不认识TboutWork？2.后面加传过来的值并更新
+            return HttpResponse("发布成功")
+        else:
+            return HttpResponse("请求错误")
+
+@csrf_exempt
+def Get_outwork_info(request):
+    if request.method == "POST":
+        com_license = request.POST.getlist('XXXX')#传的是企业工商号？
+        filterResult1 = Tbcompany.objects.filter(com_license=com_license)
+        if len(filterResult1) > 0:
+            com_number = filterResult1.objects.values("com_number").first()
+            outwork_info = TboutWork.objects.get(com_number=com_number) #只返回这些数据的某些列，需要根据页面显示调整
+            return HttpResponse &outwork_info
+        else:
+            return HttpResponse("请求错误")
+
+@csrf_exempt
+def Get_outwork_detail_info(request):
+    if request.method == "POST":
+        com_license = request.POST.getlist('XXXX')#传的是企业工商号？
+        ow_number = request.POST.get('XXXXX')  # 这里工作号是数据库自动生成的，不知道怎么从前端传给后端，建议是工作考是不是可以考虑微信那边生成，然后传给数据库保存
+        filterResult1 = TboutWork.objects.filter(ow_number=ow_number)
+        if len(filterResult1) > 0:
+            outwork_detail_info = TboutWork.objects.get(ow_number=ow_number)
+            return HttpResponse &outwork_detail_info
+        else:
+            return HttpResponse("请求错误")
+
+@csrf_exempt
+def Modify_outwork_info(request):
+    if request.method == "POST":
+        com_license = request.POST.getlist('XXXX')
+        ow_number = request.POST.get('XXXXX') #这里工作号是数据库自动生成的，不知道怎么从前端传给后端
+        ow_post = request.POST.getlist('') #这个值应该可以不用传，因为岗位应该不允许修改
+        w_time = request.POST.getlist('')
+        w_place = request.POST.getlist('')
+        work = request.POST.getlist('')
+        w_salary = request.POST.getlist('')
+        w_reuire = request.POST.getlist('')
+        w_amount = request.POST.getlist('')
+        ddl_time = request.POST.getlist('')
+        ipub_time = request.POST.getlist('')
+        w_ps = request.POST.getlist('')
+
+        TboutWork.objects.get(ow_number=ow_number ).update(w_time=w_time, w_place=w_place, work=work, w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, ipub_time=ipub_time, w_ps=w_ps)
+        return HttpResponse("修改成功")
+    else:
+        return HttpResponse("请求错误")
+
+@csrf_exempt
+def Stop_outwork(request):
+    if request.method == "POST":
+        ow_number = request.POST.get('XXXXX')
+        filterResult1 = TboutWork.objects.filter(ow_number=ow_number)
+        if len(filterResult1) > 0:
+            TboutWork.objects.get(ow_number=ow_number ).update(ow_status = 'stop')
+            return HttpResponse("该招聘已停止")
+        else:
+            return HttpResponse("请求错误")
 
 #企业兼职信息状态修改界面
 @csrf_exempt

@@ -18,7 +18,10 @@ urlpatterns = [
     path('Reset_myinfo_nickname/', views.Reset_myinfo_nickname, name='Reset_myinfo_nickname'),
     path('Reset_myinfo_phonenumber/', views.Reset_myinfo_phonenumber, name='Reset_myinfo_phonenumber'),
     path('Reset_myinfo_e_mail/', views.Reset_myinfo_e_mail, name='Reset_myinfo_e_mail'),
-
+    path('Part_time_post/', views.Part_time_post, name='Part_time_post'),
+    path('Get_outwork_info/', views.Get_outwork_info, name='Get_outwork_info'),
+    path('Get_outwork_detail_info/', views.Get_outwork_detail_info, name='Get_outwork_detail_info'),
+    path('Modify_outwork_info/', views.Modify_outwork_info, name='Modify_outwork_info'),
 
     #后台管理界面
     path('', views01.index, name='index'),
