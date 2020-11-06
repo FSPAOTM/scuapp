@@ -21,6 +21,10 @@ def login(request):
 @csrf_exempt
 def register(request):
     return render(request, 'wechat/register.html')
+#忘记密码界面
+@csrf_exempt
+def inwork_foregetpwd(request):
+    return render(request, 'wechat/inwork_foregetpwd.html')
 
 #校内兼职信息展示界面
 @csrf_exempt
@@ -34,7 +38,7 @@ def inwork_add(request):
     return render(request, 'wechat/inwork_add.html')
 
 #功能接口
-#登录
+#登录管理者
 @csrf_exempt
 def management_login(request):
     if request.method == "POST":
@@ -50,6 +54,50 @@ def management_login(request):
             return render(request, 'wechat/login.html', {'error_msg': error_msg})
         # 登录成功
         return render(request, 'wechat/index.html')
+    else:
+        return HttpResponse("请求错误")
+
+#注册管理者
+@csrf_exempt
+def management_inwork_register(request):
+    if request.method == "POST":
+        manager_id = request.POST.get("manager_id")
+        name = request.POST.get("name")
+        phonenumber = request.POST.get("phonenumber")
+        password = request.POST.get("password")
+        filterResult = Tbmanager.objects.filter(manager_id=manager_id)
+        if len(filterResult) > 0:
+            error_msg = "用户已存在"
+            return render(request, 'wechat/register.html', {'error_msg': error_msg})
+        else:
+            user = Tbmanager.objects.create(manager_id=manager_id, name=name, phonenumber=phonenumber,
+                                            password=password)
+            user.save()
+            return render(request, 'wechat/login.html')
+        #注册成功的显示？？？（界面？？）
+    else:
+        return HttpResponse("请求错误")
+
+#忘记密码
+@csrf_exempt
+def management_forgetpwd(request):
+    if request.method == "POST":
+        manager_id = request.POST.get("manager_id")
+        phonenumber = request.POST.get("phonenumber")
+        password = request.POST.get("password")
+        filterResult = Tbmanager.objects.filter(manager_id=manager_id)
+        manage = Tbmanager.objects.get(manager_id=manager_id)
+        if len(filterResult) > 0:
+            if manage.phonenumber != phonenumber:
+                error_msg = "手机号错误"
+                return render(request, 'wechat/inwork_foregetpwd.html', {'error_msg': error_msg})
+            else:
+                Tbmanager.objects.filter(manager_id=manager_id).update(password=password)
+                return render(request, 'wechat/login.html')
+            #修改成功显示？？？（界面？？）
+        else:
+            error_msg = "用户不存在"
+            return render(request, 'wechat/inwork_foregetpwd.html', {'error_msg': error_msg})
     else:
         return HttpResponse("请求错误")
 
@@ -115,6 +163,7 @@ def management_inWork_delete(request):
     return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
 
 #校内兼职信息搜索
+@csrf_exempt
 def management_inwork_search(request):
     s_iw_number = request.GET.get("s_iw_number")
     s_iw_post = request.GET.get("s_iw_post")
@@ -131,16 +180,7 @@ def management_inwork_search(request):
     return render(request, 'wechat/inwork_search.html', {'inwork_search': inwork_search})
 
 
-#注册管理者
-def management_inwork_register(request):
-    if request.method == "POST":
-        manager_id = request.POST.get("manager_id")
-        name = request.POST.get("name")
-        phonenumber = request.POST.get("phonenumber")
-        password = request.POST.get("password")
-        school = request.POST.get("school")
-        sex = request.POST.get("sex")
-        e_mail =request.POST.get("e_mail")
+
 
 
 

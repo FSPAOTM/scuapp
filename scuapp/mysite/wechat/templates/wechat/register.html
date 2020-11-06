@@ -30,7 +30,7 @@
             <!--<div style="height:20px;"></div>-->
             <div class="media media-y margin-big-bottom">
             </div>
-            <form action="../management_inwork_register" method="post">
+            <form action="../management_inwork_register/" method="post">
             <div class="panel loginbox">
                 <div class="text-center margin-big padding-big-top"><h1>注册</h1></div>
                 <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
@@ -59,27 +59,14 @@
                             <input type="password" class="input input-big" id="pwd2" name="password" onblur="check2pwd()" placeholder="请确认密码" data-validate="required:请填写密码" required/>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="field field-icon-right">
-                            <input type="text" class="input input-big" name="school" placeholder="工作单位" data-validate="required:请输入工作单位"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="field field-icon-right">性别：
-                            <label><input type="radio" name="sex" value="男">男</label>
-                            <label><input type="radio" name="sex" value="女">女</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="field field-icon-right">
-                            <input type="text" class="input input-big" name="e_mail" placeholder="邮箱" data-validate="required:请输入邮箱"/>
-                        </div>
-                    </div>
 
                     </div>
                 </div>
                 <div style="padding:30px;"><input  type="submit" class="button button-block bg-main text-big input-big" value="注册"></div>
-                <div style="padding-left: 150px;"><a href="login.html">已有账号，去登录</a></div>
+                <div style="padding-left: 150px;"><a href="../login/">已有账号，去登录</a></div>
+                <span style="color: red">{{ error_msg }}</span>
+                <!--显示注册成功??????-->
+
             </form>
         </div>
     </div>
