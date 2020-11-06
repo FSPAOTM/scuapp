@@ -26,8 +26,10 @@ urlpatterns = [
     #后台管理界面
     path('', views01.index, name='index'),
     path('login/', views01.login, name='login'),
+    path('register/', views01.register, name='register'),
     path('inwork_list/', views01.inwork_list, name='inwork_list'),
     path('inwork_add/', views01.inwork_add, name='inwork_add'),
+    path('management_login/', views01.management_login, name='management_login'),
     # path('management_inWork_release_html/', views.management_inWork_release_html, name='management_inWork_release_html'),
     path('management_inWork_release/', views01.management_inWork_release, name='management_inWork_release'),
     # path('management_inWork_show/', views.management_inWork_show, name='management_inWork_show'),

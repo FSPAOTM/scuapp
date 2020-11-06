@@ -17,6 +17,11 @@ def index(request):
 @csrf_exempt
 def login(request):
     return render(request, 'wechat/login.html')
+#注册界面
+@csrf_exempt
+def register(request):
+    return render(request, 'wechat/register.html')
+
 #校内兼职信息展示界面
 @csrf_exempt
 def inwork_list(request):
@@ -30,24 +35,21 @@ def inwork_add(request):
 
 #功能接口
 #登录
+@csrf_exempt
 def management_login(request):
     if request.method == "POST":
-        iw_post=request.POST.get("IW_post")
-        iw_depart=request.POST.get("IW_depart")
-        w_time=request.POST.get("W_Time")
-        w_place=request.POST.get("W_place")
-        work=request.POST.get("Work")
-        w_salary=request.POST.get("W_salary")
-        w_reuire=request.POST.get("W_require")
-        w_amount=request.POST.get("W_amount")
-        ddl_time=request.POST.get("Ddl_time")
-        inpub_time=timezone.now()
-        w_ps=request.POST.get("W_ps")
-        inWork=TbinWork.objects.create(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
-                                       w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
-        inWork.save()
-        inwork_list = TbinWork.objects.all()
-        return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+        manager_id = request.POST.get("manager_id")
+        password = request.POST.get("password")
+        try:
+            user = Tbmanager.objects.get(manager_id=manager_id)
+            if user.password != password:
+                error_msg = "用户名或密码错误"
+                return render(request, 'wechat/login.html', {'error_msg': error_msg})
+        except Tbmanager.DoesNotExist as e:
+            error_msg = "用户名不存在"
+            return render(request, 'wechat/login.html', {'error_msg': error_msg})
+        # 登录成功
+        return render(request, 'wechat/index.html')
     else:
         return HttpResponse("请求错误")
 
@@ -127,14 +129,6 @@ def management_inwork_search(request):
     inwork_search = TbinWork.objects.filter(iw_post__contains=s_iw_post, iw_depart__contains=s_iw_depart, w_time__contains=s_w_time, w_place__contains=s_w_place,
                             work__contains=s_work, w_salary__contains=s_w_salary, w_reuire__contains=s_w_salary )
     return render(request, 'wechat/inwork_search.html', {'inwork_search': inwork_search})
-
-
-#后台管理界面登录
-def management_inwork_login(request):
-    error_msg = ""
-    if request.method == "POST":
-        manager_id = request.POST.get("manager_id")
-        password = request.POST.get("password")
 
 
 #注册管理者

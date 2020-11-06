@@ -8,8 +8,8 @@
     <title>登录</title>  
     <link rel="stylesheet" href="../../static/wechat/css/pintuer.css">
     <link rel="stylesheet" href="../../static/wechat/css/admin.css">
-    <script src="../static/wechat/js/jquery_login.js"></script>
-    <script src="../static/wechat/js/pintuer.js"></script>
+    <script src="../../static/wechat/js/jquery_login.js"></script>
+    <script src="../../static/wechat/js/pintuer.js"></script>
 </head>
 <body>
 <div class="bg"></div>
@@ -19,7 +19,7 @@
             <div style="height:150px;"></div>
             <div class="media media-y margin-big-bottom">           
             </div>         
-            <form action="../management_inwork_login" method="post">
+            <form action="../management_login/" method="post">
             <div class="panel loginbox">
                 <div class="text-center margin-big padding-big-top"><h1>后台管理中心</h1></div>
                 <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div style="padding:30px;"><input  type="submit" class="button button-block bg-main text-big input-big" value="登录"></div>
-                <div style="padding-left: 150px;"><a href="register.html">注册&nbsp;</a>|<a href="#">&nbsp;忘记密码</a></div>
+                <div style="padding-left: 150px;"><a href="../register/">注册&nbsp;</a>|<a href="#">&nbsp;忘记密码</a></div>
                 <span style="color: red">{{ error_msg }}</span>
             </form>          
         </div>
