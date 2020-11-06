@@ -31,6 +31,7 @@ urlpatterns = [
     path('management_inWork_reset_show/', views01.management_inWork_reset_show, name='management_inWork_reset_show'),
     path('management_inWork_reset/', views01.management_inWork_reset, name='management_inWork_reset'),
     path('management_inWork_delete/', views01.management_inWork_delete, name='management_inWork_delete'),
+    path('management_inWork_search/', views01.management_inwork_search, name='management_inWork_search')
     # path('<CharField:manager_id>/results/', views.results, name='results'),
     # path('<CharField:manager_id/vote/', views.vote, name='vote'),
 
