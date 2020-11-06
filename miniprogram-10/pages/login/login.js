@@ -101,11 +101,28 @@ Page({
                   icon: 'success',
                   duration: 1000
                 })
-                setTimeout(function () {
-                  wx.navigateTo({
-                    url: '../infoFill/infoFill',
-                  })
-                }, 2000)
+                if (self.data.no.length = 13) {
+                  setTimeout(function () {
+                    wx.switchTab({
+                      url: '../sallJob/sallJob',
+                    })
+                  }, 2000)
+                }
+                /*else{
+                                  if(self.data.no.length=8){
+                                    setTimeout(function () {
+                                      wx.navigateTo({
+                                        url: '../infoFill/infoFill',
+                                      })
+                                    }, 2000)
+                                  }else{
+                                    setTimeout(function () {
+                                      wx.navigateTo({
+                                        url: '../infoFill/infoFill',
+                                      })
+                                    }, 2000)
+                                  }
+                                }*/
                 app.globalData.user = self.data.no;
                 console.log(app.globalData.user);
               } else {
