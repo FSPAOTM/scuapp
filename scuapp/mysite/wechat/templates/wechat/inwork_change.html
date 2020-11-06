@@ -44,10 +44,10 @@
             <li><label>岗位编号</label><input value="{{ inWork.iw_number }}" name="IW_number" type="text" class="dfinput" readonly required/><i>*</i></li>
             <li><label>岗位名称</label><input value="{{ inWork.iw_post }}" name="IW_post" type="text" class="dfinput" required/><i>*</i></li>
             <li><label>用人部门</label><input value="{{ inWork.iw_depart }}" name="IW_depart" type="text" class="dfinput" required/><i>*</i></li>
-            <li><label>工作时间</label><input value="{{ inWork.w_time }}" name="W_Time" type="text" class="dfinput" /></li>
+            <li><label>工作时间</label><input value="{{ inWork.w_time }}" name="W_Time" type="text" class="dfinput" /><i>如：周一~周五 14:00-18:00</i></li>
             <li><label>工作地点</label><input value="{{ inWork.w_place }}" name="W_place" type="text" class="dfinput" /></li>
             <li><label>工作内容</label><textarea name="Work" cols="" rows="3" class="textinput">{{ inWork.work }}</textarea><i>*</i></li>
-            <li><label>薪酬</label><input value="{{ inWork.w_salary }}" name="W_salary" type="text" class="dfinput" /></li>
+            <li><label>薪酬</label><input value="{{ inWork.w_salary }}" name="W_salary" type="text" class="dfinput" /><i>如：14元/小时</i></li>
             <li><label>招聘要求</label><input value="{{ inWork.w_reuire }}" name="W_require" type="text" class="dfinput" /></li>
             <li><label>招聘人数</label><input value="{{ inWork.w_amount }}" name="W_amount" type="text" class="dfinput" /></li>
             <li><label>报名截止时间</label><input value="{{ inWork.ddl_time }}" name="Ddl_time" type="datetime-local" class="dfinput" /></li>

@@ -177,14 +177,14 @@ h2{font-weight:normal;}
 .tooli li p{line-height:35px; text-align:center;}
 
 
-/*work_submit*/
+/*inwork_add*/
 .formbody{padding:10px 18px;}
 .formtitle{border-bottom:solid 1px #d0dee5; line-height:35px; position:relative; height:35px; margin-bottom:28px;}
 .formtitle span{font-weight:bold;font-size:14px; border-bottom:solid 3px #66c9f3;float:left; position:absolute; z-index:100; bottom:-1px; padding:0 3px; height:30px; line-height:30px;}
 .forminfo{padding-left:23px;}
 .forminfo li{margin-bottom:13px; clear:both;}
 .forminfo li label{width:100px;line-height:34px; display:block; float:left;}
-.forminfo li i{color:black; padding-left:20px; font-style: normal; font-size: large}
+.forminfo li i{color:grey; padding-left:20px; font-style: italic; font-size: small}
 .forminfo li cite{display:block; padding-top:10px;}
 .dfinput{width:345px; height:32px; line-height:32px; border-top:solid 1px #a7b5bc; border-left:solid 1px #a7b5bc; border-right:solid 1px #ced9df; border-bottom:solid 1px #ced9df; background:url(../images/inputbg.gif) repeat-x; text-indent:10px;}
 .dffinput{width:50px; height:32px; line-height:32px; border-top:solid 1px #a7b5bc; border-left:solid 1px #a7b5bc; border-right:solid 1px #ced9df; border-bottom:solid 1px #ced9df; background:url(../images/inputbg.gif) repeat-x; text-indent:10px;}
