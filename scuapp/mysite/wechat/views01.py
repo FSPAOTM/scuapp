@@ -184,7 +184,7 @@ def management_inWork_begin(request):
 
 #校内兼职信息搜索
 #存在问题：必须满足 %sab%的形式 中间有字检索不成功！！！！
-#待判断
+#待判断 空值不能查询
 @csrf_exempt
 def management_inwork_search(request):
     if request.method == "POST":
