@@ -1,0 +1,56 @@
+
+<view class="title">面试时间申请</view>
+<view class='a1' >
+    <view class='detailView'>
+      <text  style="margin-left:20px; font-size:30rpx;" >面试岗位：</text> 
+      <input style="margin-left:20px; font-size:30rpx;" placeholder style="font-size:28rpx;"placeholder='请填写面试岗位'/>
+    </view>
+
+    <view class='detailView'>
+      <text  style="margin-left:20px; font-size:30rpx;" >面试负责人：</text>   
+      <input style="margin-left:20px; font-size:30rpx;" placeholder style="font-size:28rpx;" placeholder='请填写面试负责人姓名'/>
+    </view>
+
+    <view class='detailView'>
+      <text  style="margin-left:20px; font-size:30rpx;" >手机号：</text>   
+      <input style="margin-left:20px; font-size:30rpx;" placeholder style="font-size:28rpx;" placeholder='请填写负责人手机号'/>
+    </view>
+
+
+  <view class='detailView'>
+      <text style="margin-left:20px; font-size:30rpx;" >请选择供学生挑选的面试时间</text>   
+    </view>
+
+  </view>
+
+ 
+  <picker  class="a2" mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+    <view style="font-size:30rpx;">
+      {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+    </view>
+  </picker>
+
+  <view class='detailView'>
+      <text style="margin-left:20px; font-size:30rpx;" >或者</text>   
+    </view>
+ 
+    <picker  class="a2" mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+    <view style="font-size:30rpx;">
+      {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+    </view>
+  </picker>
+
+
+  <view class='detailView'>
+      <text style="margin-left:20px; font-size:30rpx;" >或者</text>   
+    </view>
+ 
+    <picker class="a2" mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+    <view style=" font-size:30rpx;">
+      {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+    </view>
+  </picker>
+
+  <view class='btn-view'>
+    <button class='btn'>申请</button>
+</view>
