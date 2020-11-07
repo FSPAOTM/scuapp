@@ -30,13 +30,13 @@ Page({
       newpwd2:this.data.newpwd2,
     })
     // console.log(no);
-    if (newpwd == '' || newpwd2 == '') {
+    if (this.data.newpwd == '' || this.data.newpwd2 == '') {
       wx.showToast({
         title: '密码不能为空',
         icon: 'none',
         duration: 1000
       })
-    } else if (newpwd != newpwd2) {
+    } else if (this.data.newpwd != this.data.newpwd2) {
       wx.showToast({
         title: '两次输入不一致',
         icon: 'none',
@@ -44,11 +44,11 @@ Page({
       })
     } else {
       wx.request({
-        url: url, //仅为示例，并非真实的接口地址
+        url: 'http://127.0.0.1:8000/wechat/Reset_password_f2/', //仅为示例，并非真实的接口地址
         method: 'POST',
         data: {
           user:app.globalData.user,
-          newpwd: newpwd,
+          newpwd: this.data.newpwd,
         },
         header: {
           'content-type': 'application/x-www-form-urlencoded'

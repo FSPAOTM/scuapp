@@ -1,7 +1,7 @@
 <!--pages/scenter/scenter.wxml-->
 <view class="summary">      
         <image src="7.png" class="avatar" />
-        <view class="nickname">王雨欣</view>
+        <view class="nickname">{{name}}</view>
         </view>
 
 

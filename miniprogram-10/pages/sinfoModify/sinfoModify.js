@@ -260,7 +260,7 @@ Page({
 
   repwd: function () {
     wx.navigateTo({
-      url: '../repwd1/repwd1',
+      url: '../repwd2/repwd2',
     })
   }
 

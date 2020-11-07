@@ -1,18 +1,44 @@
 // pages/ccenter/ccenter.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    name: "",
+    phone: "",
+  },
 
+  infofill() {
+    wx.navigateTo({
+      url: '../cinfoFill/cinfoFill'
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.request({
+      url: 'http://127.0.0.1:8000/wechat/Insert_resume_show/',
+      /*待修改*/
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      data: {
+        phone: app.globalData.user,
+      },
+      success: (res) => {
+        if (res.statusCode == 200) {
+          console.log(res.data);
+          this.setData({
+            name: res.data.com_name,
+          })
+        }
+      }
+    })
   },
 
   /**

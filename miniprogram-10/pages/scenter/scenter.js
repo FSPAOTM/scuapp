@@ -1,29 +1,40 @@
 // pages/scenter/scenter.js
 //获取应用实例
 const app = getApp()
-var openid = wx.getStorageSync("openid");
+//var openid = wx.getStorageSync("openid");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    hasUserInfo: openid == ""
+    //hasUserInfo: openid == "",
+    sno:"",
+    name:"",
   },
-
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-
-  
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.request({
+      url: 'http://127.0.0.1:8000/wechat/Insert_resume_show/',/*待修改*/
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      data: {
+        sno: app.globalData.user,
+      },
+      success: (res) => {
+        if (res.statusCode == 200) {
+          console.log(res.data);
+          this.setData({
+            name: res.data.name,
+          })
+        }
+      }
+    })
   },
 
   infoModify() {

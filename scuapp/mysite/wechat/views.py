@@ -194,9 +194,9 @@ def Reset_show(request):
 @csrf_exempt
 def Reset_password(request):
     if request.method == "POST":
-        stu_id = request.POST.get('stuNumber')
-        origin_password=request.POST.get('js传数据的原密码')
-        new_password=request.POST.get('js传数据的新密码')
+        stu_id = request.POST.get('no')
+        origin_password=request.POST.get('oldpwd')
+        new_password=request.POST.get('newpwd')
 
         filterResult1 = Tbstudent.objects.filter(password=origin_password)
         if len(filterResult1) > 0:
@@ -214,7 +214,7 @@ def Reset_password_f1(request):
         stu_id = request.POST.get('user')
         phonenumber = request.POST.get('phone')
         filterResult1 = Tbstudent.objects.filter(stu_id=stu_id)
-        filterResult2 = Tbstudent.objects.filter(phonenumber=phonenumber)
+        filterResult2 = Tbstudent.objects.filter(phonenumber_phonenumberphonenumber_phonenumber=phonenumber)
         if len(filterResult1) > 0 and len(filterResult2) > 0:
             return HttpResponse("身份验证成功")
         else:

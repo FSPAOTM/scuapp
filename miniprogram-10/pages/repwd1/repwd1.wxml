@@ -3,11 +3,11 @@
 <view class="imply">①信息验证</view>
 <view class='user'>
   <text>用户名</text>
-  <input password='true' name='oldpwd' placeholder='请输入学号/工号/统一信用代码' bindblur="usser" />
+  <input  name='oldpwd' placeholder='请输入学号/工号/统一信用代码' bindblur="usser" />
 </view>
 <view class='phoneNum'>
   <text>手机号</text>
-  <input password='true' name='newpwd' placeholder='请输入注册所用手机号' bindblur="phhone"/>
+  <input  name='newpwd' placeholder='请输入注册所用手机号' bindblur="phhone"/>
 </view>
 <button type='primary' form-type='submit' bindtap="repwd">下一步</button>
 </form>

@@ -37,19 +37,25 @@ formSubmit(){
     success: (res) => {
       if (res.statusCode == 200) {
         console.log(res.data);
-        if(res.data="身份信息有误"){
+        if(res.data=="身份验证失败"){
           wx.showToast({
             title: '身份信息有误，请重新输入！',
             icon: 'none',
-            duration: 1000
+            duration: 3000
           })
           wx.redirectTo({
             url: '../repwd1/repwd1',
           })
         }else{
-          if(res.data="信息核验正确"){
+          if(res.data=="身份验证成功"){
             wx.redirectTo({
               url: '../repwd1-1/repwd1-1',
+            })
+          }else{
+            wx.showToast({
+              title: '请求错误',
+              icon: 'none',
+              duration: 1000
             })
           }
         }
