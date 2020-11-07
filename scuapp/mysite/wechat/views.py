@@ -151,7 +151,7 @@ def Insert_resume_show(request):
     else:
         return HttpResponse("请求错误")
 
-#简历修改功能 #改到这里了和前端还未调试
+#简历修改功能
 @csrf_exempt
 def Insert_resume_change(request):
     if request.method == "POST":
@@ -222,6 +222,17 @@ def Reset_password_f1(request):
     else:
         return HttpResponse("请求错误")
 
+#忘记密码重置密码界面
+@csrf_exempt
+def Reset_password_f2(request):
+    if request.method == "POST":
+        stu_id = request.POST.get('user')
+        new_password=request.POST.get('newpwd')
+        Tbstudent.objects.filter(stu_id=stu_id ).update(password=new_password)
+        return HttpResponse("密码修改成功")
+    else:
+        return HttpResponse("请求错误")
+
 #修改姓名
 @csrf_exempt
 def Reset_myinfo_name(request):
@@ -274,7 +285,7 @@ def Reset_myinfo_e_mail(request):
     else:
         return HttpResponse("请求错误")
 
-#企业信息修改？（未写）
+#企业信息修改？
 
 #企业兼职信息发布功能 对应cjobrelease界面
 @csrf_exempt

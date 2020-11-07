@@ -15,6 +15,7 @@ urlpatterns = [
     path('Reset_show/', views.Reset_show, name='Reset_show'),
     path('Reset_password/', views.Reset_password, name='Reset_password'),
     path('Reset_password_f1/', views.Reset_password_f1, name='Reset_password_f1'),
+    path('Reset_password_f2/', views.Reset_password_f2, name='Reset_password_f2'),
     path('Reset_myinfo_name/', views.Reset_myinfo_name, name='Reset_myinfo_name'),
     path('Reset_myinfo_nickname/', views.Reset_myinfo_nickname, name='Reset_myinfo_nickname'),
     path('Reset_myinfo_phonenumber/', views.Reset_myinfo_phonenumber, name='Reset_myinfo_phonenumber'),
