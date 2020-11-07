@@ -61,28 +61,33 @@ Page({
             works: res.data.res_per,
           })
           app.globalData.age = this.data.age;
-          console.log(app.globalData.age);
         }
       }
     })
   },
 
   blurname: function (e) {
+    if (e.detail.value != "null") {
     this.setData({
       name: e.detail.value
     })
+  }
   },
 
   blurage: function (e) {
+    if (e.detail.value != "null") {
     this.setData({
       age: e.detail.value
     })
+  }
   },
 
   genderchange: function (e) {
+    if (e.detail.value != "null") {
     this.setData({
       gender: e.detail.value
     })
+  }
   },
 
   bindPickerChange: function (e) {
@@ -90,9 +95,7 @@ Page({
     this.setData({
       edu: this.data.array[e.detail.value]
     })
-    console.log(this.data.array[e.detail.value])
     app.globalData.edu = this.data.array[e.detail.value];
-    console.log(app.globalData.edu);
   },
 
   blurtech: function (e) {
