@@ -207,6 +207,21 @@ def Reset_password(request):
     else:
         return HttpResponse("请求错误")
 
+#忘记密码验证身份页面
+@csrf_exempt
+def Reset_password_f1(request):
+    if request.method == "POST":
+        stu_id = request.POST.get('user')
+        phonenumber = request.POST.get('phone')
+        filterResult1 = Tbstudent.objects.filter(stu_id=stu_id)
+        filterResult2 = Tbstudent.objects.filter(phonenumber=phonenumber)
+        if len(filterResult1) > 0 and len(filterResult2) > 0:
+            return HttpResponse("身份验证成功")
+        else:
+            return HttpResponse("身份验证失败")
+    else:
+        return HttpResponse("请求错误")
+
 #修改姓名
 @csrf_exempt
 def Reset_myinfo_name(request):
@@ -330,7 +345,7 @@ def Modify_outwork_info(request):
     else:
         return HttpResponse("请求错误")
 
-#企业兼职信息状态修改界面
+#企业兼职信息状态修改界面 这个还没有加URL界面
 @csrf_exempt
 def Stop_outwork(request):
     if request.method == "POST":
@@ -339,6 +354,27 @@ def Stop_outwork(request):
         if len(filterResult1) > 0:
             TboutWork.objects.filter(ow_number=ow_number ).update(ow_status = 'stop')
             return HttpResponse("该招聘已停止")
+        else:
+            return HttpResponse("请求错误")
+
+#学生浏览所有兼职信息页面
+@csrf_exempt
+def Sget_outwork_info(request):
+    if request.method == "POST":
+        outwork_info = TboutWork.objects.get() #选择所有界面
+        return HttpResponse &outwork_info #这里要是传不了就改成前面的原始方法
+    else:
+        return HttpResponse("请求错误")
+
+#企业“单条”兼职信息展示功能
+@csrf_exempt
+def Sget_outwork_detail_info(request):
+    if request.method == "POST":
+        ow_number = request.POST.get('XXXXX')  #前端从Get_outwork_info界面接收ow_number并存为全局变量
+        filterResult1 = TboutWork.objects.filter(ow_number=ow_number)
+        if len(filterResult1) > 0:
+            outwork_detail_info = TboutWork.objects.get(ow_number=ow_number)
+            return HttpResponse &outwork_detail_info
         else:
             return HttpResponse("请求错误")
 
