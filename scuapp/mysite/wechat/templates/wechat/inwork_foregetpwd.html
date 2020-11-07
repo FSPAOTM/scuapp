@@ -35,9 +35,13 @@
             if(gh.value.length<8){
                 alert("工号位数不正确，请检查！");
                 gh.value="";
-                gh.focus();
                 return false;
             }
+        }
+    </script>
+    <script>
+        function successChange(){
+            alert("修改成功！")
         }
     </script>
 
@@ -76,7 +80,7 @@
                     </div>
                     </div>
                 </div>
-                <div style="padding:30px;"><input  type="submit" class="button button-block bg-main text-big input-big" value="重置"></div>
+                <div style="padding:30px;"><input  type="submit" onclick="successChange()" class="button button-block bg-main text-big input-big" value="重置"></div>
                 <div style="padding-left: 170px;"><a href="../login/">返回登录</a></div>
                 <span style="color: red">{{ error_msg }}</span>
                 <!--显示修改成功??????-->

@@ -35,7 +35,6 @@
             if(gh.value.length<8){
                 alert("工号位数不正确，请检查！");
                 gh.value="";
-                gh.focus();
                 return false;
             }
         }
@@ -44,17 +43,15 @@
         function checkpwd() {
             var pwd1=document.getElementById('pwd1');
             if(pwd1.value.length<6){
-                alert("密码长度须在6-16之间！");
+                alert("密码长度须在6-16之间！")
                 pwd1.value=""
-                pwd1.focus()
                 return false
             }
-            if(!(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]$/.test(pwd1))){
-                alert("密码必须包含数字和字母！");
-                pwd1.value=""
-                pwd1.focus()
-                return false
-            }
+        }
+    </script>
+    <script>
+        function successzhuce(){
+            alert("注册成功")
         }
     </script>
 
@@ -99,11 +96,10 @@
 
                     </div>
                 </div>
-                <div style="padding:30px;"><input  type="submit" class="button button-block bg-main text-big input-big" value="注册"></div>
+                <div style="padding:30px;"><input  type="submit" onclick="successzhuce()" class="button button-block bg-main text-big input-big" value="注册"></div>
                 <div style="padding-left: 150px;"><a href="../login/">已有账号，去登录</a></div>
                 <span style="color: red">{{ error_msg }}</span>
                 <!--显示注册成功??????-->
-                console.log()
 
             </form>
         </div>
