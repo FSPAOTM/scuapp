@@ -20,6 +20,43 @@
             }
         }
     </script>
+    <script>
+        function checkphone(){
+            var phone = document.getElementById('phone').value;
+            if(!(/^1[345789]\d{9}$/.test(phone))){
+                alert("请输入合法有效的手机号！")
+                return false;
+            }
+        }
+    </script>
+    <script>
+        function checkgh(){
+            var gh=document.getElementById('gh');
+            if(gh.value.length<8){
+                alert("工号位数不正确，请检查！");
+                gh.value="";
+                gh.focus();
+                return false;
+            }
+        }
+    </script>
+    <script>
+        function checkpwd() {
+            var pwd1=document.getElementById('pwd1');
+            if(pwd1.value.length<6){
+                alert("密码长度须在6-16之间！");
+                pwd1.value=""
+                pwd1.focus()
+                return false
+            }
+            if(!(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]$/.test(pwd1))){
+                alert("密码必须包含数字和字母！");
+                pwd1.value=""
+                pwd1.focus()
+                return false
+            }
+        }
+    </script>
 
 </head>
 <body>
@@ -36,7 +73,7 @@
                 <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
                     <div class="form-group">
                         <div class="field field-icon-right">
-                            <input type="text" class="input input-big" name="manager_id" placeholder="工号" data-validate="required:请输入工号" required/>
+                            <input type="text" id="gh" onblur="checkgh()" onkeyup="value=value.replace(/[^\d\.]/g,'')" maxlength="8" class="input input-big" name="manager_id" placeholder="工号" data-validate="required:请输入工号" required/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -46,12 +83,12 @@
                     </div>
                     <div class="form-group">
                         <div class="field field-icon-right">
-                            <input type="text" class="input input-big" name="phonenumber" placeholder="手机号" data-validate="required:请输入手机号" required/>
+                            <input type="text" id="phone" onblur="checkphone()" class="input input-big" maxlength="11" name="phonenumber" placeholder="手机号" data-validate="required:请输入手机号" required/>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="field field-icon-right">
-                            <input type="password" class="input input-big" id="pwd1" name="password" placeholder="密码" data-validate="required:请填写密码" required/>
+                            <input type="password" class="input input-big" maxlength="16" id="pwd1" name="password" onblur="checkpwd()" placeholder="密码" data-validate="required:请填写密码" required/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -66,6 +103,7 @@
                 <div style="padding-left: 150px;"><a href="../login/">已有账号，去登录</a></div>
                 <span style="color: red">{{ error_msg }}</span>
                 <!--显示注册成功??????-->
+                console.log()
 
             </form>
         </div>
