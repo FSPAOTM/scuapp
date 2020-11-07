@@ -73,7 +73,7 @@ def management_inwork_register(request):
             user = Tbmanager.objects.create(manager_id=manager_id, name=name, phonenumber=phonenumber,
                                             password=password)
             user.save()
-            return render(request, 'wechat/login.html')
+            return render(request, 'wechat/register_success.html')
         #注册成功的显示？？？（界面？？）
     else:
         return HttpResponse("请求错误")
@@ -93,7 +93,7 @@ def management_forgetpwd(request):
                 return render(request, 'wechat/inwork_foregetpwd.html', {'error_msg': error_msg})
             else:
                 Tbmanager.objects.filter(manager_id=manager_id).update(password=password)
-                return render(request, 'wechat/login.html')
+                return render(request, 'wechat/xiugai_success.html')
             #修改成功显示？？？（界面？？）
         else:
             error_msg = "用户不存在"

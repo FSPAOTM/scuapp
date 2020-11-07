@@ -25,6 +25,7 @@ urlpatterns = [
 
     #后台管理界面
     path('', views01.index, name='index'),
+    path('index/', views01.index, name='index'),
     path('login/', views01.login, name='login'),
     path('register/', views01.register, name='register'),
     path('inwork_list/', views01.inwork_list, name='inwork_list'),
