@@ -21,6 +21,11 @@
 {% load static %}
     <script type="text/javascript" src="{% static 'jQuery/jQuery-3.4.1.js' %}"></script>
     <![endif]-->
+      <script>
+        function success(){
+            alert("删除成功！")
+        }
+    </script>
   </head>
   
   <body>
@@ -121,7 +126,7 @@
                 console.log("success")
             }-->
               <!--<a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">-->
-              <a title="删除" href="../management_inWork_delete/?delete_num={{ line.iw_number }}" >
+              <a title="删除" onclick="success()" href="../management_inWork_delete/?delete_num={{ line.iw_number }}" >
                 <i class="layui-icon">&#xe640;</i>
               </a>
             </td>

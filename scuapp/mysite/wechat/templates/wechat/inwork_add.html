@@ -20,6 +20,11 @@
     <script src="../static/js/js3.js"></script>
 
     <![endif]-->
+    <script>
+        function success(){
+            alert("添加成功！")
+        }
+    </script>
 </head>
 
 <body>
@@ -49,7 +54,7 @@
             <li><label>招聘人数</label><input name="W_amount" type="text" class="dfinput" /></li>
             <li><label>报名截止时间</label><input name="Ddl_time" type="datetime-local" class="dfinput" /></li>
             <li><label>备注</label><textarea name="W_ps" cols="" rows="" class="textinput"></textarea></li>
-            <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="提交"/></li>
+            <li><label>&nbsp;</label><input name="" onclick="success()" type="submit" class="btn" value="提交"/></li>
         </ul>
     </form>
 

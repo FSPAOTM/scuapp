@@ -20,6 +20,11 @@
     <script src="../static/js/js3.js"></script>
 
     <![endif]-->
+    <script>
+        function success(){
+            alert("修改成功！")
+        }
+    </script>
 </head>
 
 <body>
@@ -54,7 +59,7 @@
             <li><label>备注</label><textarea name="W_ps" cols="" rows="" class="textinput">{{ inWork.w_ps }}</textarea></li>
 
 
-            <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="提交"/></li>
+            <li><label>&nbsp;</label><input name="" onclick="success()" type="submit" class="btn" value="提交"/></li>
         </ul>
     </form>
 
