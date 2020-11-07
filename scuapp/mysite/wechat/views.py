@@ -285,7 +285,45 @@ def Reset_myinfo_e_mail(request):
     else:
         return HttpResponse("请求错误")
 
-#企业信息修改？
+#企业信息修改显示功能 url未加
+@csrf_exempt
+def Company_info_showmodiify(request):
+    if request.method == "POST":
+        phone_num = request.POST.get('phone')  # 唯一标识简历的全局变量
+        user = Tbcompany.objects.get(phone_num=phone_num)
+        com_number = user.com_number
+        com_name = user.com_name
+        com_leader = user.com_leader
+        e_mail = user.e_mail
+        com_address = user.com_address
+        com_business = user.com_business
+        com_status = user.com_status
+        return HttpResponse(json.dumps(
+            {"cno": com_number,
+             "company": com_name,
+             "manname": com_leader,
+             "email": e_mail,
+             "address": com_address,
+             "contents": com_business,
+             "condition": com_status}))
+    else:
+        return HttpResponse("请求错误")
+
+#企业信息修改功能 url未加
+@csrf_exempt
+def Company_info_modiify(request):
+    if request.method == "POST":
+        com_number = request.POST.get('cno')  # 唯一标识简历的全局变量
+        phone_num = request.POST.get('phone')
+        com_leader = request.POST.get('manname')
+        e_mail = request.POST.get('email')
+        com_address = request.POST.get('address')
+        com_business = request.POST.get('contents')
+        com_status = request.POST.get('condition')
+        Tbcompany.objects.filter(com_number=com_number).update(phone_num=phone_num, com_leader=com_leader, e_mail=e_mail, com_address=com_address, com_business=com_business, com_status=com_status)
+        return HttpResponse("填写完成") #这里用filter get没有update
+    else:
+        return HttpResponse("请求错误")
 
 #企业兼职信息发布功能 对应cjobrelease界面
 @csrf_exempt

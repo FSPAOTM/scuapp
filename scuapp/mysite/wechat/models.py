@@ -15,7 +15,7 @@ class Tbapplication(models.Model):
         db_table = 'tbapplication'
 
 
-class Tbcompany(models.Model):
+class Tbcompany(models.Model): #要加数据库
     com_number = models.AutoField(db_column='Com_Number', primary_key=True)  # Field name made lowercase.
     phone_num = models.CharField(db_column='Phone_Num', max_length=11)  # Field name made lowercase.
     password = models.CharField(db_column='Password', max_length=20)  # Field name made lowercase.
@@ -23,7 +23,8 @@ class Tbcompany(models.Model):
     com_leader = models.CharField(db_column='Com_Leader', max_length=20, null=True)  # Field name made lowercase.
     e_mail = models.CharField(db_column='E_mail', max_length=60, blank=True, null=True)  # Field name made lowercase.
     com_address = models.CharField(db_column='Com_Address', max_length=60, null=True)  # Field name made lowercase.
-    com_license = models.CharField(db_column='Com_License', max_length=18)  # Field name made lowercase.
+    com_business = models.CharField(db_column='Com_Business',blank=True, null=True)  # Field name made lowercase.
+    com_status = models.CharField(db_column='Com_Status',blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -120,7 +121,7 @@ class TbinterviewResult(models.Model):
     ir_result = models.CharField(db_column='IR_Result', max_length=60)  # Field name made lowercase.
     ir_ps = models.CharField(db_column='IR_Ps', max_length=200, blank=True, null=True)  # Field name made lowercase.
     ir_time = models.DateTimeField(db_column='IR_Time')  # Field name made lowercase.
-    i_number = models.ForeignKey('TbinterviewNotice', models.DO_NOTHING, db_column='I_Number')  # Field name made lowercase.
+    i_number = models.ForeignKey(TbinterviewNotice, models.DO_NOTHING, db_column='I_Number')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -153,7 +154,7 @@ class TboutWork(models.Model):
     ddl_time = models.DateTimeField(db_column='Ddl_Time')  # Field name made lowercase.
     ipub_time = models.DateTimeField(db_column='Ipub_Time')  # Field name made lowercase.
     w_ps = models.CharField(db_column='W_Ps', max_length=200, blank=True, null=True)  # Field name made lowercase.
-    com_number = models.ForeignKey('Tbcompany', models.DO_NOTHING, db_column='Com_Number')  # Field name made lowercase.
+    com_number = models.ForeignKey(Tbcompany, models.DO_NOTHING, db_column='Com_Number')  # Field name made lowercase.
     ow_status = models.CharField(db_column='ow_status', max_length=255, default='待审核')
 
     class Meta:
@@ -176,7 +177,7 @@ class Tbquery(models.Model):
     q_content = models.CharField(db_column='Q_Content', max_length=200)  # Field name made lowercase.
     q_time = models.DateTimeField(db_column='Q_Time')  # Field name made lowercase.
     q_direc = models.CharField(db_column='Q_direc', max_length=10)  # Field name made lowercase.
-    com_number1 = models.ForeignKey('Tbcompany', models.DO_NOTHING, db_column='Com_Number1')  # Field name made lowercase.
+    com_number1 = models.ForeignKey(Tbcompany, models.DO_NOTHING, db_column='Com_Number1')  # Field name made lowercase.
     stu_id1 = models.ForeignKey('Tbstudent', models.DO_NOTHING, db_column='Stu_ID1')  # Field name made lowercase.
 
     class Meta:
@@ -214,7 +215,7 @@ class Tbstudent(models.Model):
     school = models.CharField(db_column='School', max_length=60, blank=True, null=True)  # Field name made lowercase.
     major = models.CharField(db_column='Major', max_length=60, blank=True, null=True)  # Field name made lowercase.
     grade = models.CharField(db_column='Grade', max_length=6, blank=True, null=True)  # Field name made lowercase.
-    res_id = models.ForeignKey('Tbresume', models.DO_NOTHING, db_column='Res_ID')  # Field name made lowercase.
+    res_id = models.ForeignKey(Tbresume, models.DO_NOTHING, db_column='Res_ID')  # Field name made lowercase.
 
     class Meta:
         managed = False
