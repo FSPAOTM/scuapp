@@ -13,6 +13,10 @@ import json
 @csrf_exempt
 def index(request):
     return render(request, 'wechat/index.html')
+#首页内框架页
+@csrf_exempt
+def manage(request):
+    return render(request, 'wechat/manage.html')
 #登录界面
 @csrf_exempt
 def login(request):
@@ -162,23 +166,43 @@ def management_inWork_delete(request):
     inwork_list = TbinWork.objects.all()
     return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
 
+#校内兼职中止
+@csrf_exempt
+def management_inWork_stop(request):
+    iw_number = request.GET.get('stop_num')
+    TbinWork.objects.filter(iw_number=iw_number).update(In_status="中止")  #批量中止
+    inwork_list = TbinWork.objects.all()
+    return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+
+#校内兼职启用
+@csrf_exempt
+def management_inWork_begin(request):
+    iw_number = request.GET.get('begin_num')
+    TbinWork.objects.filter(iw_number=iw_number).update(In_status="报名中")  #批量启用
+    inwork_list = TbinWork.objects.all()
+    return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+
 #校内兼职信息搜索
+#存在问题：必须满足 %sab%的形式 中间有字检索不成功！！！！
+#待判断
 @csrf_exempt
 def management_inwork_search(request):
     if request.method == "POST":
-        s_iw_number = request.GET.get("s_iw_number")
-        s_iw_post = request.GET.get("s_iw_post")
-        s_iw_depart = request.GET.get("s_iw_depart")
-        s_w_time = request.GET.get("s_w_time")
-        s_w_place = request.GET.get("s_w_place")
-        s_work = request.GET.get("s_work")
-        s_w_salary = request.GET.get("s_w_salary")
-        s_w_reuire = request.GET.get("s_w_reuire")
-        s_ddl_time = request.GET.get("s_ddl_time")
-        s_inpub_time = request.GET.get("s_inpub_time")
-        inwork_search = TbinWork.objects.filter(iw_post__contains=s_iw_post, iw_depart__contains=s_iw_depart, w_time__contains=s_w_time, w_place__contains=s_w_place,
-                            work__contains=s_work, w_salary__contains=s_w_salary, w_reuire__contains=s_w_salary )
-        return render(request, 'wechat/inwork_search.html', {'inwork_search': inwork_search})
+        s_iw_number = request.POST.get("s_iw_number")
+        s_iw_post = request.POST.get("s_iw_post")
+        s_iw_depart = request.POST.get("s_iw_depart")
+        s_w_time = request.POST.get("s_w_time")
+        s_w_place = request.POST.get("s_w_place")
+        s_work = request.POST.get("s_work")
+        s_w_salary = request.POST.get("s_w_salary")
+        s_w_reuire = request.POST.get("s_w_reuire")
+        #s_ddl_time = request.POST.get("s_ddl_time")
+        #s_inpub_time = request.POST.get("s_inpub_time")
+        inwork_list = TbinWork.objects.filter(iw_post__contains=s_iw_post).filter(iw_number__contains=s_iw_number).filter(iw_depart__contains=s_iw_depart).filter(w_time__contains=s_w_time).filter(w_place__contains=s_w_place).filter(work__contains=s_work).filter(w_salary__contains=s_w_salary).filter(w_reuire__contains=s_w_reuire)
+        return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+    else:
+        return HttpResponse("请求错误")
+
 
 
 

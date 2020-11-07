@@ -32,6 +32,7 @@ urlpatterns = [
     #后台管理界面
     path('', views01.index, name='index'),
     path('index/', views01.index, name='index'),
+    path('manage/', views01.manage, name='manage'),
     path('login/', views01.login, name='login'),
     path('register/', views01.register, name='register'),
     path('inwork_list/', views01.inwork_list, name='inwork_list'),
@@ -40,16 +41,16 @@ urlpatterns = [
     path('management_login/', views01.management_login, name='management_login'),
     path('management_inwork_register/', views01.management_inwork_register, name='management_inwork_register'),
     path('management_forgetpwd/', views01.management_forgetpwd, name='management_forgetpwd'),
-    # path('management_inWork_release_html/', views.management_inWork_release_html, name='management_inWork_release_html'),
+    path('management_inWork_stop/', views01.management_inWork_stop, name='management_inWork_stop'),
     path('management_inWork_release/', views01.management_inWork_release, name='management_inWork_release'),
-    # path('management_inWork_show/', views.management_inWork_show, name='management_inWork_show'),
+    path('management_inWork_begin/', views01.management_inWork_begin, name='management_inWork_begin'),
     path('management_inWork_reset_show/', views01.management_inWork_reset_show, name='management_inWork_reset_show'),
     path('management_inWork_reset/', views01.management_inWork_reset, name='management_inWork_reset'),
     path('management_inWork_delete/', views01.management_inWork_delete, name='management_inWork_delete'),
-    path('management_inWork_search/', views01.management_inwork_search, name='management_inWork_search'),
+    path('management_inwork_search/', views01.management_inwork_search, name='management_inwork_search'),
 
 
-    # path('<CharField:manager_id>/results/', views.results, name='results'),
-    # path('<CharField:manager_id/vote/', views.vote, name='vote'),
+    # path('<CharField:manager_id>/results/', views01.results, name='results'),
+    # path('<CharField:manager_id/vote/', views01.vote, name='vote'),
 
 ]

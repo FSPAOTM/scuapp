@@ -3,7 +3,7 @@
   
   <head>
     <meta charset="UTF-8">
-    <title>兼职列表</title>
+    <title>校内兼职列表</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -29,21 +29,11 @@
   </head>
   
   <body>
-    <div class="x-nav">
-      <span class="layui-breadcrumb">
-        <a href="../index/">首页</a>
-        <a href="">演示</a>
-        <a>
-          <cite>导航元素</cite></a>
-      </span>
-      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
-        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
-    </div>
     <div class="x-body">
       <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so" method="post" action="../management_inwork_search">
+        <form class="layui-form layui-col-md12 x-so" method="post" action="../management_inwork_search/">
             {% csrf_token %}
-            <!--<input type="text" name="s_iw_number"  placeholder="请输入岗位编号" autocomplete="off" class="layui-input" width="100px">-->
+            <input type="text" name="s_iw_number"  placeholder="请输入岗位编号" autocomplete="off" class="layui-input">
             <input type="text" name="s_iw_post"  placeholder="请输入岗位名称" autocomplete="off" class="layui-input">
             <input type="text" name="s_iw_depart"  placeholder="请输入用人部门" autocomplete="off" class="layui-input">
             <input type="text" name="s_w_time"  placeholder="请输入工作时间" autocomplete="off" class="layui-input">
@@ -100,9 +90,12 @@
             <td>{{ line.inpub_time }}</td>
             <td>{{ line.w_ps }}</td>
             <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
+              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.In_status }}</span></td>
             <td class="td-manage">
-              <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
+              <a  href="../management_inWork_stop/?stop_num={{ line.iw_number }}"  title="中止">
+                <i class="iconfont">&#xe6ce;</i>
+              </a>
+              <a  href="../management_inWork_begin/?begin_num={{ line.iw_number }}"  title="启用">
                 <i class="layui-icon">&#xe601;</i>
               </a>
               <a id="bianji_button" title="编辑" href="../management_inWork_reset_show/?re_num={{ line.iw_number }}">
