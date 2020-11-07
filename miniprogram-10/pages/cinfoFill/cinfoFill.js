@@ -28,7 +28,7 @@ Page({
       },
       method: "POST",
       data: {
-        cno: app.globalData.user,
+        phone: app.globalData.user,
       },
       success: (res) => {
         console.log(res);
@@ -36,8 +36,8 @@ Page({
         if (res.statusCode == 200) {
           console.log(res.data);
           this.setData({
-            cno:app.globalData.user,
-            phone: res.data.phone_num,
+            cno:res.data.com_license,
+            phone: app.globalData.user,
             company: res.data.com_name,
             manname: res.data.com_leader,
             email: res.data.e_mail,
@@ -102,13 +102,7 @@ Page({
   formSubmit: function (e) {
     let that=this;
     //console.log(e.detail.value);
-    app.globalData.age = this.data.age;
-    app.globalData.gender = this.data.gender;
-    app.globalData.tech = this.data.tech;
-    app.globalData.job = this.data.job;
-    app.globalData.project = this.data.project;
-    app.globalData.practice = this.data.practice;
-    app.globalData.works = this.data.works;
+    app.globalData.user = this.data.phone;
     if (this.data.phone.length != 11) {
       wx.showToast({
         title: '联系电话有误!',
@@ -153,8 +147,8 @@ Page({
         },
         method: "POST",
         data: {
-          cno: app.globalData.user,
-          phone: this.data.phone,
+          cno: this.data.cno,
+          phone: app.globalData.user,
           manname: this.data.manname,
           email: this.data.email,
           address: this.data.address,
