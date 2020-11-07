@@ -10,6 +10,24 @@
     <link rel="stylesheet" href="../../static/wechat/css/admin.css">
     <script src="../../static/wechat/js/jquery_login.js"></script>
     <script src="../../static/wechat/js/pintuer.js"></script>
+    <script>
+        function checkgh(){
+            if(gh.value.length<8 && gh.value != ""){
+                alert("工号位数不正确，请检查！");
+                gh.value=""
+                return false;
+            }
+        }
+    </script>
+    <script>
+        function checkpwd() {
+            if(!(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$]{6,16}$/.test(pwd1.value)) && pwd1.value != ""){
+                alert("密码长度须在6-16之间，必须包含数字与字母，可以包含或不包含特殊符号！");
+                pwd1.value=""
+                return false
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="bg"></div>
@@ -25,13 +43,13 @@
                 <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
                     <div class="form-group">
                         <div class="field field-icon-right">
-                            <input type="text" class="input input-big" name="manager_id" placeholder="登录账号" data-validate="required:请输入工号" required/>
+                            <input type="text" class="input input-big" id="gh" onblur="checkgh()" name="manager_id" placeholder="登录账号" data-validate="required:请输入工号" required/>
                             <span class="icon icon-user margin-small"></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="field field-icon-right">
-                            <input type="password" class="input input-big" name="password" placeholder="登录密码" data-validate="required:请填写密码" required/>
+                            <input type="password" class="input input-big" id="pwd1" onblur="checkpwd()" name="password" placeholder="登录密码" data-validate="required:请填写密码" required/>
                             <span class="icon icon-key margin-small"></span>
                         </div>
                     </div>

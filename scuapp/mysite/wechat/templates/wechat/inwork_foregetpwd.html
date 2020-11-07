@@ -13,7 +13,7 @@
 
     <script>
         function check2pwd(){
-            if ( pwd1.value != pwd2.value){
+            if (( pwd1.value != pwd2.value) && pwd1.value!=""){
                 alert("两次输入密码不一致")
                 pwd1.value=""
                 pwd2.value=""
@@ -22,26 +22,30 @@
     </script>
     <script>
         function checkphone(){
-            var phone = document.getElementById('phone').value;
-        if(!(/^1[345789]\d{9}$/.test(phone))){
-            alert("请输入合法有效的手机号！")
-            return false;
+            if(!(/^1[345789]\d{9}$/.test(phone.value)) && phone.value != ""){
+                alert("请输入合法有效的手机号！")
+                phone.value=""
+                return false
             }
         }
     </script>
+
     <script>
         function checkgh(){
-            var gh=document.getElementById('gh');
-            if(gh.value.length<8){
+            if(gh.value.length<8 && gh.value != ""){
                 alert("工号位数不正确，请检查！");
-                gh.value="";
+                gh.value=""
                 return false;
             }
         }
     </script>
     <script>
-        function successChange(){
-            alert("修改成功！")
+        function checkpwd() {
+            if(!(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$]{6,16}$/.test(pwd1.value)) && pwd1.value != ""){
+                alert("密码长度须在6-16之间，必须包含数字与字母，可以包含或不包含特殊符号！");
+                pwd1.value=""
+                return false
+            }
         }
     </script>
 
@@ -70,7 +74,7 @@
                     </div>
                     <div class="form-group">
                         <div class="field field-icon-right">
-                            <input type="password" id="pwd1" class="input input-big" name="password" placeholder="请输入新密码" data-validate="required:请填写密码" required/>
+                            <input type="password" id="pwd1" class="input input-big" name="password" onblur="checkpwd()" placeholder="请输入新密码" data-validate="required:请填写密码" required/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -80,7 +84,7 @@
                     </div>
                     </div>
                 </div>
-                <div style="padding:30px;"><input  type="submit" onclick="successChange()" class="button button-block bg-main text-big input-big" value="重置"></div>
+                <div style="padding:30px;"><input  type="submit" class="button button-block bg-main text-big input-big" value="重置"></div>
                 <div style="padding-left: 170px;"><a href="../login/">返回登录</a></div>
                 <span style="color: red">{{ error_msg }}</span>
                 <!--显示修改成功??????-->
