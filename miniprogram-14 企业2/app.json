@@ -1,0 +1,45 @@
+{
+  "pages":[
+    "pages/mancenter/mancenter",
+    "pages/workspace/workspace",
+    "pages/mianshi/mianshi",
+    "pages/fabu/fabu",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "work1.png",
+        "iconPath": "work2.png",
+        "pagePath":"pages/workspace/workspace",
+        "text": " 工作区"
+      },
+      {
+        "selectedIconPath": "fabu1.png",
+        "iconPath": "fabu2.png",
+        "pagePath": "pages/fabu/fabu",
+        "text": "我的发布"
+      },
+      {
+        "selectedIconPath": "center1.png",
+        "iconPath": "center2.png",
+        "pagePath": "pages/mancenter/mancenter",
+        "text": "企业中心"
+      }
+    ]
+  }
+
+}
