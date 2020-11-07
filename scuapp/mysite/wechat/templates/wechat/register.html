@@ -21,14 +21,6 @@
         }
     </script>
     <script>
-        function ifnull(){
-            if(pwd2.value != "" && (gh.value == "" || phone.value == ""|| name0.value == "")){
-                alert("内容不能为空！")
-                return false
-            }
-        }
-    </script>
-    <script>
         function checkphone(){
             if(!(/^1[345789]\d{9}$/.test(phone.value)) && phone.value != ""){
                 alert("请输入合法有效的手机号！")
@@ -42,20 +34,15 @@
         function checkgh(){
             if(gh.value.length<8 && gh.value != ""){
                 alert("工号位数不正确，请检查！");
-                gh.value="";
+                gh.value=""
                 return false;
             }
         }
     </script>
     <script>
         function checkpwd() {
-            if(pwd1.value.length<6 && pwd1.value != ""){
-                alert("密码长度须在6-16之间！")
-                pwd1.value=""
-                return false
-            }
-            if(!(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]$/.test(pwd1)) && pwd1.value != ""){
-                alert("密码必须包含数字和字母！");
+            if(!(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$]{6,16}$/.test(pwd1.value)) && pwd1.value != ""){
+                alert("密码长度须在6-16之间，必须包含数字与字母，可以包含或不包含特殊符号！");
                 pwd1.value=""
                 return false
             }
@@ -97,7 +84,7 @@
                     </div>
                     <div class="form-group">
                         <div class="field field-icon-right">
-                            <input type="password" class="input input-big" id="pwd2" name="password" onblur="check2pwd();ifnull()" placeholder="请确认密码" data-validate="required:请填写密码" required/>
+                            <input type="password" class="input input-big" id="pwd2" name="password" onblur="check2pwd()" placeholder="请确认密码" data-validate="required:请填写密码" required/>
                         </div>
                     </div>
 
