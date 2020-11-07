@@ -15,7 +15,7 @@ class Tbapplication(models.Model):
         db_table = 'tbapplication'
 
 
-class Tbcompany(models.Model): #要加数据库
+class Tbcompany(models.Model):
     com_number = models.AutoField(db_column='Com_Number', primary_key=True)  # Field name made lowercase.
     phone_num = models.CharField(db_column='Phone_Num', max_length=11)  # Field name made lowercase.
     password = models.CharField(db_column='Password', max_length=20)  # Field name made lowercase.
@@ -23,8 +23,7 @@ class Tbcompany(models.Model): #要加数据库
     com_leader = models.CharField(db_column='Com_Leader', max_length=20, null=True)  # Field name made lowercase.
     e_mail = models.CharField(db_column='E_mail', max_length=60, blank=True, null=True)  # Field name made lowercase.
     com_address = models.CharField(db_column='Com_Address', max_length=60, null=True)  # Field name made lowercase.
-    com_business = models.CharField(db_column='Com_Business',blank=True, null=True)  # Field name made lowercase.
-    com_status = models.CharField(db_column='Com_Status',blank=True, null=True)  # Field name made lowercase.
+    com_License = models.ForeignKey('Tbqualify', models.DO_NOTHING, db_column='Com_License')  # Field name made lowercase.
 
     class Meta:
         managed = False
