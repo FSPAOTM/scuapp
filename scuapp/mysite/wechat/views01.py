@@ -165,19 +165,20 @@ def management_inWork_delete(request):
 #校内兼职信息搜索
 @csrf_exempt
 def management_inwork_search(request):
-    s_iw_number = request.GET.get("s_iw_number")
-    s_iw_post = request.GET.get("s_iw_post")
-    s_iw_depart = request.GET.get("s_iw_depart")
-    s_w_time = request.GET.get("s_w_time")
-    s_w_place = request.GET.get("s_w_place")
-    s_work = request.GET.get("s_work")
-    s_w_salary = request.GET.get("s_w_salary")
-    s_w_reuire = request.GET.get("s_w_reuire")
-    s_ddl_time = request.GET.get("s_ddl_time")
-    s_inpub_time = request.GET.get("s_inpub_time")
-    inwork_search = TbinWork.objects.filter(iw_post__contains=s_iw_post, iw_depart__contains=s_iw_depart, w_time__contains=s_w_time, w_place__contains=s_w_place,
+    if request.method == "POST":
+        s_iw_number = request.GET.get("s_iw_number")
+        s_iw_post = request.GET.get("s_iw_post")
+        s_iw_depart = request.GET.get("s_iw_depart")
+        s_w_time = request.GET.get("s_w_time")
+        s_w_place = request.GET.get("s_w_place")
+        s_work = request.GET.get("s_work")
+        s_w_salary = request.GET.get("s_w_salary")
+        s_w_reuire = request.GET.get("s_w_reuire")
+        s_ddl_time = request.GET.get("s_ddl_time")
+        s_inpub_time = request.GET.get("s_inpub_time")
+        inwork_search = TbinWork.objects.filter(iw_post__contains=s_iw_post, iw_depart__contains=s_iw_depart, w_time__contains=s_w_time, w_place__contains=s_w_place,
                             work__contains=s_work, w_salary__contains=s_w_salary, w_reuire__contains=s_w_salary )
-    return render(request, 'wechat/inwork_search.html', {'inwork_search': inwork_search})
+        return render(request, 'wechat/inwork_search.html', {'inwork_search': inwork_search})
 
 
 

@@ -36,7 +36,7 @@
     </div>
     <div class="x-body">
       <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so" method="get" action="../management_inwork_search">
+        <form class="layui-form layui-col-md12 x-so" method="post" action="../management_inwork_search">
             {% csrf_token %}
             <!--<input type="text" name="s_iw_number"  placeholder="请输入岗位编号" autocomplete="off" class="layui-input" width="100px">-->
             <input type="text" name="s_iw_post"  placeholder="请输入岗位名称" autocomplete="off" class="layui-input">
