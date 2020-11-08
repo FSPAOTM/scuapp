@@ -285,6 +285,18 @@ def Reset_myinfo_e_mail(request):
     else:
         return HttpResponse("请求错误")
 
+#以下是企业
+#Ccenter返回企业名称
+@csrf_exempt
+def Show_company_name(request):
+    if request.method == "POST":
+        phone_num = request.POST.get('phone')  #前端从Get_outwork_info界面接收ow_number并存为全局变量
+        user = Tbcompany.objects.get(phone_num=phone_num)
+        com_name = user.com_name
+        return HttpResponse &com_name
+    else:
+        return HttpResponse("请求错误")
+
 #企业信息修改显示功能
 @csrf_exempt
 def Company_info_showmodiify(request):
@@ -429,6 +441,8 @@ def Sget_outwork_detail_info(request):
             return HttpResponse &outwork_detail_info
         else:
             return HttpResponse("请求错误")
+
+
 
 
 

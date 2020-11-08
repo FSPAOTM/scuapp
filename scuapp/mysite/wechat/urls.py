@@ -20,6 +20,8 @@ urlpatterns = [
     path('Reset_myinfo_nickname/', views.Reset_myinfo_nickname, name='Reset_myinfo_nickname'),
     path('Reset_myinfo_phonenumber/', views.Reset_myinfo_phonenumber, name='Reset_myinfo_phonenumber'),
     path('Reset_myinfo_e_mail/', views.Reset_myinfo_e_mail, name='Reset_myinfo_e_mail'),
+    #企业
+    path('Show_company_name/', views.Show_company_name, name='Show_company_name'),
     path('Company_info_showmodiify/', views.Company_info_showmodiify, name='Company_info_showmodiify'),
     path('Company_info_modiify/', views.Company_info_modiify, name='Company_info_modiify'),
     path('Part_time_post/', views.Part_time_post, name='Part_time_post'),
@@ -28,6 +30,7 @@ urlpatterns = [
     path('Modify_outwork_info/', views.Modify_outwork_info, name='Modify_outwork_info'),
     path('show/', views.show, name='show'),
     path('Sget_outwork_detail_info/', views.Sget_outwork_detail_info, name='Sget_outwork_detail_info'),
+
     #后台管理界面
     path('', views01.index, name='index'),
     path('index/', views01.index, name='index'),
