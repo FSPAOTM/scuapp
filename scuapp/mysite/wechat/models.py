@@ -152,7 +152,7 @@ class TboutWork(models.Model):
     w_amount = models.CharField(db_column='W_Amount', max_length=50, blank=True, null=True)  # Field name made lowercase.
     ddl_time = models.DateTimeField(db_column='Ddl_Time')  # Field name made lowercase.
     ipub_time = models.DateTimeField(db_column='Ipub_Time')  # Field name made lowercase.
-    w_ps = models.CharField(db_column='W_Ps_1', max_length=200, blank=True, null=True)#区域
+    w_ps = models.CharField(db_column='W_Ps', max_length=200, blank=True, null=True)#区域
     com_number = models.ForeignKey(Tbcompany, models.DO_NOTHING, db_column='Com_Number')  # Field name made lowercase.
     ow_status = models.CharField(db_column='ow_status', max_length=255, default='待审核')
 
