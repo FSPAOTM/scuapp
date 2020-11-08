@@ -293,7 +293,7 @@ def Show_company_name(request):
         phone_num = request.POST.get('phone')  #前端从Get_outwork_info界面接收ow_number并存为全局变量
         user = Tbcompany.objects.get(phone_num=phone_num)
         com_name = user.com_name
-        return HttpResponse &com_name
+        return HttpResponse(json.dumps({"name":com_name}))
     else:
         return HttpResponse("请求错误")
 
@@ -448,6 +448,23 @@ def show(request):
         plays.append({'type':'a','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':'b'})
     plays_json = json.dumps(plays,ensure_ascii=False)
     return HttpResponse(plays_json)#转换为json格式
+
+@csrf_exempt
+def showtest(request):
+    result = TboutWork.objects.all()
+    type = "校内"
+    ow_post = result.ow_post
+    w_amount = result.w_amount
+    w_place = result.w_place
+    w_salary = result.w_salary
+    depart = "b"
+    return HttpResponse(json.dumps(
+        {"type": type,
+         "title": ow_post,
+         "amount": w_amount,
+         "place": w_place,
+         "salary": w_salary,
+         "depart": depart}))
 
 #企业“单条”兼职信息展示功能
 @csrf_exempt
