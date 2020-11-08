@@ -121,6 +121,17 @@ def Company_register(request):
     else:
         return HttpResponse("请求错误")
 
+#scenter返回学生名称
+@csrf_exempt
+def Show_student_name(request):
+    if request.method == "POST":
+        stu_id = request.POST.get('stuNumber')  #前端从Get_outwork_info界面接收ow_number并存为全局变量
+        user = Tbstudent.objects.get(stu_id=stu_id)
+        name = user.name
+        return HttpResponse(json.dumps({"name":name}))
+    else:
+        return HttpResponse("请求错误")
+
 #简历显示功能
 @csrf_exempt
 def Insert_resume_show(request):
