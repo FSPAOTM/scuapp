@@ -410,12 +410,13 @@ def Stop_outwork(request):
 
 #学生浏览所有兼职信息页面
 @csrf_exempt
-def Sget_outwork_info(request):
-    if request.method == "POST":
-        outwork_info = TboutWork.objects.get() #选择所有界面
-        return HttpResponse &outwork_info #这里要是传不了就改成前面的原始方法
-    else:
-        return HttpResponse("请求错误")
+def show(request):
+    result = TboutWork.objects.all()#获取对象
+    plays = []
+    for i in result:
+        plays.append({'type':'a','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':'b'})
+    plays_json = json.dumps(plays,ensure_ascii=False)
+    return HttpResponse(plays_json)#转换为json格式
 
 #企业“单条”兼职信息展示功能
 @csrf_exempt
