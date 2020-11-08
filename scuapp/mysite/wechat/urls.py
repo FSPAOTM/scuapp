@@ -30,7 +30,6 @@ urlpatterns = [
     path('Get_outwork_detail_info/', views.Get_outwork_detail_info, name='Get_outwork_detail_info'),
     path('Modify_outwork_info/', views.Modify_outwork_info, name='Modify_outwork_info'),
     path('show/', views.show, name='show'),
-    path('showtest/', views.showtest, name='showtest'),
     path('Sget_outwork_detail_info/', views.Sget_outwork_detail_info, name='Sget_outwork_detail_info'),
 
     #后台管理界面
