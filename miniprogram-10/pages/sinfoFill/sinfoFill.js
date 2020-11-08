@@ -202,7 +202,7 @@ Page({
             this.setData({
               result: res.data
             })
-            if (res.data = "填写完成") {
+            if (res.data == "填写完成") {
               wx.showToast({
                 title: '提交成功！！！', //这里打印出登录成功
                 icon: 'success',

@@ -76,7 +76,7 @@ def Manage_register(request):
             return HttpResponse("注册成功")
     else:
         return HttpResponse("请求错误")
-
+#学生注册
 @csrf_exempt
 def Student_register(request):
     if request.method == "POST":
@@ -97,7 +97,7 @@ def Student_register(request):
             return HttpResponse("注册成功")
     else:
         return HttpResponse("请求错误")
-
+#企业注册
 @csrf_exempt
 def Company_register(request):
     if request.method == "POST":
@@ -118,6 +118,18 @@ def Company_register(request):
                 qualify = Tbqualify.objects.create(com_license=account_num)
                 qualify.save()
                 return HttpResponse("注册成功")
+    else:
+        return HttpResponse("请求错误")
+
+#以下是学生界面功能
+#scenter返回学生名称
+@csrf_exempt
+def Show_student_name(request):
+    if request.method == "POST":
+        stu_id = request.POST.get('sno')  #前端从Get_outwork_info界面接收ow_number并存为全局变量
+        user = Tbstudent.objects.get(stu_id=stu_id)
+        name = user.name
+        return HttpResponse(json.dumps({"name":name}))
     else:
         return HttpResponse("请求错误")
 
@@ -286,7 +298,7 @@ def Reset_myinfo_e_mail(request):
         return HttpResponse("请求错误")
 
 #以下是企业
-#ccenter返回企业名称 未调试
+#ccenter返回企业名称
 @csrf_exempt
 def Show_company_name(request):
     if request.method == "POST":
@@ -294,6 +306,7 @@ def Show_company_name(request):
         user = Tbcompany.objects.get(phone_num=phone_num)
         com_name = user.com_name
         return HttpResponse(json.dumps({"name":com_name}))
+        #print(json.dumps({"name":com_name}))
     else:
         return HttpResponse("请求错误")
 
@@ -308,7 +321,7 @@ def Company_info_showmodiify(request):
         com_leader = user.com_leader
         e_mail = user.e_mail
         com_address = user.com_address
-        qualify = Tbqualify.objects.get(com_License=com_License)
+        qualify = Tbqualify.objects.get(com_license=com_License)
         com_condition = qualify.com_condition
         com_business = qualify.com_business
         return HttpResponse(json.dumps(
@@ -358,11 +371,11 @@ def Company_apply_interviewtime(request):
         return HttpResponse("请求错误")
 
 
-#企业兼职信息发布功能 对应cjobrelease界面
+#cjobrelease企业兼职信息发布功能  未调试
 @csrf_exempt
 def Part_time_post(request):
     if request.method == "POST":
-        phone_num = request.POST.get('')
+        phone_num = request.POST.get('company')
         ow_post = request.POST.get('Name')
         w_time = request.POST.get('jobtime')
         w_place = request.POST.get('location')
@@ -370,7 +383,7 @@ def Part_time_post(request):
         w_salary = request.POST.get('salary')
         w_reuire = request.POST.get('ask')
         w_amount = request.POST.get('num')
-        ddl_time = request.POST.get('endingtim')
+        ddl_time = request.POST.get('endingtime')
         inpub_time = timezone.now()
         w_ps = request.POST.getlist('ps')
 

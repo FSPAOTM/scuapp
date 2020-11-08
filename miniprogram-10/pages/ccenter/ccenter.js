@@ -22,7 +22,6 @@ Page({
   onLoad: function (options) {
     wx.request({
       url: app.globalData.url + '/Show_company_name/',
-      /*待修改*/
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
@@ -34,7 +33,7 @@ Page({
         if (res.statusCode == 200) {
           console.log(res.data);
           this.setData({
-            name: res.data.com_name,
+            name: res.data.name,
           })
         }
       }

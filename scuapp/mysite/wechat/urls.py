@@ -10,6 +10,7 @@ urlpatterns = [
     path('Manage_register/', views.Manage_register, name='Manage_register'),
     path('Student_register/', views.Student_register, name='Student_register'),
     path('Company_register/', views.Company_register, name='Company_register'),
+    path('Show_student_name/', views.Show_student_name, name='Show_student_name'),
     path('Insert_resume_show/', views.Insert_resume_show, name='Insert_resume_show'),
     path('Insert_resume_change/', views.Insert_resume_change, name='Insert_resume_change'),
     path('Reset_show/', views.Reset_show, name='Reset_show'),
