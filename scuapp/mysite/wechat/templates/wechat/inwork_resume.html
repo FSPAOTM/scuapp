@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  
+
   <head>
     <meta charset="UTF-8">
     <title>校内兼职列表</title>
@@ -27,7 +27,7 @@
         }
     </script>
   </head>
-  
+
   <body>
     <div class="x-body">
       <div class="layui-row">
@@ -41,14 +41,14 @@
             <input type="text" name="s_work"  placeholder="请输入工作内容" autocomplete="off" class="layui-input">
             <input type="text" name="s_w_salary"  placeholder="请输入薪酬" autocomplete="off" class="layui-input">
             <input type="text" name="s_w_reuire"  placeholder="请输入招聘要求" autocomplete="off" class="layui-input">
-            <!--<input type="datetime-local" class="layui-input" placeholder="报名截止时间" name="s_ddl_time" id="start">
-            <input type="datetime-local" class="layui-input" placeholder="信息发布时间" name="s_inpub_time" id="end">-->
-          <button class="layui-btn" type="submit" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+          <!--<input class="layui-input" placeholder="报名截止时间" name="s_ddl_time" id="start">
+          <input class="layui-input" placeholder="信息发布时间" name="s_inpub_time" id="end">-->
+          <button class="layui-btn" type="submit"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
       </div>
       <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加岗位','../inwork_add',600,400)"><i class="layui-icon"></i>添加</button></a>
+        <a href="../inwork_add/"><button class="layui-btn" ><i class="layui-icon"></i>添加</button></a>
       </xblock>
       <table class="layui-table">
         <thead>
@@ -57,17 +57,16 @@
               <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </th>
             <th>岗位编号</th>
-            <th>岗位名称</th>
-            <th>用人部门</th>
-            <th>工作时间</th>
-            <th>工作地点</th>
-            <th>工作内容</th>
-            <th>薪酬</th>
-            <th>招聘要求</th>
-            <th>招聘人数</th>
-            <th>报名截止时间</th>
-            <th>信息发布时间</th>
-            <th>备注</th>
+            <th>简历编号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>技能自评</th>
+            <th>教育背景</th>
+            <th>工作经历</th>
+            <th>项目经历</th>
+            <th>课外实践</th>
+            <th>个人作品</th>
             <th>岗位状态</th>
             <th>操作</th></tr>
         </thead>
@@ -102,23 +101,6 @@
                 <i class="layui-icon">&#xe642;</i>
               </a>
 
-                <!--<script>
-    function post_show() {
-        $.ajax({
-            url: '../management_inWork_reset_show/',
-            type: "post",
-            data:{
-                // 因为不是json格式的数据，data就不需要用JSON转格式了，转了反而有问题
-                'iw_number': $("#iw_number").val(),
-            }
-        })
-    };
-</script>-->
-
-            <!--success: function (data) {
-                console.log("success")
-            }-->
-              <!--<a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">-->
               <a title="删除" onclick="success()" href="../management_inWork_delete/?delete_num={{ line.iw_number }}" >
                 <i class="layui-icon">&#xe640;</i>
               </a>
@@ -142,7 +124,7 @@
     <script>
       layui.use('laydate', function(){
         var laydate = layui.laydate;
-        
+
         //执行一个laydate实例
         laydate.render({
           elem: '#start' //指定元素
@@ -174,7 +156,7 @@
                 $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
                 layer.msg('已启用!',{icon: 5,time:1000});
               }
-              
+
           });
       }
 
@@ -192,7 +174,7 @@
       function delAll (argument) {
 
         var data = tableCheck.getData();
-  
+
         layer.confirm('确认要删除吗？'+data,function(index){
             //捉到所有被选中的，发异步进行删除
             layer.msg('删除成功', {icon: 1});
