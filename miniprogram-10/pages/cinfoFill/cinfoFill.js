@@ -20,30 +20,30 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
+    console.log(app.globalData.user);
     wx.request({
-      url: app.globalData.url + '/Insert_resume_show/',/*待修改*/
+      url: app.globalData.url + '/Company_info_showmodiify/',
+      method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      method: "POST",
       data: {
         phone: app.globalData.user,
       },
       success: (res) => {
         console.log(res);
-        console.log(this.data.cno);
         if (res.statusCode == 200) {
           console.log(res.data);
           this.setData({
-            cno:res.data.com_license,
+            cno:res.data.cno,
             phone: app.globalData.user,
-            company: res.data.com_name,
-            manname: res.data.com_leader,
-            email: res.data.e_mail,
-            address: res.data.com_address,
-            contents: res.data.com_business,
-            condition: res.data.com_condition,
+            company: res.data.company,
+            manname: res.data.manname,
+            email: res.data.email,
+            address: res.data.address,
+            contents: res.data.contents,
+            condition: res.data.condition,
           })
         }
       }
@@ -141,7 +141,7 @@ Page({
       }, 2000)
     } else{
       wx.request({
-        url: app.globalData.url + '/Insert_resume_change/',/*待修改*/
+        url: app.globalData.url + '/Company_info_modiify/',
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
@@ -168,7 +168,7 @@ Page({
                 duration: 1000
               })
               setTimeout(function () {
-                wx.switchTab({
+                wx.redirectTo({
                   url: '../ccenter/ccenter',
                 })
               }, 2000)

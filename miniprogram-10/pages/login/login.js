@@ -118,7 +118,7 @@ Page({
                   } else if (self.data.no.length == 11) {
                     setTimeout(function () {
                       wx.navigateTo({
-                        url: '../ccenter/ccenter',
+                        url: '../cfabu/cfabu',
                       })
                     }, 2000)
                   }

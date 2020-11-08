@@ -4,7 +4,7 @@
   <view class="title">企业信息完善</view>
   <form bindsubmit="formSubmit">
     <view class='item'>
-      <text style="padding-left:30rpx">统一社会信用代码：</text>
+      <text style="padding-left:30rpx">信用代码：</text>
       <text class='right'>{{cno}}</text>
     </view>
 
@@ -21,30 +21,30 @@
 
     <view class='item'>
       <text style="padding-left:30rpx">负责人：</text>
-      <input placeholder-class='placeholder' placeholder-style='font-size:30rpx;' placeholder='请填写负责人姓名' class="in" name="man" bindblur="blurman" />
+      <input placeholder-class='placeholder' placeholder-style='font-size:30rpx;' placeholder='请填写负责人姓名' class='right' name="man" value="{{manname}}" bindblur="blurman" />
     </view>
 
 
     <view class='item'>
       <text style="padding-left:30rpx"> 邮箱：</text>
-      <input placeholder-class='placeholder' placeholder-style='font-size:30rpx;' placeholder='请填写邮箱地址' class="in" name="email" bindblur="bluremail" />
+      <input placeholder-class='placeholder' placeholder-style='font-size:30rpx;' placeholder='请填写邮箱地址' class='right' name="email" value="{{email}}" bindblur="bluremail" />
     </view>
 
     <view class='item'>
       <text style="padding-left:30rpx"> 公司地址：</text>
-      <input placeholder-class='placeholder' placeholder-style='font-size:30rpx;' placeholder='请填写公司详细地址' class="in" name="address" bindblur="blureadd" />
+      <input placeholder-class='placeholder' placeholder-style='font-size:30rpx;' placeholder='请填写公司详细地址' class='right' name="address" value="{{address}}" bindblur="blureadd" />
     </view>
 
     <view class="section">
       <view style="padding-left:50rpx">公司业务</view>
       <view class="xian"></view>
-      <textarea placeholder-style='font-size:30rpx' style="font-size:30rpx; padding-left:50rpx; margin-top:10rpx;" maxlength='150' placeholder="请简述公司业务(150字以内)" name="contents" bindblur="blurcontents" />
+      <textarea placeholder-style='font-size:30rpx' style="font-size:30rpx; padding-left:50rpx; margin-top:10rpx;" maxlength='150' placeholder="请简述公司业务(150字以内)" name="contents" value="{{contents}}" bindblur="blurcontents" />
       </view>
 
 <view class="section">
   <view style="padding-left:50rpx" >经营状况</view>
   <view  class="xian"></view>
-  <textarea placeholder-style='font-size:30rpx;'style="font-size:30rpx; padding-left:50rpx; margin-top:10rpx;" maxlength='150'   placeholder="请简述公司经营状况(150字以内)" name="condition" bindblur="blurcondition"/>
+  <textarea placeholder-style='font-size:30rpx;'style="font-size:30rpx; padding-left:50rpx; margin-top:10rpx;" maxlength='150'   placeholder="请简述公司经营状况(150字以内)" name="condition" value="{{condition}}" bindblur="blurcondition"/>
 
         </view>
    

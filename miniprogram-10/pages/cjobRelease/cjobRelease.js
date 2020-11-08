@@ -149,12 +149,11 @@ Page({
     } else {
 
       wx.request({
-        url: app.globalData.url + '/Insert_resume_change/',
-        /*待修改*/
+        url: app.globalData.url + '/Part_time_post/',
+        method: "POST",
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
-        method: "POST",
         data: {
           company: app.globalData.user,
           Name: that.data.Name,
@@ -173,7 +172,7 @@ Page({
             this.setData({
               result: res.data
             })
-            if (res.data == "填写完成") {
+            if (res.data == "发布成功") {
               wx.showToast({
                 title: '提交成功！！！', //这里打印出登录成功
                 icon: 'success',

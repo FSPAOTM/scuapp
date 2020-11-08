@@ -18,7 +18,7 @@ Page({
    */
   onLoad: function (options) {
     wx.request({
-      url: app.globalData.url + '/Insert_resume_show/',/*待修改*/
+      url: app.globalData.url + '/Show_student_name/',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },

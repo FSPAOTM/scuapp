@@ -15,17 +15,13 @@ margin: 20rpx;
 display: flex;
 border-radius: 20rpx;
 }
-.left{
+
+.right{
 display: flex;
 justify-content: flex-start;
 flex-grow: 1;
-}
-.right{
-display: flex;
-justify-content: flex-end;
-flex-grow: 1;
-color: #ccc;
-margin-right: 20rpx;
+font-size: 13px;
+color: rgb(161, 151, 151);
 }
 
 .xian{

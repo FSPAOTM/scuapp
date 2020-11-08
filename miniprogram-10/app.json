@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/cjobRelease/cjobRelease",
     "pages/login/login",
+    "pages/cjobRelease/cjobRelease",
     "pages/cfabu/cfabu",
     "pages/ccenter/ccenter",
     "pages/cinfoFill/cinfoFill",
