@@ -22,7 +22,7 @@ Page({
    */
   onLoad: function (options) {
     wx.request({
-      url: 'http://127.0.0.1:8000/wechat/Insert_resume_show/',/*待修改*/
+      url: app.globalData.url + '/Insert_resume_show/',/*待修改*/
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
@@ -141,7 +141,7 @@ Page({
       }, 2000)
     } else{
       wx.request({
-        url: 'http://127.0.0.1:8000/wechat/Insert_resume_change/',/*待修改*/
+        url: app.globalData.url + '/Insert_resume_change/',/*待修改*/
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
         },

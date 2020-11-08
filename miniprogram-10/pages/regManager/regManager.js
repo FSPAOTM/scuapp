@@ -145,7 +145,7 @@ Page({
   formSubmit: function (e) {
     if (this.data.password = this.data.repassword) {
       wx.request({
-        url: 'http://127.0.0.1:8000/wechat/Manage_register/',
+        url: app.globalData.url + '/Manage_register/',
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded'

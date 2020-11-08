@@ -143,7 +143,7 @@ Page({
   formSubmit: function (e) {
     if (this.data.password = this.data.rePassword) {
       wx.request({
-        url: 'http://127.0.0.1:8000/wechat/Company_register/',
+        url: app.globalData.url + '/Company_register/',
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded'

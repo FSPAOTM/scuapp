@@ -156,7 +156,7 @@ Page({
       eMail: this.data.mEmail
     })
     wx.request({
-      url: 'http://127.0.0.1:8000/wechat/Reset_myinfo_e_mail/',
+      url: app.globalData.url + '/Reset_myinfo_e_mail/',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },

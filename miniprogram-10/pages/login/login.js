@@ -55,7 +55,7 @@ Page({
       disabled: true
     });
     wx.request({
-      url: 'http://127.0.0.1:8000/wechat/dengluzhuce_login/',
+      url: app.globalData.url + '/dengluzhuce_login/',
       method: "POST",
       header: {
         'content-type': 'application/x-www-form-urlencoded'

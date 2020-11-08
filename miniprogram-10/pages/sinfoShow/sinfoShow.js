@@ -27,7 +27,7 @@ Page({
    */
   onLoad: function (e) {
     wx.request({
-      url: 'http://127.0.0.1:8000/wechat/Insert_resume_show/',
+      url: app.globalData.url + '/Insert_resume_show/',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },

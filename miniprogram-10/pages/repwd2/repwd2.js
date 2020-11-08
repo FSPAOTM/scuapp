@@ -47,7 +47,7 @@ Page({
       })
     } else {
       wx.request({
-        url: 'http://127.0.0.1:8000/wechat/Reset_password/', //仅为示例，并非真实的接口地址
+        url: app.globalData.url + '/Reset_password/', 
         method: 'POST',
         data: {
           no: app.globalData.user,

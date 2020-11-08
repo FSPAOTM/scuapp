@@ -25,7 +25,7 @@ Page({
 
 formSubmit(){
   wx.request({
-    url: 'http://127.0.0.1:8000/wechat/Reset_password_f1/',
+    url: app.globalData.url + '/Reset_password_f1/',
     header: {
       "Content-Type": "application/x-www-form-urlencoded"
     },
