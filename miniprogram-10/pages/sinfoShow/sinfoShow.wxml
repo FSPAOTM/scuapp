@@ -1,0 +1,83 @@
+<!--pages/infoShow/infoShow.wxml-->
+<view>
+  <view class="title">个人简历</view>
+  <form>
+    <!--简历-->
+    <view class="all">
+    <view class='xixixi'>
+      <view class='item'>
+        <text style="padding-left:40rpx;font-size:15px">姓名：</text>
+        <text style="padding-left:10rpx;font-size:15px">{{name}}</text>
+      </view>
+      <view class='item'>
+        <text style="padding-left:40rpx;font-size:15px">性别：</text>
+        <text style="padding-left:10rpx;font-size:15px">{{gender}}</text>
+      </view>
+      
+    </view>
+
+    <view class='xixixi'>
+      <view class='item'>
+        <text style="padding-left:100rpx;font-size:15px">年龄：</text>
+        <text style="padding-left:10rpx;font-size:15px">{{age}}</text>
+      </view>
+
+      <view class='item'>
+        <text style="padding-left:100rpx;font-size:15px">教育背景：</text>
+        <text style="padding-left:10rpx;font-size:15px">{{edu}}</text>
+      </view>
+    </view>
+  </view>
+
+    <view class="section">
+      <view style="padding-left:30rpx;font-size:15px">
+        <image class="zhuce2" src="简历4.png"></image>
+        <text>技能自评：</text>
+      </view>
+      <view class="xian"></view>
+      <view class="word">{{tech}}</view>
+    </view>
+
+    <view class="section">
+      <view style="padding-left:30rpx;font-size:15px">
+        <image class="zhuce2" src="简历4.png"></image>
+        <text>工作经历：</text>
+      </view>
+      <view class="xian"></view>
+      <view class="word">{{job}}</view>
+    </view>
+
+    <view class="section">
+      <view style="padding-left:30rpx;font-size:15px">
+        <image class="zhuce2" src="简历4.png"></image>
+        <text>项目经历：</text>
+      </view>
+      <view class="xian"></view>
+      <view class="word">{{project}}</view>
+    </view>
+
+    <view class="section">
+      <view style="padding-left:30rpx;font-size:15px">
+        <image class="zhuce2" src="简历4.png"></image>
+        <text>课外实践：</text>
+      </view>
+      <view class="xian"></view>
+      <view class="word">{{practice}}</view>
+    </view>
+
+
+    <view class="section">
+      <view style="padding-left:30rpx;font-size:15px">
+        <image class="zhuce2" src="简历4.png"></image>
+        <text>个人作品：</text>
+      </view>
+      <view class="xian"></view>
+      <view class="word">{{works}}</view>
+    </view>
+
+
+    <button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'
+      bindtap="change">去完善</button>
+
+  </form>
+</view>

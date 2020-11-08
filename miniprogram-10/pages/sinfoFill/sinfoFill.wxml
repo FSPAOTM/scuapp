@@ -1,0 +1,105 @@
+<!--pages/infoFill/infoFill.wxml-->
+<view>
+  <view class="title">在线个人简历</view>
+  <form bindsubmit="formSubmit">
+    <!--简历-->
+    <view class='item' style="display:flex; margin:20rpx;">
+      <image class="zhuce" src="简历3.png"></image>
+      <text class='a1' style="padding-left:30rpx;font-size:15px; margin-top:8rpx;">姓名:</text>
+      <input bindblur="blurname" placeholder-class='a1' placeholder-style='font-size:13px;' placeholder='请填写真实姓名'
+        class="in" name="name" value="{{name}}" />
+    </view>
+
+    <view class='item' style="display:flex; margin:20rpx">
+      <image class="zhuce" src="简历3.png"></image>
+      <text class='a1' style="padding-left:30rpx;font-size:15px;margin-top:8rpx;">年龄:</text>
+      <input bindblur="blurage" placeholder-class='placeholder' placeholder-style='font-size:13px;'
+        placeholder='请填写真实年龄' class="in" name="age" value="{{age}}" />
+    </view>
+
+
+    <view class="section section_gap" style="margin:20rpx">
+      <image class="zhuce" src="简历3.png"></image>
+      <view class="section__title" style="padding-left:30rpx;font-size:15px;margin-top:8rpx;">性别:</view>
+      <view class='form-group'>
+        <radio-group name="gender" bindchange="genderchange">
+          <label>
+            <radio value="男" style="padding-left:30rpx" />男</label>
+          <label>
+            <radio value="女" style="padding-left:30rpx" />女</label>
+        </radio-group>
+      </view>
+    </view>
+
+
+
+    <view class='item1' style="margin:20rpx">
+      <image class="zhuce" src="简历3.png"></image>
+      <text class='a2' style="padding-left:30rpx;margin-top:20rpx;font-size:15px">教育背景：</text>
+      <picker class='a3' bindchange="bindPickerChange" name="edu" value="{{edu}}" range="{{array}}">
+        <view class="fb-type">
+          <view class="type-label" style="font-size:13px;">{{edu}}</view>
+          <image class="type-icon"
+            src="http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/pickerArrow-a8b918f05f.png">
+          </image>
+        </view>
+      </picker>
+    </view>
+
+
+    <view class="section" style="margin:20rpx">
+      <view class="jieshang">
+        <image class="zhuce2" src="简历1.png"></image>
+        <text>技能自评</text>
+      </view>
+      <view class="xian"></view>
+      <textarea bindblur="blurtech" placeholder-style='font-size:28rpx;' style="font-size:30rpx;margin-left:30rpx"
+        maxlength='150' placeholder="请简述自己的技能(选填/150字以内)" name="tech" value="{{tech}}" />
+      </view>
+
+    <view class="section" style="margin:20rpx">
+      <view class="jieshang" >
+        <image class="zhuce2" src="简历1.png"></image>
+        <text>工作经历</text>
+      </view>
+      <view  class="xian"></view>
+      <textarea bindblur="blurjob" placeholder-style='font-size:28rpx;' style="font-size:30rpx;margin:30rpx" maxlength='150' placeholder="请简述自己的工作经历(选填/150字以内)" name="job" value="{{job}}"/>
+    </view>
+
+    <view class="section" style="margin:20rpx">
+      <view class="jieshang" >
+        <image class="zhuce2" src="简历1.png"></image>
+        <text>项目经历</text>
+      </view>
+      <view  class="xian"></view>
+      <textarea bindblur="blurproject" placeholder-style='font-size:28rpx;' style="font-size:30rpx;margin-left:30rpx" maxlength='150' placeholder="请简述自己的项目经历(选填/150字以内)" name="project" value="{{project}}"/>
+    </view>
+
+    <view class="section" style="margin:20rpx">
+      <view class="jieshang" >
+        <image class="zhuce2" src="简历1.png"></image>
+        <text>课外实践</text>
+      </view>
+      <view class="xian"></view>
+      <textarea bindblur="blurpractice" placeholder-style='font-size:28rpx;' style="font-size:30rpx;margin-left:30rpx" maxlength='150' placeholder="请简述自己的课外实践经历(选填/150字以内)" name="practice" value="{{practice}}"/>
+    </view>
+
+
+    <view class="shopstore" style="margin:20rpx">
+      <view class="jieshang">
+        <image class="zhuce2" src="简历1.png"></image>
+        <text>个人作品</text>
+      </view>
+        <view  class="xian"></view>
+        <input bindblur="blurworks" placeholder-style='font-size:28rpx;margin-left:30rpx' placeholder='选填' class="works" name="works" value="{{works}}"/>
+      
+    </view>
+
+  <view class="tishi">
+    <text style="margin:20rpx">以上信息请如实认真填写</text>  
+  </view>
+
+  <button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>保存</button>
+
+  </form>
+</view>

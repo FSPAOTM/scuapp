@@ -1,0 +1,69 @@
+/* pages/infoShow/infoShow.wxss */
+.title{
+  font-family:"黑体" ;
+  font-weight: 1000;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.xixixi{
+  display:flex;
+  flex-direction: column;
+}
+
+.all{
+  display:flex;
+  flex-direction: row;
+}
+
+.item{
+  margin-top:8px;
+  display:flex;
+  flex-direction: row;
+}
+
+.section{
+  margin-top:8px;
+  display:flex;
+  flex-direction: column;
+}
+
+.xian{
+  width: 90%;
+  background: #ccc;
+  height: 1px;
+  margin-left:25rpx; 
+  margin-bottom: 20rpx;
+}
+.word{
+  margin-left: 30rpx;
+  width: 100%;
+  height: 130px;
+}
+
+button{
+  background: #d9002f;
+  color: #fff;
+  width: 80%;
+  font-size: 34rpx;
+  margin-bottom: 20px;
+}
+
+.zhuce{
+  width: 20px;
+  height: 20px;
+  margin-left: 40rpx;
+  margin-top: 8rpx;
+
+}
+
+.zhuce2{
+  width: 25px;
+  height: 25px;
+  margin-left: 10rpx;
+  margin-right: 20rpx;
+  margin-top: 8rpx;
+
+}

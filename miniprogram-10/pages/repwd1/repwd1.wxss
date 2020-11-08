@@ -1,0 +1,45 @@
+/* pages/repwd1/repwd1.wxss */
+.imply{
+  height: 150rpx;
+  font-size: large;
+  text-align: center;
+  background-color: #fff;
+  margin: 20rpx;
+  margin-top: 20px;
+}
+.user{
+ 
+  height: 150rpx;
+  background-color: #fff;
+  margin: 20rpx;
+}
+.phoneNum{
+  height: 150rpx;
+  background-color: #fff;
+  margin: 20rpx;
+}
+.ok{
+  height: 150rpx;
+  background-color: #fff;
+  margin: 20rpx;
+}
+text{
+  /* margin-top: 50rpx; */
+  margin-left: 20rpx;
+}
+input{
+  margin-top: 30rpx;
+  margin-left: 20rpx;
+ 
+}
+button{
+  margin: 20rpx;
+  margin-top: 30rpx;
+}
+
+.zhuce{
+  width: 26px;
+  height: 26px;
+  margin-left: 40rpx;
+ 
+}
