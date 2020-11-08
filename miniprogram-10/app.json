@@ -1,13 +1,14 @@
 {
   "pages": [
+    "pages/cjobRelease/cjobRelease",
     "pages/login/login",
+    "pages/cfabu/cfabu",
     "pages/ccenter/ccenter",
     "pages/cinfoFill/cinfoFill",
     "pages/repwd1/repwd1",
     "pages/sbaoming/sbaoming",
     "pages/sallJob/sallJob",
     "pages/sreason/sreason",
-    "pages/cfabu/cfabu",
     "pages/cjobShow/cjobShow",
     "pages/repwd2/repwd2",
     "pages/cinterview/cinterview",
@@ -19,7 +20,6 @@
     "pages/cjobSelect/cjobSelect",
     "pages/cresumeReview/cresumeReview",
     "pages/sinfoModify/sinfoModify",
-    "pages/cjobRelease/cjobRelease",
     "pages/sinfoShow/sinfoShow",
     "pages/selectID/selectID",
     "pages/index/index",

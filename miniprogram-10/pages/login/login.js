@@ -109,13 +109,13 @@ Page({
                     })
                   }, 2000)
                 } else {
-                  if (self.data.no.length = 8) {
+                  if (self.data.no.length == 8) {
                     setTimeout(function () {
                       wx.navigateTo({
                         url: '../infoFill/infoFill',
                       })
                     }, 2000)
-                  } else {
+                  } else if (self.data.no.length == 11) {
                     setTimeout(function () {
                       wx.navigateTo({
                         url: '../ccenter/ccenter',

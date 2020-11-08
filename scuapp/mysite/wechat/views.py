@@ -305,6 +305,7 @@ def Show_company_name(request):
         user = Tbcompany.objects.get(phone_num=phone_num)
         com_name = user.com_name
         return HttpResponse(json.dumps({"name":com_name}))
+        #print(json.dumps({"name":com_name}))
     else:
         return HttpResponse("请求错误")
 
