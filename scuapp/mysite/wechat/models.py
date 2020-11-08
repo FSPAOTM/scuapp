@@ -63,6 +63,7 @@ class TbinResult(models.Model):
     r_ps = models.CharField(db_column='R_Ps', max_length=200, blank=True, null=True)  # Field name made lowercase.
     in_r_time = models.DateTimeField(db_column='In_R_Time')  # Field name made lowercase.
     iw_number = models.ForeignKey('TbinWork', models.DO_NOTHING, db_column='IW_Number')  # Field name made lowercase.
+    s_sure = models.CharField(db_column='S_Sure', max_length=255, default='未确认')  # 学生确认状态
 
     class Meta:
         managed = False
@@ -96,6 +97,7 @@ class TbinterviewApply(models.Model):
     a_time = models.DateTimeField(db_column='A_Time')  # Field name made lowercase.
     ow_number = models.ForeignKey('TboutWork', models.DO_NOTHING, db_column='Ow_Number')  # Field name made lowercase.
     apply_status= models.CharField(db_column='apply_status', max_length=255, default='待审核')
+    back_reason = models.CharField(db_column='back_reason', max_length=200, blank=True, null=True)#打回理由
 
     class Meta:
         managed = False
@@ -107,7 +109,10 @@ class TbinterviewNotice(models.Model):
     i_address = models.CharField(db_column='I_Address', max_length=60, blank=True, null=True)  # Field name made lowercase.
     i_time = models.DateTimeField(db_column='I_Time')  # Field name made lowercase.
     ia_number = models.PositiveIntegerField(db_column='IA_Number')  # Field name made lowercase.
-    stu = models.ForeignKey('Tbstudent', models.DO_NOTHING, db_column='Stu_ID')  # Field name made lowercase.
+    stu = models.ForeignKey('Tbstudent', models.DO_NOTHING, db_column='Stu_ID')  #单个学生学号
+    in_time = models.CharField(db_column='IN_Time', max_length=60, blank=True, null=True)#面试时间
+    c_sure = models.CharField(db_column='C_Sure', max_length=255, default='未确认')#企业确认状态
+    s_sure = models.CharField(db_column='S_Sure', max_length=255, default='未确认')#学生确认状态
 
     class Meta:
         managed = False
@@ -121,6 +126,7 @@ class TbinterviewResult(models.Model):
     ir_ps = models.CharField(db_column='IR_Ps', max_length=200, blank=True, null=True)  # Field name made lowercase.
     ir_time = models.DateTimeField(db_column='IR_Time')  # Field name made lowercase.
     i_number = models.ForeignKey(TbinterviewNotice, models.DO_NOTHING, db_column='I_Number')  # Field name made lowercase.
+    s_sure = models.CharField(db_column='S_Sure', max_length=255, default='未确认')  # 学生确认状态
 
     class Meta:
         managed = False
@@ -146,14 +152,16 @@ class TboutWork(models.Model):
     ow_post = models.CharField(db_column='Ow_Post', max_length=60)  # Field name made lowercase.
     w_time = models.CharField(db_column='W_Time', max_length=60, blank=True, null=True)  # Field name made lowercase.
     w_place = models.CharField(db_column='W_Place', max_length=60, blank=True, null=True)  # Field name made lowercase.
+    w_place_detail = models.CharField(db_column='w_place_detail', max_length=200, blank=True, null=True)
     work = models.CharField(db_column='Work', max_length=200)  # Field name made lowercase.
     w_salary = models.CharField(db_column='W_Salary', max_length=20, blank=True, null=True)  # Field name made lowercase.
     w_reuire = models.CharField(db_column='W_Reuire', max_length=200, blank=True, null=True)  # Field name made lowercase.
     w_amount = models.CharField(db_column='W_Amount', max_length=50, blank=True, null=True)  # Field name made lowercase.
     ddl_time = models.DateTimeField(db_column='Ddl_Time')  # Field name made lowercase.
     ipub_time = models.DateTimeField(db_column='Ipub_Time')  # Field name made lowercase.
-    w_ps = models.CharField(db_column='W_Ps', max_length=200, blank=True, null=True)#区域
+    w_ps = models.CharField(db_column='W_Ps', max_length=200, blank=True, null=True)#备注# 详细地址
     com_number = models.ForeignKey(Tbcompany, models.DO_NOTHING, db_column='Com_Number')  # Field name made lowercase.
+    back_reason = models.CharField(db_column='back_reason', max_length=200, blank=True, null=True)
     ow_status = models.CharField(db_column='ow_status', max_length=255, default='待审核')
 
     class Meta:
