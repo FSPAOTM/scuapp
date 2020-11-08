@@ -30,7 +30,7 @@
 
     <form action="../management_inWork_result/" method="post">
         <ul class="forminfo">
-            <li><label>岗位编号</label><input name="iw_number" type="text" class="dfinput" readonly/><i>*</i></li>
+            <li><label>岗位编号</label><input name="iw_number" value="{{ inWork.iw_number }}" type="text" class="dfinput" readonly/><i>*</i></li>
             <li><label>联系方式</label><input name="inr_phonenum" type="text" class="dfinput" required/><i>*</i></li>
             <li><label>报到时间</label><input name="r_time" type="text" class="dfinput" required/><i>*（如：周五16:00）</i></li>
             <li><label>结果</label><input name="result" type="text" class="dfinput" value="已通过" required/><i>*（默认已通过）</i></li>
