@@ -339,7 +339,7 @@ def Company_info_modiify(request):
     else:
         return HttpResponse("请求错误")
 
-#cinterview 企业面试时间申请 未调试
+#cinterview 企业面试时间申请 未调试 未写完
 @csrf_exempt
 def Company_apply_interviewtime(request):
     if request.method == "POST":
