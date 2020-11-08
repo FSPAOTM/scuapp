@@ -1,7 +1,7 @@
 from django.shortcuts import HttpResponse,render
 from django.utils import timezone
 from django.template import loader
-from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork
+from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork, TbinResult
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
@@ -52,6 +52,23 @@ def outwork_list(request):
 @csrf_exempt
 def outwork_add(request):
     return render(request, 'wechat/outwork_add.html')
+
+#校内兼职报名处理界面
+@csrf_exempt
+def inworking_list(request):
+    return render(request, 'wechat/inworking_list.html')
+
+#报名学生信息界面(是否需要？)
+#@csrf_exempt
+#def inwork_stu_ifo(request):
+    #return render(request, 'wechat/inwork_stu_ifo.html')
+
+#招聘结果通知界面（是否需要？）
+#@csrf_exempt
+#def inwork_result(request):
+    #return render(request, 'wechat/inwork_result.html')
+
+
 
 
 #功能接口
@@ -320,7 +337,54 @@ def management_outWork_release(request):
     else:
         return HttpResponse("请求错误")
 
+###################################################信息处理部分的视图！！（待修改）
 
+#校内兼职结果搜索
+@csrf_exempt
+def management_inworking_search(request):
+    if request.method == "POST":
+        s_iw_number = request.POST.get("s_iw_number")
+        s_iw_post = request.POST.get("s_iw_post")
+        s_work = request.POST.get("s_work")
+        s_w_reuire = request.POST.get("s_w_reuire")
+        s_w_status = request.POST.get("s_w_status")
+        inworking_list = TbinWork.objects.filter(iw_post__contains=s_iw_post).filter(iw_number__contains=s_iw_number).\
+            filter(work__contains=s_work).filter(w_reuire__contains=s_w_reuire).filter(In_status=s_w_status)
+        return render(request, 'wechat/inworking_list.html', {'inworking_list': inworking_list})
+    else:
+        return HttpResponse("请求错误")
+
+#招聘结果发送
+@csrf_exempt
+def management_inWork_result(request):
+    if request.method == "POST":
+        iw_number = request.POST.get('iw_number')
+        inr_phonenum = request.POST.get('inr_phonenum')
+        r_time = request.POST.get('r_time')
+        result = request.POST.get('result')
+        r_ps = request.POST.get('r_ps')
+        in_r_time = timezone.now()
+        TbinWork.objects.filter(iw_number=iw_number)
+        ###这里我没有查怎么匹配上面的表的字段更新下面的表的值，粗糙搞了一下，你后面可以把这里弄一下。
+        inworking = TbinResult.objects.create(inr_phonenum=inr_phonenum, r_time=r_time, result=result, r_ps=r_ps, in_r_time=in_r_time)
+        inworking.save()
+        inworking_list = TbinWork.objects.filter(In_status="报名中").all()  #这里我也不清楚，乱写的
+        return render(request, 'wechat/inworking_list.html', {'inworking_list': inworking_list})
+    else:
+        return HttpResponse("请求错误")
+
+#报名学生查询
+@csrf_exempt
+def management_inwork_search_stu(request):
+    if request.method == "POST":
+        s_stu_id = request.POST.get("s_stu_id")
+        s_sex = request.POST.get("s_sex")
+        s_grade = request.POST.get("s_grade")
+        s_major = request.POST.get("s_major")
+        s_pov_identity = request.POST.get("s_pov_identity")
+        inwork_stu_list = Tbstudent.objects.filter(stu_id__contains=s_stu_id).filter(sex__contains=s_sex).\
+            filter(grade__contains=s_grade).filter(major__contains=s_major).filter(pov_identity__contains=s_pov_identity)
+        return render(request, 'wechat/inwork_stu_ifo.html', {'inwork_stu_list': inwork_stu_list})
 
 
 

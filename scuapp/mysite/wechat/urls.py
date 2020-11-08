@@ -32,20 +32,24 @@ urlpatterns = [
     path('show/', views.show, name='show'),
     path('Sget_outwork_detail_info/', views.Sget_outwork_detail_info, name='Sget_outwork_detail_info'),
 
+
+
     #后台管理界面
+    #登录注册等
     path('', views01.index, name='index'),
     path('index/', views01.index, name='index'),
     path('manage/', views01.manage, name='manage'),
     path('login/', views01.login, name='login'),
     path('register/', views01.register, name='register'),
-    path('inwork_list/', views01.inwork_list, name='inwork_list'),
-    path('outwork_list/', views01.outwork_list, name='outwork_list'),
-    path('inwork_add/', views01.inwork_add, name='inwork_add'),
-    path('outwork_add/', views01.outwork_add, name='outwork_add'),
     path('inwork_foregetpwd/', views01.inwork_foregetpwd, name='inwork_foregetpwd'),
     path('management_login/', views01.management_login, name='management_login'),
     path('management_inwork_register/', views01.management_inwork_register, name='management_inwork_register'),
     path('management_forgetpwd/', views01.management_forgetpwd, name='management_forgetpwd'),
+    #兼职管理
+    path('inwork_list/', views01.inwork_list, name='inwork_list'),
+    path('outwork_list/', views01.outwork_list, name='outwork_list'),
+    path('inwork_add/', views01.inwork_add, name='inwork_add'),
+    path('outwork_add/', views01.outwork_add, name='outwork_add'),
     path('management_inWork_stop/', views01.management_inWork_stop, name='management_inWork_stop'),
     path('management_inWork_release/', views01.management_inWork_release, name='management_inWork_release'),
     path('management_inWork_begin/', views01.management_inWork_begin, name='management_inWork_begin'),
@@ -60,6 +64,9 @@ urlpatterns = [
     path('management_outWork_reset/', views01.management_outWork_reset, name='management_outWork_reset'),
     path('management_outWork_delete/', views01.management_outWork_delete, name='management_outWork_delete'),
     path('management_outwork_search/', views01.management_outwork_search, name='management_outwork_search'),
+    #信息处理
+    path('inworking_list/', views01.inworking_list, name='inworking_list'),
+
 
 
 
