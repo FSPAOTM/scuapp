@@ -39,7 +39,9 @@ urlpatterns = [
     path('login/', views01.login, name='login'),
     path('register/', views01.register, name='register'),
     path('inwork_list/', views01.inwork_list, name='inwork_list'),
+    path('outwork_list/', views01.outwork_list, name='outwork_list'),
     path('inwork_add/', views01.inwork_add, name='inwork_add'),
+    path('outwork_add/', views01.outwork_add, name='outwork_add'),
     path('inwork_foregetpwd/', views01.inwork_foregetpwd, name='inwork_foregetpwd'),
     path('management_login/', views01.management_login, name='management_login'),
     path('management_inwork_register/', views01.management_inwork_register, name='management_inwork_register'),
@@ -51,6 +53,14 @@ urlpatterns = [
     path('management_inWork_reset/', views01.management_inWork_reset, name='management_inWork_reset'),
     path('management_inWork_delete/', views01.management_inWork_delete, name='management_inWork_delete'),
     path('management_inwork_search/', views01.management_inwork_search, name='management_inwork_search'),
+    path('management_outWork_stop/', views01.management_outWork_stop, name='management_outWork_stop'),
+    path('management_outWork_release/', views01.management_outWork_release, name='management_outWork_release'),
+    path('management_outWork_begin/', views01.management_outWork_begin, name='management_outWork_begin'),
+    path('management_outWork_reset_show/', views01.management_outWork_reset_show, name='management_outWork_reset_show'),
+    path('management_outWork_reset/', views01.management_outWork_reset, name='management_outWork_reset'),
+    path('management_outWork_delete/', views01.management_outWork_delete, name='management_outWork_delete'),
+    path('management_outwork_search/', views01.management_outwork_search, name='management_outwork_search'),
+
 
 
     # path('<CharField:manager_id>/results/', views01.results, name='results'),

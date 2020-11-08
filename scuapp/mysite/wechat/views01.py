@@ -41,6 +41,19 @@ def inwork_list(request):
 def inwork_add(request):
     return render(request, 'wechat/inwork_add.html')
 
+
+#校外兼职信息展示界面
+@csrf_exempt
+def outwork_list(request):
+    outwork_list = TboutWork.objects.all()
+    return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
+
+#校外兼职信息发布界面
+@csrf_exempt
+def outwork_add(request):
+    return render(request, 'wechat/outwork_add.html')
+
+
 #功能接口
 #登录管理者
 @csrf_exempt
@@ -195,17 +208,117 @@ def management_inwork_search(request):
         s_work = request.POST.get("s_work")
         s_w_salary = request.POST.get("s_w_salary")
         s_w_reuire = request.POST.get("s_w_reuire")
+        s_In_status = request.POST.get("s_In_status")
         #s_ddl_time = request.POST.get("s_ddl_time")
         #s_inpub_time = request.POST.get("s_inpub_time")
-        inwork_list = TbinWork.objects.filter(iw_post__contains=s_iw_post).filter(iw_number__contains=s_iw_number).filter(iw_depart__contains=s_iw_depart).filter(w_time__contains=s_w_time).filter(w_place__contains=s_w_place).filter(work__contains=s_work).filter(w_salary__contains=s_w_salary).filter(w_reuire__contains=s_w_reuire)
+        inwork_list = TbinWork.objects.filter(iw_post__contains=s_iw_post).filter(iw_number__contains=s_iw_number).filter(iw_depart__contains=s_iw_depart).filter(w_time__contains=s_w_time).filter(w_place__contains=s_w_place).filter(work__contains=s_work).filter(w_salary__contains=s_w_salary).filter(w_reuire__contains=s_w_reuire).filter(In_status__contains=s_In_status)
             #.filter(ddl_time__contains=s_ddl_time).filter(inpub_time__contains=s_inpub_time)
         return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
     else:
         return HttpResponse("请求错误")
 
+#校外兼职信息搜索
+#存在问题：必须满足 %sab%的形式 中间有字检索不成功！！！！,时间无法检索！！应该为格式问题, com_number无法检索,因为是对象！！！
+@csrf_exempt
+def management_outwork_search(request):
+    if request.method == "POST":
+        s_ow_number = request.POST.get("s_ow_number")
+        s_ow_post = request.POST.get("s_ow_post")
+        s_w_time = request.POST.get("s_w_time")
+        s_w_place_detail = request.POST.get("s_w_place_detail")
+        s_w_place = request.POST.get("s_w_place")
+        s_work = request.POST.get("s_work")
+        s_w_salary = request.POST.get("s_w_salary")
+        s_w_reuire = request.POST.get("s_w_reuire")
+        #s_com_number = request.POST.get("s_com_number")
+        s_ow_status = request.POST.get("s_ow_status")
+        #s_ddl_time = request.POST.get("s_ddl_time")
+        #s_ipub_time = request.POST.get("s_ipub_time")
+        #company = TboutWork.objects.get(com_number=s_com_number)
+        outwork_list = TboutWork.objects.filter(ow_post__contains=s_ow_post).filter(ow_number__contains=s_ow_number).filter(w_place_detail__contains=s_w_place_detail).filter(w_time__contains=s_w_time).filter(w_place__contains=s_w_place).filter(work__contains=s_work).filter(w_salary__contains=s_w_salary).filter(w_reuire__contains=s_w_reuire).filter(ow_status__contains=s_ow_status)#.filter(com_number__contains=company)
+            #.filter(ddl_time__contains=s_ddl_time).filter(ipub_time__contains=s_ipub_time)
+        return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
+    else:
+        return HttpResponse("请求错误")
+
+#校外兼职信息删除
+@csrf_exempt
+def management_outWork_delete(request):
+    ow_number = request.GET.get('delete_num')
+    TboutWork.objects.filter(ow_number=ow_number).delete()  #批量删除
+    outwork_list = TboutWork.objects.all()
+    return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
+
+#校外兼职中止
+@csrf_exempt
+def management_outWork_stop(request):
+    ow_number = request.GET.get('stop_num')
+    TboutWork.objects.filter(ow_number=ow_number).update(ow_status="中止")  #批量中止
+    outwork_list = TboutWork.objects.all()
+    return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
+
+#校外兼职启用
+@csrf_exempt
+def management_outWork_begin(request):
+    ow_number = request.GET.get('begin_num')
+    TboutWork.objects.filter(ow_number=ow_number).update(ow_status="报名中")  #批量启用
+    outwork_list = TboutWork.objects.all()
+    return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
+
+#校外兼职信息修改
+@csrf_exempt
+def management_outWork_reset_show(request):
+    ow_number=request.GET.get("re_num")
+    outWork = TboutWork.objects.get(ow_number=ow_number)
+    return render(request, 'wechat/outWork_change.html', {'outWork': outWork})
 
 
+@csrf_exempt
+def management_outWork_reset(request):
+    if request.method == "POST":
+        ow_number = request.POST.get('ow_number')
+        ow_post = request.POST.get('ow_post')
+        w_place_detail = request.POST.get('w_place_detail')
+        w_time = request.POST.get('W_Time')
+        w_place = request.POST.get('W_place')
+        work = request.POST.get('Work')
+        w_salary = request.POST.get('W_salary')
+        w_reuire = request.POST.get('W_require')
+        w_amount = request.POST.get('W_amount')
+        ddl_time = request.POST.get('Ddl_time')
+        ipub_time=timezone.now()
+        w_ps = request.POST.get('W_ps')
+        TboutWork.objects.filter(ow_number=ow_number).update(ow_post=ow_post, w_place_detail=w_place_detail, w_time=w_time, w_place=w_place, work=work,
+                                       w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, ipub_time=ipub_time, w_ps=w_ps)
+        outwork_list = TboutWork.objects.all()
+        return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
+    else:
+        return HttpResponse("请求错误")
 
+#校外兼职信息发布
+@csrf_exempt
+def management_outWork_release(request):
+    if request.method == "POST":
+        ow_post = request.POST.get('ow_post')
+        w_place_detail = request.POST.get('w_place_detail')
+        w_time = request.POST.get('W_Time')
+        w_place = request.POST.get('W_place')
+        work = request.POST.get('Work')
+        w_salary = request.POST.get('W_salary')
+        w_reuire = request.POST.get('W_require')
+        w_amount = request.POST.get('W_amount')
+        ddl_time = request.POST.get('Ddl_time')
+        ipub_time = timezone.now()
+        com_number = request.POST.get('com_number')
+        company = Tbcompany.objects.get(com_number=com_number)
+        w_ps = request.POST.get('W_ps')
+        outWork=TboutWork.objects.create(ow_post=ow_post, w_place_detail=w_place_detail, w_time=w_time, w_place=w_place, work=work,
+                                       w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, ipub_time=ipub_time, w_ps=w_ps, com_number=company)
+        outWork.save()
+        outWork_list = TboutWork.objects.all()
+        return render(request, 'wechat/outWork_list.html', {'outWork_list': outWork_list})
+    else:
+        return HttpResponse("请求错误")
 
 
 

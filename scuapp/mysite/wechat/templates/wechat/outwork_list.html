@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  
+
   <head>
     <meta charset="UTF-8">
     <title>校外兼职列表</title>
@@ -31,24 +31,26 @@
   <body>
     <div class="x-body">
       <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so" method="post" action="../management_inwork_search/">
+        <form class="layui-form layui-col-md12 x-so" method="post" action="../management_outwork_search/">
             {% csrf_token %}
-            <input type="text" name="s_iw_number"  placeholder="请输入岗位编号" autocomplete="off" class="layui-input">
-            <input type="text" name="s_iw_post"  placeholder="请输入岗位名称" autocomplete="off" class="layui-input">
-            <input type="text" name="s_iw_depart"  placeholder="请输入用人部门" autocomplete="off" class="layui-input">
+            <input type="text" name="s_ow_number"  placeholder="请输入岗位编号" autocomplete="off" class="layui-input">
+            <input type="text" name="s_ow_post"  placeholder="请输入岗位名称" autocomplete="off" class="layui-input">
             <input type="text" name="s_w_time"  placeholder="请输入工作时间" autocomplete="off" class="layui-input">
-            <input type="text" name="s_w_place"  placeholder="请输入工作地点" autocomplete="off" class="layui-input">
+            <input type="text" name="s_w_place"  placeholder="请输入工作区域" autocomplete="off" class="layui-input">
+            <input type="text" name="s_w_place_detail"  placeholder="请输入详细工作地址" autocomplete="off" class="layui-input">
             <input type="text" name="s_work"  placeholder="请输入工作内容" autocomplete="off" class="layui-input">
             <input type="text" name="s_w_salary"  placeholder="请输入薪酬" autocomplete="off" class="layui-input">
             <input type="text" name="s_w_reuire"  placeholder="请输入招聘要求" autocomplete="off" class="layui-input">
+            <!--<input type="text" name="s_com_number"  placeholder="请输入公司编号" autocomplete="off" class="layui-input">-->
+            <input type="text" name="s_ow_status"  placeholder="请输入岗位状态" autocomplete="off" class="layui-input">
             <!--<input type="datetime-local" class="layui-input" placeholder="报名截止时间" name="s_ddl_time" id="start">
-            <input type="datetime-local" class="layui-input" placeholder="信息发布时间" name="s_inpub_time" id="end">-->
-          <button class="layui-btn" type="submit"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+            <input type="datetime-local" class="layui-input" placeholder="信息发布时间" name="s_ipub_time" id="end">-->
+          <button class="layui-btn" type="submit" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
       </div>
       <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <a href="../inwork_add/"><button class="layui-btn" ><i class="layui-icon"></i>添加</button></a>
+        <button class="layui-btn" onclick="x_admin_show('添加岗位','../outwork_add',600,400)"><i class="layui-icon"></i>添加</button></a>
       </xblock>
       <table class="layui-table">
         <thead>
@@ -58,47 +60,49 @@
             </th>
             <th>岗位编号</th>
             <th>岗位名称</th>
-            <th>用人部门</th>
             <th>工作时间</th>
-            <th>工作地点</th>
+            <th>工作区域</th>
+            <th>工作详细地点</th>
             <th>工作内容</th>
             <th>薪酬</th>
             <th>招聘要求</th>
             <th>招聘人数</th>
             <th>报名截止时间</th>
             <th>信息发布时间</th>
+            <th>公司编号</th>
             <th>备注</th>
             <th>岗位状态</th>
             <th>操作</th></tr>
         </thead>
         <tbody>
-        {% for line in inwork_list %}
+        {% for line in outwork_list %}
         <tr>
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <form name="iw_number"><td>{{ line.iw_number }}</td></form><!--method="post" action="../management_inWork_reset_show/"-->
-            <td>{{ line.iw_post }}</td>
-            <td>{{ line.iw_depart }}</td>
+            <form name="ow_number"><td>{{ line.ow_number }}</td></form><!--method="post" action="../management_inWork_reset_show/"-->
+            <td>{{ line.ow_post }}</td>
             <td>{{ line.w_time }}</td>
             <td>{{ line.w_place }}</td>
+            <td>{{ line.w_place_detail }}</td>
             <td>{{ line.work }}</td>
             <td>{{ line.w_salary }}</td>
             <td>{{ line.w_reuire }}</td>
             <td>{{ line.w_amount }}</td>
             <td>{{ line.ddl_time }}</td>
-            <td>{{ line.inpub_time }}</td>
+            <td>{{ line.ipub_time }}</td>
+            <td>{{ line.com_number }}</td>
             <td>{{ line.w_ps }}</td>
             <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.In_status }}</span></td>
+              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.ow_status }}</span></td>
             <td class="td-manage">
-              <a  href="../management_inWork_stop/?stop_num={{ line.iw_number }}"  title="中止">
+              <a  href="../management_outWork_stop/?stop_num={{ line.ow_number }}"  title="中止">
                 <i class="iconfont">&#xe6ce;</i>
               </a>
-              <a  href="../management_inWork_begin/?begin_num={{ line.iw_number }}"  title="启用">
+              <a  href="../management_outWork_begin/?begin_num={{ line.ow_number }}"  title="启用">
                 <i class="layui-icon">&#xe601;</i>
               </a>
-              <a id="bianji_button" title="编辑" href="../management_inWork_reset_show/?re_num={{ line.iw_number }}">
+              <a id="bianji_button" title="编辑" href="../management_outWork_reset_show/?re_num={{ line.ow_number }}">
                 <i class="layui-icon">&#xe642;</i>
               </a>
 
@@ -119,7 +123,7 @@
                 console.log("success")
             }-->
               <!--<a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">-->
-              <a title="删除" onclick="success()" href="../management_inWork_delete/?delete_num={{ line.iw_number }}" >
+              <a title="删除" onclick="success()" href="../management_outWork_delete/?delete_num={{ line.ow_number }}" >
                 <i class="layui-icon">&#xe640;</i>
               </a>
             </td>
@@ -142,7 +146,7 @@
     <script>
       layui.use('laydate', function(){
         var laydate = layui.laydate;
-        
+
         //执行一个laydate实例
         laydate.render({
           elem: '#start' //指定元素
@@ -174,7 +178,7 @@
                 $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
                 layer.msg('已启用!',{icon: 5,time:1000});
               }
-              
+
           });
       }
 
@@ -192,7 +196,7 @@
       function delAll (argument) {
 
         var data = tableCheck.getData();
-  
+
         layer.confirm('确认要删除吗？'+data,function(index){
             //捉到所有被选中的，发异步进行删除
             layer.msg('删除成功', {icon: 1});
