@@ -335,7 +335,7 @@ def Company_info_showmodiify(request):
     else:
         return HttpResponse("请求错误")
 
-#cinfofill企业信息修改功能 未调试
+#cinfofill企业信息修改功能
 @csrf_exempt
 def Company_info_modiify(request):
     if request.method == "POST":
@@ -370,7 +370,7 @@ def Company_apply_interviewtime(request):
     else:
         return HttpResponse("请求错误")
 
-#cjobrelease企业兼职信息发布功能  未调试
+#cjobrelease企业兼职信息发布功能
 @csrf_exempt
 def Part_time_post(request):
     if request.method == "POST":
@@ -383,12 +383,11 @@ def Part_time_post(request):
         w_reuire = request.POST.get('ask')
         w_amount = request.POST.get('num')
         ddl_time = request.POST.get('endingtime')
-        inpub_time = timezone.now()
+        ipub_time = timezone.now()
         w_ps = request.POST.getlist('ps')
 
         User = Tbcompany.objects.get(phone_num=phone_num)
-        com_number = User.com_number
-        outwork = TboutWork.objects.create(ow_post=ow_post,w_time=w_time,w_place=w_place,work=work,w_salary=w_salary,w_reuire=w_reuire,w_amount=w_amount,ddl_time=ddl_time,inpub_time=inpub_time,w_ps=w_ps,com_number=com_number,ow_status = 'waiting')
+        outwork = TboutWork.objects.create(ow_post=ow_post,w_time=w_time,w_place=w_place,work=work,w_salary=w_salary,w_reuire=w_reuire,w_amount=w_amount,ddl_time=ddl_time,ipub_time=ipub_time,w_ps=w_ps,com_number=User,ow_status = 'waiting')
         outwork.save()
         return HttpResponse("发布成功")
     else:
