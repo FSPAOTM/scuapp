@@ -310,13 +310,13 @@ def Show_company_name(request):
     else:
         return HttpResponse("请求错误")
 
-#cinfofill企业信息修改显示功能 未调试
+#cinfofill企业信息修改显示功能
 @csrf_exempt
 def Company_info_showmodiify(request):
     if request.method == "POST":
         phone_num = request.POST.get('phone')  # 唯一标识简历的全局变量
         user = Tbcompany.objects.get(phone_num=phone_num)
-        com_License = user.com_License
+        com_License = user.com_License.com_license
         com_name = user.com_name
         com_leader = user.com_leader
         e_mail = user.e_mail
@@ -345,9 +345,9 @@ def Company_info_modiify(request):
         e_mail = request.POST.get('email')
         com_address = request.POST.get('address')
         com_business = request.POST.get('contents')
-        com_status = request.POST.get('condition')
+        com_condition = request.POST.get('condition')
         Tbcompany.objects.filter(com_License=com_License).update(phone_num=phone_num, com_leader=com_leader, e_mail=e_mail, com_address=com_address)
-        Tbqualify.objects.filter(com_License=com_License).update(com_business=com_business, com_status=com_status)
+        Tbqualify.objects.filter(com_license=com_License).update(com_business=com_business, com_condition=com_condition)
         return HttpResponse("填写完成") #这里用filter get没有update
     else:
         return HttpResponse("请求错误")
@@ -369,7 +369,6 @@ def Company_apply_interviewtime(request):
             return HttpResponse("注册成功")
     else:
         return HttpResponse("请求错误")
-
 
 #cjobrelease企业兼职信息发布功能  未调试
 @csrf_exempt
@@ -458,26 +457,10 @@ def show(request):
     result = TboutWork.objects.all()#获取对象
     plays = []
     for i in result:
-        plays.append({'type':'a','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':'b'})
+        plays.append({'title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary})
     plays_json = json.dumps(plays,ensure_ascii=False)
     return HttpResponse(plays_json)#转换为json格式
 
-@csrf_exempt
-def showtest(request):
-    result = TboutWork.objects.all()
-    type = "校内"
-    ow_post = result.ow_post
-    w_amount = result.w_amount
-    w_place = result.w_place
-    w_salary = result.w_salary
-    depart = "b"
-    return HttpResponse(json.dumps(
-        {"type": type,
-         "title": ow_post,
-         "amount": w_amount,
-         "place": w_place,
-         "salary": w_salary,
-         "depart": depart}))
 
 #企业“单条”兼职信息展示功能
 @csrf_exempt
