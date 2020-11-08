@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>校内兼职结果</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../static/wechat/css/font.css">
+    <link rel="stylesheet" href="../../static/wechat/css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/wechat/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../static/wechat/js/xadmin.js"></script>
+      <script type="text/javascript" src="../../static/wechat/js/jquery-3.4.1.min.js"></script>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+{% load static %}
+    <script type="text/javascript" src="{% static 'jQuery/jQuery-3.4.1.js' %}"></script>
+
+  </head>
+
+  <body>
+    <div class="x-body">
+      <div class="layui-row">
+        <form class="layui-form layui-col-md12 x-so" method="post" action="../management_inwork_search/">
+            {% csrf_token %}
+            <input type="text" name="s_iw_number"  placeholder="请输入岗位编号" autocomplete="off" class="layui-input">
+            <input type="text" name="s_iw_post"  placeholder="请输入岗位名称" autocomplete="off" class="layui-input">
+            <input type="text" name="s_work"  placeholder="请输入工作内容" autocomplete="off" class="layui-input">
+            <input type="text" name="s_w_reuire"  placeholder="请输入招聘要求" autocomplete="off" class="layui-input">
+            <input type="text" name="s_w_status"  placeholder="请输入岗位状态" autocomplete="off" class="layui-input">
+            <!--<input type="datetime-local" class="layui-input" placeholder="报名截止时间" name="s_ddl_time" id="start">
+            <input type="datetime-local" class="layui-input" placeholder="信息发布时间" name="s_inpub_time" id="end">-->
+          <button class="layui-btn" type="submit" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </form>
+      </div>
+
+      <table class="layui-table">
+        <thead>
+          <tr>
+            <th>
+              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+            </th>
+            <th>岗位编号</th>
+            <th>岗位名称</th>
+            <th>工作内容</th>
+            <th>招聘要求</th>
+            <th>预招人数</th>
+            <th>已报人数</th>
+            <th>学生简历</th>
+            <th>报名结果</th>
+            <th>岗位状态</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for line in inwork_list %}
+        <tr>
+            <td>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <form name="iw_number"><td>{{ line.iw_number }}</td></form>
+            <td>{{ line.iw_post }}</td>
+            <td>{{ line.work }}</td>
+            <td>{{ line.w_reuire }}</td>
+            <td>{{ line.w_amount }}</td>
+            <td>0</td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini"><a href="../inwork_stu_ifo">点击查看</a></span></td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini"><a href="../inwork_result">点击发送</a></span></td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.In_status }}</span></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      <div class="page">
+        <div>
+          <a class="prev" href="">&lt;&lt;</a>
+          <a class="num" href="">1</a>
+          <span class="current">2</span>
+          <a class="num" href="">3</a>
+          <a class="num" href="">489</a>
+          <a class="next" href="">&gt;&gt;</a>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+
+</html>
