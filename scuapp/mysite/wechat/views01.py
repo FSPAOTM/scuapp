@@ -183,8 +183,7 @@ def management_inWork_begin(request):
     return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
 
 #校内兼职信息搜索
-#存在问题：必须满足 %sab%的形式 中间有字检索不成功！！！！
-#待判断 空值不能查询
+#存在问题：必须满足 %sab%的形式 中间有字检索不成功！！！！,时间无法检索！！应该为格式问题
 @csrf_exempt
 def management_inwork_search(request):
     if request.method == "POST":
@@ -199,6 +198,7 @@ def management_inwork_search(request):
         #s_ddl_time = request.POST.get("s_ddl_time")
         #s_inpub_time = request.POST.get("s_inpub_time")
         inwork_list = TbinWork.objects.filter(iw_post__contains=s_iw_post).filter(iw_number__contains=s_iw_number).filter(iw_depart__contains=s_iw_depart).filter(w_time__contains=s_w_time).filter(w_place__contains=s_w_place).filter(work__contains=s_work).filter(w_salary__contains=s_w_salary).filter(w_reuire__contains=s_w_reuire)
+            #.filter(ddl_time__contains=s_ddl_time).filter(inpub_time__contains=s_inpub_time)
         return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
     else:
         return HttpResponse("请求错误")
