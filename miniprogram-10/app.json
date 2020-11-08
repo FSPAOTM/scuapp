@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/sallJob/sallJob",
+    "pages/sbaoming/sbaoming",
+    "pages/sreason/sreason",
     "pages/cfabu/cfabu",
     "pages/cjobShow/cjobShow",
     "pages/login/login",

@@ -1,4 +1,5 @@
 // pages/sallJob/sallJob.js
+const app=getApp();
 Page({
 
   /**
@@ -72,22 +73,13 @@ Page({
     xiaoliang_id: 0, //筛选
     xiaoliang_txt: '',
 
-    details: [{
-        salary: '100/天',
-        settlement: '日结',
-        company: 'XX公司',
-        sex: '男女不限',
-        title: 'XXX服务员',
-
-      },
-      {
-        salary: '150/天',
-        settlement: '完工结',
-        company: 'XX公司',
-        sex: '男女不限',
-        title: 'XXX服务员',
-      },
-    ],
+    workinfo: [{
+      salary: "",
+      amount: "",
+      depart: "",
+      type: "",
+      place: "",
+    }]
   },
 
   // 选项卡
@@ -141,7 +133,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.request({
+      url: app.globalData.url + 'url',
+      method: "GET",
+      header: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        jobtype: "校内",
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          self.setData({
+            
+          })
+        }
+      }
+    })
   },
 
   /**
@@ -156,7 +165,9 @@ Page({
       isRuleTrue: true
     })
     this.animation.translate(-245, 0).step()
-    this.setData({ animation: this.animation.export() })
+    this.setData({
+      animation: this.animation.export()
+    })
   },
 
   success: function () {
@@ -164,7 +175,9 @@ Page({
       isRuleTrue: false
     })
     this.animation.translate(0, 0).step()
-    this.setData({ animation: this.animation.export() })
+    this.setData({
+      animation: this.animation.export()
+    })
   },
   tryDriver: function () {
     this.setData({

@@ -1,4 +1,5 @@
 <!--pages/sallJob/sallJob.wxml-->
+<import src="template.wxml" />
 <view class="tabTit box">
   <view class="flex1{{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="type" data-index="{{index}}" bindtap="filterTab">
     <text>{{item}}</text>
@@ -33,25 +34,8 @@
 
  <!-- 下面列表 -->
 <view class="container">
- 
-  <view class='xiangqing' wx:for="{{details}}"  wx:key="key" bindtap="navigateTo">
-    
-    <view class='xiangqing_info' style=" padding-left:30rpx;">
-      <text class='zi' >自营</text>
-      <text class='title'>{{item.title}}</text>
-      
-      <view class='house' style=" padding-left:30rpx;">{{item.settlement}}|{{item.sex}}</view>
-      <view class='prix'>
-        <text class='prix1' style=" padding-left:30rpx;">{{item.salary}}</text>
-        <text>{{item.company}}</text>
-
-        <view class='arrow' bindtap="modalput"></view>
-
-      </view>
-    </view>
-   
+ <template is="workinfo" wx:for="{{workinfo}}" data="{{...workinfo[index]}}"></template>
   </view>
  
-</view>
 
 

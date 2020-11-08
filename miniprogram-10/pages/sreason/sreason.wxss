@@ -1,0 +1,48 @@
+/* pages/sreason/sreason.wxss */
+
+.tishi{
+  width:100%;font-size:26rpx;
+  text-align: right;
+  padding: 20rpx 0;
+  color: #999;
+  padding-right: 10rpx;
+ }
+ .section{
+   background: #fff
+ }
+ .xian{
+   width: 90%;
+   background: #ccc;
+   height: 2rpx;
+ }
+ .jieshang{
+   padding: 20rpx 0;
+   font-size: 32rpx;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center; 
+ 
+ }
+ .xian{
+   margin-left:25rpx; 
+   margin-bottom: 20rpx;
+ }
+ textarea{
+   width: 100%;
+   margin-left:80rpx;
+ }
+ 
+ button{
+   background: #d9002f;
+   color: #fff;
+   width: 80%;
+   font-size: 34rpx;
+ }
+ 
+ .a1 {
+   width: 15px;
+   height: 15px;
+   margin: 15px;
+ }
+ 
