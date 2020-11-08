@@ -1,4 +1,4 @@
-// pages/ccenter/ccenter.js
+// pages/infoShow/infoShow.js
 const app = getApp();
 Page({
 
@@ -6,36 +6,53 @@ Page({
    * 页面的初始数据
    */
   data: {
+    edu: "",
     name: "",
-    phone: "",
+    age: "",
+    gender: "",
+    tech: "",
+    job: "",
+    project: "",
+    practice: "",
+    works: "",
   },
 
-  infofill() {
-    wx.navigateTo({
-      url: '../cinfoFill/cinfoFill'
+  change:function(){
+    wx.redirectTo({
+      url: '../sinfoFill/sinfoFill',
     })
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (e) {
     wx.request({
-      url: app.globalData.url + '/Show_company_name/',
-      /*待修改*/
+      url: app.globalData.url + '/Insert_resume_show/',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       method: "POST",
       data: {
-        phone: app.globalData.user,
+        stuNumber: app.globalData.user,
       },
       success: (res) => {
+        console.log(res);
+        console.log(this.data.stuNumber);
         if (res.statusCode == 200) {
           console.log(res.data);
           this.setData({
-            name: res.data.com_name,
+            name: res.data.name,
+            age: res.data.age,
+            gender: res.data.sex,
+            tech: res.data.res_asses,
+            edu: res.data.res_edu,
+            job: res.data.res_work,
+            project: res.data.res_proj,
+            practice: res.data.res_extra,
+            works: res.data.res_per,
           })
+          app.globalData.age = this.data.age;
+          console.log(app.globalData.age);
         }
       }
     })

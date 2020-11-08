@@ -1,0 +1,117 @@
+/* pages/infoFill/infoFill.wxss */
+.title {
+  font-family: "黑体";
+  font-weight: 1000;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.item {
+  margin-top: 1px;
+}
+
+.item1 {
+  display: flex;
+  flex-direction: row;
+}
+
+.in {
+  width: 70%;
+  padding-left: 30rpx;
+  margin-left: 5px;
+  margin-top: 1px;
+  font-family: "微软雅黑";
+  line-height: 10px;
+}
+
+.section_gap {
+  display: flex;
+  flex-direction: row;
+}
+
+.tishi {
+  width: 100%;
+  font-size: 26rpx;
+  text-align: right;
+  padding: 20rpx 0;
+  color: #999;
+  padding-right: 10rpx;
+}
+
+.xian {
+  width: 90%;
+  background: #ccc;
+  height: 1rpx;
+  margin-left: 25rpx;
+  margin-bottom: 20rpx;
+}
+
+.jieshang {
+  margin-left: 30rpx;
+  padding: 20rpx 0;
+  font-size: 30rpx;
+}
+
+.fb-type {
+  height: 60rpx;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.fb-type .type-label {
+  height: 36rpx;
+  flex: 1;
+  color: #333;
+  font-size: 32rpx;
+  margin-left: 10px;
+}
+
+.fb-type .type-icon {
+  padding-left: 5px;
+  padding-top: 18px;
+  height: 36rpx;
+  width: 36rpx;
+
+}
+
+button {
+  background: #d9002f;
+  color: #fff;
+  width: 80%;
+  font-size: 34rpx;
+  margin-bottom: 20px;
+}
+
+.a1 {
+  line-height: 20px;
+}
+
+.a2 {
+  line-height: 30px;
+}
+
+.a3 {
+  line-height: 35px;
+}
+
+.zhuce {
+  width: 20px;
+  height: 20px;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+
+}
+
+.zhuce2 {
+  width: 25px;
+  height: 25px;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-top: 25rpx;
+
+}
