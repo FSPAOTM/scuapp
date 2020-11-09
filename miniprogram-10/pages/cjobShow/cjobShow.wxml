@@ -65,7 +65,7 @@
     </view>
 
 
-    <!--<button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>保存</button>-->
 
-  </form>
+  <button bindtap="cjobrelease" style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>修改</button>
+</form>
 </view>

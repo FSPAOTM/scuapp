@@ -21,7 +21,7 @@
 }
 
 .in {
-  width: 60%;
+  width: 100%;
   padding-left: 50rpx;
   margin-top: 10px;
   font-family: "黑体";

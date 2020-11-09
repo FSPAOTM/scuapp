@@ -43,6 +43,7 @@
   color:#323232;
 }
 .state{
+  margin-top: 15px;
   margin-right:5px;
   font-size:12px;
 }

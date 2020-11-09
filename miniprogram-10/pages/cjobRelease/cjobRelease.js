@@ -7,6 +7,7 @@ Page({
    */
   data: {
     company: "",
+    ow_number:"",
     Name: "",
     jobtime: "",
     location: "",
@@ -17,6 +18,25 @@ Page({
     num: "",
     endingtime: "",
     ps: "",
+  },
+
+  onLoad: function (options) {
+    console.log("e");
+    console.log("接收到的参数是post=" + options.post)
+    console.log("e");
+    this.setData({
+      ow_number:options.ow_number,
+      Name: options.post,
+      jobtime: options.time,
+      location: options.location,
+      location_detail: options.location_detail,
+      salary: options.salary,
+      description: options.description,
+      ask: options.ask,
+      num: options.num,
+      endingtime: options.ddl,
+      ps: options.ps,
+    })
   },
 
   blurname: function (e) {
@@ -178,6 +198,7 @@ Page({
           "Content-Type": "application/x-www-form-urlencoded"
         },
         data: {
+          ow_number:that.data.ow_number,
           company: app.globalData.user,
           Name: that.data.Name,
           jobtime: that.data.jobtime,
@@ -204,7 +225,7 @@ Page({
               })
               setTimeout(function () {
                 wx.navigateTo({
-                  url: /*'../cjobShow/cjobShow?post='+that.data.Name+'&time='+that.data.jobtime+'&location_detail='+that.data.location_detail+'&salary='+that.data.salary+'&description='+that.data.description+'&ask='+that.data.ask+'&num='+that.data.num+'&ddl='+that.data.endingtime+'&ps='+that.data.ps*/'../cfabu/cfabu',
+                  url: '../cfabu/cfabu',
                 })
               }, 2000)
             }

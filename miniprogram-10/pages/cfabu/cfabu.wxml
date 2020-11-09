@@ -1,17 +1,19 @@
 <!--pages/cfabu/cfabu.wxml-->
 
 <view class="title">发布管理</view>
-<view class="jobrelease_management" wx:for="{{jobinfo}}">
-  <navigator url='' class='nav-class'>
+<view class="jobrelease_management" wx:for="{{jobinfo}}" wx:for-item="item" >
+  <view class='nav-class' bindtap="cjobshow" data-index="{{index}}">
+  <!--<navigator url='../cjobShow/cjobShow?jobinfo=JSON.stringify(jobinfo)' class='nav-class'>-->
     <view class='detailView'>
       <text>岗位：</text>
-      <text>{{jobinfo.post}}</text>
+      <text>{{item.post}}</text>
     </view>
 
     <!--状态显示,如正在招聘、等待审核等-->
-    <text class="state">{{jobinfo.show}}</text>
+    <text class="state">{{item.status}}</text>
     <view class='guide'></view>
-  </navigator>
+  <!--</navigator>-->
+</view>
 </view>
 
 <view class='btn-view'>

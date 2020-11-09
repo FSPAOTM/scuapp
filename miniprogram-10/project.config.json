@@ -74,6 +74,36 @@
         {
           "name": "pages/login/login",
           "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cinterview/cinterview",
+          "pathName": "pages/cinterview/cinterview",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cresumeReview/cresumeReview",
+          "pathName": "pages/cresumeReview/cresumeReview",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cworkspace/cworkspace",
+          "pathName": "pages/cworkspace/cworkspace",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sbaoming/sbaoming",
+          "pathName": "pages/sbaoming/sbaoming",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sallJob/sallJob",
+          "pathName": "pages/sallJob/sallJob",
           "scene": null
         }
       ]
