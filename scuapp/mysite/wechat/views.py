@@ -387,19 +387,13 @@ def Show_one_work(request):
 def Enroll_in_work(request):
     if request.method == "POST":
         stu = request.POST.get('前端传值')
-        back_reason = request.POST.get('前端传值')
-
-        application = Tbapplication.objects.create(name=account_name)
-        resume.save()
-        user = Tbstudent.objects.create(stu_id=account_num, name=account_name, nickname=nickname,
-                                        phonenumber_phonenumberphonenumber_phonenumber=account_phone,
-                                        password=passwd_1, res_id=resume)
-        user.save()
-        return HttpResponse("注册成功")
+        ap_reson = request.POST.get('前端传值')
+        ow_number = request.POST.get('前端传值')
+        application = Tbapplication.objects.create(ap_reson=ap_reson,ow_number=ow_number,stu=stu)
+        application.save()
+        return HttpResponse("请求成功")
     else:
         return HttpResponse("请求错误")
-
-
 
 #以下是企业
 #ccenter返回企业名称
@@ -464,7 +458,7 @@ def Part_time_post(request):
         ow_post = request.POST.get('Name')
         w_time = request.POST.get('jobtime')
         w_place = request.POST.get('location')
-        w_place_detail = request.POST.get('location_detail')
+        w_place_detail = request.POST.get('detail')
         work = request.POST.get('description')
         w_salary = request.POST.get('salary')
         w_reuire = request.POST.get('ask')
@@ -487,7 +481,7 @@ def Get_outwork_info(request):
     result = TboutWork.objects.all().filter(com_number=com)#获取对象
     plays = []
     for i in result:
-        plays.append({'ow_number':i.ow_number,'post':i.ow_post,'time':str(i.w_time),'location':i.w_place,'location_detail':i.w_place_detail,'description':i.work,'salary':i.w_salary,'ask':i.w_reuire,'num':i.w_amount,'ddl':str(i.ddl_time),'ps':i.w_ps,'status':i.ow_status})
+        plays.append({'ow_number':i.ow_number,'post':i.ow_post,'time':str(i.w_time),'location':i.w_place,'detail':i.w_place_detail,'description':i.work,'salary':i.w_salary,'ask':i.w_reuire,'num':i.w_amount,'ddl':str(i.ddl_time),'ps':i.w_ps,'status':i.ow_status})
     plays_json = json.dumps(plays,ensure_ascii=False)
     return HttpResponse(plays_json)
 
@@ -512,7 +506,7 @@ def Get_outwork_detail_info(request):
             "post":post,
             "time":time,
             "location":location,
-            "location_detail":location_detail,
+            "detail":location_detail,
             "salary":salary,
             "description":description,
             "ask":ask,
@@ -523,7 +517,7 @@ def Get_outwork_detail_info(request):
     else:
         return HttpResponse("请求错误")
 
-#企业兼职信息修改界面
+#cjobshow后的企业兼职信息修改界面
 @csrf_exempt
 def Modify_outwork_info(request):
     if request.method == "POST":
@@ -532,7 +526,7 @@ def Modify_outwork_info(request):
         ow_post = request.POST.get('Name')
         w_time = request.POST.get('jobtime')
         w_place = request.POST.get('location')
-        w_place_detail = request.POST.get('location_detail')
+        w_place_detail = request.POST.get('detail')
         work = request.POST.get('description')
         w_salary = request.POST.get('salary')
         w_reuire = request.POST.get('ask')
@@ -547,6 +541,18 @@ def Modify_outwork_info(request):
         return HttpResponse("修改成功")
     else:
         return HttpResponse("请求错误")
+
+#cworkspace 未调试未加URL
+@csrf_exempt
+def Get_applicant_info(request):
+    phone_num = request.GET.get('user')#获取全局变量
+    com = Tbcompany.objects.get(phone_num=phone_num)
+    result = TboutWork.objects.all().filter(com_number=com)#获取对象
+    plays = []
+    for i in result:
+        plays.append({'ow_number':i.ow_number,'post':i.ow_post,'time':str(i.w_time),'location':i.w_place,'detail':i.w_place_detail,'description':i.work,'salary':i.w_salary,'ask':i.w_reuire,'num':i.w_amount,'ddl':str(i.ddl_time),'ps':i.w_ps,'status':i.ow_status})
+    plays_json = json.dumps(plays,ensure_ascii=False)
+    return HttpResponse(plays_json)
 
 #企业兼职信息状态修改界面 这个还没有加URL界面
 @csrf_exempt
