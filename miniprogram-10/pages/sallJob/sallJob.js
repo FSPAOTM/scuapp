@@ -1,5 +1,5 @@
 // pages/sallJob/sallJob.js
-const app=getApp();
+const app = getApp();
 Page({
 
   /**
@@ -127,7 +127,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let self=this;
+    let self = this;
     wx.request({
       url: app.globalData.url + '/Show_outwork/',
       method: "GET",
@@ -137,19 +137,11 @@ Page({
       success: function (res) {
         console.log(res);
         if (res.statusCode == 200) {
-          /*for(var index in res.data){*/
           self.setData({
-            workinfo:res.data
-            /*type:res.data[index].type,
-            title:res.data[index].title,待修改*/
-            /*amount:res.data[index].amount,
-            place:res.data[index].place,
-            salary:res.data[index].salary,
-            depart:res.data[index].depart,*/
+            workinfo: res.data
           })
-        /*}*/
+        }
       }
-    }
     })
   },
 

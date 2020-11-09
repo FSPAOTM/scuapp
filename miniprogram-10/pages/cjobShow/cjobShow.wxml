@@ -1,81 +1,71 @@
 <!--pages/cjobShow/cjobShow.wxml-->
 <view>
 
-<view class="title">发布信息详情</view>
-<form>
-<view class='item'>
-<text class='a1' style="padding-left:50rpx;font-size:15px">兼职岗位：</text>
-<text class='right'>{{myinfo.post}}</text>
-  </view>
-  <view class='arrow' bindtap="modalinput"></view>
+  <view class="title">发布信息详情</view>
+  <form>
+    <view class='item'>
+      <text class='a1' style="padding-left:50rpx;font-size:15px">兼职岗位：</text>
+      <text class='right'>{{post}}</text>
+    </view>
 
-  <view class='item'>
-    <text class='a1' style="padding-left:50rpx;font-size:15px">工作时间：</text>
-     <text class='right' >{{myinfo.time}}</text>
-     <view class='arrow' bindtap="modalinput"></view>
-  </view>
+    <view class='item'>
+      <text class='a1' style="padding-left:50rpx;font-size:15px">工作时间：</text>
+      <text class='right'>{{time}}</text>
+    </view>
 
-  <view class='item'>
-    <text class='a1' style="padding-left:50rpx;font-size:15px">工作地点:</text> 
-    <text class='right'>{{myinfo.location_detail}}</text>
-    <view class='arrow' bindtap="modalinput"></view>
-  </view>
+    <view class='item'>
+      <text class='a1' style="padding-left:50rpx;font-size:15px">工作地点:</text>
+      <text class='right'>{{location_detail}}</text>
+    </view>
 
-  <view class='item'>
-    <text class='a1' style="padding-left:50rpx; font-size:15px">薪酬：</text>
-     <text class='right'>{{myinfo.salary}}</text>
-     <view class='arrow' bindtap="modalinput"></view>
-  </view>
+    <view class='item'>
+      <text class='a1' style="padding-left:50rpx; font-size:15px">薪酬：</text>
+      <text class='right'>{{salary}}</text>
+    </view>
 
-  <view class="section">
-<view class="jieshang" style="padding-left:30rpx;font-size:15px">职位描述</view>
-<view  class="xian"></view>
-<view style=" height: 150px;">
-<view class='arrow' bindtap="modalinput"></view>
-<text  style="font-size:30rpx; margin-left:30rpx;;"maxlength='200'>{{myinfo.description}}</text>
-</view>
+    <view class="section">
+      <view class="jieshang" style="padding-left:30rpx;font-size:15px">职位描述</view>
+      <view class="xian"></view>
+      <view style=" height: 150px;">
+        <view class='arrow' bindtap="modalinput"></view>
+        <text style="font-size:30rpx; margin-left:30rpx;;" maxlength='200'>{{description}}</text>
       </view>
+    </view>
 
 
-<view class="section">
-<view class="jieshang" style="padding-left:30rpx;font-size:15px">招聘要求</view>
-<view  class="xian"></view>
-<view style=" height: 150px;">
-  <view class='arrow' bindtap="modalinput"></view>
-<text style="font-size:30rpx;margin-left:30rpx" maxlength='200'>{{myinfo.ask}}</text>
-</view>
+    <view class="section">
+      <view class="jieshang" style="padding-left:30rpx;font-size:15px">招聘要求</view>
+      <view class="xian"></view>
+      <view style=" height: 150px;">
+        <view class='arrow' bindtap="modalinput"></view>
+        <text style="font-size:30rpx;margin-left:30rpx" maxlength='200'>{{ask}}</text>
       </view>
-
-     
-
-      <view class='item'>
-    <text class='a1' style="padding-left:50rpx;font-size:15px">招聘人数：</text> 
-    <text class='right'>{{myinfo.num}}</text>
-    <view class='arrow' bindtap="modalinput"></view>
-  </view> 
-
-  <view class='item'>
-    <text class='a1' style="padding-left:50rpx;font-size:15px">报名截止时间：</text> 
-    <text class='right'>{{myinfo.ddl}}</text>
-    <view class='arrow' bindtap="modalinput"></view>
-  </view> 
-
-  <view class='item'>
-    <text class='a1' style="padding-left:50rpx;font-size:15px">备注：</text> 
-    <text class='right'>{{myinfo.ps}}</text>
-    <view class='arrow' bindtap="modalinput"></view>
-  </view> 
-
-  <view class='item'>
-    <text class='a1' style="padding-left:50rpx;font-size:15px">已报名人数：</text> 
-    <text class='right'>{{myinfo.already}}</text>
-  </view> 
+    </view>
 
 
-<!--<button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>保存</button>-->
 
- </form>
+    <view class='item'>
+      <text class='a1' style="padding-left:50rpx;font-size:15px">招聘人数：</text>
+      <text class='right'>{{num}}</text>
+    </view>
+
+    <view class='item'>
+      <text class='a1' style="padding-left:50rpx;font-size:15px">报名截止时间：</text>
+      <text class='right'>{{ddl}}</text>
+    </view>
+
+    <view class='item'>
+      <text class='a1' style="padding-left:50rpx;font-size:15px">备注：</text>
+      <text class='right'>{{ps}}</text>
+    </view>
+
+    <view class='item'>
+      <text class='a1' style="padding-left:50rpx;font-size:15px">已报名人数：</text>
+      <text class='right'>{{already}}</text>
+    </view>
+
+
+    <!--<button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>保存</button>-->
+
+  </form>
 </view>
-
-
-

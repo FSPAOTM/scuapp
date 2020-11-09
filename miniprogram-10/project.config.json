@@ -48,23 +48,35 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
+    "plugin": {
       "list": []
     },
     "game": {
-      "list": []
-    },
-    "plugin": {
       "list": []
     },
     "gamePlugin": {
       "list": []
     },
     "miniprogram": {
-      "list": []
+      "list": [
+        {
+          "name": "pages/cjobShow/cjobShow",
+          "pathName": "pages/cjobShow/cjobShow",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cjobRelease/cjobRelease",
+          "pathName": "pages/cjobRelease/cjobRelease",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/login/login",
+          "pathName": "pages/login/login",
+          "scene": null
+        }
+      ]
     }
   }
 }

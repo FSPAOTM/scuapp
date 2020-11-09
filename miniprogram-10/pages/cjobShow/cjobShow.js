@@ -1,53 +1,42 @@
 // pages/cjobShow/cjobShow.js
+//还有已报名人数
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    myinfo:null,
-    hiddenmodalput: true,
+    post: "",
+    time: "",
+    location_detail: "",
+    salary: "",
+    description: "",
+    ask: "",
+    num: "",
+    ddl: "",
+    ps: "",
+    already: "",
   },
 
-//点击按钮痰喘指定的hiddenmodalput弹出框
+  //点击按钮痰喘指定的hiddenmodalput弹出框
 
-modalinput: function () {
- 
-  this.setData({
-   
-  hiddenmodalput:!this.data.hiddenmodalput,
-  })
-   
-  },
-   
-  //取消按钮
-   
-  cancel: function () {
-   
-  this.setData({
-   
-  hiddenmodalput: true,
-  });
-   
-  },
-   
-  //确认
-   
-  confirm: function () {
-   
-  this.setData({
-   
-  hiddenmodalput: true,
-  
-  })
-   
-  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log("接收到的参数是post=" + options.post)
+    this.setData ({
+      post: options.post,
+      time: options.time,
+      location_detail: options.location_detail,
+      salary: options.salary,
+      description: options.description,
+      ask: options.ask,
+      num: options.num,
+      ddl: options.ddl,
+      ps: options.ps,
+    })
   },
 
   /**
