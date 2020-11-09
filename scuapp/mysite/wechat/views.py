@@ -541,7 +541,7 @@ def Modify_outwork_info(request):
         ipub_time = timezone.now()
         w_ps = request.POST.getlist('ps')
         User = Tbcompany.objects.get(phone_num=phone_num)
-        TboutWork.objects.filter(ow_number=ow_number).update(phone_num=phone_num).update(ow_post=ow_post, w_time=w_time, w_place= w_place, w_place_detail=w_place_detail, work=work,
+        TboutWork.objects.filter(ow_number=ow_number).update(ow_post=ow_post, w_time=w_time, w_place= w_place, w_place_detail=w_place_detail, work=work,
                                            w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time,
                                            ipub_time=ipub_time, w_ps=w_ps, com_number=User, ow_status='待审核')
         return HttpResponse("修改成功")
