@@ -200,9 +200,13 @@ def management_inWork_delete(request):
 @csrf_exempt
 def management_inWork_stop(request):
     iw_number = request.GET.get('stop_num')
-    TbinWork.objects.filter(iw_number=iw_number).update(In_status="中止")  #批量中止
-    inwork_list = TbinWork.objects.all()
-    return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+    inWork=TbinWork.objects.get(iw_number=iw_number)
+    if inWork.In_status == "报名中" or inWork.In_status == "报名结束" or inWork.In_status == "中止":
+        TbinWork.objects.filter(iw_number=iw_number).update(In_status="中止")  #批量中止
+        inwork_list = TbinWork.objects.all()
+        return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+    else:
+        return render(request, 'wechat/inwork_list.html')
 
 #校内兼职启用
 @csrf_exempt
