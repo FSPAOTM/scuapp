@@ -330,58 +330,62 @@ def Show_inwork(request):
 
 #Salljob 查询区域
 
-#Sbaoming 兼职详情展示 未调试未修改参数 未加URL
+#Sbaoming 兼职详情展示 未调试未修改参数
 @csrf_exempt
-def Show_one_work(request):
+def Show_outwork_detail(request):
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
+        result = TboutWork.objects.get(ow_number=ow_number)
+        ow_post = result.ow_post
+        w_time = result.w_time
+        w_place_detail = result.w_place_detail
+        w_salary = result.w_salary
+        work = result.work
+        w_reuire = result.w_reuire
+        w_amount = result.w_amount
+        ddl_time = result.ddl_time
+        w_ps = result.w_ps
+        num = Tbapplication.objects.filter(ow_number=ow_number).count()
+        return HttpResponse(json.dumps(
+            {"post": ow_post,
+             "time": w_time,
+             "detail": w_place_detail,
+             "salary": w_salary,
+             "description": work,
+             "ask": w_reuire,
+             "num": w_amount,
+             "ddl":ddl_time,
+             "ps":w_ps,
+             "already":num}))
+    else:
+        return HttpResponse("请求错误")
+
+@csrf_exempt
+def Show_inwork_detail(request):
+    if request.method == "POST":
         iw_number = request.POST.get('iw_number')
-        if iw_number == "":
-            result = TboutWork.objects.get(ow_number=ow_number)
-            ow_post = result.ow_post
-            w_time = result.w_time
-            w_place = result.w_place
-            w_salary = result.w_salary
-            work = result.work
-            w_reuire = result.w_reuire
-            w_amount = result.w_amount
-            ddl_time = result.ddl_time
-            w_ps = result.w_ps
-            num = Tbapplication.objects.filter(ow_number=ow_number).count()
-            return HttpResponse(json.dumps(
-                {"X_X": ow_post,
-                 "XX_": w_time,
-                 "X.X": w_place,
-                 "X": w_salary,
-                 "XXX": work,
-                 "XXXX": w_reuire,
-                 "XXXXX": w_amount,
-                 "00":ddl_time,
-                 "08":w_ps,
-                 "num":num}))
-        else:
-            result = TbinWork.objects.get(iw_number=iw_number)
-            iw_post = result.iw_post
-            w_time = result.w_time
-            w_place = result.w_place
-            w_salary = result.w_salary
-            work = result.work
-            w_reuire = result.w_reuire
-            w_amount = result.w_amount
-            ddl_time = result.ddl_time
-            w_ps = result.w_ps
-            num = Tbapplication.objects.filter(iw_number=iw_number).count()
-            return HttpResponse(json.dumps(
-                {"X_X": iw_post,
-                 "XX_": w_time,
-                 "X.X": w_place,
-                 "X": w_salary,
-                 "XXX": work,
-                 "XXXX": w_reuire,
-                 "XXXXX": w_amount,
-                 "00":ddl_time,
-                 "08":w_ps,
-                 "num":num}))
+        result = TbinWork.objects.get(iw_number=iw_number)
+        iw_post = result.iw_post
+        w_time = result.w_time
+        w_place = result.w_place
+        w_salary = result.w_salary
+        work = result.work
+        w_reuire = result.w_reuire
+        w_amount = result.w_amount
+        ddl_time = result.ddl_time
+        w_ps = result.w_ps
+        num = Tbapplication.objects.filter(iw_number=iw_number).count()
+        return HttpResponse(json.dumps(
+            {"post": iw_post,
+             "time": w_time,
+             "detail": w_place,
+             "salary": w_salary,
+             "description": work,
+             "ask": w_reuire,
+             "num": w_amount,
+             "ddl": ddl_time,
+             "ps": w_ps,
+             "already": num}))
     else:
         return HttpResponse("请求错误")
 
