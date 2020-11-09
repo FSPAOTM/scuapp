@@ -1,6 +1,6 @@
 from django.shortcuts import HttpResponse,render
 from django.template import loader
-from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork
+from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.utils import timezone
@@ -12,7 +12,7 @@ def detail(request, manager_id):
     return HttpResponse("You're looking at managerid %s." % manager_id)
 
 
-#登录功能  login界面
+#login登录功能
 @csrf_exempt
 def dengluzhuce_login(request):
     if request.method == "POST":
@@ -286,7 +286,7 @@ def Reset_myinfo_phonenumber(request):
 @csrf_exempt
 def Reset_myinfo_e_mail(request):
     if request.method == "POST":
-        stu_id=request.POST.get('stuNumber')
+        stu_id=request.POST.get('sno')
         e_mail=request.POST.get('eMail')
         filterResult1 = Tbstudent.objects.filter(e_mail=e_mail)
         if len(filterResult1) > 0:
@@ -297,16 +297,88 @@ def Reset_myinfo_e_mail(request):
     else:
         return HttpResponse("请求错误")
 
-#Salljob 学生浏览所有兼职信息页面
+#Salljob 校外兼职信息展示界面
 @csrf_exempt
 def Show_outwork(request):
     result = TboutWork.objects.all()#获取对象
     plays = []
     for i in result:
-        plays.append({'type':'校外','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary})
+        plays.append({'type':'校外','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':'某公司'})
+    plays_json = json.dumps(plays,ensure_ascii=False)
+    #print(plays_json)
+    return HttpResponse(plays_json)#转换为json格式
+
+#Salljob 校内兼职信息展示界面
+@csrf_exempt
+def Show_inwork(request):
+    result = TbinWork.objects.all()
+    plays = []
+    for i in result:
+        plays.append({'type':'校内','title':i.iw_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':i.iw_depart})
     plays_json = json.dumps(plays,ensure_ascii=False)
     print(plays_json)
-    return HttpResponse(plays_json)#转换为json格式
+    return HttpResponse(plays_json)
+
+#Salljob 查询类型功能
+
+#Salljob 查询距离功能
+
+#Salljob 查询区域
+
+#Sbaoming 兼职详情展示 未调试未修改参数 未加URL
+@csrf_exempt
+def Show_one_work(request):
+    if request.method == "POST":
+        ow_number = request.POST.get('ow_number')
+        iw_number = request.POST.get('iw_number')
+        if iw_number == "":
+            result = TboutWork.objects.get(ow_number=ow_number)
+            ow_post = result.ow_post
+            w_time = result.w_time
+            w_place = result.w_place
+            w_salary = result.w_salary
+            work = result.work
+            w_reuire = result.w_reuire
+            w_amount = result.w_amount
+            ddl_time = result.ddl_time
+            w_ps = result.w_ps
+            num = Tbapplication.objects.filter(ow_number=ow_number).count()
+            return HttpResponse(json.dumps(
+                {"X_X": ow_post,
+                 "XX_": w_time,
+                 "X.X": w_place,
+                 "X": w_salary,
+                 "XXX": work,
+                 "XXXX": w_reuire,
+                 "XXXXX": w_amount,
+                 "00":ddl_time,
+                 "08":w_ps,
+                 "num":num}))
+        else:
+            result = TbinWork.objects.get(iw_number=iw_number)
+            iw_post = result.iw_post
+            w_time = result.w_time
+            w_place = result.w_place
+            w_salary = result.w_salary
+            work = result.work
+            w_reuire = result.w_reuire
+            w_amount = result.w_amount
+            ddl_time = result.ddl_time
+            w_ps = result.w_ps
+            num = Tbapplication.objects.filter(iw_number=iw_number).count()
+            return HttpResponse(json.dumps(
+                {"X_X": iw_post,
+                 "XX_": w_time,
+                 "X.X": w_place,
+                 "X": w_salary,
+                 "XXX": work,
+                 "XXXX": w_reuire,
+                 "XXXXX": w_amount,
+                 "00":ddl_time,
+                 "08":w_ps,
+                 "num":num}))
+    else:
+        return HttpResponse("请求错误")
 
 #以下是企业
 #ccenter返回企业名称
@@ -359,64 +431,100 @@ def Company_info_modiify(request):
         com_condition = request.POST.get('condition')
         Tbcompany.objects.filter(com_License=com_License).update(phone_num=phone_num, com_leader=com_leader, e_mail=e_mail, com_address=com_address)
         Tbqualify.objects.filter(com_license=com_License).update(com_business=com_business, com_condition=com_condition)
-        return HttpResponse("填写完成") #这里用filter get没有update
+        return HttpResponse("填写完成")
     else:
         return HttpResponse("请求错误")
 
-#cinterview 企业面试时间申请 未调试 未写完
-@csrf_exempt
-def Company_apply_interviewtime(request):
-    if request.method == "POST":
-        account_num = request.POST.get('ManNumber')
-        account_name = request.POST.get('Name')
-        account_phone=request.POST.get('phoneNum')
-        passwd_1 = request.POST.get('password')
-        filterResult =Tbmanager.objects.filter(manager_id=account_num)
-        if len(filterResult) > 0:
-            return HttpResponse("用户已存在")
-        else:
-            user = Tbmanager.objects.create(manager_id=account_num, name=account_name, phonenumber=account_phone, password=passwd_1)
-            user.save()
-            return HttpResponse("注册成功")
-    else:
-        return HttpResponse("请求错误")
-
-#cjobrelease企业兼职信息发布功能
+#cjobrelease+cjobshow 企业兼职信息发布功能
 @csrf_exempt
 def Part_time_post(request):
     if request.method == "POST":
         phone_num = request.POST.get('company')
-        ow_post = request.POST.get('Name')
-        w_time = request.POST.get('jobtime')
-        w_place = request.POST.get('location')
+        ow_post = request.POST.get('post')
+        w_time = request.POST.get('time')
+        w_place_detail = request.POST.get('location_detail')
         work = request.POST.get('description')
         w_salary = request.POST.get('salary')
         w_reuire = request.POST.get('ask')
         w_amount = request.POST.get('num')
-        ddl_time = request.POST.get('endingtime')
+        ddl_time = request.POST.get('ddl')
         ipub_time = timezone.now()
         w_ps = request.POST.getlist('ps')
-
         User = Tbcompany.objects.get(phone_num=phone_num)
-        outwork = TboutWork.objects.create(ow_post=ow_post,w_time=w_time,w_place=w_place,work=work,w_salary=w_salary,w_reuire=w_reuire,w_amount=w_amount,ddl_time=ddl_time,ipub_time=ipub_time,w_ps=w_ps,com_number=User,ow_status = 'waiting')
+        outwork = TboutWork.objects.create(ow_post=ow_post,w_time=w_time,w_place_detail=w_place_detail,work=work,w_salary=w_salary,w_reuire=w_reuire,w_amount=w_amount,ddl_time=ddl_time,ipub_time=ipub_time,w_ps=w_ps,com_number=User,ow_status = 'waiting')
         outwork.save()
         return HttpResponse("发布成功")
+        ow_number = User.ow_number
+        ow_post = User.ow_post
+        w_time = User.w_time
+        w_place_detail = User.w_place_detail
+        w_salary = User.w_salary
+        work = User.work
+        w_reuire = User.w_reuire
+        w_amount = User.w_amount
+        ddl_time = User.ddl_time
+        w_ps = User.w_ps
+        ow_status = User.ow_status
+        num = Tbapplication.objects.filter(ow_number=ow_number).count()
+        return HttpResponse(json.dumps(
+            {"ow_number": ow_number,
+             "post":ow_post,
+             "time":w_time,
+             "location_detail":w_place_detail,
+             "description":work,
+             "salary":w_salary,
+             "ask":w_reuire,
+             "num":w_amount,
+             "ddl":ddl_time,
+             "ps":w_ps,
+             "status":ow_status,
+             "already": num}))
     else:
         return HttpResponse("请求错误")
 
-#企业兼职信息展示功能
+#cjobshow 企业发布兼职信息展示功能
+@csrf_exempt
+def Get_outwork_detail_info(request):
+    if request.method == "POST":
+        ow_number = request.POST.get('ow_number')
+        result = TboutWork.objects.get(ow_number=ow_number)
+        ow_post = result.ow_post
+        w_time = result.w_time
+        w_place = result.w_place
+        w_salary = result.w_salary
+        work = result.work
+        w_reuire = result.w_reuire
+        w_amount = result.w_amount
+        ddl_time = result.ddl_time
+        w_ps = result.w_ps
+        num = Tbapplication.objects.filter(ow_number=ow_number).count()
+        return HttpResponse(json.dumps(
+            {"X_X": ow_post,
+             "XX_": w_time,
+             "X.X": w_place,
+             "X": w_salary,
+             "XXX": work,
+             "XXXX": w_reuire,
+             "XXXXX": w_amount,
+             "00": ddl_time,
+             "08": w_ps,
+             "num": num}))
+    else:
+        return HttpResponse("请求错误")
+
+# 企业兼职信息展示功能
 @csrf_exempt
 def Get_outwork_info(request):
-    if request.method == "POST":
-        phone_num = request.POST.get('')
-        User = Tbcompany.objects.get(phone_num=phone_num)
-        com_number = User.com_number
-        outwork_info = TboutWork.objects.get(com_number=com_number) #只返回这些数据的某些列，需要根据页面显示调整
-        return HttpResponse &outwork_info #这里要是传不了就改成前面的原始方法
-    else:
-        return HttpResponse("请求错误")
+    result = TboutWork.objects.filter()#获取对象
+    plays = []
+    for i in result:
+        plays.append({'type':'校内','title':i.iw_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':i.iw_depart})
+    plays_json = json.dumps(plays,ensure_ascii=False)
+    print(plays_json)
+    return HttpResponse(plays_json)#转换为json格式
 
-#企业“单条”兼职信息展示功能
+
+# 企业详细兼职信息展示功能
 @csrf_exempt
 def Get_outwork_detail_info(request):
     if request.method == "POST":
@@ -476,6 +584,24 @@ def Sget_outwork_detail_info(request):
         else:
             return HttpResponse("请求错误")
 
+
+#cinterview 企业面试时间申请 未调试 未写完
+@csrf_exempt
+def Company_apply_interviewtime(request):
+    if request.method == "POST":
+        account_num = request.POST.get('ManNumber')
+        account_name = request.POST.get('Name')
+        account_phone=request.POST.get('phoneNum')
+        passwd_1 = request.POST.get('password')
+        filterResult =Tbmanager.objects.filter(manager_id=account_num)
+        if len(filterResult) > 0:
+            return HttpResponse("用户已存在")
+        else:
+            user = Tbmanager.objects.create(manager_id=account_num, name=account_name, phonenumber=account_phone, password=passwd_1)
+            user.save()
+            return HttpResponse("注册成功")
+    else:
+        return HttpResponse("请求错误")
 
 
 

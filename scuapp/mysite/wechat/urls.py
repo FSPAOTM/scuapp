@@ -22,6 +22,7 @@ urlpatterns = [
     path('Reset_myinfo_phonenumber/', views.Reset_myinfo_phonenumber, name='Reset_myinfo_phonenumber'),
     path('Reset_myinfo_e_mail/', views.Reset_myinfo_e_mail, name='Reset_myinfo_e_mail'),
     path('Show_outwork/', views.Show_outwork, name='Show_outwork'),
+    path('Show_inwork/', views.Show_inwork, name='Show_inwork'),
     #企业
     path('Show_company_name/', views.Show_company_name, name='Show_company_name'),
     path('Company_info_showmodiify/', views.Company_info_showmodiify, name='Company_info_showmodiify'),
