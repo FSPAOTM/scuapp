@@ -297,6 +297,17 @@ def Reset_myinfo_e_mail(request):
     else:
         return HttpResponse("请求错误")
 
+#Salljob 学生浏览所有兼职信息页面
+@csrf_exempt
+def Show_outwork(request):
+    result = TboutWork.objects.all()#获取对象
+    plays = []
+    for i in result:
+        plays.append({'type':'校外','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary})
+    plays_json = json.dumps(plays,ensure_ascii=False)
+    print(plays_json)
+    return HttpResponse(plays_json)#转换为json格式
+
 #以下是企业
 #ccenter返回企业名称
 @csrf_exempt
@@ -450,15 +461,7 @@ def Stop_outwork(request):
         else:
             return HttpResponse("请求错误")
 
-#学生浏览所有兼职信息页面
-@csrf_exempt
-def show(request):
-    result = TboutWork.objects.all()#获取对象
-    plays = []
-    for i in result:
-        plays.append({'title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary})
-    plays_json = json.dumps(plays,ensure_ascii=False)
-    return HttpResponse(plays_json)#转换为json格式
+
 
 
 #企业“单条”兼职信息展示功能

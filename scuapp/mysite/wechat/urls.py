@@ -21,6 +21,7 @@ urlpatterns = [
     path('Reset_myinfo_nickname/', views.Reset_myinfo_nickname, name='Reset_myinfo_nickname'),
     path('Reset_myinfo_phonenumber/', views.Reset_myinfo_phonenumber, name='Reset_myinfo_phonenumber'),
     path('Reset_myinfo_e_mail/', views.Reset_myinfo_e_mail, name='Reset_myinfo_e_mail'),
+    path('Show_outwork/', views.Show_outwork, name='Show_outwork'),
     #企业
     path('Show_company_name/', views.Show_company_name, name='Show_company_name'),
     path('Company_info_showmodiify/', views.Company_info_showmodiify, name='Company_info_showmodiify'),
@@ -29,7 +30,6 @@ urlpatterns = [
     path('Get_outwork_info/', views.Get_outwork_info, name='Get_outwork_info'),
     path('Get_outwork_detail_info/', views.Get_outwork_detail_info, name='Get_outwork_detail_info'),
     path('Modify_outwork_info/', views.Modify_outwork_info, name='Modify_outwork_info'),
-    path('show/', views.show, name='show'),
     path('Sget_outwork_detail_info/', views.Sget_outwork_detail_info, name='Sget_outwork_detail_info'),
 
 
