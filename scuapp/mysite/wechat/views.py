@@ -457,45 +457,25 @@ def Part_time_post(request):
     else:
         return HttpResponse("请求错误")
 
-#cfabu 企业兼职信息展示功能 未调试
+#cfabu 企业兼职信息展示功能 未调试 后期尝试完善在这里传already
 @csrf_exempt
 def Get_outwork_info(request):
-    com_number = request.POST.get('user')#获取全局变量
+    phone_num = request.GET.get('user')#获取全局变量
+    com = Tbcompany.objects.get(phone_num=phone_num)
+    com_number = com.com_number.com_number
     result = TboutWork.objects.all().filter(com_number=com_number)#获取对象
     plays = []
     for i in result:
-        plays.append({'ow_number':i.ow_number,'post':i.ow_post,'time':i.w_time,'location_detail':i.w_place_detail,'description':i.work,'salary':i.w_salary,'ask':i.w_reuire,'num':i.w_amount,'ddl':i.ddl_time,'ps':i.w_ps,'status':i.ow_status}) #待修改
+        plays.append({'ow_number':i.ow_number,'post':i.ow_post,'time':i.w_time,'location_detail':i.w_place_detail,'description':i.work,'salary':i.w_salary,'ask':i.w_reuire,'num':i.w_amount,'ddl':i.ddl_time,'ps':i.w_ps,'status':i.ow_status})
     plays_json = json.dumps(plays,ensure_ascii=False)
     return HttpResponse(plays_json)
 
-# 企业发布兼职信息展示功能
+#cjobshow 企业发布兼职信息展示功能
 @csrf_exempt
 def Get_outwork_detail_info(request):
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
-        result = TboutWork.objects.get(ow_number=ow_number)
-        ow_post = result.ow_post
-        w_time = result.w_time
-        w_place = result.w_place
-        w_salary = result.w_salary
-        work = result.work
-        w_reuire = result.w_reuire
-        w_amount = result.w_amount
-        ddl_time = result.ddl_time
-        w_ps = result.w_ps
-        num = Tbapplication.objects.filter(ow_number=ow_number).count()
-        return HttpResponse(json.dumps(
-            {"X_X": ow_post,
-             "XX_": w_time,
-             "X.X": w_place,
-             "X": w_salary,
-             "XXX": work,
-             "XXXX": w_reuire,
-             "XXXXX": w_amount,
-             "00": ddl_time,
-             "08": w_ps,
-             "num": num}))
-
+        User = TboutWork.objects.get(ow_number=ow_number)
         ow_number = User.ow_number
         ow_post = User.ow_post
         w_time = User.w_time
