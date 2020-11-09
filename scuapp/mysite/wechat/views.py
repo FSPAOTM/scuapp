@@ -303,7 +303,7 @@ def Show_outwork(request):
     result = TboutWork.objects.all().filter(ow_status='报名中')#获取对象
     plays = []
     for i in result:
-        plays.append({'type':'校外','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':'某公司'})
+        plays.append({'type':'校外','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':'某公司','w_number':i.ow_number})
     plays_json = json.dumps(plays,ensure_ascii=False)
     #print(plays_json)
     return HttpResponse(plays_json)#转换为json格式
@@ -314,7 +314,7 @@ def Show_inwork(request):
     result = TbinWork.objects.all().filter(iw_status='报名中')
     plays = []
     for i in result:
-        plays.append({'type':'校内','title':i.iw_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':i.iw_depart})
+        plays.append({'type':'校内','title':i.iw_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':i.iw_depart,'w_number':i.iw_number})
     plays_json = json.dumps(plays,ensure_ascii=False)
     print(plays_json)
     return HttpResponse(plays_json)
@@ -478,7 +478,6 @@ def Get_outwork_detail_info(request):
         return HttpResponse(json.dumps({"already": num}))
     else:
         return HttpResponse("请求错误")
-
 
 #企业兼职信息修改界面
 @csrf_exempt
