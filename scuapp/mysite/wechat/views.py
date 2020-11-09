@@ -300,7 +300,7 @@ def Reset_myinfo_e_mail(request):
 #Salljob 校外兼职信息展示界面
 @csrf_exempt
 def Show_outwork(request):
-    result = TboutWork.objects.all()#获取对象
+    result = TboutWork.objects.all().filter(ow_status='报名中')#获取对象
     plays = []
     for i in result:
         plays.append({'type':'校外','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':'某公司'})
@@ -311,7 +311,7 @@ def Show_outwork(request):
 #Salljob 校内兼职信息展示界面
 @csrf_exempt
 def Show_inwork(request):
-    result = TbinWork.objects.all()
+    result = TbinWork.objects.all().filter(iw_status='报名中')
     plays = []
     for i in result:
         plays.append({'type':'校内','title':i.iw_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':i.iw_depart})
@@ -435,7 +435,7 @@ def Company_info_modiify(request):
     else:
         return HttpResponse("请求错误")
 
-#cjobrelease+cjobshow 企业兼职信息发布功能
+#cjobrelease企业兼职信息发布功能
 @csrf_exempt
 def Part_time_post(request):
     if request.method == "POST":
@@ -454,6 +454,48 @@ def Part_time_post(request):
         outwork = TboutWork.objects.create(ow_post=ow_post,w_time=w_time,w_place_detail=w_place_detail,work=work,w_salary=w_salary,w_reuire=w_reuire,w_amount=w_amount,ddl_time=ddl_time,ipub_time=ipub_time,w_ps=w_ps,com_number=User,ow_status = 'waiting')
         outwork.save()
         return HttpResponse("发布成功")
+    else:
+        return HttpResponse("请求错误")
+
+#cfabu 企业兼职信息展示功能 未调试
+@csrf_exempt
+def Get_outwork_info(request):
+    com_number = request.POST.get('user')#获取全局变量
+    result = TboutWork.objects.all().filter(com_number=com_number)#获取对象
+    plays = []
+    for i in result:
+        plays.append({'ow_number':i.ow_number,'post':i.ow_post,'time':i.w_time,'location_detail':i.w_place_detail,'description':i.work,'salary':i.w_salary,'ask':i.w_reuire,'num':i.w_amount,'ddl':i.ddl_time,'ps':i.w_ps,'status':i.ow_status}) #待修改
+    plays_json = json.dumps(plays,ensure_ascii=False)
+    return HttpResponse(plays_json)
+
+# 企业发布兼职信息展示功能
+@csrf_exempt
+def Get_outwork_detail_info(request):
+    if request.method == "POST":
+        ow_number = request.POST.get('ow_number')
+        result = TboutWork.objects.get(ow_number=ow_number)
+        ow_post = result.ow_post
+        w_time = result.w_time
+        w_place = result.w_place
+        w_salary = result.w_salary
+        work = result.work
+        w_reuire = result.w_reuire
+        w_amount = result.w_amount
+        ddl_time = result.ddl_time
+        w_ps = result.w_ps
+        num = Tbapplication.objects.filter(ow_number=ow_number).count()
+        return HttpResponse(json.dumps(
+            {"X_X": ow_post,
+             "XX_": w_time,
+             "X.X": w_place,
+             "X": w_salary,
+             "XXX": work,
+             "XXXX": w_reuire,
+             "XXXXX": w_amount,
+             "00": ddl_time,
+             "08": w_ps,
+             "num": num}))
+
         ow_number = User.ow_number
         ow_post = User.ow_post
         w_time = User.w_time
@@ -482,59 +524,6 @@ def Part_time_post(request):
     else:
         return HttpResponse("请求错误")
 
-#cjobshow 企业发布兼职信息展示功能
-@csrf_exempt
-def Get_outwork_detail_info(request):
-    if request.method == "POST":
-        ow_number = request.POST.get('ow_number')
-        result = TboutWork.objects.get(ow_number=ow_number)
-        ow_post = result.ow_post
-        w_time = result.w_time
-        w_place = result.w_place
-        w_salary = result.w_salary
-        work = result.work
-        w_reuire = result.w_reuire
-        w_amount = result.w_amount
-        ddl_time = result.ddl_time
-        w_ps = result.w_ps
-        num = Tbapplication.objects.filter(ow_number=ow_number).count()
-        return HttpResponse(json.dumps(
-            {"X_X": ow_post,
-             "XX_": w_time,
-             "X.X": w_place,
-             "X": w_salary,
-             "XXX": work,
-             "XXXX": w_reuire,
-             "XXXXX": w_amount,
-             "00": ddl_time,
-             "08": w_ps,
-             "num": num}))
-    else:
-        return HttpResponse("请求错误")
-
-# 企业兼职信息展示功能
-@csrf_exempt
-def Get_outwork_info(request):
-    result = TboutWork.objects.filter()#获取对象
-    plays = []
-    for i in result:
-        plays.append({'type':'校内','title':i.iw_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':i.iw_depart})
-    plays_json = json.dumps(plays,ensure_ascii=False)
-    print(plays_json)
-    return HttpResponse(plays_json)#转换为json格式
-
-
-# 企业详细兼职信息展示功能
-@csrf_exempt
-def Get_outwork_detail_info(request):
-    if request.method == "POST":
-        ow_number = request.POST.get('XXXXX')  #前端从Get_outwork_info界面接收ow_number并存为全局变量
-        filterResult1 = TboutWork.objects.filter(ow_number=ow_number)
-        if len(filterResult1) > 0:
-            outwork_detail_info = TboutWork.objects.get(ow_number=ow_number)
-            return HttpResponse &outwork_detail_info
-        else:
-            return HttpResponse("请求错误")
 
 #企业兼职信息修改界面
 @csrf_exempt

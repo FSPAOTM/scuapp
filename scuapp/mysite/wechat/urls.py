@@ -28,6 +28,7 @@ urlpatterns = [
     path('Company_info_showmodiify/', views.Company_info_showmodiify, name='Company_info_showmodiify'),
     path('Company_info_modiify/', views.Company_info_modiify, name='Company_info_modiify'),
     path('Part_time_post/', views.Part_time_post, name='Part_time_post'),
+
     path('Get_outwork_info/', views.Get_outwork_info, name='Get_outwork_info'),
     path('Get_outwork_detail_info/', views.Get_outwork_detail_info, name='Get_outwork_detail_info'),
     path('Modify_outwork_info/', views.Modify_outwork_info, name='Modify_outwork_info'),
