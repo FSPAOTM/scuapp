@@ -200,17 +200,25 @@ def management_inWork_delete(request):
 @csrf_exempt
 def management_inWork_stop(request):
     iw_number = request.GET.get('stop_num')
-    TbinWork.objects.filter(iw_number=iw_number).update(In_status="中止")  #批量中止
-    inwork_list = TbinWork.objects.all()
-    return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+    inWork=TbinWork.objects.get(iw_number=iw_number)
+    if inWork.In_status == "报名中" or inWork.In_status == "报名结束" or inWork.In_status == "中止":
+        TbinWork.objects.filter(iw_number=iw_number).update(In_status="中止")  #批量中止
+        inwork_list = TbinWork.objects.all()
+        return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+    else:
+        return render(request, 'wechat/manage_error.html')
 
 #校内兼职启用
 @csrf_exempt
 def management_inWork_begin(request):
     iw_number = request.GET.get('begin_num')
-    TbinWork.objects.filter(iw_number=iw_number).update(In_status="报名中")  #批量启用
-    inwork_list = TbinWork.objects.all()
-    return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+    inWork = TbinWork.objects.get(iw_number=iw_number)
+    if inWork.In_status == "报名中" or inWork.In_status == "报名结束" or inWork.In_status == "中止":
+        TbinWork.objects.filter(iw_number=iw_number).update(In_status="报名中")  #批量启用
+        inwork_list = TbinWork.objects.all()
+        return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+    else:
+        return render(request, 'wechat/manage_error.html')
 
 #校内兼职信息搜索
 #存在问题：必须满足 %sab%的形式 中间有字检索不成功！！！！,时间无法检索！！应该为格式问题
@@ -270,17 +278,25 @@ def management_outWork_delete(request):
 @csrf_exempt
 def management_outWork_stop(request):
     ow_number = request.GET.get('stop_num')
-    TboutWork.objects.filter(ow_number=ow_number).update(ow_status="中止")  #批量中止
-    outwork_list = TboutWork.objects.all()
-    return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
+    outWork = TboutWork.objects.get(ow_number=ow_number)
+    if outWork.ow_status == "报名中" or outWork.ow_status == "待审核" or outWork.ow_status == "中止":
+        TboutWork.objects.filter(ow_number=ow_number).update(ow_status="中止")  #批量中止
+        outwork_list = TboutWork.objects.all()
+        return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
+    else:
+        return render(request, 'wechat/manage_error.html')
 
 #校外兼职启用
 @csrf_exempt
 def management_outWork_begin(request):
     ow_number = request.GET.get('begin_num')
-    TboutWork.objects.filter(ow_number=ow_number).update(ow_status="待审核")  #批量启用
-    outwork_list = TboutWork.objects.all()
-    return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
+    outWork = TboutWork.objects.get(ow_number=ow_number)
+    if outWork.ow_status == "报名中" or outWork.ow_status == "待审核" or outWork.ow_status == "中止":
+        TboutWork.objects.filter(ow_number=ow_number).update(ow_status="待审核")  #批量启用
+        outwork_list = TboutWork.objects.all()
+        return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
+    else:
+        return render(request, 'wechat/manage_error.html')
 
 #校外兼职信息修改
 @csrf_exempt

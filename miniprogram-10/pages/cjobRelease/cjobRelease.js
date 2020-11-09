@@ -10,7 +10,7 @@ Page({
     Name: "",
     jobtime: "",
     location: "",
-    location_detail:"",
+    location_detail: "",
     description: "",
     salary: "",
     ask: "",
@@ -37,7 +37,7 @@ Page({
     })
   },
 
-  focuslocation_detail(){
+  focuslocation_detail() {
     this.setData({
       location_detail: this.data.location
     })
@@ -48,7 +48,7 @@ Page({
       location_detail: e.detail.value
     })
   },
-  
+
 
   blurdescription: function (e) {
     this.setData({
@@ -182,7 +182,7 @@ Page({
           Name: that.data.Name,
           jobtime: that.data.jobtime,
           location: that.data.location,
-          location_detail:that.data.location_detail,
+          location_detail: that.data.location_detail,
           description: that.data.description,
           salary: that.data.salary,
           ask: that.data.ask,
@@ -203,8 +203,8 @@ Page({
                 duration: 1000
               })
               setTimeout(function () {
-                wx.redirectTo({
-                  url: '../cjobShow/cjobShow',
+                wx.navigateTo({
+                  url: /*'../cjobShow/cjobShow?post='+that.data.Name+'&time='+that.data.jobtime+'&location_detail='+that.data.location_detail+'&salary='+that.data.salary+'&description='+that.data.description+'&ask='+that.data.ask+'&num='+that.data.num+'&ddl='+that.data.endingtime+'&ps='+that.data.ps*/'../cfabu/cfabu',
                 })
               }, 2000)
             }
