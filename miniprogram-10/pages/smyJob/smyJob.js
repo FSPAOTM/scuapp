@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    iworkinfo: [],
+    oworkinfo: [],
     //tap切换自定义宽高
     winWidth: 0,
     winHeight: 0,
@@ -16,17 +17,6 @@ Page({
     scrollleft: 0,
     currentTab: 0,
 
-
-    details: [{
-        company: 'XX公司',
-        title: 'XXX服务员',
-      },
-
-      {
-        company: 'XX公司',
-        title: 'XXX销售',
-      },
-    ],
   },
 
 
@@ -72,6 +62,43 @@ Page({
         });
       }
     });
+    let self = this;
+    wx.request({
+      url: app.globalData.url + '/Show_outwork/',/*待修改*/
+      method: "GET",
+      header: {
+        'Content-Type': 'application/json'
+      },
+      data:{
+        user:app.globalData.user
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          self.setData({
+            iworkinfo: res.data
+          })
+        }
+      }
+    })
+    wx.request({
+      url: app.globalData.url + '/Show_outwork/',/*待修改*/
+      method: "GET",
+      header: {
+        'Content-Type': 'application/json'
+      },
+      data:{
+        user:app.globalData.user
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          self.setData({
+            oworkinfo: res.data
+          })
+        }
+      }
+    })
   },
 
 

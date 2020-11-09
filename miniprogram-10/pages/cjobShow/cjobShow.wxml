@@ -15,7 +15,7 @@
 
     <view class='item'>
       <text class='a1' style="padding-left:50rpx;font-size:15px">工作地点:</text>
-      <text class='right'>{{location_detail}}</text>
+      <text class='right'>{{detail}}</text>
     </view>
 
     <view class='item'>

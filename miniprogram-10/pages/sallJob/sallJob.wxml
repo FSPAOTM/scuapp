@@ -35,8 +35,8 @@
 
 <!-- 下面列表 -->
 <view class="container">
-  <view class='xiangqing' wx:for="{{workinfo}}" wx:for-item="item" bindtap="navigateTo">
-    <navigator url='../sbaoming/sbbaoming?workinfo=JSON.stringify({{workinfo}})' class='nav-class'>
+  <view class='xiangqing' wx:for="{{iworkinfo}}" wx:for-item="item" bindtap="navigateTo">
+    <view class='nav-class' bindtap="sijobinfo" data-index="{{index}}">
       <view class='xiangqing_info' style=" padding-left:30rpx;">
         <text class='zi'>{{item.type}}</text>
         <text class='title'>{{item.title}}</text>
@@ -50,6 +50,23 @@
 
         </view>
       </view>
-    </navigator>
+    </view>
+  </view>
+  <view class='xiangqing' wx:for="{{oworkinfo}}" wx:for-item="item" bindtap="navigateTo">
+    <view class='nav-class' bindtap="sojobinfo" data-index="{{index}}">
+      <view class='xiangqing_info' style=" padding-left:30rpx;">
+        <text class='zi'>{{item.type}}</text>
+        <text class='title'>{{item.title}}</text>
+
+        <view class='house' style=" padding-left:30rpx;">{{item.amount}}人|{{item.place}}</view>
+        <view class='prix'>
+          <text class='prix1' style=" padding-left:30rpx;">{{item.salary}}</text>
+          <text>{{item.depart}}</text>
+
+          <view class='arrow' bindtap="modalput"></view>
+
+        </view>
+      </view>
+    </view>
   </view>
 </view>

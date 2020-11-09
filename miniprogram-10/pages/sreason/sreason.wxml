@@ -1,6 +1,6 @@
 <!--pages/sreason/sreason.wxml-->
 <view>
- <form>
+ <form bindsubmit="formsubmit">
     <view class="section">
   <view class="jieshang" >
     <image src="理由.png" class="a1"/>
@@ -8,7 +8,7 @@
   </view>
   <view  class="xian"></view>
 
-            <textarea placeholder-style='font-size:28rpx;' style="font-size:30rpx" maxlength='150' placeholder="请简述自己的应聘理由(150字以内)" name="digest" value="{{digest}}"/>
+            <textarea bindinput="reasoninput" placeholder-style='font-size:28rpx;' style="font-size:30rpx" maxlength='150' placeholder="请简述自己的应聘理由(150字以内)" name="digest" value="{{digest}}"/>
         </view>
   
 

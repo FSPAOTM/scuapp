@@ -73,7 +73,8 @@ Page({
     xiaoliang_id: 0, //筛选
     xiaoliang_txt: '',
 
-    workinfo: [],
+    iworkinfo: [],
+    oworkinfo: [],
   },
 
   // 选项卡
@@ -129,6 +130,21 @@ Page({
   onLoad: function (options) {
     let self = this;
     wx.request({
+      url: app.globalData.url + '/Show_inwork/',
+      method: "GET",
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          self.setData({
+            iworkinfo: res.data
+          })
+        }
+      }
+    })
+    wx.request({
       url: app.globalData.url + '/Show_outwork/',
       method: "GET",
       header: {
@@ -138,13 +154,32 @@ Page({
         console.log(res);
         if (res.statusCode == 200) {
           self.setData({
-            workinfo: res.data
+            oworkinfo: res.data
           })
         }
       }
     })
   },
 
+  sijobinfo: function (ev) {
+    var that = this;
+    var e = ev.currentTarget.dataset.index;
+    var iw_number=that.data.workinfo[e].iw_number;
+    console.log("++++++", ev, that)
+    wx.setStorageSync("iw_number", iw_number), wx.navigateTo({
+      url: "../sbaoming/sbaoming"
+    })
+  },
+
+  sojobinfo: function (ev) {
+    var that = this;
+    var e = ev.currentTarget.dataset.index;
+    var ow_number=that.data.workinfo[e].ow_number;
+    console.log("++++++", ev, that)
+    wx.setStorageSync("ow_number", ow_number), wx.navigateTo({
+      url: "../sbaoming/sbaoming"
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

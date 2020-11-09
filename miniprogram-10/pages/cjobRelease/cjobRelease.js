@@ -6,13 +6,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    judge:"",
+    judge: "",
     company: "",
-    ow_number:"",
+    ow_number: "",
     Name: "",
     jobtime: "",
     location: "",
-    location_detail: "",
+    detail: "",
     description: "",
     salary: "",
     ask: "",
@@ -22,23 +22,7 @@ Page({
   },
 
   onLoad: function (options) {
-    console.log("e");
-    console.log("接收到的参数是post=" + options.post)
-    console.log("e");
-    this.setData({
-      judge:options.ow_number,
-      ow_number:options.ow_number,
-      Name: options.post,
-      jobtime: options.time,
-      location: options.location,
-      location_detail: options.location_detail,
-      salary: options.salary,
-      description: options.description,
-      ask: options.ask,
-      num: options.num,
-      endingtime: options.ddl,
-      ps: options.ps,
-    })
+
   },
 
   blurname: function (e) {
@@ -59,15 +43,10 @@ Page({
     })
   },
 
-  focuslocation_detail() {
-    this.setData({
-      location_detail: this.data.location
-    })
-  },
 
-  blurlocation_datail: function (e) {
+  blurdetail: function (e) {
     this.setData({
-      location_detail: e.detail.value
+      detail: e.detail.value
     })
   },
 
@@ -137,7 +116,7 @@ Page({
       setTimeout(function () {
         wx.hideToast()
       }, 2000)
-    } else if (this.data.location_detail.length == 0) {
+    } else if (this.data.detail == null) {
       wx.showToast({
         title: '工作详细地址不能为空!',
         icon: 'none',
@@ -191,7 +170,7 @@ Page({
       setTimeout(function () {
         wx.hideToast()
       }, 2000)
-    } else if(this.data.judge==null){
+    } else {
       wx.request({
         url: app.globalData.url + '/Part_time_post/',
         method: "POST",
@@ -203,7 +182,7 @@ Page({
           Name: that.data.Name,
           jobtime: that.data.jobtime,
           location: that.data.location,
-          location_detail: that.data.location_detail,
+          detail: that.data.detail,
           description: that.data.description,
           salary: that.data.salary,
           ask: that.data.ask,
@@ -220,54 +199,6 @@ Page({
             if (res.data == "发布成功") {
               wx.showToast({
                 title: '提交成功！！！', //这里打印出登录成功
-                icon: 'success',
-                duration: 1000
-              })
-              setTimeout(function () {
-                wx.navigateTo({
-                  url: '../cfabu/cfabu',
-                })
-              }, 2000)
-            }
-          } else {
-            wx.showToast({
-              title: '请求错误',
-              icon: 'none',
-              duration: 1000
-            })
-          }
-        }
-      })
-    }else{
-      wx.request({
-        url: app.globalData.url + '/Modify_outwork_info/',
-        method: "POST",
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        data: {
-          ow_number:that.data.ow_number,
-          company: app.globalData.user,
-          Name: that.data.Name,
-          jobtime: that.data.jobtime,
-          location: that.data.location,
-          location_detail: that.data.location_detail,
-          description: that.data.description,
-          salary: that.data.salary,
-          ask: that.data.ask,
-          num: that.data.num,
-          endingtime: that.data.endingtime,
-          ps: that.data.ps,
-        },
-        success: (res) => {
-          /*console.log(res.data);*/
-          if (res.statusCode == 200) {
-            this.setData({
-              result: res.data
-            })
-            if (res.data == "修改成功") {
-              wx.showToast({
-                title: '修改成功！', //这里打印出登录成功
                 icon: 'success',
                 duration: 1000
               })

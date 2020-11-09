@@ -28,8 +28,8 @@
 
    <view class='item'>
      <text class='a1' style="padding-left:50rpx;font-size:15px">工作详细地址</text>
-     <input bindfocus="focuslocation_detail"  bindblur="blurlocation_detail" placeholder-class='placeholder' placeholder-style='font-size:12px;' maxlength='60' placeholder='请填写工作详细地址' class="in"
-       name="location" value="{{location_detail}}" />
+     <input bindblur="blurdetail" placeholder-class='placeholder' placeholder-style='font-size:12px;' maxlength='60' placeholder='请填写工作详细地址' class="in"
+       name="location" value="{{detail}}" />
      <view class="xian"></view>
    </view>
 
@@ -76,7 +76,7 @@
 
  
 
- <button bindtap="goDetail" style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>发布</button>
+ <button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>发布</button>
 
 
  </form>

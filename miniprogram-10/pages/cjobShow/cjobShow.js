@@ -11,7 +11,7 @@ Page({
     post: "",
     time: "",
     location: "",
-    location_detail: "",
+    detail: "",
     salary: "",
     description: "",
     ask: "",
@@ -39,7 +39,7 @@ Page({
       post: JSON.parse(options.post),
       time: JSON.parse(options.time),
       location:JSON.parse(options.location),
-      location_detail: JSON.parse(options.location_detail),
+      detail: JSON.parse(options.detail),
       salary: JSON.parse(options.salary),
       description: JSON.parse(options.description),
       ask: JSON.parse(options.ask),
@@ -50,7 +50,6 @@ Page({
     })*/
     wx.request({
       url: app.globalData.url + '/Get_outwork_detail_info/',
-      /*待修改*/
       method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -65,7 +64,7 @@ Page({
             post: res.data.post,
             time: res.data.time,
             location: res.data.location,
-            location_detail: res.data.location_detail,
+            detail: res.data.detail,
             salary: res.data.salary,
             description: res.data.description,
             ask: res.data.ask,
@@ -83,7 +82,7 @@ Page({
   cjobrelease() {
     let that = this;
     wx.reLaunch({
-      url: '../cjobRelease/cjobRelease?post=' + that.data.post + '&ow_number=' + that.data.ow_number + '&time=' + that.data.time + '&location=' + that.data.location + '&location_detail=' + that.data.location_detail + '&salary=' + that.data.salary + '&description=' + that.data.description + '&ask=' + that.data.ask + '&num=' + that.data.num + '&ddl=' + that.data.ddl + '&ps=' + that.data.ps,
+      url: '../cjobModify/cjobModify?post=' + that.data.post + '&ow_number=' + that.data.ow_number + '&time=' + that.data.time + '&location=' + that.data.location + '&detail=' + that.data.detail + '&salary=' + that.data.salary + '&description=' + that.data.description + '&ask=' + that.data.ask + '&num=' + that.data.num + '&ddl=' + that.data.ddl + '&ps=' + that.data.ps,
     })
   },
   /**
