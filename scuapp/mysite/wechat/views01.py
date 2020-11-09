@@ -278,7 +278,7 @@ def management_outWork_stop(request):
 @csrf_exempt
 def management_outWork_begin(request):
     ow_number = request.GET.get('begin_num')
-    TboutWork.objects.filter(ow_number=ow_number).update(ow_status="报名中")  #批量启用
+    TboutWork.objects.filter(ow_number=ow_number).update(ow_status="待审核")  #批量启用
     outwork_list = TboutWork.objects.all()
     return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
 
