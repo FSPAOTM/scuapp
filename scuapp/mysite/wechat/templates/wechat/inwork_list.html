@@ -103,23 +103,6 @@
                 <i class="layui-icon">&#xe642;</i>
               </a>
 
-                <!--<script>
-    function post_show() {
-        $.ajax({
-            url: '../management_inWork_reset_show/',
-            type: "post",
-            data:{
-                // 因为不是json格式的数据，data就不需要用JSON转格式了，转了反而有问题
-                'iw_number': $("#iw_number").val(),
-            }
-        })
-    };
-</script>-->
-
-            <!--success: function (data) {
-                console.log("success")
-            }-->
-              <!--<a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">-->
               <a title="删除" onclick="success()" href="../management_inWork_delete/?delete_num={{ line.iw_number }}" >
                 <i class="layui-icon">&#xe640;</i>
               </a>
