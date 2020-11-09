@@ -457,16 +457,15 @@ def Part_time_post(request):
     else:
         return HttpResponse("请求错误")
 
-#cfabu 企业兼职信息展示功能 未调试 后期尝试完善在这里传already
+#cfabu 企业兼职信息展示功能 后期尝试完善在这里传already
 @csrf_exempt
 def Get_outwork_info(request):
     phone_num = request.GET.get('user')#获取全局变量
     com = Tbcompany.objects.get(phone_num=phone_num)
-    com_number = com.com_number.com_number
-    result = TboutWork.objects.all().filter(com_number=com_number)#获取对象
+    result = TboutWork.objects.all().filter(com_number=com)#获取对象
     plays = []
     for i in result:
-        plays.append({'ow_number':i.ow_number,'post':i.ow_post,'time':i.w_time,'location_detail':i.w_place_detail,'description':i.work,'salary':i.w_salary,'ask':i.w_reuire,'num':i.w_amount,'ddl':i.ddl_time,'ps':i.w_ps,'status':i.ow_status})
+        plays.append({'ow_number':i.ow_number,'post':i.ow_post,'time':str(i.w_time),'location':i.w_place,'location_detail':i.w_place_detail,'description':i.work,'salary':i.w_salary,'ask':i.w_reuire,'num':i.w_amount,'ddl':i.ddl_time,'ps':i.w_ps,'status':i.ow_status})
     plays_json = json.dumps(plays,ensure_ascii=False)
     return HttpResponse(plays_json)
 
@@ -475,32 +474,8 @@ def Get_outwork_info(request):
 def Get_outwork_detail_info(request):
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
-        User = TboutWork.objects.get(ow_number=ow_number)
-        ow_number = User.ow_number
-        ow_post = User.ow_post
-        w_time = User.w_time
-        w_place_detail = User.w_place_detail
-        w_salary = User.w_salary
-        work = User.work
-        w_reuire = User.w_reuire
-        w_amount = User.w_amount
-        ddl_time = User.ddl_time
-        w_ps = User.w_ps
-        ow_status = User.ow_status
         num = Tbapplication.objects.filter(ow_number=ow_number).count()
-        return HttpResponse(json.dumps(
-            {"ow_number": ow_number,
-             "post":ow_post,
-             "time":w_time,
-             "location_detail":w_place_detail,
-             "description":work,
-             "salary":w_salary,
-             "ask":w_reuire,
-             "num":w_amount,
-             "ddl":ddl_time,
-             "ps":w_ps,
-             "status":ow_status,
-             "already": num}))
+        return HttpResponse(json.dumps({"already": num}))
     else:
         return HttpResponse("请求错误")
 
