@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.utils import timezone
 import json
+from itertools import chain
 #小程序界面
 
 
@@ -302,18 +303,20 @@ def Reset_myinfo_e_mail(request):
 #Salljob 校外兼职信息展示界面
 @csrf_exempt
 def Show_outwork(request):
-    result = TboutWork.objects.all().filter(ow_status='报名中')#获取对象
+    result = TboutWork.objects.all().filter(ow_status='报名中')
     plays = []
     for i in result:
-        plays.append({'type':'校外','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':'某公司','w_number':i.ow_number})
+            user = TboutWork.objects.get(ow_number=i.ow_number)
+            com_number = user.com_number.com_number
+            com_name = Tbcompany.objects.get(com_number=com_number).com_name
+            plays.append({'type':'校外','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':com_name,'w_number':i.ow_number})
     plays_json = json.dumps(plays,ensure_ascii=False)
-    #print(plays_json)
-    return HttpResponse(plays_json)#转换为json格式
+    return HttpResponse(plays_json)
 
 #Salljob 校内兼职信息展示界面
 @csrf_exempt
 def Show_inwork(request):
-    result = TbinWork.objects.all().filter(iw_status='报名中')
+    result = TbinWork.objects.all().filter(In_status='报名中')
     plays = []
     for i in result:
         plays.append({'type':'校内','title':i.iw_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':i.iw_depart,'w_number':i.iw_number})
