@@ -6,9 +6,10 @@ class Tbapplication(models.Model):
     ap_reson = models.TextField(db_column='AP_Reson', blank=True, null=True)  # Field name made lowercase.
     ap_time = models.DateTimeField(db_column='AP_Time')  # Field name made lowercase.
     ap_abletime = models.CharField(db_column='AP_AbleTime', max_length=60, blank=True, null=True)  # Field name made lowercase.
-    ow_number = models.ForeignKey('TboutWork', models.DO_NOTHING, db_column='OW_Number')  # Field name made lowercase.
+    ow_number = models.ForeignKey('TboutWork', models.DO_NOTHING, db_column='OW_Number', null=True)  # Field name made lowercase.
     stu = models.ForeignKey('Tbstudent', models.DO_NOTHING, db_column='Stu_ID')  # Field name made lowercase.
     apply_status = models.CharField(db_column='apply_status', max_length=255, default='待审核')
+    iw_number = models.ForeignKey('TbinWork', models.DO_NOTHING, db_column='iw_number', null=True)
 
     class Meta:
         managed = False

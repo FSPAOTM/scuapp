@@ -1,7 +1,7 @@
 from django.shortcuts import HttpResponse,render
 from django.utils import timezone
 from django.template import loader
-from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork, TbinResult
+from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork, TbinResult,Tbapplication
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
@@ -56,19 +56,24 @@ def outwork_add(request):
 #校内兼职报名处理界面
 @csrf_exempt
 def inworking_list(request):
-    return render(request, 'wechat/inworking_list.html')
-
-#报名学生信息界面(是否需要？)
-#@csrf_exempt
-#def inwork_stu_ifo(request):
-    #return render(request, 'wechat/inwork_stu_ifo.html')
-
-#招聘结果通知界面（是否需要？）
-#@csrf_exempt
-#def inwork_result(request):
-    #return render(request, 'wechat/inwork_result.html')
-
-
+    inworking_list = []
+    list = TbinWork.objects.exclude(In_status ="已结束").exclude(In_status ="中止")
+    for i in list:
+        dictionary = {}
+        w_now=Tbapplication.objects.filter(iw_number=i.iw_number).count()
+        w_out=(timezone.now()-i.inpub_time).days
+        w_ddl=(i.ddl_time-timezone.now()).days
+        dictionary["w_now"]=w_now
+        dictionary["iw_number"] = i.iw_number
+        dictionary["iw_post"] = i.iw_post
+        dictionary["work"] = i.work
+        dictionary["w_amount"] = i.w_amount
+        dictionary["w_reuire"] = i.w_reuire
+        dictionary["w_out"] = w_out
+        dictionary["w_ddl"] = w_ddl
+        dictionary["In_status"] = i.In_status
+        inworking_list.append(dictionary)
+    return render(request, 'wechat/inworking_list.html', {'inworking_list': inworking_list})
 
 
 #功能接口
@@ -355,6 +360,14 @@ def management_outWork_release(request):
 
 ###################################################信息处理部分的视图！！（待修改）
 
+#校内兼职报名学生简历
+@csrf_exempt
+def inwork_stu_ifo(request):
+    iw_number = request.GET.get("stu_ifo_num")
+    inwork_stu_list=Tbstudent.objects.filter(Tbapplication__iw_number=iw_number)
+    return render(request, 'wechat/inwork_stu_ifo.html', {'inwork_stu_list': inwork_stu_list})
+
+
 #校内兼职结果搜索
 @csrf_exempt
 def management_inworking_search(request):
@@ -363,9 +376,27 @@ def management_inworking_search(request):
         s_iw_post = request.POST.get("s_iw_post")
         s_work = request.POST.get("s_work")
         s_w_reuire = request.POST.get("s_w_reuire")
+        #s_w_out = request.POST.get("s_w_out")
+        #s_w_ddl = request.POST.get("s_w_ddl")
         s_w_status = request.POST.get("s_w_status")
-        inworking_list = TbinWork.objects.filter(iw_post__contains=s_iw_post).filter(iw_number__contains=s_iw_number).\
-            filter(work__contains=s_work).filter(w_reuire__contains=s_w_reuire).filter(In_status=s_w_status)
+        inworking_list = TbinWork.objects.filter(iw_post__contains=s_iw_post).filter(iw_number__contains=s_iw_number).filter(work__contains=s_work).filter(w_reuire__contains=s_w_reuire).filter(In_status=s_w_status)
+        inworking_list = []
+        list = TbinWork.objects.exclude(In_status="已结束").exclude(In_status="中止")
+        for i in list:
+            dictionary = {}
+            w_now = Tbapplication.objects.filter(iw_number=i.iw_number).count()
+            w_out = (timezone.now() - i.inpub_time).days
+            w_ddl = (i.ddl_time - timezone.now()).days
+            dictionary["w_now"] = w_now
+            dictionary["iw_number"] = i.iw_number
+            dictionary["iw_post"] = i.iw_post
+            dictionary["work"] = i.work
+            dictionary["w_amount"] = i.w_amount
+            dictionary["w_reuire"] = i.w_reuire
+            dictionary["w_out"] = w_out
+            dictionary["w_ddl"] = w_ddl
+            dictionary["In_status"] = i.In_status
+            inworking_list.append(dictionary)
         return render(request, 'wechat/inworking_list.html', {'inworking_list': inworking_list})
     else:
         return HttpResponse("请求错误")

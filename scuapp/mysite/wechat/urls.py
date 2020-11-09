@@ -69,6 +69,8 @@ urlpatterns = [
     path('management_outwork_search/', views01.management_outwork_search, name='management_outwork_search'),
     #信息处理
     path('inworking_list/', views01.inworking_list, name='inworking_list'),
+    path('inwork_stu_ifo/', views01.inwork_stu_ifo, name='inwork_stu_ifo'),
+
 
 
 

@@ -30,6 +30,8 @@
             <input type="text" name="s_iw_post"  placeholder="请输入岗位名称" autocomplete="off" class="layui-input">
             <input type="text" name="s_work"  placeholder="请输入工作内容" autocomplete="off" class="layui-input">
             <input type="text" name="s_w_reuire"  placeholder="请输入招聘要求" autocomplete="off" class="layui-input">
+            <!--<input type="text" name="s_w_out"  placeholder="请输入发布天数" autocomplete="off" class="layui-input">
+            <input type="text" name="s_w_ddl"  placeholder="请输入截止倒计时" autocomplete="off" class="layui-input">-->
             <input type="text" name="s_w_status"  placeholder="请输入岗位状态" autocomplete="off" class="layui-input">
           <button class="layui-btn" type="submit" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
@@ -45,8 +47,10 @@
             <th>岗位名称</th>
             <th>工作内容</th>
             <th>招聘要求</th>
+            <th>发布天数</th>
+            <th>截止倒计时</th>
             <th>预招人数</th>
-            <th>已报人数</th>
+            <th>报名人数</th>
             <th>学生简历</th>
             <th>报名结果</th>
             <th>岗位状态</th>
@@ -62,12 +66,15 @@
             <td>{{ line.iw_post }}</td>
             <td>{{ line.work }}</td>
             <td>{{ line.w_reuire }}</td>
+            <td>{{ line.w_out }}天</td>
+            <td>{{ line.w_ddl }}天</td>
             <td>{{ line.w_amount }}</td>
-            <td>0</td>
+            <td>{{ line.w_now }}</td>
             <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini"><a href="../inwork_stu_ifo">点击查看</a></span></td>
+              <a href="../inwork_stu_ifo/?stu_ifo_num={{ line.iw_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">点击查看</span></a></td>
+            <!--使用弹出框-->
             <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini"><a href="../inwork_result">点击发送</a></span></td>
+              <a href="../inwork_result/?result_num={{ line.iw_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">点击发送</span></a></td>
             <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.In_status }}</span></td>
         </tr>
