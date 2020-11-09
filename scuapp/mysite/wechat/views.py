@@ -58,7 +58,7 @@ def dengluzhuce_login(request):
     else:
         return HttpResponse("请求错误")
 
-#注册功能
+#regManager 注册功能 (暂未启用)
 @csrf_exempt
 def Manage_register(request):
     #curtime=time.strftime("%Y-%m-%d %H:%M:%S",time.localtime());注册时间？
@@ -76,7 +76,8 @@ def Manage_register(request):
             return HttpResponse("注册成功")
     else:
         return HttpResponse("请求错误")
-#学生注册
+
+#regstudent 学生注册
 @csrf_exempt
 def Student_register(request):
     if request.method == "POST":
@@ -97,7 +98,8 @@ def Student_register(request):
             return HttpResponse("注册成功")
     else:
         return HttpResponse("请求错误")
-#企业注册
+
+#regcompany 企业注册
 @csrf_exempt
 def Company_register(request):
     if request.method == "POST":
@@ -121,6 +123,32 @@ def Company_register(request):
     else:
         return HttpResponse("请求错误")
 
+#repsw1 忘记密码验证身份页面
+@csrf_exempt
+def Reset_password_f1(request):
+    if request.method == "POST":
+        stu_id = request.POST.get('user')
+        phonenumber = request.POST.get('phone')
+        filterResult1 = Tbstudent.objects.filter(stu_id=stu_id)
+        filterResult2 = Tbstudent.objects.filter(phonenumber_phonenumberphonenumber_phonenumber=phonenumber)
+        if len(filterResult1) > 0 and len(filterResult2) > 0:
+            return HttpResponse("身份验证成功")
+        else:
+            return HttpResponse("身份验证失败")
+    else:
+        return HttpResponse("请求错误")
+
+#repsw1-1 忘记密码重置密码界面
+@csrf_exempt
+def Reset_password_f2(request):
+    if request.method == "POST":
+        stu_id = request.POST.get('user')
+        new_password=request.POST.get('newpwd')
+        Tbstudent.objects.filter(stu_id=stu_id ).update(password=new_password)
+        return HttpResponse("密码修改成功")
+    else:
+        return HttpResponse("请求错误")
+
 #以下是学生界面功能
 #scenter返回学生名称
 @csrf_exempt
@@ -133,7 +161,7 @@ def Show_student_name(request):
     else:
         return HttpResponse("请求错误")
 
-#简历显示功能
+#sinfoShow 简历显示功能
 @csrf_exempt
 def Insert_resume_show(request):
     if request.method == "POST":
@@ -163,7 +191,7 @@ def Insert_resume_show(request):
     else:
         return HttpResponse("请求错误")
 
-#简历修改功能
+#Sinfofill 简历修改功能
 @csrf_exempt
 def Insert_resume_change(request):
     if request.method == "POST":
@@ -184,7 +212,7 @@ def Insert_resume_change(request):
     else:
         return HttpResponse("请求错误")
 
-#修改个人信息总界面
+#Sinfomodify 修改个人信息总界面
 @csrf_exempt
 def Reset_show(request):
     if request.method == "POST":
@@ -202,7 +230,7 @@ def Reset_show(request):
     else:
         return HttpResponse("请求错误")
 
-#修改密码
+#repwd2 修改密码
 @csrf_exempt
 def Reset_password(request):
     if request.method == "POST":
@@ -219,33 +247,7 @@ def Reset_password(request):
     else:
         return HttpResponse("请求错误")
 
-#忘记密码验证身份页面
-@csrf_exempt
-def Reset_password_f1(request):
-    if request.method == "POST":
-        stu_id = request.POST.get('user')
-        phonenumber = request.POST.get('phone')
-        filterResult1 = Tbstudent.objects.filter(stu_id=stu_id)
-        filterResult2 = Tbstudent.objects.filter(phonenumber_phonenumberphonenumber_phonenumber=phonenumber)
-        if len(filterResult1) > 0 and len(filterResult2) > 0:
-            return HttpResponse("身份验证成功")
-        else:
-            return HttpResponse("身份验证失败")
-    else:
-        return HttpResponse("请求错误")
-
-#忘记密码重置密码界面
-@csrf_exempt
-def Reset_password_f2(request):
-    if request.method == "POST":
-        stu_id = request.POST.get('user')
-        new_password=request.POST.get('newpwd')
-        Tbstudent.objects.filter(stu_id=stu_id ).update(password=new_password)
-        return HttpResponse("密码修改成功")
-    else:
-        return HttpResponse("请求错误")
-
-#修改姓名
+#修改姓名 未调试
 @csrf_exempt
 def Reset_myinfo_name(request):
     if request.method == "POST":
@@ -256,7 +258,7 @@ def Reset_myinfo_name(request):
     else:
         return HttpResponse("请求错误")
 
-#修改昵称
+#修改昵称 未调试
 @csrf_exempt
 def Reset_myinfo_nickname(request):
     if request.method == "POST":
@@ -267,7 +269,7 @@ def Reset_myinfo_nickname(request):
     else:
         return HttpResponse("请求错误")
 
-#修改手机号码
+#修改手机号码 未调试
 @csrf_exempt
 def Reset_myinfo_phonenumber(request):
     if request.method == "POST":
@@ -282,7 +284,7 @@ def Reset_myinfo_phonenumber(request):
     else:
         return HttpResponse("请求错误")
 
-#修改邮箱
+#修改邮箱 未调试
 @csrf_exempt
 def Reset_myinfo_e_mail(request):
     if request.method == "POST":
@@ -380,6 +382,25 @@ def Show_one_work(request):
     else:
         return HttpResponse("请求错误")
 
+#Sreason 报名功能
+@csrf_exempt
+def Enroll_in_work(request):
+    if request.method == "POST":
+        stu = request.POST.get('前端传值')
+        back_reason = request.POST.get('前端传值')
+
+        application = Tbapplication.objects.create(name=account_name)
+        resume.save()
+        user = Tbstudent.objects.create(stu_id=account_num, name=account_name, nickname=nickname,
+                                        phonenumber_phonenumberphonenumber_phonenumber=account_phone,
+                                        password=passwd_1, res_id=resume)
+        user.save()
+        return HttpResponse("注册成功")
+    else:
+        return HttpResponse("请求错误")
+
+
+
 #以下是企业
 #ccenter返回企业名称
 @csrf_exempt
@@ -474,8 +495,30 @@ def Get_outwork_info(request):
 def Get_outwork_detail_info(request):
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
-        num = Tbapplication.objects.filter(ow_number=ow_number).count()
-        return HttpResponse(json.dumps({"already": num}))
+        result = TboutWork.objects.get(ow_number=ow_number)
+        post = result.ow_post
+        time = result.w_time
+        location = result.w_place
+        location_detail = result.w_place_detail
+        salary = result.w_salary
+        description = result.work
+        ask = result.w_reuire
+        num = result.w_amount
+        ddl = result.ddl_time
+        ps = result.w_ps
+        already = Tbapplication.objects.filter(ow_number=ow_number).count()
+        return HttpResponse(json.dumps({
+            "post":post,
+            "time":time,
+            "location":location,
+            "location_detail":location_detail,
+            "salary":salary,
+            "description":description,
+            "ask":ask,
+            "num":num,
+            "ddl":ddl,
+            "ps":ps,
+            "already": already}))
     else:
         return HttpResponse("请求错误")
 
@@ -511,22 +554,6 @@ def Stop_outwork(request):
             return HttpResponse("该招聘已停止")
         else:
             return HttpResponse("请求错误")
-
-
-
-
-#企业“单条”兼职信息展示功能
-@csrf_exempt
-def Sget_outwork_detail_info(request):
-    if request.method == "POST":
-        ow_number = request.POST.get('XXXXX')  #前端从Get_outwork_info界面接收ow_number并存为全局变量
-        filterResult1 = TboutWork.objects.filter(ow_number=ow_number)
-        if len(filterResult1) > 0:
-            outwork_detail_info = TboutWork.objects.get(ow_number=ow_number)
-            return HttpResponse &outwork_detail_info
-        else:
-            return HttpResponse("请求错误")
-
 
 #cinterview 企业面试时间申请 未调试 未写完
 @csrf_exempt
