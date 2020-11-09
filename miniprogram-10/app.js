@@ -48,5 +48,6 @@ App({
     works:"",
     stuNumber:"",
     jobType:"",
+    ow_number:"",
   }
 })

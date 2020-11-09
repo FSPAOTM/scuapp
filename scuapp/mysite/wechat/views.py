@@ -309,7 +309,7 @@ def Show_outwork(request):
             user = TboutWork.objects.get(ow_number=i.ow_number)
             com_number = user.com_number.com_number
             com_name = Tbcompany.objects.get(com_number=com_number).com_name
-            plays.append({'type':'校外','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':com_name,'w_number':i.ow_number})
+            plays.append({'type':'校外','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':com_name,'ow_number':i.ow_number})
     plays_json = json.dumps(plays,ensure_ascii=False)
     return HttpResponse(plays_json)
 
@@ -319,7 +319,7 @@ def Show_inwork(request):
     result = TbinWork.objects.all().filter(In_status='报名中')
     plays = []
     for i in result:
-        plays.append({'type':'校内','title':i.iw_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':i.iw_depart,'w_number':i.iw_number})
+        plays.append({'type':'校内','title':i.iw_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':i.iw_depart,'iw_number':i.iw_number})
     plays_json = json.dumps(plays,ensure_ascii=False)
     print(plays_json)
     return HttpResponse(plays_json)
@@ -343,7 +343,7 @@ def Show_outwork_detail(request):
         work = result.work
         w_reuire = result.w_reuire
         w_amount = result.w_amount
-        ddl_time = result.ddl_time
+        ddl_time = str(result.ddl_time)
         w_ps = result.w_ps
         num = Tbapplication.objects.filter(ow_number=ow_number).count()
         return HttpResponse(json.dumps(
@@ -372,7 +372,7 @@ def Show_inwork_detail(request):
         work = result.work
         w_reuire = result.w_reuire
         w_amount = result.w_amount
-        ddl_time = result.ddl_time
+        ddl_time = str(result.ddl_time)
         w_ps = result.w_ps
         num = Tbapplication.objects.filter(iw_number=iw_number).count()
         return HttpResponse(json.dumps(
@@ -557,7 +557,6 @@ def Get_applicant_info(request):
     for i in result:
         plays.append({'title':i.ow_post,'stu':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':'某公司','w_number':i.ow_number})
     plays_json = json.dumps(plays,ensure_ascii=False)
-    #print(plays_json)
     return HttpResponse(plays_json)#转换为json格式
 
 #企业兼职信息状态修改界面 这个还没有加URL界面

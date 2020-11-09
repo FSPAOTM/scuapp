@@ -1,4 +1,5 @@
 // pages/sbaoming/sbaoming.js
+var app=getApp();
 Page({
 
   /**
@@ -24,15 +25,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var ow_number=-1
     var ow_number = wx.getStorageSync("ow_number");
+    app.globalData.ow_number= ow_number;
+    wx.removeStorageSync("ow_number");
+    console.log(ow_number)
     this.setData({
       ow_number: ow_number
     })
+    var iw_number=-1
     var iw_number = wx.getStorageSync("iw_number");
     this.setData({
       iw_number: iw_number
     })
-    if(this.data.ow_number!=null){
+    console.log(this.data.ow_number)
+    console.log(this.data.iw_number)
+    if(this.data.ow_number>0){
     wx.request({
       url: app.globalData.url + '/Show_outwork_detail/',/*待修改*/
       method: "POST",
@@ -61,7 +69,7 @@ Page({
         }
       }
     })
-  }else if(this.data.iw_number!=null){
+  }else/* if(this.data.iw_number!=null)*/{
     wx.request({
       url: app.globalData.url + '/Show_inwork_detail/',/*待修改*/
       method: "POST",

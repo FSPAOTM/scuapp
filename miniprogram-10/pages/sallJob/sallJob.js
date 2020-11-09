@@ -164,7 +164,7 @@ Page({
   sijobinfo: function (ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
-    var iw_number=that.data.workinfo[e].iw_number;
+    var iw_number=that.data.iworkinfo[e].iw_number;
     console.log("++++++", ev, that)
     wx.setStorageSync("iw_number", iw_number), wx.navigateTo({
       url: "../sbaoming/sbaoming"
@@ -174,7 +174,7 @@ Page({
   sojobinfo: function (ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
-    var ow_number=that.data.workinfo[e].ow_number;
+    var ow_number=that.data.oworkinfo[e].ow_number;
     console.log("++++++", ev, that)
     wx.setStorageSync("ow_number", ow_number), wx.navigateTo({
       url: "../sbaoming/sbaoming"

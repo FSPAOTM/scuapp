@@ -48,6 +48,14 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
     "plugin": {
       "list": []
     },
@@ -60,48 +68,84 @@
     "miniprogram": {
       "list": [
         {
+          "id": -1,
+          "name": "pages/sinfoShow/sinfoShow",
+          "pathName": "pages/sinfoShow/sinfoShow",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
           "name": "pages/cjobShow/cjobShow",
           "pathName": "pages/cjobShow/cjobShow",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/cjobRelease/cjobRelease",
-          "pathName": "pages/cjobRelease/cjobRelease",
-          "query": "",
-          "scene": null
-        },
-        {
+          "id": -1,
           "name": "pages/login/login",
           "pathName": "pages/login/login",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/cinterview/cinterview",
-          "pathName": "pages/cinterview/cinterview",
+          "id": -1,
+          "name": "pages/repwd2/repwd2",
+          "pathName": "pages/repwd2/repwd2",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/cresumeReview/cresumeReview",
-          "pathName": "pages/cresumeReview/cresumeReview",
+          "id": -1,
+          "name": "pages/sinfoShow/sinfoShow",
+          "pathName": "pages/sinfoShow/sinfoShow",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/cworkspace/cworkspace",
-          "pathName": "pages/cworkspace/cworkspace",
+          "id": -1,
+          "name": "pages/sinfoModify/sinfoModify",
+          "pathName": "pages/sinfoModify/sinfoModify",
           "query": "",
           "scene": null
         },
         {
+          "id": -1,
+          "name": "pages/smyJob/smyJob",
+          "pathName": "pages/smyJob/smyJob",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
           "name": "pages/sbaoming/sbaoming",
           "pathName": "pages/sbaoming/sbaoming",
           "query": "",
           "scene": null
         },
         {
+          "id": -1,
+          "name": "pages/sreason/sreason",
+          "pathName": "pages/sreason/sreason",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/cresumeReview/cresumeReview",
+          "pathName": "pages/cresumeReview/cresumeReview",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/cworkspace/cworkspace",
+          "pathName": "pages/cworkspace/cworkspace",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
           "name": "pages/sallJob/sallJob",
           "pathName": "pages/sallJob/sallJob",
           "query": "",
