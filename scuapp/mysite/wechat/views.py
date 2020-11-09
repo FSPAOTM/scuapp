@@ -494,7 +494,7 @@ def Get_outwork_detail_info(request):
         post = result.ow_post
         time = result.w_time
         location = result.w_place
-        location_detail = result.w_place_detail
+        detail = result.w_place_detail
         salary = result.w_salary
         description = result.work
         ask = result.w_reuire
@@ -506,7 +506,7 @@ def Get_outwork_detail_info(request):
             "post":post,
             "time":time,
             "location":location,
-            "detail":location_detail,
+            "detail":detail,
             "salary":salary,
             "description":description,
             "ask":ask,
@@ -545,14 +545,13 @@ def Modify_outwork_info(request):
 #cworkspace 未调试未加URL
 @csrf_exempt
 def Get_applicant_info(request):
-    phone_num = request.GET.get('user')#获取全局变量
-    com = Tbcompany.objects.get(phone_num=phone_num)
-    result = TboutWork.objects.all().filter(com_number=com)#获取对象
+    result = Tbapplication.objects.all().filter(apply_status='待审核')#获取对象
     plays = []
     for i in result:
-        plays.append({'ow_number':i.ow_number,'post':i.ow_post,'time':str(i.w_time),'location':i.w_place,'detail':i.w_place_detail,'description':i.work,'salary':i.w_salary,'ask':i.w_reuire,'num':i.w_amount,'ddl':str(i.ddl_time),'ps':i.w_ps,'status':i.ow_status})
+        plays.append({'title':i.ow_post,'stu':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':'某公司','w_number':i.ow_number})
     plays_json = json.dumps(plays,ensure_ascii=False)
-    return HttpResponse(plays_json)
+    #print(plays_json)
+    return HttpResponse(plays_json)#转换为json格式
 
 #企业兼职信息状态修改界面 这个还没有加URL界面
 @csrf_exempt
