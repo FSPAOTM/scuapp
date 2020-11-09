@@ -461,18 +461,19 @@ def Company_info_modiify(request):
 def Part_time_post(request):
     if request.method == "POST":
         phone_num = request.POST.get('company')
-        ow_post = request.POST.get('post')
-        w_time = request.POST.get('time')
+        ow_post = request.POST.get('Name')
+        w_time = request.POST.get('jobtime')
+        w_place = request.POST.get('location')
         w_place_detail = request.POST.get('location_detail')
         work = request.POST.get('description')
         w_salary = request.POST.get('salary')
         w_reuire = request.POST.get('ask')
         w_amount = request.POST.get('num')
-        ddl_time = request.POST.get('ddl')
+        ddl_time = request.POST.get('endingtime')
         ipub_time = timezone.now()
         w_ps = request.POST.getlist('ps')
         User = Tbcompany.objects.get(phone_num=phone_num)
-        outwork = TboutWork.objects.create(ow_post=ow_post,w_time=w_time,w_place_detail=w_place_detail,work=work,w_salary=w_salary,w_reuire=w_reuire,w_amount=w_amount,ddl_time=ddl_time,ipub_time=ipub_time,w_ps=w_ps,com_number=User,ow_status = '待审核')
+        outwork = TboutWork.objects.create(ow_post=ow_post,w_time=w_time,w_place=w_place,w_place_detail=w_place_detail,work=work,w_salary=w_salary,w_reuire=w_reuire,w_amount=w_amount,ddl_time=ddl_time,ipub_time=ipub_time,w_ps=w_ps,com_number=User,ow_status = '待审核')
         outwork.save()
         return HttpResponse("发布成功")
     else:
@@ -528,18 +529,19 @@ def Modify_outwork_info(request):
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
         phone_num = request.POST.get('company')
-        ow_post = request.POST.get('post')
-        w_time = request.POST.get('time')
+        ow_post = request.POST.get('Name')
+        w_time = request.POST.get('jobtime')
+        w_place = request.POST.get('location')
         w_place_detail = request.POST.get('location_detail')
         work = request.POST.get('description')
         w_salary = request.POST.get('salary')
         w_reuire = request.POST.get('ask')
         w_amount = request.POST.get('num')
-        ddl_time = request.POST.get('ddl')
+        ddl_time = request.POST.get('endingtime')
         ipub_time = timezone.now()
         w_ps = request.POST.getlist('ps')
         User = Tbcompany.objects.get(phone_num=phone_num)
-        TboutWork.objects.filter(ow_number=ow_number).update(phone_num=phone_num).update(ow_post=ow_post, w_time=w_time, w_place_detail=w_place_detail, work=work,
+        TboutWork.objects.filter(ow_number=ow_number).update(phone_num=phone_num).update(ow_post=ow_post, w_time=w_time, w_place= w_place, w_place_detail=w_place_detail, work=work,
                                            w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time,
                                            ipub_time=ipub_time, w_ps=w_ps, com_number=User, ow_status='待审核')
         return HttpResponse("修改成功")
