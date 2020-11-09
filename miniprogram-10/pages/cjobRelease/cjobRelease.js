@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    judge:"",
     company: "",
     ow_number:"",
     Name: "",
@@ -25,6 +26,7 @@ Page({
     console.log("接收到的参数是post=" + options.post)
     console.log("e");
     this.setData({
+      judge:options.ow_number,
       ow_number:options.ow_number,
       Name: options.post,
       jobtime: options.time,
@@ -189,8 +191,7 @@ Page({
       setTimeout(function () {
         wx.hideToast()
       }, 2000)
-    } else {
-
+    } else if(this.data.judge==null){
       wx.request({
         url: app.globalData.url + '/Part_time_post/',
         method: "POST",
@@ -198,7 +199,6 @@ Page({
           "Content-Type": "application/x-www-form-urlencoded"
         },
         data: {
-          ow_number:that.data.ow_number,
           company: app.globalData.user,
           Name: that.data.Name,
           jobtime: that.data.jobtime,
@@ -238,14 +238,55 @@ Page({
           }
         }
       })
+    }else{
+      wx.request({
+        url: app.globalData.url + '/Modify_outwork_info/',
+        method: "POST",
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        data: {
+          ow_number:that.data.ow_number,
+          company: app.globalData.user,
+          Name: that.data.Name,
+          jobtime: that.data.jobtime,
+          location: that.data.location,
+          location_detail: that.data.location_detail,
+          description: that.data.description,
+          salary: that.data.salary,
+          ask: that.data.ask,
+          num: that.data.num,
+          endingtime: that.data.endingtime,
+          ps: that.data.ps,
+        },
+        success: (res) => {
+          /*console.log(res.data);*/
+          if (res.statusCode == 200) {
+            this.setData({
+              result: res.data
+            })
+            if (res.data == "修改成功") {
+              wx.showToast({
+                title: '修改成功！', //这里打印出登录成功
+                icon: 'success',
+                duration: 1000
+              })
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '../cfabu/cfabu',
+                })
+              }, 2000)
+            }
+          } else {
+            wx.showToast({
+              title: '请求错误',
+              icon: 'none',
+              duration: 1000
+            })
+          }
+        }
+      })
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
   },
 
   /**

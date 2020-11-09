@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/cjobModify/cjobModify",
     "pages/login/login",
     "pages/cjobRelease/cjobRelease",
     "pages/cfabu/cfabu",

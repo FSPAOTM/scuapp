@@ -82,7 +82,7 @@ Page({
 
   cjobrelease() {
     let that = this;
-    wx.navigateTo({
+    wx.reLaunch({
       url: '../cjobRelease/cjobRelease?post=' + that.data.post + '&ow_number=' + that.data.ow_number + '&time=' + that.data.time + '&location=' + that.data.location + '&location_detail=' + that.data.location_detail + '&salary=' + that.data.salary + '&description=' + that.data.description + '&ask=' + that.data.ask + '&num=' + that.data.num + '&ddl=' + that.data.ddl + '&ps=' + that.data.ps,
     })
   },
