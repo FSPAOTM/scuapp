@@ -10,6 +10,7 @@ Page({
     Name: "",
     jobtime: "",
     location: "",
+    location_detail:"",
     description: "",
     salary: "",
     ask: "",
@@ -35,6 +36,19 @@ Page({
       location: e.detail.value
     })
   },
+
+  focuslocation_detail(){
+    this.setData({
+      location_detail: this.data.location
+    })
+  },
+
+  blurlocation_datail: function (e) {
+    this.setData({
+      location_detail: e.detail.value
+    })
+  },
+  
 
   blurdescription: function (e) {
     this.setData({
@@ -94,7 +108,16 @@ Page({
       }, 2000)
     } else if (this.data.location.length == 0) {
       wx.showToast({
-        title: '工作地点不能为空!',
+        title: '工作地点所在地区不能为空!',
+        icon: 'none',
+        duration: 2000
+      })
+      setTimeout(function () {
+        wx.hideToast()
+      }, 2000)
+    } else if (this.data.location_detail.length == 0) {
+      wx.showToast({
+        title: '工作详细地址不能为空!',
         icon: 'none',
         duration: 2000
       })
@@ -159,6 +182,7 @@ Page({
           Name: that.data.Name,
           jobtime: that.data.jobtime,
           location: that.data.location,
+          location_detail:that.data.location_detail,
           description: that.data.description,
           salary: that.data.salary,
           ask: that.data.ask,

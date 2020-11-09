@@ -39,7 +39,7 @@
       <text class='zi' >{{item.type}}</text>
       <text class='title'>{{item.title}}</text>
       
-      <view class='house' style=" padding-left:30rpx;">{{item.amount}}|{{item.place}}</view>
+      <view class='house' style=" padding-left:30rpx;">{{item.amount}}人|{{item.place}}</view>
       <view class='prix'>
         <text class='prix1' style=" padding-left:30rpx;">{{item.salary}}</text>
         <text>{{item.depart}}</text>

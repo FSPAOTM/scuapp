@@ -20,12 +20,18 @@
    </view>
 
    <view class='item'>
-     <text class='a1' style="padding-left:50rpx;font-size:15px">工作地点</text>
-     <input bindblur="blurlocation" placeholder-class='placeholder' placeholder-style='font-size:12px;' maxlength='60' placeholder='请填写工作地点' class="in"
+     <text class='a1' style="padding-left:50rpx;font-size:15px">工作所在地</text>
+     <input bindblur="blurlocation" placeholder-class='placeholder' placeholder-style='font-size:12px;' maxlength='10' placeholder='请填写工作地点所在地区' class="in"
        name="location" value="{{location}}" />
      <view class="xian"></view>
    </view>
 
+   <view class='item'>
+     <text class='a1' style="padding-left:50rpx;font-size:15px">工作详细地址</text>
+     <input bindfocus="focuslocation_detail"  bindblur="blurlocation_detail" placeholder-class='placeholder' placeholder-style='font-size:12px;' maxlength='60' placeholder='请填写工作详细地址' class="in"
+       name="location" value="{{location_detail}}" />
+     <view class="xian"></view>
+   </view>
 
 
    <view class="section">

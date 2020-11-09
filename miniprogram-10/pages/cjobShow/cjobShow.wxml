@@ -5,32 +5,25 @@
 <form>
 <view class='item'>
 <text class='a1' style="padding-left:50rpx;font-size:15px">兼职岗位：</text>
-<text class='right'>{{myinfo.name}}</text>
+<text class='right'>{{myinfo.post}}</text>
   </view>
   <view class='arrow' bindtap="modalinput"></view>
 
   <view class='item'>
     <text class='a1' style="padding-left:50rpx;font-size:15px">工作时间：</text>
-     <text class='right' >{{myinfo.age}}</text>
+     <text class='right' >{{myinfo.time}}</text>
      <view class='arrow' bindtap="modalinput"></view>
   </view>
 
-  <modal id="modal" hidden="{{hiddenmodalput}}" title="信息完善" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
-<input type='text' placeholder="请填写修改后的信息" auto-focus/>
-</modal>
-
-
-
-
   <view class='item'>
     <text class='a1' style="padding-left:50rpx;font-size:15px">工作地点:</text> 
-    <text class='right'>{{myinfo.sex}}</text>
+    <text class='right'>{{myinfo.location_detail}}</text>
     <view class='arrow' bindtap="modalinput"></view>
   </view>
 
   <view class='item'>
     <text class='a1' style="padding-left:50rpx; font-size:15px">薪酬：</text>
-     <text class='right'>{{myinfo.edu}}</text>
+     <text class='right'>{{myinfo.salary}}</text>
      <view class='arrow' bindtap="modalinput"></view>
   </view>
 
@@ -39,7 +32,7 @@
 <view  class="xian"></view>
 <view style=" height: 150px;">
 <view class='arrow' bindtap="modalinput"></view>
-<text  style="font-size:30rpx; margin-left:30rpx;;"maxlength='200'>{{myinfo.ass}}</text>
+<text  style="font-size:30rpx; margin-left:30rpx;;"maxlength='200'>{{myinfo.description}}</text>
 </view>
       </view>
 
@@ -49,7 +42,7 @@
 <view  class="xian"></view>
 <view style=" height: 150px;">
   <view class='arrow' bindtap="modalinput"></view>
-<text style="font-size:30rpx;margin-left:30rpx" maxlength='200'>{{myinfo.work}}</text>
+<text style="font-size:30rpx;margin-left:30rpx" maxlength='200'>{{myinfo.ask}}</text>
 </view>
       </view>
 
@@ -57,25 +50,25 @@
 
       <view class='item'>
     <text class='a1' style="padding-left:50rpx;font-size:15px">招聘人数：</text> 
-    <text class='right'>{{myinfo.edu}}</text>
+    <text class='right'>{{myinfo.num}}</text>
     <view class='arrow' bindtap="modalinput"></view>
   </view> 
 
   <view class='item'>
     <text class='a1' style="padding-left:50rpx;font-size:15px">报名截止时间：</text> 
-    <text class='right'>{{myinfo.edu}}</text>
+    <text class='right'>{{myinfo.ddl}}</text>
     <view class='arrow' bindtap="modalinput"></view>
   </view> 
 
   <view class='item'>
     <text class='a1' style="padding-left:50rpx;font-size:15px">备注：</text> 
-    <text class='right'>{{myinfo.edu}}</text>
+    <text class='right'>{{myinfo.ps}}</text>
     <view class='arrow' bindtap="modalinput"></view>
   </view> 
 
   <view class='item'>
     <text class='a1' style="padding-left:50rpx;font-size:15px">已报名人数：</text> 
-    <text class='right'>{{myinfo.edu}}</text>
+    <text class='right'>{{myinfo.already}}</text>
   </view> 
 
 

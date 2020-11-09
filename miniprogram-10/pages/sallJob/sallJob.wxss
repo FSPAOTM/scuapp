@@ -129,7 +129,7 @@ navigator{
 }
 
 .xiangqing_info{
-  width: 50%;
+  width: 100%;
   padding-top: 25rpx;
   padding-bottom: 25rpx;
 }

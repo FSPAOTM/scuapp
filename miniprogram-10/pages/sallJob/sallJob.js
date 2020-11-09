@@ -129,13 +129,10 @@ Page({
   onLoad: function (options) {
     let self=this;
     wx.request({
-      url: app.globalData.url + '/show/',
+      url: app.globalData.url + '/Show_outwork/',
       method: "GET",
       header: {
         'Content-Type': 'application/json'
-      },
-      data: {
-        jobtype: "校内",
       },
       success: function (res) {
         console.log(res);
