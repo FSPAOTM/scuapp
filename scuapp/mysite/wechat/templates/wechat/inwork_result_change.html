@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>招聘结果通知</title>
+    <title>招聘结果通知修改</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -29,19 +29,19 @@
         <a href="../inworking_list/"><button class="layui-btn" >返回</button></a>
     <div class="formtitle"><span>招聘结果通知（带*为必填）</span></div>
 
-    <form action="../management_inWork_result/" method="post">
+     <form action="../management_inWork_result_change/" method="post">
         <ul class="forminfo">
-            <li><label>岗位编号</label><input name="iw_number" value="{{ iw_number }}" type="text" class="dfinput" readonly/><i>*</i></li>
-            <li><label>联系方式</label><input id="inr_phonenum" name="inr_phonenum" type="text" class="dfinput" required/><i>*</i></li>
-            <li><label>报到时间</label><input id="r_time" name="r_time" type="text" class="dfinput" required/><i>*（如：2020.11.10(周二）16:00）</i></li>
+            <li><label>岗位编号</label><input name="iw_number" value="{{ result_list.iw_number }}" type="text" class="dfinput" readonly/><i>*</i></li>
+            <li><label>联系方式</label><input id="inr_phonenum" name="inr_phonenum" value="{{ result_list.inr_phonenum }}" type="text" class="dfinput" required/><i>*</i></li>
+            <li><label>报到时间</label><input id="r_time" name="r_time" value="{{ result_list.r_time }}"type="text" class="dfinput" required/><i>*（如：2020.11.10(周二）16:00）</i></li>
             <li><label>结果</label>
-                <select name="result" id="result" class="dfinput">
+                <select name="result" class="dfinput" id="result">
                     <option value="未通过">未通过</option>
                     <option value="已通过" selected>已通过</option>
                 </select><i>*（默认已通过）</i></li>
-            <li><label>备注</label><textarea name="r_ps" cols="" rows="" class="textinput"></textarea></li>
-            <li><label>&nbsp</label><input name="保存" onclick="success()" type="submit" class="btn" value="保存"/><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><a href="../inwork_result_submit/?submit_num={{ iw_number }}"><input name="" type="button" class="btn" value="发送"/></a></li>
-            <!--提交按钮绑定另一接口-->
+            <li><label>备注</label><textarea name="r_ps" cols="" rows="" class="textinput">{{ result_list.r_ps }}</textarea></li>
+            <li><label>&nbsp</label><input name="保存" onclick="success()" type="submit" class="btn" value="保存"/><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><a href="../inwork_result_submit/?submit_num={{ result_list.iw_number }}"><input name="" type="button" class="btn" value="发送"/></a></li>
+
         </ul>
     </form>
 

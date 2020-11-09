@@ -10,6 +10,7 @@ class Tbapplication(models.Model):
     stu = models.ForeignKey('Tbstudent', models.DO_NOTHING, db_column='Stu_ID')  # Field name made lowercase.
     apply_status = models.CharField(db_column='apply_status', max_length=255, default='待审核')
     iw_number = models.ForeignKey('TbinWork', models.DO_NOTHING, db_column='iw_number', null=True)
+    s_sure = models.CharField(db_column='S_Sure', max_length=255, default='未确认')  # 学生确认状态
 
     class Meta:
         managed = False
@@ -64,7 +65,6 @@ class TbinResult(models.Model):
     r_ps = models.CharField(db_column='R_Ps', max_length=200, blank=True, null=True)  # Field name made lowercase.
     in_r_time = models.DateTimeField(db_column='In_R_Time')  # Field name made lowercase.
     iw_number = models.ForeignKey('TbinWork', models.DO_NOTHING, db_column='IW_Number')  # Field name made lowercase.
-    s_sure = models.CharField(db_column='S_Sure', max_length=255, default='未确认')  # 学生确认状态
 
     class Meta:
         managed = False
@@ -127,7 +127,7 @@ class TbinterviewResult(models.Model):
     ir_ps = models.CharField(db_column='IR_Ps', max_length=200, blank=True, null=True)  # Field name made lowercase.
     ir_time = models.DateTimeField(db_column='IR_Time')  # Field name made lowercase.
     i_number = models.ForeignKey('TbinterviewNotice', models.DO_NOTHING, db_column='I_Number')  # Field name made lowercase.
-    s_sure = models.CharField(db_column='S_Sure', max_length=255, default='未确认')  # 学生确认状态
+
 
     class Meta:
         managed = False

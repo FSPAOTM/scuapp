@@ -25,19 +25,8 @@
 
   <body>
     <div class="x-body">
-      <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so" method="post" action="../management_inwork_search_stu/">
-            {% csrf_token %}
-            <input type="text" name="s_stu_id"  placeholder="请输入学号" autocomplete="off" class="layui-input">
-            <input type="text" name="s_sex"  placeholder="请输入性别" autocomplete="off" class="layui-input">
-            <input type="text" name="s_grade"  placeholder="请输入年级" autocomplete="off" class="layui-input">
-            <input type="text" name="s_major"  placeholder="请输入专业" autocomplete="off" class="layui-input">
-            <input type="text" name="s_pov_identity"  placeholder="请输入贫困资质" autocomplete="off" class="layui-input">
-          <button class="layui-btn" type="submit"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
-        </form>
-      </div>
       <xblock>
-        <a href="../inworking_list/"><button class="layui-btn" ><i class="layui-icon"></i>返回</button></a>
+        <a href="../inworking_list/"><button class="layui-btn" >返回</button></a>
       </xblock>
       <table class="layui-table">
         <thead>
@@ -68,7 +57,7 @@
             <td>{{ line.pov_identity }}</td>
             <td>{{ line.e_mail }}</td>
             <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.s_sure }}</span></td>
+              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.s_sure }}</span>
             </td>
         </tr>
         {% endfor %}

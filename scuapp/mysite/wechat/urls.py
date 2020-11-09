@@ -72,6 +72,13 @@ urlpatterns = [
     #信息处理
     path('inworking_list/', views01.inworking_list, name='inworking_list'),
     path('inwork_stu_ifo/', views01.inwork_stu_ifo, name='inwork_stu_ifo'),
+    path('management_inworking_search/', views01.management_inworking_search, name='management_inworking_search'),
+    path('management_inWork_result/', views01.management_inWork_result, name='management_inWork_result'),
+    path('inwork_result/', views01.inwork_result, name='inwork_result'),
+    path('inwork_result_submit/', views01.inwork_result_submit, name='inwork_result_submit'),
+    path('management_inWork_result_change/', views01.management_inWork_result_change, name='management_inWork_result_change'),
+
+
 
 
 
