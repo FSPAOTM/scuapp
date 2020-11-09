@@ -58,7 +58,7 @@ def dengluzhuce_login(request):
     else:
         return HttpResponse("请求错误")
 
-#regManager 注册功能 (暂未启用)
+#regManager 注册功能
 @csrf_exempt
 def Manage_register(request):
     #curtime=time.strftime("%Y-%m-%d %H:%M:%S",time.localtime());注册时间？
@@ -486,7 +486,7 @@ def Get_outwork_info(request):
     result = TboutWork.objects.all().filter(com_number=com)#获取对象
     plays = []
     for i in result:
-        plays.append({'ow_number':i.ow_number,'post':i.ow_post,'time':str(i.w_time),'location':i.w_place,'location_detail':i.w_place_detail,'description':i.work,'salary':i.w_salary,'ask':i.w_reuire,'num':i.w_amount,'ddl':i.ddl_time,'ps':i.w_ps,'status':i.ow_status})
+        plays.append({'ow_number':i.ow_number,'post':i.ow_post,'time':str(i.w_time),'location':i.w_place,'location_detail':i.w_place_detail,'description':i.work,'salary':i.w_salary,'ask':i.w_reuire,'num':i.w_amount,'ddl':str(i.ddl_time),'ps':i.w_ps,'status':i.ow_status})
     plays_json = json.dumps(plays,ensure_ascii=False)
     return HttpResponse(plays_json)
 
@@ -504,7 +504,7 @@ def Get_outwork_detail_info(request):
         description = result.work
         ask = result.w_reuire
         num = result.w_amount
-        ddl = result.ddl_time
+        ddl = str(result.ddl_time)
         ps = result.w_ps
         already = Tbapplication.objects.filter(ow_number=ow_number).count()
         return HttpResponse(json.dumps({
@@ -526,19 +526,22 @@ def Get_outwork_detail_info(request):
 @csrf_exempt
 def Modify_outwork_info(request):
     if request.method == "POST":
-        ow_number = request.POST.get('')
-        ow_post = request.POST.get('Name') #前端提示岗位不可修改
-        w_time = request.POST.get('jobtime')
-        w_place = request.POST.get('location')
+        ow_number = request.POST.get('ow_number')
+        phone_num = request.POST.get('company')
+        ow_post = request.POST.get('post')
+        w_time = request.POST.get('time')
+        w_place_detail = request.POST.get('location_detail')
         work = request.POST.get('description')
         w_salary = request.POST.get('salary')
         w_reuire = request.POST.get('ask')
         w_amount = request.POST.get('num')
-        ddl_time = request.POST.get('endingtim')
-        inpub_time = timezone.now()
+        ddl_time = request.POST.get('ddl')
+        ipub_time = timezone.now()
         w_ps = request.POST.getlist('ps')
-
-        TboutWork.objects.filter(ow_number=ow_number).update(w_time=w_time, w_place=w_place, work=work, w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, ipub_time=inpub_time, w_ps=w_ps)
+        User = Tbcompany.objects.get(phone_num=phone_num)
+        TboutWork.objects.filter(ow_number=ow_number).update(phone_num=phone_num).update(ow_post=ow_post, w_time=w_time, w_place_detail=w_place_detail, work=work,
+                                           w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time,
+                                           ipub_time=ipub_time, w_ps=w_ps, com_number=User, ow_status='待审核')
         return HttpResponse("修改成功")
     else:
         return HttpResponse("请求错误")
