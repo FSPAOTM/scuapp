@@ -418,18 +418,29 @@ def Enroll_in_inwork(request):
     else:
         return HttpResponse("请求错误")
 
-#smyjob 学生报名展示 未调试未加url
+#smyjob 学生报名展示 未调试
 @csrf_exempt
 def Show_myjob(request):
     if request.method == "POST":
         stu = request.POST.get('user')
         application = Tbapplication.objects.get(stu=stu)
-        result = TbinWork.objects.all().filter(iw_number=application)  # 获取对象
-        plays = []
-        for i in result:
-            plays.append({'type': '校内', 'title': i.iw_post, 'depart': i.iw_depart})
-        plays_json = json.dumps(plays, ensure_ascii=False)
-        return HttpResponse(plays_json)
+        if application.iw_number:
+            result = TbinWork.objects.all().filter(iw_number=application)  # 获取对象
+            plays = []
+            for i in result:
+                plays.append({'type': '校内', 'title': i.iw_post, 'depart': i.iw_depart})
+            plays_json = json.dumps(plays, ensure_ascii=False)
+            return HttpResponse(plays_json)
+        else:
+            result = TboutWork.objects.all().filter(ow_number=application)  # 获取对象
+            plays = []
+            for i in result:
+                user = TboutWork.objects.get(ow_number=i.ow_number)
+                com_number = user.com_number.com_number
+                com_name = Tbcompany.objects.get(com_number=com_number).com_name
+                plays.append({'type': '校外', 'title': i.ow_post, 'depart': com_name})
+            plays_json = json.dumps(plays, ensure_ascii=False)
+            return HttpResponse(plays_json)
     else:
         return HttpResponse("请求错误")
 #以下是企业
