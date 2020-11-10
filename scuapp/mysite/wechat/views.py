@@ -393,12 +393,13 @@ def Show_inwork_detail(request):
 @csrf_exempt
 def Enroll_in_work(request):
     if request.method == "POST":
-        stu = request.POST.get('前端传值')
-        ap_reson = request.POST.get('前端传值')
-        ow_number = request.POST.get('前端传值')
+        stu = request.POST.get('user')
+        ap_reson = request.POST.get('reason')
+        ow_number_str = request.POST.get('ow_number')
+        ow_number = int(ow_number_str)
         application = Tbapplication.objects.create(ap_reson=ap_reson,ow_number=ow_number,stu=stu)
         application.save()
-        return HttpResponse("请求成功")
+        return HttpResponse("报名成功")
     else:
         return HttpResponse("请求错误")
 
