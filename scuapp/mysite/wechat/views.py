@@ -330,7 +330,7 @@ def Show_inwork(request):
 
 #Salljob 查询区域
 
-#Sbaoming 兼职详情展示 未调试未修改参数
+#Sbaoming 兼职详情展示
 @csrf_exempt
 def Show_outwork_detail(request):
     if request.method == "POST":
@@ -395,9 +395,24 @@ def Enroll_in_work(request):
     if request.method == "POST":
         stu = request.POST.get('user')
         ap_reson = request.POST.get('reason')
-        ow_number_str = request.POST.get('ow_number')
-        ow_number = int(ow_number_str)
-        application = Tbapplication.objects.create(ap_reson=ap_reson,ow_number=ow_number,stu=stu)
+        get_ow_number = request.POST.get('ow_number')
+        user = TboutWork.objects.get(ow_number=get_ow_number)
+        student = Tbstudent.objects.get(stu_id=stu)
+        application = Tbapplication.objects.create(ap_reson=ap_reson,ow_number=user,stu=student)
+        application.save()
+        return HttpResponse("报名成功")
+    else:
+        return HttpResponse("请求错误")
+
+#Sbaoming 报名功能
+@csrf_exempt
+def Enroll_in_inwork(request):
+    if request.method == "POST":
+        stu = request.POST.get('user')
+        get_iw_number = request.POST.get('iw_number')
+        user = TbinWork.objects.get(iw_number=get_iw_number)
+        student = Tbstudent.objects.get(stu_id=stu)
+        application = Tbapplication.objects.create(ow_number=user,stu=student)
         application.save()
         return HttpResponse("报名成功")
     else:
