@@ -1,4 +1,6 @@
 <!--pages/sallJob/sallJob.wxml-->
+<import src="template\tabbar.wxml"/> 
+<template is="tabBar" data="{{tabBar}}"/>
 <view class="tabTit box">
   <view class="flex1{{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="type" data-index="{{index}}"
     bindtap="filterTab">

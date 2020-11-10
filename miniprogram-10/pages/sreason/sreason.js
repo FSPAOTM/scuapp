@@ -17,6 +17,7 @@ Page({
     this.setData({
       ow_number: app.globalData.ow_number
     })
+    console.log(this.data.ow_number)
   },
 
   reasoninput(e) {
@@ -25,10 +26,9 @@ Page({
     })
   },
 
-  formsubmit() {
+  formsubmit:function(e) {
     wx.request({
-      url: app.globalData.url + '/Get_outwork_detail_info/',
-      /*待修改*/
+      url: app.globalData.url + '/Enroll_in_work/',
       method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -48,8 +48,8 @@ Page({
               duration: 2000
             })
             setTimeout(function () {
-              wx.navigateTo({
-                url: '../smyjob/smyjob',
+              wx.switchTab({
+                url: '../smyJob/smyJob',
               })
             }, 2000)
           }

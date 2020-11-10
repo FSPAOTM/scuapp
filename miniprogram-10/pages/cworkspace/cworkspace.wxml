@@ -1,5 +1,6 @@
 <!--pages/cworkspace/cworkspace.wxml-->
-
+<import src="template\tabbar.wxml"/> 
+<template is="tabBar" data="{{tabBar}}"/>
 <view class="swiper_tab_view">
   <scroll-view scroll-x='true' scroll-left="{{scrollleft}}" class='tab-h'>
     <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">已报名</view>

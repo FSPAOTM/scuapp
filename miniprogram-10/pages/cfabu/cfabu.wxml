@@ -1,5 +1,6 @@
 <!--pages/cfabu/cfabu.wxml-->
-
+<import src="template\tabbar.wxml"/> 
+<template is="tabBar" data="{{tabBar}}"/>
 <view class="title">发布管理</view>
 <view class="jobrelease_management" wx:for="{{jobinfo}}" wx:for-item="item" >
   <view class='nav-class' bindtap="cjobshow" data-index="{{index}}">

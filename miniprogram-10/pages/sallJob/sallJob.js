@@ -144,6 +144,7 @@ Page({
         }
       }
     })
+
     wx.request({
       url: app.globalData.url + '/Show_outwork/',
       method: "GET",
@@ -158,6 +159,7 @@ Page({
           })
         }
       }
+    
     })
   },
 
@@ -165,8 +167,9 @@ Page({
     var that = this;
     var e = ev.currentTarget.dataset.index;
     var iw_number=that.data.iworkinfo[e].iw_number;
+    var type=that.data.iworkinfo[e].type;
     console.log("++++++", ev, that)
-    wx.setStorageSync("iw_number", iw_number), wx.navigateTo({
+    wx.setStorageSync("iw_number", iw_number),wx.setStorageSync('type', type) ,wx.navigateTo({
       url: "../sbaoming/sbaoming"
     })
   },
@@ -175,8 +178,9 @@ Page({
     var that = this;
     var e = ev.currentTarget.dataset.index;
     var ow_number=that.data.oworkinfo[e].ow_number;
+    var type=that.data.oworkinfo[e].type;
     console.log("++++++", ev, that)
-    wx.setStorageSync("ow_number", ow_number), wx.navigateTo({
+    wx.setStorageSync("ow_number", ow_number),wx.setStorageSync('type', type), wx.navigateTo({
       url: "../sbaoming/sbaoming"
     })
   },
@@ -216,7 +220,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    app.editTabBar();  
   },
 
   /**

@@ -1,4 +1,6 @@
 <!--pages/scenter/scenter.wxml-->
+<import src="template\tabbar.wxml"/> 
+<template is="tabBar" data="{{tabBar}}"/>
 <view class="summary">      
         <image src="7.png" class="avatar" />
         <view class="nickname">{{name}}</view>

@@ -64,8 +64,7 @@ Page({
     });
     let self = this;
     wx.request({
-      url: app.globalData.url + '/Show_outwork/',/*待修改*/
-      method: "GET",
+      url: app.globalData.url + '/Show_myijob/',
       header: {
         'Content-Type': 'application/json'
       },
@@ -80,10 +79,9 @@ Page({
           })
         }
       }
-    })
-    wx.request({
-      url: app.globalData.url + '/Show_outwork/',/*待修改*/
-      method: "GET",
+    });
+     wx.request({
+      url: app.globalData.url + '/Show_myojob/',
       header: {
         'Content-Type': 'application/json'
       },
@@ -114,7 +112,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    app.editTabBar();  
   },
 
   /**

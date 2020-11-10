@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    type:"",
     iw_number:"",
     ow_number: "",
     post: "",
@@ -29,7 +30,6 @@ Page({
     var ow_number = wx.getStorageSync("ow_number");
     app.globalData.ow_number= ow_number;
     wx.removeStorageSync("ow_number");
-    console.log(ow_number)
     this.setData({
       ow_number: ow_number
     })
@@ -38,11 +38,15 @@ Page({
     this.setData({
       iw_number: iw_number
     })
+    var type = wx.getStorageSync("type");
+    this.setData({
+      type: type
+    })
     console.log(this.data.ow_number)
     console.log(this.data.iw_number)
     if(this.data.ow_number>0){
     wx.request({
-      url: app.globalData.url + '/Show_outwork_detail/',/*待修改*/
+      url: app.globalData.url + '/Show_outwork_detail/',
       method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -71,7 +75,7 @@ Page({
     })
   }else/* if(this.data.iw_number!=null)*/{
     wx.request({
-      url: app.globalData.url + '/Show_inwork_detail/',/*待修改*/
+      url: app.globalData.url + '/Show_inwork_detail/',
       method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -102,9 +106,40 @@ Page({
 
 
   reason(){
+    if(this.data.type=="校内"){
+      wx.request({
+        url: app.globalData.url + '/Enroll_in_inwork/',
+        method: "POST",
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        data: {
+          iw_number: this.data.iw_number,
+          user:app.globalData.user,
+        },
+        success: (res) => {
+          /*console.log(res.data);*/
+          if (res.statusCode == 200) {
+            if(res.data=="报名成功"){
+              wx.showToast({
+                title: '报名成功',
+                icon: 'success',
+                duration: 2000
+              })
+              setTimeout(function () {
+                wx.switchTab({
+                  url: '../smyJob/smyJob',
+                })
+              }, 2000)
+            }
+          }
+        }
+      })
+    }else{
     wx.navigateTo({
       url: '../sreason/sreason',
     })
+  }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
