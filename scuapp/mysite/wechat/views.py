@@ -412,12 +412,26 @@ def Enroll_in_inwork(request):
         get_iw_number = request.POST.get('iw_number')
         user = TbinWork.objects.get(iw_number=get_iw_number)
         student = Tbstudent.objects.get(stu_id=stu)
-        application = Tbapplication.objects.create(ow_number=user,stu=student)
+        application = Tbapplication.objects.create(iw_number=user,stu=student)
         application.save()
         return HttpResponse("报名成功")
     else:
         return HttpResponse("请求错误")
 
+#smyjob 学生报名展示 未调试未加url
+@csrf_exempt
+def Show_myjob(request):
+    if request.method == "POST":
+        stu = request.POST.get('user')
+        application = Tbapplication.objects.get(stu=stu)
+        result = TbinWork.objects.all().filter(iw_number=application)  # 获取对象
+        plays = []
+        for i in result:
+            plays.append({'type': '校内', 'title': i.iw_post, 'depart': i.iw_depart})
+        plays_json = json.dumps(plays, ensure_ascii=False)
+        return HttpResponse(plays_json)
+    else:
+        return HttpResponse("请求错误")
 #以下是企业
 #ccenter返回企业名称
 @csrf_exempt
