@@ -10,7 +10,7 @@ class Tbapplication(models.Model):
     stu = models.ForeignKey('Tbstudent', models.DO_NOTHING, db_column='Stu_ID')  # Field name made lowercase.
     apply_status = models.CharField(db_column='apply_status', max_length=255, default='待审核')
     iw_number = models.ForeignKey('TbinWork', models.DO_NOTHING, db_column='iw_number', null=True)
-    s_sure = models.CharField(db_column='S_Sure', max_length=255, default='未确认')  # 学生确认状态
+    s_sure = models.CharField(db_column='s_sure', max_length=255, default='未确认')  # 学生确认状态
 
     class Meta:
         managed = False

@@ -384,7 +384,7 @@ def inwork_stu_ifo(request):
         if inWork.In_status== "报名中" or inWork.In_status == "中止":
             dictionary["s_sure"] = "未通知"
         else:
-            application= Tbapplication.objects.filter(iw_number=iw_number).filter(stu=stu_id)
+            application= Tbapplication.objects.filter(iw_number=iw_number).get(stu=stu_id)
             dictionary["s_sure"] = application.s_sure
         inwork_stu_list.append(dictionary)
     return render(request, 'wechat/inwork_stu_ifo.html', {'inwork_stu_list': inwork_stu_list})
