@@ -26,6 +26,7 @@ urlpatterns = [
     path('Show_outwork_detail/', views.Show_outwork_detail, name='Show_outwork_detail'),
     path('Show_inwork_detail/', views.Show_inwork_detail, name='Show_inwork_detail'),
     path('Enroll_in_work/', views.Enroll_in_work, name='Enroll_in_work'),
+    path('Enroll_in_inwork/', views.Enroll_in_inwork, name='Enroll_in_inwork'),
     #企业
     path('Show_company_name/', views.Show_company_name, name='Show_company_name'),
     path('Company_info_showmodiify/', views.Company_info_showmodiify, name='Company_info_showmodiify'),
