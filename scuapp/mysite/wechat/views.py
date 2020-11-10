@@ -409,8 +409,8 @@ def Enroll_in_work(request):
 def Enroll_in_inwork(request):
     if request.method == "POST":
         stu = request.POST.get('user')
-        get_ow_number = request.POST.get('ow_number')
-        user = TboutWork.objects.get(ow_number=get_ow_number)
+        get_iw_number = request.POST.get('iw_number')
+        user = TbinWork.objects.get(iw_number=get_iw_number)
         student = Tbstudent.objects.get(stu_id=stu)
         application = Tbapplication.objects.create(ow_number=user,stu=student)
         application.save()
