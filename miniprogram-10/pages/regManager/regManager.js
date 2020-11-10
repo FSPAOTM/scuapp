@@ -184,7 +184,7 @@ Page({
                 })
                 setTimeout(function () {
                   wx.redirectTo({
-                    url: '../index/index',
+                    url: '../login/login',
                   })
                 }, 2000)
               } else {

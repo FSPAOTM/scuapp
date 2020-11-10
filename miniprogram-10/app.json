@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/ccenter/ccenter",
     "pages/cjobModify/cjobModify",
     "pages/login/login",
     "pages/cjobRelease/cjobRelease",
     "pages/cfabu/cfabu",
-    "pages/ccenter/ccenter",
     "pages/cinfoFill/cinfoFill",
     "pages/repwd1/repwd1",
     "pages/sbaoming/sbaoming",
