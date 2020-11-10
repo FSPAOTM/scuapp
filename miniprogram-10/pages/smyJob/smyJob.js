@@ -7,7 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    iworkinfo: [],
+    iworkinfo: [
+      {
+        type:"校内",
+        title:"信息管理中心值班人员",
+        depart:"信息管理中心",
+      }
+    ],
     oworkinfo: [],
     //tap切换自定义宽高
     winWidth: 0,
@@ -63,7 +69,7 @@ Page({
       }
     });
     let self = this;
-    wx.request({
+    /*wx.request({
       url: app.globalData.url + '/Show_myijob/',
       header: {
         'Content-Type': 'application/json'
@@ -96,7 +102,7 @@ Page({
           })
         }
       }
-    })
+    })*/
   },
 
 
