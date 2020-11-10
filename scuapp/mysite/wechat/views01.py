@@ -426,7 +426,12 @@ def management_inworking_search(request):
 @csrf_exempt
 def inwork_result(request):
     iw_number = request.GET.get("result_num")
-    return render(request, 'wechat/inwork_result.html', {'iw_number': iw_number})
+    inwork = TbinWork.objects.get(iw_number=iw_number)
+
+    if inwork.In_status == "报名结束" or inwork.In_status == "结果通知中":
+        return render(request, 'wechat/inwork_result.html', {'iw_number': iw_number})
+    else:
+        return render(request, 'wechat/manage_error.html')
 
 #应该多表和学生相连(保存按钮）
 @csrf_exempt
@@ -458,7 +463,7 @@ def inwork_result_submit(request):
     iw_number = request.GET.get("submit_num")
     filterResult = TbinResult.objects.filter(iw_number=iw_number)
     if len(filterResult) > 0:
-        TbinWork.objects.filter(iw_number=iw_number).update(In_status = "报名结束")
+        TbinWork.objects.filter(iw_number=iw_number).update(In_status = "结果通知中")
         inworking_list = []
         list = TbinWork.objects.exclude(In_status="已结束").exclude(In_status="中止")
         for i in list:
