@@ -20,7 +20,7 @@
 <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}rpx" >
   <swiper-item>
 
-    <view class='xiangqing' wx:for="{{iworkinfo}}"  wx:key="key" bindtap="navigateTo">
+    <view class='xiangqing' wx:for="{{workinfo}}"  wx:key="key" bindtap="navigateTo">
     <view class='xiangqing_info' style="padding-left:40rpx;">
       <text class='zi' >{{item.type}}</text>
       <text class='title'>{{item.title}}</text>
@@ -30,7 +30,7 @@
     </view>
   </view>
        
-  <view class='xiangqing' wx:for="{{oworkinfo}}"  wx:key="key" bindtap="navigateTo">
+  <!--<view class='xiangqing' wx:for="{{oworkinfo}}"  wx:key="key" bindtap="navigateTo">
     <view class='xiangqing_info' style="padding-left:40rpx;">
       <text class='zi' >{{item.type}}</text>
       <text class='title'>{{item.title}}</text>
@@ -38,7 +38,7 @@
         <text class='prix1'>{{item.depart}}</text>   
       </view>      
     </view>
-  </view>
+  </view>-->
   </swiper-item>
 
   <swiper-item>

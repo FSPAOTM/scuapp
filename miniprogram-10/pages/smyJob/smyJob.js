@@ -7,14 +7,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    iworkinfo: [
+    /*iworkinfo: [
       {
         type:"校内",
         title:"信息管理中心值班人员",
         depart:"信息管理中心",
       }
-    ],
-    oworkinfo: [],
+    ],*/
+    workinfo:[],
     //tap切换自定义宽高
     winWidth: 0,
     winHeight: 0,
@@ -69,11 +69,12 @@ Page({
       }
     });
     let self = this;
-    /*wx.request({
-      url: app.globalData.url + '/Show_myijob/',
+    wx.request({
+      url: app.globalData.url + '/Show_myjob/',
       header: {
         'Content-Type': 'application/json'
       },
+      method:"GET",
       data:{
         user:app.globalData.user
       },
@@ -81,12 +82,12 @@ Page({
         console.log(res);
         if (res.statusCode == 200) {
           self.setData({
-            iworkinfo: res.data
+            workinfo: res.data
           })
         }
       }
     });
-     wx.request({
+     /*wx.request({
       url: app.globalData.url + '/Show_myojob/',
       header: {
         'Content-Type': 'application/json'

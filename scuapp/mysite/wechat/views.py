@@ -421,11 +421,11 @@ def Enroll_in_inwork(request):
 #smyjob 学生报名展示 未调试
 @csrf_exempt
 def Show_myjob(request):
-    if request.method == "POST":
-        stu = request.POST.get('user')
-        application = Tbapplication.objects.get(stu=stu) #看后续可不可以改成filter
-        iw_number = application.iw_number
-        ow_number = application.ow_number
+    if request.method == "GET":
+        stu = request.GET.get('user')
+        application = Tbapplication.objects.filter(stu=stu) #看后续可不可以改成filter
+        iw_number = application[0].iw_number.iw_number
+        ow_number = application[0].ow_number.ow_number
         if iw_number:
             result = TbinWork.objects.filter(iw_number=iw_number)  # 获取对象
             plays = []
