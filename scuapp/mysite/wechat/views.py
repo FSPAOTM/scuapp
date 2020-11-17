@@ -423,16 +423,18 @@ def Enroll_in_inwork(request):
 def Show_myjob(request):
     if request.method == "POST":
         stu = request.POST.get('user')
-        application = Tbapplication.objects.get(stu=stu)
-        if application.iw_number:
-            result = TbinWork.objects.all().filter(iw_number=application)  # 获取对象
+        application = Tbapplication.objects.get(stu=stu) #看后续可不可以改成filter
+        iw_number = application.iw_number
+        ow_number = application.ow_number
+        if iw_number:
+            result = TbinWork.objects.filter(iw_number=iw_number)  # 获取对象
             plays = []
             for i in result:
                 plays.append({'type': '校内', 'title': i.iw_post, 'depart': i.iw_depart})
             plays_json = json.dumps(plays, ensure_ascii=False)
             return HttpResponse(plays_json)
         else:
-            result = TboutWork.objects.all().filter(ow_number=application)  # 获取对象
+            result = TboutWork.objects.filter(ow_number=ow_number)  # 获取对象
             plays = []
             for i in result:
                 user = TboutWork.objects.get(ow_number=i.ow_number)
