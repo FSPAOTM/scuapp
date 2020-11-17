@@ -50,6 +50,11 @@ def outwork_list(request):
 
 #校外兼职信息发布界面
 @csrf_exempt
+def work_examine(request):
+    return render(request, 'wechat/work_examine.html')
+
+#校外兼职审核界面
+@csrf_exempt
 def outwork_add(request):
     return render(request, 'wechat/outwork_add.html')
 
@@ -302,6 +307,43 @@ def management_outWork_begin(request):
         return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
     else:
         return render(request, 'wechat/manage_error.html')
+
+#校外兼职通过
+@csrf_exempt
+def management_outWork_pass(request):
+    ow_number = request.GET.get('pass_num')
+    outWork = TboutWork.objects.get(ow_number=ow_number)
+    if outWork.ow_status == "待审核":
+        TboutWork.objects.filter(ow_number=ow_number).update(ow_status="审核通过")  #批量中止
+        outwork_list = TboutWork.objects.all()
+        return render(request, 'wechat/work_examine.html', {'outwork_list': outwork_list})
+    else:
+        return render(request, 'wechat/manage_error.html')
+
+#校外兼职打回
+@csrf_exempt
+def outWork_reject_result(request):
+    if request.method == "POST":
+        ow_number = request.POST.get('ow_number')
+        inr_phonenum = request.POST.get('inr_phonenum')
+        result = request.POST.get('result')
+        reject = request.POST.get('reject')
+#        in_r_time = timezone.now()
+#        filterResult = TbinResult.objects.filter(ow_number=ow_number)
+#        inWork = TbinWork.objects.get(iw_number=iw_number)
+#        if len(filterResult) > 0:
+#            TbinResult.objects.filter(iw_number=iw_number).update(inr_phonenum=inr_phonenum, r_time=r_time,
+#                                                                  result=result, r_ps=r_ps,
+#                                                                  in_r_time=in_r_time)
+#        else:
+#            inworking = TbinResult.objects.create(inr_phonenum=inr_phonenum, r_time=r_time, result=result, r_ps=r_ps,
+#                                                  in_r_time=in_r_time, iw_number=inWork)
+#            inworking.save()
+#        result_list = TbinResult.objects.get(iw_number=inWork)
+#        return render(request, 'wechat/inwork_result_change.html', {'result_list': result_list})
+#    else:
+#        return HttpResponse("请求错误")
+
 
 #校外兼职信息修改
 @csrf_exempt

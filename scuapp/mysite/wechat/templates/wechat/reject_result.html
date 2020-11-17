@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>打回理由</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../static/wechat/css/font.css">
+    <link rel="stylesheet" href="../../static/wechat/css/xadmin.css">
+    <link href="../../static/wechat/css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../static/wechat/js/js1.js"></script>
+    <script type="text/javascript" src="../../static/wechat/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../static/wechat/js/xadmin.js"></script>
+    <script src="../static/js/js2.js"></script>
+    <script src="../static/js/js3.js"></script>
+    <script>
+        function success(){
+            if(inr_phonenum.value != ""&& reject.value != ""&& result.value != "")
+            alert("操作成功！")
+        }
+    </script>
+</head>
+
+<body>
+    <div class="formbody">
+        <a href="../work_examine/"><button class="layui-btn" >返回</button></a>
+    <div class="formtitle"><span>打回理由（带*为必填）</span></div>
+
+    <form action="../outWork_reject_result/" method="post">
+        <ul class="forminfo">
+            <li><label>岗位编号</label><input name="ow_number" value="{{ ow_number }}" type="text" class="dfinput" readonly/><i>*</i></li>
+            <li><label>联系方式</label><input id="inr_phonenum" name="inr_phonenum" type="text" class="dfinput" required/><i>*</i></li>
+            <li><label>结果</label>
+                <select name="result" id="result" class="dfinput">
+                    <option value="未通过" selected>未通过</option>
+                    <option value="已通过">已通过</option>
+                </select><i>*（默认未通过）</i></li>
+            <li><label>打回理由</label><textarea name="reject" cols="" rows="" class="textinput" required></textarea></li>
+            <li><label>&nbsp</label><input name="保存" onclick="success()" type="submit" class="btn" value="保存"/><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><a href="../#/?submit_num={{ ow_number }}"><input name="" type="button" class="btn" value="发送"/></a></li>
+            <!--提交按钮绑定另一接口-->
+        </ul>
+    </form>
+
+
+</div>
+
+</body>
+
+</html>

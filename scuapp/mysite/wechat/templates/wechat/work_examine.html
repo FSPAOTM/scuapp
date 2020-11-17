@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>校外兼职列表</title>
+    <title>校外兼职审核</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -50,7 +50,7 @@
       </div>
       <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加岗位','../outwork_add',600,400)"><i class="layui-icon"></i>添加</button></a>
+
       </xblock>
       <table class="layui-table">
         <thead>
@@ -80,7 +80,7 @@
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <form name="ow_number"><td>{{ line.ow_number }}</td></form><!--method="post" action="../management_inWork_reset_show/"-->
+            <form name="ow_number"><td>{{ line.ow_number }}</td></form>
             <td>{{ line.ow_post }}</td>
             <td>{{ line.w_time }}</td>
             <td>{{ line.w_place }}</td>
@@ -96,20 +96,8 @@
             <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.ow_status }}</span></td>
             <td class="td-manage">
-              <a  href="../management_outWork_stop/?stop_num={{ line.ow_number }}"  title="中止">
-                <i class="iconfont">&#xe6ce;</i>
-              </a>
-              <a  href="../management_outWork_begin/?begin_num={{ line.ow_number }}"  title="启用">
-                <i class="layui-icon">&#xe601;</i>
-              </a>
-              <a id="bianji_button" title="编辑" href="../management_outWork_reset_show/?re_num={{ line.ow_number }}">
-                <i class="layui-icon">&#xe642;</i>
-              </a>
-
-
-              <a title="删除" onclick="success()" href="../management_outWork_delete/?delete_num={{ line.ow_number }}" >
-                <i class="layui-icon">&#xe640;</i>
-              </a>
+              <a href="../management_outWork_pass/?pass_num={{ line.ow_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">通过</span></a>
+              <p><br><a href="../management_outWork_reject/?reject_num={{ line.ow_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">打回</span></a>
             </td>
         </tr>
         {% endfor %}
@@ -188,6 +176,7 @@
         });
       }
     </script>
+
   </body>
 
 </html>
