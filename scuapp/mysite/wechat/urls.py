@@ -1,6 +1,6 @@
 from django.urls import path
 
-from . import views,views01
+from . import views,views01,views_com
 
 app_name = 'wechat'
 urlpatterns = [
@@ -21,22 +21,22 @@ urlpatterns = [
     path('Reset_myinfo_nickname/', views.Reset_myinfo_nickname, name='Reset_myinfo_nickname'),
     path('Reset_myinfo_phonenumber/', views.Reset_myinfo_phonenumber, name='Reset_myinfo_phonenumber'),
     path('Reset_myinfo_e_mail/', views.Reset_myinfo_e_mail, name='Reset_myinfo_e_mail'),
-    path('Show_outwork/', views.Show_outwork, name='Show_outwork'),
-    path('Show_inwork/', views.Show_inwork, name='Show_inwork'),
+    path('Show_work/', views.Show_work, name='Show_work'),
+    #path('Show_inwork/', views.Show_inwork, name='Show_inwork'),
     path('Show_outwork_detail/', views.Show_outwork_detail, name='Show_outwork_detail'),
     path('Show_inwork_detail/', views.Show_inwork_detail, name='Show_inwork_detail'),
     path('Enroll_in_work/', views.Enroll_in_work, name='Enroll_in_work'),
     path('Enroll_in_inwork/', views.Enroll_in_inwork, name='Enroll_in_inwork'),
     path('Show_myjob/', views.Show_myjob, name='Show_myjob'),
     #企业
-    path('Show_company_name/', views.Show_company_name, name='Show_company_name'),
-    path('Company_info_showmodiify/', views.Company_info_showmodiify, name='Company_info_showmodiify'),
-    path('Company_info_modiify/', views.Company_info_modiify, name='Company_info_modiify'),
-    path('Part_time_post/', views.Part_time_post, name='Part_time_post'),
+    path('Show_company_name/', views_com.Show_company_name, name='Show_company_name'),
+    path('Company_info_showmodiify/', views_com.Company_info_showmodiify, name='Company_info_showmodiify'),
+    path('Company_info_modiify/', views_com.Company_info_modiify, name='Company_info_modiify'),
+    path('Part_time_post/', views_com.Part_time_post, name='Part_time_post'),
 
-    path('Get_outwork_info/', views.Get_outwork_info, name='Get_outwork_info'),
-    path('Get_outwork_detail_info/', views.Get_outwork_detail_info, name='Get_outwork_detail_info'),
-    path('Modify_outwork_info/', views.Modify_outwork_info, name='Modify_outwork_info'),
+    path('Get_outwork_info/', views_com.Get_outwork_info, name='Get_outwork_info'),
+    path('Get_outwork_detail_info/', views_com.Get_outwork_detail_info, name='Get_outwork_detail_info'),
+    path('Modify_outwork_info/', views_com.Modify_outwork_info, name='Modify_outwork_info'),
 
 
 
