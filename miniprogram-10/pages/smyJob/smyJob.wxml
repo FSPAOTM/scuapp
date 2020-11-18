@@ -20,7 +20,7 @@
 <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}rpx" >
   <swiper-item>
 
-    <view class='xiangqing' wx:for="{{workinfo}}"  wx:key="key" bindtap="navigateTo">
+    <view class='xiangqing' wx:for="{{workinfo1}}"  wx:key="key" bindtap="navigateTo">
     <view class='xiangqing_info' style="padding-left:40rpx;">
       <text class='zi' >{{item.type}}</text>
       <text class='title'>{{item.title}}</text>
@@ -42,19 +42,51 @@
   </swiper-item>
 
   <swiper-item>
-    <view>模块2</view>
+    <view class='xiangqing' wx:for="{{workinfo2}}"  wx:key="key" bindtap="navigateTo">
+    <view class='xiangqing_info' style="padding-left:40rpx;">
+      <text class='zi' >{{item.type}}</text>
+      <text class='title'>{{item.title}}</text>
+      <view class='prix'>
+        <text class='prix1'>{{item.depart}}</text>   
+      </view>      
+    </view>
+  </view>
   </swiper-item>
  
   <swiper-item>
-    <view>模块3</view>
+    <view class='xiangqing' wx:for="{{workinfo3}}"  wx:key="key" bindtap="navigateTo">
+    <view class='xiangqing_info' style="padding-left:40rpx;">
+      <text class='zi' >{{item.type}}</text>
+      <text class='title'>{{item.title}}</text>
+      <view class='prix'>
+        <text class='prix1'>{{item.depart}}</text>   
+      </view>      
+    </view>
+  </view>
   </swiper-item>
  
   <swiper-item>
-    <view>模块4</view>
+    <view class='xiangqing' wx:for="{{workinfo4}}"  wx:key="key" bindtap="navigateTo">
+    <view class='xiangqing_info' style="padding-left:40rpx;">
+      <text class='zi' >{{item.type}}</text>
+      <text class='title'>{{item.title}}</text>
+      <view class='prix'>
+        <text class='prix1'>{{item.depart}}</text>   
+      </view>      
+    </view>
+  </view>
   </swiper-item>
  
   <swiper-item>
-    <view>模块5</view>
+    <view class='xiangqing' wx:for="{{workinfo5}}"  wx:key="key" bindtap="navigateTo">
+    <view class='xiangqing_info' style="padding-left:40rpx;">
+      <text class='zi' >{{item.type}}</text>
+      <text class='title'>{{item.title}}</text>
+      <view class='prix'>
+        <text class='prix1'>{{item.depart}}</text>   
+      </view>      
+    </view>
+  </view>
   </swiper-item>
  
 </swiper>
