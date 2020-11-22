@@ -80,6 +80,7 @@ urlpatterns = [
     path('inwork_result_submit/', views01.inwork_result_submit, name='inwork_result_submit'),
     path('management_inWork_result_change/', views01.management_inWork_result_change, name='management_inWork_result_change'),
     path('work_examine/', views01.work_examine, name='work_examine'),
+    path('interview_list/', views01.interview_list, name='interview_list'),
 
 
 

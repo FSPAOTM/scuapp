@@ -1,7 +1,7 @@
 from django.shortcuts import HttpResponse,render
 from django.utils import timezone
 from django.template import loader
-from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork, TbinResult,Tbapplication
+from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
@@ -79,6 +79,11 @@ def inworking_list(request):
         dictionary["In_status"] = i.In_status
         inworking_list.append(dictionary)
     return render(request, 'wechat/inworking_list.html', {'inworking_list': inworking_list})
+
+#面试申请表界面
+def interview_list(request):
+    interview_list = TbinterviewApply.objects.all()
+    return render(request, 'wechat/interview_list.html', {'interview_list': interview_list})
 
 
 #功能接口
@@ -544,6 +549,25 @@ def management_inWork_result_change(request):
         return render(request, 'wechat/inwork_result_change.html', {'result_list': result_list})
     else:
         return HttpResponse("请求错误")
+
+#发送面试时间 from HHL
+def interviewTime_send(request):
+    ia_number = request.GET.get('result_num')
+    interview = TbinterviewApply.objects.get(ia_number=ia_number)
+
+    #if interview.apply_status == "待审核":
+
+    #else:
+        #return render(request, 'wechat/manage_error.html')
+
+
+
+#学生返回理由 from HHL
+def stu_feedback(request):
+    ia_number = request.GET.get('ia_num')
+
+
+
 
 
 
