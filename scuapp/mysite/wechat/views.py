@@ -303,20 +303,18 @@ def Reset_myinfo_e_mail(request):
 #Salljob 校内外兼职信息展示界面
 @csrf_exempt
 def Show_work(request):
-    result1 = TboutWork.objects.all().filter(ow_status='报名中')
-    plays1 = []
+    result1 = TboutWork.objects.filter(ow_status='报名中')
+    result2 = TbinWork.objects.filter(In_status='报名中')
+    plays = []
     for i in result1:
             user = TboutWork.objects.get(ow_number=i.ow_number)
             com_number = user.com_number.com_number
             com_name = Tbcompany.objects.get(com_number=com_number).com_name
-            plays1.append({'type':'校外','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':com_name,'ow_number':i.ow_number})
-    plays_json1 = json.dumps(plays1,ensure_ascii=False)
-    result2 = TbinWork.objects.all().filter(In_status='报名中')
-    plays2 = []
+            plays.append({'type':'校外','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':com_name,'ow_number':i.ow_number})
     for i in result2:
-        plays2.append({'type':'校内','title':i.iw_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':i.iw_depart,'iw_number':i.iw_number})
-    plays_json2 = json.dumps(plays2,ensure_ascii=False)
-    return HttpResponse(plays_json1,plays_json2)
+        plays.append({'type':'校内','title':i.iw_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':i.iw_depart,'iw_number':i.iw_number})
+    plays_json = json.dumps(plays,ensure_ascii=False)
+    return HttpResponse(plays_json)
 
 #Salljob 校内兼职信息展示界面
 # @csrf_exempt
@@ -428,26 +426,24 @@ def Show_myjob(request):
     if request.method == "GET":
         stu = request.GET.get('user')
         application = Tbapplication.objects.filter(stu=stu)
+        plays = []
         for item in application:
             apply_status = item.apply_status
             if item.iw_number is not None:
                 iw_number = item.iw_number.iw_number
                 result = TbinWork.objects.filter(iw_number=iw_number)
-                plays = []
                 for i in result:
                     plays.append({'type': '校内', 'title': i.iw_post, 'depart': i.iw_depart,'status': apply_status})
                 plays_json = json.dumps(plays, ensure_ascii=False)
-                return HttpResponse(plays_json)
             else:
                 result = TboutWork.objects.filter(ow_number=item.ow_number.ow_number)
-                plays = []
                 for i in result:
                     user = TboutWork.objects.get(ow_number=i.ow_number)
                     com_number = user.com_number.com_number
                     com_name = Tbcompany.objects.get(com_number=com_number).com_name
                     plays.append({'type': '校外', 'title': i.ow_post, 'depart': com_name,'status': apply_status})
                 plays_json = json.dumps(plays, ensure_ascii=False)
-                return HttpResponse(plays_json)
+        return HttpResponse(plays_json)
     else:
         return HttpResponse("请求错误")
 
