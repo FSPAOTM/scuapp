@@ -72,7 +72,6 @@ Page({
         });
       }
     });
-    let self = this;
     wx.request({
       url: app.globalData.url + '/Show_myjob/',
       header: {
@@ -84,29 +83,33 @@ Page({
       },
       success: function (res) {
         console.log(res);
+        console.log(res.data[0].status);
+        for (i = 0; i < cars.length; i++) {
         if (res.statusCode == 200) {
           if (res.data.status == "已报名")  {
-            self.setData({
+            that.setData({
               workinfo1: res.data
             })
+            console.log(that.data.workinfo1)
           } else if (res.data.status == "面试中") /*待修改*/ {
-            self.setData({
+            that.setData({
               workinfo2: res.data
             })
           } else if (res.data.status == "已录用") /*待修改*/ {
-            self.setData({
+            that.setData({
               workinfo3: res.data
             })
           } else if (res.data.status == "已到岗") /*待修改*/ {
-            self.setData({
+            that.setData({
               workinfo4: res.data
             })
           } else if (res.data.status == "已结算") /*待修改*/ {
-            self.setData({
+            that.setData({
               workinfo5: res.data
             })
           }
         }
+      }
       }
     });
     /*wx.request({
@@ -120,7 +123,7 @@ Page({
       success: function (res) {
         console.log(res);
         if (res.statusCode == 200) {
-          self.setData({
+          that.setData({
             oworkinfo: res.data
           })
         }
@@ -169,7 +172,7 @@ Page({
   },
   //网络请求，获取数据
   getData() {
-    let self = this;
+    let that = this;
     wx.request({
       url: app.globalData.url + '/Show_mywork/',
       /*待修改*/
@@ -181,23 +184,23 @@ Page({
         console.log(res);
         if (res.statusCode == 200) {
           if (res.data.status == "已报名") /*待修改*/ {
-            self.setData({
+            that.setData({
               workinfo1: res.data
             })
           } else if (res.data.status == "面试中") /*待修改*/ {
-            self.setData({
+            that.setData({
               workinfo2: res.data
             })
           } else if (res.data.status == "已录用") /*待修改*/ {
-            self.setData({
+            that.setData({
               workinfo3: res.data
             })
           } else if (res.data.status == "已到岗") /*待修改*/ {
-            self.setData({
+            that.setData({
               workinfo4: res.data
             })
           } else if (res.data.status == "已结算") /*待修改*/ {
-            self.setData({
+            that.setData({
               workinfo5: res.data
             })
           }

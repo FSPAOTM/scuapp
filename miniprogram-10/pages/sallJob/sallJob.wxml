@@ -36,7 +36,7 @@
 
 <!-- 下面列表 -->
 <view class="container">
-  <view class='xiangqing' wx:for="{{workinfo}}" wx:for-item="item" bindtap="navigateTo">
+  <view class='xiangqing' wx:for="{{workinfo}}" wx:for-item="item" wx:for-index="index" bindtap="navigateTo">
     <view class='nav-class' bindtap="sjobinfo" data-index="{{index}}">
       <view class='xiangqing_info' style=" padding-left:30rpx;">
         <text class='zi'>{{item.type}}</text>

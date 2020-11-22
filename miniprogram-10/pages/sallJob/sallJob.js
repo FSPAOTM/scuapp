@@ -80,8 +80,8 @@ Page({
   filterTab: function (e) {
     var self = this;
     var data = [true, true, true],
-      index = e.currentTarget.dataset.index;
-    data[index] = !this.data.tab[index];
+      id = e.currentTarget.dataset.id;
+    data[id] = !this.data.tab[id];
     this.setData({
       tab: data
     })
@@ -116,7 +116,7 @@ Page({
       id = e.currentTarget.dataset.id,
       txt = e.currentTarget.dataset.txt,
       tabTxt = this.data.tabTxt;
-    switch (e.currentTarget.dataset.index) {
+    switch (e.currentTarget.dataset.id) {
       case '0':
         tabTxt[0] = txt;
         self.setData({
@@ -146,7 +146,7 @@ Page({
       id = e.currentTarget.dataset.id,
       txt = e.currentTarget.dataset.txt,
       tabTxt = this.data.tabTxt;
-    switch (e.currentTarget.dataset.index) {
+    switch (e.currentTarget.dataset.id) {
       case '0':
         tabTxt[0] = txt;
         self.setData({
@@ -176,7 +176,7 @@ Page({
       id = e.currentTarget.dataset.id,
       txt = e.currentTarget.dataset.txt,
       tabTxt = this.data.tabTxt;
-    switch (e.currentTarget.dataset.index) {
+    switch (e.currentTarget.dataset.id) {
       case '0':
         tabTxt[0] = txt;
         self.setData({
@@ -268,11 +268,14 @@ Page({
     })*/
   },
 
-  sijobinfo: function (ev) {
+
+  sjobinfo: function (ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
     var type = that.data.workinfo[e].type;
-    if (that.data.workinfo[e].iw_number != "null") {
+    console.log(that.data.workinfo[e].ow_number)
+    console.log(that.data.workinfo[e].iw_number)
+    if (that.data.workinfo[e].iw_number != "NULL") {
       var iw_number = that.data.workinfo[e].iw_number;
       console.log("++++++", ev, that)
       wx.setStorageSync("iw_number", iw_number), wx.setStorageSync('type', type), wx.navigateTo({
@@ -280,6 +283,7 @@ Page({
       })
     } else {
       var ow_number = that.data.workinfo[e].ow_number;
+      console.log(ow_number);
       console.log("++++++", ev, that)
       wx.setStorageSync("ow_number", ow_number), wx.setStorageSync('type', type), wx.navigateTo({
         url: "../sbaoming/sbaoming"
@@ -291,7 +295,7 @@ Page({
 
   /*sojobinfo: function (ev) {
     var that = this;
-    var e = ev.currentTarget.dataset.index;
+    var e = ev.currentTarget.dataset.id;
     var ow_number=that.data.oworkinfo[e].ow_number;
     var type=that.data.oworkinfo[e].type;
     console.log("++++++", ev, that)

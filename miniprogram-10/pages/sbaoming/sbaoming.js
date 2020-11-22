@@ -44,7 +44,7 @@ Page({
     })
     console.log(this.data.ow_number)
     console.log(this.data.iw_number)
-    if(this.data.ow_number>0){
+    if(type == "校外"){
     wx.request({
       url: app.globalData.url + '/Show_outwork_detail/',
       method: "POST",
