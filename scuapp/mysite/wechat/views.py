@@ -310,7 +310,7 @@ def Show_work(request):
             user = TboutWork.objects.get(ow_number=i.ow_number)
             com_number = user.com_number.com_number
             com_name = Tbcompany.objects.get(com_number=com_number).com_name
-            plays.append({'type':'校外','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':com_name,'ow_number':i.ow_number})
+            plays.append({'type':'校外','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':com_name,'iw_number':'none','ow_number':i.ow_number})
     for i in result2:
         plays.append({'type':'校内','title':i.iw_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':i.iw_depart,'iw_number':i.iw_number})
     plays_json = json.dumps(plays,ensure_ascii=False)
@@ -414,7 +414,7 @@ def Enroll_in_inwork(request):
         get_iw_number = request.POST.get('iw_number')
         user = TbinWork.objects.get(iw_number=get_iw_number)
         student = Tbstudent.objects.get(stu_id=stu)
-        application = Tbapplication.objects.create(iw_number=user,stu=student,In_status='已报名')
+        application = Tbapplication.objects.create(iw_number=user,stu=student,apply_status='已报名')
         application.save()
         return HttpResponse("报名成功")
     else:
