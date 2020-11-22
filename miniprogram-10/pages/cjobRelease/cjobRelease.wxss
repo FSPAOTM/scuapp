@@ -1,18 +1,22 @@
 /* pages/cjobRelease/cjobRelease.wxss */
 
-.title {
-  font-family: "黑体";
-  font-weight: 1000;
-  font-size: 38rpx;
+.title{
+  font-family:"KaiTi";
+  font-weight: 900;
+  font-size: 18px;
   text-align: center;
-  margin-top: 5px;
-  margin-bottom: 15px;
+  background: #F0F8FF;
+  height: 50px;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  color:#999;
 }
 
 
 
 .item {
-  margin-top: 1px;
+  margin-top: 20rpx;
 }
 
 .item1 {
@@ -22,10 +26,10 @@
 
 .in {
   width: 100%;
-  padding-left: 50rpx;
   margin-top: 10px;
   font-family: "黑体";
   line-height: 20px;
+  text-align: center;
 }
 
 .section_gap {
@@ -33,11 +37,19 @@
   flex-direction: row;
 }
 
+.section{
+  background: #fff;
+  border: 5rpx solid #FFE4E1;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  margin:30rpx; 
+}
+
 
 .xian {
   width: 90%;
-  background: #ccc;
-  height: 1rpx;
+  background: #FFE4E1;
+  height: 3rpx;
   margin-left: 25rpx;
   margin-bottom: 20rpx;
 }
@@ -80,6 +92,7 @@ button {
 
 .a1 {
   line-height: 20px;
+  
 }
 
 .a2 {
@@ -88,4 +101,29 @@ button {
 
 .a3 {
   line-height: 35px;
+}
+
+
+
+.line{
+  height: 10rpx;
+  background: #FFE4E1;
+}
+
+.line2{
+  width: 25%;
+  background: #FFE4E1;
+  height: 3rpx;
+  margin-left: 25rpx;
+  margin-bottom: 20rpx;
+}
+
+.zhuce{
+  width: 20px;
+  height: 20px;
+  margin-left: 60rpx;
+}
+
+.placeholder{
+  text-align: center;
 }

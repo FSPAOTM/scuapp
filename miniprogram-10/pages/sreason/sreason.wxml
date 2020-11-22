@@ -3,8 +3,8 @@
  <form bindsubmit="formsubmit">
     <view class="section">
   <view class="jieshang" >
-    <image src="理由.png" class="a1"/>
-  <text>应聘理由</text>
+    <image src="reason.png" class="a1"/>
+  <text>应 聘 理 由</text>
   </view>
   <view  class="xian"></view>
 
@@ -16,7 +16,7 @@
 <text style="margin-right:20rpx">认真填写哦</text>  
 </view>
 
- <button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>报名</button>
+ <button style="margin-top:100rpx;" form-type="submit" hover-class='button-hover' class='su'>报 名</button>
 
    </form>
 </view>

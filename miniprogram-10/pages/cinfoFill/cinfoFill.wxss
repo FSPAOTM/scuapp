@@ -1,5 +1,7 @@
 /* pages/cinfoFill/cinfoFill.wxss */
-/* pages/companylist/companylist.wxss */
+
+
+
 .nav{
   background-color: #fff;
 }
@@ -11,7 +13,7 @@ text-align: center;
 .item{
 height: 70rpx;
 background-color: #fff;
-margin: 20rpx;
+margin-top: 20rpx;
 display: flex;
 border-radius: 20rpx;
 }
@@ -25,24 +27,59 @@ color: rgb(161, 151, 151);
 }
 
 .xian{
-  width: 90%;
-  background: #ccc;
-  height: 2rpx;
+  width: 25%;
+  background: #FFE4E1;
+  height: 5rpx;
+  margin-left: 25rpx;
 }
 
 .section{
-  background: #fff
+  background: #fff;
+  margin-top: 30rpx;
 }
 .title{
-  font-family:"黑体" ;
-  font-weight: 1000;
-  font-size: 34rpx;
+  font-family:"KaiTi";
+  font-weight: 900;
+  font-size: 20px;
   text-align: center;
-  margin-top: 5px;
-  margin-bottom: 15px;
+  background: #F0F8FF;
+  height: 50px;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  color:#999;
 }
+
 
 
 .su{
   margin-bottom: 15px;
+}
+
+.line{
+  height: 10rpx;
+  background: #FFE4E1;
+ 
+}
+
+.line2{
+  width: 90%;
+  background: #FFE4E1;
+  height: 4rpx;
+  margin-left: 25rpx;
+  margin-bottom: 20rpx;
+}
+
+.zhuce{
+  width: 20px;
+  height: 20px;
+  margin-left: 60rpx;
+}
+
+button {
+  background: #7e8ef0;
+  color: #fff;
+  width: 80%;
+  font-size: 34rpx;
+  margin-bottom: 20px;
 }

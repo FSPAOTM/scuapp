@@ -40,7 +40,13 @@
 .item {
   display: flex;
   flex-direction: row;
+  border-top: 20rpx solid #ededed;
+  color: #999;
+  line-height: 70rpx;
+  font-size: 28rpx;
 }
+
+
 
 .title {
   padding-top: 15px;
@@ -182,7 +188,7 @@ Page {
 }
 
 .summary {
-  background: #77B3E3;
+  background: #FFF5EE;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -205,3 +211,4 @@ Page {
   height: 20px;
   margin: 20px;
 }
+

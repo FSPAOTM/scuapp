@@ -104,8 +104,14 @@
 }
 
 .section{
-  background: #fff
+  background: #fff;
+  border: 5rpx solid #FFE4E1;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  margin:30rpx; 
+ 
 }
+
 .xian{
   width: 90%;
   background: #ccc;
@@ -143,12 +149,16 @@ button{
   }
 
   .title{
-    font-family:"黑体" ;
-    font-weight: 1000;
-    font-size: 35rpx;
+    font-family:"KaiTi";
+    font-weight: 900;
+    font-size: 18px;
     text-align: center;
-    margin-top: 5px;
-    margin-bottom: 15px;
+    background: #F0F8FF;
+    height: 50px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    color:#999;
   }
 
   page{
@@ -170,6 +180,31 @@ button{
       border-style:solid;
       transform: rotate(45deg);
       margin-left:325px;
-    
-    
+    }
+
+    .line{
+      height: 10rpx;
+      background: #FFE4E1;
+    }
+
+    .xian {
+      width: 90%;
+      background: #FFE4E1;
+      height: 3rpx;
+      margin-left: 25rpx;
+      margin-bottom: 20rpx;
+    }
+
+    .zhuce{
+      width: 18px;
+      height: 18px;
+      margin-left: 60rpx;
+    }
+
+    .xian2{
+      width: 25%;
+      background: #FFE4E1;
+      height: 3rpx;
+      margin-left: 25rpx;
+      margin-bottom: 20rpx;
     }

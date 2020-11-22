@@ -234,7 +234,7 @@ Page({
       }
     })
     wx.request({
-      url: app.globalData.url + '/Show_inwork/',
+      url: app.globalData.url + '/Show_work/',
       /*待修改*/
       method: "GET",
       header: {
@@ -358,6 +358,7 @@ Page({
     //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
     wx.showLoading({
       title: '刷新中...',
+      duration: 2000
     })
     this.getData();
   },
@@ -365,7 +366,7 @@ Page({
   getData() {
     let self = this;
     wx.request({
-      url: app.globalData.url + '/Show_inwork/',
+      url: app.globalData.url + '/Show_work/',
       /*待修改*/
       method: "GET",
       header: {

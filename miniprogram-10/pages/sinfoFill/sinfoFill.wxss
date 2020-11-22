@@ -1,15 +1,21 @@
 /* pages/infoFill/infoFill.wxss */
 .title {
-  font-family: "黑体";
-  font-weight: 1000;
+  font-family:"KaiTi";
+  font-weight: 900;
   font-size: 18px;
   text-align: center;
-  margin-top: 5px;
-  margin-bottom: 15px;
+  background: #F0F8FF;
+  height: 50px;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  color:#999;
 }
 
 .item {
-  margin-top: 1px;
+  margin-top: 50rpx;
+  display:flex; 
+  margin-left: 50rpx;
 }
 
 .item1 {
@@ -24,6 +30,20 @@
   margin-top: 1px;
   font-family: "微软雅黑";
   line-height: 10px;
+}
+
+.section{
+  margin-left:25rpx;
+}
+
+.section2{
+  margin-left:40rpx;
+  background: #fff;
+  border: 5rpx solid #FFE4E1;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  margin-right:50rpx;
+  margin-top:35rpx;
 }
 
 .section_gap {
@@ -41,17 +61,29 @@
 }
 
 .xian {
-  width: 90%;
-  background: #ccc;
-  height: 1rpx;
-  margin-left: 25rpx;
+  width: 85%;
+  background: #FFE4E1;
+  height: 3rpx;
+  margin-left: 35rpx;
+  margin-top: 15rpx;
   margin-bottom: 20rpx;
+}
+.xian2{
+  width: 30%;
+  background: #FFE4E1;
+  height: 3rpx;
+  margin-left: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.placeholder{
+  margin-top: 5rpx;
 }
 
 .jieshang {
   margin-left: 30rpx;
-  padding: 20rpx 0;
   font-size: 30rpx;
+  margin-top: 0;
 }
 
 .fb-type {
@@ -100,18 +132,26 @@ button {
 }
 
 .zhuce {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   margin-left: 20rpx;
-  margin-top: 20rpx;
+  margin-top: 15rpx;
 
 }
 
 .zhuce2 {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   margin-left: 20rpx;
   margin-right: 20rpx;
-  margin-top: 25rpx;
+  margin-top: 35rpx;
+}
 
+.line{
+  height: 10rpx;
+  background: #FFE4E1;
+}
+
+.shopstore{
+  margin-left:25rpx;
 }

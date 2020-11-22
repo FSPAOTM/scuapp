@@ -6,7 +6,7 @@
   <view class="login-from">  
   <form bindsubmit="formSubmit" class='form'>
   <view class="userTotal">
-    <image class="lock-img" src="/lock.png"></image>
+    <image class="lock-img" src="/yonghu.png"></image>
     <view class="yhm">用户名</view>
     <view class="userno">
     <!-- 学号 -->
@@ -46,7 +46,7 @@
     
     <view class="registerBtView">
         <navigator class="forgetPwd" url="../repwd1/repwd1">忘记密码？</navigator>
-        <navigator class="registerBt" url="../selectID/selectID">还没有账户？去注册</navigator>
+        <navigator class="registerBt" url="../selectID/selectID">没有账户？去注册</navigator>
     </view>
 
     </form>

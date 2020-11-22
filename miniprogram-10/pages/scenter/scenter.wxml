@@ -7,6 +7,7 @@
         </view>
 
 
+
 <view class="hr"></view>
 <view class='item' bindtap="infoModify">
   <image src="8.png" class="a1"/>
@@ -25,7 +26,7 @@
   </view>
 </view>
 
-<view class="hr"></view>
+
 
 <view class="line"></view>
 <view class="item">
@@ -43,6 +44,6 @@
     <text> ></text>
   </view>
 </view>
-<view class="hr"></view>
+<view class="line"></view>
 
 

@@ -1,33 +1,44 @@
 <!--pages/sbaoming/sbaoming.wxml-->
 
 <view>
-<view class="title">兼职详情</view>
+<view class="title">兼 职 详 情</view>
+<view class="line"></view>
+
+
 <form>
 <view class='item'>
+  <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
 <text class='a1' style="padding-left:50rpx;font-size:15px">兼职岗位：</text>
 <text class='right'>{{post}}</text>
+<view class="xian"></view>
 </view>
   
 
   <view class='item'>
+    <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
     <text class='a1' style="padding-left:50rpx;font-size:15px">工作时间：</text>
      <text class='right' >{{time}}</text>
+     <view class="xian"></view>
     </view>     
 
   
   <view class='item'>
+    <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
     <text class='a1' style="padding-left:50rpx;font-size:15px">工作地点:</text> 
     <text class='right'>{{detail}}</text>
+    <view class="xian"></view>
   </view>
     
   <view class='item'>
+    <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
     <text class='a1' style="padding-left:50rpx; font-size:15px">薪酬：</text>
      <text class='right'>{{salary}}</text>
+     <view class="xian"></view>
     </view>    
 
   <view class="section">
 <view class="jieshang" style="padding-left:30rpx;font-size:15px">职位描述</view>
-<view  class="xian"></view>
+<view class="xian2"></view>
 <view style=" height: 150px;">
 <text  style="font-size:30rpx; margin-left:30rpx;;"maxlength='200'>{{description}}</text>
 </view>
@@ -36,7 +47,7 @@
 
 <view class="section">
 <view class="jieshang" style="padding-left:30rpx;font-size:15px">招聘要求</view>
-<view  class="xian"></view>
+<view class="xian2"></view>
 <view style=" height: 150px;">
 
 <text style="font-size:30rpx;margin-left:30rpx" maxlength='200'>{{ask}}</text>
@@ -46,28 +57,32 @@
      
 
       <view class='item'>
+        <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
     <text class='a1' style="padding-left:50rpx;font-size:15px">招聘人数：</text> 
     <text class='right'>{{num}}</text>
-  
+    <view class="xian"></view>
   </view> 
 
   <view class='item'>
+    <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
     <text class='a1' style="padding-left:50rpx;font-size:15px">报名截止时间：</text> 
     <text class='right'>{{ddl}}</text>
-   
+    <view class="xian"></view>
   </view> 
 
   <view class='item'>
     <text class='a1' style="padding-left:50rpx;font-size:15px">备注：</text> 
     <text class='right'>{{ps}}</text>
-   
+    <view class="xian"></view>
   </view> 
 
   <view class='item'>
     <text class='a1' style="padding-left:50rpx;font-size:15px">已报名人数：</text> 
     <text class='right'>{{already}}</text>
   </view> 
+
  </form>
+
  <button style="margin-top:50rpx;" bindtap="reason" form-type="submit" hover-class='button-hover' class='su'>报名</button>
 </view>
 

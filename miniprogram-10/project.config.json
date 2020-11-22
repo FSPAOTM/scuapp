@@ -48,12 +48,6 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
     "plugin": {
       "list": []
     },
@@ -152,6 +146,102 @@
         {
           "name": "pages/sallJob/sallJob",
           "pathName": "pages/sallJob/sallJob",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/ccenter/ccenter",
+          "pathName": "pages/ccenter/ccenter",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cinfoFill/cinfoFill",
+          "pathName": "pages/cinfoFill/cinfoFill",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cjobModify/cjobModify",
+          "pathName": "pages/cjobModify/cjobModify",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cjobRelease/cjobRelease",
+          "pathName": "pages/cjobRelease/cjobRelease",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cjobShow/cjobShow",
+          "pathName": "pages/cjobShow/cjobShow",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/regCompany/regCompany",
+          "pathName": "pages/regCompany/regCompany",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/regManager/regManager",
+          "pathName": "pages/regManager/regManager",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/repwd1/repwd1",
+          "pathName": "pages/repwd1/repwd1",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/repwd1-1/repwd1-1",
+          "pathName": "pages/repwd1-1/repwd1-1",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/repwd2/repwd2",
+          "pathName": "pages/repwd2/repwd2",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sbaoming/sbaoming",
+          "pathName": "pages/sbaoming/sbaoming",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/scenter/scenter",
+          "pathName": "pages/scenter/scenter",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/selectID/selectID",
+          "pathName": "pages/selectID/selectID",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sinfoFill/sinfoFill",
+          "pathName": "pages/sinfoFill/sinfoFill",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sinfoShow/sinfoShow",
+          "pathName": "pages/sinfoShow/sinfoShow",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sreason/sreason",
+          "pathName": "pages/sreason/sreason",
           "scene": null
         }
       ]

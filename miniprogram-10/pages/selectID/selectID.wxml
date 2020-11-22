@@ -1,20 +1,27 @@
 <!--pages/selectID/selectID.wxml-->
 <view class="container">
-  <view class="pointText">请选择您的身份：</view>
+<view class="point">
+  <text class="pointText">请 选 择 您 的 身 份：</text>
+</view>
+<view class="line"></view>
+
+<image class="pick" src="pick.png"></image>
+
   <view class="Total">
     <button class="bTotal" hover-class="wsui-btn__hover_list" bindtap="tRegister">
-      <image class="Icon1" src="/教师.png"></image>
-      <view class="teacherText">教师</view>
-    </button>
-    <button class="bTotal" hover-class="wsui-btn__hover_list" bindtap="cRegister">
-      <image class="Icon2" src="/企业.png"></image>
-      <view class="companyText">企业</view>
+      <view class="teacherText">教  师</view>
     </button>
   </view>
+
+  <view class="Total">
+    <button class="bTotal" hover-class="wsui-btn__hover_list" bindtap="cRegister">
+      <view class="companyText">企  业</view>
+    </button>
+  </view>
+
   <view class="Total">
     <button class="bTotal" hover-class="wsui-btn__hover_list" bindtap="sRegister">
-      <image class="Icon3" src="/学生.png"></image>
-      <view class="studentText">学生</view>
+      <view class="studentText">学  生</view>
     </button>
   </view>
 </view>

@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/smyJob/smyJob",
+    "pages/login/login",
     "pages/ccenter/ccenter",
     "pages/cjobModify/cjobModify",
-    "pages/login/login",
     "pages/cjobRelease/cjobRelease",
     "pages/cfabu/cfabu",
     "pages/cinfoFill/cinfoFill",
@@ -16,7 +17,6 @@
     "pages/cworkspace/cworkspace",
     "pages/repwd1-1/repwd1-1",
     "pages/scenter/scenter",
-    "pages/smyJob/smyJob",
     "pages/sinfoFill/sinfoFill",
     "pages/cjobSelect/cjobSelect",
     "pages/cresumeReview/cresumeReview",

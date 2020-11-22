@@ -1,45 +1,14 @@
 /* pages/ccenter/ccenter.wxss */
-.bg {
-  height: 150px;
-  background-color: #d53e37;
-}
 
-.head {
-  display: flex;
-  flex-direction: column;
-}
 
-.headIcon {
-  display: flex;
-  justify-content: center;
-}
-
-.login {
-  display: flex;
-  color: #fff;
-  font-size: 15px;
-  margin-top: 15rpx;
-  justify-content: center;
-}
-
-.button {
-  margin: 10px;
-  font-size: 14px;
-}
-
-.head image {
-  border-radius: 50%;
-}
-
-.hr {
-  width: 100%;
-  height: 15px;
-  background-color: #f4f5f6;
-}
 
 .item {
   display: flex;
   flex-direction: row;
+  border-top: 20rpx solid #ededed;
+  color: #999;
+  line-height: 70rpx;
+  font-size: 28rpx;
 }
 
 .title {
@@ -47,6 +16,11 @@
   padding-bottom: 15px;
   padding-left: 15px;
   font-size: 15px;
+  position: relative;
+  height: 70rpx;
+  border-bottom: 1rpx solid #e9e9e9;
+  text-align: center;
+
 }
 
 .detail2 {
@@ -60,7 +34,7 @@
 
 .line {
   border: 1px solid #ccc;
-  opacity: 0.2;
+  opacity: 1;
 }
 
 
@@ -205,4 +179,27 @@ Page {
   width: 20px;
   height: 20px;
   margin: 20px;
+}
+
+.header{
+  position: relative;
+  height: 220rpx;
+  line-height: 120rpx;
+  padding:30rpx 30rpx 30rpx 180rpx;
+  box-sizing: border-box;
+  background: #FFF5EE;
+  font-size: 35rpx;
+  color: rgb(138, 138, 138);
+}
+.header .thumb{
+  position: absolute;
+  left: 30rpx;
+  top: 30rpx;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.header .about{
+  float: right;
 }

@@ -2,17 +2,22 @@
 <!--pages/cjobRelease/cjobRelease.wxml-->
 <view>
  
- <view class="title">兼职信息发布</view>
+ <view class="title">兼 职 信 息 发 布</view>
+ <view class="line"></view>
+
  <form bindsubmit="formSubmit">
    <!--简历-->
    <view class='item'>
+    <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
      <text class='a1' style="padding-left:50rpx;font-size:15px">兼职岗位</text>
      <text class="in" name="Name" value="{{Name}}" />
      <view class="xian"></view>
+    
    </view>
 
 
    <view class='item'>
+    <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
      <text class='a1' style="padding-left:50rpx;font-size:15px">工作时间</text>
      <input bindblur="blurjobtime" placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='请填写工作时间' class="in"
        name="jobtime" value="{{jobtime}}" />
@@ -20,6 +25,7 @@
    </view>
 
    <view class='item'>
+    <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
      <text class='a1' style="padding-left:50rpx;font-size:15px">工作所在地</text>
      <input bindblur="blurlocation" placeholder-class='placeholder' placeholder-style='font-size:12px;' maxlength='10' placeholder='请填写工作地点所在地区' class="in"
        name="location" value="{{location}}" />
@@ -27,6 +33,7 @@
    </view>
 
    <view class='item'>
+    <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
      <text class='a1' style="padding-left:50rpx;font-size:15px">工作详细地址</text>
      <input bindblur="blurdetail" placeholder-class='placeholder' placeholder-style='font-size:12px;' maxlength='60' placeholder='请填写工作详细地址' class="in"
        name="location" value="{{detail}}" />
@@ -36,11 +43,13 @@
 
    <view class="section">
      <view class="jieshang">职位描述</view>
+     <view class="line2"></view>
      <textarea bindblur="blurdescription" placeholder-style='font-size:28rpx;' style="font-size:30rpx;margin-left:50rpx" minlength='20' maxlength='200'
        placeholder="请输入相关工作内容等细节，(200字以内)" name="description" value="{{description}}" />
      </view>
 
      <view class='item'>
+      <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
      <text class='a1' style="padding-left:50rpx;font-size:15px">薪酬</text>
      <input bindblur="blursalary" placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='请填写将会给出的薪酬' class="in"
        name="salary" value="{{salary}}" />
@@ -49,11 +58,13 @@
 
    <view class="section">
      <view class="jieshang">招聘要求</view>
+     <view class="line2"></view>
      <textarea bindblur="blurask" placeholder-style='font-size:28rpx;' style="font-size:30rpx;margin-left:50rpx" minlength='20' maxlength='200'
        placeholder="请输入岗位要求等细节，(200字以内)" name="ask" value="{{ask}}" />
      </view>
 
    <view class='item'>
+    <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
      <text class='a1' style="padding-left:50rpx;font-size:15px">招聘人数</text>
      <input bindblur="blurnum" placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='请填写招聘人数' class="in"
        name="num" value="{{num}}" />
@@ -61,6 +72,7 @@
    </view>
 
    <view class='item'>
+    <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
      <text class='a1' style="padding-left:50rpx;font-size:15px">报名截止时间</text>
      <input bindblur="blurendingtime" placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='请填写报名截止时间，如2020-XX-XX' class="in"
        name="endingtime" value="{{endingtime}}" />

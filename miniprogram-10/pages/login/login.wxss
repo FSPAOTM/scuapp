@@ -2,7 +2,7 @@
 page{
   height: 100%;
   background-size:100%;
-  background-color:#f9fafa;
+  background-color:white;
 }
  
 .container {
@@ -19,14 +19,13 @@ page{
 /*登录图片*/
 .login-icon{
   flex: none;
-  margin-left: 120px;
-  margin-top: 100rpx;
+  margin-left: 85px;
+  margin-top: 130rpx;
 }
 .login-img{
-  width: 160rpx;
-  height: 160rpx;
-  border-radius: 80rpx;
-  opacity:0.5;
+  width: 140px;
+  height:140px;
+
 }
  
 /*表单内容*/
@@ -38,38 +37,38 @@ page{
 
  /*提示语*/
 .weui-input{
-  font-size: 13px;
+  font-size: 12px;
+  text-align: center;
 }
 
 /* 输入框 */
 .userno{
   width: 60%;
-  height: 25px;
+  height: 35px;
   margin: 0 auto;
-  border:1.5px solid #9E9E9E;
+  border:1px solid #9E9E9E;
   border-radius: 50rpx;
-  padding-left:10px;
-  padding-top:5px;
+  padding-top:10px;
 }
 
 .userpwd{
   width: 60%;
-  height: 25px;
+  height: 35px;
   margin: 0 auto;
-  border:1.5px solid #9E9E9E;
+  border:1px solid #9E9E9E;
   border-radius: 50rpx;
-  margin-top: 8px;
-  padding-left:10px;
-  padding-top:5px;
+  padding-top:10px;
 }
 
 .lock-img{
-  width:15%;
-  height: auto;
+  margin-top: 8px;
+  width: 25px;
+  height: 25px;
+  margin-right: 30rpx;
 }
 
 .yhm{
-  margin-top: 5px;
+  margin-top: 10px;
   font-size: 15px;
 }
 
@@ -86,6 +85,7 @@ page{
 .pwdTotal{
   display:flex;
   flex-direction: row;
+  margin-top: 20px;
 }
 
 /*按钮*/

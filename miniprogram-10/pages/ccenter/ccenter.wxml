@@ -1,13 +1,18 @@
 <!--pages/ccenter/ccenter.wxml-->
 <import src="template\tabbar.wxml"/> 
 <template is="tabBar" data="{{tabBar}}"/>
-<view class="summary">      
-        <image src="名称.png" class="avatar" />
-        <view class="nickname">{{name}}</view>
+<view class="header">
+        <!-- <image src="{{thumb}}" class="thumb"></image> -->
+        <view class="thumb">
+          <open-data type="userAvatarUrl"></open-data>
         </view>
+        <view class='nickname'>
+          <view class="nickname">{{name}}</view>
+        </view>
+        <!-- <text class="nickname">{{nickname}}</text> -->
+    </view>
 
-<view class="hr"></view>
-<view class='item' bindtap="infofill">
+    <view class='item' bindtap="infofill">
   <image src="信息.png" class="a1"/>
   <view class="title">企业信息完善</view>
   <view class="detail2">
@@ -24,7 +29,7 @@
   </view>
 </view>
 
-<view class="hr"></view>
+
 
 <view class="line"></view>
 <view class="item">
@@ -42,8 +47,4 @@
     <text> ></text>
   </view>
 </view>
-<view class="hr"></view>
-
-
-
 

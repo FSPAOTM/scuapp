@@ -75,12 +75,16 @@
 }
 
 .title{
-  font-family:"黑体" ;
-  font-weight: 1000;
-  font-size: 32rpx;
+  font-family:"KaiTi";
+  font-weight: 900;
+  font-size: 18px;
   text-align: center;
-  margin-top: 10px;
-  margin-bottom: 15px;
+  background: #F0F8FF;
+  height: 50px;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  color:#999;
 }
 
 .a1{
@@ -100,10 +104,17 @@ page{
 }
 
 .zhuce{
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     margin-left: 60rpx;
    
 }
 
+.line{
+  height: 10rpx;
+  background: #FFE4E1;
+}
 
+.item {
+  margin-top: 20rpx;
+}

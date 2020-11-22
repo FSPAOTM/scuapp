@@ -1,50 +1,60 @@
 <!--pages/cinfoFill/cinfoFill.wxml-->
 <!--企业信息完善表单-->
+
 <view>
-  <view class="title">企业信息完善</view>
+  <view class="title">企 业 信 息 完 善</view>
+  <view class="line"></view>
+
   <form bindsubmit="formSubmit">
     <view class='item'>
-      <text style="padding-left:30rpx">信用代码：</text>
-      <text class='right'>{{cno}}</text>
+      <text style="padding-left:40rpx;font-size:30rpx;">信用代码：</text>
+      <text style="padding-left:15rpx;font-size:28rpx;">{{cno}}</text>
     </view>
+ 
 
     <view class='item'>
-      <text style="padding-left:30rpx">联系电话：</text>
-      <input bindblur="blurphone" class='right' name="phone" value="{{phone}}"/>
+      <text style="padding-left:40rpx;font-size:30rpx;">联系电话：</text>
+      <input  style="padding-left:15rpx;font-size:28rpx;" bindblur="blurphone" class='right' name="phone" value="{{phone}}"/>
     </view>
-
+ 
 
     <view class='item'>
-      <text style="padding-left:30rpx"> 企业名称：</text>
-      <text class='right'>{{company}}</text>
+      <text style="padding-left:40rpx;font-size:30rpx;"> 企业名称：</text>
+      <text style="padding-left:15rpx;font-size:28rpx;">{{company}}</text>
     </view>
+    <view class="line2"></view>
 
     <view class='item'>
-      <text style="padding-left:30rpx">负责人：</text>
-      <input placeholder-class='placeholder' placeholder-style='font-size:30rpx;' placeholder='请填写负责人姓名' class='right' name="man" value="{{manname}}" bindblur="blurman" />
+      <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
+      <text style="padding-left:40rpx;font-size:30rpx;">负责人：</text>
+      <input placeholder-class='placeholder' placeholder-style='font-size:28rpx; padding-left:35px;' placeholder='请填写负责人姓名' class='right' name="man" value="{{manname}}" bindblur="blurman" />
     </view>
-
-
-    <view class='item'>
-      <text style="padding-left:30rpx"> 邮箱：</text>
-      <input placeholder-class='placeholder' placeholder-style='font-size:30rpx;' placeholder='请填写邮箱地址' class='right' name="email" value="{{email}}" bindblur="bluremail" />
-    </view>
+    <view class="line2"></view>
 
     <view class='item'>
-      <text style="padding-left:30rpx"> 公司地址：</text>
-      <input placeholder-class='placeholder' placeholder-style='font-size:30rpx;' placeholder='请填写公司详细地址' class='right' name="address" value="{{address}}" bindblur="blureadd" />
+      <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
+      <text style="padding-left:40rpx;font-size:30rpx;">邮箱</text>
+      <input placeholder-class='placeholder' placeholder-style='font-size:28rpx; padding-left:60px;' placeholder='请填写负责人姓名' class='right'  name="email" value="{{email}}" bindblur="bluremail" />
     </view>
+    <view class="line2"></view>
+
+    <view class='item'>
+      <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
+      <text style="padding-left:40rpx;font-size:30rpx;"> 公司地址：</text>
+      <input placeholder-class='placeholder' placeholder-style='font-size:28rpx; padding-left:15px;' placeholder='请填写公司详细地址' class='right' name="address" value="{{address}}" bindblur="blureadd" />
+    </view>
+    <view class="line2"></view>
 
     <view class="section">
-      <view style="padding-left:50rpx">公司业务</view>
+      <view style="padding-left:50rpx;font-size:30rpx;">公司业务</view>
       <view class="xian"></view>
-      <textarea placeholder-style='font-size:30rpx' style="font-size:30rpx; padding-left:50rpx; margin-top:10rpx;" maxlength='150' placeholder="请简述公司业务(150字以内)" name="contents" value="{{contents}}" bindblur="blurcontents" />
+      <textarea placeholder-style='font-size:28rpx' style="font-size:28rpx; padding-left:50rpx; margin-top:20rpx;" maxlength='150' placeholder="请简述公司业务(150字以内)" name="contents" value="{{contents}}" bindblur="blurcontents" />
       </view>
 
 <view class="section">
-  <view style="padding-left:50rpx" >经营状况</view>
+  <view style="padding-left:50rpx;font-size:30rpx;" >经营状况</view>
   <view  class="xian"></view>
-  <textarea placeholder-style='font-size:30rpx;'style="font-size:30rpx; padding-left:50rpx; margin-top:10rpx;" maxlength='150'   placeholder="请简述公司经营状况(150字以内)" name="condition" value="{{condition}}" bindblur="blurcondition"/>
+  <textarea placeholder-style='font-size:28rpx;'style="font-size:30rpx; padding-left:50rpx; margin-top:20rpx;" maxlength='150'   placeholder="请简述公司经营状况(150字以内)" name="condition" value="{{condition}}" bindblur="blurcondition"/>
 
         </view>
    
