@@ -81,7 +81,8 @@ urlpatterns = [
     path('management_inWork_result_change/', views01.management_inWork_result_change, name='management_inWork_result_change'),
     path('work_examine/', views01.work_examine, name='work_examine'),
     path('interview_list/', views01.interview_list, name='interview_list'),
-
+    path('management_outWork_pass/', views01.management_outWork_pass, name='management_outWork_pass'),
+    #path('management_outWork_reject/', views01.management_outWork_reject, name='management_outWork_reject'),
 
 
 
