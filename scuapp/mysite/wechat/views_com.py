@@ -89,7 +89,7 @@ def Part_time_post(request):
 def Get_outwork_info(request):
     phone_num = request.GET.get('user')#获取全局变量
     com = Tbcompany.objects.get(phone_num=phone_num)
-    result = TboutWork.objects.all().filter(com_number=com)#获取对象
+    result = TboutWork.objects.filter(com_number=com)#获取对象
     plays = []
     for i in result:
         plays.append({'ow_number':i.ow_number,'post':i.ow_post,'time':str(i.w_time),'location':i.w_place,'detail':i.w_place_detail,'description':i.work,'salary':i.w_salary,'ask':i.w_reuire,'num':i.w_amount,'ddl':str(i.ddl_time),'ps':i.w_ps,'status':i.ow_status})
@@ -154,7 +154,36 @@ def Modify_outwork_info(request):
         return HttpResponse("请求错误")
 
 #cworkspace 企业端报名者显示功能
-@csrf_exempt
+# @csrf_exempt
+# def Show_applicant(request):
+#     if request.method == "GET":
+#         phone_num = request.GET.get('user')
+#         com_number = Tbcompany.objects.get(phone_num=phone_num).com_number
+#         outwork = TboutWork.objects.filter(com_number=com_number)
+#         for i in outwork:
+#             ow_number = i.ow_number
+#             result
+#         application = Tbapplication.objects.filter(stu=stu)
+#         plays = []
+#         for item in application:
+#             apply_status = item.apply_status
+#             if item.iw_number is not None:
+#                 iw_number = item.iw_number.iw_number
+#                 result = TbinWork.objects.filter(iw_number=iw_number)
+#                 for i in result:
+#                     plays.append({'type': '校内', 'title': i.iw_post, 'depart': i.iw_depart,'status': apply_status})
+#                 plays_json = json.dumps(plays, ensure_ascii=False)
+#             else:
+#                 result = TboutWork.objects.filter(ow_number=item.ow_number.ow_number)
+#                 for i in result:
+#                     user = TboutWork.objects.get(ow_number=i.ow_number)
+#                     com_number = user.com_number.com_number
+#                     com_name = Tbcompany.objects.get(com_number=com_number).com_name
+#                     plays.append({'type': '校外', 'title': i.ow_post, 'depart': com_name,'status': apply_status})
+#                 plays_json = json.dumps(plays, ensure_ascii=False)
+#         return HttpResponse(plays_json)
+#     else:
+#         return HttpResponse("请求错误")
 
 
 
