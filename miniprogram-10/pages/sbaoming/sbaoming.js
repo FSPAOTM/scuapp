@@ -35,15 +35,15 @@ Page({
     })
     var iw_number=-1
     var iw_number = wx.getStorageSync("iw_number");
+    wx.removeStorageSync("iw_number");
     this.setData({
       iw_number: iw_number
     })
     var type = wx.getStorageSync("type");
+    wx.removeStorageSync("type");
     this.setData({
       type: type
     })
-    console.log(this.data.ow_number)
-    console.log(this.data.iw_number)
     if(type == "校外"){
     wx.request({
       url: app.globalData.url + '/Show_outwork_detail/',

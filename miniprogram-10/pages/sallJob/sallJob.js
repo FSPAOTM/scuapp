@@ -273,8 +273,6 @@ Page({
     var that = this;
     var e = ev.currentTarget.dataset.index;
     var type = that.data.workinfo[e].type;
-    console.log(that.data.workinfo[e].ow_number)
-    console.log(that.data.workinfo[e].iw_number)
     if (that.data.workinfo[e].iw_number != "NULL") {
       var iw_number = that.data.workinfo[e].iw_number;
       console.log("++++++", ev, that)
