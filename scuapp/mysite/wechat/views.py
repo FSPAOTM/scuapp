@@ -330,6 +330,7 @@ def Show_outwork_detail(request):
         result = TboutWork.objects.get(ow_number=ow_number)
         ow_post = result.ow_post
         w_time = result.w_time
+        w_place = result.w_place
         w_place_detail = result.w_place_detail
         w_salary = result.w_salary
         work = result.work
@@ -341,6 +342,7 @@ def Show_outwork_detail(request):
         return HttpResponse(json.dumps(
             {"post": ow_post,
              "time": w_time,
+             "location":w_place,
              "detail": w_place_detail,
              "salary": w_salary,
              "description": work,
