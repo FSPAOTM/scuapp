@@ -153,49 +153,51 @@ def Modify_outwork_info(request):
     else:
         return HttpResponse("请求错误")
 
-#cworkspace 企业端报名者显示功能
-# @csrf_exempt
-# def Show_applicant(request):
-#     if request.method == "GET":
-#         phone_num = request.GET.get('user')
-#         com_number = Tbcompany.objects.get(phone_num=phone_num).com_number
-#         outwork = TboutWork.objects.filter(com_number=com_number)
-#         for i in outwork:
-#             ow_number = i.ow_number
-#             result
-#         application = Tbapplication.objects.filter(stu=stu)
-#         plays = []
-#         for item in application:
-#             apply_status = item.apply_status
-#             if item.iw_number is not None:
-#                 iw_number = item.iw_number.iw_number
-#                 result = TbinWork.objects.filter(iw_number=iw_number)
-#                 for i in result:
-#                     plays.append({'type': '校内', 'title': i.iw_post, 'depart': i.iw_depart,'status': apply_status})
-#                 plays_json = json.dumps(plays, ensure_ascii=False)
-#             else:
-#                 result = TboutWork.objects.filter(ow_number=item.ow_number.ow_number)
-#                 for i in result:
-#                     user = TboutWork.objects.get(ow_number=i.ow_number)
-#                     com_number = user.com_number.com_number
-#                     com_name = Tbcompany.objects.get(com_number=com_number).com_name
-#                     plays.append({'type': '校外', 'title': i.ow_post, 'depart': com_name,'status': apply_status})
-#                 plays_json = json.dumps(plays, ensure_ascii=False)
-#         return HttpResponse(plays_json)
-#     else:
-#         return HttpResponse("请求错误")
-
-
-
-#cworkspace 未调试未加URL
+#cworkspace 企业端报名者显示功能 返回岗位 报名者 未调试
 @csrf_exempt
-def Get_applicant_info(request):
-    result = Tbapplication.objects.all().filter(apply_status='待审核')#获取对象
-    plays = []
-    for i in result:
-        plays.append({'title':i.ow_post,'stu':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':'某公司','w_number':i.ow_number})
-    plays_json = json.dumps(plays,ensure_ascii=False)
-    return HttpResponse(plays_json)#转换为json格式
+def Show_applicant(request):
+    if request.method == "GET":
+        phone_num = request.GET.get('user')
+        com_number = Tbcompany.objects.get(phone_num=phone_num).com_number
+        outwork = TboutWork.objects.filter(com_number=com_number)
+        plays = []
+        for i in outwork:
+            ow_post = i.ow_post
+            ow_number = i.ow_number
+            result = Tbapplication.objects.filter(ow_number=ow_number).filter(apply_status='已报名')
+            for i in result:
+                plays.append({'ow_number': ow_number,'ow_post': ow_post, 'stu': i.stu.stu_id, 'name':i.stu.name})
+        plays_json = json.dumps(plays, ensure_ascii=False)
+        return HttpResponse(plays_json)
+    else:
+        return HttpResponse("请求错误")
+
+#cresumeReview 接口直接调用sinfoShow 简历显示功能 未调试
+
+#cresumeReview 点击接受后改变applystatus状态 未调试
+def Modify_applystatus(request):
+    if request.method == "POST":
+        stu_id = request.POST.get('stu_number')
+        ow_number = request.POST.get('ow_number')
+        Tbapplication.objects.filter(stu=stu_id,ow_number=ow_number).update(apply_status='表筛通过？表筛拒绝？')
+        return HttpResponse("修改成功")
+    else:
+        return HttpResponse("请求错误")
+
+#cinterview 企业面试时间申请 未写完 未加url
+@csrf_exempt
+def Company_apply_interviewtime(request):
+    if request.method == "POST":
+        ow_number = request.POST.get('ow_number')
+        ia_name = request.POST.get('Name')
+        phonenumber = request.POST.get('company')
+        a_time = request.POST.get('a_time')
+        ia_time = timezone.now()
+        TboutWork.objects.create(ia_time=ia_time, ia_name=ia_name, phonenumber=phonenumber,
+                                                             a_time=a_time, ow_number=ow_number)
+        return HttpResponse("请求成功")
+    else:
+        return HttpResponse("请求错误")
 
 #企业兼职信息状态修改界面 这个还没有加URL界面
 @csrf_exempt
@@ -209,20 +211,3 @@ def Stop_outwork(request):
         else:
             return HttpResponse("请求错误")
 
-#cinterview 企业面试时间申请 未调试 未写完
-@csrf_exempt
-def Company_apply_interviewtime(request):
-    if request.method == "POST":
-        account_num = request.POST.get('ManNumber')
-        account_name = request.POST.get('Name')
-        account_phone=request.POST.get('phoneNum')
-        passwd_1 = request.POST.get('password')
-        filterResult =Tbmanager.objects.filter(manager_id=account_num)
-        if len(filterResult) > 0:
-            return HttpResponse("用户已存在")
-        else:
-            user = Tbmanager.objects.create(manager_id=account_num, name=account_name, phonenumber=account_phone, password=passwd_1)
-            user.save()
-            return HttpResponse("注册成功")
-    else:
-        return HttpResponse("请求错误")

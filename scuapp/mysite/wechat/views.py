@@ -400,7 +400,7 @@ def Enroll_in_work(request):
         get_ow_number = request.POST.get('ow_number')
         user = TboutWork.objects.get(ow_number=get_ow_number)
         student = Tbstudent.objects.get(stu_id=stu)
-        application = Tbapplication.objects.create(ap_reson=ap_reson,ow_number=user,stu=student)
+        application = Tbapplication.objects.create(ap_reson=ap_reson,ap_time=timezone.now(),ow_number=user,stu=student)
         application.save()
         return HttpResponse("报名成功")
     else:
