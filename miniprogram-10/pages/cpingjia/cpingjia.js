@@ -1,49 +1,18 @@
-// pages/ccenter/ccenter.js
-const app = getApp();
+// pages/cpingjia/cpingjia.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    name: "",
-    phone: "",
-  },
 
-  infofill() {
-    wx.navigateTo({
-      url: '../cinfoFill/cinfoFill'
-    })
   },
-
-cpingjia(){
-  wx.navigateTo({
-    url: '../cpingjia/cpingjia'
-  })
-},
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.request({
-      url: app.globalData.url + '/Show_company_name/',
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      method: "POST",
-      data: {
-        phone: app.globalData.user,
-      },
-      success: (res) => {
-        if (res.statusCode == 200) {
-          console.log(res.data);
-          this.setData({
-            name: res.data.name,
-          })
-        }
-      }
-    })
+
   },
 
   /**
@@ -57,7 +26,7 @@ cpingjia(){
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    app.editTabBar1();  
+
   },
 
   /**

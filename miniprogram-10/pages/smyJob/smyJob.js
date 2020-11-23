@@ -84,28 +84,33 @@ Page({
       success: function (res) {
         console.log(res);
         console.log(res.data[0].status);
-        for (i = 0; i < cars.length; i++) {
+        var i;
+        for (i = 0; i < res.data.length; i++) {
         if (res.statusCode == 200) {
-          if (res.data.status == "已报名")  {
+          if (res.data[i].status == "已报名")  {
+            that.data.workinfo1.push(res.data[i])
             that.setData({
-              workinfo1: res.data
+              workinfo1: that.data.workinfo1
             })
-            console.log(that.data.workinfo1)
-          } else if (res.data.status == "面试中") /*待修改*/ {
+          } else if (res.data[i].status == "面试中")  {
+            that.data.workinfo2.push(res.data[i])
             that.setData({
-              workinfo2: res.data
+              workinfo2: that.data.workinfo2
             })
-          } else if (res.data.status == "已录用") /*待修改*/ {
+          } else if (res.data[i].status == "已录用"){
+            that.data.workinfo3.push(res.data[i])
             that.setData({
-              workinfo3: res.data
+              workinfo3: that.data.workinfo3
             })
-          } else if (res.data.status == "已到岗") /*待修改*/ {
+          } else if (res.data[i].status == "已到岗"){
+            that.data.workinfo4.push(res.data[i])
             that.setData({
-              workinfo4: res.data
+              workinfo4: that.data.workinfo4
             })
-          } else if (res.data.status == "已结算") /*待修改*/ {
+          } else if (res.data[i].status == "已结算"){
+            that.data.workinfo5.push(res.data[i])
             that.setData({
-              workinfo5: res.data
+              workinfo5: that.data.workinfo5
             })
           }
         }

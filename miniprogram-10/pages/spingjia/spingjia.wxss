@@ -1,0 +1,60 @@
+/* pages/spingjia/spingjia.wxss */
+.item {
+  display: flex;
+  flex-direction: row;
+  border-top: 20rpx solid #FFE4E1;
+  color: #999;
+  line-height: 70rpx;
+  font-size: 28rpx;
+}
+
+.title {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  font-size: 15px;
+  position: relative;
+  height: 70rpx;
+  border-bottom: 1rpx solid #e9e9e9;
+  text-align: center;
+
+}
+
+.detail2 {
+  font-size: 15px;
+  position: absolute;
+  right: 10px;
+  height: 50px;
+  line-height: 50px;
+  color: #888;
+}
+
+.line {
+  border: 1px solid #ccc;
+  opacity: 1;
+}
+
+.title2{
+  font-family:"KaiTi";
+  font-weight: 900;
+  font-size: 32rpx;
+  text-align: center;
+  background: #F0F8FF;
+  height: 50px;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  color:#999;
+}
+
+.line2{
+  height: 10rpx;
+  background: #FFE4E1;
+}
+
+.a1{
+  width: 23px;
+  height: 23px;
+  margin-left: 30px;
+  margin-top: 45rpx;
+}

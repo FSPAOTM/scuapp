@@ -15,15 +15,11 @@ Page({
     nickName: "",
     phoneNum: "",
     eMail: "",
-    mName: "",
-    mNick: "",
-    mPhone: "",
-    mEmail: "",
   },
 
   onLoad: function (e) {
     wx.request({
-      url: 'http://127.0.0.1:8000/wechat/Reset_show/',
+      url: app.globalData.url + '/Reset_show/',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
@@ -47,57 +43,59 @@ Page({
     })
   },
 
+  mName(e) {
+    this.setData({
+      name: e.detail.value
+    })
+  },
+
+  mNick(e) {
+    this.setData({
+      nickName: e.detail.value
+    })
+  },
+
+  mPhone(e) {
+    this.setData({
+      phoneNum: e.detail.value
+    })
+  },
+
+  mEmail(e) {
+    this.setData({
+      eMail: e.detail.value
+    })
+  },
+
   confirm1: function (e) {
-    wx.showModal({//有问题，查弹出框组件
-      title: '提示',
-      content: '是否确认退出',
-      success: function (res) {
-        if (res.confirm) {
-          // console.log('用户点击确定')
-          this.setData({
-            mName: e.detail//待修改部分
+    wx.request({
+      url: app.globalData.url + '/Reset_myinfo_name/',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      data: {
+        stuNumber: app.globalData.user,
+        name: this.data.name,
+      },
+      success: (res) => {
+        if (res.statusCode == 200) {
+          wx.showToast({
+            title: '修改成功',
+            icon: 'success',
+            duration: 1000
           })
-          console.log(this.data.mName)
-          wx.request({
-            url: 'http://127.0.0.1:8000/wechat/Reset_myinfo_name/',
-            header: {
-              "Content-Type": "application/x-www-form-urlencoded"
-            },
-            method: "POST",
-            data: {
-              stuNumber: app.globalData.user,
-              name: this.data.name,
-            },
-            success: (res) => {
-              if (res.statusCode == 200) {
-                wx.showToast({
-                  title: '修改成功',
-                  icon: 'success',
-                  duration: 1000
-                })
-              }
-              this.setData({
-                hiddenmodalput1: true,
-              })
-            }
-          })
-        } else if (res.cancel) {
           this.setData({
             hiddenmodalput1: true,
           })
         }
       }
     })
-
-
   },
 
   confirm2: function (e) {
-    this.setData({
-      nickName: this.data.mNick
-    })
     wx.request({
-      url: 'http://127.0.0.1:8000/wechat/Reset_myinfo_nickname/',
+      url: app.globalData.url + '/Reset_myinfo_nickname/',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
@@ -113,26 +111,23 @@ Page({
             icon: 'success',
             duration: 1000
           })
+          this.setData({
+            hiddenmodalput1: true,
+          })
         }
-        this.setData({
-          hiddenmodalput2: true,
-        })
       }
     })
   },
 
   confirm3: function (e) {
-    this.setData({
-      stuNumber: app.globalData.user,
-      phoneNum: this.data.mPhone
-    })
     wx.request({
-      url: 'http://127.0.0.1:8000/wechat/Reset_myinfo_phonenumber/',
+      url: app.globalData.url + '/Reset_myinfo_phonenumber/',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       method: "POST",
       data: {
+        stuNumber: app.globalData.user,
         phoneNum: this.data.phoneNum,
       },
       success: (res) => {
@@ -142,19 +137,15 @@ Page({
             icon: 'success',
             duration: 1000
           })
+          this.setData({
+            hiddenmodalput1: true,
+          })
         }
-        this.setData({
-          hiddenmodalput3: true,
-        })
       }
     })
   },
 
   confirm4: function (e) {
-    this.setData({
-      stuNumber: app.globalData.user,
-      eMail: this.data.mEmail
-    })
     wx.request({
       url: app.globalData.url + '/Reset_myinfo_e_mail/',
       header: {
@@ -162,19 +153,20 @@ Page({
       },
       method: "POST",
       data: {
+        stuNumber: app.globalData.user,
         eMail: this.data.eMail,
       },
       success: (res) => {
         if (res.statusCode == 200) {
           wx.showToast({
-            title: '绑定成功',
+            title: '修改成功',
             icon: 'success',
             duration: 1000
           })
+          this.setData({
+            hiddenmodalput1: true,
+          })
         }
-        this.setData({
-          hiddenmodalput4: true,
-        })
       }
     })
   },
@@ -241,20 +233,11 @@ Page({
 
     this.setData({
 
-      hiddenmodalput: true,
+      hiddenmodalput1: true,
+      hiddenmodalput2: true,
+      hiddenmodalput3: true,
+      hiddenmodalput4: true,
     });
-
-  },
-
-  //确认
-
-  confirm: function () {
-
-    this.setData({
-
-      hiddenmodalput: true,
-
-    })
 
   },
 

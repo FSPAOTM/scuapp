@@ -1,8 +1,6 @@
 <!--pages/cjobRelease/cjobRelease.wxml-->
 <view>
- 
- <view class="title">兼 职 信 息 发 布</view>
- <view class="line"></view>
+
 
 
  <form bindsubmit="formSubmit">
@@ -27,7 +25,7 @@
    <view class='item'>
     <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
      <text class='a1' style="padding-left:50rpx;font-size:15px">工作所在地</text>
-     <input bindblur="blurlocation" placeholder-class='placeholder' placeholder-style='font-size:12px;' maxlength='10' placeholder='请填写工作地点所在地区' class="in"
+     <input bindblur="blurlocation" placeholder-class='placeholder' placeholder-style='font-size:12px;' maxlength='10' placeholder='请填写工作地点所在地区，如"武侯区"' class="in"
        name="location" value="{{location}}" />
      <view class="xian"></view>
    </view>
@@ -44,8 +42,8 @@
    <view class="section">
      <view class="jieshang">职位描述</view>
      <view class="line2"></view>
-     <textarea bindblur="blurdescription" placeholder-style='font-size:12px;' style="font-size:12px;" minlength='20' maxlength='200'
-       placeholder="请输入相关工作内容等细节，(200字以内)" name="description" value="{{description}}" />
+     <textarea bindblur="blurdescription" placeholder-style='font-size:12px;' style="font-size:12px;margin-left:50rpx" minlength='20' maxlength='200'
+       placeholder="请输入相关工作内容等细节(200字以内)" name="description" value="{{description}}" />
      </view>
 
      <view class='item'>
@@ -60,23 +58,28 @@
 
      <view class="jieshang">招聘要求</view>
      <view class="line2"></view>
-     <textarea bindblur="blurask" placeholder-style='font-size:12px;' style="font-size:30rpx;margin-left:50rpx" minlength='20' maxlength='200'
-       placeholder="请输入岗位要求等细节，(200字以内)" name="ask" value="{{ask}}" />
+     <textarea bindblur="blurask" placeholder-style='font-size:12px;' style="font-size:12px;margin-left:50rpx" minlength='20' maxlength='200'
+       placeholder="请输入岗位要求等细节(200字以内)" name="ask" value="{{ask}}" />
      </view>
 
-   <view class='item'>
-    <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
-     <text class='a1' style="padding-left:50rpx;font-size:15px">招聘人数</text>
-     <input bindblur="blurnum" placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='请填写招聘人数' class="in"
+     <view class='item2'>
+    <image class="zhuce2" src="/pages/regCompany/企业注册.png"></image>
+     <text class='a' style="padding-left:50rpx;font-size:15px">招聘人数</text>
+     <input type="number" bindblur="blurnum" placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='请填写招聘人数' class="in2"
        name="num" value="{{num}}" />
-     <view class="xian"></view>
    </view>
+   <view class="xian"></view>
+
 
    <view class='item'>
     <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
      <text class='a1' style="padding-left:50rpx;font-size:15px">报名截止时间</text>
-     <input bindblur="blurendingtime" placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='请填写报名截止时间，如2020-XX-XX' class="in"
-       name="endingtime" value="{{endingtime}}" />
+     <picker  class="time" mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+    <view style="font-size:30rpx;">
+      {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+    </view>
+  </picker>
+
      <view class="xian"></view>
    </view>
 
@@ -86,8 +89,6 @@
        name="ps" value="{{ps}}" />
      <view class="xian"></view>
    </view>
-
- 
 
  <button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>发布</button>
 

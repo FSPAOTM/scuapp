@@ -1,0 +1,46 @@
+<!--pages/cfeedback/cfeedback.wxml-->
+
+<view class="service">
+  <!--评分-->
+  <view class='score'>
+    <view class='left'>
+      <text>评 分</text>
+    </view>
+    <view class='right'>
+       <view bindtap="starTap" data-index="{{index}}"  class="star" wx:for="{{userStars}}" wx:key="index">
+        <image src="{{item}}"></image>
+      </view>
+      <text class='rtxt'>{{wjxScore}}.0</text>
+    </view>
+  </view>
+</view>
+
+<view class="xian"></view>
+
+  <!--内容-->
+  <view class='content'>
+    <view class='left'>
+      <text>内 容</text>
+    </view>
+    <view class='right'>
+      <text bindtap='label' class="{{attitude===true ? 'labelColor':''}}" data-index="{{attitude}}">认真负责</text>
+      <text bindtap='label1' class="{{time===false? 'labelColor':''}}" data-index="{{time}}">态度端正</text>
+      <text bindtap='label2' class="{{efficiency===false?'labelColor':''}}" data-index="{{efficiency}}">联系及时</text>
+      <text bindtap='label3' class="{{environment===false?'labelColor':''}}" data-index="{{environment}}">吃苦耐劳</text>
+      <text bindtap='label4' class="{{professional===false?'labelColor':''}}" data-index="{{professional}}">工作能力强</text>
+    </view>
+  </view>
+  <view class="xian"></view>
+
+  
+<!--textarea-->
+<view class="conts">
+    <textarea class="areas" placeholder='更多评价请写在这里（最多200字）' placeholder-class='placeholder' minlength="{{min}}" maxlength="{{max}}" bindinput="inputs">
+       
+    </textarea>
+</view>
+<!--提交评价-->
+
+<view class="whole" style="padding-top:50rpx;padding-bottom:400rpx;">
+<button  form-type="submit" hover-class='button-hover'  bindtap="change">提交评价</button>
+    </view>

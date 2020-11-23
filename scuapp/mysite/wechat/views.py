@@ -248,7 +248,7 @@ def Reset_password(request):
     else:
         return HttpResponse("请求错误")
 
-#修改姓名 未调试
+#修改姓名
 @csrf_exempt
 def Reset_myinfo_name(request):
     if request.method == "POST":
@@ -259,7 +259,7 @@ def Reset_myinfo_name(request):
     else:
         return HttpResponse("请求错误")
 
-#修改昵称 未调试
+#修改昵称
 @csrf_exempt
 def Reset_myinfo_nickname(request):
     if request.method == "POST":
@@ -270,7 +270,7 @@ def Reset_myinfo_nickname(request):
     else:
         return HttpResponse("请求错误")
 
-#修改手机号码 未调试
+#修改手机号码
 @csrf_exempt
 def Reset_myinfo_phonenumber(request):
     if request.method == "POST":
@@ -285,7 +285,7 @@ def Reset_myinfo_phonenumber(request):
     else:
         return HttpResponse("请求错误")
 
-#修改邮箱 未调试
+#修改邮箱
 @csrf_exempt
 def Reset_myinfo_e_mail(request):
     if request.method == "POST":
@@ -310,21 +310,11 @@ def Show_work(request):
             user = TboutWork.objects.get(ow_number=i.ow_number)
             com_number = user.com_number.com_number
             com_name = Tbcompany.objects.get(com_number=com_number).com_name
-            plays.append({'type':'校外','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':com_name,'iw_number':'none','ow_number':i.ow_number})
+            plays.append({'type':'校外','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':com_name,'iw_number':'NULL','ow_number':i.ow_number})
     for i in result2:
         plays.append({'type':'校内','title':i.iw_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':i.iw_depart,'iw_number':i.iw_number})
     plays_json = json.dumps(plays,ensure_ascii=False)
     return HttpResponse(plays_json)
-
-#Salljob 校内兼职信息展示界面
-# @csrf_exempt
-# def Show_inwork(request):
-#     result2 = TbinWork.objects.all().filter(In_status='报名中')
-#     plays = []
-#     for i in result2:
-#         plays.append({'type':'校内','title':i.iw_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':i.iw_depart,'iw_number':i.iw_number})
-#     plays_json2 = json.dumps(plays,ensure_ascii=False)
-#     return HttpResponse(plays_json2)
 
 #Salljob 查询类型功能
 
@@ -340,6 +330,7 @@ def Show_outwork_detail(request):
         result = TboutWork.objects.get(ow_number=ow_number)
         ow_post = result.ow_post
         w_time = result.w_time
+        w_place = result.w_place
         w_place_detail = result.w_place_detail
         w_salary = result.w_salary
         work = result.work
@@ -351,6 +342,7 @@ def Show_outwork_detail(request):
         return HttpResponse(json.dumps(
             {"post": ow_post,
              "time": w_time,
+             "location":w_place,
              "detail": w_place_detail,
              "salary": w_salary,
              "description": work,
@@ -400,9 +392,13 @@ def Enroll_in_work(request):
         get_ow_number = request.POST.get('ow_number')
         user = TboutWork.objects.get(ow_number=get_ow_number)
         student = Tbstudent.objects.get(stu_id=stu)
-        application = Tbapplication.objects.create(ap_reson=ap_reson,ap_time=timezone.now(),ow_number=user,stu=student)
-        application.save()
-        return HttpResponse("报名成功")
+        filterResult1 = Tbapplication.objects.filter(stu=stu,ow_number=get_ow_number)
+        if len(filterResult1) > 0:
+            return HttpResponse("该学生已报名")
+        else:
+            application = Tbapplication.objects.create(ap_reson=ap_reson,ap_time=timezone.now(),ow_number=user,stu=student)
+            application.save()
+            return HttpResponse("报名成功")
     else:
         return HttpResponse("请求错误")
 
@@ -414,9 +410,13 @@ def Enroll_in_inwork(request):
         get_iw_number = request.POST.get('iw_number')
         user = TbinWork.objects.get(iw_number=get_iw_number)
         student = Tbstudent.objects.get(stu_id=stu)
-        application = Tbapplication.objects.create(iw_number=user,stu=student,apply_status='已报名')
-        application.save()
-        return HttpResponse("报名成功")
+        filterResult1 = Tbapplication.objects.filter(stu=stu, iw_number=get_iw_number)
+        if len(filterResult1) > 0:
+            return HttpResponse("该学生已报名")
+        else:
+            application = Tbapplication.objects.create(iw_number=user,stu=student,apply_status='已报名',ap_time=timezone.now())
+            application.save()
+            return HttpResponse("报名成功")
     else:
         return HttpResponse("请求错误")
 

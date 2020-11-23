@@ -1,0 +1,25 @@
+<!--pages/cpingjia/cpingjia.wxml-->
+
+<view class="title2">我 的 评 价</view>
+
+
+
+<view class='item' bindtap="infofill">
+  <image src="pj.png" class="a1"/>
+  <view class="title">已完成兼职的学生{{stu.pj}}</view>
+  <view class="detail2">
+    <text>></text>
+  </view>
+</view>
+
+
+<view class='item'>
+  <image src="pj.png" class="a1"/>
+  <view class="title">已完成兼职的学生{{stu.pj}}</view>
+  <view class="detail2">
+    <text>></text>
+  </view>
+</view>
+
+
+

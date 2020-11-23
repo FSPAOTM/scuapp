@@ -14,7 +14,7 @@
 <view class='new'>
   <image class="zhuce" src="repwd2.png"></image>
   <text>新密码</text>
-  <input password='true' name='newpwd' placeholder-style='font-size:28rpx;margin-left:40rpx;' placeholder='请输入新密码' bindblur="new"/>
+  <input password='true' name='newpwd' placeholder-style='font-size:28rpx;margin-left:40rpx;' placeholder='请输入8-18位新密码' bindblur="new"/>
   <view class="xian"></view>
 </view>
 

@@ -104,15 +104,16 @@ Page({
       focusPassword: false,
       password: e.detail.value
     })
+    let myreg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$]{8,18}$/;
     if (e.detail.value == "") {
       wx.showToast({
         title: '密码不能为空',
         icon: 'none',
         duration: 2000
       })
-    } else if (e.detail.value.length < 8) {
+    } else if (!myreg.test(e.detail.value)) {
       wx.showToast({
-        title: '密码不得少于8位',
+        title: '密码必须包含数字与字母，可以包含或不包含特殊符号！',
         icon: 'none',
         duration: 2000
       })

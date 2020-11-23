@@ -127,3 +127,42 @@ button {
 .placeholder{
   text-align: center;
 }
+
+.item2{
+  display:flex;
+  margin-bottom: 10px;
+}
+
+.a{
+  margin-top: 10rpx;
+  width: 120px;
+}
+
+.zhuce2{
+  width: 20px;
+  height: 20px;
+  margin-left: 60rpx;
+}
+
+.textarea{
+  height: 30px;
+  text-align: center;
+  margin-top: 15rpx;
+}
+
+.time{
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top:10px;   
+  margin-bottom:10px; 
+
+}
+
+.in2{
+  margin-top: 8px;
+  line-height: 20px;
+  font-size:12px;
+
+}
