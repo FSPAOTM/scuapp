@@ -82,10 +82,9 @@ urlpatterns = [
     path('work_examine/', views01.work_examine, name='work_examine'),
     path('interview_list/', views01.interview_list, name='interview_list'),
     path('management_outWork_pass/', views01.management_outWork_pass, name='management_outWork_pass'),
-    #path('management_outWork_reject/', views01.management_outWork_reject, name='management_outWork_reject'),
-
-
-
+    path('management_outWork_reject/', views01.management_outWork_reject, name='management_outWork_reject'),
+    path('outWork_reject_result/', views01.outWork_reject_result, name='outWork_reject_result'),
+    path('outWork_reject_result_send/', views01.outWork_reject_result_send, name='outWork_reject_result_send'),
 
 
 

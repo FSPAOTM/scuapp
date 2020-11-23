@@ -18,7 +18,7 @@
     <script src="../static/js/js3.js"></script>
     <script>
         function success(){
-            if(inr_phonenum.value != ""&& reject.value != ""&& result.value != "")
+            if(back_reason.value != "")
             alert("操作成功！")
         }
     </script>
@@ -32,14 +32,9 @@
     <form action="../outWork_reject_result/" method="post">
         <ul class="forminfo">
             <li><label>岗位编号</label><input name="ow_number" value="{{ ow_number }}" type="text" class="dfinput" readonly/><i>*</i></li>
-            <li><label>联系方式</label><input id="inr_phonenum" name="inr_phonenum" type="text" class="dfinput" required/><i>*</i></li>
-            <li><label>结果</label>
-                <select name="result" id="result" class="dfinput">
-                    <option value="未通过" selected>未通过</option>
-                    <option value="已通过">已通过</option>
-                </select><i>*（默认未通过）</i></li>
-            <li><label>打回理由</label><textarea name="reject" cols="" rows="" class="textinput" required></textarea></li>
-            <li><label>&nbsp</label><input name="保存" onclick="success()" type="submit" class="btn" value="保存"/><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><a href="../#/?submit_num={{ ow_number }}"><input name="" type="button" class="btn" value="发送"/></a></li>
+            <li><label>企业联系方式</label><input value="{{ c_phonenum }}" name="c_phonenum" type="text" class="dfinput" readonly/><i>*</i></li>
+            <li><label>打回理由</label><textarea name="back_reason" cols="" rows="" class="textinput" required>{{ back_reason }}</textarea><i>默认为“None”,修改后,请先保存,再发送</i></li>
+            <li><label>&nbsp</label><input name="保存" onclick="success()" type="submit" class="btn" value="保存"/><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><a href="../outWork_reject_result_send/?submit_num={{ ow_number }}"><input name="" type="button" class="btn" value="发送"/></a></li>
             <!--提交按钮绑定另一接口-->
         </ul>
     </form>

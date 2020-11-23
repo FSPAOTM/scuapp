@@ -4,9 +4,28 @@ from django.template import loader
 from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
+from threading import Timer
 from django.http import JsonResponse
 import json
 
+#报名结束状态生成（定时器自动更新）
+def info_status():
+    inlist = TbinWork.objects.filter(In_status='报名中')
+    for i in inlist:
+        iddl = (i.ddl_time - timezone.now()).days
+        inow = Tbapplication.objects.filter(iw_number=i.iw_number).count()
+        if iddl < 0 or inow >= int(i.w_amount):
+            TbinWork.objects.filter(iw_number=i.iw_number).update(In_status='报名结束')
+    outlist = TboutWork.objects.filter(ow_status="报名中")
+    for j in outlist:
+        oddl = (j.ddl_time - timezone.now()).days
+        if oddl < 0:
+            TboutWork.objects.filter(ow_number=j.ow_number).update(ow_status="报名结束")
+    #print("更新完毕")
+    t = Timer(10, info_status, ())
+    t.start()
+
+info_status()
 
 #后台管理界面
 
@@ -15,6 +34,7 @@ import json
 @csrf_exempt
 def index(request):
     return render(request, 'wechat/index.html')
+
 #首页内框架页
 @csrf_exempt
 def manage(request):
@@ -540,29 +560,47 @@ def management_outWork_pass(request):
     else:
         return render(request, 'wechat/manage_error.html')
 
-#校外兼职打回
+#校外兼职打回界面
+@csrf_exempt
+def management_outWork_reject(request):
+    ow_number = request.GET.get('reject_num')
+    outWork = TboutWork.objects.get(ow_number=ow_number)
+    if outWork.ow_status == "待审核" or outWork.ow_status == "已打回" :
+        c_phonenum = outWork.com_number.phone_num
+        back_reason = outWork.back_reason
+        return render(request, 'wechat/reject_result.html', {'ow_number': ow_number,'c_phonenum':c_phonenum,'back_reason': back_reason})
+    else:
+        return render(request, 'wechat/manage_error.html')
+
+#校外兼职打回理由生成(保存按钮）
 @csrf_exempt
 def outWork_reject_result(request):
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
-        inr_phonenum = request.POST.get('inr_phonenum')
-        result = request.POST.get('result')
-        reject = request.POST.get('reject')
-#        in_r_time = timezone.now()
-#        filterResult = TbinResult.objects.filter(ow_number=ow_number)
-#        inWork = TbinWork.objects.get(iw_number=iw_number)
-#        if len(filterResult) > 0:
-#            TbinResult.objects.filter(iw_number=iw_number).update(inr_phonenum=inr_phonenum, r_time=r_time,
-#                                                                  result=result, r_ps=r_ps,
-#                                                                  in_r_time=in_r_time)
-#        else:
-#            inworking = TbinResult.objects.create(inr_phonenum=inr_phonenum, r_time=r_time, result=result, r_ps=r_ps,
-#                                                  in_r_time=in_r_time, iw_number=inWork)
-#            inworking.save()
-#        result_list = TbinResult.objects.get(iw_number=inWork)
-#        return render(request, 'wechat/inwork_result_change.html', {'result_list': result_list})
-#    else:
-#        return HttpResponse("请求错误")
+        back_reason = request.POST.get('back_reason')
+        TboutWork.objects.filter(ow_number=ow_number).update(back_reason= back_reason)
+        outWork = TboutWork.objects.get(ow_number=ow_number)
+        c_phonenum = outWork.com_number.phone_num
+        back_reason = outWork.back_reason
+        return render(request, 'wechat/reject_result.html',
+                      {'ow_number': ow_number, 'c_phonenum': c_phonenum, 'back_reason': back_reason})
+    else:
+        return HttpResponse("请求错误")
+
+
+# 校外兼职打回理由生成(发送按钮）
+@csrf_exempt
+def outWork_reject_result_send(request):
+    ow_number = request.GET.get('submit_num')
+    outWork = TboutWork.objects.get(ow_number=ow_number)
+    if outWork.back_reason != "None":
+        TboutWork.objects.filter(ow_number=ow_number).update(ow_status="已打回")
+        outwork_list = TboutWork.objects.filter(Q(ow_status="待审核") | Q(ow_status="已打回"))
+        return render(request, 'wechat/work_examine.html', {'outwork_list': outwork_list})
+    else:
+        return render(request, 'wechat/manage_error.html')
+
+
 
 
 #学生返回理由 from HHL
