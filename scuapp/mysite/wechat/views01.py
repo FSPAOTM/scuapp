@@ -415,7 +415,7 @@ def inwork_stu_ifo(request):
         dictionary["major"] = student.major
         dictionary["pov_identity"] = student.pov_identity
         dictionary["e_mail"] = student.e_mail
-        if inWork.In_status== "报名中" or inWork.In_status == "中止":
+        if inWork.In_status== "报名中" or inWork.In_status == "中止" or inWork.In_status == "报名结束":
             dictionary["s_sure"] = "未通知"
         else:
             application= Tbapplication.objects.filter(iw_number=iw_number).get(stu=stu_id)
@@ -461,9 +461,13 @@ def management_inworking_search(request):
 def inwork_result(request):
     iw_number = request.GET.get("result_num")
     inwork = TbinWork.objects.get(iw_number=iw_number)
-
     if inwork.In_status == "报名结束" or inwork.In_status == "结果通知中":
-        return render(request, 'wechat/inwork_result.html', {'iw_number': iw_number})
+        filterResult = TbinResult.objects.filter(iw_number=inwork)
+        if len(filterResult) > 0:
+            result_list = TbinResult.objects.get(iw_number=inwork)
+            return render(request, 'wechat/inwork_result_change.html', {'result_list': result_list})
+        else:
+            return render(request, 'wechat/inwork_result.html', {'iw_number': iw_number})
     else:
         return render(request, 'wechat/manage_error.html')
 
@@ -477,10 +481,10 @@ def management_inWork_result(request):
         result = request.POST.get('result')
         r_ps = request.POST.get('r_ps')
         in_r_time = timezone.now()
-        filterResult = TbinResult.objects.filter(iw_number=iw_number)
         inWork = TbinWork.objects.get(iw_number=iw_number)
+        filterResult = TbinResult.objects.filter(iw_number=inWork)
         if len(filterResult) > 0:
-            TbinResult.objects.filter(iw_number=iw_number).update(inr_phonenum=inr_phonenum, r_time=r_time, result=result, r_ps=r_ps,
+            TbinResult.objects.filter(iw_number=inWork).update(inr_phonenum=inr_phonenum, r_time=r_time, result=result, r_ps=r_ps,
                                       in_r_time=in_r_time)
         else:
             inworking = TbinResult.objects.create(inr_phonenum=inr_phonenum, r_time=r_time, result=result, r_ps=r_ps,
@@ -530,9 +534,9 @@ def management_inWork_result_change(request):
         r_ps = request.POST.get('r_ps')
         in_r_time = timezone.now()
         inWork = TbinWork.objects.get(iw_number=iw_number)
-        TbinResult.objects.filter(iw_number=iw_number).update(inr_phonenum=inr_phonenum, r_time=r_time, result=result, r_ps=r_ps,
+        TbinResult.objects.filter(iw_number=inWork).update(inr_phonenum=inr_phonenum, r_time=r_time, result=result, r_ps=r_ps,
                                       in_r_time=in_r_time)
-        result_list = TbinResult.objects.get(iw_number=iw_number)
+        result_list = TbinResult.objects.get(iw_number=inWork)
         return render(request, 'wechat/inwork_result_change.html', {'result_list': result_list})
     else:
         return HttpResponse("请求错误")
