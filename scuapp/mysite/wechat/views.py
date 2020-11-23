@@ -408,9 +408,13 @@ def Enroll_in_inwork(request):
         get_iw_number = request.POST.get('iw_number')
         user = TbinWork.objects.get(iw_number=get_iw_number)
         student = Tbstudent.objects.get(stu_id=stu)
-        application = Tbapplication.objects.create(iw_number=user,stu=student,apply_status='已报名',ap_time=timezone.now())
-        application.save()
-        return HttpResponse("报名成功")
+        filterResult1 = Tbapplication.objects.filter(stu=stu, iw_number=get_iw_number)
+        if len(filterResult1) > 0:
+            return HttpResponse("该学生已报名")
+        else:
+            application = Tbapplication.objects.create(iw_number=user,stu=student,apply_status='已报名',ap_time=timezone.now())
+            application.save()
+            return HttpResponse("报名成功")
     else:
         return HttpResponse("请求错误")
 
