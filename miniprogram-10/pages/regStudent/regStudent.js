@@ -52,9 +52,11 @@ Page({
       focusRePassword: true
     })
   },
+
   blurPhoneNum: function (e) {
     this.setData({
-      focusPhoneNum: false
+      focusPhoneNum: false,
+      phoneNum:e.detail.value
     })
     let myreg = /^1[3456789]\d{9}$/;
     if (e.detail.value == "") {
@@ -74,7 +76,8 @@ Page({
 
   blurStuNumber: function (e) {
     this.setData({
-      focusStuNumber: false
+      focusStuNumber: false,
+      StuNumber:e.detail.value
     })
     let myreg = /^(20)\d{11}$/;
     if (e.detail.value == "") {
@@ -93,9 +96,11 @@ Page({
     app.globalData.stuNumber = e.detail.value;
     console.log(app.globalData.stuNumber);
   },
+
   blurName: function (e) {
     this.setData({
-      focusName: false
+      focusName: false,
+      Name:e.detail.value
     })
     if (e.detail.value == "") {
       wx.showToast({
@@ -105,9 +110,11 @@ Page({
       })
     }
   },
+
   blurNickName: function (e) {
     this.setData({
-      focusNickName: false
+      focusNickName: false,
+      NickName:e.detail.value
     })
     if (e.detail.value == "") {
       wx.showToast({
@@ -120,26 +127,30 @@ Page({
 
   blurPassword: function (e) {
     this.setData({
-      focusPassword: false
+      focusPassword: false,
+      password:e.detail.value
     })
+    let myreg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$]{8,18}$/;
     if (e.detail.value == "") {
       wx.showToast({
         title: '密码不能为空',
         icon: 'none',
         duration: 2000
       })
-    } else if (e.detail.value.length < 8) {
+    } else if (!myreg.test(e.detail.value)) {
       wx.showToast({
-        title: '密码不得少于8位',
+        title: '密码必须包含数字与字母，可以包含或不包含特殊符号！',
         icon: 'none',
         duration: 2000
       })
     }
   },
+
   blurRePassword: function (e) {
     console.log(this.data.password);
     this.setData({
-      focusRePassword: false
+      focusRePassword: false,
+      rePassword:e.detail.value
     })
     if (e.detail.value == "") {
       wx.showToast({
@@ -174,7 +185,6 @@ Page({
         },
         success: (res) => {
           console.log(res);
-          console.log(this.data.stuNumber);
           if (res.statusCode == 200) {
             this.setData({
               result: res.data

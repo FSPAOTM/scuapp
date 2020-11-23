@@ -16,7 +16,7 @@
     <view class='item' style="display:flex;">
       <image class="zhuce" src="简历3.png"></image>
       <text class='a1' style="padding-left:30rpx;font-size:15px;margin-top:8rpx;">年龄:</text>
-      <input bindblur="blurage" placeholder-class='placeholder' placeholder-style='font-size:13px;'
+      <input type="number" bindblur="blurage" placeholder-class='placeholder' placeholder-style='font-size:13px;'
         placeholder='请填写真实年龄' class="in" name="age" value="{{age}}" />
     </view>
     <view class="xian"></view>

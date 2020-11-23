@@ -21,7 +21,7 @@
 </view>
 <view class="line"></view>
 
-<view class='item'>
+<view class='item' bindtap="cpingjia">
   <image src="评价.png" class="a1"/>
   <view class="title">评价</view>
   <view class="detail2">

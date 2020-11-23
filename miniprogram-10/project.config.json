@@ -242,6 +242,18 @@
         {
           "name": "pages/sreason/sreason",
           "pathName": "pages/sreason/sreason",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/regStudent/regStudent",
+          "pathName": "pages/regStudent/regStudent",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sinfoModify/sinfoModify",
+          "pathName": "pages/sinfoModify/sinfoModify",
           "scene": null
         }
       ]

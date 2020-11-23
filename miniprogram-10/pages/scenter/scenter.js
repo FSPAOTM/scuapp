@@ -9,8 +9,8 @@ Page({
    */
   data: {
     //hasUserInfo: openid == "",
-    sno:"",
-    name:"",
+    sno: "",
+    name: "",
   },
 
   /**
@@ -44,9 +44,15 @@ Page({
   },
 
   infoFill() {
-      wx.navigateTo({
-        url: '../sinfoShow/sinfoShow'
-      })
+    wx.navigateTo({
+      url: '../sinfoShow/sinfoShow'
+    })
+  },
+
+  spingjia() {
+    wx.navigateTo({
+      url: '../spingjia/spingjia'
+    })
   },
 
   /**
@@ -60,7 +66,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    app.editTabBar();  
+    app.editTabBar();
   },
 
   /**

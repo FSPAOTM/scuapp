@@ -14,7 +14,7 @@
 
     <view class='item'>
       <text style="padding-left:40rpx;font-size:30rpx;">联系电话：</text>
-      <input  style="padding-left:15rpx;font-size:28rpx;" bindblur="blurphone" class='right' name="phone" value="{{phone}}"/>
+      <input type="number" style="padding-left:15rpx;font-size:28rpx;" bindblur="blurphone" class='right' name="phone" value="{{phone}}"/>
     </view>
  
 
