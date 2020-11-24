@@ -84,6 +84,7 @@ urlpatterns = [
     path('notice_send/', views01.notice_send, name='notice_send'),
     path('back_reason/', views01.back_reason, name='back_reason'),
     path('interview_result/', views01.interview_result, name='interview_result'),
+    path('stu_result/', views01.stu_result, name='stu_result'),
     path('management_outWork_pass/', views01.management_outWork_pass, name='management_outWork_pass'),
     path('management_outWork_reject/', views01.management_outWork_reject, name='management_outWork_reject'),
     path('outWork_reject_result/', views01.outWork_reject_result, name='outWork_reject_result'),

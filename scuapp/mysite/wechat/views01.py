@@ -121,6 +121,10 @@ def interview_result(request):
     interview_result = TbinterviewResult.objects.all()
     return render(request, 'wechat/interview_result.html', {'interview_result': interview_result})
 
+#面试结果界面
+def stu_result(request):
+    return render(request, 'wechat/stu_result.html', {'stu_result': stu_result})
+
 
 #功能接口
 #登录管理者
