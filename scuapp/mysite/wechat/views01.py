@@ -108,6 +108,14 @@ def interview_list(request):
     interview_list = TbinterviewApply.objects.all()
     return render(request, 'wechat/interview_list.html', {'interview_list': interview_list})
 
+#面试信息通知界面 HHL
+def notice_send(request):
+    return render(request, 'wechat/notice_send.html')
+
+#面试信息打回 HHL
+def back_reason(request):
+    return render(request, 'wechat/back_reason.html')
+
 
 #功能接口
 #登录管理者
@@ -541,16 +549,6 @@ def management_inWork_result_change(request):
     else:
         return HttpResponse("请求错误")
 
-#发送面试时间 from HHL
-def interviewTime_send(request):
-    ia_number = request.GET.get('result_num')
-    interview = TbinterviewApply.objects.get(ia_number=ia_number)
-
-    #if interview.apply_status == "待审核":
-
-    #else:
-        #return render(request, 'wechat/manage_error.html')
-
 
 #校外兼职通过
 @csrf_exempt
@@ -605,11 +603,6 @@ def outWork_reject_result_send(request):
         return render(request, 'wechat/manage_error.html')
 
 
-
-
-#学生返回理由 from HHL
-def stu_feedback(request):
-    ia_number = request.GET.get('ia_num')
 
 
 

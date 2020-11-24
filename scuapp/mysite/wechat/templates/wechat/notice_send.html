@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>面试信息通知</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../static/wechat/css/font.css">
+    <link rel="stylesheet" href="../../static/wechat/css/xadmin.css">
+    <link href="../../static/wechat/css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../static/wechat/js/js1.js"></script>
+    <script type="text/javascript" src="../../static/wechat/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../static/wechat/js/xadmin.js"></script>
+    <script src="../static/js/js2.js"></script>
+    <script src="../static/js/js3.js"></script>
+    <script>
+        function success(){
+            if(inr_phonenum.value != ""&& r_time.value != ""&& result.value != "")
+            alert("操作成功！")
+        }
+    </script>
+</head>
+
+<body>
+    <div class="formbody">
+        <a href="../interview_list/"><button class="layui-btn" >返回</button></a>
+    <div class="formtitle"><span>面试信息通知（带*为必填）</span></div>
+
+     <form action="#" method="post">
+        <ul class="forminfo">
+            <li><label>面试编号</label><input name="i_number" value="{{ result_list.iw_number.iw_number }}" type="text" class="dfinput" readonly/><i>*</i></li>
+            <li><label>申请编号</label><input id="ia_number" name="ia_number" value="{{ result_list.inr_phonenum }}" type="text" class="dfinput" readonly/><i>*</i></li>
+            <li><label>面试时间</label><input id="i_time" name="i_time" value="{{ result_list.r_time }}"type="text" class="dfinput" required/><i>*（如：2020.11.10(周二）16:00）</i></li>
+            <li><label>面试地点</label><input id="i_address" name="i_address" type="text" class="dfinput" required/><i>*</i></li>
+            <li><label>&nbsp</label><input name="保存" onclick="success()" type="submit" class="btn" value="保存"/><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><a href="../inwork_result_submit/?submit_num={{ result_list.iw_number.iw_number }}"><input name="" type="button" class="btn" value="发送"/></a></li>
+
+        </ul>
+    </form>
+
+
+</div>
+
+</body>
+
+</html>

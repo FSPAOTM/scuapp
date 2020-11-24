@@ -51,7 +51,9 @@
             <th>申请时间</th>
             <th>申请状态</th>
             <th>发送</th>
-            <th>打回理由</th>
+            <th>打回</th>
+            <th>学生确认</th>
+            <th>企业确认</th>
           </tr>
         </thead>
         <tbody>
@@ -69,9 +71,13 @@
             <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.apply_status }}</span></td>
             <td class="td-status">
-              <a href="../interviewTime_send/?result_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">点击发送</span></a></td>
+              <a href="../notice_send/?result_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">点击发送</span></a></td>
             <td class="td-status">
-              <a href="../stu_feedback/?ia_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">点击查看</span></a></td>
+              <a href="../back_reason/?ia_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">打回</span></a></td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.s_sure }}</span></td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.c_sure }}</span></td>
         </tr>
         {% endfor %}
         </tbody>
