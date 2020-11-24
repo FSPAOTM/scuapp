@@ -1,7 +1,7 @@
 from django.shortcuts import HttpResponse,render
 from django.utils import timezone
 from django.template import loader
-from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply
+from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply, TbinterviewResult
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 from threading import Timer
@@ -115,6 +115,11 @@ def notice_send(request):
 #面试信息打回 HHL
 def back_reason(request):
     return render(request, 'wechat/back_reason.html')
+
+#面试结果界面
+def interview_result(request):
+    interview_result = TbinterviewResult.objects.all()
+    return render(request, 'wechat/interview_result.html', {'interview_result': interview_result})
 
 
 #功能接口
