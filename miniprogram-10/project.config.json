@@ -254,6 +254,24 @@
         {
           "name": "pages/sinfoModify/sinfoModify",
           "pathName": "pages/sinfoModify/sinfoModify",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/spingjia/spingjia",
+          "pathName": "pages/spingjia/spingjia",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sfeedback/sfeedback",
+          "pathName": "pages/sfeedback/sfeedback",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cpingjia/cpingjia",
+          "pathName": "pages/cpingjia/cpingjia",
           "scene": null
         }
       ]

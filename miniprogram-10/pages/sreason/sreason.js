@@ -1,5 +1,5 @@
 // pages/sreason/sreason.js
-const app=getApp();
+const app = getApp();
 Page({
 
   /**
@@ -26,7 +26,7 @@ Page({
     })
   },
 
-  formsubmit:function(e) {
+  formsubmit: function (e) {
     wx.request({
       url: app.globalData.url + '/Enroll_in_work/',
       method: "POST",
@@ -35,15 +35,26 @@ Page({
       },
       data: {
         ow_number: this.data.ow_number,
-        reason:this.data.reason,
-        user:app.globalData.user,
+        reason: this.data.reason,
+        user: app.globalData.user,
       },
       success: (res) => {
         /*console.log(res.data);*/
         if (res.statusCode == 200) {
-          if(res.data=="报名成功"){
+          if (res.data == "报名成功") {
             wx.showToast({
               title: '报名成功',
+              icon: 'success',
+              duration: 2000
+            })
+            setTimeout(function () {
+              wx.switchTab({
+                url: '../smyJob/smyJob',
+              })
+            }, 2000)
+          } else if (res.data == "该学生已报名") {
+            wx.showToast({
+              title: '请勿重复报名！',
               icon: 'success',
               duration: 2000
             })

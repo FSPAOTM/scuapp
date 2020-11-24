@@ -1,4 +1,5 @@
 // pages/cworkspace/cworkspace.js
+const app = getApp();
 Page({
 
   /**
@@ -16,6 +17,7 @@ Page({
     idArr: [
 
     ],
+    workinfo:[],
     details: [{
         position: 'XXX职位',
         title: '王雨欣 2018141093040',
@@ -47,7 +49,7 @@ Page({
       })
     }
   },
-  
+
   checkCor: function () {
     if (this.data.currentTab > 4) {
       this.setData({
@@ -65,17 +67,62 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-  /** 
-   * 获取系统信息,系统宽高
-   */
-  wx.getSystemInfo({
-    success: function (res) {
-      that.setData({
-        winWidth: res.windowWidth,
-        winHeight: res.windowHeight
-      });
-    }
-  });
+    /** 
+     * 获取系统信息,系统宽高
+     */
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          winWidth: res.windowWidth,
+          winHeight: res.windowHeight
+        });
+      }
+    });
+    wx.request({
+      url: app.globalData.url + '/Show_myjob/',//待修改
+      header: {
+        'Content-Type': 'application/json'
+      },
+      method: "GET",
+      data: {
+        user: app.globalData.user
+      },
+      success: function (res) {
+        console.log(res);
+        console.log(res.data[0].status);
+        var i;
+        for (i = 0; i < res.data.length; i++) {
+        if (res.statusCode == 200) {
+          if (res.data[i].status == "已报名")  {
+            that.data.workinfo1.push(res.data[i])
+            that.setData({
+              workinfo1: that.data.workinfo1
+            })
+          } else if (res.data[i].status == "未通过")  {
+            that.data.workinfo2.push(res.data[i])
+            that.setData({
+              workinfo2: that.data.workinfo2
+            })
+          } else if (res.data[i].status == "已通过"){
+            that.data.workinfo3.push(res.data[i])
+            that.setData({
+              workinfo3: that.data.workinfo3
+            })
+          } else if (res.data[i].status == "已录用"){
+            that.data.workinfo4.push(res.data[i])
+            that.setData({
+              workinfo4: that.data.workinfo4
+            })
+          } else if (res.data[i].status == "已结算"){
+            that.data.workinfo5.push(res.data[i])
+            that.setData({
+              workinfo5: that.data.workinfo5
+            })
+          }
+        }
+      }
+      }
+    });
   },
 
   itemSelected: function (e) {
@@ -98,7 +145,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    app.editTabBar1();  
+    app.editTabBar1();
   },
 
   /**

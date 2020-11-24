@@ -1,8 +1,12 @@
 {
   "pages": [
+    "pages/ccenter/ccenter",
+    "pages/cpingjia/cpingjia",
+    "pages/spingjia/spingjia",
+    "pages/cfeedback/cfeedback",
+    "pages/sfeedback/sfeedback",
     "pages/smyJob/smyJob",
     "pages/login/login",
-    "pages/ccenter/ccenter",
     "pages/cjobModify/cjobModify",
     "pages/cjobRelease/cjobRelease",
     "pages/cfabu/cfabu",
