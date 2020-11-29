@@ -87,6 +87,28 @@
 
   </form>
 
-  <button style="margin-top:50rpx;" bindtap="reason" form-type="submit" hover-class='button-hover'
-    class='su'>报名</button>
+  <!--底部按钮的背景层-->
+  <view class="baise"></view>
+ <!--底部按钮-->
+ <view class="anniu">
+  <button formType="submit" class="btbdstk" bindtap="resetSalaryBtnClick" >
+    <image class="image" src="pj.png"></image>
+   <view class="bdstk" >
+    <text >评价</text> 
+   </view>
+  </button>
+  <button formType="submit" class="btbdstk" bindtap="resetSalaryBtnClick" >
+    <image class="image2" src="lx.png"></image>
+   <view class="bdstk2" >
+    <text >联系企业</text> 
+   </view>
+  </button>
+  <button formType="submit" disabled="{{disabled}}" bindtap="reason" class="btbdstk" >
+   <view class="sqdzk">
+    <text>报 名</text>
+   </view>
+  </button>
+  </view>
+
+
 </view>

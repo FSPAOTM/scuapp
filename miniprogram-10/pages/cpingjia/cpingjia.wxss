@@ -1,61 +1,73 @@
-/* pages/cpingjia/cpingjia.wxss */
+/* pages/pingjia/pingjia.wxss */
 
-.item {
+.message-list{
+  /* background-color:#f2f2f2; */
+  display: flex;
+  flex-direction: column;
+}
+
+.user-content{
+  margin-left: 40rpx;
+  display: flex;
+  flex-direction: column;
+}
+.header-icon{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 80rpx;
+  margin-left: 20rpx;
+  margin-top: 26rpx;
+}
+.firstline{
   display: flex;
   flex-direction: row;
-  border-top: 20rpx solid #FFE4E1;
-  color: #999;
-  line-height: 70rpx;
-  font-size: 28rpx;
 }
-
-.title {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 15px;
-  font-size: 15px;
-  position: relative;
-  height: 70rpx;
-  border-bottom: 1rpx solid #e9e9e9;
-  text-align: center;
-
-}
-
-.detail2 {
-  font-size: 15px;
-  position: absolute;
-  right: 10px;
-  height: 50px;
-  line-height: 50px;
-  color: #888;
-}
-
-.line {
-  border: 1px solid #ccc;
-  opacity: 1;
-}
-
-.title2{
-  font-family:"KaiTi";
-  font-weight: 900;
-  font-size: 32rpx;
-  text-align: center;
-  background: #F0F8FF;
-  height: 50px;
+.apart{
+  margin-left: 30rpx;
   display: flex;
-  justify-content:center;
-  align-items:center;
-  color:#999;
+  flex-direction: row;
+  width: 400rpx;
+  font-size: 26rpx;
+  margin-top: 26rpx;
+  font-weight: 400;
+  color: #aeaeae;
 }
 
-.line2{
-  height: 10rpx;
-  background: #FFE4E1;
+.time{
+  display: flex;
+  width: 60rpx;
+  font-size: 24rpx;
+  margin-top: 36rpx;
+  color: #aeaeae;
+  margin-left: 140rpx;
 }
 
-.a1{
-  width: 23px;
-  height: 23px;
-  margin-left: 30px;
-  margin-top: 45rpx;
+.time-num{
+margin-right: 200rpx; 
 }
+
+/*内容第二行*/
+.secondline{
+  display: flex;
+  flex-direction: row;
+}
+/*对话框消息内容*/
+.dialog{
+  width: 545rpx;
+  font-size: 28rpx;
+  margin-left: 30rpx;
+  margin-top: 15rpx;
+}
+
+
+/*分割线*/
+.linecut{
+  width: 100%;
+  height: 2rpx;
+  background-color: #F2F2F2;
+  margin-top: 26rpx;
+}
+
+
+
+

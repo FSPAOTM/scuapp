@@ -78,6 +78,14 @@
   </swiper-item>
  
   <swiper-item>
+
+    <view class="firstView" catchtouchmove="setTouchMove" catchtouchend='setCoordinates' style="left: {{left||'89%'}};top: {{top||'70%'}};" >
+  <view>
+    <image class='kehuImg' bindtap='makephone' src="pj.png"></image>
+  </view>
+  <text class="pj">评价</text>
+</view>
+
     <view class='xiangqing' wx:for="{{workinfo5}}"  wx:key="key" bindtap="navigateTo">
     <view class='xiangqing_info' style="padding-left:40rpx;">
       <text class='zi' >{{item.type}}</text>

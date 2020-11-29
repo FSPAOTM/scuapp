@@ -1,4 +1,4 @@
-// pages/pingjia/pingjia.js
+// pages/stongzhi/stongzhi.js
 Page({
 
   /**

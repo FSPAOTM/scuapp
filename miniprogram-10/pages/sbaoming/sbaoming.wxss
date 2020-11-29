@@ -143,12 +143,7 @@ textarea {
   margin-left: 20rpx;
 }
 
-button {
-  background: #7e8ef0;
-  color: #fff;
-  width: 80%;
-  font-size: 34rpx;
-}
+
 
 .a1 {
   line-height: 45px;
@@ -228,4 +223,67 @@ page {
   height: 3rpx;
   margin-left: 25rpx;
   margin-bottom: 20rpx;
+}
+
+/* 底部按钮 */
+.baise{
+  background:#FFFFFF;
+  display:flex;
+  position:fixed; 
+  width:100%;
+  height:150rpx;
+  z-index:665;
+  bottom:0rpx;
+}
+.anniu{
+ display:flex;
+ position:fixed; 
+ width:100%;
+ z-index:666;
+ bottom:55rpx;
+}
+.btbdstk{
+ width:100%;
+}
+
+.bdstk{
+  font-size:22rpx;
+  width:100%;
+  text-align: center;
+  line-height:10rpx;
+  color:#FF7178;
+  margin-top: 3rpx;
+ }
+
+ .bdstk2{
+  font-size:22rpx;
+  width:100%;
+  text-align: center;
+  line-height:10rpx;
+  margin-top: 10rpx;
+  color:#FF7178;
+ }
+
+.image{
+  width: 30px;
+  height: 30px;
+  margin-top: 5rpx;
+}
+
+.image2{
+  margin-top: 8rpx;
+  width: 25px;
+  height: 25px;
+}
+
+.sqdzk{
+ font-size:30rpx;
+ color:#ffffff;
+ width:100%;
+ border:2rpx solid #ffffff;
+ border-radius:15rpx;
+ background:#FF7178;
+ height: 95rpx;
+ text-align: center;
+ line-height:95rpx;
 }

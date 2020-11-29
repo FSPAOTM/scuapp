@@ -1,0 +1,15 @@
+<!--pages/stongzhi/stongzhi.wxml-->
+
+<view class="line"></view>
+
+<view class="section">
+    <view class="tongzhi" >
+      <text>通 知</text>
+    </view>
+    <view class="xian2"></view>
+    <view style=" height: 200px;">
+      <text style="font-size:15px; margin-left:30rpx;;" maxlength='300'>{{description}}</text>
+    </view>
+  </view>
+  <button bindtap="cjobrelease" style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>确 认</button>
+

@@ -27,16 +27,6 @@
 </view>
 
 
-
-<view class="line"></view>
-<view class="item">
-  <image src="10.png" class="a1"/>
-  <view class="title">我的消息</view>
-  <view class="detail2">
-    <text> ></text>
-  </view>
-</view>
-
 <view class="line"></view>
 <view class="item" bindtap="spingjia">
   <image src="评价.png" class="a1"/>

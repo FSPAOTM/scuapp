@@ -272,6 +272,12 @@
         {
           "name": "pages/cpingjia/cpingjia",
           "pathName": "pages/cpingjia/cpingjia",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cxiaoxi/cxiaoxi",
+          "pathName": "pages/cxiaoxi/cxiaoxi",
           "scene": null
         }
       ]

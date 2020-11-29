@@ -1,25 +1,42 @@
-<!--pages/cpingjia/cpingjia.wxml-->
-
-<view class="title2">我 的 评 价</view>
-
-
-
-<view class='item' bindtap="infofill">
-  <image src="pj.png" class="a1"/>
-  <view class="title">已完成兼职的学生{{stu.pj}}</view>
-  <view class="detail2">
-    <text>></text>
+<!--pages/pingjia/pingjia.wxml-->
+<scroll-view scroll-y="true" class="message-list" style="margin-top:{{navH+47}}px;height:1200rpx" >
+  <!--示例用户1-->
+ 
+  <view class='user-content'>
+    <view class='firstline'>
+      <view class='apart'>
+        <text>匿名用户</text>
+      </view>
+      <view class='time'>
+        <view class='time-num'>9:36</view>
+      </view>
+    </view>
+    <view class='secondline'>
+      <view class='dialog'>
+      <text>认真负责，沟通及时，时间调整很灵活，不为难学生。</text>
+      </view>
+    </view>
   </view>
-</view>
 
+<!--分割线-->
+<view class='linecut'></view>
+  <!--示例用户2-->
 
-<view class='item'>
-  <image src="pj.png" class="a1"/>
-  <view class="title">已完成兼职的学生{{stu.pj}}</view>
-  <view class="detail2">
-    <text>></text>
+  <view class='user-content'>
+    <view class='firstline'>
+    <view class='apart'>  
+        <text>匿名用户</text>
+    </view>
+      <view class='time'>
+        <view class='time-num'>8:16</view>
+      </view>
+    </view>
+    <view class='secondline'>
+      <view class='dialog'>
+      <text>工作不错</text>
+      </view>
+    </view>
   </view>
-</view>
-
-
+  <view class='linecut'></view>
+</scroll-view> 
 

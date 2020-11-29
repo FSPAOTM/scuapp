@@ -1,5 +1,8 @@
 {
   "pages": [
+    "pages/sxiaoxi/sxiaoxi",
+    "pages/cxiaoxi/cxiaoxi",
+    "pages/stongzhi/stongzhi",
     "pages/ccenter/ccenter",
     "pages/cpingjia/cpingjia",
     "pages/spingjia/spingjia",
@@ -59,6 +62,14 @@
       "iconPath": "3.png",
       "pagePath": "pages/smyJob/smyJob",
       "text": "我的兼职",
+      "class": "menu-item",
+      "active": false
+    },
+    {
+      "selectedIconPath": "8.png",
+      "iconPath": "7.png",
+      "pagePath": "pages/sxiaoxi/sxiaoxi",
+      "text": "我的消息",
       "class": "menu-item",
       "active": false
     },

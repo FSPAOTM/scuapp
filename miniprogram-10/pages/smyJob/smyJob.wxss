@@ -79,3 +79,26 @@ overflow: hidden;
     font-weight: 600;
     
   }
+
+  .firstView {
+    position: absolute;
+    height:70px;
+    width:180px;
+    padding: 10rpx;
+    background-color: #eee;  
+    border-radius: 2rem;
+    border:2rpx solid #ffffff;
+    border-radius:15rpx;
+  }
+
+  .kehuImg {
+    margin-top: 20rpx;
+    height: 60rpx;
+    width: 60rpx;
+  }
+
+  .pj{
+    font-size: 25rpx;
+    margin-left: 8rpx;
+    color:#FA7C15;
+  }
