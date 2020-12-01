@@ -125,6 +125,11 @@ def interview_result(request):
 def stu_result(request):
     return render(request, 'wechat/stu_result.html', {'stu_result': stu_result})
 
+#企业列表界面
+def company_list(request):
+    company_list = Tbcompany.objects.all()
+    return render(request, 'wechat/company_list.html', {'company_list': company_list})
+
 
 #功能接口
 #登录管理者
@@ -608,6 +613,9 @@ def outWork_reject_result_send(request):
         return render(request, 'wechat/work_examine.html', {'outwork_list': outwork_list})
     else:
         return render(request, 'wechat/manage_error.html')
+
+
+
 
 
 

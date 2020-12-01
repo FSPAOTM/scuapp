@@ -90,6 +90,7 @@ urlpatterns = [
     path('back_reason/', views01.back_reason, name='back_reason'),
     path('interview_result/', views01.interview_result, name='interview_result'),
     path('stu_result/', views01.stu_result, name='stu_result'),
+    path('company_list/', views01.company_list, name='company_list'),
 
 
     # path('<CharField:manager_id>/results/', views01.results, name='results'),

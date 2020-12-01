@@ -30,24 +30,7 @@
 
   <body>
     <div class="x-body">
-      <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so" method="post" action="../management_outwork_search/">
-            {% csrf_token %}
-            <input type="text" name="s_ow_number"  placeholder="请输入岗位编号" autocomplete="off" class="layui-input">
-            <input type="text" name="s_ow_post"  placeholder="请输入岗位名称" autocomplete="off" class="layui-input">
-            <input type="text" name="s_w_time"  placeholder="请输入工作时间" autocomplete="off" class="layui-input">
-            <input type="text" name="s_w_place"  placeholder="请输入工作区域" autocomplete="off" class="layui-input">
-            <input type="text" name="s_w_place_detail"  placeholder="请输入详细工作地址" autocomplete="off" class="layui-input">
-            <input type="text" name="s_work"  placeholder="请输入工作内容" autocomplete="off" class="layui-input">
-            <input type="text" name="s_w_salary"  placeholder="请输入薪酬" autocomplete="off" class="layui-input">
-            <input type="text" name="s_w_reuire"  placeholder="请输入招聘要求" autocomplete="off" class="layui-input">
-            <!--<input type="text" name="s_com_number"  placeholder="请输入公司编号" autocomplete="off" class="layui-input">-->
-            <input type="text" name="s_ow_status"  placeholder="请输入岗位状态" autocomplete="off" class="layui-input">
-            <!--<input type="datetime-local" class="layui-input" placeholder="报名截止时间" name="s_ddl_time" id="start">
-            <input type="datetime-local" class="layui-input" placeholder="信息发布时间" name="s_ipub_time" id="end">-->
-          <button class="layui-btn" type="submit" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
-        </form>
-      </div>
+
       <table class="layui-table">
         <thead>
           <tr>
