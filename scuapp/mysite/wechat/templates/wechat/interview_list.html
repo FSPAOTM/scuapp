@@ -24,7 +24,7 @@
   <body>
     <div class="x-body">
       <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so" method="post" action="../management_inworking_search/">
+        <form class="layui-form layui-col-md12 x-so" method="post" action="../management_inworking_search/"> <!--查询接口修改-->
             {% csrf_token %}
             <input type="text" name="s_iw_number"  placeholder="请输入岗位编号" autocomplete="off" class="layui-input">
             <input type="text" name="s_iw_post"  placeholder="请输入岗位名称" autocomplete="off" class="layui-input">
@@ -71,13 +71,17 @@
             <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.apply_status }}</span></td>
             <td class="td-status">
-              <a href="../notice_send/?result_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">点击发送</span></a></td>
+              <a href="../interview_notice_send/?result_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">点击发送</span></a></td>
+            <!--接口修改-->
             <td class="td-status">
-              <a href="../back_reason/?ia_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">打回</span></a></td>
+                <!--接口修改-->
+              <a href="../interview_back_reason/?ia_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">打回</span></a></td>
             <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.s_sure }}</span></td>
+            <!--待修改-->
             <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.c_sure }}</span></td>
+            <!--待修改-->
         </tr>
         {% endfor %}
         </tbody>

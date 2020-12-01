@@ -92,10 +92,10 @@ class TbinWork(models.Model):
 
 class TbinterviewApply(models.Model):
     ia_number = models.AutoField(db_column='IA_Number', primary_key=True)  # Field name made lowercase.
-    ia_time = models.CharField(db_column='IA_Time', max_length=60, blank=True, null=True)  # Field name made lowercase.
-    ia_name = models.CharField(db_column='IA_Name', max_length=20, blank=True, null=True)  # Field name made lowercase.
-    phonenumber = models.CharField(db_column='PhoneNumber', max_length=12)  # Field name made lowercase.
-    a_time = models.DateTimeField(db_column='A_Time')  # Field name made lowercase.
+    ia_time = models.CharField(db_column='IA_Time', max_length=60, blank=True, null=True)  # 面试时间
+    ia_name = models.CharField(db_column='IA_Name', max_length=20, blank=True, null=True)  # 面试负责人
+    phonenumber = models.CharField(db_column='PhoneNumber', max_length=12)  # 手机号
+    a_time = models.DateTimeField(db_column='A_Time')  # 申请时间
     ow_number = models.ForeignKey('TboutWork', models.DO_NOTHING, db_column='Ow_Number')  # Field name made lowercase.
     apply_status= models.CharField(db_column='apply_status', max_length=255, default='待审核')
     back_reason = models.CharField(db_column='back_reason', max_length=200, blank=True, null=True)#打回理由

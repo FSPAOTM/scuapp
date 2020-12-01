@@ -103,8 +103,8 @@ def inworking_list(request):
         inworking_list.append(dictionary)
     return render(request, 'wechat/inworking_list.html', {'inworking_list': inworking_list})
 
-########面试申请表界面
-def interview_list(request):
+#面试申请总界面
+def interview_list(request):#append修改
     interview_list = TbinterviewApply.objects.all()
     return render(request, 'wechat/interview_list.html', {'interview_list': interview_list})
 
@@ -409,8 +409,6 @@ def management_outWork_release(request):
     else:
         return HttpResponse("请求错误")
 
-###################################################信息处理部分的视图！！（待修改）
-
 #校内兼职报名学生简历
 @csrf_exempt
 def inwork_stu_ifo(request):
@@ -433,7 +431,7 @@ def inwork_stu_ifo(request):
         dictionary["pov_identity"] = student.pov_identity
         dictionary["e_mail"] = student.e_mail
         if inWork.In_status== "报名中" or inWork.In_status == "中止" or inWork.In_status == "报名结束":
-            dictionary["s_sure"] = "未通知"
+            dictionary["s_sure"] = "未开启"
         else:
             application= Tbapplication.objects.filter(iw_number=iw_number).get(stu=stu_id)
             dictionary["s_sure"] = application.s_sure

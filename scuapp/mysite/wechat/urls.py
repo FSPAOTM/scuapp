@@ -80,16 +80,16 @@ urlpatterns = [
     path('inwork_result_submit/', views01.inwork_result_submit, name='inwork_result_submit'),
     path('management_inWork_result_change/', views01.management_inWork_result_change, name='management_inWork_result_change'),
     path('work_examine/', views01.work_examine, name='work_examine'),
-    path('interview_list/', views01.interview_list, name='interview_list'),
-    path('notice_send/', views01.notice_send, name='notice_send'),
-    path('back_reason/', views01.back_reason, name='back_reason'),
-    path('interview_result/', views01.interview_result, name='interview_result'),
-    path('stu_result/', views01.stu_result, name='stu_result'),
     path('management_outWork_pass/', views01.management_outWork_pass, name='management_outWork_pass'),
     path('management_outWork_reject/', views01.management_outWork_reject, name='management_outWork_reject'),
     path('outWork_reject_result/', views01.outWork_reject_result, name='outWork_reject_result'),
     path('outWork_reject_result_send/', views01.outWork_reject_result_send, name='outWork_reject_result_send'),
 
+    path('interview_list/', views01.interview_list, name='interview_list'),
+    path('notice_send/', views01.notice_send, name='notice_send'),
+    path('back_reason/', views01.back_reason, name='back_reason'),
+    path('interview_result/', views01.interview_result, name='interview_result'),
+    path('stu_result/', views01.stu_result, name='stu_result'),
 
 
     # path('<CharField:manager_id>/results/', views01.results, name='results'),
