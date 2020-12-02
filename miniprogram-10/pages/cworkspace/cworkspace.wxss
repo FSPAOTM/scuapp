@@ -15,6 +15,16 @@
   margin-top: 91rpx;
 }
 
+.postt{
+  display: flex;
+  flex-direction: row;
+}
+
+.baoming{
+  display: flex;
+  flex-direction: row;
+}
+
 .swiper-tab-list {
   font-size: 12px;
   display: inline-block;

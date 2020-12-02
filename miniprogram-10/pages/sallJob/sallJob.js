@@ -268,7 +268,6 @@ Page({
     })*/
   },
 
-
   sjobinfo: function (ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;

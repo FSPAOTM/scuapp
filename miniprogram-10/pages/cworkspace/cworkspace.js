@@ -17,7 +17,7 @@ Page({
     idArr: [
 
     ],
-    workinfo:[],
+    workinfo: [],
     details: [{
         position: 'XXX职位',
         title: '王雨欣 2018141093040',
@@ -79,7 +79,7 @@ Page({
       }
     });
     wx.request({
-      url: app.globalData.url + '/Show_myjob/',//待修改
+      url: app.globalData.url + '/Show_myjob/', //待修改
       header: {
         'Content-Type': 'application/json'
       },
@@ -92,35 +92,35 @@ Page({
         console.log(res.data[0].status);
         var i;
         for (i = 0; i < res.data.length; i++) {
-        if (res.statusCode == 200) {
-          if (res.data[i].status == "已报名")  {
-            that.data.workinfo1.push(res.data[i])
-            that.setData({
-              workinfo1: that.data.workinfo1
-            })
-          } else if (res.data[i].status == "未通过")  {
-            that.data.workinfo2.push(res.data[i])
-            that.setData({
-              workinfo2: that.data.workinfo2
-            })
-          } else if (res.data[i].status == "已通过"){
-            that.data.workinfo3.push(res.data[i])
-            that.setData({
-              workinfo3: that.data.workinfo3
-            })
-          } else if (res.data[i].status == "已录用"){
-            that.data.workinfo4.push(res.data[i])
-            that.setData({
-              workinfo4: that.data.workinfo4
-            })
-          } else if (res.data[i].status == "已结算"){
-            that.data.workinfo5.push(res.data[i])
-            that.setData({
-              workinfo5: that.data.workinfo5
-            })
+          if (res.statusCode == 200) {
+            if (res.data[i].status == "已报名") {
+              that.data.workinfo1.push(res.data[i])
+              that.setData({
+                workinfo1: that.data.workinfo1
+              })
+            } else if (res.data[i].status == "未通过") {
+              that.data.workinfo2.push(res.data[i])
+              that.setData({
+                workinfo2: that.data.workinfo2
+              })
+            } else if (res.data[i].status == "已通过") {
+              that.data.workinfo3.push(res.data[i])
+              that.setData({
+                workinfo3: that.data.workinfo3
+              })
+            } else if (res.data[i].status == "已录用") {
+              that.data.workinfo4.push(res.data[i])
+              that.setData({
+                workinfo4: that.data.workinfo4
+              })
+            } else if (res.data[i].status == "已结算") {
+              that.data.workinfo5.push(res.data[i])
+              that.setData({
+                workinfo5: that.data.workinfo5
+              })
+            }
           }
         }
-      }
       }
     });
   },
@@ -133,6 +133,21 @@ Page({
       details: this.data.details,
     });
   },
+
+  yibaoming: function (ev) {
+    var that = this;
+    var e = ev.currentTarget.dataset.index;
+    var f = ev.currentTarget.dataset.id;
+    var ow_number = that.data.workinfo1[e].ow_number;
+    var stu_number = that.data.workinfo1[e][f].stu_number;
+    var ap_time = that.data.workinfo1[e][f].ap_time;
+    console.log("++++++", ev, that)
+    wx.setStorageSync("ow_number", ow_number),wx.setStorageSync("stu_number", stu_number),wx.setStorageSync("ap_time", ap_time), wx.navigateTo({
+      url: "../cresumeReview/cresumeReview"
+    })
+  },
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

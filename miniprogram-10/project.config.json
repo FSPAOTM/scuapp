@@ -278,6 +278,12 @@
         {
           "name": "pages/cxiaoxi/cxiaoxi",
           "pathName": "pages/cxiaoxi/cxiaoxi",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cresumeReview/cresumeReview",
+          "pathName": "pages/cresumeReview/cresumeReview",
           "scene": null
         }
       ]
