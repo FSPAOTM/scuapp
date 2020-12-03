@@ -447,6 +447,7 @@ def Show_myjob(request):
     else:
         return HttpResponse("请求错误")
 
+#学生接受面试通知 TbinterviewNotice数据表
 
 
 

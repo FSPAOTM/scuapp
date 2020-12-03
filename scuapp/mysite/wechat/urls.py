@@ -22,7 +22,6 @@ urlpatterns = [
     path('Reset_myinfo_phonenumber/', views.Reset_myinfo_phonenumber, name='Reset_myinfo_phonenumber'),
     path('Reset_myinfo_e_mail/', views.Reset_myinfo_e_mail, name='Reset_myinfo_e_mail'),
     path('Show_work/', views.Show_work, name='Show_work'),
-    #path('Show_inwork/', views.Show_inwork, name='Show_inwork'),
     path('Show_outwork_detail/', views.Show_outwork_detail, name='Show_outwork_detail'),
     path('Show_inwork_detail/', views.Show_inwork_detail, name='Show_inwork_detail'),
     path('Enroll_in_work/', views.Enroll_in_work, name='Enroll_in_work'),
@@ -33,13 +32,12 @@ urlpatterns = [
     path('Company_info_showmodiify/', views_com.Company_info_showmodiify, name='Company_info_showmodiify'),
     path('Company_info_modiify/', views_com.Company_info_modiify, name='Company_info_modiify'),
     path('Part_time_post/', views_com.Part_time_post, name='Part_time_post'),
-
     path('Get_outwork_info/', views_com.Get_outwork_info, name='Get_outwork_info'),
     path('Get_outwork_detail_info/', views_com.Get_outwork_detail_info, name='Get_outwork_detail_info'),
     path('Modify_outwork_info/', views_com.Modify_outwork_info, name='Modify_outwork_info'),
-
-
-
+    path('Show_applicant/', views_com.Show_applicant, name='Show_applicant'),
+    path('Modify_applystatus/', views_com.Modify_applystatus, name='Modify_applystatus'),
+    path('Company_apply_interviewtime/', views_com.Company_apply_interviewtime, name='Company_apply_interviewtime'),
 
     #后台管理界面
     #登录注册等

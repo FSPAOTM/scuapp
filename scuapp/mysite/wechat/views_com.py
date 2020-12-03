@@ -1,6 +1,6 @@
 from django.shortcuts import HttpResponse,render
 from django.template import loader
-from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication
+from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication,TbinterviewApply
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.utils import timezone
@@ -153,7 +153,7 @@ def Modify_outwork_info(request):
     else:
         return HttpResponse("请求错误")
 
-#cworkspace 企业端报名者显示功能 返回岗位 报名者 未调试
+#cworkspace 企业端报名者显示功能 返回岗位报名者 未调试
 @csrf_exempt
 def Show_applicant(request):
     if request.method == "GET":
@@ -179,12 +179,16 @@ def Modify_applystatus(request):
     if request.method == "POST":
         stu_id = request.POST.get('stu_number')
         ow_number = request.POST.get('ow_number')
-        Tbapplication.objects.filter(stu=stu_id,ow_number=ow_number).update(apply_status='表筛通过？表筛拒绝？')
-        return HttpResponse("修改成功")
+        filterResult1 = Tbapplication.objects.filter(stu=stu_id,ow_number=ow_number)
+        if len(filterResult1) > 0:
+            filterResult1.update(apply_status='表筛通过？表筛拒绝？')
+            return HttpResponse("修改成功")
+        else:
+            return HttpResponse("修改失败")
     else:
         return HttpResponse("请求错误")
 
-#cinterview 企业面试时间申请 未写完 未加url
+#cinterview 企业面试时间申请 未调试
 @csrf_exempt
 def Company_apply_interviewtime(request):
     if request.method == "POST":
@@ -193,21 +197,33 @@ def Company_apply_interviewtime(request):
         phonenumber = request.POST.get('company')
         a_time = request.POST.get('a_time')
         ia_time = timezone.now()
-        TboutWork.objects.create(ia_time=ia_time, ia_name=ia_name, phonenumber=phonenumber,
-                                                             a_time=a_time, ow_number=ow_number)
-        return HttpResponse("请求成功")
+        apply_status = request.POST.get('apply_status')
+        if apply_status=="报名结束":
+            TbinterviewApply.objects.create(ia_time=ia_time,
+                                            ia_name=ia_name,
+                                            phonenumber=phonenumber,
+                                            a_time=a_time,
+                                            ow_number=ow_number,
+                                            apply_status='面试申请中')
+            return HttpResponse("请求成功")
+        else:
+            return HttpResponse("报名未结束无法申请面试")
     else:
         return HttpResponse("请求错误")
 
-#企业兼职信息状态修改界面 这个还没有加URL界面
+#企业面试结果修改界面 未加url 未调试
 @csrf_exempt
-def Stop_outwork(request):
+def Modify_interview_status(request):
     if request.method == "POST":
         ow_number = request.POST.get('XXXXX')
-        filterResult1 = TboutWork.objects.filter(ow_number=ow_number)
-        if len(filterResult1) > 0:
-            TboutWork.objects.filter(ow_number=ow_number ).update(ow_status = 'stop')
-            return HttpResponse("该招聘已停止")
+        stu = request.POST.get('XXXXX')
+        judge = request.POST.get('传判断参数，为1则为面试通过，为2则为面试不通过')
+        filterResult1 = Tbapplication.objects.filter(stu=stu, ow_number=ow_number)
+        if len(filterResult1) > 0 and judge=="1":  #判断参数未固定
+            filterResult1.update(apply_status = '已录用')
+            return HttpResponse("请求成功")
         else:
             return HttpResponse("请求错误")
+    else:
+        return HttpResponse("请求错误")
 
