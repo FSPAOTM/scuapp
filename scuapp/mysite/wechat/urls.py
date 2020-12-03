@@ -85,6 +85,7 @@ urlpatterns = [
     path('outWork_reject_result/', views01.outWork_reject_result, name='outWork_reject_result'),
     path('outWork_reject_result_send/', views01.outWork_reject_result_send, name='outWork_reject_result_send'),
 
+
     path('interview_list/', views01.interview_list, name='interview_list'),
     path('notice_send/', views01.notice_send, name='notice_send'),
     path('back_reason/', views01.back_reason, name='back_reason'),
