@@ -166,7 +166,7 @@ def Show_applicant(request):
             ow_number = i.ow_number
             result = Tbapplication.objects.filter(ow_number=ow_number)
             for item in result:
-                plays.append({'ow_number': ow_number,'ow_post': ow_post, 'stu': item.stu.stu_id, 'name':item.stu.name, 'apply_status':item.apply_status, 'ap_time':item.ap_time})
+                plays.append({'ow_number': ow_number,'ow_post': ow_post, 'stu': item.stu.stu_id, 'name':item.stu.name, 'apply_status':item.apply_status, 'ap_time':str(item.ap_time)})
         plays_json = json.dumps(plays, ensure_ascii=False)
         return HttpResponse(plays_json)
     else:
