@@ -17,7 +17,22 @@ Page({
     idArr: [
 
     ],
-    workinfo: [],
+    workinfo1: [],
+    workinfo2: [],
+    workinfo3: [],
+    workinfo4: [],
+    workinfo5: [],
+    user1: [],
+    user2: [],
+    user3: [],
+    user4: [],
+    user5: [],
+    stu1:{},
+    stu2:{},
+    stu3:{},
+    stu4:{},
+    stu5:{},
+    selectedFlag:[],
     details: [{
         position: 'XXX职位',
         title: '王雨欣 2018141093040',
@@ -78,8 +93,14 @@ Page({
         });
       }
     });
+
+    that.setData({
+      'stu1.index':'',  //给教师对象增加名字属性
+      'stu1.name':''
+    })
+
     wx.request({
-      url: app.globalData.url + '/Show_myjob/', //待修改
+      url: app.globalData.url + '/Show_applicant/',
       header: {
         'Content-Type': 'application/json'
       },
@@ -95,9 +116,13 @@ Page({
           if (res.statusCode == 200) {
             if (res.data[i].status == "已报名") {
               that.data.workinfo1.push(res.data[i])
+              //that.data.user1.push(res.data[i].user)
               that.setData({
                 workinfo1: that.data.workinfo1
               })
+              /*that.setData({
+                user1: that.data.user1
+              })*/
             } else if (res.data[i].status == "未通过") {
               that.data.workinfo2.push(res.data[i])
               that.setData({
@@ -139,10 +164,9 @@ Page({
     var e = ev.currentTarget.dataset.index;
     var f = ev.currentTarget.dataset.id;
     var ow_number = that.data.workinfo1[e].ow_number;
-    var stu_number = that.data.workinfo1[e][f].stu_number;
-    var ap_time = that.data.workinfo1[e][f].ap_time;
+    var stu_number = that.data.user1[f].stu_number;
     console.log("++++++", ev, that)
-    wx.setStorageSync("ow_number", ow_number),wx.setStorageSync("stu_number", stu_number),wx.setStorageSync("ap_time", ap_time), wx.navigateTo({
+    wx.setStorageSync("ow_number", ow_number), wx.setStorageSync("stu_number", stu_number), wx.navigateTo({
       url: "../cresumeReview/cresumeReview"
     })
   },
@@ -162,6 +186,18 @@ Page({
   onShow: function () {
     app.editTabBar1();
   },
+  /*userlist(e) {
+    var index = e.currentTarget.dataset.index;
+    if (this.data.selectedFlag[index]){
+      this.data.selectedFlag[index] = false;
+    }else{
+      this.data.selectedFlag[index] = true;
+    }
+
+    this.setData({
+      selectedFlag: this.data.selectedFlag
+    })
+  },*/
 
   /**
    * 生命周期函数--监听页面隐藏

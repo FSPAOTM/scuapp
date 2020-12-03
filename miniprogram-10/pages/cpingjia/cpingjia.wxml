@@ -1,42 +1,44 @@
 <!--pages/pingjia/pingjia.wxml-->
-<scroll-view scroll-y="true" class="message-list" style="margin-top:{{navH+47}}px;height:1200rpx" >
+<scroll-view scroll-y="true" class="message-list" style="margin-top:{{navH+47}}px;height:1200rpx">
   <!--示例用户1-->
- 
-  <view class='user-content'>
-    <view class='firstline'>
-      <view class='apart'>
-        <text>匿名用户</text>
+
+  <view class="content" wx:for="{{stupingjia}}" wx:for-item="item" wx:for-index="index">
+    <!--分割线-->
+    <view class='linecut'></view>
+    <view class='user-content'>
+      <view class='firstline'>
+        <view class='apart'>
+          <text>匿名用户</text>
+        </view>
+        <view class='time'>
+          <view class='time-num'>{{item.time}}</view>
+        </view>
       </view>
-      <view class='time'>
-        <view class='time-num'>9:36</view>
-      </view>
-    </view>
-    <view class='secondline'>
-      <view class='dialog'>
-      <text>认真负责，沟通及时，时间调整很灵活，不为难学生。</text>
+      <view class='secondline'>
+        <view class='dialog'>
+          <text>{{item.content}}</text>
+        </view>
       </view>
     </view>
   </view>
 
-<!--分割线-->
-<view class='linecut'></view>
+
   <!--示例用户2-->
 
-  <view class='user-content'>
+  <!--<view class='user-content'>
     <view class='firstline'>
-    <view class='apart'>  
+      <view class='apart'>
         <text>匿名用户</text>
-    </view>
+      </view>
       <view class='time'>
         <view class='time-num'>8:16</view>
       </view>
     </view>
     <view class='secondline'>
       <view class='dialog'>
-      <text>工作不错</text>
+        <text>工作不错</text>
       </view>
     </view>
   </view>
-  <view class='linecut'></view>
-</scroll-view> 
-
+  <view class='linecut'></view>-->
+</scroll-view>

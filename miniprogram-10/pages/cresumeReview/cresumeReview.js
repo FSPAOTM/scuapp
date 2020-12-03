@@ -8,9 +8,9 @@ Page({
     myinfo: null,
     hiddenmodalput: true,
     hiddenmodalput2: true,
+    status:"",
     ow_number: "",
     stu_number: "",
-    ap_time: "",
     name: "",
     age: "",
     gender: "",
@@ -43,13 +43,6 @@ Page({
     })
     console.log(this.data.stu_number)
 
-    var ap_time = -1
-    var ap_time = wx.getStorageSync("ap_time");
-    wx.removeStorageSync("ap_time");
-    this.setData({
-      ap_time: ap_time
-    })
-    console.log(this.data.ap_time)
     wx.request({
       url: app.globalData.url + '/Show_outwork_detail/', //*待修改
       method: "POST",
@@ -122,10 +115,10 @@ Page({
       },
       method: "POST",
       data: {
+        status:"已通过",
         user: app.globalData.user,
         ow_number: this.data.ow_number,
         stu_number: this.data.stu_number,
-        ap_time: this.data.ap_time,
       },
       success: (res) => {
         if (res.statusCode == 200) {
@@ -151,6 +144,7 @@ Page({
       },
       method: "POST",
       data: {
+        status:"未通过",
         user: app.globalData.user,
         ow_number: this.data.ow_number,
         stu_number: this.data.stu_number,

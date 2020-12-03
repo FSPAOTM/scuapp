@@ -33,7 +33,6 @@
 
 
 
-
 <!-- 下面列表 -->
 <view class="container">
   <view class='xiangqing' wx:for="{{workinfo}}" wx:for-item="item" wx:for-index="index" bindtap="navigateTo">

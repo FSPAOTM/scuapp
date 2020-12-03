@@ -5,14 +5,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    stupingjia:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.request({
+      url: app.globalData.url + '/Show_work/',//待修改
+      method: "GET",
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          self.setData({
+            stupingjia: res.data
+          })
+        }
+      }
+    })
   },
 
   /**

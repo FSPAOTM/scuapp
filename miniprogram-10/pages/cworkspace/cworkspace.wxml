@@ -23,12 +23,20 @@
       <view class="container">
         <view class="post" wx:for="{{workinfo1}}" wx:for-item="item" wx:for-index="index">
           <view class="postt">
-            <text style="font-size:28rpx">岗位：</text>
-            <view class="jobb">{{item.post}}</view>
+            <text style="font-size:16px">岗位：</text>
+            <text style="font-size:16px">{{item.post}}</text>
+            <!--<view class="right">
+              <text class="iconfont {{selectedFlag[index]?'icon-shangjiantou':'icon-xiala'}}"> </text>
+            </view>-->
           </view>
-          <view class="baoming" wx:for="{{item.user}}" wx:for-index="id" bindtap="yibaoming">
-            <text style="font-size:28rpx;margin-left:50px;">报名者：</text>
-            <view class='xiangqing'>{{item.user}}</view>
+          <view class="post2">
+            <block class="baomingall" wx:for="{{user1}}" wx:for-item="user" wx:for-index="id" bindtap="yibaoming">
+              <view class="baoming">
+                <text style="font-size:16px;margin-left:25px;">报名者：</text>
+                <text style="font-size:16px">{{user1[id]}}</text>
+              </view>
+              <view class="xian"></view>
+            </block>
           </view>
         </view>
       </view>
@@ -80,7 +88,7 @@
           </view>
           <view class="baoming" wx:for="{{item.user}}" wx:for-index="id" bindtap="yitongguo">
             <image style="margin-top:10px;" class='select_icon'
-            src="{{item.isSelected?'isselected.png':'unselected.png'}}"></image>
+              src="{{item.isSelected?'isselected.png':'unselected.png'}}"></image>
             <text style="font-size:28rpx;margin-left:50px;">报名者：</text>
             <view class='xiangqing'>{{item.user}}</view>
           </view>

@@ -212,7 +212,7 @@ Page({
   onLoad: function (options) {
     let self = this;
     wx.request({
-      url: 'https://lbs.amap.com/api/webservice/guide/api/district',
+      url: 'https://lbs.amap.com/api/webservice/guide/api/district',//待修改
       method: "GET",
       header: {
         'Content-Type': 'application/json'
@@ -235,7 +235,6 @@ Page({
     })
     wx.request({
       url: app.globalData.url + '/Show_work/',
-      /*待修改*/
       method: "GET",
       header: {
         'Content-Type': 'application/json'

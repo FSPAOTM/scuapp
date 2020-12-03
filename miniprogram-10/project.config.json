@@ -284,6 +284,24 @@
         {
           "name": "pages/cresumeReview/cresumeReview",
           "pathName": "pages/cresumeReview/cresumeReview",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/stongzhi/stongzhi",
+          "pathName": "pages/stongzhi/stongzhi",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sxiaoxi/sxiaoxi",
+          "pathName": "pages/sxiaoxi/sxiaoxi",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cinterview/cinterview",
+          "pathName": "pages/cinterview/cinterview",
           "scene": null
         }
       ]

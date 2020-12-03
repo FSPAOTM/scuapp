@@ -16,6 +16,7 @@
 }
 
 .postt{
+  margin-left: 10px;
   display: flex;
   flex-direction: row;
 }
@@ -23,6 +24,22 @@
 .baoming{
   display: flex;
   flex-direction: row;
+}
+
+.baomingall{
+  display: flex;
+  flex-direction: column;
+}
+
+.xian{
+  width: 90%;
+  background: #ccc;
+  height: 2rpx;
+}
+
+.icon-xiala ,.icon-shangjiantou {
+  color: #999;
+  font-size: 28rpx;
 }
 
 .swiper-tab-list {
