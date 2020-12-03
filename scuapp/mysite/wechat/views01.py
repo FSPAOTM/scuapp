@@ -126,6 +126,12 @@ def interview_list(request):
         interview_list.append(dictionary)
     return render(request, 'wechat/interview_list.html', {'interview_list': interview_list})
 
+#应聘学生查看 HHL
+def stu_yingpin(request):
+    stu_yingpinlist = ['阿巴阿巴']
+    return render(request, 'wechat/stu_yingpin.html', {'stu_yingpinlist': stu_yingpinlist})
+
+
 #面试信息通知界面 HHL
 def notice_send(request):
     return render(request, 'wechat/notice_send.html')
