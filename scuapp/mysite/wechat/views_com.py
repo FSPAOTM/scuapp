@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 
 from django.shortcuts import HttpResponse,render
 from django.template import loader
