@@ -1,7 +1,7 @@
 from django.shortcuts import HttpResponse,render
 from django.utils import timezone
 from django.template import loader
-from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply, TbinterviewResult
+from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply, TbinterviewResult, TbinterviewNotice
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 from threading import Timer
@@ -104,8 +104,26 @@ def inworking_list(request):
     return render(request, 'wechat/inworking_list.html', {'inworking_list': inworking_list})
 
 #面试申请总界面
-def interview_list(request):#append修改
-    interview_list = TbinterviewApply.objects.all()
+def interview_list(request):
+    interview_list = []
+    list = TbinterviewApply.objects.all()
+    for i in list:
+        dictionary = {}
+        dictionary["ia_number"] = i.ia_number
+        outwork = i.ow_number
+        dictionary["ow_number"] = outwork.ow_number
+        dictionary["ia_time"] = i.ia_time
+        dictionary["ia_name"] = i.ia_name
+        dictionary["phonenumber"] = i.phonenumber
+        dictionary["a_time"] = i.a_time
+        dictionary["apply_status"] = i.apply_status
+        filterResult = TbinterviewNotice.objects.filter(ia_number=i.ia_number)
+        if len(filterResult) > 0:
+            application = TbinterviewNotice.objects.filter(ia_number=i.ia_number)
+            dictionary["c_sure"] = application[0].c_sure
+        else:
+            dictionary["c_sure"] = "未开启"
+        interview_list.append(dictionary)
     return render(request, 'wechat/interview_list.html', {'interview_list': interview_list})
 
 #面试信息通知界面 HHL

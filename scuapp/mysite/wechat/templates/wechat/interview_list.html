@@ -36,11 +36,10 @@
             <th>负责人</th>
             <th>手机号</th>
             <th>申请时间</th>
-            <th>申请状态</th>
-            <th>发送</th>
-            <th>打回</th>
-            <th>学生确认</th>
+            <th>应聘学生</th>
             <th>企业确认</th>
+            <th>申请状态</th>
+            <th>操作</th>
           </tr>
         </thead>
         <tbody>
@@ -56,18 +55,15 @@
             <td>{{ line.phonenumber }}</td>
             <td>{{ line.a_time }}</td>
             <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.apply_status }}</span></td>
-            <td class="td-status">
-              <a href="../interview_notice_send/?result_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">点击发送</span></a></td>
-            <!--接口修改-->
-            <td class="td-status">
                 <!--接口修改-->
-              <a href="../interview_back_reason/?ia_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">打回</span></a></td>
-            <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.s_sure }}</span></td>
-            <!--待修改-->
+              <a href="../interview_stu_sure/?sure_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">查看</span></a></td>
             <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.c_sure }}</span></td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.apply_status }}</span></td>
+            <td align="center" class="td-status">
+              <a href="../interview_notice_send/?result_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">发送通知</span></a>
+              <p><br><a href="../interview_back_reason/?ia_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">打回</span></a></td>
             <!--待修改-->
         </tr>
         {% endfor %}
