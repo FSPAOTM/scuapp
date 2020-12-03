@@ -146,9 +146,9 @@ def Modify_outwork_info(request):
         ipub_time = timezone.now()
         w_ps = request.POST.getlist('ps')
         User = Tbcompany.objects.get(phone_num=phone_num)
-        TboutWork.objects.filter(ow_number=ow_number).update(ow_post=ow_post, w_time=w_time, w_place= w_place, w_place_detail=w_place_detail, work=work,
-                                           w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time,
-                                           ipub_time=ipub_time, w_ps=w_ps, com_number=User, ow_status='待审核')
+        TboutWork.objects.filter(ow_number=ow_number).update(ow_post=ow_post, w_time=w_time, w_place= w_place, w_place_detail=w_place_detail,
+                                                             work=work,w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time,
+                                                             ipub_time=ipub_time, w_ps=w_ps, com_number=User, ow_status='待审核')
         return HttpResponse("修改成功")
     else:
         return HttpResponse("请求错误")
@@ -164,9 +164,9 @@ def Show_applicant(request):
         for i in outwork:
             ow_post = i.ow_post
             ow_number = i.ow_number
-            result = Tbapplication.objects.filter(ow_number=ow_number).filter(apply_status='已报名')
-            for i in result:
-                plays.append({'ow_number': ow_number,'ow_post': ow_post, 'stu': i.stu.stu_id, 'name':i.stu.name})
+            result = Tbapplication.objects.filter(ow_number=ow_number)
+            for item in result:
+                plays.append({'ow_number': ow_number,'ow_post': ow_post, 'stu': item.stu.stu_id, 'name':item.stu.name, 'apply_status':item.apply_status, 'ap_time':item.ap_time})
         plays_json = json.dumps(plays, ensure_ascii=False)
         return HttpResponse(plays_json)
     else:
@@ -179,9 +179,13 @@ def Modify_applystatus(request):
     if request.method == "POST":
         stu_id = request.POST.get('stu_number')
         ow_number = request.POST.get('ow_number')
+        judge = request.POST.get('status')
         filterResult1 = Tbapplication.objects.filter(stu=stu_id,ow_number=ow_number)
-        if len(filterResult1) > 0:
-            filterResult1.update(apply_status='表筛通过？表筛拒绝？')
+        if len(filterResult1) > 0 and judge=='已通过':
+            filterResult1.update(apply_status='表筛通过')
+            return HttpResponse("修改成功")
+        elif len(filterResult1) > 0 and judge=='未通过':
+            filterResult1.update(apply_status='表筛未通过')
             return HttpResponse("修改成功")
         else:
             return HttpResponse("修改失败")
