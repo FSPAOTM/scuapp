@@ -1,3 +1,5 @@
+import datetime
+
 from django.shortcuts import HttpResponse,render
 from django.template import loader
 from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication,TbinterviewApply
@@ -5,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.utils import timezone
 import json
+
 from itertools import chain
 #以下是企业
 #ccenter返回企业名称
@@ -153,6 +156,13 @@ def Modify_outwork_info(request):
     else:
         return HttpResponse("请求错误")
 
+class DateEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj,datetime.datetime):
+            return obj.strftime("%Y-%m-%d %H:%M:%S")
+        else:
+            return json.JSONEncoder.default(self,obj)
+
 #cworkspace 企业端报名者显示功能 返回岗位报名者 未调试
 @csrf_exempt
 def Show_applicant(request):
@@ -166,7 +176,8 @@ def Show_applicant(request):
             ow_number = i.ow_number
             result = Tbapplication.objects.filter(ow_number=ow_number)
             for item in result:
-                plays.append({'ow_number': ow_number,'ow_post': ow_post, 'stu': item.stu.stu_id, 'name':item.stu.name, 'apply_status':item.apply_status, 'ap_time':str(item.ap_time)})
+                ap_time = json.dumps(item.ap_time, cls=DateEncoder)
+                plays.append({'ow_number': ow_number,'ow_post': ow_post, 'stu': item.stu.stu_id, 'name':item.stu.name, 'apply_status':item.apply_status, 'ap_time':ap_time})
         plays_json = json.dumps(plays, ensure_ascii=False)
         return HttpResponse(plays_json)
     else:
