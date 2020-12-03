@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>企业列表</title>
+    <title>校外兼职列表</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -14,52 +14,48 @@
     <script type="text/javascript" src="../../static/wechat/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="../../static/wechat/js/xadmin.js"></script>
       <script type="text/javascript" src="../../static/wechat/js/jquery-3.4.1.min.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
       <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
       <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 {% load static %}
     <script type="text/javascript" src="{% static 'jQuery/jQuery-3.4.1.js' %}"></script>
-
+    <![endif]-->
   </head>
 
   <body>
     <div class="x-body">
-
       <table class="layui-table">
         <thead>
           <tr>
             <th>
               <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </th>
-            <th>企业编号</th>
-            <th>企业名称</th>
-            <th>负责人</th>
-            <th>联系电话</th>
-            <th>企业地址</th>
-            <th>邮箱</th>
-            <th>营业执照号</th>
-            <th>经营状况</th>
-            <th>公司业务</th>
-            <th>兼职发布</th>
-          </tr>
+            <th>岗位编号</th>
+            <th>岗位名称</th>
+            <th>工作时间</th>
+            <th>工作区域</th>
+            <th>工作详细地点</th>
+            <th>工作内容</th>
+            <th>信息发布时间</th>
+            <th>岗位状态</th>
+        </tr>
         </thead>
         <tbody>
-        {% for line in company_list %}
+        {% for line in company_work %}
         <tr>
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <td>{{ line.com_number }}</td>
-            <td>{{ line.com_name }}</td>
-            <td>{{ line.com_leader }}</td>
-            <td>{{ line.phone_num }}</td>
-            <td>{{ line.com_address }}</td>
-            <td>{{ line.e_mail }}</td>
-            <td>{{ line.com_License }}</td>
-            <td>{{ line.com_condition }}</td>
-            <td>{{ line.com_business }}</td>
+            <td>{{ line.ow_number }}</td>
+            <td>{{ line.ow_post }}</td>
+            <td>{{ line.w_time }}</td>
+            <td>{{ line.w_place }}</td>
+            <td>{{ line.w_place_detail }}</td>
+            <td>{{ line.work }}</td>
+            <td>{{ line.ipub_time }}</td>
             <td class="td-status">
-                <!--接口修改-->
-              <a href="../stu_yingpin/?yp_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">查看</span></a></td>
+              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.ow_status }}</span></td>
         </tr>
         {% endfor %}
         </tbody>
@@ -75,7 +71,6 @@
       </div>
 
     </div>
-
   </body>
 
 </html>
