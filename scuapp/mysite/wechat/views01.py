@@ -108,22 +108,23 @@ def interview_list(request):
     interview_list = []
     list = TbinterviewApply.objects.all()
     for i in list:
-        dictionary = {}
-        dictionary["ia_number"] = i.ia_number
         outwork = i.ow_number
-        dictionary["ow_number"] = outwork.ow_number
-        dictionary["ia_time"] = i.ia_time
-        dictionary["ia_name"] = i.ia_name
-        dictionary["phonenumber"] = i.phonenumber
-        dictionary["a_time"] = i.a_time
-        dictionary["apply_status"] = i.apply_status
-        filterResult = TbinterviewNotice.objects.filter(ia_number=i.ia_number)
-        if len(filterResult) > 0:
-            application = TbinterviewNotice.objects.filter(ia_number=i.ia_number)
-            dictionary["c_sure"] = application[0].c_sure
-        else:
-            dictionary["c_sure"] = "未开启"
-        interview_list.append(dictionary)
+        if outwork.ow_status=="面试申请中" or outwork.ow_status=="面试通知中" or outwork.ow_status=="面试阶段" or outwork.ow_status=="结果通知":
+            dictionary = {}
+            dictionary["ia_number"] = i.ia_number
+            dictionary["ow_number"] = outwork.ow_number
+            dictionary["ia_time"] = i.ia_time
+            dictionary["ia_name"] = i.ia_name
+            dictionary["phonenumber"] = i.phonenumber
+            dictionary["a_time"] = i.a_time
+            dictionary["apply_status"] = i.apply_status
+            filterResult = TbinterviewNotice.objects.filter(ia_number=i.ia_number)
+            if len(filterResult) > 0:
+                application = TbinterviewNotice.objects.filter(ia_number=i.ia_number)
+                dictionary["c_sure"] = application[0].c_sure
+            else:
+                dictionary["c_sure"] = "未开启"
+            interview_list.append(dictionary)
     return render(request, 'wechat/interview_list.html', {'interview_list': interview_list})
 
 #应聘学生查看 HHL
