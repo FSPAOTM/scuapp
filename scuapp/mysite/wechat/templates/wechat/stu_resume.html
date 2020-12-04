@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>学生简历</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../static/wechat/css/font.css">
+    <link rel="stylesheet" href="../../static/wechat/css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/wechat/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../static/wechat/js/xadmin.js"></script>
+      <script type="text/javascript" src="../../static/wechat/js/jquery-3.4.1.min.js"></script>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+{% load static %}
+    <script type="text/javascript" src="{% static 'jQuery/jQuery-3.4.1.js' %}"></script>
+
+  </head>
+
+  <body>
+    <div class="x-body">
+        <xblock>
+            <a href="../stu_list/"><button class="layui-btn" >返回</button></a>
+        </xblock>
+
+      <table class="layui-table">
+        <thead>
+          <tr>
+            <th>
+              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+            </th>
+            <th>简历编号</th>
+            <th>姓名</th>
+            <th>技能自评</th>
+            <th>教育背景</th>
+            <th>工作经历</th>
+            <th>项目经历</th>
+            <th>课外实践</th>
+            <th>个人作品</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for line in resume_list %}
+        <tr>
+            <td>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <td>{{ line.res_id }}</td>
+            <td>{{ line.name }}</td>
+            <td>{{ line.res_asses }}</td>
+            <td>{{ line.res_edu }}</td>
+            <td>{{ line.res_work }}</td>
+            <td>{{ line.res_proj }}</td>
+            <td>{{ line.res_extra }}</td>
+            <td>{{ line.per }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      <div class="page">
+        <div>
+          <a class="prev" href="">&lt;&lt;</a>
+          <a class="num" href="">1</a>
+          <span class="current">2</span>
+          <a class="num" href="">3</a>
+          <a class="next" href="">&gt;&gt;</a>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+
+</html>
