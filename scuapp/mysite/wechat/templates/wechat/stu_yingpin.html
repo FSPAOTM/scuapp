@@ -39,7 +39,7 @@
             <th>年级</th>
             <th>邮箱</th>
             <th>应聘理由</th>
-            <th>是否通过表筛</th>
+            <th>报名状态</th>
             <th>是否确认</th>
         </thead>
         <tbody>
@@ -53,6 +53,7 @@
             <td>{{ line.grade }}</td>
             <td>{{ line.e_mail }}</td>
             <td>{{ line.ap_reson }}</td>
+            <td>{{ line.apply_status }}</td>
             <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.s_sure }}</span>
             </td>

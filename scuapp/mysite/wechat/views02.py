@@ -80,9 +80,32 @@ def interview_list(request):
             interview_list.append(dictionary)
     return render(request, 'wechat/interview_list.html', {'interview_list': interview_list})
 
-#应聘学生查看 HHL
+#校外应聘学生查看
 def stu_yingpin(request):
-    stu_yingpinlist = ['阿巴阿巴']
+    ow_number = request.GET.get("yp_num")
+    list = Tbapplication.objects.filter(ow_number=ow_number)
+    outWork = TboutWork.objects.get(ow_number=ow_number)
+    stu_yingpinlist = []
+    for i in list:
+        stu_id = i.stu.stu_id
+        student = Tbstudent.objects.get(stu_id=stu_id)
+        dictionary = {}
+        dictionary["stu_id"] = stu_id
+        dictionary["name"] = student.name
+        dictionary["age"] = student.age
+        dictionary["sex"] = student.sex
+        dictionary["phonenumber"] = student.phonenumber_phonenumberphonenumber_phonenumber
+        dictionary["grade"] = student.grade
+        dictionary["school"] = student.school
+        dictionary["major"] = student.major
+        dictionary["pov_identity"] = student.pov_identity
+        dictionary["e_mail"] = student.e_mail
+        if inWork.In_status == "报名中" or inWork.In_status == "中止" or inWork.In_status == "报名结束":
+            dictionary["s_sure"] = "未开启"
+        else:
+            application = Tbapplication.objects.filter(iw_number=iw_number).get(stu=stu_id)
+            dictionary["s_sure"] = application.s_sure
+        stu_yingpinlist.append(dictionary)
     return render(request, 'wechat/stu_yingpin.html', {'stu_yingpinlist': stu_yingpinlist})
 
 

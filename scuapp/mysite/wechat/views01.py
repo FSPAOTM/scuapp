@@ -320,7 +320,6 @@ def inwork_stu_ifo(request):
         dictionary["sex"] = student.sex
         dictionary["phonenumber"] = student.phonenumber_phonenumberphonenumber_phonenumber
         dictionary["grade"] = student.grade
-        dictionary["school"] = student.school
         dictionary["major"] = student.major
         dictionary["pov_identity"] = student.pov_identity
         dictionary["e_mail"] = student.e_mail
