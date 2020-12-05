@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>信息完善</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../static/wechat/css/font.css">
+    <link rel="stylesheet" href="../../static/wechat/css/xadmin.css">
+    <link href="../../static/wechat/css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../static/wechat/js/js1.js"></script>
+    <script type="text/javascript" src="../../static/wechat/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../static/wechat/js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="../static/js/js2.js"></script>
+    <script src="../static/js/js3.js"></script>
+
+    <![endif]-->
+    <script>
+        function success(){
+            alert("提交成功！")
+        }
+    </script>
+</head>
+
+<body>
+<div class="formbody">
+
+    <div class="formtitle"><span>信息完善</span></div>
+
+
+
+    <form action="../manager_complete" method="post">
+        <ul class="forminfo">
+            <li><label>工号</label><input value="{{ manager.manager_id }}" name="manager_id" type="text" class="dfinput" readonly required/></li>
+            <li><label>姓名</label><input value="{{ manager.name }}" id="IW_post" name="name" type="text" class="dfinput" /></li>
+            <li><label>性别</label><input value="{{ manager.sex }}" id="IW_depart" name="sex" type="text" class="dfinput" /></li>
+            <li><label>手机号</label><input value="{{ manager.phonenumber }}" name="phonenumber" type="text" class="dfinput" /></li>
+            <li><label>所属单位</label><input value="{{ manager.school }}" name="school" type="text" class="dfinput" /></li>
+            <li><label>邮箱</label><input value="{{ manager.e_mail }}" name="e_mail" type="text" class="dfinput" /></li>
+
+
+            <li><label>&nbsp;</label><input name="" onclick="success()" type="submit" class="btn" value="提交"/></li>
+        </ul>
+    </form>
+
+
+</div>
+
+</body>
+
+</html>
