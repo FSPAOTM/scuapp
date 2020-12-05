@@ -447,7 +447,13 @@ def Show_myjob(request):
     else:
         return HttpResponse("请求错误")
 
-#学生接受面试通知 TbinterviewNotice数据表
+#stongzhi 学生接受面试通知 TbinterviewNotice数据表
+@csrf_exempt
+def Interview_notice(request):
+    if request.method == "GET":
+        stu = request.GET.get('user')
+
+
 
 
 

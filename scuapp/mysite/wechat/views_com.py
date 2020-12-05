@@ -177,7 +177,7 @@ def Show_applicant(request):
             result = Tbapplication.objects.filter(ow_number=ow_number)
             for item in result:
                 ap_time = json.dumps(item.ap_time, cls=DateEncoder)
-                plays.append({'ow_number': ow_number,'ow_post': ow_post, 'stu': item.stu.stu_id, 'name':item.stu.name, 'apply_status':item.apply_status, 'ap_time':ap_time})
+                plays.append({'ow_number': ow_number,'post': ow_post, 'stu_number': item.stu.stu_id, 'user':item.stu.name, 'status':item.apply_status, 'ap_time':ap_time})
         plays_json = json.dumps(plays, ensure_ascii=False)
         return HttpResponse(plays_json)
     else:
@@ -203,18 +203,18 @@ def Modify_applystatus(request):
     else:
         return HttpResponse("请求错误")
 
-#cinterview 企业面试时间申请 未调试
+#cinterview 企业面试申请 未调试
 @csrf_exempt
 def Company_apply_interviewtime(request):
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
         ia_name = request.POST.get('Name')
         phonenumber = request.POST.get('company')
-        a_time = request.POST.get('a_time')
-        ia_time = timezone.now()
-        apply_status = request.POST.get('apply_status')
-        if apply_status=="报名结束":
-            TbinterviewApply.objects.create(ia_time=ia_time,
+        #a_time = request.POST.get('a_time')
+        a_time = timezone.now()
+        ow_status = TboutWork.objects.get(ow_number=ow_number).ow_status
+        if ow_status=="报名结束":
+            TbinterviewApply.objects.create(#ia_time=ia_time,
                                             ia_name=ia_name,
                                             phonenumber=phonenumber,
                                             a_time=a_time,
@@ -241,4 +241,7 @@ def Modify_interview_status(request):
             return HttpResponse("请求错误")
     else:
         return HttpResponse("请求错误")
+
+
+
 
