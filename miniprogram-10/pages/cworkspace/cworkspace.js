@@ -22,36 +22,6 @@ Page({
     workinfo3: [],
     workinfo4: [],
     workinfo5: [],
-    user1: [],
-    user2: [],
-    user3: [],
-    user4: [],
-    user5: [],
-    stu1:{},
-    stu2:{},
-    stu3:{},
-    stu4:{},
-    stu5:{},
-    selectedFlag:[],
-    details: [{
-        position: 'XXX职位',
-        title: '王雨欣 2018141093040',
-      },
-
-      {
-        position: 'XXX职位',
-        title: '姓名 12345565676',
-      },
-      {
-        position: 'XXX职位',
-        title: '姓名 12345565676',
-      },
-
-      {
-        position: 'XXX职位',
-        title: '姓名 12345565676',
-      },
-    ],
   },
 
   swichNav: function (e) {
@@ -120,15 +90,13 @@ Page({
               that.setData({
                 workinfo1: that.data.workinfo1
               })
-              /*that.setData({
-                user1: that.data.user1
-              })*/
-            } else if (res.data[i].status == "未通过") {
+              console.log(that.data.workinfo1)
+            } else if (res.data[i].status == "表筛未通过") {
               that.data.workinfo2.push(res.data[i])
               that.setData({
                 workinfo2: that.data.workinfo2
               })
-            } else if (res.data[i].status == "已通过") {
+            } else if (res.data[i].status == "表筛通过") {
               that.data.workinfo3.push(res.data[i])
               that.setData({
                 workinfo3: that.data.workinfo3
@@ -152,19 +120,20 @@ Page({
 
   itemSelected: function (e) {
     var index = e.currentTarget.dataset.index;
-    var item = this.data.details[index];
+    var item = this.data.workinfo3[index];
     item.isSelected = !item.isSelected;
     this.setData({
-      details: this.data.details,
+      workinfo3: this.data.workinfo3,
     });
   },
 
   yibaoming: function (ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
-    var f = ev.currentTarget.dataset.id;
+    console.log(e)
+    console.log(that.data.workinfo1[e])
     var ow_number = that.data.workinfo1[e].ow_number;
-    var stu_number = that.data.user1[f].stu_number;
+    var stu_number = that.data.workinfo1[e].stu_number;
     console.log("++++++", ev, that)
     wx.setStorageSync("ow_number", ow_number), wx.setStorageSync("stu_number", stu_number), wx.navigateTo({
       url: "../cresumeReview/cresumeReview"

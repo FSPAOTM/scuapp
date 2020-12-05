@@ -18,6 +18,7 @@
 
 <view class="container">
 <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}rpx" >
+ 
   <swiper-item>
 
     <view class='xiangqing' wx:for="{{workinfo1}}"  wx:key="key" bindtap="navigateTo">

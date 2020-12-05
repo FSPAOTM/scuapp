@@ -1,4 +1,5 @@
 // pages/cresumeDecide/cresumeDecide.js
+const app = getApp()
 Page({
 
   /**
@@ -44,13 +45,13 @@ Page({
     console.log(this.data.stu_number)
 
     wx.request({
-      url: app.globalData.url + '/Show_outwork_detail/', //*待修改
+      url: app.globalData.url + '/Insert_resume_show/', //*待修改
       method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        stu_number: this.data.stu_number
+        stuNumber: this.data.stu_number
       },
       success: (res) => {
         /*console.log(res.data);*/
@@ -109,14 +110,13 @@ Page({
 
   confirm1: function () {
     wx.request({
-      url: app.globalData.url + '/Reset_myinfo_name/', //待修改：状态改为“已通过”
+      url: app.globalData.url + '/Modify_applystatus/', //待修改：状态改为“已通过”
+      method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      method: "POST",
       data: {
         status:"已通过",
-        user: app.globalData.user,
         ow_number: this.data.ow_number,
         stu_number: this.data.stu_number,
       },
@@ -138,17 +138,15 @@ Page({
 
   confirm2: function () {
     wx.request({
-      url: app.globalData.url + '/Reset_myinfo_name/', //待修改：状态改为“未通过”
+      url: app.globalData.url + '/Modify_applystatus/', //待修改：状态改为“未通过”
+      method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      method: "POST",
       data: {
         status:"未通过",
-        user: app.globalData.user,
         ow_number: this.data.ow_number,
         stu_number: this.data.stu_number,
-        ap_time: this.data.ap_time,
       },
       success: (res) => {
         if (res.statusCode == 200) {

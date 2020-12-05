@@ -7,33 +7,33 @@
   <form>
     <view class='item'>
       <text class='a1' style="padding-left:60rpx;font-size:15px">姓名：</text>
-      <text class='right'>{{myinfo.name}}</text>
+      <text class='right'>{{name}}</text>
     </view>
 
 
 
     <view class='item'>
       <text class='a1' style="padding-left:60rpx;font-size:15px">年龄：</text>
-      <text class='right'>{{myinfo.age}}</text>
+      <text class='right'>{{age}}</text>
     </view>
 
 
 
     <view class="section section_gap">
-      <text class='a1' style="padding-left:60rpx;font-size:15px">性别:</text> <text class='right'>{{myinfo.sex}}</text>
+      <text class='a1' style="padding-left:60rpx;font-size:15px">性别:</text> <text class='right'>{{gender}}</text>
     </view>
 
 
 
     <view class='item'>
-      <text class='a1' style="padding-left:60rpx;font-size:15px">教育背景：</text> <text class='right'>{{myinfo.edu}}</text>
+      <text class='a1' style="padding-left:60rpx;font-size:15px">教育背景：</text> <text class='right'>{{edu}}</text>
     </view>
 
     <view class="section">
       <view class="jieshang" style="padding-left:30rpx;font-size:15px">技能自评</view>
       <view class="xian"></view>
       <view style=" height: 150px;">
-        <text style="font-size:30rpx; margin-left:30rpx;;" maxlength='150'>{{myinfo.ass}}</text>
+        <text style="font-size:30rpx; margin-left:30rpx;;" maxlength='150'>{{tech}}</text>
       </view>
     </view>
 
@@ -41,7 +41,7 @@
       <view class="jieshang" style="padding-left:30rpx;font-size:15px">工作经历</view>
       <view class="xian"></view>
       <view style=" height: 150px;">
-        <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{myinfo.work}}</text>
+        <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{job}}</text>
       </view>
     </view>
 
@@ -49,7 +49,7 @@
       <view class="jieshang" style="padding-left:30rpx;font-size:15px">项目经历</view>
       <view class="xian"></view>
       <view style=" height: 150px;">
-        <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{myinfo.proj}}</text>
+        <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{project}}</text>
       </view>
     </view>
 
@@ -57,14 +57,14 @@
       <view class="jieshang" style="padding-left:30rpx;font-size:15px">课外实践</view>
       <view class="xian"></view>
       <view style=" height: 150px;">
-        <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{myinfo.ext}}</text>
+        <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{practice}}</text>
       </view>
     </view>
 
     <view class="shopstore">
       <view class="shopstore_log">
         <text class="jieshang" style="padding-left:30rpx;font-size:15px">个人作品</text>
-        <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{myinfo.per}}</text>
+        <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{works}}</text>
       </view>
     </view>
 
