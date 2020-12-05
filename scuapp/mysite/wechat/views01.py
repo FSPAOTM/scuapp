@@ -1,12 +1,9 @@
 from django.shortcuts import HttpResponse,render
 from django.utils import timezone
-from django.template import loader
-from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply, TbinterviewResult, TbinterviewNotice
+from .models import Tbcompany, Tbmanager, Tbstudent,TbinWork, TboutWork, TbinResult, Tbapplication
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 from threading import Timer
-from django.http import JsonResponse
-import json
 
 #报名结束状态生成（定时器自动更新）
 def info_status():
@@ -21,65 +18,12 @@ def info_status():
         oddl = (j.ddl_time - timezone.now()).days
         if oddl < 0:
             TboutWork.objects.filter(ow_number=j.ow_number).update(ow_status="报名结束")
-    #print("更新完毕")
     t = Timer(10, info_status, ())
     t.start()
 
 info_status()
 
 #后台管理界面
-
-#一大波界面导入
-#首页
-@csrf_exempt
-def index(request):
-    return render(request, 'wechat/index.html')
-
-#首页内框架页
-@csrf_exempt
-def manage(request):
-    return render(request, 'wechat/manage.html')
-#登录界面
-@csrf_exempt
-def login(request):
-    return render(request, 'wechat/login.html')
-#注册界面
-@csrf_exempt
-def register(request):
-    return render(request, 'wechat/register.html')
-#忘记密码界面
-@csrf_exempt
-def inwork_foregetpwd(request):
-    return render(request, 'wechat/inwork_foregetpwd.html')
-
-#校内兼职信息展示界面
-@csrf_exempt
-def inwork_list(request):
-    inwork_list = TbinWork.objects.all()
-    return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
-
-#校内兼职信息发布界面
-@csrf_exempt
-def inwork_add(request):
-    return render(request, 'wechat/inwork_add.html')
-
-
-#校外兼职信息展示界面
-@csrf_exempt
-def outwork_list(request):
-    outwork_list = TboutWork.objects.all()
-    return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
-
-#校外兼职发布审核界面
-@csrf_exempt
-def work_examine(request):
-    outwork_list = TboutWork.objects.filter(Q(ow_status="待审核") | Q(ow_status="已打回"))
-    return render(request, 'wechat/work_examine.html', {'outwork_list': outwork_list})
-
-#校外兼职信息发布界面
-@csrf_exempt
-def outwork_add(request):
-    return render(request, 'wechat/outwork_add.html')
 
 #校内兼职报名处理界面
 @csrf_exempt
@@ -91,70 +35,21 @@ def inworking_list(request):
         w_now=Tbapplication.objects.filter(iw_number=i.iw_number).count()
         w_out=(timezone.now()-i.inpub_time).days
         w_ddl=(i.ddl_time-timezone.now()).days
+        if w_ddl <0:
+            dictionary["w_out"] = "已截止"
+            dictionary["w_ddl"] = "已截止"
+        else:
+            dictionary["w_out"] = w_out+"天"
+            dictionary["w_ddl"] = w_ddl+"天"
         dictionary["w_now"]=w_now
         dictionary["iw_number"] = i.iw_number
         dictionary["iw_post"] = i.iw_post
         dictionary["work"] = i.work
         dictionary["w_amount"] = i.w_amount
         dictionary["w_reuire"] = i.w_reuire
-        dictionary["w_out"] = w_out
-        dictionary["w_ddl"] = w_ddl
         dictionary["In_status"] = i.In_status
         inworking_list.append(dictionary)
     return render(request, 'wechat/inworking_list.html', {'inworking_list': inworking_list})
-
-#面试申请总界面
-def interview_list(request):
-    interview_list = []
-    list = TbinterviewApply.objects.all()
-    for i in list:
-        outwork = i.ow_number
-        if outwork.ow_status=="面试申请中" or outwork.ow_status=="面试通知中" or outwork.ow_status=="面试阶段" or outwork.ow_status=="结果通知":
-            dictionary = {}
-            dictionary["ia_number"] = i.ia_number
-            dictionary["ow_number"] = outwork.ow_number
-            dictionary["ia_time"] = i.ia_time
-            dictionary["ia_name"] = i.ia_name
-            dictionary["phonenumber"] = i.phonenumber
-            dictionary["a_time"] = i.a_time
-            dictionary["apply_status"] = i.apply_status
-            filterResult = TbinterviewNotice.objects.filter(ia_number=i.ia_number)
-            if len(filterResult) > 0:
-                application = TbinterviewNotice.objects.filter(ia_number=i.ia_number)
-                dictionary["c_sure"] = application[0].c_sure
-            else:
-                dictionary["c_sure"] = "未开启"
-            interview_list.append(dictionary)
-    return render(request, 'wechat/interview_list.html', {'interview_list': interview_list})
-
-#应聘学生查看 HHL
-def stu_yingpin(request):
-    stu_yingpinlist = ['阿巴阿巴']
-    return render(request, 'wechat/stu_yingpin.html', {'stu_yingpinlist': stu_yingpinlist})
-
-
-#面试信息通知界面 HHL
-def notice_send(request):
-    return render(request, 'wechat/notice_send.html')
-
-#面试信息打回 HHL
-def back_reason(request):
-    return render(request, 'wechat/back_reason.html')
-
-#面试结果界面
-def interview_result(request):
-    interview_result = TbinterviewResult.objects.all()
-    return render(request, 'wechat/interview_result.html', {'interview_result': interview_result})
-
-#面试结果界面
-def stu_result(request):
-    return render(request, 'wechat/stu_result.html', {'stu_result': stu_result})
-
-#企业列表界面
-def company_list(request):
-    company_list = Tbcompany.objects.all()
-    return render(request, 'wechat/company_list.html', {'company_list': company_list})
-
 
 #功能接口
 #登录管理者
@@ -171,11 +66,9 @@ def management_login(request):
         except Tbmanager.DoesNotExist as e:
             error_msg = "用户名不存在"
             return render(request, 'wechat/login.html', {'error_msg': error_msg})
-        # 登录成功
         return render(request, 'wechat/index.html')
     else:
         return HttpResponse("请求错误")
-
 #注册管理者
 @csrf_exempt
 def management_inwork_register(request):
@@ -193,10 +86,8 @@ def management_inwork_register(request):
                                             password=password)
             user.save()
             return render(request, 'wechat/register_success.html')
-        #注册成功的显示？？？（界面？？）
     else:
         return HttpResponse("请求错误")
-
 #忘记密码
 @csrf_exempt
 def management_forgetpwd(request):
@@ -213,13 +104,11 @@ def management_forgetpwd(request):
             else:
                 Tbmanager.objects.filter(manager_id=manager_id).update(password=password)
                 return render(request, 'wechat/xiugai_success.html')
-            #修改成功显示？？？（界面？？）
         else:
             error_msg = "用户不存在"
             return render(request, 'wechat/inwork_foregetpwd.html', {'error_msg': error_msg})
     else:
         return HttpResponse("请求错误")
-
 #校内兼职信息发布
 @csrf_exempt
 def management_inWork_release(request):
@@ -242,15 +131,12 @@ def management_inWork_release(request):
         return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
     else:
         return HttpResponse("请求错误")
-
 #校内兼职信息修改
 @csrf_exempt
 def management_inWork_reset_show(request):
     iw_number=request.GET.get("re_num")
     inWork = TbinWork.objects.get(iw_number=iw_number)
     return render(request, 'wechat/inwork_change.html', {'inWork': inWork})
-
-
 @csrf_exempt
 def management_inWork_reset(request):
     if request.method == "POST":
@@ -272,7 +158,6 @@ def management_inWork_reset(request):
         return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
     else:
         return HttpResponse("请求错误")
-
 #校内兼职信息删除
 @csrf_exempt
 def management_inWork_delete(request):
@@ -280,7 +165,6 @@ def management_inWork_delete(request):
     TbinWork.objects.filter(iw_number=iw_number).delete()  #批量删除
     inwork_list = TbinWork.objects.all()
     return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
-
 #校内兼职中止
 @csrf_exempt
 def management_inWork_stop(request):
@@ -292,7 +176,6 @@ def management_inWork_stop(request):
         return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
     else:
         return render(request, 'wechat/manage_error.html')
-
 #校内兼职启用
 @csrf_exempt
 def management_inWork_begin(request):
@@ -304,7 +187,6 @@ def management_inWork_begin(request):
         return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
     else:
         return render(request, 'wechat/manage_error.html')
-
 #校内兼职信息搜索
 #存在问题：必须满足 %sab%的形式 中间有字检索不成功！！！！,时间无法检索！！应该为格式问题
 @csrf_exempt
@@ -319,14 +201,10 @@ def management_inwork_search(request):
         s_w_salary = request.POST.get("s_w_salary")
         s_w_reuire = request.POST.get("s_w_reuire")
         s_In_status = request.POST.get("s_In_status")
-        #s_ddl_time = request.POST.get("s_ddl_time")
-        #s_inpub_time = request.POST.get("s_inpub_time")
         inwork_list = TbinWork.objects.filter(iw_post__contains=s_iw_post).filter(iw_number__contains=s_iw_number).filter(iw_depart__contains=s_iw_depart).filter(w_time__contains=s_w_time).filter(w_place__contains=s_w_place).filter(work__contains=s_work).filter(w_salary__contains=s_w_salary).filter(w_reuire__contains=s_w_reuire).filter(In_status__contains=s_In_status)
-            #.filter(ddl_time__contains=s_ddl_time).filter(inpub_time__contains=s_inpub_time)
         return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
     else:
         return HttpResponse("请求错误")
-
 #校外兼职信息搜索
 #存在问题：必须满足 %sab%的形式 中间有字检索不成功！！！！,时间无法检索！！应该为格式问题, com_number无法检索,因为是对象！！！
 @csrf_exempt
@@ -340,17 +218,11 @@ def management_outwork_search(request):
         s_work = request.POST.get("s_work")
         s_w_salary = request.POST.get("s_w_salary")
         s_w_reuire = request.POST.get("s_w_reuire")
-        #s_com_number = request.POST.get("s_com_number")
         s_ow_status = request.POST.get("s_ow_status")
-        #s_ddl_time = request.POST.get("s_ddl_time")
-        #s_ipub_time = request.POST.get("s_ipub_time")
-        #company = TboutWork.objects.get(com_number=s_com_number)
         outwork_list = TboutWork.objects.filter(ow_post__contains=s_ow_post).filter(ow_number__contains=s_ow_number).filter(w_place_detail__contains=s_w_place_detail).filter(w_time__contains=s_w_time).filter(w_place__contains=s_w_place).filter(work__contains=s_work).filter(w_salary__contains=s_w_salary).filter(w_reuire__contains=s_w_reuire).filter(ow_status__contains=s_ow_status)#.filter(com_number__contains=company)
-            #.filter(ddl_time__contains=s_ddl_time).filter(ipub_time__contains=s_ipub_time)
         return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
     else:
         return HttpResponse("请求错误")
-
 #校外兼职信息删除
 @csrf_exempt
 def management_outWork_delete(request):
@@ -358,7 +230,6 @@ def management_outWork_delete(request):
     TboutWork.objects.filter(ow_number=ow_number).delete()  #批量删除
     outwork_list = TboutWork.objects.all()
     return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
-
 #校外兼职中止
 @csrf_exempt
 def management_outWork_stop(request):
@@ -370,7 +241,6 @@ def management_outWork_stop(request):
         return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
     else:
         return render(request, 'wechat/manage_error.html')
-
 #校外兼职启用
 @csrf_exempt
 def management_outWork_begin(request):
@@ -382,16 +252,12 @@ def management_outWork_begin(request):
         return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
     else:
         return render(request, 'wechat/manage_error.html')
-
-
 #校外兼职信息修改
 @csrf_exempt
 def management_outWork_reset_show(request):
     ow_number=request.GET.get("re_num")
     outWork = TboutWork.objects.get(ow_number=ow_number)
     return render(request, 'wechat/outWork_change.html', {'outWork': outWork})
-
-
 @csrf_exempt
 def management_outWork_reset(request):
     if request.method == "POST":
@@ -413,7 +279,6 @@ def management_outWork_reset(request):
         return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
     else:
         return HttpResponse("请求错误")
-
 #校外兼职信息发布
 @csrf_exempt
 def management_outWork_release(request):
@@ -438,7 +303,6 @@ def management_outWork_release(request):
         return render(request, 'wechat/outWork_list.html', {'outWork_list': outWork_list})
     else:
         return HttpResponse("请求错误")
-
 #校内兼职报名学生简历
 @csrf_exempt
 def inwork_stu_ifo(request):
@@ -467,8 +331,6 @@ def inwork_stu_ifo(request):
             dictionary["s_sure"] = application.s_sure
         inwork_stu_list.append(dictionary)
     return render(request, 'wechat/inwork_stu_ifo.html', {'inwork_stu_list': inwork_stu_list})
-
-
 #校内兼职结果搜索
 @csrf_exempt
 def management_inworking_search(request):
@@ -477,8 +339,6 @@ def management_inworking_search(request):
         s_iw_post = request.POST.get("s_iw_post")
         s_work = request.POST.get("s_work")
         s_w_reuire = request.POST.get("s_w_reuire")
-        #s_w_out = request.POST.get("s_w_out")
-        #s_w_ddl = request.POST.get("s_w_ddl")
         s_w_status = request.POST.get("s_w_status")
         list = TbinWork.objects.filter(iw_post__contains=s_iw_post).filter(iw_number__contains=s_iw_number).filter(work__contains=s_work).filter(w_reuire__contains=s_w_reuire).filter(In_status__contains=s_w_status).exclude(In_status="已结束").exclude(In_status="中止")
         inworking_list = []
@@ -500,7 +360,6 @@ def management_inworking_search(request):
         return render(request, 'wechat/inworking_list.html', {'inworking_list': inworking_list})
     else:
         return HttpResponse("请求错误")
-
 #招聘结果发送
 @csrf_exempt
 def inwork_result(request):
@@ -515,7 +374,6 @@ def inwork_result(request):
             return render(request, 'wechat/inwork_result.html', {'iw_number': iw_number})
     else:
         return render(request, 'wechat/manage_error.html')
-
 #应该多表和学生相连(保存按钮）
 @csrf_exempt
 def management_inWork_result(request):
@@ -539,7 +397,6 @@ def management_inWork_result(request):
         return render(request, 'wechat/inwork_result_change.html', {'result_list': result_list})
     else:
         return HttpResponse("请求错误")
-
 #提交按钮
 @csrf_exempt
 def inwork_result_submit(request):
@@ -567,7 +424,6 @@ def inwork_result_submit(request):
         return render(request, 'wechat/inworking_list.html', {'inworking_list': inworking_list})
     else:
         return render(request, 'wechat/manage_error.html')
-
 #修改校内招聘结果通知
 @csrf_exempt
 def management_inWork_result_change(request):
@@ -585,8 +441,6 @@ def management_inWork_result_change(request):
         return render(request, 'wechat/inwork_result_change.html', {'result_list': result_list})
     else:
         return HttpResponse("请求错误")
-
-
 #校外兼职通过
 @csrf_exempt
 def management_outWork_pass(request):
@@ -598,7 +452,6 @@ def management_outWork_pass(request):
         return render(request, 'wechat/work_examine.html', {'outwork_list': outwork_list})
     else:
         return render(request, 'wechat/manage_error.html')
-
 #校外兼职打回界面
 @csrf_exempt
 def management_outWork_reject(request):
@@ -610,7 +463,6 @@ def management_outWork_reject(request):
         return render(request, 'wechat/reject_result.html', {'ow_number': ow_number,'c_phonenum':c_phonenum,'back_reason': back_reason})
     else:
         return render(request, 'wechat/manage_error.html')
-
 #校外兼职打回理由生成(保存按钮）
 @csrf_exempt
 def outWork_reject_result(request):
@@ -625,8 +477,6 @@ def outWork_reject_result(request):
                       {'ow_number': ow_number, 'c_phonenum': c_phonenum, 'back_reason': back_reason})
     else:
         return HttpResponse("请求错误")
-
-
 # 校外兼职打回理由生成(发送按钮）
 @csrf_exempt
 def outWork_reject_result_send(request):

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from . import views,views01,views_com
+from . import views,views01,views02,views_com
 
 app_name = 'wechat'
 urlpatterns = [
@@ -41,20 +41,20 @@ urlpatterns = [
 
     #后台管理界面
     #登录注册等
-    path('', views01.index, name='index'),
-    path('index/', views01.index, name='index'),
-    path('manage/', views01.manage, name='manage'),
-    path('login/', views01.login, name='login'),
-    path('register/', views01.register, name='register'),
-    path('inwork_foregetpwd/', views01.inwork_foregetpwd, name='inwork_foregetpwd'),
+    path('', views02.index, name='index'),
+    path('index/', views02.index, name='index'),
+    path('manage/', views02.manage, name='manage'),
+    path('login/', views02.login, name='login'),
+    path('register/', views02.register, name='register'),
+    path('inwork_foregetpwd/', views02.inwork_foregetpwd, name='inwork_foregetpwd'),
     path('management_login/', views01.management_login, name='management_login'),
     path('management_inwork_register/', views01.management_inwork_register, name='management_inwork_register'),
     path('management_forgetpwd/', views01.management_forgetpwd, name='management_forgetpwd'),
     #兼职管理
-    path('inwork_list/', views01.inwork_list, name='inwork_list'),
-    path('outwork_list/', views01.outwork_list, name='outwork_list'),
-    path('inwork_add/', views01.inwork_add, name='inwork_add'),
-    path('outwork_add/', views01.outwork_add, name='outwork_add'),
+    path('inwork_list/', views02.inwork_list, name='inwork_list'),
+    path('outwork_list/', views02.outwork_list, name='outwork_list'),
+    path('inwork_add/', views02.inwork_add, name='inwork_add'),
+    path('outwork_add/', views02.outwork_add, name='outwork_add'),
     path('management_inWork_stop/', views01.management_inWork_stop, name='management_inWork_stop'),
     path('management_inWork_release/', views01.management_inWork_release, name='management_inWork_release'),
     path('management_inWork_begin/', views01.management_inWork_begin, name='management_inWork_begin'),
@@ -77,20 +77,20 @@ urlpatterns = [
     path('inwork_result/', views01.inwork_result, name='inwork_result'),
     path('inwork_result_submit/', views01.inwork_result_submit, name='inwork_result_submit'),
     path('management_inWork_result_change/', views01.management_inWork_result_change, name='management_inWork_result_change'),
-    path('work_examine/', views01.work_examine, name='work_examine'),
+    path('work_examine/', views02.work_examine, name='work_examine'),
     path('management_outWork_pass/', views01.management_outWork_pass, name='management_outWork_pass'),
     path('management_outWork_reject/', views01.management_outWork_reject, name='management_outWork_reject'),
     path('outWork_reject_result/', views01.outWork_reject_result, name='outWork_reject_result'),
     path('outWork_reject_result_send/', views01.outWork_reject_result_send, name='outWork_reject_result_send'),
 
 
-    path('interview_list/', views01.interview_list, name='interview_list'),
-    path('notice_send/', views01.notice_send, name='notice_send'),
-    path('back_reason/', views01.back_reason, name='back_reason'),
-    path('interview_result/', views01.interview_result, name='interview_result'),
-    path('stu_result/', views01.stu_result, name='stu_result'),
-    path('company_list/', views01.company_list, name='company_list'),
-    path('stu_yingpin/', views01.stu_yingpin, name='stu_yingpin'),
+    path('interview_list/', views02.interview_list, name='interview_list'),
+    path('notice_send/', views02.notice_send, name='notice_send'),
+    path('back_reason/', views02.back_reason, name='back_reason'),
+    path('interview_result/', views02.interview_result, name='interview_result'),
+    path('stu_result/', views02.stu_result, name='stu_result'),
+    path('company_list/', views02.company_list, name='company_list'),
+    path('stu_yingpin/', views02.stu_yingpin, name='stu_yingpin'),
 
 
     # path('<CharField:manager_id>/results/', views01.results, name='results'),
