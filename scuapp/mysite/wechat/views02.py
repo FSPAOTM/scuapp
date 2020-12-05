@@ -1,8 +1,7 @@
 from django.shortcuts import HttpResponse,render
 from django.utils import timezone
 from django.template import loader
-from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply, TbinterviewResult, TbinterviewNotice
-from django.views.decorators.csrf import csrf_exempt
+from .models import Tbcompany, Tbstudent,Tbresume, Tbqualify, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply, TbinterviewResult, TbinterviewNotice
 from django.db.models import Q
 from threading import Timer
 from django.http import JsonResponse
@@ -12,49 +11,38 @@ import json
 
 #一大波界面导入
 #首页
-@csrf_exempt
 def index(request):
     return render(request, 'wechat/index.html')
 #首页内框架页
-@csrf_exempt
 def manage(request):
     return render(request, 'wechat/manage.html')
 #登录界面
-@csrf_exempt
 def login(request):
     return render(request, 'wechat/login.html')
 #注册界面
-@csrf_exempt
 def register(request):
     return render(request, 'wechat/register.html')
 #忘记密码界面
-@csrf_exempt
 def inwork_foregetpwd(request):
     return render(request, 'wechat/inwork_foregetpwd.html')
 #校内兼职信息展示界面
-@csrf_exempt
 def inwork_list(request):
     inwork_list = TbinWork.objects.all()
     return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
 #校内兼职信息发布界面
-@csrf_exempt
 def inwork_add(request):
     return render(request, 'wechat/inwork_add.html')
 #校外兼职信息展示界面
-@csrf_exempt
 def outwork_list(request):
     outwork_list = TboutWork.objects.all()
     return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
 #校外兼职发布审核界面
-@csrf_exempt
 def work_examine(request):
     outwork_list = TboutWork.objects.filter(Q(ow_status="待审核") | Q(ow_status="已打回"))
     return render(request, 'wechat/work_examine.html', {'outwork_list': outwork_list})
 #校外兼职信息发布界面
-@csrf_exempt
 def outwork_add(request):
     return render(request, 'wechat/outwork_add.html')
-
 #校外
 #面试申请总界面
 def interview_list(request):
@@ -62,7 +50,7 @@ def interview_list(request):
     list = TbinterviewApply.objects.all()
     for i in list:
         outwork = i.ow_number
-        if outwork.ow_status=="面试申请中" or outwork.ow_status=="面试通知中" or outwork.ow_status=="面试阶段" or outwork.ow_status=="结果通知":
+        if outwork.ow_status=="面试申请中" or outwork.ow_status=="面试通知中" or outwork.ow_status=="面试阶段":
             dictionary = {}
             dictionary["ia_number"] = i.ia_number
             dictionary["ow_number"] = outwork.ow_number
@@ -71,10 +59,9 @@ def interview_list(request):
             dictionary["phonenumber"] = i.phonenumber
             dictionary["a_time"] = i.a_time
             dictionary["apply_status"] = i.apply_status
-            filterResult = TbinterviewNotice.objects.filter(ia_number=i.ia_number)
-            if len(filterResult) > 0:
-                application = TbinterviewNotice.objects.filter(ia_number=i.ia_number)
-                dictionary["c_sure"] = application[0].c_sure
+            if outwork.ow_status != "面试申请中":
+                interviewNotice = TbinterviewNotice.objects.get(ia_number=i.ia_number)
+                dictionary["c_sure"] = interviewNotice.c_sure
             else:
                 dictionary["c_sure"] = "未开启"
             interview_list.append(dictionary)
@@ -82,9 +69,10 @@ def interview_list(request):
 
 #校外应聘学生查看
 def stu_yingpin(request):
-    ow_number = request.GET.get("yp_num")
-    list = Tbapplication.objects.filter(ow_number=ow_number)
-    outWork = TboutWork.objects.get(ow_number=ow_number)
+    ia_number = request.GET.get("yp_num")
+    interviewApply = TbinterviewApply.objects.get(ia_number=ia_number)
+    outwork = interviewApply.ow_number
+    list = Tbapplication.objects.filter(ow_number = outwork.ow_number)
     stu_yingpinlist = []
     for i in list:
         stu_id = i.stu.stu_id
@@ -96,21 +84,24 @@ def stu_yingpin(request):
         dictionary["sex"] = student.sex
         dictionary["phonenumber"] = student.phonenumber_phonenumberphonenumber_phonenumber
         dictionary["grade"] = student.grade
-        dictionary["school"] = student.school
-        dictionary["major"] = student.major
-        dictionary["pov_identity"] = student.pov_identity
         dictionary["e_mail"] = student.e_mail
-        if inWork.In_status == "报名中" or inWork.In_status == "中止" or inWork.In_status == "报名结束":
+        dictionary["ap_reson"] = i.ap_reson
+        dictionary["apply_status"] = i.apply_status
+        if outwork.ow_status == "面试申请中":
             dictionary["s_sure"] = "未开启"
         else:
-            application = Tbapplication.objects.filter(iw_number=iw_number).get(stu=stu_id)
-            dictionary["s_sure"] = application.s_sure
+            interviewNotice = TbinterviewNotice.objects.get(ia_number=ia_number)
+            dictionary["s_sure"] = interviewNotice.s_sure
         stu_yingpinlist.append(dictionary)
     return render(request, 'wechat/stu_yingpin.html', {'stu_yingpinlist': stu_yingpinlist})
 
+#面试信息通知界面
+def interview_notice_send(request):
+    ia_number = request.GET.get("result_num")
 
-#面试信息通知界面 HHL
-def notice_send(request):
+    TbinterviewNotice
+
+
     return render(request, 'wechat/notice_send.html')
 
 #面试信息打回 HHL

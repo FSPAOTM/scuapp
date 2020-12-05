@@ -82,15 +82,17 @@ urlpatterns = [
     path('management_outWork_reject/', views01.management_outWork_reject, name='management_outWork_reject'),
     path('outWork_reject_result/', views01.outWork_reject_result, name='outWork_reject_result'),
     path('outWork_reject_result_send/', views01.outWork_reject_result_send, name='outWork_reject_result_send'),
-
-
     path('interview_list/', views02.interview_list, name='interview_list'),
-    path('notice_send/', views02.notice_send, name='notice_send'),
+    path('stu_yingpin/', views02.stu_yingpin, name='stu_yingpin'),
+
+
+
+    path('interview_notice_send/', views02.interview_notice_send, name='interview_notice_send'),
     path('back_reason/', views02.back_reason, name='back_reason'),
     path('interview_result/', views02.interview_result, name='interview_result'),
     path('stu_result/', views02.stu_result, name='stu_result'),
     path('company_list/', views02.company_list, name='company_list'),
-    path('stu_yingpin/', views02.stu_yingpin, name='stu_yingpin'),
+
 
 
     # path('<CharField:manager_id>/results/', views01.results, name='results'),
