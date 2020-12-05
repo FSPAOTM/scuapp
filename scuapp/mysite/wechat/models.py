@@ -109,7 +109,7 @@ class TbinterviewNotice(models.Model):
     i_number = models.AutoField(db_column='I_Number', primary_key=True)  # Field name made lowercase.
     i_address = models.CharField(db_column='I_Address', max_length=60, blank=True, null=True)  # Field name made lowercase.
     i_time = models.DateTimeField(db_column='I_Time')  # Field name made lowercase.
-    ia_number = models.PositiveIntegerField(db_column='IA_Number')  # Field name made lowercase.
+    ia_number = models.PositiveIntegerField(db_column='IA_Number')  # Field name made lowercase.#
     stu = models.ForeignKey('Tbstudent', models.DO_NOTHING, db_column='Stu_ID')  #单个学生学号
     in_time = models.CharField(db_column='IN_Time', max_length=60, blank=True, null=True)#面试时间
     c_sure = models.CharField(db_column='C_Sure', max_length=255, default='未确认')#企业确认状态
