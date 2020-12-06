@@ -29,12 +29,13 @@
         <a href="../interview_list/"><button class="layui-btn" >返回</button></a>
     <div class="formtitle"><span>打回理由（带*为必填）</span></div>
 
-    <form action="#" method="post">
+    <form action="../interview_back_reason_save/" method="post">
         <ul class="forminfo">
             <li><label>申请编号</label><input name="ia_number" value="{{ ia_number }}" type="text" class="dfinput" readonly/><i>*</i></li>
             <li><label>校外岗位编号</label><input name="ow_number" value="{{ ow_number }}" type="text" class="dfinput" readonly/><i>*</i></li>
+            <li><label>负责人联系方式</label><input value="{{ c_phonenum }}" name="c_phonenum" type="text" class="dfinput" readonly/><i>*</i></li>
             <li><label>打回理由</label><textarea name="back_reason" cols="" rows="" class="textinput" required>{{ back_reason }}</textarea><i>默认为“None”,修改后,请先保存,再发送</i></li>
-            <li><label>&nbsp</label><input name="保存" onclick="success()" type="submit" class="btn" value="保存"/><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><a href="../outWork_reject_result_send/?submit_num={{ ow_number }}"><input name="" type="button" class="btn" value="发送"/></a></li>
+            <li><label>&nbsp</label><input name="保存" onclick="success()" type="submit" class="btn" value="保存"/><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><a href="../interview_back_reason_send/?submit_num={{ ia_number }}"><input name="" type="button" class="btn" value="发送"/></a></li>
             <!--提交按钮绑定另一接口-->
         </ul>
     </form>

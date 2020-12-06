@@ -452,13 +452,10 @@ def outWork_reject_result(request):
 # 校外兼职打回理由生成(发送按钮）
 def outWork_reject_result_send(request):
     ow_number = request.GET.get('submit_num')
-    outWork = TboutWork.objects.get(ow_number=ow_number)
-    if outWork.back_reason != "None":
-        TboutWork.objects.filter(ow_number=ow_number).update(ow_status="已打回")
-        outwork_list = TboutWork.objects.filter(Q(ow_status="待审核") | Q(ow_status="已打回"))
-        return render(request, 'wechat/work_examine.html', {'outwork_list': outwork_list})
-    else:
-        return render(request, 'wechat/manage_error.html')
+    TboutWork.objects.filter(ow_number=ow_number).update(ow_status="已打回")
+    outwork_list = TboutWork.objects.filter(Q(ow_status="待审核") | Q(ow_status="已打回"))
+    return render(request, 'wechat/work_examine.html', {'outwork_list': outwork_list})
+
 
 
 

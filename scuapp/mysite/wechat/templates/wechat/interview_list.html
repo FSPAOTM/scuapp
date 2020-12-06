@@ -30,7 +30,7 @@
             <th>
               <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </th>
-            <th>面试编号</th>
+            <th>申请编号</th>
             <th>校外岗位编号</th>
             <th>面试时间</th>
             <th>负责人</th>
@@ -62,7 +62,7 @@
             <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.apply_status }}</span></td>
             <td align="center" class="td-status">
-              <a href="../interview_notice_send/?result_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">发送通知</span></a>
+              <a href="../interview_notice_send/?result_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">面试通知</span></a>
               <p><br><a href="../interview_back_reason/?ia_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">打回</span></a></td>
             <!--待修改-->
         </tr>
