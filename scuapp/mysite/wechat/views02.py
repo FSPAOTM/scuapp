@@ -91,18 +91,71 @@ def stu_yingpin(request):
             dictionary["s_sure"] = "未开启"
         else:
             interviewNotice = TbinterviewNotice.objects.get(ia_number=ia_number)
-            dictionary["s_sure"] = interviewNotice.s_sure
+            list = interviewNotice.stu
+            for i in list:
+                if i == stu_id:
+                    dictionary["s_sure"] = interviewNotice.s_sure[i]
         stu_yingpinlist.append(dictionary)
     return render(request, 'wechat/stu_yingpin.html', {'stu_yingpinlist': stu_yingpinlist})
 
 #面试信息通知界面
 def interview_notice_send(request):
     ia_number = request.GET.get("result_num")
+    interviewApply = TbinterviewApply.objects.get(ia_number=ia_number)
+    outwork = interviewApply.ow_number
+    if outwork.ow_status == "面试申请中" or outwork.ow_status == "面试通知中":
+        apply = Tbapplication.objects.filter(ow_number=outwork.ow_number).filter(apply_status="表筛已通过")
+        filterResult = TbinterviewNotice.objects.filter(ia_number=ia_number)
+        if len(filterResult) > 0:
+            interviewNotice = TbinterviewNotice.objects.get(ia_number=ia_number)
+            i_com = outwork.com_number.com_name
+            i_num = str(apply.count())+"人"
+            return render(request, 'wechat/notice_send.html', {'i_number': interviewNotice.i_number, 'ia_number': interviewNotice.ia_number, 'i_com': i_com,
+                 'i_num': i_num, 'in_time': interviewNotice.in_time, 'i_address': interviewNotice.i_address})
+        else:
+            stu = []
+            k = 0
+            for i in apply:
+                stu.append(i.stu.stu_id)
+                k=k+1
+            in_time=interviewApply.ia_time
+            interviewNotice = TbinterviewNotice.objects.create(i_time=timezone.now(), ia_number=ia_number, stu=stu,in_time=in_time)
+            interviewNotice.save()
+            interviewNotice = TbinterviewNotice.objects.get(ia_number=ia_number)
+            i_com = outwork.com_number.com_name
+            i_num = str(k)+"人"
+            return render(request, 'wechat/notice_send.html',{'i_number':interviewNotice.i_number,'ia_number':interviewNotice.ia_number,'i_com':i_com,'i_num':i_num,'in_time':interviewNotice.in_time,'i_address':interviewNotice.i_address})
+    else:
+        return render(request, 'wechat/manage_error.html')
 
-    TbinterviewNotice
+#面试信息通知界面(保存按钮）
+def interview_notice_send_save(request):
+    ia_number = request.GET.get("result_num")
+    interviewApply = TbinterviewApply.objects.get(ia_number=ia_number)
+    outwork = interviewApply.ow_number
+    if outwork.ow_status == "面试申请中" or outwork.ow_status == "面试通知中":
+        apply = Tbapplication.objects.filter(ow_number=outwork.ow_number).filter(apply_status="表筛已通过")
+        filterResult = TbinterviewNotice.objects.filter(ia_number=ia_number)
+        if len(filterResult) > 0:
+            interviewNotice = TbinterviewNotice.objects.get(ia_number=ia_number)
+            i_com = outwork.com_number.com_name
+            i_num = str(apply.count())+"人"
+            return render(request, 'wechat/notice_send.html', {'i_number': interviewNotice.i_number, 'ia_number': interviewNotice.ia_number, 'i_com': i_com,
+                 'i_num': i_num, 'in_time': interviewNotice.in_time, 'i_address': interviewNotice.i_address})
+        else:
+            stu = []
+            k = 0
+            for i in apply:
+                stu.append(i.stu.stu_id)
+                k=k+1
+            in_time=interviewApply.ia_time
+            interviewNotice = TbinterviewNotice.objects.create(i_time=timezone.now(), ia_number=ia_number, stu=stu,in_time=in_time)
+            interviewNotice.save()
+            interviewNotice = TbinterviewNotice.objects.get(ia_number=ia_number)
+            i_com = outwork.com_number.com_name
+            i_num = str(k)+"人"
+            return render(request, 'wechat/notice_send.html',{'i_number':interviewNotice.i_number,'ia_number':interviewNotice.ia_number,'i_com':i_com,'i_num':i_num,'in_time':interviewNotice.in_time,'i_address':interviewNotice.i_address})
 
-
-    return render(request, 'wechat/notice_send.html')
 
 #面试信息打回 HHL
 def back_reason(request):
