@@ -17,6 +17,7 @@ Page({
     salary: "",
     meaning: "",
     more:"",
+    content:"",
     code: 1,
     code1: 2,
     userStars: [
@@ -121,8 +122,11 @@ Page({
     this.setData({
       iw_number: iw_number
     })
+
+
+
     wx.request({
-      url: app.globalData.url + '/Insert_resume_show/', //待修改
+      url: app.globalData.url + '/feedbackEr/', 
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
@@ -138,6 +142,7 @@ Page({
         salary: that.data.salary,
         meaning: that.data.meaning,
         more: that.data.more,
+        content:that.data.content,
       },
       success: (res) => {
         if (res.statusCode == 200) {

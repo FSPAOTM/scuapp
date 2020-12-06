@@ -129,20 +129,20 @@
             <text class='gongsi2'>{{item.depart}}</text>
           </view>
         </view>
-        <view class="lainjie">
+        <view class="lianjie">
           <view>
-            <button bindtap="xq5" style="width:90px;" class='su' data-index="{{index}}">详情 ></button>
+            <button bindtap="xq5" style="width:80px;" class='su2' data-index="{{index}}">详情 ></button>
           </view>
 
           <view>
-            <button bindtap="ms" style="width:105px;" class='su' data-index="{{index}}">面试信息 ></button>
+            <button bindtap="ms" style="width:90px;" class='su2' data-index="{{index}}">面试信息 ></button>
           </view>
 
           <view>
-            <button bindtap="ms" style="width:105px;" class='su' data-index="{{index}}">录用信息 ></button>
+            <button bindtap="ms" style="width:90px;" class='su2' data-index="{{index}}">录用信息 ></button>
           </view>
-          <view wx:if="{{isShow}}">
-            <button bindtap="pingjia" style="width:90px;" class='su' data-index="{{index}}">评价 ></button>
+          <view wx:if="{{item.show}}">
+            <button bindtap="pingjia" style="width:80px;" class='su2' data-index="{{index}}">评价 ></button>
           </view>
         </view>
         <view class="line"></view>

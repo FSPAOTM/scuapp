@@ -7,13 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isShow:true,
+    isShow: true,
     workinfo1: [],
     workinfo2: [],
     workinfo3: [],
     workinfo4: [],
     workinfo5: [],
-    pingjia:"",
+    pingjia: "",
     //tap切换自定义宽高
     winWidth: 0,
     winHeight: 0,
@@ -67,9 +67,6 @@ Page({
         });
       }
     });
-    that.setData({
-      pingjia: options.pingjia
-    })
     wx.request({
       url: app.globalData.url + '/Show_myjob/',
       header: {
@@ -81,7 +78,6 @@ Page({
       },
       success: function (res) {
         console.log(res);
-        console.log(res.data[0].status);
         var i;
         for (i = 0; i < res.data.length; i++) {
           if (res.statusCode == 200) {
@@ -106,6 +102,11 @@ Page({
                 workinfo4: that.data.workinfo4
               })
             } else if (res.data[i].status == "已结算") {
+              that.data.workinfo5.push(res.data[i])
+              that.setData({
+                workinfo5: that.data.workinfo5
+              })
+            } else if (res.data[i].status == "已评价") {
               that.data.workinfo5.push(res.data[i])
               that.setData({
                 workinfo5: that.data.workinfo5
@@ -265,11 +266,6 @@ Page({
    */
   onShow: function () {
     app.editTabBar();
-    if(this.data.pingjia==1){
-      this.setData({
-        isShow:false
-      })
-    }
   },
 
   /**
@@ -307,7 +303,6 @@ Page({
       },
       success: function (res) {
         console.log(res);
-        console.log(res.data[0].status);
         var i;
         for (i = 0; i < res.data.length; i++) {
           if (res.statusCode == 200) {

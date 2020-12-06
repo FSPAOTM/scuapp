@@ -84,6 +84,13 @@ overflow: hidden;
   margin-left:10px;
 }
 
+.lianjie{
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-left:10px;
+}
+
   .prix1{
     color: #FA7C15;
     font-size: 28rpx;
@@ -91,23 +98,7 @@ overflow: hidden;
     margin-left:180px;
   }
 
-  .firstView {
-    position: absolute;
-    height:70px;
-    width:180px;
-    padding: 10rpx;
-    background-color: #eee;  
-    border-radius: 2rem;
-    border:2rpx solid #ffffff;
-    border-radius:15rpx;
-  }
-
-  .kehuImg {
-    margin-top: 20rpx;
-    height: 60rpx;
-    width: 60rpx;
-  }
-
+  
   .pj{
     font-size: 25rpx;
     margin-left: 8rpx;
@@ -145,9 +136,15 @@ overflow: hidden;
 
   }
 
- 
-
   .su{
+    font-size: 22rpx;
+    background-color:white;
+    color:#FA8D33;
+  } 
+
+  .su2{
+    padding-left: 0%;
+    padding-right: 0%;
     font-size: 22rpx;
     background-color:white;
     color:#FA8D33;
