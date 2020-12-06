@@ -1,6 +1,6 @@
 from django.shortcuts import HttpResponse,render
 from django.template import loader
-from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication
+from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication,TbinterviewNotice,TbfeedbackStu
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.utils import timezone
@@ -433,7 +433,7 @@ def Show_myjob(request):
                 iw_number = item.iw_number.iw_number
                 result = TbinWork.objects.filter(iw_number=iw_number)
                 for i in result:
-                    plays.append({'type': '校内', 'title': i.iw_post, 'depart': i.iw_depart,'status': apply_status})
+                    plays.append({'type': '校内', 'title': i.iw_post, 'depart': i.iw_depart,'status': apply_status,'place':i.w_place,'salary':i.w_salary,'iw_number':i.iw_number})
                 plays_json = json.dumps(plays, ensure_ascii=False)
             else:
                 result = TboutWork.objects.filter(ow_number=item.ow_number.ow_number)
@@ -441,17 +441,81 @@ def Show_myjob(request):
                     user = TboutWork.objects.get(ow_number=i.ow_number)
                     com_number = user.com_number.com_number
                     com_name = Tbcompany.objects.get(com_number=com_number).com_name
-                    plays.append({'type': '校外', 'title': i.ow_post, 'depart': com_name,'status': apply_status})
+                    plays.append({'type': '校外', 'title': i.ow_post, 'depart': com_name,'status': apply_status,'place':i.w_place,'salary':i.w_salary,'ow_number':i.ow_number})
                 plays_json = json.dumps(plays, ensure_ascii=False)
         return HttpResponse(plays_json)
     else:
         return HttpResponse("请求错误")
 
-#stongzhi 学生接受面试通知 TbinterviewNotice数据表
+#stongzhi 面试通知展示 TbinterviewNotice数据表 未加url未调试
 @csrf_exempt
 def Interview_notice(request):
     if request.method == "GET":
         stu = request.GET.get('user')
+        plays = []
+        result = TbinterviewNotice.objects.filter(stu=stu)
+        for i in result:
+            plays.append({'address':i.i_address,'time':i.i_time,'number':i.i_number})
+        plays_json = json.dumps(plays, ensure_ascii=False)
+        return HttpResponse(plays_json)
+    else:
+        return HttpResponse("请求错误")
+
+#stongzhi 学生接收面试通知 未加url未调试
+def Interview_notice(request):
+    if request.method == "GET":
+        i_number = request.GET.get('i_number')
+        filterResult1 = TbinterviewNotice.objects.get(i_number=i_number)
+        if len(filterResult1) > 0:
+            filterResult1.update(s_sure='已确认')
+            return HttpResponse("请求成功")
+        else:
+            return HttpResponse("请求错误")
+    else:
+        return HttpResponse("请求错误")
+
+#sfeedback 未调试
+def feedbackEr(request):
+    if request.method == "GET":
+        stu = request.GET.get('stuNumber')
+        ow_number = request.GET.get('ow_number')
+        iw_number = request.GET.get('iw_number')
+        score = request.GET.get('score')
+        trust = request.GET.get('trust')
+        timely = request.GET.get('timely')
+        flexible = request.GET.get('flexible')
+        salary = request.GET.get('salary')
+        meaning = request.GET.get('meaning')
+        more = request.GET.get('more')
+        fb_content = []
+        fb_content[0] = score
+        fb_content[1] = trust
+        fb_content[2] = timely
+        fb_content[3] = flexible
+        fb_content[4] = salary
+        fb_content[5] = meaning
+        fb_content[6] = more
+        filterResult1 = TbinWork.objects.filter(iw_number=iw_number)
+        filterResult2 = TbinWork.objects.filter(ow_number=ow_number)
+        if len(filterResult1) > 0 or len(filterResult2) > 0:
+            result = TbfeedbackStu.objects.create(fb_content=fb_content, fb_time=timezone.now(), iw_number=iw_number, ow_number=ow_number,stu=stu)
+            result.save()
+            return HttpResponse("评价成功")
+        else:
+            return HttpResponse("请求错误")
+    else:
+        return HttpResponse("请求错误")
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -27,6 +27,7 @@ urlpatterns = [
     path('Enroll_in_work/', views.Enroll_in_work, name='Enroll_in_work'),
     path('Enroll_in_inwork/', views.Enroll_in_inwork, name='Enroll_in_inwork'),
     path('Show_myjob/', views.Show_myjob, name='Show_myjob'),
+    path('feedbackEr/', views.feedbackEr, name='feedbackEr'),
     #企业
     path('Show_company_name/', views_com.Show_company_name, name='Show_company_name'),
     path('Company_info_showmodiify/', views_com.Company_info_showmodiify, name='Company_info_showmodiify'),
@@ -38,6 +39,7 @@ urlpatterns = [
     path('Show_applicant/', views_com.Show_applicant, name='Show_applicant'),
     path('Modify_applystatus/', views_com.Modify_applystatus, name='Modify_applystatus'),
     path('Company_apply_interviewtime/', views_com.Company_apply_interviewtime, name='Company_apply_interviewtime'),
+
 
     #后台管理界面
     #登录注册等

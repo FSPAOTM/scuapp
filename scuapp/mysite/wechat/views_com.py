@@ -183,9 +183,9 @@ def Show_applicant(request):
     else:
         return HttpResponse("请求错误")
 
-#cresumeReview 接口直接调用sinfoShow 简历显示功能 未调试
+#cresumeReview 接口直接调用sinfoShow 简历显示功能
 
-#cresumeReview 点击接受后改变applystatus状态 未调试
+#cresumeReview 点击接受后改变applystatus状态
 def Modify_applystatus(request):
     if request.method == "POST":
         stu_id = request.POST.get('stu_number')
@@ -218,8 +218,7 @@ def Company_apply_interviewtime(request):
                                             ia_name=ia_name,
                                             phonenumber=phonenumber,
                                             a_time=a_time,
-                                            ow_number=ow_number,
-                                            apply_status='面试申请中')
+                                            ow_number=ow_number)
             return HttpResponse("请求成功")
         else:
             return HttpResponse("报名未结束无法申请面试")
