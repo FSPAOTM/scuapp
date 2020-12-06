@@ -476,30 +476,31 @@ def Interview_notice(request):
 
 #sfeedback 未调试
 def feedbackEr(request):
-    if request.method == "GET":
-        stu = request.GET.get('stuNumber')
-        ow_number = request.GET.get('ow_number')
-        iw_number = request.GET.get('iw_number')
-        score = request.GET.get('score')
-        trust = request.GET.get('trust')
-        timely = request.GET.get('timely')
-        flexible = request.GET.get('flexible')
-        salary = request.GET.get('salary')
-        meaning = request.GET.get('meaning')
-        more = request.GET.get('more')
+    if request.method == "POST":
+        stu = request.POST.get('stuNumber')
+        ow_number = request.POST.get('ow_number')
+        iw_number = request.POST.get('iw_number')
+        score = request.POST.get('score')
+        trust = request.POST.get('trust')
+        timely = request.POST.get('timely')
+        flexible = request.POST.get('flexible')
+        salary = request.POST.get('salary')
+        meaning = request.POST.get('meaning')
+        more = request.POST.get('more')
         fb_content = []
-        fb_content[0] = score
-        fb_content[1] = trust
-        fb_content[2] = timely
-        fb_content[3] = flexible
-        fb_content[4] = salary
-        fb_content[5] = meaning
-        fb_content[6] = more
+        fb_content.append(score)
+        fb_content.append(trust)
+        fb_content.append(timely)
+        fb_content.append(flexible)
+        fb_content.append(salary)
+        fb_content.append(meaning)
+        fb_content.append(more)
         filterResult1 = TbinWork.objects.filter(iw_number=iw_number)
         filterResult2 = TbinWork.objects.filter(ow_number=ow_number)
         if len(filterResult1) > 0 or len(filterResult2) > 0:
             result = TbfeedbackStu.objects.create(fb_content=fb_content, fb_time=timezone.now(), iw_number=iw_number, ow_number=ow_number,stu=stu)
             result.save()
+            Tbapplication.objects.filter(stu=stu,iw_number=iw_number,ow_number=ow_number).update(apply_status='已评价')
             return HttpResponse("评价成功")
         else:
             return HttpResponse("请求错误")
