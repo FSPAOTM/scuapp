@@ -7,18 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    /*iworkinfo: [
-      {
-        type:"校内",
-        title:"信息管理中心值班人员",
-        depart:"信息管理中心",
-      }
-    ],*/
+    isShow:true,
     workinfo1: [],
     workinfo2: [],
     workinfo3: [],
     workinfo4: [],
     workinfo5: [],
+    pingjia:"",
     //tap切换自定义宽高
     winWidth: 0,
     winHeight: 0,
@@ -72,6 +67,9 @@ Page({
         });
       }
     });
+    that.setData({
+      pingjia: options.pingjia
+    })
     wx.request({
       url: app.globalData.url + '/Show_myjob/',
       header: {
@@ -86,35 +84,35 @@ Page({
         console.log(res.data[0].status);
         var i;
         for (i = 0; i < res.data.length; i++) {
-        if (res.statusCode == 200) {
-          if (res.data[i].status == "已报名")  {
-            that.data.workinfo1.push(res.data[i])
-            that.setData({
-              workinfo1: that.data.workinfo1
-            })
-          } else if (res.data[i].status == "面试中")  {
-            that.data.workinfo2.push(res.data[i])
-            that.setData({
-              workinfo2: that.data.workinfo2
-            })
-          } else if (res.data[i].status == "已录用"){
-            that.data.workinfo3.push(res.data[i])
-            that.setData({
-              workinfo3: that.data.workinfo3
-            })
-          } else if (res.data[i].status == "已到岗"){
-            that.data.workinfo4.push(res.data[i])
-            that.setData({
-              workinfo4: that.data.workinfo4
-            })
-          } else if (res.data[i].status == "已结算"){
-            that.data.workinfo5.push(res.data[i])
-            that.setData({
-              workinfo5: that.data.workinfo5
-            })
+          if (res.statusCode == 200) {
+            if (res.data[i].status == "已报名") {
+              that.data.workinfo1.push(res.data[i])
+              that.setData({
+                workinfo1: that.data.workinfo1
+              })
+            } else if (res.data[i].status == "面试中") {
+              that.data.workinfo2.push(res.data[i])
+              that.setData({
+                workinfo2: that.data.workinfo2
+              })
+            } else if (res.data[i].status == "已录用") {
+              that.data.workinfo3.push(res.data[i])
+              that.setData({
+                workinfo3: that.data.workinfo3
+              })
+            } else if (res.data[i].status == "已到岗") {
+              that.data.workinfo4.push(res.data[i])
+              that.setData({
+                workinfo4: that.data.workinfo4
+              })
+            } else if (res.data[i].status == "已结算") {
+              that.data.workinfo5.push(res.data[i])
+              that.setData({
+                workinfo5: that.data.workinfo5
+              })
+            }
           }
         }
-      }
       }
     });
     /*wx.request({
@@ -136,7 +134,124 @@ Page({
     })*/
   },
 
+  xq1(ev) {
+    var that = this;
+    var e = ev.currentTarget.dataset.index;
+    var type = that.data.workinfo1[e].type;
+    if (that.data.workinfo1[e].iw_number != "NULL") {
+      var iw_number = that.data.workinfo1[e].iw_number;
+      console.log("++++++", ev, that)
+      wx.setStorageSync("iw_number", iw_number), wx.setStorageSync('type', type), wx.navigateTo({
+        url: "../sjobShow/sjobShow"
+      })
+    } else {
+      var ow_number = that.data.workinfo1[e].ow_number;
+      console.log(ow_number);
+      console.log("++++++", ev, that)
+      wx.setStorageSync("ow_number", ow_number), wx.setStorageSync('type', type), wx.navigateTo({
+        url: "../sjobShow/sjobShow"
+      })
+    }
+  },
 
+  xq2(ev) {
+    var that = this;
+    var e = ev.currentTarget.dataset.index;
+    var type = that.data.workinfo2[e].type;
+    if (that.data.workinfo2[e].iw_number != "NULL") {
+      var iw_number = that.data.workinfo2[e].iw_number;
+      console.log("++++++", ev, that)
+      wx.setStorageSync("iw_number", iw_number), wx.setStorageSync('type', type), wx.navigateTo({
+        url: "../sjobShow/sjobShow"
+      })
+    } else {
+      var ow_number = that.data.workinfo2[e].ow_number;
+      console.log(ow_number);
+      console.log("++++++", ev, that)
+      wx.setStorageSync("ow_number", ow_number), wx.setStorageSync('type', type), wx.navigateTo({
+        url: "../sjobShow/sjobShow"
+      })
+    }
+  },
+
+  xq3(ev) {
+    var that = this;
+    var e = ev.currentTarget.dataset.index;
+    var type = that.data.workinfo3[e].type;
+    if (that.data.workinfo3[e].iw_number != "NULL") {
+      var iw_number = that.data.workinfo3[e].iw_number;
+      console.log("++++++", ev, that)
+      wx.setStorageSync("iw_number", iw_number), wx.setStorageSync('type', type), wx.navigateTo({
+        url: "../sjobShow/sjobShow"
+      })
+    } else {
+      var ow_number = that.data.workinfo3[e].ow_number;
+      console.log(ow_number);
+      console.log("++++++", ev, that)
+      wx.setStorageSync("ow_number", ow_number), wx.setStorageSync('type', type), wx.navigateTo({
+        url: "../sjobShow/sjobShow"
+      })
+    }
+  },
+
+  xq4(ev) {
+    var that = this;
+    var e = ev.currentTarget.dataset.index;
+    var type = that.data.workinfo4[e].type;
+    if (that.data.workinfo4[e].iw_number != "NULL") {
+      var iw_number = that.data.workinfo4[e].iw_number;
+      console.log("++++++", ev, that)
+      wx.setStorageSync("iw_number", iw_number), wx.setStorageSync('type', type), wx.navigateTo({
+        url: "../sjobShow/sjobShow"
+      })
+    } else {
+      var ow_number = that.data.workinfo4[e].ow_number;
+      console.log(ow_number);
+      console.log("++++++", ev, that)
+      wx.setStorageSync("ow_number", ow_number), wx.setStorageSync('type', type), wx.navigateTo({
+        url: "../sjobShow/sjobShow"
+      })
+    }
+  },
+
+  xq5(ev) {
+    var that = this;
+    var e = ev.currentTarget.dataset.index;
+    var type = that.data.workinfo5[e].type;
+    if (that.data.workinfo5[e].iw_number != "NULL") {
+      var iw_number = that.data.workinfo5[e].iw_number;
+      console.log("++++++", ev, that)
+      wx.setStorageSync("iw_number", iw_number), wx.setStorageSync('type', type), wx.navigateTo({
+        url: "../sjobShow/sjobShow"
+      })
+    } else {
+      var ow_number = that.data.workinfo5[e].ow_number;
+      console.log(ow_number);
+      console.log("++++++", ev, that)
+      wx.setStorageSync("ow_number", ow_number), wx.setStorageSync('type', type), wx.navigateTo({
+        url: "../sjobShow/sjobShow"
+      })
+    }
+  },
+
+  pingjia(ev) {
+    var that = this;
+    var e = ev.currentTarget.dataset.index;
+    if (that.data.workinfo5[e].iw_number != "NULL") {
+      var iw_number = that.data.workinfo5[e].iw_number;
+      console.log("++++++", ev, that)
+      wx.setStorageSync("iw_number", iw_number), wx.navigateTo({
+        url: "../sfeedback/sfeedback"
+      })
+    } else {
+      var ow_number = that.data.workinfo5[e].ow_number;
+      console.log(ow_number);
+      console.log("++++++", ev, that)
+      wx.setStorageSync("ow_number", ow_number), wx.navigateTo({
+        url: "../sfeedback/sfeedback"
+      })
+    }
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -150,6 +265,11 @@ Page({
    */
   onShow: function () {
     app.editTabBar();
+    if(this.data.pingjia==1){
+      this.setData({
+        isShow:false
+      })
+    }
   },
 
   /**
@@ -179,7 +299,7 @@ Page({
   getData() {
     let that = this;
     wx.request({
-      url: app.globalData.url + '/Show_mywork/',
+      url: app.globalData.url + '/Show_myjob/',
       /*待修改*/
       method: "GET",
       header: {
@@ -187,27 +307,36 @@ Page({
       },
       success: function (res) {
         console.log(res);
-        if (res.statusCode == 200) {
-          if (res.data.status == "已报名") /*待修改*/ {
-            that.setData({
-              workinfo1: res.data
-            })
-          } else if (res.data.status == "面试中") /*待修改*/ {
-            that.setData({
-              workinfo2: res.data
-            })
-          } else if (res.data.status == "已录用") /*待修改*/ {
-            that.setData({
-              workinfo3: res.data
-            })
-          } else if (res.data.status == "已到岗") /*待修改*/ {
-            that.setData({
-              workinfo4: res.data
-            })
-          } else if (res.data.status == "已结算") /*待修改*/ {
-            that.setData({
-              workinfo5: res.data
-            })
+        console.log(res.data[0].status);
+        var i;
+        for (i = 0; i < res.data.length; i++) {
+          if (res.statusCode == 200) {
+            if (res.data[i].status == "已报名") {
+              that.data.workinfo1.push(res.data[i])
+              that.setData({
+                workinfo1: that.data.workinfo1
+              })
+            } else if (res.data[i].status == "面试中") {
+              that.data.workinfo2.push(res.data[i])
+              that.setData({
+                workinfo2: that.data.workinfo2
+              })
+            } else if (res.data[i].status == "已录用") {
+              that.data.workinfo3.push(res.data[i])
+              that.setData({
+                workinfo3: that.data.workinfo3
+              })
+            } else if (res.data[i].status == "已到岗") {
+              that.data.workinfo4.push(res.data[i])
+              that.setData({
+                workinfo4: that.data.workinfo4
+              })
+            } else if (res.data[i].status == "已结算") {
+              that.data.workinfo5.push(res.data[i])
+              that.setData({
+                workinfo5: that.data.workinfo5
+              })
+            }
           }
         }
         //隐藏loading 提示框

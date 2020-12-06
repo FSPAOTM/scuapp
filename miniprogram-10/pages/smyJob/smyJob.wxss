@@ -44,11 +44,13 @@ overflow: hidden;
   padding-top: 100rpx;
 }
 
+
 .xiangqing_info{
-  width: 50%;
+  width: 100%;
   padding-top: 15rpx;
-  padding-bottom: 25rpx;
+  padding-bottom: 10rpx;
 }
+
 .xiangqing_info .zi{
   border: 2rpx #FA8D33 solid;
   color: #FA8D33;
@@ -66,18 +68,27 @@ overflow: hidden;
   padding-top: 15rpx;
 }
 
-  .prix{
-    margin-top:20rpx; 
-    display: flex;
-    flex-direction: row;
-   
-    align-items:center;  
-  }
-  .prix .prix1{
+.xiangqing_info .gongsi2{
+  line-height: 10rpx;
+  font-size: 25rpx;
+  color:#A9A9A9;
+  float: right;
+  padding-right: 20px;
+  padding-top: 12px;
+}
+
+.lainjie{
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-left:10px;
+}
+
+  .prix1{
     color: #FA7C15;
     font-size: 28rpx;
     font-weight: 600;
-    
+    margin-left:180px;
   }
 
   .firstView {
@@ -102,3 +113,54 @@ overflow: hidden;
     margin-left: 8rpx;
     color:#FA7C15;
   }
+
+  .gongsi{
+    line-height: 10rpx;
+    font-size: 25rpx;
+    color:#A9A9A9;
+    margin-left:20px;
+    margin-top:30px;
+    margin-bottom:20px;
+  }
+
+  
+
+  
+  .quyu{
+    line-height: 10rpx;
+    font-size: 25rpx;
+    color:#A9A9A9;
+    margin-left:200px;
+  }
+
+  
+
+  .line{
+    height: 3rpx;
+    background: #FFE4E1;
+  }
+
+  .xiangxi{
+   margin-bottom:8px;
+
+  }
+
+ 
+
+  .su{
+    font-size: 22rpx;
+    background-color:white;
+    color:#FA8D33;
+  }
+  
+  .plain {
+    border: none;
+    border-color: transparent;
+  }
+
+  
+
+ .xq{
+  display:flex;
+  width: 100%;
+ }

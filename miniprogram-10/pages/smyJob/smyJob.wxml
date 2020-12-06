@@ -1,37 +1,39 @@
 <!--pages/smyJob/smyJob.wxml-->
-<import src="template\tabbar.wxml"/> 
-<template is="tabBar" data="{{tabBar}}"/>
+<import src="template\tabbar.wxml" />
+<template is="tabBar" data="{{tabBar}}" />
 <view class="swiper_tab_view">
   <scroll-view scroll-x='true' scroll-left="{{scrollleft}}" class='tab-h'>
     <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">已报名</view>
- 
+
     <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">面试中</view>
- 
+
     <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">已录用</view>
- 
+
     <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">已到岗</view>
- 
+
     <view class="swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-current="4" bindtap="swichNav">已结算</view>
- 
+
   </scroll-view>
 </view>
 
 <view class="container">
-<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}rpx" >
- 
-  <swiper-item>
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}rpx">
+    <swiper-item>
 
-    <view class='xiangqing' wx:for="{{workinfo1}}"  wx:key="key" bindtap="navigateTo">
-    <view class='xiangqing_info' style="padding-left:40rpx;">
-      <text class='zi' >{{item.type}}</text>
-      <text class='title'>{{item.title}}</text>
-      <view class='prix'>
-        <text class='prix1'>{{item.depart}}</text>   
-      </view>      
-    </view>
-  </view>
-       
-  <!--<view class='xiangqing' wx:for="{{oworkinfo}}"  wx:key="key" bindtap="navigateTo">
+      <view class='xiangqing' wx:for="{{workinfo1}}" wx:key="key" wx:for-item="item" wx:for-index="index">
+        <view class='xiangqing_info' bindtap="xq1" data-index="{{index}}" style="padding-left:40rpx;">
+          <text class='zi'>{{item.type}}</text>
+          <text class='title'>{{item.title}}</text>
+          <text class='prix1'>{{item.salary}}</text>
+        </view>
+        <view class="xiangxi">
+          <text class='gongsi'>{{item.depart}}</text>
+          <text class='quyu'>{{item.place}}</text>
+        </view>
+        <view class="line"></view>
+      </view>
+
+      <!--<view class='xiangqing' wx:for="{{oworkinfo}}"  wx:key="key" bindtap="navigateTo">
     <view class='xiangqing_info' style="padding-left:40rpx;">
       <text class='zi' >{{item.type}}</text>
       <text class='title'>{{item.title}}</text>
@@ -40,64 +42,112 @@
       </view>      
     </view>
   </view>-->
-  </swiper-item>
+    </swiper-item>
 
-  <swiper-item>
-    <view class='xiangqing' wx:for="{{workinfo2}}"  wx:key="key" bindtap="navigateTo">
-    <view class='xiangqing_info' style="padding-left:40rpx;">
-      <text class='zi' >{{item.type}}</text>
-      <text class='title'>{{item.title}}</text>
-      <view class='prix'>
-        <text class='prix1'>{{item.depart}}</text>   
-      </view>      
-    </view>
-  </view>
-  </swiper-item>
- 
-  <swiper-item>
-    <view class='xiangqing' wx:for="{{workinfo3}}"  wx:key="key" bindtap="navigateTo">
-    <view class='xiangqing_info' style="padding-left:40rpx;">
-      <text class='zi' >{{item.type}}</text>
-      <text class='title'>{{item.title}}</text>
-      <view class='prix'>
-        <text class='prix1'>{{item.depart}}</text>   
-      </view>      
-    </view>
-  </view>
-  </swiper-item>
- 
-  <swiper-item>
-    <view class='xiangqing' wx:for="{{workinfo4}}"  wx:key="key" bindtap="navigateTo">
-    <view class='xiangqing_info' style="padding-left:40rpx;">
-      <text class='zi' >{{item.type}}</text>
-      <text class='title'>{{item.title}}</text>
-      <view class='prix'>
-        <text class='prix1'>{{item.depart}}</text>   
-      </view>      
-    </view>
-  </view>
-  </swiper-item>
- 
-  <swiper-item>
+    <swiper-item>
+      <view class='xiangqing' wx:for="{{workinfo2}}" wx:key="key" wx:for-item="item" wx:for-index="index">
+        <view class="xq">
+          <view class='xiangqing_info' style="padding-left:40rpx;">
+            <text class='zi'>{{item.type}}</text>
+            <text class='title'>{{item.title}}</text>
+          </view>
+          <view>
+            <button bindtap="xq2" style="width:100px;" class='su' data-index="{{index}}">详情 ></button>
+          </view>
+        </view>
+        <view class="lainjie">
+          <view>
+            <text class='gongsi'>{{item.depart}}</text>
+          </view>
+          <view>
+            <button bindtap="ms" style="width:110px;" class='su'>面试信息 ></button>
+          </view>
+        </view>
+        <view class="line"></view>
+      </view>
+    </swiper-item>
 
-    <view class="firstView" catchtouchmove="setTouchMove" catchtouchend='setCoordinates' style="left: {{left||'89%'}};top: {{top||'70%'}};" >
-  <view>
-    <image class='kehuImg' bindtap='makephone' src="pj.png"></image>
-  </view>
-  <text class="pj">评价</text>
+    <swiper-item>
+      <view class='xiangqing' wx:for="{{workinfo3}}" wx:key="key" wx:for-item="item" wx:for-index="index">
+        <view class="xq">
+          <view class='xiangqing_info' style="padding-left:40rpx;">
+            <text class='zi'>{{item.type}}</text>
+            <text class='title'>{{item.title}}</text>
+            <text class='gongsi2'>{{item.depart}}</text>
+          </view>
+        </view>
+        <view class="lainjie">
+          <view>
+            <button bindtap="xq3" style="width:100px;" class='su' data-index="{{index}}">详情 ></button>
+          </view>
+
+          <view>
+            <button bindtap="ms" style="width:110px;" class='su' data-index="{{index}}">面试信息 ></button>
+          </view>
+
+          <view>
+            <button bindtap="ms" style="width:110px;" class='su' data-index="{{index}}">录用信息 ></button>
+          </view>
+        </view>
+        <view class="line"></view>
+      </view>
+    </swiper-item>
+
+    <swiper-item>
+      <view class='xiangqing' wx:for="{{workinfo4}}" wx:key="key" wx:for-item="item" wx:for-index="index">
+        <view class="xq">
+          <view class='xiangqing_info' style="padding-left:40rpx;">
+            <text class='zi'>{{item.type}}</text>
+            <text class='title'>{{item.title}}</text>
+            <text class='gongsi2'>{{item.depart}}</text>
+          </view>
+        </view>
+        <view class="lainjie">
+          <view>
+            <button bindtap="xq4" style="width:100px;" class='su' data-index="{{index}}">详情 ></button>
+          </view>
+
+          <view>
+            <button bindtap="ms" style="width:110px;" class='su' data-index="{{index}}">面试信息 ></button>
+          </view>
+
+          <view>
+            <button bindtap="ms" style="width:110px;" class='su' data-index="{{index}}">录用信息 ></button>
+          </view>
+        </view>
+        <view class="line"></view>
+      </view>
+    </swiper-item>
+
+    <swiper-item>
+
+      <view class='xiangqing' wx:for="{{workinfo5}}" wx:key="key" wx:for-item="item" wx:for-index="index">
+        <view class="xq">
+          <view class='xiangqing_info' style="padding-left:40rpx;">
+            <text class='zi'>{{item.type}}</text>
+            <text class='title'>{{item.title}}</text>
+            <text class='gongsi2'>{{item.depart}}</text>
+          </view>
+        </view>
+        <view class="lainjie">
+          <view>
+            <button bindtap="xq5" style="width:90px;" class='su' data-index="{{index}}">详情 ></button>
+          </view>
+
+          <view>
+            <button bindtap="ms" style="width:105px;" class='su' data-index="{{index}}">面试信息 ></button>
+          </view>
+
+          <view>
+            <button bindtap="ms" style="width:105px;" class='su' data-index="{{index}}">录用信息 ></button>
+          </view>
+          <view wx:if="{{isShow}}">
+            <button bindtap="pingjia" style="width:90px;" class='su' data-index="{{index}}">评价 ></button>
+          </view>
+        </view>
+        <view class="line"></view>
+      </view>
+   </swiper-item>
+
+  </swiper>
 </view>
-
-    <view class='xiangqing' wx:for="{{workinfo5}}"  wx:key="key" bindtap="navigateTo">
-    <view class='xiangqing_info' style="padding-left:40rpx;">
-      <text class='zi' >{{item.type}}</text>
-      <text class='title'>{{item.title}}</text>
-      <view class='prix'>
-        <text class='prix1'>{{item.depart}}</text>   
-      </view>      
-    </view>
-  </view>
-  </swiper-item>
- 
-</swiper>
-</view>
-
