@@ -1,6 +1,6 @@
 from django.shortcuts import HttpResponse,render
 from django.template import loader
-from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication,TbinterviewNotice,TbfeedbackStu
+from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication,TbinterviewNotice,TbfeedbackEr
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.utils import timezone
@@ -433,7 +433,12 @@ def Show_myjob(request):
                 iw_number = item.iw_number.iw_number
                 result = TbinWork.objects.filter(iw_number=iw_number)
                 for i in result:
-                    plays.append({'type': '校内', 'title': i.iw_post, 'depart': i.iw_depart,'status': apply_status,'place':i.w_place,'salary':i.w_salary,'iw_number':i.iw_number})
+                    if apply_status == "已评价":
+                        plays.append({'type': '校内', 'title': i.iw_post, 'depart': i.iw_depart, 'status': apply_status,
+                                  'place': i.w_place, 'salary': i.w_salary, 'iw_number': i.iw_number, 'show': False})
+                    else:
+                        plays.append({'type': '校内', 'title': i.iw_post, 'depart': i.iw_depart, 'status': apply_status,
+                                  'place': i.w_place, 'salary': i.w_salary, 'iw_number': i.iw_number, 'show': True})
                 plays_json = json.dumps(plays, ensure_ascii=False)
             else:
                 result = TboutWork.objects.filter(ow_number=item.ow_number.ow_number)
@@ -441,7 +446,14 @@ def Show_myjob(request):
                     user = TboutWork.objects.get(ow_number=i.ow_number)
                     com_number = user.com_number.com_number
                     com_name = Tbcompany.objects.get(com_number=com_number).com_name
-                    plays.append({'type': '校外', 'title': i.ow_post, 'depart': com_name,'status': apply_status,'place':i.w_place,'salary':i.w_salary,'ow_number':i.ow_number})
+                    if apply_status == "已评价":
+                        plays.append({'type': '校外', 'title': i.ow_post, 'depart': com_name, 'status': apply_status,
+                                      'place': i.w_place, 'salary': i.w_salary, 'iw_number': "NULL",
+                                      'ow_number': i.ow_number, 'show': False})
+                    else:
+                        plays.append({'type': '校外', 'title': i.ow_post, 'depart': com_name, 'status': apply_status,
+                                      'place': i.w_place, 'salary': i.w_salary, 'iw_number': "NULL",
+                                      'ow_number': i.ow_number, 'show': True})
                 plays_json = json.dumps(plays, ensure_ascii=False)
         return HttpResponse(plays_json)
     else:
@@ -495,15 +507,17 @@ def feedbackEr(request):
         fb_content.append(salary)
         fb_content.append(meaning)
         fb_content.append(more)
-        filterResult1 = TbinWork.objects.filter(iw_number=iw_number)
-        filterResult2 = TbinWork.objects.filter(ow_number=ow_number)
-        if len(filterResult1) > 0 or len(filterResult2) > 0:
-            result = TbfeedbackStu.objects.create(fb_content=fb_content, fb_time=timezone.now(), iw_number=iw_number, ow_number=ow_number,stu=stu)
-            result.save()
-            Tbapplication.objects.filter(stu=stu,iw_number=iw_number,ow_number=ow_number).update(apply_status='已评价')
-            return HttpResponse("评价成功")
+        stu = Tbstudent.objects.get(stu_id=stu)
+        if iw_number != '':
+            iw_number = TbinWork.objects.get(iw_number=iw_number)
+            result = TbfeedbackEr.objects.create(fb_content=fb_content, fb_time=timezone.now(), iw_number=iw_number,stu=stu)
+            Tbapplication.objects.filter(stu=stu,iw_number=iw_number).update(apply_status='已评价')
         else:
-            return HttpResponse("请求错误")
+            ow_number = TbinWork.objects.get(ow_number=ow_number)
+            result = TbfeedbackEr.objects.create(fb_content=fb_content, fb_time=timezone.now(), ow_number=ow_number,stu=stu)
+            Tbapplication.objects.filter(stu=stu,ow_number=ow_number).update(apply_status='已评价')
+        result.save()
+        return HttpResponse("评价成功")
     else:
         return HttpResponse("请求错误")
 
