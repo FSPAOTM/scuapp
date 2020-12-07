@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/cendinglist/cendinglist",
     "pages/sjobShow/sjobShow",
     "pages/sxiaoxi/sxiaoxi",
     "pages/cxiaoxi/cxiaoxi",

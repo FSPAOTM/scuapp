@@ -24,11 +24,11 @@
         <view class='xiangqing_info' bindtap="xq1" data-index="{{index}}" style="padding-left:40rpx;">
           <text class='zi'>{{item.type}}</text>
           <text class='title'>{{item.title}}</text>
-          <text class='prix1'>{{item.salary}}</text>
+          <text class='prix2'>{{item.salary}}</text>
         </view>
         <view class="xiangxi">
           <text class='gongsi'>{{item.depart}}</text>
-          <text class='quyu'>{{item.place}}</text>
+          <text class='quyu2'>{{item.place}}</text>
         </view>
         <view class="line"></view>
       </view>

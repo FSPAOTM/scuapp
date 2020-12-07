@@ -1,0 +1,19 @@
+/* pages/cendinglist/cendinglist.wxss */
+
+.container{
+  width:90%;
+  padding-top: 100rpx;
+}
+
+.button{
+  width: fit-content;
+  margin-right: 10px;
+  background-color: darkcyan;
+  color: #ffffff;
+}
+
+.xiangqing_info{
+  width: 80%;
+  padding-top: 15rpx;
+  padding-bottom: 10rpx;
+}

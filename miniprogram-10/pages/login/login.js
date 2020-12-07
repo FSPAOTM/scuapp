@@ -115,11 +115,11 @@ Page({
                       wx.navigateTo({
                         url: '../infoFill/infoFill',
                       })
-                    }, 2000)
+                    }, 2000)//教师的逻辑还未处理
                   } else if (self.data.no.length == 11) {
                     setTimeout(function () {
                       wx.navigateTo({
-                        url: '../cfabu/cworkspace',
+                        url: '../cfabu/cfabu',
                       })
                     }, 2000)
                   }

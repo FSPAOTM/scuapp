@@ -302,6 +302,12 @@
         {
           "name": "pages/cinterview/cinterview",
           "pathName": "pages/cinterview/cinterview",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cinterview/cinterview",
+          "pathName": "pages/cinterview/cinterview",
           "scene": null
         }
       ]

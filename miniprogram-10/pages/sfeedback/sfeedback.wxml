@@ -23,7 +23,7 @@
       <text>内 容</text>
     </view>
     <view class='right'>
-      <text bindtap='label' class="{{attitude===true ? 'labelColor':''}}" data-index="{{attitude}}">可以信任</text>
+      <text bindtap='label' class="{{attitude===false? 'labelColor':''}}" data-index="{{attitude}}">可以信任</text>
       <text bindtap='label1' class="{{time===false? 'labelColor':''}}" data-index="{{time}}">反馈及时</text>
       <text bindtap='label2' class="{{efficiency===false?'labelColor':''}}" data-index="{{efficiency}}">时间灵活</text>
       <text bindtap='label3' class="{{environment===false?'labelColor':''}}" data-index="{{environment}}">工资可观</text>
