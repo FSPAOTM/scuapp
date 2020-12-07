@@ -107,7 +107,7 @@ def interview_notice_send(request):
     ia_number = request.GET.get("result_num")
     interviewApply = TbinterviewApply.objects.get(ia_number=ia_number)
     outwork = interviewApply.ow_number
-    if outwork.ow_status == "面试申请中" or outwork.ow_status == "面试通知中":
+    if (outwork.ow_status == "面试申请中" or outwork.ow_status == "面试通知中") and interviewApply.apply_status !="已打回":
         filterResult = TbinterviewNotice.objects.filter(ia_number=ia_number)
         if len(filterResult) > 0:
             interviewNotice = TbinterviewNotice.objects.get(ia_number=ia_number)
@@ -249,12 +249,52 @@ def interview_back_reason_send(request):
 
 #面试结果界面
 def interview_result(request):
-    interview_result = TbinterviewResult.objects.all()
+    interview_result=[]
+    list = TbinterviewResult.objects.all()
+    for i in list:
+        interviewNotice = i.i_number
+        interviewApply = TbinterviewApply.objects.get(ia_number=interviewNotice.ia_number)
+        outwork = interviewApply.ow_number
+        if outwork.ow_status == "结果通知中" or outwork.ow_status == "工作中":
+            dictionary = {}
+            dictionary["ir_number"] = i.ir_number
+            dictionary["i_number"] = i.i_number.i_number
+            dictionary["ir_rtime"] = i.ir_rtime
+            result = i.ir_result.replace("'", '"')
+            result = json.loads(result)  # str转化为list,便于数据库取数据
+            k=0
+            for j in result:
+                k = k + 1
+            dictionary["i_num"] = str(k) + "人"
+            dictionary["ir_ps"] = i.ir_ps
+            dictionary["ow_status"] = outwork.ow_status
+            interview_result.append(dictionary)
     return render(request, 'wechat/interview_result.html', {'interview_result': interview_result})
 
-#面试结果界面
-def stu_result(request):
+
+#面试录用详情界面
+def interview_stu_result(request):
+    i_number = request.GET.get('i_num')
+    interviewNotice = TbinterviewNotice.objects.get(i_number=i_number)
+    interviewApply = TbinterviewApply.objects.get(ia_number=interviewNotice.ia_number)
+    outwork = interviewApply.ow_number
+    stu = interviewNotice.stu.replace("'", '"')
+    stu = json.loads(stu)  # str转化为list,便于数据库取数据
+    stu_result = []
+    for j in stu:
+        student = Tbstudent.objects.get(stu_id=j)
+        dictionary = {}
+        dictionary["stu_id"] = student.stu_id
+        dictionary["name"] = student.name
+        dictionary["sex"] = student.sex
+        dictionary["phonenumber"] = student.phonenumber_phonenumberphonenumber_phonenumber
+        dictionary["grade"] = student.grade
+        application = Tbapplication.objects.filter(ow_number=outwork).get(stu=student)
+        dictionary["apply_status"] = application.apply_status
+        dictionary["s_sure"] = application.s_sure
+        stu_result.append(dictionary)
     return render(request, 'wechat/stu_result.html', {'stu_result': stu_result})
+
 
 #企业列表界面
 def company_list(request):

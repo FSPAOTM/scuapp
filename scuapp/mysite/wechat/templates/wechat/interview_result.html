@@ -33,9 +33,10 @@
             <th>结果编号</th>
             <th>面试编号</th>
             <th>报到时间</th>
+            <th>备注</th>
             <th>录用人数</th>
             <th>详细结果</th>
-            <th>备注</th>
+            <th>工作状态</th>
           </tr>
         </thead>
         <tbody>
@@ -47,10 +48,12 @@
             <form name="ir_number"><td>{{ line.ir_number }}</td></form>
             <td>{{ line.i_number }}</td>
             <td>{{ line.ir_rtime }}</td>
+            <td>{{ line.ir_ps }}</td>
             <td>{{ line.i_num }}</td>
             <td class="td-status">
-              <a href="../stu_result/?i_num={{ line.i_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">查看</span></a></td>
-            <td>{{ line.ir_ps }}</td>
+              <a href="../interview_stu_result/?i_num={{ line.i_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">查看</span></a></td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.ow_status }}</span></td>
         </tr>
         {% endfor %}
         </tbody>

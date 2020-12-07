@@ -10,7 +10,7 @@ class Tbapplication(models.Model):
     stu = models.ForeignKey('Tbstudent', models.DO_NOTHING, db_column='Stu_ID')  # Field name made lowercase.
     apply_status = models.CharField(db_column='apply_status', max_length=255, default='待审核')
     iw_number = models.ForeignKey('TbinWork', models.DO_NOTHING, db_column='iw_number', null=True)
-    s_sure = models.CharField(db_column='s_sure', max_length=255, default='未确认')  # 学生确认状态
+    s_sure = models.CharField(db_column='s_sure', max_length=255, default='未确认')  # 学生工作结果确认状态
 
     class Meta:
         managed = False
@@ -112,8 +112,8 @@ class TbinterviewNotice(models.Model):
     ia_number = models.PositiveIntegerField(db_column='IA_Number')  #一个申请对应一个通知
     stu = models.CharField(db_column='Stu_ID', max_length=1000, blank=True)#学生学号 数组
     in_time = models.CharField(db_column='IN_Time', max_length=60, blank=True, null=True)#面试时间
-    c_sure = models.CharField(db_column='C_Sure', max_length=255, default='未确认')#企业确认状态
-    s_sure = models.CharField(db_column='S_Sure', max_length=255, default='未确认')#学生确认状态 数组 与学号位置对应
+    c_sure = models.CharField(db_column='C_Sure', max_length=255, default='未确认')#企业确认状态 面试通知
+    s_sure = models.CharField(db_column='S_Sure', max_length=255, default='未确认')#学生确认状态 数组 与学号位置对应 面试通知
 
     class Meta:
         managed = False
@@ -122,10 +122,10 @@ class TbinterviewNotice(models.Model):
 
 class TbinterviewResult(models.Model):
     ir_number = models.AutoField(db_column='IR_Number', primary_key=True)  # Field name made lowercase.
-    ir_rtime = models.CharField(db_column='IR_Rtime', max_length=60)  # Field name made lowercase.
-    ir_result = models.CharField(db_column='IR_Result', max_length=60)  # Field name made lowercase.
+    ir_rtime = models.CharField(db_column='IR_Rtime', max_length=60)  # 通知的报道时间
+    ir_result = models.CharField(db_column='IR_Result', max_length=60)  # “已录用”的学生id数组
     ir_ps = models.CharField(db_column='IR_Ps', max_length=200, blank=True, null=True)  # Field name made lowercase.
-    ir_time = models.DateTimeField(db_column='IR_Time')  # Field name made lowercase.
+    ir_time = models.DateTimeField(db_column='IR_Time')  # 结果发送时间
     i_number = models.ForeignKey('TbinterviewNotice', models.DO_NOTHING, db_column='I_Number')  # Field name made lowercase.
 
 

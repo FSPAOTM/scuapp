@@ -92,11 +92,12 @@ urlpatterns = [
     path('interview_back_reason/', views02.interview_back_reason, name='interview_back_reason'),
     path('interview_back_reason_save/', views02.interview_back_reason_save, name='interview_back_reason_save'),
     path('interview_back_reason_send/', views02.interview_back_reason_send, name='interview_back_reason_send'),
-
-
-
     path('interview_result/', views02.interview_result, name='interview_result'),
-    path('stu_result/', views02.stu_result, name='stu_result'),
+    path('interview_stu_result/', views02.interview_stu_result, name='interview_stu_result'),
+
+
+
+
     path('company_list/', views02.company_list, name='company_list'),
 
 
