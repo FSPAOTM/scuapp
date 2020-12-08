@@ -36,8 +36,8 @@ def inworking_list(request):
             dictionary["w_out"] = "已截止"
             dictionary["w_ddl"] = "已截止"
         else:
-            dictionary["w_out"] = w_out+"天"
-            dictionary["w_ddl"] = w_ddl+"天"
+            dictionary["w_out"] = str(w_out)+"天"
+            dictionary["w_ddl"] = str(w_ddl)+"天"
         dictionary["w_now"]=w_now
         dictionary["iw_number"] = i.iw_number
         dictionary["iw_post"] = i.iw_post
