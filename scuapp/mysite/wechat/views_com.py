@@ -203,7 +203,8 @@ def Modify_applystatus(request):
     else:
         return HttpResponse("请求错误")
 
-#cinterview 企业面试申请 未调试
+
+
 @csrf_exempt
 def Company_apply_interviewtime(request):
     if request.method == "POST":

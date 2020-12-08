@@ -36,6 +36,7 @@ class TbfeedbackEr(models.Model):
     fbe_number = models.AutoField(db_column='Fbe_Number', primary_key=True)  # Field name made lowercase.
     fb_content = models.CharField(db_column='Fb_Content', max_length=200, blank=True, null=True)  # Field name made lowercase.
     fb_time = models.DateTimeField(db_column='Fb_Time')  # Field name made lowercase.
+    fb_direction = models.CharField(db_column='Fb_Direction', max_length=200, blank=True, null=True)#取值为“学生评价企业”"企业评价学生"
     stu = models.ForeignKey('Tbstudent', models.DO_NOTHING, db_column='Stu_ID')  # Field name made lowercase.
     iw_number = models.ForeignKey('TbinWork', models.DO_NOTHING, db_column='IW_Number', blank=True, null=True)  # Field name made lowercase.
     ow_number = models.ForeignKey('TboutWork', models.DO_NOTHING, db_column='Ow_Number', blank=True, null=True)  # Field name made lowercase.
@@ -44,7 +45,7 @@ class TbfeedbackEr(models.Model):
         managed = False
         db_table = 'tbfeedback_er'
 
-
+#这个表已经弃用
 class TbfeedbackStu(models.Model):
     fbs_number = models.AutoField(db_column='Fbs_Number', primary_key=True)  # Field name made lowercase.
     fb_content = models.CharField(db_column='Fb_Content', max_length=200, blank=True, null=True)  # Field name made lowercase.

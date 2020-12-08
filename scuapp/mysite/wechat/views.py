@@ -510,11 +510,11 @@ def feedbackEr(request):
         stu = Tbstudent.objects.get(stu_id=stu)
         if iw_number != '':
             iw_number = TbinWork.objects.get(iw_number=iw_number)
-            result = TbfeedbackEr.objects.create(fb_content=fb_content, fb_time=timezone.now(), iw_number=iw_number,stu=stu)
+            result = TbfeedbackEr.objects.create(fb_content=fb_content, fb_direction='学生评价企业',fb_time=timezone.now(), iw_number=iw_number,stu=stu)
             Tbapplication.objects.filter(stu=stu,iw_number=iw_number).update(apply_status='已评价')
         else:
-            ow_number = TbinWork.objects.get(ow_number=ow_number)
-            result = TbfeedbackEr.objects.create(fb_content=fb_content, fb_time=timezone.now(), ow_number=ow_number,stu=stu)
+            ow_number = TboutWork.objects.get(ow_number=ow_number)
+            result = TbfeedbackEr.objects.create(fb_content=fb_content, fb_direction='学生评价企业',fb_time=timezone.now(), ow_number=ow_number,stu=stu)
             Tbapplication.objects.filter(stu=stu,ow_number=ow_number).update(apply_status='已评价')
         result.save()
         return HttpResponse("评价成功")
