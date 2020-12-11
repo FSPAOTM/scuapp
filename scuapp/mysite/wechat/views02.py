@@ -1,12 +1,18 @@
 from django.shortcuts import HttpResponse,render
 from django.utils import timezone
-from .models import Tbcompany, Tbstudent,Tbresume, Tbqualify, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply, TbinterviewResult, TbinterviewNotice
+from .models import Tbcompany, Tbstudent,Tbresume, Tbqualify, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply, TbinterviewResult, TbinterviewNotice, TbfeedbackEr, TbfeedbackStu
 from django.db.models import Q
 from threading import Timer
 from django.http import JsonResponse
 import json
 
 #后台管理界面
+
+#对企业评价——HHL 12/11
+def outwork_feedback(request):
+    out_feed = ["balabala"]
+    feed_content = ["bilibili"]
+    return render(request, 'wechat/outwork_feedback.html')
 
 #一大波界面导入
 #首页

@@ -99,6 +99,7 @@ urlpatterns = [
 
 
     path('company_list/', views02.company_list, name='company_list'),
+    path('outwork_feedback/', views02.outwork_feedback, name='outwork_feedback'),
 
 
 
