@@ -14,6 +14,12 @@ def outwork_feedback(request):
     feed_content = ["bilibili"]
     return render(request, 'wechat/outwork_feedback.html')
 
+#对校内兼职评价——HHL 12/11
+def inwork_feedback(request):
+    in_feed = ["jijiwaiwai"]
+    feed_content = ["jijizhazha"]
+    return render(request, 'wechat/inwork_feedback.html')
+
 #一大波界面导入
 #首页
 def index(request):
