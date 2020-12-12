@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show: true,
     ow_number: "",
     post: "",
     time: "",
@@ -30,7 +31,8 @@ Page({
   onLoad: function (options) {
     var ow_number = wx.getStorageSync("ow_number");
     this.setData({
-      ow_number: ow_number
+      ow_number: ow_number,
+      show: options.show
     })
     /*console.log("接收到的参数是post=" + options.jobinfo)
     this.setData({

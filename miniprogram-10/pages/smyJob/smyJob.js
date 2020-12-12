@@ -294,12 +294,21 @@ Page({
   //网络请求，获取数据
   getData() {
     let that = this;
+    that.setData({
+      workinfo1: [],
+      workinfo2: [],
+      workinfo3: [],
+      workinfo4: [],
+      workinfo5: []
+    })
     wx.request({
       url: app.globalData.url + '/Show_myjob/',
-      /*待修改*/
       method: "GET",
       header: {
         'Content-Type': 'application/json'
+      },
+      data: {
+        user: app.globalData.user
       },
       success: function (res) {
         console.log(res);
