@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>学生评价填写</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../static/wechat/css/font.css">
+    <link rel="stylesheet" href="../../static/wechat/css/xadmin.css">
+    <link href="../../static/wechat/css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../static/wechat/js/js1.js"></script>
+    <script type="text/javascript" src="../../static/wechat/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../static/wechat/js/xadmin.js"></script>
+    <script src="../static/js/js2.js"></script>
+    <script src="../static/js/js3.js"></script>
+    <script>
+        function success(){
+            if(back_reason.value != "")
+            alert("操作成功！")
+        }
+    </script>
+</head>
+
+<body>
+    <div class="formbody">
+        <a href="../stu_feedback/"><button class="layui-btn" >返回</button></a>
+    <div class="formtitle"><span>学生评价</span></div>
+
+    <form action="../stu_feedback_submit/" method="post">
+        <ul class="forminfo">
+            <li><label>学号</label><input name="stu_id" value="{{ stu_id }}" type="text" class="dfinput" readonly/><i>*</i></li>
+            <li><label>姓名</label><input name="name" value="{{ name }}" type="text" class="dfinput" readonly/><i>*</i></li>
+            <li><label>岗位</label><input value="{{ work }}" name="work" type="text" class="dfinput" readonly/><i>*</i></li>
+            <li><label>评价</label><textarea name="fb_content" cols="" rows="" class="textinput" required>{{ fb_content }}</textarea><i>*</i></li>
+            <li><label>&nbsp</label><input name="保存" onclick="success()" type="submit" class="btn" value="保存"/><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><a href="../interview_back_reason_send/?submit_num={{ ia_number }}"><input name="" type="button" class="btn" value="提交"/></a></li>
+            <!--提交按钮绑定另一接口-->
+        </ul>
+    </form>
+
+
+</div>
+
+</body>
+
+</html>

@@ -34,7 +34,24 @@
     <form action="../management_inWork_release/" method="post">
         <ul class="forminfo">
             <li><label>岗位名称</label><input id="IW_post" name="IW_post" type="text" class="dfinput" required/><i>*</i></li>
-            <li><label>用人部门</label><input id="IW_depart" name="IW_depart" type="text" class="dfinput" required/><i>*</i></li>
+            <li><label>用人部门</label>
+                <select id="IW_depart" name="IW_depart" type="text" class="dfinput" required>
+                    <option value="">---请选择---</option>
+                    <option value="教务处">教务处</option>
+                    <option value="党政办">党政办</option>
+                    <option value="纪委办">纪委办</option>
+                    <option value="资产处">资产处</option>
+                    <option value="志愿队">志愿队</option>
+                    <option value="校工会">校工会</option>
+                    <option value="学工部">学工部</option>
+                    <option value="出国培训部">出国培训部</option>
+                    <option value="科研院">科研院</option>
+                    <option value="安保处">安保处</option>
+                    <option value="后勤部">后勤部</option>
+                    <option value="学院">学院</option>
+                    <option value="教师">教师</option>
+                    <option value="其他">其他</option>
+                </select><i>*</i></li>
             <li><label>工作时间</label><input name="W_Time" type="text" class="dfinput" /><i>如：周一至周五 14:00-18:00</i></li>
             <li><label>工作地点</label><input name="W_place" type="text" class="dfinput" /></li>
             <li><label>工作内容</label><textarea id="Work" name="Work" cols="" rows="3" class="textinput" required></textarea><i>*</i></li>

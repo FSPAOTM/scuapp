@@ -101,6 +101,8 @@ urlpatterns = [
     path('company_list/', views02.company_list, name='company_list'),
     path('outwork_feedback/', views02.outwork_feedback, name='outwork_feedback'),
     path('inwork_feedback/', views02.inwork_feedback, name='inwork_feedback'),
+    path('stu_feedback/', views02.stu_feedback, name='stu_feedback'),
+    path('stu_feedback_edit/', views02.stu_feedback_edit, name='stu_feedback_edit'),
 
 
 

@@ -20,6 +20,17 @@ def inwork_feedback(request):
     feed_content = ["jijizhazha"]
     return render(request, 'wechat/inwork_feedback.html')
 
+#学生评价表——HHL 12/12
+def stu_feedback(request):
+    stu_feedback_list = ["嘿嘿嘿"]
+    stu_list = ["kekeke"]
+    return render(request, 'wechat/stu_feedback.html')
+
+#编辑学生评价
+def stu_feedback_edit(request):
+
+    return render(request, 'wechat/stu_feedback_edit.html')
+
 #一大波界面导入
 #首页
 def index(request):
