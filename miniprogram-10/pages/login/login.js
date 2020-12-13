@@ -115,11 +115,11 @@ Page({
                       wx.navigateTo({
                         url: '../infoFill/infoFill',
                       })
-                    }, 2000)//教师的逻辑还未处理
+                    }, 2000) //教师的逻辑还未处理
                   } else if (self.data.no.length == 11) {
                     setTimeout(function () {
                       wx.navigateTo({
-                        url: '../cfabu/cfabu',
+                        url: '../ccenter/ccenter',
                       })
                     }, 2000)
                   }
@@ -142,15 +142,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  /*onLoad: function (options) {
-    this.setData({disabled:false});
-    var student = wx.getStorageSync('student');
-    if (typeof (student) == 'object' && student.no != '' && student.classid != '') {
-      wx.switchTab({
-        url: '../teacher/teacher',
-      })
-    }
-  },*/
+  onLoad: function (options) {
+      /*this.setData({
+        no: app.globalData.userInfo
+      })*/
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

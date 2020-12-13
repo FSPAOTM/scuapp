@@ -203,3 +203,14 @@ Page {
 .header .about{
   float: right;
 }
+
+.round-click{
+  float:right;
+  margin-right: 15px;
+  margin-top: 10px;
+}
+
+.addicon{
+  width:25px;
+  height:25px;
+}
