@@ -48,8 +48,8 @@
                             <div class="panel-body">
                                 <div class="comments">
                                     {% for li in feed_content %}
-                                    <div class="comment-wrap">
-                                        <div class="comment-left">{{ li.type }}</div>
+                                    <div class="{{ li.css }}">{{ li.type }}</div>
+                                        <div class="comment-wrap">
                                         <div class="comment-block">
                                             <div class="bottom-comment">
                                                 <div class="comment-person">{{ li.depart }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
