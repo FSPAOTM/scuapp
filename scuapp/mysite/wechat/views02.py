@@ -4,6 +4,7 @@ from .models import Tbcompany, Tbstudent,Tbresume, Tbqualify, TbinWork, TboutWor
 from django.db.models import Q
 from threading import Timer
 from django.http import JsonResponse
+from . import views01
 import json
 
 #后台管理界面
@@ -19,12 +20,6 @@ def inwork_feedback(request):
     in_feed = ["jijiwaiwai"]
     feed_content = ["jijizhazha"]
     return render(request, 'wechat/inwork_feedback.html')
-
-#学生评价表——HHL 12/12
-def stu_feedback(request):
-    stu_feedback_list = ["嘿嘿嘿"]
-    stu_list = ["kekeke"]
-    return render(request, 'wechat/stu_feedback.html')
 
 #学生评价展示——HHL 12/13
 def stu_feedback_show(request):
@@ -131,7 +126,7 @@ def stu_yingpin(request):
         stu_yingpinlist.append(dictionary)
     return render(request, 'wechat/stu_yingpin.html', {'stu_yingpinlist': stu_yingpinlist})
 
-#面试信息通知界面
+#面试信息通知界面  （可能需要修改 表未知）
 def interview_notice_send(request):
     ia_number = request.GET.get("result_num")
     interviewApply = TbinterviewApply.objects.get(ia_number=ia_number)
@@ -284,9 +279,10 @@ def interview_result(request):
         interviewNotice = i.i_number
         interviewApply = TbinterviewApply.objects.get(ia_number=interviewNotice.ia_number)
         outwork = interviewApply.ow_number
-        if outwork.ow_status == "结果通知中" or outwork.ow_status == "工作中":
+        if outwork.ow_status == "结果通知中" or outwork.ow_status == "工作中"or outwork.ow_status == "待评价"or outwork.ow_status == "工作结束":
             dictionary = {}
             dictionary["ir_number"] = i.ir_number
+            dictionary["ow_number"] = outwork.ow_number
             dictionary["i_number"] = i.i_number.i_number
             dictionary["ir_rtime"] = i.ir_rtime
             result = i.ir_result.replace("'", '"')
@@ -323,6 +319,14 @@ def interview_stu_result(request):
         dictionary["s_sure"] = application.s_sure
         stu_result.append(dictionary)
     return render(request, 'wechat/stu_result.html', {'stu_result': stu_result})
+
+#校内兼职学生评价
+#学生评价表——HHL 12/12
+def stu_feedback(request):
+    stu_feedback_list = ["嘿嘿嘿"]
+    stu_list = ["kekeke"]
+    return render(request, 'wechat/stu_feedback.html')
+
 
 
 #企业列表界面

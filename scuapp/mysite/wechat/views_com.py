@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.utils import timezone
 import json
+from . import views01
 
 from itertools import chain
 #以下是企业
@@ -242,6 +243,7 @@ def Modify_interview_status(request):
     else:
         return HttpResponse("请求错误")
 
+#面试结果表生成（需要 修改工作状态 “面试阶段”到 “结果通知中”）（校外）
 
 
 

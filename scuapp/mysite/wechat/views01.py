@@ -1,6 +1,6 @@
 from django.shortcuts import HttpResponse,render
 from django.utils import timezone
-from .models import Tbcompany, Tbmanager, Tbstudent,TbinWork, TboutWork, TbinResult, Tbapplication
+from .models import Tbcompany, Tbmanager, Tbstudent,TbinWork, TboutWork, TbinResult, Tbapplication,TbfeedbackEr
 from django.db.models import Q
 from threading import Timer
 
@@ -26,7 +26,7 @@ info_status()
 #校内兼职报名处理界面
 def inworking_list(request):
     inworking_list = []
-    list = TbinWork.objects.exclude(In_status ="已结束").exclude(In_status ="中止")
+    list = TbinWork.objects.exclude(In_status ="工作结束").exclude(In_status ="中止").exclude(In_status ="工作中").exclude(In_status ="待评价")
     for i in list:
         dictionary = {}
         w_now=Tbapplication.objects.filter(iw_number=i.iw_number).count()
@@ -319,7 +319,7 @@ def management_inworking_search(request):
         s_work = request.POST.get("s_work")
         s_w_reuire = request.POST.get("s_w_reuire")
         s_w_status = request.POST.get("s_w_status")
-        list = TbinWork.objects.filter(iw_post__contains=s_iw_post).filter(iw_number__contains=s_iw_number).filter(work__contains=s_work).filter(w_reuire__contains=s_w_reuire).filter(In_status__contains=s_w_status).exclude(In_status="已结束").exclude(In_status="中止")
+        list = TbinWork.objects.filter(iw_post__contains=s_iw_post).filter(iw_number__contains=s_iw_number).filter(work__contains=s_work).filter(w_reuire__contains=s_w_reuire).filter(In_status__contains=s_w_status).exclude(In_status ="工作结束").exclude(In_status ="中止").exclude(In_status ="工作中").exclude(In_status ="待评价")
         inworking_list = []
         for i in list:
             dictionary = {}
@@ -379,9 +379,10 @@ def inwork_result_submit(request):
     iw_number = request.GET.get("submit_num")
     filterResult = TbinResult.objects.filter(iw_number=iw_number)
     if len(filterResult) > 0:
+        Tbapplication.objects.filter(iw_number=iw_number).update(apply_status='已录用')
         TbinWork.objects.filter(iw_number=iw_number).update(In_status = "结果通知中")
         inworking_list = []
-        list = TbinWork.objects.exclude(In_status="已结束").exclude(In_status="中止")
+        list = TbinWork.objects.exclude(In_status ="工作结束").exclude(In_status ="中止").exclude(In_status ="工作中").exclude(In_status ="待评价")
         for i in list:
             dictionary = {}
             w_now = Tbapplication.objects.filter(iw_number=i.iw_number).count()
@@ -455,6 +456,36 @@ def outWork_reject_result_send(request):
     TboutWork.objects.filter(ow_number=ow_number).update(ow_status="已打回")
     outwork_list = TboutWork.objects.filter(Q(ow_status="待审核") | Q(ow_status="已打回"))
     return render(request, 'wechat/work_examine.html', {'outwork_list': outwork_list})
+
+#一些改状态的函数
+#判断工作是否评价完毕（修改工作状态“待评价”到“工作结束”）(校外)
+def out_feedback_over():
+    list1 = TboutWork.objects.filter(ow_status="待评价")
+    for i in list1:
+        list2 = Tbapplication.objects.filter(ow_number=i).filter(apply_status="已录用")
+        for j in list2:
+            filterResult1 = TbfeedbackEr.objects.filter(stu=j.stu).filter(ow_number=i).filter(fb_directionr="学生评价企业")
+            filterResult2 = TbfeedbackEr.objects.filter(stu=j.stu).filter(ow_number=i).filter(fb_directionr="企业评价学生")
+            if not (len(filterResult1) > 0 and len(filterResult2) > 0):
+                return()
+        TboutWork.objects.filter(ow_number=i).update(ow_status="工作结束")
+#判断工作是否评价完毕（修改工作状态“待评价”到“工作结束”）(校内)
+def in_feedback_over():
+    list1 = TbinWork.objects.filter(iw_number="待评价")
+    for i in list1:
+        list2 = Tbapplication.objects.filter(iw_number=i).filter(apply_status="已录用")
+        for j in list2:
+            filterResult1 = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=i).filter(fb_directionr="学生评价企业")
+            filterResult2 = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=i).filter(fb_directionr="企业评价学生")
+            if not (len(filterResult1) > 0 and len(filterResult2) > 0):
+                return()
+        TbinWork.objects.filter(iw_number=i).update(iw_number="工作结束")
+#判断面试通知是否确认完毕（修改工作状态“面试通知中”到“面试阶段”，修改面试申请状态“面试通知中”到“面试阶段”）（校外）
+
+
+#判断结果通知是否确认完毕（修改工作状态“结果通过中”到“工作中”）（校内）
+
+#判断结果通知是否确认完毕（修改工作状态“结果通过中”到“工作中”）（校外）
 
 
 
