@@ -1,10 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="#" type="image/png">
+
+    <title>学生评价</title>
+
+    <link href="../../static/wechat/css/style1.css" rel="stylesheet">
+    <link href="../../static/wechat/css/style-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body>
+
+<body class="sticky-header">
+    <section>
+        <!-- main content start-->
+        <div class="main-content">
+
+            <!-- 页面标题开始-->
+            <div class="page-heading">
+                <h3>学生评价</h3>
+            </div>
+            <!-- 页面标题结束-->
+
+            <!--内容区域开始-->
+            <div class="wrapper">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <section class="panel">
+                            <header class="panel-heading">
+                                {% for line in stu_feed %}
+                                <span style="font-size: 16px">{{ line.name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <span style="font-size: 14px">{{ line.stu_id }}</span>
+                                <span class="tools pull-right">
+                                    <a href="javascript:;" class="fa fa-chevron-down"></a>
+                                    <a href="javascript:;" class="fa fa-times"></a>
+                                </span>
+                            </header>
+                            <div class="panel-body">
+                                <div class="comments">
+                                    {% for li in feed_content %}
+                                    <div class="comment-wrap">
+                                        <div class="comment-left">{{ li.type }}</div>
+                                        <div class="comment-block">
+                                            <div class="bottom-comment">
+                                                <div class="comment-person">{{ li.depart }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                            </div>
+                                            <div class="bottom-comment">
+                                                <div class="comment-person">{{ li.work }}</div>
+                                            </div>
+                                            <p class="comment-text">{{ li.fb_content }}</p>
+                                            <div class="bottom-comment">
+                                                <div class="comment-date">{{ li.fb_time }}</div>
+                                            </div>.
+                                        </div>
+                                    {% endfor %}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </section>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <!--内容区域结束-->
+
+        </div>
+    </section>
+
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <script src="../../static/wechat/js/feedback-js/jquery-1.10.2.min.js"></script>
+    <script src="../../static/wechat/js/feedback-js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="../../static/wechat/js/feedback-js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../../static/wechat/js/feedback-js/bootstrap.min.js"></script>
+    <script src="../../static/wechat/js/feedback-js/modernizr.min.js"></script>
+    <script src="../../static/wechat/js/feedback-js/jquery.nicescroll.js"></script>
+
+    <!--common scripts for all pages-->
+    <script src="../../static/wechat/js/feedback-js/scripts.js"></script>
 
 </body>
+
 </html>

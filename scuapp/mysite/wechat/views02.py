@@ -26,6 +26,12 @@ def stu_feedback(request):
     stu_list = ["kekeke"]
     return render(request, 'wechat/stu_feedback.html')
 
+#学生评价展示——HHL 12/13
+def stu_feedback_show(request):
+    stu_feed = ["哇哇哇"]
+    feed_content = ["awsl"]
+    return render(request, 'wechat/stu_feedback_show.html')
+
 #编辑学生评价
 def stu_feedback_edit(request):
 
