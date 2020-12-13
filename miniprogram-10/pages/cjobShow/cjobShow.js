@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    show: true,
+    show1: true,
+    show2: true,
     ow_number: "",
     post: "",
     time: "",
@@ -32,7 +33,8 @@ Page({
     var ow_number = wx.getStorageSync("ow_number");
     this.setData({
       ow_number: ow_number,
-      show: options.show
+      show1: options.show1,
+      show2: options.show2
     })
     /*console.log("接收到的参数是post=" + options.jobinfo)
     this.setData({
@@ -81,12 +83,13 @@ Page({
   },
 
 
-  cjobrelease() {
+  cjobrelease1() {
     let that = this;
     wx.reLaunch({
       url: '../cjobModify/cjobModify?post=' + that.data.post + '&ow_number=' + that.data.ow_number + '&time=' + that.data.time + '&location=' + that.data.location + '&detail=' + that.data.detail + '&salary=' + that.data.salary + '&description=' + that.data.description + '&ask=' + that.data.ask + '&num=' + that.data.num + '&ddl=' + that.data.ddl + '&ps=' + that.data.ps,
     })
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

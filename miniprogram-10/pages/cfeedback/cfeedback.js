@@ -2,6 +2,8 @@
 const app = getApp();
 Page({
   data: {
+    ow_number: "",
+    stu_number:"",
     staticImg: app.globalData.staticImg,
     current: 0,
     attitude: true,
@@ -9,6 +11,12 @@ Page({
     efficiency: true,
     environment: true,
     professional: true,
+    serious: "",
+    manner: "",
+    timely: "",
+    labor: "",
+    ability: "",
+    more:"",
     code:1,
     code1:2,
     userStars: [
@@ -20,7 +28,7 @@ Page({
     ],
     wjxScore: 5,
     // textarea
-    min: 5,//最少字数
+    min: 10,//最少字数
     max: 200, //最多字数 (根据自己需求改变)
     pics: [],
   },
@@ -50,35 +58,40 @@ Page({
     console.log(e)
     var that = this;
     that.setData({
-      attitude: !e.currentTarget.dataset.index
+      attitude: !e.currentTarget.dataset.index,
+      serious: "认真负责"
     })
   },
   label1: function (e) {
     console.log(e)
     var that = this;
     that.setData({
-      time: !e.currentTarget.dataset.index
+      time: !e.currentTarget.dataset.index,
+      manner: "态度端正"
     })
   },
   label2: function (e) {
     console.log(e)
     var that = this;
     that.setData({
-      efficiency: !e.currentTarget.dataset.index
+      efficiency: !e.currentTarget.dataset.index,
+      timely: "联系及时"
     })
   },
   label3: function (e) {
     console.log(e)
     var that = this;
     that.setData({
-      environment: !e.currentTarget.dataset.index
+      environment: !e.currentTarget.dataset.index,
+      labor: "吃苦耐劳"
     })
   },
   label4: function (e) {
     console.log(e)
     var that = this;
     that.setData({
-      professional: !e.currentTarget.dataset.index
+      professional: !e.currentTarget.dataset.index,
+      ability: "工作能力强"
     })
   },
   // 留言
@@ -93,33 +106,63 @@ Page({
     return;
     // 当输入框内容的长度大于最大长度限制（max)时，终止setData()的执行
     this.setData({
-      currentWordNumber: len //当前字数
+      currentWordNumber: len, //当前字数
+      more: value
     });
   },
   
-  handleBtn(){
-    wx:if(this.data.code==1){
-      wx.showToast({
-        title: '评价成功',
-        icon: 'succes',
-        duration: 1500,
-        mask: true,
-        success:function(){
-          setTimeout(function(){
+  change() {
+    let that = this;
+    var ow_number = -1
+    var ow_number = wx.getStorageSync("ow_number");
+    app.globalData.ow_number = ow_number;
+    wx.removeStorageSync("ow_number");
+    this.setData({
+      ow_number: ow_number
+    })
+    console.log(this.data.ow_number)
+    var stu_number = -1
+    var stu_number = wx.getStorageSync("stu_number");
+    wx.removeStorageSync("stu_number");
+    this.setData({
+      stu_number: stu_number
+    })
+
+
+
+    wx.request({
+      url: app.globalData.url + '/feedbackEr/', //待修改
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      data: {
+        com:app.globalData.user,
+        stuNumber:that.data.stuNumber,
+        ow_number: that.data.ow_number,
+        score: that.data.wjxScore,
+        serious: that.data.serious,
+        manner: that.data.manner,
+        timely: that.data.timely,
+        labor: that.data.labor,
+        ability: that.data.ability,
+        more: that.data.more
+      },
+      success: (res) => {
+        if (res.statusCode == 200) {
+          wx.showToast({
+            title: '评价成功',
+            icon: 'success',
+            duration: 1500,
+            mask: true,
+          })
+          setTimeout(function () {
             wx.reLaunch({
-              url: '../index/index'
+              url: '../cworkspace/cworkspace?pingjia=1'
             })
-          },1500)
+          }, 1500)
         }
-      });
-    } else if (this.data.code1 == 2){
-      console.log("111")
-      wx.showToast({
-        title: '评价失败',
-        image: '../img/fail.png',
-        duration: 1500,
-        mask: true
-      })
-    }
+      }
+    })
   }
 })

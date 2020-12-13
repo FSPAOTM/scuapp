@@ -35,7 +35,7 @@
   
 <!--textarea-->
 <view class="conts">
-    <textarea class="areas" placeholder='更多评价请写在这里（最多200字）' placeholder-class='placeholder' minlength="{{min}}" maxlength="{{max}}" bindinput="inputs">
+    <textarea class="areas" placeholder='更多评价请写在这里（最少10字，最多200字）' placeholder-class='placeholder' minlength="{{min}}" maxlength="{{max}}" bindinput="inputs">
        
     </textarea>
 </view>

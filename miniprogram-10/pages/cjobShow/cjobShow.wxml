@@ -81,7 +81,11 @@
 
 
 
-    <button hidden="{{show}}" bindtap="cjobrelease" style="margin-top:50rpx;" form-type="submit"
+    <button hidden="{{show1}}" bindtap="cjobrelease1" style="margin-top:50rpx;" form-type="submit"
       hover-class='button-hover' class='su'>修改</button>
+      <button hidden="{{show2}}" bindtap="cinterview" style="margin-top:50rpx;" form-type="submit"
+      hover-class='button-hover' class='su'>申请面试时间</button>
+      <button hidden="{{show3}}" bindtap="cjobrelease2" style="margin-top:50rpx;" form-type="submit"
+      hover-class='button-hover' class='su'>再次发布</button>
   </form>
 </view>

@@ -6,11 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    show: false,
+    show1: false,
+    show2: false,
+    show3: false,
     jobinfo1: [],
     jobinfo2: [],
     jobinfo3: [],
     jobinfo4: [],
+    jobinfo5: [],
     winWidth: 0,
     winHeight: 0,
     currentTab: 0,
@@ -59,20 +62,25 @@ Page({
               that.setData({
                 jobinfo1: that.data.jobinfo1
               })
-            } else if (res.data[i].status == "面试中") {
+            } else if (res.data[i].status == "报名结束") {
               that.data.jobinfo2.push(res.data[i])
               that.setData({
                 jobinfo2: that.data.jobinfo2
               })
-            } else if (res.data[i].status == "工作中") {
+            } else if (res.data[i].status == "面试中") {
               that.data.jobinfo3.push(res.data[i])
               that.setData({
                 jobinfo3: that.data.jobinfo3
               })
-            } else if (res.data[i].status == "报名结束") {
+            } else if (res.data[i].status == "工作中") {
               that.data.jobinfo4.push(res.data[i])
               that.setData({
                 jobinfo4: that.data.jobinfo4
+              })
+            } else if (res.data[i].status == "已结束") {
+              that.data.jobinfo5.push(res.data[i])
+              that.setData({
+                jobinfo5: that.data.jobinfo5
               })
             }
           }
@@ -91,7 +99,7 @@ Page({
     var ow_number = that.data.jobinfo1[e].ow_number;
     console.log("++++++", ev, that)
     wx.setStorageSync("ow_number", ow_number), wx.navigateTo({
-      url: "../cjobShow/cjobShow"
+      url: "../cjobShow/cjobShow?show1=false&show2=true&show3=true"
     })
   },
 
@@ -104,7 +112,7 @@ Page({
     var ow_number = that.data.jobinfo2[e].ow_number;
     console.log("++++++", ev, that)
     wx.setStorageSync("ow_number", ow_number), wx.navigateTo({
-      url: "../cjobShow/cjobShow?show=false"
+      url: "../cjobShow/cjobShow?show1=true&show2=false&show3=true"
     })
   },
 
@@ -117,7 +125,7 @@ Page({
     var ow_number = that.data.jobinfo3[e].ow_number;
     console.log("++++++", ev, that)
     wx.setStorageSync("ow_number", ow_number), wx.navigateTo({
-      url: "../cjobShow/cjobShow?show=false"
+      url: "../cjobShow/cjobShow?show1=true&show2=true&show3=true"
     })
   },
 
@@ -130,18 +138,35 @@ Page({
     var ow_number = that.data.jobinfo4[e].ow_number;
     console.log("++++++", ev, that)
     wx.setStorageSync("ow_number", ow_number), wx.navigateTo({
-      url: "../cjobShow/cjobShow?show=false"
+      url: "../cjobShow/cjobShow?show1=true&show2=true&show3=true"
     })
   },
-  /*
-    cjobshow: function (ev) {
-      var that = this;
-      var e = ev.currentTarget.dataset.id;
-      console.log("++++++", ev, that)
-      wx.setStorageSync("job_id", e), wx.navigateTo({
-        url: "../cjobShow/cjobShow?jobinfo=" + JSON.stringify(infojob)
-      })
-    },*/
+
+  cjobshow4: function (ev) {
+    var that = this;
+    console.log(that.data.jobinfo4);
+    var e = ev.currentTarget.dataset.index;
+    console.log(e);
+    console.log(that.data.jobinfo4[e]);
+    var ow_number = that.data.jobinfo4[e].ow_number;
+    console.log("++++++", ev, that)
+    wx.setStorageSync("ow_number", ow_number), wx.navigateTo({
+      url: "../cjobShow/cjobShow?show1=true&show2=true&show3=true"
+    })
+  },
+
+  cjobshow5: function (ev) {
+    var that = this;
+    console.log(that.data.jobinfo5);
+    var e = ev.currentTarget.dataset.index;
+    console.log(e);
+    console.log(that.data.jobinfo5[e]);
+    var ow_number = that.data.jobinfo5[e].ow_number;
+    console.log("++++++", ev, that)
+    wx.setStorageSync("ow_number", ow_number), wx.navigateTo({
+      url: "../cjobShow/cjobShow?show1=true&show2=true&show3=false"
+    })
+  },
 
   swichNav: function (e) {
     var that = this;
@@ -155,7 +180,7 @@ Page({
   },
 
   checkCor: function () {
-    if (this.data.currentTab > 4) {
+    if (this.data.currentTab > 5) {
       this.setData({
         scrollleft: 300
       })
@@ -195,6 +220,7 @@ Page({
       jobinfo2: [],
       jobinfo3: [],
       jobinfo4: [],
+      jobinfo5: [],
     })
     wx.request({
       url: app.globalData.url + '/Get_outwork_info/',
@@ -215,20 +241,25 @@ Page({
               that.setData({
                 jobinfo1: that.data.jobinfo1
               })
-            } else if (res.data[i].status == "面试中") {
+            } else if (res.data[i].status == "报名结束") {
               that.data.jobinfo2.push(res.data[i])
               that.setData({
                 jobinfo2: that.data.jobinfo2
               })
-            } else if (res.data[i].status == "工作中") {
+            } else if (res.data[i].status == "面试中") {
               that.data.jobinfo3.push(res.data[i])
               that.setData({
                 jobinfo3: that.data.jobinfo3
               })
-            } else if (res.data[i].status == "报名结束") {
+            } else if (res.data[i].status == "工作中") {
               that.data.jobinfo4.push(res.data[i])
               that.setData({
                 jobinfo4: that.data.jobinfo4
+              })
+            } else if (res.data[i].status == "已结束") {
+              that.data.jobinfo5.push(res.data[i])
+              that.setData({
+                jobinfo5: that.data.jobinfo5
               })
             }
           }

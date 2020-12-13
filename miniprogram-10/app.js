@@ -2,6 +2,7 @@
 var app=getApp()
 App({
   onLaunch: function () {
+    var that=this;
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -12,7 +13,7 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         if (res.code) {
           wx.request({
-            url: app.globalData.url + '//', //待修改
+            url: that.globalData.url + '//', //待修改
             header: {
               'content-type': 'application/json'
             },
@@ -23,7 +24,7 @@ App({
             success: res => {
               if (res.statusCode == 200) {
                 wx.request({
-                  url: app.globalData.url + "Login/setuser",//待修改
+                  url: that.globalData.url + "Login/setuser",//待修改
                   method:"POST",
                   data: {
                     openid: res.data.openid
@@ -34,7 +35,7 @@ App({
                   success(res) {
                     //如果有该用户，把用户信息放到公共数组中
                     if (res.data) {
-                      app.globalData.userInfo = res.data
+                      that.globalData.userInfo = res.data
                     }
                   },
                 })

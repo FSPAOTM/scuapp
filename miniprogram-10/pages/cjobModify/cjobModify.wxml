@@ -88,7 +88,7 @@
 
  
 
- <button bindtap="goDetail" style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>发布</button>
+ <button hidden="{{show1}}" bindtap="goDetail" style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>发布</button>
 
 
  </form>

@@ -17,7 +17,6 @@ Page({
     salary: "",
     meaning: "",
     more:"",
-    content:"",
     code: 1,
     code1: 2,
     userStars: [
@@ -142,7 +141,6 @@ Page({
         salary: that.data.salary,
         meaning: that.data.meaning,
         more: that.data.more,
-        content:that.data.content,
       },
       success: (res) => {
         if (res.statusCode == 200) {
