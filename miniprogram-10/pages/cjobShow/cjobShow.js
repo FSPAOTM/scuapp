@@ -9,6 +9,7 @@ Page({
   data: {
     show1: true,
     show2: true,
+    show3: true,
     ow_number: "",
     post: "",
     time: "",
@@ -33,9 +34,11 @@ Page({
     var ow_number = wx.getStorageSync("ow_number");
     this.setData({
       ow_number: ow_number,
-      show1: options.show1,
-      show2: options.show2
+      show1: (options.show1 == 'true') ? true : false,
+      show2: (options.show2 == 'true') ? true : false,
+      show3: (options.show3 == 'true') ? true : false
     })
+    console.log(this.data.show2)
     /*console.log("接收到的参数是post=" + options.jobinfo)
     this.setData({
       jobinfo: JSON.parse(options.jobinfo),
@@ -85,8 +88,21 @@ Page({
 
   cjobrelease1() {
     let that = this;
-    wx.reLaunch({
-      url: '../cjobModify/cjobModify?post=' + that.data.post + '&ow_number=' + that.data.ow_number + '&time=' + that.data.time + '&location=' + that.data.location + '&detail=' + that.data.detail + '&salary=' + that.data.salary + '&description=' + that.data.description + '&ask=' + that.data.ask + '&num=' + that.data.num + '&ddl=' + that.data.ddl + '&ps=' + that.data.ps,
+    wx.navigateTo({
+      url: '../cjobModify/cjobModify?post=' + that.data.post + '&ow_number=' + that.data.ow_number + '&time=' + that.data.time + '&location=' + that.data.location + '&detail=' + that.data.detail + '&salary=' + that.data.salary + '&description=' + that.data.description + '&ask=' + that.data.ask + '&num=' + that.data.num + '&ddl=' + that.data.ddl + '&ps=' + that.data.ps + '&show01=true&show02=false',
+    })
+  },
+
+  cjobrelease2() {
+    let that = this;
+    wx.navigateTo({
+      url: '../cjobModify/cjobModify?post=' + that.data.post + '&ow_number=' + that.data.ow_number + '&time=' + that.data.time + '&location=' + that.data.location + '&detail=' + that.data.detail + '&salary=' + that.data.salary + '&description=' + that.data.description + '&ask=' + that.data.ask + '&num=' + that.data.num + '&ddl=' + that.data.ddl + '&ps=' + that.data.ps + '&show01=false&show02=true',
+    })
+  },
+
+  cinterview(){
+    wx.navigateTo({
+      url: "../cinterview/cinterview?ow_number=" + this.data.ow_number+ '&user=' + app.globalData.user
     })
   },
 

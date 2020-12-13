@@ -92,7 +92,6 @@
 
  <button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'>发布</button>
 
-
  </form>
 </view>
 

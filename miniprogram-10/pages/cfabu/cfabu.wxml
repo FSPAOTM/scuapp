@@ -54,7 +54,7 @@
           <view class='detailView' style="padding-left:45rpx;">
             <text class='zi'>岗位</text>
             <text class='title'>{{item.post}}</text>
-            <text class="state">{{item.status}}</text>
+            <text class="state">{{operation}}</text>
           </view>
         </view>
         <view class="line"></view>
@@ -92,7 +92,7 @@
           <view class='detailView' style="padding-left:45rpx;">
             <text class='zi'>岗位</text>
             <text class='title'>{{item.post}}</text>
-            <text class="state">{{item.status}}</text>
+            <button class="end" bindtap="jieshu">结束工作</button>
           </view>
         </view>
         <view class="line"></view>
