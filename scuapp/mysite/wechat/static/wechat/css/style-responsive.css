@@ -380,7 +380,13 @@ p {
 .comment-actions li.reply {
     padding-left: 0.625rem;
 }
-.comment-left{
-    font-size: 22px;
+.comment-type1{
+    font-size: 18px;
     margin-top: 10px;
+    color: #1fb5ad;
+}
+.comment-type2{
+    font-size: 18px;
+    margin-top: 10px;
+    color: #8074C6;
 }
