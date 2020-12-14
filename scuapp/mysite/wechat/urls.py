@@ -38,7 +38,11 @@ urlpatterns = [
     path('Modify_outwork_info/', views_com.Modify_outwork_info, name='Modify_outwork_info'),
     path('Show_applicant/', views_com.Show_applicant, name='Show_applicant'),
     path('Modify_applystatus/', views_com.Modify_applystatus, name='Modify_applystatus'),
+
+         ####lhy修改
+    path('Get_outwork_info_end/', views_com.Get_outwork_info_end, name='Get_outwork_info_end'),
     path('Company_apply_interviewtime/', views_com.Company_apply_interviewtime, name='Company_apply_interviewtime'),
+
 
 
     #后台管理界面

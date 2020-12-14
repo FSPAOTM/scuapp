@@ -100,6 +100,16 @@ def Get_outwork_info(request):
     plays_json = json.dumps(plays,ensure_ascii=False)
     return HttpResponse(plays_json)
 
+#cfabu 修改工作状态 “工作中” 到 “待评价”
+@csrf_exempt
+def Get_outwork_info_end(request):
+    if request.method == "POST":
+        ow_number = request.POST.get('ow_number')
+        TboutWork.objects.filter(ow_number=ow_number).update(ow_status="待评价")
+        return HttpResponse("修改成功")
+    else:
+        return HttpResponse("请求错误")
+
 #cjobshow 企业发布兼职信息展示功能
 @csrf_exempt
 def Get_outwork_detail_info(request):
@@ -204,28 +214,34 @@ def Modify_applystatus(request):
     else:
         return HttpResponse("请求错误")
 
-
-
+#cinterview 企业面试申请
 @csrf_exempt
 def Company_apply_interviewtime(request):
     if request.method == "POST":
-        ow_number = request.POST.get('ow_number')
-        ia_name = request.POST.get('Name')
-        phonenumber = request.POST.get('company')
-        #a_time = request.POST.get('a_time')
+        number = request.POST.get('ow_number')
+        ia_name = request.POST.get('manager')
+        phonenumber = request.POST.get('phonenum')
+        applytime1 = request.POST.get('applytime1')
+        applytime2 = request.POST.get('applytime2')
+        applytime3 = request.POST.get('applytime3')
         a_time = timezone.now()
-        ow_status = TboutWork.objects.get(ow_number=ow_number).ow_status
+        ow_number = TboutWork.objects.get(ow_number=number)
+        ia_time = applytime1 + "或" + applytime2 + "或" + applytime3  #是否存在空时间段或重复时间段
+        ow_status = ow_number.ow_status
         if ow_status=="报名结束":
-            TbinterviewApply.objects.create(#ia_time=ia_time,
+            interviewApply = TbinterviewApply.objects.create(ia_time=ia_time,
                                             ia_name=ia_name,
                                             phonenumber=phonenumber,
                                             a_time=a_time,
                                             ow_number=ow_number)
-            return HttpResponse("请求成功")
+            interviewApply.save()
+            TboutWork.objects.filter(ow_number=number).update(ow_status="面试申请中")
+            return HttpResponse("提交成功")
         else:
             return HttpResponse("报名未结束无法申请面试")
     else:
         return HttpResponse("请求错误")
+
 
 #企业面试结果修改界面 未加url 未调试
 @csrf_exempt
