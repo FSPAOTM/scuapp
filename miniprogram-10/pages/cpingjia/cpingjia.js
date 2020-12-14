@@ -6,17 +6,77 @@ Page({
    */
   data: {
     stupingjia:[],
+    mypingjia:[],
+    winWidth: 0,
+    winHeight: 0,
+    isShow: false,
+  },
+
+  swichNav: function (e) {
+    var that = this;
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: e.target.dataset.current
+      })
+    }
+  },
+
+  checkCor: function () {
+    if (this.data.currentTab > 4) {
+      this.setData({
+        scrollleft: 300
+      })
+    } else {
+      this.setData({
+        scrollleft: 0
+      })
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    /** 
+     * 获取系统信息,系统宽高
+     */
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          winWidth: res.windowWidth,
+          winHeight: res.windowHeight
+        });
+      }
+    });
     wx.request({
       url: app.globalData.url + '/Show_work/',//待修改
       method: "GET",
       header: {
         'Content-Type': 'application/json'
+      },
+      data:{
+        user:app.globalData.user
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          self.setData({
+            mypingjia: res.data
+          })
+        }
+      }
+    })
+    wx.request({
+      url: app.globalData.url + '/Show_work/',//待修改
+      method: "GET",
+      header: {
+        'Content-Type': 'application/json'
+      },
+      data:{
+        user:app.globalData.user
       },
       success: function (res) {
         console.log(res);
@@ -26,6 +86,16 @@ Page({
           })
         }
       }
+    })
+  },
+
+  toChange (e) {
+    let that = this;
+    let name = e.currentTarget.dataset.show;
+    let param = {};
+    param[name] = !that.data[name];
+    that.setData({
+      ...param
     })
   },
 

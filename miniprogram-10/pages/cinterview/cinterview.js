@@ -182,7 +182,7 @@ Page({
             this.setData({
               result: res.data
             })
-            if (res.data == "发布成功") {//待修改
+            if (res.data == "提交成功") {//待修改
               wx.showToast({
                 title: '申请提交成功！！！', //这里打印出登录成功
                 icon: 'success',

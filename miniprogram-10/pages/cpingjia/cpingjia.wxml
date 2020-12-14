@@ -1,44 +1,72 @@
-<!--pages/pingjia/pingjia.wxml-->
-<scroll-view scroll-y="true" class="message-list" style="margin-top:{{navH+47}}px;height:1200rpx">
-  <!--示例用户1-->
+<!--pages/pj/pj.wxml-->
+<import src="template\tabbar.wxml" />
+<template is="tabBar" data="{{tabBar}}" />
 
-  <view class="content" wx:for="{{stupingjia}}" wx:for-item="item" wx:for-index="index">
-    <!--分割线-->
-    <view class='linecut'></view>
-    <view class='user-content'>
-      <view class='firstline'>
-        <view class='apart'>
-          <text>匿名用户</text>
+<view class="swiper_tab_view">
+  <scroll-view scroll-x='true' scroll-left="{{scrollleft}}" class='tab-h'>
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">我的评价</view>
+
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">评价我</view>
+
+
+  </scroll-view>
+</view>
+
+
+<view class="container">
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height: 1200rpx">
+
+
+    <swiper-item>
+
+      <view class='user-content' wx:for="{{mypingjia}}" wx:key="key" wx:for-item="item" wx:for-index="index" data-index="{{index}}">
+        <view class='firstline'>
+          <view class='apart'>
+            <text>{{item.stu}}</text>
+            <text>（{{item.post}}）</text>
+          </view>
+          <view class='time'>
+            <view class='time-num'>{{item.time}}</view>
+          </view>
         </view>
-        <view class='time'>
-          <view class='time-num'>{{item.time}}</view>
+      </view>
+
+      <view bindtap="toChange" data-show='isShow'>
+        <image class="title_icon" src="{{isShow ? 'up.png' : 'down.png'}}" />
+      </view>
+      <view class="{{isShow?'db' : 'dn'}}">
+        <text class='dialog2'>这是评价的详情</text>
+      </view>
+
+      <view class='linecut'></view>
+
+    </swiper-item>
+
+
+    <swiper-item>
+      <scroll-view scroll-y="true" class="message-list" style="margin-top:{{navH+47}}px;height:1200rpx">
+        <!--示例用户1-->
+
+        <view class="content" wx:for="{{stupingjia}}" wx:key="key" wx:for-item="item" wx:for-index="index">
+          <!--分割线-->
+          <view class='linecut'></view>
+          <view class='user-content' data-index="{{index}}">
+            <view class='firstline'>
+              <view class='apart'>
+                <text>匿名用户</text>
+              </view>
+              <view class='time'>
+                <view class='time-num'>{{item.time}}</view>
+              </view>
+            </view>
+            <view class='secondline'>
+              <view class='dialog'>
+                <text>{{item.content}}</text>
+              </view>
+            </view>
+          </view>
         </view>
-      </view>
-      <view class='secondline'>
-        <view class='dialog'>
-          <text>{{item.content}}</text>
-        </view>
-      </view>
-    </view>
-  </view>
-
-
-  <!--示例用户2-->
-
-  <!--<view class='user-content'>
-    <view class='firstline'>
-      <view class='apart'>
-        <text>匿名用户</text>
-      </view>
-      <view class='time'>
-        <view class='time-num'>8:16</view>
-      </view>
-    </view>
-    <view class='secondline'>
-      <view class='dialog'>
-        <text>工作不错</text>
-      </view>
-    </view>
-  </view>
-  <view class='linecut'></view>-->
-</scroll-view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>

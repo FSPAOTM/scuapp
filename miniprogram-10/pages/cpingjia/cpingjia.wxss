@@ -1,3 +1,4 @@
+/* pages/pj/pj.wxss */
 /* pages/pingjia/pingjia.wxss */
 
 .message-list{
@@ -28,7 +29,7 @@
   flex-direction: row;
   width: 400rpx;
   font-size: 26rpx;
-  margin-top: 26rpx;
+  margin-top: 30rpx;
   font-weight: 400;
   color: #aeaeae;
 }
@@ -43,7 +44,7 @@
 }
 
 .time-num{
-margin-right: 200rpx; 
+margin-right: 100rpx; 
 }
 
 /*内容第二行*/
@@ -60,6 +61,13 @@ margin-right: 200rpx;
 }
 
 
+.dialog2{
+  width: 545rpx;
+  font-size: 28rpx;
+  margin-left: 70rpx;
+  margin-top: 10rpx;
+}
+
 /*分割线*/
 .linecut{
   width: 100%;
@@ -69,5 +77,80 @@ margin-right: 200rpx;
 }
 
 
+
+
+
+
+
+.tab-h{  
+  width: 100%;  
+  border-bottom: 1px solid #eee;  
+  text-align: center;  
+  line-height: 80rpx;
+  background: #fff;  
+  position: fixed;
+  top: 0;  
+  z-index: 999;
+  }  
+
+.swiper-tab-list{  
+font-size: 12px;  
+display: inline-block;  
+width: 20%;  
+color: #666;  
+}  
+.swiper_tab_view{
+  width: 100%;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.on{ 
+  color: #dd2727;  
+  border-bottom: 5rpx solid #dd2727;
+  }  
+  
+  .swiper-box{ 
+  display: block; 
+  width: 100%; 
+  height: 100%;
+  overflow: hidden; 
+  }  
+  
+  
+  .swiper-box view{
+    width:100%;
+  }
+
+  
+  .container{
+    width:100%;
+    height:100%;
+    padding-top: 80rpx;
+  }
+
+.nav-class{
+  margin-top:15rpx;
+  margin-bottom:15rpx;
+  margin-right:10px;
+  border-radius: 40px;
+  border:1px solid;
+  border-color: transparent;
+  height:100%;
+}
+
+
+.db{
+  display:block;
+}
+.dn{
+  display:none;
+}
+
+.title_icon{
+  margin-left: 330px;
+  width: 20px;
+  height:20px ;
+}
 
 
