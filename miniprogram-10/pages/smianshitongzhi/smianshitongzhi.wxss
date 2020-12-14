@@ -1,0 +1,56 @@
+/* pages/smianshitongzhi/smianshitongzhi.wxss */
+.section{
+  background: #fff;
+  border: 5rpx solid #FFE4E1;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  margin:30rpx; 
+}
+
+
+.tongzhi{
+  margin-top:20rpx;
+  margin-bottom:20rpx;
+  font-size: 32rpx;
+  text-align: center;
+  color:#FA8D33;
+}
+
+.xian2{
+      width: 90%;
+      background: #FFE4E1;
+      height: 3rpx;
+      margin-left: 25rpx;
+      margin-bottom: 20rpx;
+    }
+
+.line{
+      height: 10rpx;
+      background: #FFE4E1;
+    }
+
+
+ .section_gap{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .title{
+    font-family:"KaiTi";
+    font-weight: 900;
+    font-size: 32rpx;
+    text-align: center;
+    background: #F0F8FF;
+    height: 50px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    color:#999;
+  }
+
+  button{
+    background: #FA8D33;
+    color: #fff;
+    width: 80%;
+  }
+  
