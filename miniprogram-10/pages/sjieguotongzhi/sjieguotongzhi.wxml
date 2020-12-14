@@ -1,0 +1,20 @@
+<!--pages/sjieguotongzhi/sjieguotongzhi.wxml-->
+
+
+<view class="line"></view>
+
+<view class="section"  wx:for="{{jieguodahui}}" wx:key="key" wx:for-item="item" wx:for-index="index">
+    <view class="tongzhi" >
+      <text>结 果 通 知</text>
+    </view>
+    <view class="xian2"></view>
+    <view style=" height: 200px;">
+      <text style="font-size:15px; margin-left:30rpx;;" maxlength='300'>{{description}}</text><!--结果通知看数据库-->
+    </view>
+    <button bindtap="cjobrelease" data-index="{{index}}" size='mini' style="font-size: 28rpx;margin-left:260px;">确 认</button>
+  </view>
+
+
+
+
+

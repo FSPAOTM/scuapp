@@ -102,7 +102,7 @@ Page({
 
   cinterview(){
     wx.navigateTo({
-      url: "../cinterview/cinterview?ow_number=" + this.data.ow_number+ '&user=' + app.globalData.user
+      url: "../cinterview/cinterview?ow_number=" + this.data.ow_number+ '&user=' + app.globalData.user+'&post=' + this.data.post
     })
   },
 

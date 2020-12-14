@@ -1,5 +1,6 @@
 // pages/cinterview/cinterview.js
 var dateTimePicker = require('outer.js');
+const app=getApp()
 Page({
 
   /**
@@ -30,6 +31,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      post:options.post,
+      ow_number:options.ow_number
+    })
     // 获取完整的年月日 时分秒，以及默认显示的数组
     var obj = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
     var obj1 = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
@@ -161,13 +166,12 @@ Page({
       }, 2000)
     }else {
       wx.request({
-        url: app.globalData.url + '/Part_time_post/',//待修改
+        url: app.globalData.url + '/Company_apply_interviewtime/',
         method: "POST",
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
         data: {
-          user: app.globalData.user,
           ow_number: that.data.ow_number,
           post: that.data.post,
           manager: that.data.manager,

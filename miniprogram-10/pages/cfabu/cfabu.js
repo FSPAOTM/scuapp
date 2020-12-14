@@ -11,7 +11,6 @@ Page({
     jobinfo3: [],
     jobinfo4: [],
     jobinfo5: [],
-    operation: "",
     winWidth: 0,
     winHeight: 0,
     currentTab: 0,
@@ -30,11 +29,12 @@ Page({
     console.log(e);
     console.log(that.data.jobinfo4[e]);
     var ow_number = that.data.jobinfo4[e].ow_number;
+    console.log(ow_number)
     wx.request({
       url: app.globalData.url + '/Get_outwork_info_end/',
       method: "POST",
       header: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
       data: {
         ow_number: ow_number
@@ -67,16 +67,7 @@ Page({
         });
       }
     });
-    if (options.operation == "已申请") {
-      that.setData({
-        operation: "重新申请 >"
-      })
-    } else {
-      that.setData({
-        operation: "申请面试时间 >"
-      })
-    }
-
+    
     wx.request({
       url: app.globalData.url + '/Get_outwork_info/',
       method: "GET",
@@ -106,7 +97,22 @@ Page({
               that.setData({
                 jobinfo2: that.data.jobinfo2
               })
-            } else if (res.data[i].status == "面试中") {
+            } else if (res.data[i].status == "面试申请中") {
+              that.data.jobinfo3.push(res.data[i])
+              that.setData({
+                jobinfo3: that.data.jobinfo3
+              })
+            }else if (res.data[i].status == "面试通知中") {
+              that.data.jobinfo3.push(res.data[i])
+              that.setData({
+                jobinfo3: that.data.jobinfo3
+              })
+            } else if (res.data[i].status == "面试阶段") {
+              that.data.jobinfo3.push(res.data[i])
+              that.setData({
+                jobinfo3: that.data.jobinfo3
+              })
+            }else if (res.data[i].status == "结果通知中") {
               that.data.jobinfo3.push(res.data[i])
               that.setData({
                 jobinfo3: that.data.jobinfo3

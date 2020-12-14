@@ -1,32 +1,20 @@
-// pages/cxiaoxi/cxiaoxi.js
-const app = getApp()
+// pages/cmianshitongzhi/cmianshitongzhi.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    user: "",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-
-  tongzhi() {
-    wx.navigateTo({
-      url: '../cmianshitongzhi/cmianshitongzhi?user=' + app.globalData.user,
-    })
-  },
-
-  dahui() {
-    wx.navigateTo({
-      url: '../cmianshidahui/cmianshidahui?user=' + app.globalData.user,
-    })
-  },
-
   onLoad: function (options) {
-
+    this.setData({
+      user: options.user
+    })
   },
 
   /**

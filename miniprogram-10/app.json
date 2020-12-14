@@ -1,9 +1,12 @@
 {
   "pages": [
+    "pages/cmianshitongzhi/cmianshitongzhi",
+    "pages/cmianshidahui/cmianshidahui",
+    "pages/sjieguotongzhi/sjieguotongzhi",
     "pages/sjobShow/sjobShow",
     "pages/sxiaoxi/sxiaoxi",
     "pages/cxiaoxi/cxiaoxi",
-    "pages/stongzhi/stongzhi",
+    "pages/smianshitongzhi/smianshitongzhi",
     "pages/ccenter/ccenter",
     "pages/cpingjia/cpingjia",
     "pages/spingjia/spingjia",

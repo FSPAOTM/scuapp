@@ -11,7 +11,6 @@ Page({
     workinfo1: [],
     workinfo2: [],
     workinfo3: [],
-    workinfo4: [],
     workinfo5: [],
     pingjia: "",
     //tap切换自定义宽高
@@ -96,12 +95,7 @@ Page({
               that.setData({
                 workinfo3: that.data.workinfo3
               })
-            } else if (res.data[i].status == "已到岗") {
-              that.data.workinfo4.push(res.data[i])
-              that.setData({
-                workinfo4: that.data.workinfo4
-              })
-            } else if (res.data[i].status == "已结算") {
+            } else if (res.data[i].status == "待评价") {
               that.data.workinfo5.push(res.data[i])
               that.setData({
                 workinfo5: that.data.workinfo5
@@ -195,7 +189,7 @@ Page({
     }
   },
 
-  xq4(ev) {
+  /*xq4(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
     var type = that.data.workinfo4[e].type;
@@ -213,7 +207,7 @@ Page({
         url: "../sjobShow/sjobShow"
       })
     }
-  },
+  },*/
 
   xq5(ev) {
     var that = this;
@@ -298,7 +292,6 @@ Page({
       workinfo1: [],
       workinfo2: [],
       workinfo3: [],
-      workinfo4: [],
       workinfo5: []
     })
     wx.request({
@@ -330,12 +323,12 @@ Page({
               that.setData({
                 workinfo3: that.data.workinfo3
               })
-            } else if (res.data[i].status == "已到岗") {
-              that.data.workinfo4.push(res.data[i])
+            } else if (res.data[i].status == "待评价") {
+              that.data.workinfo5.push(res.data[i])
               that.setData({
-                workinfo4: that.data.workinfo4
+                workinfo5: that.data.workinfo5
               })
-            } else if (res.data[i].status == "已结算") {
+            }else if (res.data[i].status == "已评价") {
               that.data.workinfo5.push(res.data[i])
               that.setData({
                 workinfo5: that.data.workinfo5

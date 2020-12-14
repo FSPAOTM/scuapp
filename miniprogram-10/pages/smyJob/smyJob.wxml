@@ -9,9 +9,7 @@
 
     <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">已录用</view>
 
-    <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">已到岗</view>
-
-    <view class="swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-current="4" bindtap="swichNav">已结算</view>
+    <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">已结算</view>
 
   </scroll-view>
 </view>
@@ -93,7 +91,7 @@
       </view>
     </swiper-item>
 
-    <swiper-item>
+    <!--<swiper-item>
       <view class='xiangqing' wx:for="{{workinfo4}}" wx:key="key" wx:for-item="item" wx:for-index="index">
         <view class="xq">
           <view class='xiangqing_info' style="padding-left:40rpx;">
@@ -117,7 +115,7 @@
         </view>
         <view class="line"></view>
       </view>
-    </swiper-item>
+    </swiper-item>-->
 
     <swiper-item>
 

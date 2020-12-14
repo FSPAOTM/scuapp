@@ -126,7 +126,37 @@ App({
     stuNumber: "",
     jobType: "",
     ow_number: "",
-    
+    tabBar: {
+      "color": "#a9b7b7",
+      "selectedColor": "#11cd6e",
+      "borderStyle": "white",
+      "list": [{
+          "selectedIconPath": "2.png",
+          "iconPath": "1.png",
+          "pagePath": "pages/sallJob/sallJob",
+          "text": " 全部兼职",
+          "class": "menu-item",
+          "active": false
+        },
+        {
+          "selectedIconPath": "4.png",
+          "iconPath": "3.png",
+          "pagePath": "pages/smyJob/smyJob",
+          "text": "我的兼职",
+          "class": "menu-item",
+          "active": false
+        },
+        {
+          "selectedIconPath": "6.png",
+          "iconPath": "5.png",
+          "pagePath": "pages/scenter/scenter",
+          "text": "个人中心",
+          "class": "menu-item",
+          "active": false
+        }
+      ],
+      "position": "bottom"
+    },
     "tabBar1": {
       "color": "#a9b7b7",
       "selectedColor": "#11cd6e",
@@ -142,17 +172,9 @@ App({
         {
           "selectedIconPath": "3.png",
           "iconPath": "4.png",
-          "pagePath": "pages/cfabu/cfabu",
+          "pagePath": "pages/fabu/fabu",
           "text": "我的发布",
           "class": "menu-item1",
-          "active": false
-        },
-        {
-          "selectedIconPath": "8.png",
-          "iconPath": "7.png",
-          "pagePath": "pages/cxiaoxi/cxiaoxi",
-          "text": "我的消息",
-          "class": "menu-item",
           "active": false
         },
         {

@@ -1,5 +1,4 @@
-// pages/cxiaoxi/cxiaoxi.js
-const app = getApp()
+// pages/stongzhi/stongzhi.js
 Page({
 
   /**
@@ -12,19 +11,6 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-
-  tongzhi() {
-    wx.navigateTo({
-      url: '../cmianshitongzhi/cmianshitongzhi?user=' + app.globalData.user,
-    })
-  },
-
-  dahui() {
-    wx.navigateTo({
-      url: '../cmianshidahui/cmianshidahui?user=' + app.globalData.user,
-    })
-  },
-
   onLoad: function (options) {
 
   },

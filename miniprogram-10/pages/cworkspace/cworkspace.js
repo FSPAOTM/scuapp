@@ -84,7 +84,7 @@ Page({
         var i;
         for (i = 0; i < res.data.length; i++) {
           if (res.statusCode == 200) {
-            if (res.data[i].status == "已报名") {
+            if (res.data[i].status == "待审核") {
               that.data.workinfo1.push(res.data[i])
               //that.data.user1.push(res.data[i].user)
               that.setData({
