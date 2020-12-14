@@ -105,7 +105,9 @@ def Get_outwork_info(request):
 def Get_outwork_info_end(request):
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
+        outwork = TboutWork.objects.get(ow_number=ow_number)
         TboutWork.objects.filter(ow_number=ow_number).update(ow_status="待评价")
+        Tbapplication.objects.filter(ow_number=outwork).filter(apply_status="已录用").update(apply_status="待评价")
         return HttpResponse("修改成功")
     else:
         return HttpResponse("请求错误")

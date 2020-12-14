@@ -188,7 +188,7 @@ def interview_notice_send_send(request):
     interviewNotice = TbinterviewNotice.objects.get(i_number=i_number)
     interviewApply = TbinterviewApply.objects.get(ia_number=interviewNotice.ia_number)
     ow_number = interviewApply.ow_number.ow_number
-    TboutWork.objects.filter(ow_number=ow_number).update(ow_status="面试通知中")
+    TboutWork.objects.filter(ow_number=ow_number).update(ow_status='面试通知中')
     stu = interviewNotice.stu.replace("'", '"')
     stu = json.loads(stu)
     s_sure =[]
@@ -279,7 +279,7 @@ def interview_result(request):
         interviewNotice = i.i_number
         interviewApply = TbinterviewApply.objects.get(ia_number=interviewNotice.ia_number)
         outwork = interviewApply.ow_number
-        if outwork.ow_status == "结果通知中" or outwork.ow_status == "工作中"or outwork.ow_status == "待评价"or outwork.ow_status == "工作结束":
+        if outwork.ow_status == "结果通知中" or outwork.ow_status == "工作中"or outwork.ow_status == "待评价"or outwork.ow_status == "已结束":
             dictionary = {}
             dictionary["ir_number"] = i.ir_number
             dictionary["ow_number"] = outwork.ow_number

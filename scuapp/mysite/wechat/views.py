@@ -480,7 +480,7 @@ def Interview_notice(request):
         i_number = request.GET.get('i_number')
         filterResult1 = TbinterviewNotice.objects.get(i_number=i_number)
         if len(filterResult1) > 0:
-            filterResult1.update(s_sure='已确认')
+            filterResult1.update(s_sure='已确认')  #需要在数组内操作，待修改
             return HttpResponse("请求成功")
         else:
             return HttpResponse("请求错误")
