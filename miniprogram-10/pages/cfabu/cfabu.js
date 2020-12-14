@@ -23,7 +23,7 @@ Page({
     })
   },
 
-  jieshu() {
+  jieshu(ev) {
     var that = this;
     console.log(that.data.jobinfo4);
     var e = ev.currentTarget.dataset.index;
@@ -31,19 +31,18 @@ Page({
     console.log(that.data.jobinfo4[e]);
     var ow_number = that.data.jobinfo4[e].ow_number;
     wx.request({
-      url: app.globalData.url + '/Get_outwork_info/',//待修改
+      url: app.globalData.url + '/Get_outwork_info_end/',
       method: "POST",
       header: {
         'Content-Type': 'application/json'
       },
       data: {
-        user: app.globalData.user,
-        ow_number:ow_number
+        ow_number: ow_number
       },
       success: function (res) {
         console.log(res);
-        if(res.statusCode==200){
-          if(res.data=="修改成功"){
+        if (res.statusCode == 200) {
+          if (res.data == "修改成功") {
             wx.reLaunch({
               url: '../cfabu/cfabu',
             })
@@ -116,6 +115,11 @@ Page({
               that.data.jobinfo4.push(res.data[i])
               that.setData({
                 jobinfo4: that.data.jobinfo4
+              })
+            } else if (res.data[i].status == "待评价") {
+              that.data.jobinfo5.push(res.data[i])
+              that.setData({
+                jobinfo5: that.data.jobinfo5
               })
             } else if (res.data[i].status == "已结束") {
               that.data.jobinfo5.push(res.data[i])
