@@ -226,7 +226,14 @@ def Company_apply_interviewtime(request):
         applytime3 = request.POST.get('applytime3')
         a_time = timezone.now()
         ow_number = TboutWork.objects.get(ow_number=number)
-        ia_time = applytime1 + "或" + applytime2 + "或" + applytime3  #是否存在空时间段或重复时间段
+        if applytime2 == "" and applytime3 =="":
+            ia_time = applytime1
+        if applytime2 == "" and applytime3 !="":
+            ia_time = applytime1 + "或" + applytime3
+        if applytime2 != "" and applytime3 =="":
+            ia_time = applytime1 + "或" + applytime2
+        if applytime2 != "" and applytime3 !="":
+            ia_time = applytime1 + "或" + applytime2+ "或" + applytime3  #考虑存在空时间段
         ow_status = ow_number.ow_status
         if ow_status=="报名结束":
             interviewApply = TbinterviewApply.objects.create(ia_time=ia_time,
@@ -241,7 +248,6 @@ def Company_apply_interviewtime(request):
             return HttpResponse("报名未结束无法申请面试")
     else:
         return HttpResponse("请求错误")
-
 
 #企业面试结果修改界面 未加url 未调试
 @csrf_exempt
