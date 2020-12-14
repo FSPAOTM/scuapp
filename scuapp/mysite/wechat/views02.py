@@ -95,9 +95,10 @@ def stu_yingpin(request):
     ia_number = request.GET.get("yp_num")
     interviewApply = TbinterviewApply.objects.get(ia_number=ia_number)
     outwork = interviewApply.ow_number
-    list = Tbapplication.objects.filter(ow_number = outwork.ow_number)
+    list1 = Tbapplication.objects.filter(ow_number=outwork.ow_number).exclude(apply_status = "表筛未通过")
+    list2 = Tbapplication.objects.filter(ow_number=outwork.ow_number).filter(apply_status="表筛未通过")
     stu_yingpinlist = []
-    for i in list:
+    for i in list1:
         stu_id = i.stu.stu_id
         student = Tbstudent.objects.get(stu_id=stu_id)
         dictionary = {}
@@ -110,7 +111,7 @@ def stu_yingpin(request):
         dictionary["e_mail"] = student.e_mail
         dictionary["ap_reson"] = i.ap_reson
         dictionary["apply_status"] = i.apply_status
-        if outwork.ow_status == "面试申请中":
+        if outwork.ow_status == "面试通知中":
             dictionary["s_sure"] = "未开启"
         else:
             interviewNotice = TbinterviewNotice.objects.get(ia_number=ia_number)
@@ -123,6 +124,21 @@ def stu_yingpin(request):
                 if i == stu_id:
                     dictionary["s_sure"] = s_sure[k]
                 k = k + 1
+        stu_yingpinlist.append(dictionary)
+    for i in list2:
+        stu_id = i.stu.stu_id
+        student = Tbstudent.objects.get(stu_id=stu_id)
+        dictionary = {}
+        dictionary["stu_id"] = stu_id
+        dictionary["name"] = student.name
+        dictionary["age"] = student.age
+        dictionary["sex"] = student.sex
+        dictionary["phonenumber"] = student.phonenumber_phonenumberphonenumber_phonenumber
+        dictionary["grade"] = student.grade
+        dictionary["e_mail"] = student.e_mail
+        dictionary["ap_reson"] = i.ap_reson
+        dictionary["apply_status"] = i.apply_status
+        dictionary["s_sure"] = "未开启"
         stu_yingpinlist.append(dictionary)
     return render(request, 'wechat/stu_yingpin.html', {'stu_yingpinlist': stu_yingpinlist})
 
@@ -296,7 +312,6 @@ def interview_result(request):
             interview_result.append(dictionary)
     return render(request, 'wechat/interview_result.html', {'interview_result': interview_result})
 
-
 #面试录用详情界面
 def interview_stu_result(request):
     i_number = request.GET.get('i_num')
@@ -316,16 +331,21 @@ def interview_stu_result(request):
         dictionary["grade"] = student.grade
         application = Tbapplication.objects.filter(ow_number=outwork).get(stu=student)
         dictionary["apply_status"] = application.apply_status
-        dictionary["s_sure"] = application.s_sure
+        if dictionary["apply_status"] == "未录用":
+            dictionary["s_sure"] = "未开启"
+        else:
+            dictionary["s_sure"] = application.s_sure
         stu_result.append(dictionary)
     return render(request, 'wechat/stu_result.html', {'stu_result': stu_result})
 
 #校内兼职学生评价
 #学生评价表——HHL 12/12
-def stu_feedback(request):
-    stu_feedback_list = ["嘿嘿嘿"]
+def stu_feedback_list(request):
+    stu_feedback_list = []
+    list = TbinWork.objects.filter(Q(In_status="已结束") | Q(In_status="工作中") | Q(In_status="待评价"))
+
     stu_list = ["kekeke"]
-    return render(request, 'wechat/stu_feedback.html')
+    return render(request, 'wechat/stu_feedback.html', {'stu_feedback_list': stu_feedback_list})
 
 
 

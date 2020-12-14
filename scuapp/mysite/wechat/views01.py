@@ -2,28 +2,72 @@ from django.shortcuts import HttpResponse,render
 from django.utils import timezone
 from .models import Tbcompany, Tbmanager, Tbstudent,TbinWork, TboutWork, TbinResult, Tbapplication,TbfeedbackEr,TbinterviewApply,TbinterviewNotice
 from django.db.models import Q
-from threading import Timer
 import json
 
-#报名结束状态生成（定时器自动更新）
-def info_status():
-    inlist = TbinWork.objects.filter(In_status='报名中')
-    for i in inlist:
-        iddl = (i.ddl_time - timezone.now()).days
-        inow = Tbapplication.objects.filter(iw_number=i.iw_number).count()
-        if iddl < 0 or inow >= int(i.w_amount):
-            TbinWork.objects.filter(iw_number=i.iw_number).update(In_status='报名结束')
-    outlist = TboutWork.objects.filter(ow_status="报名中")
-    for j in outlist:
-        oddl = (j.ddl_time - timezone.now()).days
-        if oddl < 0:
-            TboutWork.objects.filter(ow_number=j.ow_number).update(ow_status="报名结束")
-    t = Timer(10, info_status, ())
-    t.start()
+######一些改状态的函数
+#判断工作是否评价完毕（修改工作状态“待评价”到“已结束”）(校外)
+def out_feedback_over(k): #k为ow_number
+    ow_number = TboutWork.objects.get(ow_number=k)
+    list = Tbapplication.objects.filter(ow_number=ow_number).filter(apply_status="待评价")
+    for j in list:
+        filterResult1 = TbfeedbackEr.objects.filter(stu=j.stu).filter(ow_number=ow_number).filter(fb_directionr="学生评价企业")
+        filterResult2 = TbfeedbackEr.objects.filter(stu=j.stu).filter(ow_number=ow_number).filter(fb_directionr="企业评价学生")
+        if not (len(filterResult1) > 0 and len(filterResult2) > 0):
+            return()
+    ow_number.update(ow_status="已结束")
+    return ()
+#判断工作是否评价完毕（修改工作状态“待评价”到“已结束”）(校内)
+def in_feedback_over(k): #k为iw_number
+    iw_number = TbinWork.objects.get(iw_number=k)
+    list = Tbapplication.objects.filter(iw_number=iw_number).filter(apply_status="待评价")
+    for j in list:
+        filterResult1 = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=iw_number).filter(fb_directionr="学生评价企业")
+        filterResult2 = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=iw_number).filter(fb_directionr="企业评价学生")
+        if not (len(filterResult1) > 0 and len(filterResult2) > 0):
+            return()
+    iw_number.update(In_status="已结束")
+    return ()
+#判断面试通知是否确认完毕（修改工作状态“面试通知中”到“面试阶段”，修改面试申请状态“面试通知中”到“面试阶段”）（校外）
+def interview_sure(k): #k为i_number
+    interviewNotice = TbinterviewNotice.objects.get(i_number = k)
+    if interviewNotice.c_sure=="已确认":
+        sure = interviewNotice.s_sure.replace("'", '"')
+        sure = json.loads(sure)
+        for j in sure:
+            if j != "已确认":
+                return()
+        interviewApply = TbinterviewApply.objects.get(ia_number=interviewNotice.ia_number)
+        TboutWork.objects.filter(ow_number=interviewApply.ow_number.ow_number).update(ow_status="面试阶段")
+        interviewApply.update(apply_status = "面试阶段")
+        return ()
+    else:
+        return()
+#判断结果通知是否确认完毕（修改工作状态“结果通过中”到“工作中”）（校外）
+def out_result_sure(k): #k为ow_number
+    ow_number = TboutWork.objects.get(ow_number=k)
+    if ow_number.ow_status=="结果通知中":
+        application = Tbapplication.objects.filter(ow_number=ow_number).filter(apply_status="已录用")
+        for j in application:
+            if j.s_sure != "已确认":
+                return()
+        ow_number.update(ow_status="工作中")
+        return ()
+    else:
+        return ()
+#判断结果通知是否确认完毕（修改工作状态“结果通过中”到“工作中”）（校内）
+def in_result_sure(k): #k为iw_number
+    iw_number = TbinWork.objects.get(iw_number=k)
+    if iw_number.In_status=="结果通知中":
+        application = Tbapplication.objects.filter(iw_number=iw_number).filter(apply_status="已录用")
+        for j in application:
+            if j.s_sure != "已确认":
+                return()
+        iw_number.update(In_status="工作中")
+        return ()
+    else:
+        return ()
 
-info_status()
-
-#后台管理界面
+######后台管理界面
 #校内兼职报名处理界面
 def inworking_list(request):
     inworking_list = []
@@ -48,7 +92,6 @@ def inworking_list(request):
         dictionary["In_status"] = i.In_status
         inworking_list.append(dictionary)
     return render(request, 'wechat/inworking_list.html', {'inworking_list': inworking_list})
-
 #功能接口
 #登录管理者
 def management_login(request):
@@ -457,49 +500,6 @@ def outWork_reject_result_send(request):
     TboutWork.objects.filter(ow_number=ow_number).update(ow_status="已打回")
     outwork_list = TboutWork.objects.filter(Q(ow_status="待审核") | Q(ow_status="已打回"))
     return render(request, 'wechat/work_examine.html', {'outwork_list': outwork_list})
-
-#一些改状态的函数
-#判断工作是否评价完毕（修改工作状态“待评价”到“已结束”）(校外)
-def out_feedback_over():
-    list1 = TboutWork.objects.filter(ow_status="待评价")
-    for i in list1:
-        list2 = Tbapplication.objects.filter(ow_number=i).filter(apply_status="待评价")
-        for j in list2:
-            filterResult1 = TbfeedbackEr.objects.filter(stu=j.stu).filter(ow_number=i).filter(fb_directionr="学生评价企业")
-            filterResult2 = TbfeedbackEr.objects.filter(stu=j.stu).filter(ow_number=i).filter(fb_directionr="企业评价学生")
-            if not (len(filterResult1) > 0 and len(filterResult2) > 0):
-                return()
-        TboutWork.objects.filter(ow_number=i).update(ow_status="已结束")
-#判断工作是否评价完毕（修改工作状态“待评价”到“已结束”）(校内)
-def in_feedback_over():
-    list1 = TbinWork.objects.filter(In_status="待评价")
-    for i in list1:
-        list2 = Tbapplication.objects.filter(iw_number=i).filter(apply_status="待评价")
-        for j in list2:
-            filterResult1 = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=i).filter(fb_directionr="学生评价企业")
-            filterResult2 = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=i).filter(fb_directionr="企业评价学生")
-            if not (len(filterResult1) > 0 and len(filterResult2) > 0):
-                return()
-        TbinWork.objects.filter(iw_number=i).update(In_status="已结束")
-#判断面试通知是否确认完毕（修改工作状态“面试通知中”到“面试阶段”，修改面试申请状态“面试通知中”到“面试阶段”）（校外）
-def interview_sure():
-    list1 = TbinterviewApply.objects.filter(apply_status = "面试通知中")
-    for i in list1:
-        interviewNotice = TbinterviewNotice.objects.get(ia_number = i.ia_number)
-        if interviewNotice.c_sure=="已确认":
-            sure = interviewNotice.s_sure.replace("'", '"')
-            sure = json.loads(sure)
-            for i in sure:
-                if i != "已确认":
-                    return()
-            TbinWork.objects.filter(iw_number=i).update(In_status="已结束")
-        else:
-            return()
-
-#判断结果通知是否确认完毕（修改工作状态“结果通过中”到“工作中”）（校内）
-
-
-#判断结果通知是否确认完毕（修改工作状态“结果通过中”到“工作中”）（校外）
 
 
 

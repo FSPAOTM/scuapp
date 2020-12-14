@@ -1,21 +1,34 @@
 from django.shortcuts import HttpResponse,render
 from django.template import loader
 from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication,TbinterviewNotice,TbfeedbackEr
-from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.utils import timezone
 import json
+from threading import Timer
 from itertools import chain
 from . import views01
+
+#####报名结束状态生成（定时器自动更新）
+def info_status():
+    inlist = TbinWork.objects.filter(In_status='报名中')
+    for i in inlist:
+        iddl = (i.ddl_time - timezone.now()).days
+        inow = Tbapplication.objects.filter(iw_number=i.iw_number).count()
+        if iddl < 0 or inow >= int(i.w_amount):
+            TbinWork.objects.filter(iw_number=i.iw_number).update(In_status='报名结束')
+    outlist = TboutWork.objects.filter(ow_status="报名中")
+    for j in outlist:
+        oddl = (j.ddl_time - timezone.now()).days
+        if oddl < 0:
+            TboutWork.objects.filter(ow_number=j.ow_number).update(ow_status="报名结束")
+    t = Timer(10, info_status, ())
+    t.start()
+
+info_status()
+
 #小程序界面
 
-
-def detail(request, manager_id):
-    return HttpResponse("You're looking at managerid %s." % manager_id)
-
-
 #login登录功能
-@csrf_exempt
 def dengluzhuce_login(request):
     if request.method == "POST":
         account_num = request.POST.get('no')
@@ -61,7 +74,6 @@ def dengluzhuce_login(request):
         return HttpResponse("请求错误")
 
 #regManager 注册功能
-@csrf_exempt
 def Manage_register(request):
     #curtime=time.strftime("%Y-%m-%d %H:%M:%S",time.localtime());注册时间？
     if request.method == "POST":
@@ -80,7 +92,6 @@ def Manage_register(request):
         return HttpResponse("请求错误")
 
 #regstudent 学生注册
-@csrf_exempt
 def Student_register(request):
     if request.method == "POST":
         account_num = request.POST.get('stuNumber')
@@ -102,7 +113,6 @@ def Student_register(request):
         return HttpResponse("请求错误")
 
 #regcompany 企业注册
-@csrf_exempt
 def Company_register(request):
     if request.method == "POST":
         account_name = request.POST.get('ComName')
@@ -126,7 +136,6 @@ def Company_register(request):
         return HttpResponse("请求错误")
 
 #repsw1 忘记密码验证身份页面
-@csrf_exempt
 def Reset_password_f1(request):
     if request.method == "POST":
         stu_id = request.POST.get('user')
@@ -141,7 +150,6 @@ def Reset_password_f1(request):
         return HttpResponse("请求错误")
 
 #repsw1-1 忘记密码重置密码界面
-@csrf_exempt
 def Reset_password_f2(request):
     if request.method == "POST":
         stu_id = request.POST.get('user')
@@ -153,7 +161,6 @@ def Reset_password_f2(request):
 
 #以下是学生界面功能
 #scenter返回学生名称
-@csrf_exempt
 def Show_student_name(request):
     if request.method == "POST":
         stu_id = request.POST.get('sno')  #前端从Get_outwork_info界面接收ow_number并存为全局变量
@@ -164,7 +171,6 @@ def Show_student_name(request):
         return HttpResponse("请求错误")
 
 #sinfoShow 简历显示功能  #cresumeReview 企业端简历显示功能
-@csrf_exempt
 def Insert_resume_show(request):
     if request.method == "POST":
         stu_id = request.POST.get('stuNumber') # 唯一标识简历的全局变量
@@ -194,7 +200,6 @@ def Insert_resume_show(request):
         return HttpResponse("请求错误")
 
 #Sinfofill 简历修改功能
-@csrf_exempt
 def Insert_resume_change(request):
     if request.method == "POST":
         stu_id = request.POST.get('stuNumber')  # 唯一标识简历的全局变量
@@ -215,7 +220,6 @@ def Insert_resume_change(request):
         return HttpResponse("请求错误")
 
 #Sinfomodify 修改个人信息总界面
-@csrf_exempt
 def Reset_show(request):
     if request.method == "POST":
         stu_id = request.POST.get('stuNumber') # 唯一标识简历的全局变量
@@ -233,7 +237,6 @@ def Reset_show(request):
         return HttpResponse("请求错误")
 
 #repwd2 修改密码
-@csrf_exempt
 def Reset_password(request):
     if request.method == "POST":
         stu_id = request.POST.get('no')
@@ -250,7 +253,6 @@ def Reset_password(request):
         return HttpResponse("请求错误")
 
 #修改姓名
-@csrf_exempt
 def Reset_myinfo_name(request):
     if request.method == "POST":
         stu_id=request.POST.get('stuNumber')
@@ -261,7 +263,6 @@ def Reset_myinfo_name(request):
         return HttpResponse("请求错误")
 
 #修改昵称
-@csrf_exempt
 def Reset_myinfo_nickname(request):
     if request.method == "POST":
         stu_id=request.POST.get('stuNumber')
@@ -272,7 +273,6 @@ def Reset_myinfo_nickname(request):
         return HttpResponse("请求错误")
 
 #修改手机号码
-@csrf_exempt
 def Reset_myinfo_phonenumber(request):
     if request.method == "POST":
         stu_id=request.POST.get('stuNumber')
@@ -287,7 +287,6 @@ def Reset_myinfo_phonenumber(request):
         return HttpResponse("请求错误")
 
 #修改邮箱
-@csrf_exempt
 def Reset_myinfo_e_mail(request):
     if request.method == "POST":
         stu_id=request.POST.get('sno')
@@ -302,7 +301,6 @@ def Reset_myinfo_e_mail(request):
         return HttpResponse("请求错误")
 
 #Salljob 校内外兼职信息展示界面
-@csrf_exempt
 def Show_work(request):
     result1 = TboutWork.objects.filter(ow_status='报名中')
     result2 = TbinWork.objects.filter(In_status='报名中')
@@ -324,7 +322,6 @@ def Show_work(request):
 #Salljob 查询区域
 
 #Sbaoming 兼职详情展示
-@csrf_exempt
 def Show_outwork_detail(request):
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
@@ -355,7 +352,6 @@ def Show_outwork_detail(request):
     else:
         return HttpResponse("请求错误")
 
-@csrf_exempt
 def Show_inwork_detail(request):
     if request.method == "POST":
         iw_number = request.POST.get('iw_number')
@@ -385,7 +381,6 @@ def Show_inwork_detail(request):
         return HttpResponse("请求错误")
 
 #Sreason 报名功能
-@csrf_exempt
 def Enroll_in_work(request):
     if request.method == "POST":
         stu = request.POST.get('user')
@@ -404,7 +399,6 @@ def Enroll_in_work(request):
         return HttpResponse("请求错误")
 
 #Sbaoming 报名功能
-@csrf_exempt
 def Enroll_in_inwork(request):
     if request.method == "POST":
         stu = request.POST.get('user')
@@ -422,7 +416,6 @@ def Enroll_in_inwork(request):
         return HttpResponse("请求错误")
 
 #smyjob 学生报名展示
-@csrf_exempt
 def Show_myjob(request):
     if request.method == "GET":
         stu = request.GET.get('user')
@@ -457,69 +450,6 @@ def Show_myjob(request):
                                       'ow_number': i.ow_number, 'show': True})
                 plays_json = json.dumps(plays, ensure_ascii=False)
         return HttpResponse(plays_json)
-    else:
-        return HttpResponse("请求错误")
-
-#stongzhi 面试通知展示 TbinterviewNotice数据表 未加url未调试
-@csrf_exempt
-def Interview_notice(request):
-    if request.method == "GET":
-        stu = request.GET.get('user')
-        plays = []
-        result = TbinterviewNotice.objects.filter(stu=stu)
-        for i in result:
-            plays.append({'address':i.i_address,'time':i.i_time,'number':i.i_number})
-        plays_json = json.dumps(plays, ensure_ascii=False)
-        return HttpResponse(plays_json)
-    else:
-        return HttpResponse("请求错误")
-
-#stongzhi 学生接收面试通知 未加url未调试
-def Interview_notice(request):
-    if request.method == "GET":
-        i_number = request.GET.get('i_number')
-        filterResult1 = TbinterviewNotice.objects.get(i_number=i_number)
-        if len(filterResult1) > 0:
-            filterResult1.update(s_sure='已确认')  #需要在数组内操作，待修改
-            return HttpResponse("请求成功")
-        else:
-            return HttpResponse("请求错误")
-    else:
-        return HttpResponse("请求错误")
-
-#sfeedback 未调试
-def feedbackEr(request):
-    if request.method == "POST":
-        stu = request.POST.get('stuNumber')
-        ow_number = request.POST.get('ow_number')
-        iw_number = request.POST.get('iw_number')
-        score = request.POST.get('score')
-        trust = request.POST.get('trust')
-        timely = request.POST.get('timely')
-        flexible = request.POST.get('flexible')
-        salary = request.POST.get('salary')
-        meaning = request.POST.get('meaning')
-        more = request.POST.get('more')
-        fb_content = []
-        fb_content.append(score)
-        fb_content.append(trust)
-        fb_content.append(timely)
-        fb_content.append(flexible)
-        fb_content.append(salary)
-        fb_content.append(meaning)
-        fb_content.append(more)
-        stu = Tbstudent.objects.get(stu_id=stu)
-        if iw_number != '':
-            iw_number = TbinWork.objects.get(iw_number=iw_number)
-            result = TbfeedbackEr.objects.create(fb_content=fb_content, fb_direction='学生评价企业',fb_time=timezone.now(), iw_number=iw_number,stu=stu)
-            Tbapplication.objects.filter(stu=stu,iw_number=iw_number).update(apply_status='已评价')
-
-        else:
-            ow_number = TboutWork.objects.get(ow_number=ow_number)
-            result = TbfeedbackEr.objects.create(fb_content=fb_content, fb_direction='学生评价企业',fb_time=timezone.now(), ow_number=ow_number,stu=stu)
-            Tbapplication.objects.filter(stu=stu,ow_number=ow_number).update(apply_status='已评价')
-        result.save()
-        return HttpResponse("评价成功")
     else:
         return HttpResponse("请求错误")
 

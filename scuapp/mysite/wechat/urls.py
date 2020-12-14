@@ -1,11 +1,10 @@
 from django.urls import path
 
-from . import views,views01,views02,views_com
+from . import views,views01,views02,views_com,views_stu
 
 app_name = 'wechat'
 urlpatterns = [
     #小程序界面
-    path('detail/<manager_id>/', views.detail, name='detail'),
     path('dengluzhuce_login/', views.dengluzhuce_login, name='dengluzhuce_login'),
     path('Manage_register/', views.Manage_register, name='Manage_register'),
     path('Student_register/', views.Student_register, name='Student_register'),
@@ -27,7 +26,6 @@ urlpatterns = [
     path('Enroll_in_work/', views.Enroll_in_work, name='Enroll_in_work'),
     path('Enroll_in_inwork/', views.Enroll_in_inwork, name='Enroll_in_inwork'),
     path('Show_myjob/', views.Show_myjob, name='Show_myjob'),
-    path('feedbackEr/', views.feedbackEr, name='feedbackEr'),
     #企业
     path('Show_company_name/', views_com.Show_company_name, name='Show_company_name'),
     path('Company_info_showmodiify/', views_com.Company_info_showmodiify, name='Company_info_showmodiify'),
@@ -42,7 +40,8 @@ urlpatterns = [
          ####lhy修改
     path('Get_outwork_info_end/', views_com.Get_outwork_info_end, name='Get_outwork_info_end'),
     path('Company_apply_interviewtime/', views_com.Company_apply_interviewtime, name='Company_apply_interviewtime'),
-
+         ###待修改
+    path('feedbackEr/', views_stu.feedbackEr, name='feedbackEr'),
 
 
     #后台管理界面
@@ -101,11 +100,11 @@ urlpatterns = [
 
 
 
+    path('stu_feedback_list/', views02.stu_feedback_list, name='stu_feedback_list'),
 
     path('company_list/', views02.company_list, name='company_list'),
     path('outwork_feedback/', views02.outwork_feedback, name='outwork_feedback'),
     path('inwork_feedback/', views02.inwork_feedback, name='inwork_feedback'),
-    path('stu_feedback/', views02.stu_feedback, name='stu_feedback'),
     path('stu_feedback_edit/', views02.stu_feedback_edit, name='stu_feedback_edit'),
     path('stu_feedback_show/', views02.stu_feedback_show, name='stu_feedback_show'),
 
