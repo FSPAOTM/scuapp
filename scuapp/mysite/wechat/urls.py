@@ -37,10 +37,17 @@ urlpatterns = [
     path('Show_applicant/', views_com.Show_applicant, name='Show_applicant'),
     path('Modify_applystatus/', views_com.Modify_applystatus, name='Modify_applystatus'),
 
-         ####lhy修改
+         ####lhy修改 企业
     path('Get_outwork_info_end/', views_com.Get_outwork_info_end, name='Get_outwork_info_end'),
     path('Company_apply_interviewtime/', views_com.Company_apply_interviewtime, name='Company_apply_interviewtime'),
-         ###待修改
+    path('Com_interview_notice_show/',views_com.Com_interview_notice_show, name='Com_interview_notice_show'),
+    path('Com_interview_notice_sure/',views_com.Com_interview_notice_sure, name='Com_interview_notice_sure'),
+
+         ###lhy修改 学生
+    path('Stu_interview_notice_show/', views_stu.Stu_interview_notice_show, name='Stu_interview_notice_show'),
+    path('Stu_interview_notice_sure/', views_stu.Stu_interview_notice_sure, name='Stu_interview_notice_sure'),
+
+        ###待修改
     path('feedbackEr/', views_stu.feedbackEr, name='feedbackEr'),
 
 

@@ -2,7 +2,7 @@ import datetime
 
 from django.shortcuts import HttpResponse,render
 from django.template import loader
-from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication,TbinterviewApply
+from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication,TbinterviewApply,TbinterviewNotice
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.utils import timezone
@@ -196,7 +196,7 @@ def Show_applicant(request):
     else:
         return HttpResponse("请求错误")
 
-#cresumeReview 接口直接调用sinfoShow 简历显示功能
+#cresumeReview 接口直接调用sinfoShow 简历显示功能????
 
 #cresumeReview 点击接受后改变applystatus状态
 def Modify_applystatus(request):
@@ -252,12 +252,38 @@ def Company_apply_interviewtime(request):
             TboutWork.objects.filter(ow_number=number).update(ow_status="面试申请中")
             return HttpResponse("提交成功")
         else:
-            return HttpResponse("存在学生未初步审核,无法申请面试")
+            return HttpResponse("存在学生简历未初步审核,无法申请面试")
+    else:
+        return HttpResponse("请求错误")
+
+#cmianshitongzhi 企业面试通知显示 未调试
+def Com_interview_notice_show(request):
+    phone_num = request.GET.get('user')
+    com = Tbcompany.objects.get(phone_num=phone_num)
+    outWork = TboutWork.objects.filter(com_number=com).filter(ow_status="面试通知中")
+    plays = []
+    for i in outWork:
+        interviewApply = TbinterviewApply.objects.get(ow_number=i)
+        interviewNotice = TbinterviewNotice.objects.get(ia_number=interviewApply.ia_number)
+        if interviewNotice.c_sure =="未确认":
+            plays.append({'ow_number': i.ow_number, 'post': i.ow_post, 'time': interviewNotice.in_time, 'place': interviewNotice.i_address})
+    plays_json = json.dumps(plays, ensure_ascii=False)
+    return HttpResponse(plays_json)
+
+#cmianshitongzhi 企业面试通知确认 未调试
+def Com_interview_notice_sure(request):
+    if request.method == "POST":
+        number = request.POST.get('ow_number')
+        ow_number = TboutWork.objects.get(ow_number=number)
+        interviewApply = TbinterviewApply.objects.get(ow_number=ow_number)
+        interviewNotice = TbinterviewNotice.objects.get(ia_number=interviewApply.ia_number)
+        interviewNotice.update(c_sure="已确认")
+        views01.interview_sure(interviewNotice.i_number)
+        return HttpResponse("确认成功")
     else:
         return HttpResponse("请求错误")
 
 #企业面试结果修改界面 未加url 未调试
-@csrf_exempt
 def Modify_interview_status(request):
     if request.method == "POST":
         ow_number = request.POST.get('XXXXX')
