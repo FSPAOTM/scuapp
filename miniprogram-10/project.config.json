@@ -1,316 +1,316 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"enhance": false,
-		"postcss": true,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": true,
-		"coverView": true,
-		"nodeModules": false,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"uglifyFileName": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"useIsolateContext": true,
-		"useCompilerModule": true,
-		"userConfirmedUseCompilerModuleSwitch": false,
-		"useMultiFrameRuntime": false,
-		"useApiHook": true,
-		"packNpmManually": false,
-		"packNpmRelationList": [],
-		"enableEngineNative": false,
-		"minifyWXSS": true
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.13.1",
-	"appid": "wx81aadab37047aa6a",
-	"projectname": "miniprogram-10",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"scripts": {},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"plugin": {
-			"list": []
-		},
-		"game": {
-			"list": []
-		},
-		"gamePlugin": {
-			"list": []
-		},
-		"miniprogram": {
-			"list": [
-				{
-					"id": -1,
-					"name": "pages/sinfoShow/sinfoShow",
-					"pathName": "pages/sinfoShow/sinfoShow",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/cjobShow/cjobShow",
-					"pathName": "pages/cjobShow/cjobShow",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/login/login",
-					"pathName": "pages/login/login",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/repwd2/repwd2",
-					"pathName": "pages/repwd2/repwd2",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/sinfoShow/sinfoShow",
-					"pathName": "pages/sinfoShow/sinfoShow",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/sinfoModify/sinfoModify",
-					"pathName": "pages/sinfoModify/sinfoModify",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/smyJob/smyJob",
-					"pathName": "pages/smyJob/smyJob",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/sbaoming/sbaoming",
-					"pathName": "pages/sbaoming/sbaoming",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/sreason/sreason",
-					"pathName": "pages/sreason/sreason",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/cresumeReview/cresumeReview",
-					"pathName": "pages/cresumeReview/cresumeReview",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/cworkspace/cworkspace",
-					"pathName": "pages/cworkspace/cworkspace",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/sallJob/sallJob",
-					"pathName": "pages/sallJob/sallJob",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/sallJob/sallJob",
-					"pathName": "pages/sallJob/sallJob",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/ccenter/ccenter",
-					"pathName": "pages/ccenter/ccenter",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/cinfoFill/cinfoFill",
-					"pathName": "pages/cinfoFill/cinfoFill",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/cjobModify/cjobModify",
-					"pathName": "pages/cjobModify/cjobModify",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/cjobRelease/cjobRelease",
-					"pathName": "pages/cjobRelease/cjobRelease",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/cjobShow/cjobShow",
-					"pathName": "pages/cjobShow/cjobShow",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/regCompany/regCompany",
-					"pathName": "pages/regCompany/regCompany",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/regManager/regManager",
-					"pathName": "pages/regManager/regManager",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/repwd1/repwd1",
-					"pathName": "pages/repwd1/repwd1",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/repwd1-1/repwd1-1",
-					"pathName": "pages/repwd1-1/repwd1-1",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/repwd2/repwd2",
-					"pathName": "pages/repwd2/repwd2",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/sbaoming/sbaoming",
-					"pathName": "pages/sbaoming/sbaoming",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/scenter/scenter",
-					"pathName": "pages/scenter/scenter",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/selectID/selectID",
-					"pathName": "pages/selectID/selectID",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/sinfoFill/sinfoFill",
-					"pathName": "pages/sinfoFill/sinfoFill",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/sinfoShow/sinfoShow",
-					"pathName": "pages/sinfoShow/sinfoShow",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/sreason/sreason",
-					"pathName": "pages/sreason/sreason",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/regStudent/regStudent",
-					"pathName": "pages/regStudent/regStudent",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/sinfoModify/sinfoModify",
-					"pathName": "pages/sinfoModify/sinfoModify",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/spingjia/spingjia",
-					"pathName": "pages/spingjia/spingjia",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/sfeedback/sfeedback",
-					"pathName": "pages/sfeedback/sfeedback",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/cpingjia/cpingjia",
-					"pathName": "pages/cpingjia/cpingjia",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/cxiaoxi/cxiaoxi",
-					"pathName": "pages/cxiaoxi/cxiaoxi",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/cresumeReview/cresumeReview",
-					"pathName": "pages/cresumeReview/cresumeReview",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/stongzhi/stongzhi",
-					"pathName": "pages/stongzhi/stongzhi",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/sxiaoxi/sxiaoxi",
-					"pathName": "pages/sxiaoxi/sxiaoxi",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/cinterview/cinterview",
-					"pathName": "pages/cinterview/cinterview",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "pages/cinterview/cinterview",
-					"pathName": "pages/cinterview/cinterview",
-					"scene": null
-				}
-			]
-		}
-	}
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "enableEngineNative": false,
+    "minifyWXSS": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.13.1",
+  "appid": "wx81aadab37047aa6a",
+  "projectname": "miniprogram-10",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "scripts": {},
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "pages/sinfoShow/sinfoShow",
+          "pathName": "pages/sinfoShow/sinfoShow",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/cjobShow/cjobShow",
+          "pathName": "pages/cjobShow/cjobShow",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/login/login",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/repwd2/repwd2",
+          "pathName": "pages/repwd2/repwd2",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/sinfoShow/sinfoShow",
+          "pathName": "pages/sinfoShow/sinfoShow",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/sinfoModify/sinfoModify",
+          "pathName": "pages/sinfoModify/sinfoModify",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/smyJob/smyJob",
+          "pathName": "pages/smyJob/smyJob",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/sbaoming/sbaoming",
+          "pathName": "pages/sbaoming/sbaoming",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/sreason/sreason",
+          "pathName": "pages/sreason/sreason",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/cresumeReview/cresumeReview",
+          "pathName": "pages/cresumeReview/cresumeReview",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/cworkspace/cworkspace",
+          "pathName": "pages/cworkspace/cworkspace",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/sallJob/sallJob",
+          "pathName": "pages/sallJob/sallJob",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sallJob/sallJob",
+          "pathName": "pages/sallJob/sallJob",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/ccenter/ccenter",
+          "pathName": "pages/ccenter/ccenter",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cinfoFill/cinfoFill",
+          "pathName": "pages/cinfoFill/cinfoFill",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cjobModify/cjobModify",
+          "pathName": "pages/cjobModify/cjobModify",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cjobRelease/cjobRelease",
+          "pathName": "pages/cjobRelease/cjobRelease",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cjobShow/cjobShow",
+          "pathName": "pages/cjobShow/cjobShow",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/regCompany/regCompany",
+          "pathName": "pages/regCompany/regCompany",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/regManager/regManager",
+          "pathName": "pages/regManager/regManager",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/repwd1/repwd1",
+          "pathName": "pages/repwd1/repwd1",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/repwd1-1/repwd1-1",
+          "pathName": "pages/repwd1-1/repwd1-1",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/repwd2/repwd2",
+          "pathName": "pages/repwd2/repwd2",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sbaoming/sbaoming",
+          "pathName": "pages/sbaoming/sbaoming",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/scenter/scenter",
+          "pathName": "pages/scenter/scenter",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/selectID/selectID",
+          "pathName": "pages/selectID/selectID",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sinfoFill/sinfoFill",
+          "pathName": "pages/sinfoFill/sinfoFill",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sinfoShow/sinfoShow",
+          "pathName": "pages/sinfoShow/sinfoShow",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sreason/sreason",
+          "pathName": "pages/sreason/sreason",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/regStudent/regStudent",
+          "pathName": "pages/regStudent/regStudent",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sinfoModify/sinfoModify",
+          "pathName": "pages/sinfoModify/sinfoModify",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/spingjia/spingjia",
+          "pathName": "pages/spingjia/spingjia",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sfeedback/sfeedback",
+          "pathName": "pages/sfeedback/sfeedback",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cpingjia/cpingjia",
+          "pathName": "pages/cpingjia/cpingjia",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cxiaoxi/cxiaoxi",
+          "pathName": "pages/cxiaoxi/cxiaoxi",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cresumeReview/cresumeReview",
+          "pathName": "pages/cresumeReview/cresumeReview",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/stongzhi/stongzhi",
+          "pathName": "pages/stongzhi/stongzhi",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sxiaoxi/sxiaoxi",
+          "pathName": "pages/sxiaoxi/sxiaoxi",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cinterview/cinterview",
+          "pathName": "pages/cinterview/cinterview",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cinterview/cinterview",
+          "pathName": "pages/cinterview/cinterview",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

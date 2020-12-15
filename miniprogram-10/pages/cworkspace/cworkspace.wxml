@@ -112,8 +112,8 @@
           </view>
         </view>-->
         <view class='btn-view'>
-          <button class='btn'>通过面试</button>
-          <button class='btn' style="margin-top:5px">未通过面试</button>
+          <button class='btn' bindtap="tongguo">通过面试</button>
+          <button class='btn' bindtap="weitongguo" style="margin-top:5px">未通过面试</button>
           <button class='btn' style="margin-top:5px;margin-bottom:10px">发送面试申请</button>
         </view>
       </swiper-item>

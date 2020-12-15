@@ -23,7 +23,8 @@ Page({
     workinfo4: [],
     workinfo5: [],
     mingdan: [],
-    numbers: []
+    numbers: [],
+    count: ""
   },
 
   swichNav: function (e) {
@@ -127,6 +128,8 @@ Page({
     this.setData({
       workinfo3: this.data.workinfo3
     })
+
+    //获取选中学生数
     var content = {}
     content.ow_number = item.ow_number;
     content.stu_number = item.stu_number;
@@ -139,12 +142,14 @@ Page({
             this.setData({
               mingdan: this.data.mingdan
             })
+            break;
           }
         }
       } else if (!item.isSelected) {
         var j;
         for (j = 0; j < this.data.mingdan.length; j++) {
           if (item.ow_number == this.data.mingdan[j].ow_number && item.stu_number == this.data.mingdan[j].stu_number) {
+            console.log("hhhh")
             this.data.mingdan.splice(j, 1)
             this.setData({
               mingdan: this.data.mingdan
@@ -159,22 +164,102 @@ Page({
       })
     }
     console.log(this.data.mingdan)
-    var m;
-    var number = item.ow_number;
-    if (this.data.mingdan.length >= 1) {
-      for (m = 0; m < this.data.mingdan.length; m++) {
-        if (numbers[m].ow_number != number) {
-          numbers.push(this.data.mingdan[m])
-          numbers = number
+
+    //获取选中工作总数
+    if (this.data.numbers.length >= 1) {
+      var ii;
+      if (item.isSelected) {
+        for (ii = 0; ii < this.data.numbers.length; ii++) {
+          if (item.ow_number != this.data.numbers[ii].ow_number) {
+            this.data.numbers.push(this.data.mingdan[ii])
+            this.setData({
+              numbers: this.data.numbers
+            })
+            break;
+          }
+        }
+      } else if (!item.isSelected) {
+        var jj;
+        for (jj = 0; jj < this.data.numbers.length; jj++) {
+          if (this.data.mingdan.length >= 1) {
+            if (item.ow_number != this.data.numbers[jj].ow_number) {
+              this.data.numbers.splice(jj, 1)
+              this.setData({
+                numbers: this.data.numbers
+              })
+            }
+          } else {
+            if (item.ow_number == this.data.numbers[0].ow_number) {
+              this.data.numbers.splice(0, 1)
+              this.setData({
+                numbers: this.data.numbers
+              })
+            }
+          }
         }
       }
     } else {
-      numbers.push(this.data.mingdan[m])
-      numbers = numbers
+      this.data.numbers.push(this.data.mingdan[0])
+      this.setData({
+        numbers: this.data.numbers
+      })
     }
-    var count = numbers.length
-      console.log(count)
+    var count = this.data.numbers.length
+    this.setData({
+      count: count
+    })
+    console.log(this.data.numbers)
+    console.log(count)
+  
   },
+
+tongguo(){
+  wx.request({
+    url: app.globalData.url + '/Show_outwork_detail/',//待修改
+    method: "POST",
+    header: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    data: {
+      ow_number: ow_number,
+      mingdan:this.data.mingdan,
+      count:this.data.count
+    },
+    success: (res) => {
+      /*console.log(res.data);*/
+      if (res.statusCode == 200) {
+        this.setData({
+          mingdan:[]
+        })
+        this.onRefresh();
+      }
+    }
+  })
+},
+
+weitongguo(){
+  wx.request({
+    url: app.globalData.url + '/Show_outwork_detail/',//待修改
+    method: "POST",
+    header: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    data: {
+      ow_number: ow_number,
+      mingdan:this.data.mingdan,
+      count:this.data.count
+    },
+    success: (res) => {
+      /*console.log(res.data);*/
+      if (res.statusCode == 200) {
+        this.setData({
+          mingdan:[]
+        })
+        this.onRefresh();
+      }
+    }
+  })
+},
 
   yibaoming: function (ev) {
     var that = this;
@@ -217,6 +302,80 @@ Page({
     })
   },*/
 
+  onRefresh() {
+    //在当前页面显示导航条加载动画
+    wx.showNavigationBarLoading();
+    //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
+    wx.showLoading({
+      title: '刷新中...',
+    })
+    this.getData();
+  },
+  getData() {
+    let that = this;
+    that.setData({
+      workinfo1: [],
+      workinfo2: [],
+      workinfo3: [],
+      workinfo4: [],
+      workinfo5: [],
+    })
+    wx.request({
+      url: app.globalData.url + '/Show_applicant/',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      method: "GET",
+      data: {
+        user: app.globalData.user
+      },
+      success: function (res) {
+        console.log(res);
+        console.log(res.data[0].status);
+        var i;
+        for (i = 0; i < res.data.length; i++) {
+          if (res.statusCode == 200) {
+            if (res.data[i].status == "待审核") {
+              that.data.workinfo1.push(res.data[i])
+              //that.data.user1.push(res.data[i].user)
+              that.setData({
+                workinfo1: that.data.workinfo1
+              })
+              console.log(that.data.workinfo1)
+            } else if (res.data[i].status == "表筛未通过") {
+              that.data.workinfo2.push(res.data[i])
+              that.setData({
+                workinfo2: that.data.workinfo2
+              })
+            } else if (res.data[i].status == "表筛通过") {
+              that.data.workinfo3.push(res.data[i])
+              that.setData({
+                workinfo3: that.data.workinfo3
+              })
+            } else if (res.data[i].status == "已录用") {
+              that.data.workinfo4.push(res.data[i])
+              that.setData({
+                workinfo4: that.data.workinfo4
+              })
+            } else if (res.data[i].status == "已结算") {
+              that.data.workinfo5.push(res.data[i])
+              that.setData({
+                workinfo5: that.data.workinfo5
+              })
+            }
+          }
+        }
+        //隐藏loading 提示框
+        wx.hideLoading();
+        //隐藏导航条加载动画
+        wx.hideNavigationBarLoading();
+        //停止下拉刷新
+        wx.stopPullDownRefresh();
+      }
+    });
+    
+  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -235,7 +394,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.onRefresh();
   },
 
   /**
