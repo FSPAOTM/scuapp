@@ -22,6 +22,8 @@ Page({
     workinfo3: [],
     workinfo4: [],
     workinfo5: [],
+    mingdan: [],
+    numbers: []
   },
 
   swichNav: function (e) {
@@ -65,8 +67,8 @@ Page({
     });
 
     that.setData({
-      'stu1.index':'',  //给教师对象增加名字属性
-      'stu1.name':''
+      'stu1.index': '', //给教师对象增加名字属性
+      'stu1.name': ''
     })
 
     wx.request({
@@ -123,8 +125,55 @@ Page({
     var item = this.data.workinfo3[index];
     item.isSelected = !item.isSelected;
     this.setData({
-      workinfo3: this.data.workinfo3,
-    });
+      workinfo3: this.data.workinfo3
+    })
+    var content = {}
+    content.ow_number = item.ow_number;
+    content.stu_number = item.stu_number;
+    if (this.data.mingdan.length >= 1) {
+      var i;
+      if (item.isSelected) {
+        for (i = 0; i < this.data.mingdan.length; i++) {
+          if (item.ow_number != this.data.mingdan[i].ow_number || item.stu_number != this.data.mingdan[i].stu_number) {
+            this.data.mingdan.push(content)
+            this.setData({
+              mingdan: this.data.mingdan
+            })
+          }
+        }
+      } else if (!item.isSelected) {
+        var j;
+        for (j = 0; j < this.data.mingdan.length; j++) {
+          if (item.ow_number == this.data.mingdan[j].ow_number && item.stu_number == this.data.mingdan[j].stu_number) {
+            this.data.mingdan.splice(j, 1)
+            this.setData({
+              mingdan: this.data.mingdan
+            })
+          }
+        }
+      }
+    } else {
+      this.data.mingdan.push(content)
+      this.setData({
+        mingdan: this.data.mingdan
+      })
+    }
+    console.log(this.data.mingdan)
+    var m;
+    var number = item.ow_number;
+    if (this.data.mingdan.length >= 1) {
+      for (m = 0; m < this.data.mingdan.length; m++) {
+        if (numbers[m].ow_number != number) {
+          numbers.push(this.data.mingdan[m])
+          numbers = number
+        }
+      }
+    } else {
+      numbers.push(this.data.mingdan[m])
+      numbers = numbers
+    }
+    var count = numbers.length
+      console.log(count)
   },
 
   yibaoming: function (ev) {
