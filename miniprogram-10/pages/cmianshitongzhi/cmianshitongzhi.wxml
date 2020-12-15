@@ -13,4 +13,3 @@
     </view>
     <button bindtap="sure" data-index="{{index}}" size='mini' style="font-size: 28rpx;margin-left:260px;">确 认</button>
   </view>
-

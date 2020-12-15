@@ -1,4 +1,5 @@
 // pages/cmianshitongzhi/cmianshitongzhi.js
+const app=getApp()
 Page({
 
   /**
@@ -6,6 +7,7 @@ Page({
    */
   data: {
     user: "",
+    info: []
   },
 
   /**
@@ -14,6 +16,51 @@ Page({
   onLoad: function (options) {
     this.setData({
       user: options.user
+    })
+    wx.request({
+      url: app.globalData.url + '/Show_work/', //待修改,res.data里面包括post/time/place/ow_number
+      method: "GET",
+      header: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        user: app.globalData.user
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          this.setData({
+            info: res.data
+          })
+        }
+      }
+    })
+  },
+
+  sure(ev) {
+    var that = this;
+    var e = ev.currentTarget.dataset.index;
+    var ow_number = that.data.info[e].ow_number;
+    console.log("++++++", ev, that)
+    wx.request({
+      url: app.globalData.url + '/Show_work/', //待修改——确认面试信息，状态改为“已确认”
+      method: "POST",
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        user: app.globalData.user,
+        ow_number: ow_number
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          wx.showToast({
+            title: '如需再次查看，请前往【我的发布】',
+            duration: 2000
+          })
+        }
+      }
     })
   },
 
