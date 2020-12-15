@@ -71,12 +71,12 @@
             <td>{{ line.w_amount }}</td>
             <td>{{ line.w_now }}</td>
             <td class="td-status">
-              <a href="../inwork_stu_ifo/?stu_ifo_num={{ line.iw_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">点击查看</span></a></td>
+              <a href="../inwork_stu_ifo/?stu_ifo_num={{ line.iw_number }}"><span class="button1 button-color1 button-mini">点击查看</span></a></td>
             <!--使用弹出框-->
             <td class="td-status">
-              <a href="../inwork_result/?result_num={{ line.iw_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">点击发送</span></a></td>
+              <a href="../inwork_result/?result_num={{ line.iw_number }}"><span class="button1 button-color2 button-mini">点击发送</span></a></td>
             <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.In_status }}</span></td>
+              <span class="button1 {{ line.btn_color }} button-mini">{{ line.In_status }}</span></td>
         </tr>
         {% endfor %}
         </tbody>
@@ -87,7 +87,6 @@
           <a class="num" href="">1</a>
           <span class="current">2</span>
           <a class="num" href="">3</a>
-          <a class="num" href="">489</a>
           <a class="next" href="">&gt;&gt;</a>
         </div>
       </div>

@@ -90,6 +90,12 @@ def inworking_list(request):
         dictionary["w_amount"] = i.w_amount
         dictionary["w_reuire"] = i.w_reuire
         dictionary["In_status"] = i.In_status
+        if dictionary["In_status"] == "报名中":
+            dictionary["btn_color"] = "button-color3"
+        if dictionary["In_status"] == "报名结束":
+            dictionary["btn_color"] = "button-color5"
+        if dictionary["In_status"] == "结果通知中":
+            dictionary["btn_color"] = "button-color4"
         inworking_list.append(dictionary)
     return render(request, 'wechat/inworking_list.html', {'inworking_list': inworking_list})
 #功能接口
@@ -191,7 +197,7 @@ def management_inWork_reset(request):
         TbinWork.objects.filter(iw_number=iw_number).update(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
                                        w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
         inwork_list = TbinWork.objects.all()
-        return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+        return render(request, 'wechat/In_status.html', {'inwork_list': inwork_list})
     else:
         return HttpResponse("请求错误")
 #校内兼职信息删除
@@ -351,8 +357,14 @@ def inwork_stu_ifo(request):
         if inWork.In_status== "报名中" or inWork.In_status == "中止" or inWork.In_status == "报名结束":
             dictionary["s_sure"] = "未开启"
         else:
-            application= Tbapplication.objects.filter(iw_number=iw_number).get(stu=stu_id)
+            application = Tbapplication.objects.filter(iw_number=iw_number).get(stu=stu_id)
             dictionary["s_sure"] = application.s_sure
+        if dictionary["s_sure"] == "未开启":
+            dictionary["btn_color"] = "button-color4"
+        if dictionary["s_sure"] == "未确认":
+            dictionary["btn_color"] = "button-color5"
+        if dictionary["s_sure"] == "已确认":
+            dictionary["btn_color"] = "button-color3"
         inwork_stu_list.append(dictionary)
     return render(request, 'wechat/inwork_stu_ifo.html', {'inwork_stu_list': inwork_stu_list})
 #校内兼职结果搜索
