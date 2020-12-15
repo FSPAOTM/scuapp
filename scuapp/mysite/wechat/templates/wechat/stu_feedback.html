@@ -50,7 +50,7 @@
             <td>{{ line.iw_number }}</td>
             <td>{{ line.work }}</td>
             <td>{{ line.inr_phonenum }}</td>
-            {% for li in stu_list %}
+            {% for li in line.stu_list %}
             <td>{{ li.name }}<br></td>
             <td>{{ li.stu_id }}<br></td>
             <td class="td-status">
@@ -61,8 +61,8 @@
             <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.in_status }}</span></td>
             <td class="td-manage">
-              <a title="结束工作" href="../inWork_finish/?finish_num={{ line.iw_number }}" >
-                <i class="layui-icon">&#xe723;</i>
+              <a title="工作结束" href="../inWork_finish/?finish_num={{ line.iw_number }}" >
+                <i class="layui-icon">&#xe723;</i> <!--操作权限-->
               </a>
             </td>
         </tr>

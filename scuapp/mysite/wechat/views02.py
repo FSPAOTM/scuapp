@@ -365,8 +365,26 @@ def interview_stu_result(request):
 #评价学生管理总列表
 def stu_feedback_list(request):
     stu_feedback_list = []
-    list = TbinWork.objects.filter(Q(In_status="已结束") | Q(In_status="工作中") | Q(In_status="待评价"))
-    for i in list:
+    list1 = TbinWork.objects.filter(Q(In_status="已结束") | Q(In_status="工作中") | Q(In_status="待评价"))
+    for i in list1:
+        inResult = TbinResult.objects.get(iw_number=i)
+        dictionary1 = {}
+        dictionary1["iw_number"] = i.iw_number
+        dictionary1["work"] = i.work
+        dictionary1["inr_phonenum"] = inResult.inr_phonenum
+        dictionary1["stu_list"] = []
+        list2 = Tbapplication.objects.filter(iw_number=i)
+        for j in list2:
+            dictionary2 = {}
+            dictionary2["name"] = j.stu.name
+            dictionary2["stu_id"] = j.stu.stu_id
+
+            dictionary2["pingjia"] = j.iw_number
+
+        dictionary1["in_status"] = i.In_status
+
+
+
         stu_list = ["kekeke"]
     return render(request, 'wechat/stu_feedback.html', {'stu_feedback_list': stu_feedback_list})
 

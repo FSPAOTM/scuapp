@@ -237,7 +237,12 @@ def Company_apply_interviewtime(request):
         if applytime2 != "" and applytime3 !="":
             ia_time = applytime1 + "或" + applytime2+ "或" + applytime3  #考虑存在空时间段
         ow_status = ow_number.ow_status
-        if ow_status=="报名结束":
+        list = Tbapplication.objects.filter(ow_number=ow_number)
+        k=0
+        for i in list:
+            if i.apply_status == "待审核":
+                k=k+1
+        if ow_status=="报名结束" and k == 0 :
             interviewApply = TbinterviewApply.objects.create(ia_time=ia_time,
                                             ia_name=ia_name,
                                             phonenumber=phonenumber,
@@ -247,7 +252,7 @@ def Company_apply_interviewtime(request):
             TboutWork.objects.filter(ow_number=number).update(ow_status="面试申请中")
             return HttpResponse("提交成功")
         else:
-            return HttpResponse("报名未结束无法申请面试")
+            return HttpResponse("存在学生未初步审核,无法申请面试")
     else:
         return HttpResponse("请求错误")
 
