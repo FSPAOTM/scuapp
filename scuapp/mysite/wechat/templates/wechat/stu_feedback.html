@@ -37,6 +37,7 @@
             <th>学号</th>
             <th>评价</th>
             <th>岗位状态</th>
+            <th>操作</th>
           </tr>
         </thead>
         <tbody>
@@ -55,11 +56,15 @@
             <td class="td-status">
                 <!--接口修改-->
               <a href="../stu_feedback_edit/?fd_num={{ li.stu_id }}"><span class="layui-btn layui-btn-normal layui-btn-mini">{{ li.pingjia }}</span></a></td>
+
+            {% endfor %}
             <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.in_status }}</span></td>
-            {% endfor %}
-
-
+            <td class="td-manage">
+              <a title="结束工作" href="../inWork_finish/?finish_num={{ line.iw_number }}" >
+                <i class="layui-icon">&#xe723;</i>
+              </a>
+            </td>
         </tr>
         {% endfor %}
         </tbody>

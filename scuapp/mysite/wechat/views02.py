@@ -339,12 +339,12 @@ def interview_stu_result(request):
     return render(request, 'wechat/stu_result.html', {'stu_result': stu_result})
 
 #校内兼职学生评价
-#学生评价表——HHL 12/12
+#评价学生管理总列表
 def stu_feedback_list(request):
     stu_feedback_list = []
     list = TbinWork.objects.filter(Q(In_status="已结束") | Q(In_status="工作中") | Q(In_status="待评价"))
-
-    stu_list = ["kekeke"]
+    for i in list:
+        stu_list = ["kekeke"]
     return render(request, 'wechat/stu_feedback.html', {'stu_feedback_list': stu_feedback_list})
 
 
