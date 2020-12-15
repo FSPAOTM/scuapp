@@ -82,11 +82,25 @@ def interview_list(request):
             dictionary["phonenumber"] = i.phonenumber
             dictionary["a_time"] = i.a_time
             dictionary["apply_status"] = i.apply_status
+            if dictionary["apply_status"] == "待审核":
+                dictionary["btn_color"] = "button-color4"
+            if dictionary["apply_status"] == "面试通知中":
+                dictionary["btn_color"] = "button-color3"
+            if dictionary["apply_status"] == "已打回":
+                dictionary["btn_color"] = "button-color5"
+            if dictionary["apply_status"] == "面试阶段":
+                dictionary["btn_color"] = "button-color6"
             if outwork.ow_status != "面试申请中":
                 interviewNotice = TbinterviewNotice.objects.get(ia_number=i.ia_number)
                 dictionary["c_sure"] = interviewNotice.c_sure
             else:
                 dictionary["c_sure"] = "未开启"
+            if dictionary["apply_status"] == "未开启":
+                dictionary["btn_colors"] = "button-color4"
+            if dictionary["apply_status"] == "未确认":
+                dictionary["btn_colors"] = "button-color5"
+            if dictionary["apply_status"] == "已确认":
+                dictionary["btn_colors"] = "button-color6"
             interview_list.append(dictionary)
     return render(request, 'wechat/interview_list.html', {'interview_list': interview_list})
 
@@ -309,6 +323,15 @@ def interview_result(request):
             dictionary["i_num"] = str(k) + "人"
             dictionary["ir_ps"] = i.ir_ps
             dictionary["ow_status"] = outwork.ow_status
+            if dictionary["ow_status"] == "结果通知中":
+                dictionary["btn_color"] = "button-color3"
+            if dictionary["ow_status"] == "工作中":
+                dictionary["btn_color"] = "button-color2"
+            if dictionary["ow_status"] == "待评价":
+                dictionary["btn_color"] = "button-color4"
+            if dictionary["ow_status"] == "已结束":
+                dictionary["btn_color"] = "button-color5"
+
             interview_result.append(dictionary)
     return render(request, 'wechat/interview_result.html', {'interview_result': interview_result})
 

@@ -58,12 +58,12 @@
                 <!--接口修改-->
               <a href="../stu_yingpin/?yp_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">查看</span></a></td>
             <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.c_sure }}</span></td>
+              <span class="button1 {{ line.btn_colors }} button-mini">{{ line.c_sure }}</span></td>
             <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.apply_status }}</span></td>
+              <span class="button1 {{ line.btn_color }} button-mini">{{ line.apply_status }}</span></td>
             <td align="center" class="td-status">
-              <a href="../interview_notice_send/?result_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">面试通知</span></a>
-              <p><br><a href="../interview_back_reason/?ia_num={{ line.ia_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">打回</span></a></td>
+              <a href="../interview_notice_send/?result_num={{ line.ia_number }}"><span class="button1 button-color3 button-mini">面试通知</span></a>
+              <p><br><a href="../interview_back_reason/?ia_num={{ line.ia_number }}"><span class="button1 button-color5 button-mini">打回</span></a></td>
             <!--待修改-->
         </tr>
         {% endfor %}
