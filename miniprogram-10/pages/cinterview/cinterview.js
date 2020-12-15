@@ -186,7 +186,7 @@ Page({
             this.setData({
               result: res.data
             })
-            if (res.data == "提交成功") {//待修改
+            if (res.data == "提交成功") {
               wx.showToast({
                 title: '申请提交成功！！！', //这里打印出登录成功
                 icon: 'success',
@@ -197,6 +197,11 @@ Page({
                   url: '../cfabu/cfabu?operation=已申请',
                 })
               }, 2000)
+            }else if (res.data == "存在学生简历未初步审核,无法申请面试"){
+              wx.showToast({
+                title: '存在学生简历未初步审核,无法申请面试',
+                duration: 2000
+              })
             }
           } else {
             wx.showToast({
