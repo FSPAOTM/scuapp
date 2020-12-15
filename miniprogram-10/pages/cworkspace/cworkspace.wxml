@@ -89,9 +89,9 @@
       <swiper-item>
 
         <view class="post" wx:for="{{workinfo3}}" wx:for-item="item" wx:for-index="index">
-          <view class='item_container' bindtap='itemSelected' data-index="{{index}}">
+          <view class='item_container' >
           <image style="margin-top:2px;" class='select_icon'
-                src="{{item.isSelected?'isselected.png':'unselected.png'}}"></image>
+                src="{{item.isSelected?'isselected.png':'unselected.png'}}" bindtap='itemSelected' data-index="{{index}}"></image>
             <view class="postt">
               <view style="font-size:12px" class="jobb">岗位：{{item.post}}</view>
             </view>
