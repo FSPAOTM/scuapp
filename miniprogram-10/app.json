@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/cinterviewModify/cinterviewModify",
     "pages/cmianshitongzhi/cmianshitongzhi",
     "pages/cmianshidahui/cmianshidahui",
     "pages/sjieguotongzhi/sjieguotongzhi",
