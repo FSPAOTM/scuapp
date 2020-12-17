@@ -8,7 +8,7 @@ from itertools import chain
 from . import views01
 #小程序界面
 
-#smianshitongzhi 学生面试通知显示 未调试
+#smianshitongzhi 学生面试通知显示
 def Stu_interview_notice_show(request):
     stu_id = request.GET.get('user')
     student = Tbstudent.objects.get(stu_id=stu_id)
@@ -32,7 +32,7 @@ def Stu_interview_notice_show(request):
     plays_json = json.dumps(plays, ensure_ascii=False)
     return HttpResponse(plays_json)
 
-#smianshitongzhi 学生面试通知确认 未调试
+#smianshitongzhi 学生面试通知确认
 def Stu_interview_notice_sure(request):
     if request.method == "POST":
         stu_id = request.POST.get('user')
@@ -51,7 +51,7 @@ def Stu_interview_notice_sure(request):
                 sure[k] = "已确认"
             k = k + 1
         Notice.update(s_sure=sure)
-        views01.interview_sure(interviewNotice[0].i_number)
+        views01.interview_sure(Notice[0].i_number)
         return HttpResponse("确认成功")
     else:
         return HttpResponse("请求错误")

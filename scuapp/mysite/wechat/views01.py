@@ -7,7 +7,8 @@ import json
 ######一些改状态的函数
 #判断工作是否评价完毕（修改工作状态“待评价”到“已结束”）(校外)
 def out_feedback_over(k): #k为ow_number
-    ow_number = TboutWork.objects.filter(ow_number=k)
+    ow_number = TboutWork.objects.get(ow_number=k)
+    number = TboutWork.objects.filter(ow_number=k)
     filterResult1 = Tbapplication.objects.filter(ow_number=ow_number).filter(apply_status="待评价")
     if len(filterResult1) > 0 :
         return()
@@ -16,11 +17,12 @@ def out_feedback_over(k): #k为ow_number
         filterResult2 = TbfeedbackEr.objects.filter(stu=j.stu).filter(ow_number=ow_number).filter(fb_direction="企业评价学生")
         if not len(filterResult2) > 0:
             return()
-    ow_number.update(ow_status="已结束")
+    number.update(ow_status="已结束")
     return ()
 #判断工作是否评价完毕（修改工作状态“待评价”到“已结束”）(校内)
 def in_feedback_over(k): #k为iw_number
-    iw_number = TbinWork.objects.filter(iw_number=k)
+    iw_number = TbinWork.objects.get(iw_number=k)
+    number = TbinWork.objects.filter(iw_number=k)
     filterResult1 = Tbapplication.objects.filter(iw_number=iw_number).filter(apply_status="待评价")
     if len(filterResult1) > 0:
         return ()
@@ -29,7 +31,7 @@ def in_feedback_over(k): #k为iw_number
         filterResult2 = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=iw_number).filter(fb_direction="企业评价学生")
         if not len(filterResult2) > 0:
             return ()
-    iw_number.update(In_status="已结束")
+    number.update(In_status="已结束")
     return ()
 #判断面试通知是否确认完毕（修改工作状态“面试通知中”到“面试阶段”，修改面试申请状态“面试通知中”到“面试阶段”）（校外）
 def interview_sure(k): #k为i_number
@@ -40,34 +42,37 @@ def interview_sure(k): #k为i_number
         for j in sure:
             if j != "已确认":
                 return()
-        interviewApply = TbinterviewApply.objects.filter(ia_number=interviewNotice.ia_number)
+        interviewApply = TbinterviewApply.objects.get(ia_number=interviewNotice.ia_number)
+        Apply = TbinterviewApply.objects.filter(ia_number=interviewNotice.ia_number)
         TboutWork.objects.filter(ow_number=interviewApply.ow_number.ow_number).update(ow_status="面试阶段")
-        interviewApply.update(apply_status = "面试阶段")
+        Apply.update(apply_status = "面试阶段")
         return ()
     else:
         return()
 
 #判断结果通知是否确认完毕（修改工作状态“结果通过中”到“工作中”）（校外）
 def out_result_sure(k): #k为ow_number
-    ow_number = TboutWork.objects.filter(ow_number=k)
+    ow_number = TboutWork.objects.get(ow_number=k)
+    number = TboutWork.objects.filter(ow_number=k)
     if ow_number.ow_status=="结果通知中":
         application = Tbapplication.objects.filter(ow_number=ow_number).filter(apply_status="已录用")
         for j in application:
             if j.s_sure != "已确认":
                 return()
-        ow_number.update(ow_status="工作中")
+        number.update(ow_status="工作中")
         return ()
     else:
         return ()
 #判断结果通知是否确认完毕（修改工作状态“结果通过中”到“工作中”）（校内）
 def in_result_sure(k): #k为iw_number
-    iw_number = TbinWork.objects.filter(iw_number=k)
+    iw_number = TbinWork.objects.get(iw_number=k)
+    number = TbinWork.objects.filter(iw_number=k)
     if iw_number.In_status=="结果通知中":
         application = Tbapplication.objects.filter(iw_number=iw_number).filter(apply_status="已录用")
         for j in application:
             if j.s_sure != "已确认":
                 return()
-        iw_number.update(In_status="工作中")
+        number.update(In_status="工作中")
         return ()
     else:
         return ()

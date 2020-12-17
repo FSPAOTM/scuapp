@@ -283,6 +283,54 @@ def Com_interview_notice_sure(request):
     else:
         return HttpResponse("请求错误")
 
+#cmianshidahui 企业面试打回理由显示
+def Com_interview_back_show(request):
+    phone_num = request.GET.get('user')
+    com = Tbcompany.objects.get(phone_num=phone_num)
+    outWork = TboutWork.objects.filter(com_number=com)
+    plays = []
+    for i in outWork:
+        filterResult = TbinterviewApply.objects.filter(ow_number=i).filter(apply_status="已打回")
+        if len(filterResult) >0:
+            interviewApply = TbinterviewApply.objects.filter(ow_number=i).get(apply_status="已打回")
+            plays.append({'type':"面试申请",'ow_number': i.ow_number, 'post': i.ow_post, 'back_reason': interviewApply.back_reason})
+    outWork1 = TboutWork.objects.filter(com_number=com).filter(ow_status="已打回")
+    for j in outWork1:
+        plays.append({'type': "兼职申请", 'ow_number': j.ow_number, 'post': j.ow_post, 'back_reason': j.back_reason})
+    plays_json = json.dumps(plays, ensure_ascii=False)
+    return HttpResponse(plays_json)
+
+#cinterviewModify 企业面试申请时间修改显示
+def Com_interview_back_edit(request):
+    if request.method == "POST":
+        number = request.POST.get('ow_number')
+        ow_number = TboutWork.objects.get(ow_number=number)
+        interviewApply = TbinterviewApply.objects.get(ow_number=ow_number)
+        return HttpResponse(json.dumps({'ow_number': number, 'post': ow_number.ow_post, 'manager': interviewApply.ia_name, 'phonenum': interviewApply.phonenumber}))
+    else:
+        return HttpResponse("请求错误")
+
+#cinterviewModify 企业面试申请重提交
+def Com_interview_back_send(request):
+    if request.method == "POST":
+        number = request.POST.get('ow_number')
+        ia_name = request.POST.get('manager')
+        phonenumber = request.POST.get('phonenum')
+        applytime1 = request.POST.get('applytime1')
+        applytime2 = request.POST.get('applytime2')
+        applytime3 = request.POST.get('applytime3')
+        a_time = timezone.now()
+        ow_number = TboutWork.objects.get(ow_number=number)
+        if applytime2 == "" and applytime3 == "":
+            ia_time = applytime1
+        if applytime2 == "" and applytime3 != "":
+            ia_time = applytime1 + "或" + applytime3
+        if applytime2 != "" and applytime3 == "":
+            ia_time = applytime1 + "或" + applytime2
+        if applytime2 != "" and applytime3 != "":
+            ia_time = applytime1 + "或" + applytime2 + "或" + applytime3  # 考虑存在空时间段
+
+
 #企业面试结果修改界面 未加url 未调试
 def Modify_interview_status(request):
     if request.method == "POST":

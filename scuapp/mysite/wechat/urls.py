@@ -42,10 +42,14 @@ urlpatterns = [
     path('Company_apply_interviewtime/', views_com.Company_apply_interviewtime, name='Company_apply_interviewtime'),
     path('Com_interview_notice_show/',views_com.Com_interview_notice_show, name='Com_interview_notice_show'),
     path('Com_interview_notice_sure/',views_com.Com_interview_notice_sure, name='Com_interview_notice_sure'),
+    path('Com_interview_back_show/',views_com.Com_interview_back_show, name='Com_interview_back_show'),
+    path('Com_interview_back_edit/',views_com.Com_interview_back_edit, name='Com_interview_back_edit'),
+    path('Com_interview_back_send/',views_com.Com_interview_back_send, name='Com_interview_back_send'),
 
          ###lhy修改 学生
     path('Stu_interview_notice_show/', views_stu.Stu_interview_notice_show, name='Stu_interview_notice_show'),
     path('Stu_interview_notice_sure/', views_stu.Stu_interview_notice_sure, name='Stu_interview_notice_sure'),
+
 
         ###待修改
     path('feedbackEr/', views_stu.feedbackEr, name='feedbackEr'),
