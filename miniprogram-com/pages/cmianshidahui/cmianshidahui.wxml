@@ -9,7 +9,12 @@
     <view class="xian2"></view>
     <view style=" height: 200px;">
       <text style="font-size:15px; margin-left:30rpx;;" maxlength='300'>面试岗位：{{item.post}}</text>
-      <text style="font-size:15px; margin-left:30rpx;;" maxlength='300'>打回理由：{{item.reason}}</text>
+      <text style="font-size:15px; margin-left:30rpx;;" maxlength='300'>打回理由：</text>
+      <text style="font-size:15px; margin-left:30rpx;;" maxlength='300'>{{item.reason}}</text>
     </view>
     <button bindtap="reapply" data-index="{{index}}" size='mini' style="font-size: 28rpx;margin-left:260px;">重新申请</button>
   </view>
+
+  <view class="after" wx:if="{{isShow}}">
+  <text>暂无打回面试通知</text>
+</view>

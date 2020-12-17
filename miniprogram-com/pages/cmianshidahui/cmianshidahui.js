@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isShow:false,
     user: "",
     info: []
   },
@@ -35,6 +36,11 @@ Page({
             info: res.data
           })
         }
+        if (that.data.mianshitongzhi.length == 0) {
+          that.setData({
+            isShow: true
+          })
+        }
       }
     })
   },
@@ -44,25 +50,8 @@ Page({
     var e = ev.currentTarget.dataset.index;
     var ow_number = that.data.info[e].ow_number;
     console.log("++++++", ev, that)
-    wx.request({
-      url: app.globalData.url + '/Show_work/', //待修改——确认面试信息，状态改为“已确认”
-      method: "POST",
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      data: {
-        user: app.globalData.user,
-        ow_number: ow_number
-      },
-      success: function (res) {
-        console.log(res);
-        if (res.statusCode == 200) {
-          wx.showToast({
-            title: '如需再次查看，请前往【我的发布】',
-            duration: 2000
-          })
-        }
-      }
+    wx.navigateTo({
+      url: '../cinterviewModify/cinterviewModify?ow_number='+ow_number,
     })
   },
 

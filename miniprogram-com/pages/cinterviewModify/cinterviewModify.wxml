@@ -30,7 +30,7 @@
     </view>
   </picker>
 
-  <view class='detailView'>
+  <view class='detailView' wx:if="{{show1}}">
       <text style="margin-left:20px; font-size:30rpx;" >或者</text>   
     </view>
  
@@ -41,7 +41,7 @@
   </picker>
 
 
-  <view class='detailView'>
+  <view class='detailView' wx:if="{{show2}}">
       <text style="margin-left:20px; font-size:30rpx;" >或者</text>   
     </view>
  
