@@ -49,6 +49,8 @@ urlpatterns = [
          ###lhy修改 学生
     path('Stu_interview_notice_show/', views_stu.Stu_interview_notice_show, name='Stu_interview_notice_show'),
     path('Stu_interview_notice_sure/', views_stu.Stu_interview_notice_sure, name='Stu_interview_notice_sure'),
+    path('Stu_result_show/', views_stu.Stu_result_show, name='Stu_result_show'),
+
 
 
         ###待修改

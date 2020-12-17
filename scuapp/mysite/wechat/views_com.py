@@ -315,7 +315,7 @@ def Com_interview_back_send(request):
     if request.method == "POST":
         number = request.POST.get('ow_number')
         ia_name = request.POST.get('manager')
-        phonenumber = request.POST.get('phonenum')
+        phonenumber = request.POST.get('phone')
         applytime1 = request.POST.get('applytime1')
         applytime2 = request.POST.get('applytime2')
         applytime3 = request.POST.get('applytime3')
