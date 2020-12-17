@@ -7,7 +7,7 @@ import json
 ######一些改状态的函数
 #判断工作是否评价完毕（修改工作状态“待评价”到“已结束”）(校外)
 def out_feedback_over(k): #k为ow_number
-    ow_number = TboutWork.objects.get(ow_number=k)
+    ow_number = TboutWork.objects.filter(ow_number=k)
     filterResult1 = Tbapplication.objects.filter(ow_number=ow_number).filter(apply_status="待评价")
     if len(filterResult1) > 0 :
         return()
@@ -20,7 +20,7 @@ def out_feedback_over(k): #k为ow_number
     return ()
 #判断工作是否评价完毕（修改工作状态“待评价”到“已结束”）(校内)
 def in_feedback_over(k): #k为iw_number
-    iw_number = TbinWork.objects.get(iw_number=k)
+    iw_number = TbinWork.objects.filter(iw_number=k)
     filterResult1 = Tbapplication.objects.filter(iw_number=iw_number).filter(apply_status="待评价")
     if len(filterResult1) > 0:
         return ()
@@ -40,7 +40,6 @@ def interview_sure(k): #k为i_number
         for j in sure:
             if j != "已确认":
                 return()
-        #Apply = TbinterviewApply.objects.get(ia_number=interviewNotice.ia_number)
         interviewApply = TbinterviewApply.objects.filter(ia_number=interviewNotice.ia_number)
         TboutWork.objects.filter(ow_number=interviewApply.ow_number.ow_number).update(ow_status="面试阶段")
         interviewApply.update(apply_status = "面试阶段")
@@ -50,7 +49,7 @@ def interview_sure(k): #k为i_number
 
 #判断结果通知是否确认完毕（修改工作状态“结果通过中”到“工作中”）（校外）
 def out_result_sure(k): #k为ow_number
-    ow_number = TboutWork.objects.get(ow_number=k)
+    ow_number = TboutWork.objects.filter(ow_number=k)
     if ow_number.ow_status=="结果通知中":
         application = Tbapplication.objects.filter(ow_number=ow_number).filter(apply_status="已录用")
         for j in application:
@@ -62,7 +61,7 @@ def out_result_sure(k): #k为ow_number
         return ()
 #判断结果通知是否确认完毕（修改工作状态“结果通过中”到“工作中”）（校内）
 def in_result_sure(k): #k为iw_number
-    iw_number = TbinWork.objects.get(iw_number=k)
+    iw_number = TbinWork.objects.filter(iw_number=k)
     if iw_number.In_status=="结果通知中":
         application = Tbapplication.objects.filter(iw_number=iw_number).filter(apply_status="已录用")
         for j in application:
@@ -444,21 +443,32 @@ def inwork_result_submit(request):
         Tbapplication.objects.filter(iw_number=iw_number).update(apply_status='已录用')
         TbinWork.objects.filter(iw_number=iw_number).update(In_status = "结果通知中")
         inworking_list = []
-        list = TbinWork.objects.exclude(In_status ="已结束").exclude(In_status ="中止").exclude(In_status ="工作中").exclude(In_status ="待评价")
+        list = TbinWork.objects.exclude(In_status="已结束").exclude(In_status="中止").exclude(In_status="工作中").exclude(
+            In_status="待评价")
         for i in list:
             dictionary = {}
             w_now = Tbapplication.objects.filter(iw_number=i.iw_number).count()
             w_out = (timezone.now() - i.inpub_time).days
             w_ddl = (i.ddl_time - timezone.now()).days
+            if w_ddl < 0:
+                dictionary["w_out"] = "已截止"
+                dictionary["w_ddl"] = "已截止"
+            else:
+                dictionary["w_out"] = str(w_out) + "天"
+                dictionary["w_ddl"] = str(w_ddl) + "天"
             dictionary["w_now"] = w_now
             dictionary["iw_number"] = i.iw_number
             dictionary["iw_post"] = i.iw_post
             dictionary["work"] = i.work
             dictionary["w_amount"] = i.w_amount
             dictionary["w_reuire"] = i.w_reuire
-            dictionary["w_out"] = w_out
-            dictionary["w_ddl"] = w_ddl
             dictionary["In_status"] = i.In_status
+            if dictionary["In_status"] == "报名中":
+                dictionary["btn_color"] = "button-color3"
+            if dictionary["In_status"] == "报名结束":
+                dictionary["btn_color"] = "button-color5"
+            if dictionary["In_status"] == "结果通知中":
+                dictionary["btn_color"] = "button-color4"
             inworking_list.append(dictionary)
         return render(request, 'wechat/inworking_list.html', {'inworking_list': inworking_list})
     else:

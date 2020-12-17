@@ -335,6 +335,9 @@ def interview_result(request):
             interview_result.append(dictionary)
     return render(request, 'wechat/interview_result.html', {'interview_result': interview_result})
 
+
+#校外结果加报道地址
+
 #面试录用详情界面
 def interview_stu_result(request):
     i_number = request.GET.get('i_num')
