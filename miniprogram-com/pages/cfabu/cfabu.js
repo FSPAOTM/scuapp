@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show1:false,
+    show2:true,
     jobinfo1: [],
     jobinfo2: [],
     jobinfo3: [],
@@ -45,6 +47,38 @@ Page({
           if (res.data == "修改成功") {
             wx.reLaunch({
               url: '../cfabu/cfabu',
+            })
+          }
+        }
+      },
+    })
+  },
+
+  jiesuan(ev){
+    var that = this;
+    console.log(that.data.jobinfo5);
+    var e = ev.currentTarget.dataset.index;
+    console.log(e);
+    console.log(that.data.jobinfo5[e]);
+    var ow_number = that.data.jobinfo5[e].ow_number;
+    console.log(ow_number)
+    wx.request({
+      url: app.globalData.url + '/Get_outwork_info_end/',//待修改
+      method: "POST",
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        ow_number: ow_number
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          if (res.data == "修改成功") {
+            that.onRefresh();
+            that.setData({
+              show1:true,
+              show2:false
             })
           }
         }

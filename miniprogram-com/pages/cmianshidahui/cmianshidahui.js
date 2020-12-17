@@ -1,5 +1,4 @@
 // pages/cmianshidahui/cmianshidahui.js
-// pages/cmianshitongzhi/cmianshitongzhi.js
 const app=getApp()
 Page({
 
