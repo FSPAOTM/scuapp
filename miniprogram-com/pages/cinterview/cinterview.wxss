@@ -1,0 +1,46 @@
+/* pages/cinterview/cinterview.wxss */
+.detailView {
+  margin-left:10px;
+  color:#323232;
+  display:flex;
+  margin-top:40rpx;
+  height: 100%;
+  width: 100%;
+}
+
+.title{
+  font-family:"黑体" ;
+  font-weight: 1000;
+  font-size: 34rpx;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.a1{
+height: 100%;
+width: 100%;
+}
+
+.a2{
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top:5px; 
+  
+}
+
+.btn-view {
+  width: 100%;
+  padding: 20rpx 0;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.btn {
+  width: 90%;
+  font-size:16px;
+}

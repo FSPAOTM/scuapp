@@ -1,0 +1,161 @@
+<!--pages/cworkspace/cworkspace.wxml-->
+<!--<import src="template\tabbar.wxml" />
+<template is="tabBar" data="{{tabBar}}" />-->
+<view class="swiper_tab_view">
+  <scroll-view scroll-x='true' scroll-left="{{scrollleft}}" class='tab-h'>
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">已报名</view>
+
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">未通过</view>
+
+    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">已通过</view>
+
+    <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">已录用</view>
+
+    <view class="swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-current="4" bindtap="swichNav">已结算</view>
+
+  </scroll-view>
+</view>
+<view class="container">
+    <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px">
+      <!--<swiper-item>
+      <view class="container">
+        <view class="post" wx:for="{{workinfo1}}" wx:for-item="item" wx:for-index="index">
+          <view class="postt">
+            <text style="font-size:16px">岗位：</text>
+            <text style="font-size:16px">{{item.post}}</text>
+            <view class="right">
+              <text class="iconfont {{selectedFlag[index]?'icon-shangjiantou':'icon-xiala'}}"> </text>
+            </view>
+          </view>
+          <view class="post2">
+            <block class="baomingall" wx:for="{{user1}}" wx:for-item="user" wx:for-index="id" bindtap="yibaoming">
+              <view class="baoming">
+                <text style="font-size:16px;margin-left:25px;">报名者：</text>
+                <text style="font-size:16px">{{user1[id]}}</text>
+              </view>
+              <view class="xian"></view>
+            </block>
+          </view>
+        </view>
+      </view>-->
+
+
+      <!--<navigator url='' class='nav-class'>
+        <view class='detailView'>
+          <text style="font-size:28rpx;">岗位：</text>
+          <text style="margin-left:20px; font-size:28rpx;">{{myinfo.post1}}</text>
+          <text style="font-size:28rpx;margin-left:50px;">报名者：</text>
+          <text style="margin-left:20px; font-size:28rpx;">{{myinfo.post2}}</text>
+        </view>
+      </navigator>
+
+      <navigator url='' class='nav-class'>
+        <view class='detailView'>
+          <text style="font-size:28rpx;">岗位：</text>
+          <text style="margin-left:20px; font-size:28rpx;">{{myinfo.post1}}</text>
+          <text style="font-size:28rpx;margin-left:50px;">报名者：</text>
+          <text style="margin-left:20px; font-size:28rpx;">{{myinfo.post2}}</text>
+        </view>
+      </navigator>
+    </swiper-item>-->
+
+      <swiper-item>
+        <view class="post" wx:for="{{workinfo1}}" wx:for-item="item" wx:for-index="index">
+          <view class='nav-class' bindtap="yibaoming" data-index="{{index}}">
+            <view class="postt">
+              <view style="font-size:12px" class="jobb">岗位：{{item.post}}</view>
+            </view>
+            <view class="baoming">
+              <view style="font-size:12px" class='xiangqing'>报名者：{{item.user}}</view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+
+
+      <swiper-item>
+        <view class="post" wx:for="{{workinfo2}}" wx:for-item="item" wx:for-index="index">
+          <view class='nav-class' bindtap="weitongguo" data-index="{{index}}">
+            <view class="postt">
+              <view style="font-size:12px" class="jobb">岗位：{{item.post}}</view>
+            </view>
+            <view class="baoming">
+              <view style="font-size:12px" class='xiangqing'>报名者：{{item.user}}</view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+
+      <swiper-item>
+
+        <view class="post" wx:for="{{workinfo3}}" wx:for-item="item" wx:for-index="index">
+          <view class='item_container' >
+          <image style="margin-top:2px;" class='select_icon'
+                src="{{item.isSelected?'isselected.png':'unselected.png'}}" bindtap='itemSelected' data-index="{{index}}"></image>
+            <view class="postt">
+              <view style="font-size:12px" class="jobb">岗位：{{item.post}}</view>
+            </view>
+            <view class="baoming">
+              <view style="font-size:12px" class='xiangqing'>报名者：{{item.user}}</view>
+            </view>
+          </view>
+        </view>
+
+        <!--<view class='h1' wx:for="{{details}}" wx:key="key" bindtap='itemSelected' data-index='{{index}}'>
+        <view class='xiangqing_info' style="padding-left:40rpx;">
+          <image style="margin-top:10px;" class='select_icon'
+            src="{{item.isSelected?'isselected.png':'unselected.png'}}"></image>
+          <text class='zi'>学生</text>
+          <text class='title'>{{item.title}}</text>
+          <view class='prix'>
+            <text class='prix1'>{{item.position}}</text>
+          </view>
+        </view>-->
+        <view class='btn-view'>
+          <button class='btn' bindtap="tongguo">通过面试</button>
+          <button class='btn' bindtap="weitongguo" style="margin-top:5px">未通过面试</button>
+          <button class='btn' style="margin-top:5px;margin-bottom:10px">发送面试申请</button>
+        </view>
+      </swiper-item>
+
+
+
+      <swiper-item>
+        <view class="post" wx:for="{{workinfo4}}" wx:for-item="item" wx:for-index="index">
+          <view class='nav-class' bindtap="yiluyong" data-index="{{index}}">
+            <view class="postt">
+              <view style="font-size:12px" class="jobb">岗位：{{item.post}}</view>
+            </view>
+            <view class="baoming">
+              <view style="font-size:12px" class='xiangqing'>报名者：{{item.user}}</view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+
+      <swiper-item>
+
+        <view class="firstView" catchtouchmove="setTouchMove" catchtouchend='setCoordinates'
+          style="left: {{left||'89%'}};top: {{top||'65%'}};">
+          <view>
+            <image class='kehuImg' bindtap='makephone' src="pj.png"></image>
+          </view>
+          <text class="pj">评价</text>
+        </view>
+
+        <view class="container">
+          <view class="post" wx:for="{{workinfo5}}" wx:for-item="item" wx:for-index="index">
+            <view class='nav-class' bindtap="yijiesuan" data-index="{{index}}">
+              <view class="postt">
+                <view style="font-size:12px" class="jobb">岗位：{{item.post}}</view>
+              </view>
+              <view class="baoming">
+                <view style="font-size:12px" class='xiangqing'>报名者：{{item.user}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+
+    </swiper>
+</view>

@@ -1,0 +1,21 @@
+<!--pages/repwd1/repwd1.wxml-->
+<form bindsubmit='formSubmit'>
+<view class="imply">STEP 1  信息验证</view>
+<view class="line"></view>
+
+<view class='user'>
+  <image class="zhuce" src="repwd1.png"></image>
+  <text>用户名</text>
+  <input  name='oldpwd'  placeholder-style="font-size: 28rpx;" placeholder-class='placeholder' placeholder='请输入学号/工号/统一信用代码' bindblur="usser" />
+  <view class="xian"></view>
+</view>
+
+<view class='phoneNum'>
+  <image class="zhuce" src="repwd1.png"></image>
+  <text>手机号</text>
+  <input  name='newpwd' placeholder-style=" font-size: 28rpx;"  placeholder-class='placeholder' placeholder='请输入注册所用手机号' bindblur="phhone"/>
+  <view class="xian"></view>
+</view>
+
+<button style="margin-top:80px" type='primary' form-type='submit' bindtap="repwd">下一步</button>
+</form>

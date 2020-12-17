@@ -1,0 +1,57 @@
+/* pages/repwd1-1/repwd1-1.wxss */
+
+.new{
+  height: 150rpx;
+  background-color: #fff;
+  margin: 20rpx;
+}
+.ok{
+  height: 150rpx;
+  background-color: #fff;
+  margin: 20rpx;
+}
+.imply{
+  height: 150rpx;
+  font-size: large;
+  font-weight: 900;
+  text-align: center;
+  background: #F0F8FF;
+  height: 50px;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  color:#999;
+}
+text{
+  /* margin-top: 50rpx; */
+  margin-left: 20rpx;
+}
+input{
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+ 
+}
+button{
+  margin: 20rpx;
+  margin-top: 30rpx;
+}
+
+.zhuce{
+  width: 20px;
+  height: 20px;
+  margin-left: 40rpx;
+}
+
+.line{
+  height: 10rpx;
+  background: #FFE4E1;
+}
+
+.xian {
+  width: 90%;
+  background: #FFE4E1;
+  height: 3rpx;
+  margin-left: 25rpx;
+  margin-bottom: 20rpx;
+  margin-top: 20rpx;
+}

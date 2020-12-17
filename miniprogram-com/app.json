@@ -1,0 +1,74 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/cinterviewModify/cinterviewModify",
+    "pages/cmianshitongzhi/cmianshitongzhi",
+    "pages/cmianshidahui/cmianshidahui",
+    "pages/cxiaoxi/cxiaoxi",
+    "pages/ccenter/ccenter",
+    "pages/cpingjia/cpingjia",
+    "pages/cfeedback/cfeedback",
+    "pages/login/login",
+    "pages/cjobModify/cjobModify",
+    "pages/cjobRelease/cjobRelease",
+    "pages/cfabu/cfabu",
+    "pages/cinfoFill/cinfoFill",
+    "pages/repwd1/repwd1",
+    "pages/cjobShow/cjobShow",
+    "pages/repwd2/repwd2",
+    "pages/cinterview/cinterview",
+    "pages/cworkspace/cworkspace",
+    "pages/repwd1-1/repwd1-1",
+    "pages/cjobSelect/cjobSelect",
+    "pages/cresumeReview/cresumeReview",
+    "pages/regCompany/regCompany"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#a3d3d6",
+    "navigationBarTitleText": "SCU掌上兼职",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar":{
+    "color": "#a9b7b7",
+  "selectedColor": "#11cd6e",
+  "borderStyle": "white",
+  "list": [{
+    "selectedIconPath": "1.png",
+    "iconPath": "2.png",
+    "pagePath": "pages/cworkspace/cworkspace",
+    "text": " 工作区",
+    "class": "menu-item1",
+    "active": false
+  },
+  {
+    "selectedIconPath": "3.png",
+    "iconPath": "4.png",
+    "pagePath": "pages/cfabu/cfabu",
+    "text": "我的发布",
+    "class": "menu-item1",
+    "active": false
+  },
+  {
+    "selectedIconPath": "8.png",
+    "iconPath": "7.png",
+    "pagePath": "pages/cxiaoxi/cxiaoxi",
+    "text": "我的消息",
+    "class": "menu-item1",
+    "active": false
+  },
+  {
+    "selectedIconPath": "5.png",
+    "iconPath": "6.png",
+    "pagePath": "pages/ccenter/ccenter",
+    "text": "企业中心",
+    "class": "menu-item1",
+    "active": false
+  }
+],
+  "position": "bottom"
+  }
+}

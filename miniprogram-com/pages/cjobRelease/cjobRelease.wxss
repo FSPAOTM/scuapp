@@ -1,0 +1,168 @@
+/* pages/cjobRelease/cjobRelease.wxss */
+
+.title{
+  font-family:"KaiTi";
+  font-weight: 900;
+  font-size: 18px;
+  text-align: center;
+  background: #F0F8FF;
+  height: 50px;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  color:#999;
+}
+
+
+
+.item {
+  margin-top: 20rpx;
+}
+
+.item1 {
+  display: flex;
+  flex-direction: row;
+}
+
+.in {
+  width: 100%;
+  margin-top: 10px;
+  font-family: "黑体";
+  line-height: 20px;
+  text-align: center;
+}
+
+.section_gap {
+  display: flex;
+  flex-direction: row;
+}
+
+.section{
+  background: #fff;
+  border: 5rpx solid #FFE4E1;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  margin:30rpx; 
+}
+
+
+.xian {
+  width: 90%;
+  background: #FFE4E1;
+  height: 3rpx;
+  margin-left: 25rpx;
+  margin-bottom: 20rpx;
+}
+
+.jieshang {
+  margin-left: 50rpx;
+  padding: 20rpx 0;
+  font-size: 30rpx;
+}
+
+.fb-type {
+  height: 60rpx;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.fb-type .type-label {
+  height: 36rpx;
+  flex: 1;
+  color: #333;
+  font-size: 32rpx;
+  margin-left: 10px;
+}
+
+.fb-type .type-icon {
+  height: 36rpx;
+  width: 36rpx;
+}
+
+button {
+  background: #7e8ef0;
+  color: #fff;
+  width: 80%;
+  font-size: 34rpx;
+  margin-bottom: 20px;
+}
+
+.a1 {
+  line-height: 20px;
+  
+}
+
+.a2 {
+  line-height: 30px;
+}
+
+.a3 {
+  line-height: 35px;
+}
+
+
+
+.line{
+  height: 10rpx;
+  background: #FFE4E1;
+}
+
+.line2{
+  width: 25%;
+  background: #FFE4E1;
+  height: 3rpx;
+  margin-left: 25rpx;
+  margin-bottom: 20rpx;
+}
+
+.zhuce{
+  width: 20px;
+  height: 20px;
+  margin-left: 60rpx;
+}
+
+.placeholder{
+  text-align: center;
+}
+
+.item2{
+  display:flex;
+  margin-bottom: 10px;
+}
+
+.a{
+  margin-top: 10rpx;
+  width: 120px;
+}
+
+.zhuce2{
+  width: 20px;
+  height: 20px;
+  margin-left: 60rpx;
+}
+
+.textarea{
+  height: 30px;
+  text-align: center;
+  margin-top: 15rpx;
+}
+
+.time{
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top:10px;   
+  margin-bottom:10px; 
+
+}
+
+.in2{
+  margin-top: 8px;
+  line-height: 20px;
+  font-size:12px;
+
+}
