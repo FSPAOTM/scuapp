@@ -115,7 +115,7 @@ urlpatterns = [
     path('interview_result/', views02.interview_result, name='interview_result'),
     path('interview_stu_result/', views02.interview_stu_result, name='interview_stu_result'),
     path('management_inWork_end/', views02.management_inWork_end, name='management_inWork_end'),
-
+    path('management_inWork_paid/', views02.management_inWork_paid, name='management_inWork_paid'),
 
 
     path('stu_feedback_edit/', views02.stu_feedback_edit, name='stu_feedback_edit'),
