@@ -15,6 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this;
     this.setData({
       user: options.user
     })
@@ -30,7 +31,7 @@ Page({
       success: function (res) {
         console.log(res);
         if (res.statusCode == 200) {
-          this.setData({
+          that.setData({
             info: res.data
           })
         }

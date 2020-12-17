@@ -119,7 +119,7 @@ Page({
                   } else if (self.data.no.length == 11) {
                     setTimeout(function () {
                       wx.navigateTo({
-                        url: '../cworkspace/cworkspace',
+                        url: '../cxiaoxi/cxiaoxi',
                       })
                     }, 2000)
                   }

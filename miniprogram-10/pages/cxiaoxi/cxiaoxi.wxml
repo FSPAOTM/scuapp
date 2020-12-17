@@ -5,6 +5,7 @@
  <!--背景层-->
  <view class="baise"></view>
  <!--按钮-->
+ 
  <view class="anniu">
   <button formType="submit" class="btbdstk" bindtap="tongzhi" >
    <view class="bdstk" >

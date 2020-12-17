@@ -7,18 +7,19 @@ Page({
    */
   data: {
     user: "",
-    info: []
+    mianshitongzhi: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this;
     this.setData({
       user: options.user
     })
     wx.request({
-      url: app.globalData.url + '/Show_work/', //待修改,res.data里面包括post/time/place/ow_number
+      url: app.globalData.url + '/Stu_interview_notice_show/', //res.data里面包括post/time/place/ow_number
       method: "GET",
       header: {
         'Content-Type': 'application/json'
@@ -29,8 +30,8 @@ Page({
       success: function (res) {
         console.log(res);
         if (res.statusCode == 200) {
-          this.setData({
-            info: res.data
+          that.setData({
+            mianshitongzhi: res.data
           })
         }
       }
@@ -40,10 +41,10 @@ Page({
   sure(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
-    var ow_number = that.data.info[e].ow_number;
+    var ow_number = that.data.mianshitongzhi[e].ow_number;
     console.log("++++++", ev, that)
     wx.request({
-      url: app.globalData.url + '/Show_work/', //待修改——确认面试信息，状态改为“已确认”
+      url: app.globalData.url + '/Stu_interview_notice_sure/', //确认面试信息，状态改为“已确认”
       method: "POST",
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'

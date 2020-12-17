@@ -1,4 +1,5 @@
 // pages/sxiaoxi/sxiaoxi.js
+const app=getApp()
 Page({
 
   /**
@@ -6,6 +7,18 @@ Page({
    */
   data: {
 
+  },
+
+  mianshi() {
+    wx.navigateTo({
+      url: '../smianshitongzhi/smianshitongzhi?user=' + app.globalData.user,
+    })
+  },
+
+  jieguo() {
+    wx.navigateTo({
+      url: '../sjieguotongzhi/sjieguotongzhi?user=' + app.globalData.user,
+    })
   },
 
   /**

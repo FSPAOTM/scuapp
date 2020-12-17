@@ -5,13 +5,13 @@
  <view class="baise"></view>
  <!--按钮-->
  <view class="anniu">
-  <button formType="submit" class="btbdstk" bindtap="resetSalaryBtnClick" >
+  <button formType="submit" class="btbdstk" bindtap="mianshi" >
    <view class="bdstk" >
     <image class="image" src="mianshi.png"></image>
     <text class="text">面试通知</text> 
    </view>
   </button>
-  <button formType="submit" class="btbdstk" bindtap="resetSalaryBtnClick" >
+  <button formType="submit" class="btbdstk" bindtap="jieguo" >
    <view class="bdstk" >
     <image class="image" src="jieguo.png"></image>
     <text class="text">结果通知</text> 
