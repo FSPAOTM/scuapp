@@ -39,7 +39,8 @@ def Stu_interview_notice_sure(request):
         number = request.POST.get('ow_number')
         ow_number = TboutWork.objects.get(ow_number=number)
         interviewApply = TbinterviewApply.objects.get(ow_number=ow_number)
-        interviewNotice = TbinterviewNotice.objects.filter(ia_number=interviewApply.ia_number)
+        interviewNotice = TbinterviewNotice.objects.get(ia_number=interviewApply.ia_number)
+        Notice = TbinterviewNotice.objects.filter(ia_number=interviewApply.ia_number)
         stu = interviewNotice.stu.replace("'", '"')
         stu = json.loads(stu)
         sure = interviewNotice.s_sure.replace("'", '"')
@@ -49,7 +50,7 @@ def Stu_interview_notice_sure(request):
             if j == stu_id:
                 sure[k] = "已确认"
             k = k + 1
-        interviewNotice.update(s_sure=sure)
+        Notice.update(s_sure=sure)
         views01.interview_sure(interviewNotice[0].i_number)
         return HttpResponse("确认成功")
     else:
