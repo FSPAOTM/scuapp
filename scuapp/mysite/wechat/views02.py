@@ -379,16 +379,21 @@ def stu_feedback_list(request):
             dictionary2["name"] = j.stu.name
             dictionary2["stu_id"] = j.stu.stu_id
 
-            dictionary2["pingjia"] = j.iw_number
+            dictionary2["stu_pingjia"] = j.stu.stu_id
 
+            if i.In_status == "工作中":
+                dictionary2["stu_pingjia"] = "未开启"
+                dictionary2["pingjia"] = "未开启"
+            else:
+                if i: #学生评价与教师评价双方
+                    dictionary1["stu_list"].append(dictionary2)
         dictionary1["in_status"] = i.In_status
 
-
-
-        stu_list = ["kekeke"]
     return render(request, 'wechat/stu_feedback.html', {'stu_feedback_list': stu_feedback_list})
 
 
+
+#校外结果展示的评价情况 待改
 
 #企业列表界面
 def company_list(request):

@@ -39,7 +39,7 @@ def Stu_interview_notice_sure(request):
         number = request.POST.get('ow_number')
         ow_number = TboutWork.objects.get(ow_number=number)
         interviewApply = TbinterviewApply.objects.get(ow_number=ow_number)
-        interviewNotice = TbinterviewNotice.objects.get(ia_number=interviewApply.ia_number)
+        interviewNotice = TbinterviewNotice.objects.filter(ia_number=interviewApply.ia_number)
         stu = interviewNotice.stu.replace("'", '"')
         stu = json.loads(stu)
         sure = interviewNotice.s_sure.replace("'", '"')

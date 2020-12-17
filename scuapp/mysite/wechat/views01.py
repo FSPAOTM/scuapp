@@ -8,23 +8,27 @@ import json
 #判断工作是否评价完毕（修改工作状态“待评价”到“已结束”）(校外)
 def out_feedback_over(k): #k为ow_number
     ow_number = TboutWork.objects.get(ow_number=k)
-    list = Tbapplication.objects.filter(ow_number=ow_number).filter(apply_status="待评价")
+    filterResult1 = Tbapplication.objects.filter(ow_number=ow_number).filter(apply_status="待评价")
+    if len(filterResult1) > 0 :
+        return()
+    list = Tbapplication.objects.filter(ow_number=ow_number).filter(apply_status="已评价")
     for j in list:
-        filterResult1 = TbfeedbackEr.objects.filter(stu=j.stu).filter(ow_number=ow_number).filter(fb_directionr="学生评价企业")
         filterResult2 = TbfeedbackEr.objects.filter(stu=j.stu).filter(ow_number=ow_number).filter(fb_directionr="企业评价学生")
-        if not (len(filterResult1) > 0 and len(filterResult2) > 0):
+        if not len(filterResult2) > 0:
             return()
     ow_number.update(ow_status="已结束")
     return ()
 #判断工作是否评价完毕（修改工作状态“待评价”到“已结束”）(校内)
 def in_feedback_over(k): #k为iw_number
     iw_number = TbinWork.objects.get(iw_number=k)
-    list = Tbapplication.objects.filter(iw_number=iw_number).filter(apply_status="待评价")
+    filterResult1 = Tbapplication.objects.filter(iw_number=iw_number).filter(apply_status="待评价")
+    if len(filterResult1) > 0:
+        return ()
+    list = Tbapplication.objects.filter(iw_number=iw_number).filter(apply_status="已评价")
     for j in list:
-        filterResult1 = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=iw_number).filter(fb_directionr="学生评价企业")
         filterResult2 = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=iw_number).filter(fb_directionr="企业评价学生")
-        if not (len(filterResult1) > 0 and len(filterResult2) > 0):
-            return()
+        if not len(filterResult2) > 0:
+            return ()
     iw_number.update(In_status="已结束")
     return ()
 #判断面试通知是否确认完毕（修改工作状态“面试通知中”到“面试阶段”，修改面试申请状态“面试通知中”到“面试阶段”）（校外）
@@ -42,6 +46,7 @@ def interview_sure(k): #k为i_number
         return ()
     else:
         return()
+
 #判断结果通知是否确认完毕（修改工作状态“结果通过中”到“工作中”）（校外）
 def out_result_sure(k): #k为ow_number
     ow_number = TboutWork.objects.get(ow_number=k)

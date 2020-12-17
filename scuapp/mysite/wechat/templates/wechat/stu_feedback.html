@@ -35,7 +35,8 @@
             <th>联系方式</th>
             <th>已招募学生</th>
             <th>学号</th>
-            <th>评价</th>
+            <th>学生评价</th>
+            <th>评价学生</th>
             <th>岗位状态</th>
             <th>操作</th>
           </tr>
@@ -53,6 +54,7 @@
             {% for li in line.stu_list %}
             <td>{{ li.name }}<br></td>
             <td>{{ li.stu_id }}<br></td>
+            <td>{{ li.stu_pingjia }}<br></td>
             <td class="td-status">
                 <!--接口修改-->
               <a href="../stu_feedback_edit/?fd_num={{ li.stu_id }}"><span class="layui-btn layui-btn-normal layui-btn-mini">{{ li.pingjia }}</span></a></td>
