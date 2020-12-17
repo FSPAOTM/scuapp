@@ -100,14 +100,14 @@ def Get_outwork_info(request):
     plays_json = json.dumps(plays,ensure_ascii=False)
     return HttpResponse(plays_json)
 
-#cfabu 修改工作状态 “工作中” 到 “待评价”
+#cfabu 修改工作状态 “工作中” 到 “工作结束”
 @csrf_exempt
 def Get_outwork_info_end(request):
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
         outwork = TboutWork.objects.get(ow_number=ow_number)
-        TboutWork.objects.filter(ow_number=ow_number).update(ow_status="待评价")
-        Tbapplication.objects.filter(ow_number=outwork).filter(apply_status="已录用").update(apply_status="待评价")
+        TboutWork.objects.filter(ow_number=ow_number).update(ow_status="工作结束")
+        Tbapplication.objects.filter(ow_number=outwork).filter(apply_status="已录用").update(apply_status="工作结束")
         return HttpResponse("修改成功")
     else:
         return HttpResponse("请求错误")
@@ -256,7 +256,7 @@ def Company_apply_interviewtime(request):
     else:
         return HttpResponse("请求错误")
 
-#cmianshitongzhi 企业面试通知显示 未调试
+#cmianshitongzhi 企业面试通知显示
 def Com_interview_notice_show(request):
     phone_num = request.GET.get('user')
     com = Tbcompany.objects.get(phone_num=phone_num)
@@ -270,7 +270,7 @@ def Com_interview_notice_show(request):
     plays_json = json.dumps(plays, ensure_ascii=False)
     return HttpResponse(plays_json)
 
-#cmianshitongzhi 企业面试通知确认 未调试
+#cmianshitongzhi 企业面试通知确认
 def Com_interview_notice_sure(request):
     if request.method == "POST":
         number = request.POST.get('ow_number')

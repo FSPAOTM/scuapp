@@ -27,11 +27,6 @@ def stu_feedback_show(request):
     feed_content = ["awsl"]
     return render(request, 'wechat/stu_feedback_show.html')
 
-#编辑学生评价
-def stu_feedback_edit(request):
-
-    return render(request, 'wechat/stu_feedback_edit.html')
-
 #一大波界面导入
 #首页
 def index(request):
@@ -309,12 +304,13 @@ def interview_result(request):
         interviewNotice = i.i_number
         interviewApply = TbinterviewApply.objects.get(ia_number=interviewNotice.ia_number)
         outwork = interviewApply.ow_number
-        if outwork.ow_status == "结果通知中" or outwork.ow_status == "工作中"or outwork.ow_status == "待评价"or outwork.ow_status == "已结束":
+        if outwork.ow_status == "结果通知中" or outwork.ow_status == "工作中"or outwork.ow_status == "待评价"or outwork.ow_status == "已结束"or outwork.ow_status == "工作结束":
             dictionary = {}
             dictionary["ir_number"] = i.ir_number
             dictionary["ow_number"] = outwork.ow_number
             dictionary["i_number"] = i.i_number.i_number
             dictionary["ir_rtime"] = i.ir_rtime
+            dictionary["ir_address"] = outwork.w_place + outwork.w_place_detail
             result = i.ir_result.replace("'", '"')
             result = json.loads(result)  # str转化为list,便于数据库取数据
             k=0
@@ -331,12 +327,8 @@ def interview_result(request):
                 dictionary["btn_color"] = "button-color4"
             if dictionary["ow_status"] == "已结束":
                 dictionary["btn_color"] = "button-color5"
-
             interview_result.append(dictionary)
     return render(request, 'wechat/interview_result.html', {'interview_result': interview_result})
-
-
-#校外结果加报道地址
 
 #面试录用详情界面
 def interview_stu_result(request):
@@ -365,17 +357,16 @@ def interview_stu_result(request):
     return render(request, 'wechat/stu_result.html', {'stu_result': stu_result})
 
 #校内兼职学生评价
-#评价学生管理总列表
+#评价学生管理总列表  （待改）
 def stu_feedback_list(request):
     stu_feedback_list = []
-    list1 = TbinWork.objects.filter(Q(In_status="已结束") | Q(In_status="工作中") | Q(In_status="待评价"))
+    list1 = TbinWork.objects.filter(Q(In_status="已结束") | Q(In_status="工作中") | Q(In_status="待评价")| Q(In_status="工作结束"))
     for i in list1:
         inResult = TbinResult.objects.get(iw_number=i)
         dictionary1 = {}
         dictionary1["iw_number"] = i.iw_number
         dictionary1["work"] = i.work
         dictionary1["inr_phonenum"] = inResult.inr_phonenum
-
         dictionary1["stu_list"] = []
         list2 = Tbapplication.objects.filter(iw_number=i)
         dictionary1["num"] = str(len(list2)+1)
@@ -388,8 +379,8 @@ def stu_feedback_list(request):
                 dictionary2["pingjia"] = "未开启"
             else:
                 dictionary2["stu_pingjia"] = j.apply_status
-                filterResult = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=i).filter(
-                    fb_directionr="企业评价学生")
+                fb_direction="企业评价学生"
+                filterResult = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=i).filter(fb_direction=fb_direction)
                 if len(filterResult) > 0:
                     dictionary2["pingjia"] = "已评价"
                 else:
@@ -399,8 +390,56 @@ def stu_feedback_list(request):
         stu_feedback_list.append(dictionary1)
     return render(request, 'wechat/stu_feedback.html', {'stu_feedback_list': stu_feedback_list})
 
+#校内工作结束  （待改）
+def management_inWork_end(request):
+    iw_number = request.GET.get('finish_num')
+    inWork=TbinWork.objects.get(iw_number=iw_number)
+    if inWork.In_status == "工作中":
+        TbinWork.objects.filter(iw_number=iw_number).update(In_status="工作结束")
+        Tbapplication.objects.filter(iw_number=inWork).filter(apply_status="已录用").update(apply_status="工作结束")
+        stu_feedback_list = []
+        list1 = TbinWork.objects.filter(Q(In_status="已结束") | Q(In_status="工作中") | Q(In_status="待评价")| Q(In_status="工作结束"))
+        for i in list1:
+            inResult = TbinResult.objects.get(iw_number=i)
+            dictionary1 = {}
+            dictionary1["iw_number"] = i.iw_number
+            dictionary1["work"] = i.work
+            dictionary1["inr_phonenum"] = inResult.inr_phonenum
+            dictionary1["stu_list"] = []
+            list2 = Tbapplication.objects.filter(iw_number=i)
+            dictionary1["num"] = str(len(list2) + 1)
+            for j in list2:
+                dictionary2 = {}
+                dictionary2["name"] = j.stu.name
+                dictionary2["stu_id"] = j.stu.stu_id
+                if i.In_status == "工作中":
+                    dictionary2["stu_pingjia"] = "未开启"
+                    dictionary2["pingjia"] = "未开启"
+                else:
+                    dictionary2["stu_pingjia"] = j.apply_status
+                    fb_direction = "企业评价学生"
+                    filterResult = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=i).filter(fb_direction=fb_direction)
+                    if len(filterResult) > 0:
+                        dictionary2["pingjia"] = "已评价"
+                    else:
+                        dictionary2["pingjia"] = "请评价"
+                dictionary1["stu_list"].append(dictionary2)
+            dictionary1["in_status"] = i.In_status
+            stu_feedback_list.append(dictionary1)
+        return render(request, 'wechat/stu_feedback.html', {'stu_feedback_list': stu_feedback_list})
+    else:
+        return render(request, 'wechat/manage_error.html')
 
-#校外结果展示的评价情况 待改
+#编辑学生评价(界面需修改）
+def stu_feedback_edit(request):
+#判断状态、表是否存在跳转不同界面与逻辑
+
+    return render(request, 'wechat/stu_feedback_edit.html')
+
+
+
+
+
 
 #企业列表界面
 def company_list(request):

@@ -104,15 +104,17 @@ urlpatterns = [
     path('interview_back_reason_send/', views02.interview_back_reason_send, name='interview_back_reason_send'),
     path('interview_result/', views02.interview_result, name='interview_result'),
     path('interview_stu_result/', views02.interview_stu_result, name='interview_stu_result'),
+    path('management_inWork_end/', views02.management_inWork_end, name='management_inWork_end'),
 
 
 
+    path('stu_feedback_edit/', views02.stu_feedback_edit, name='stu_feedback_edit'),
     path('stu_feedback_list/', views02.stu_feedback_list, name='stu_feedback_list'),
+
 
     path('company_list/', views02.company_list, name='company_list'),
     path('outwork_feedback/', views02.outwork_feedback, name='outwork_feedback'),
     path('inwork_feedback/', views02.inwork_feedback, name='inwork_feedback'),
-    path('stu_feedback_edit/', views02.stu_feedback_edit, name='stu_feedback_edit'),
     path('stu_feedback_show/', views02.stu_feedback_show, name='stu_feedback_show'),
 
 

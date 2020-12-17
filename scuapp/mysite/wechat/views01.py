@@ -13,7 +13,7 @@ def out_feedback_over(k): #k为ow_number
         return()
     list = Tbapplication.objects.filter(ow_number=ow_number).filter(apply_status="已评价")
     for j in list:
-        filterResult2 = TbfeedbackEr.objects.filter(stu=j.stu).filter(ow_number=ow_number).filter(fb_directionr="企业评价学生")
+        filterResult2 = TbfeedbackEr.objects.filter(stu=j.stu).filter(ow_number=ow_number).filter(fb_direction="企业评价学生")
         if not len(filterResult2) > 0:
             return()
     ow_number.update(ow_status="已结束")
@@ -26,7 +26,7 @@ def in_feedback_over(k): #k为iw_number
         return ()
     list = Tbapplication.objects.filter(iw_number=iw_number).filter(apply_status="已评价")
     for j in list:
-        filterResult2 = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=iw_number).filter(fb_directionr="企业评价学生")
+        filterResult2 = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=iw_number).filter(fb_direction="企业评价学生")
         if not len(filterResult2) > 0:
             return ()
     iw_number.update(In_status="已结束")
@@ -76,7 +76,7 @@ def in_result_sure(k): #k为iw_number
 #校内兼职报名处理界面
 def inworking_list(request):
     inworking_list = []
-    list = TbinWork.objects.exclude(In_status ="已结束").exclude(In_status ="中止").exclude(In_status ="工作中").exclude(In_status ="待评价")
+    list = TbinWork.objects.exclude(In_status ="已结束").exclude(In_status ="中止").exclude(In_status ="工作中").exclude(In_status ="待评价").exclude(In_status ="工作结束")
     for i in list:
         dictionary = {}
         w_now=Tbapplication.objects.filter(iw_number=i.iw_number).count()
@@ -380,7 +380,7 @@ def management_inworking_search(request):
         s_work = request.POST.get("s_work")
         s_w_reuire = request.POST.get("s_w_reuire")
         s_w_status = request.POST.get("s_w_status")
-        list = TbinWork.objects.filter(iw_post__contains=s_iw_post).filter(iw_number__contains=s_iw_number).filter(work__contains=s_work).filter(w_reuire__contains=s_w_reuire).filter(In_status__contains=s_w_status).exclude(In_status ="已结束").exclude(In_status ="中止").exclude(In_status ="工作中").exclude(In_status ="待评价")
+        list = TbinWork.objects.filter(iw_post__contains=s_iw_post).filter(iw_number__contains=s_iw_number).filter(work__contains=s_work).filter(w_reuire__contains=s_w_reuire).filter(In_status__contains=s_w_status).exclude(In_status ="已结束").exclude(In_status ="中止").exclude(In_status ="工作中").exclude(In_status ="待评价").exclude(In_status ="工作结束")
         inworking_list = []
         for i in list:
             dictionary = {}
@@ -444,7 +444,7 @@ def inwork_result_submit(request):
         TbinWork.objects.filter(iw_number=iw_number).update(In_status = "结果通知中")
         inworking_list = []
         list = TbinWork.objects.exclude(In_status="已结束").exclude(In_status="中止").exclude(In_status="工作中").exclude(
-            In_status="待评价")
+            In_status="待评价").exclude(In_status="工作结束")
         for i in list:
             dictionary = {}
             w_now = Tbapplication.objects.filter(iw_number=i.iw_number).count()
