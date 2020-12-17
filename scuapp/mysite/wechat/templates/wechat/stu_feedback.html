@@ -57,7 +57,7 @@
             <td>{{ li.stu_pingjia }}<br></td>
             <td class="td-status">
                 <!--接口修改-->
-              <a href="../stu_feedback_edit/?fd_num={{ li.stu_id }}"><span class="layui-btn layui-btn-normal layui-btn-mini">{{ li.pingjia }}</span></a></td>
+              <a href="../stu_feedback_edit/?fd_num=[{{ li.stu_id }},{{ li.iw_number }}]"><span class="layui-btn layui-btn-normal layui-btn-mini">{{ li.pingjia }}</span></a></td>
 
             {% endfor %}
             <td class="td-status">
