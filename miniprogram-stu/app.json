@@ -1,0 +1,73 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/sjieguotongzhi/sjieguotongzhi",
+    "pages/sjobShow/sjobShow",
+    "pages/sxiaoxi/sxiaoxi",
+    "pages/smianshitongzhi/smianshitongzhi",
+    "pages/spingjia/spingjia",
+    "pages/sfeedback/sfeedback",
+    "pages/smyJob/smyJob",
+    "pages/login/login",
+    "pages/repwd1/repwd1",
+    "pages/sbaoming/sbaoming",
+    "pages/sallJob/sallJob",
+    "pages/sreason/sreason",
+    "pages/repwd2/repwd2",
+    "pages/repwd1-1/repwd1-1",
+    "pages/scenter/scenter",
+    "pages/sinfoFill/sinfoFill",
+    "pages/sinfoModify/sinfoModify",
+    "pages/sinfoShow/sinfoShow",
+    "pages/regStudent/regStudent"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#a3d3d6",
+    "navigationBarTitleText": "SCU掌上兼职",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar":{
+    "color": "#a9b7b7",
+  "selectedColor": "#11cd6e",
+  "borderStyle": "white",
+  "list": [
+    {
+      "selectedIconPath": "2.png",
+      "iconPath": "1.png",
+      "pagePath":"pages/sallJob/sallJob",
+      "text": " 全部兼职",
+      "class": "menu-item",
+      "active": false
+    },
+    {
+      "selectedIconPath": "4.png",
+      "iconPath": "3.png",
+      "pagePath": "pages/smyJob/smyJob",
+      "text": "我的兼职",
+      "class": "menu-item",
+      "active": false
+    },
+    {
+      "selectedIconPath": "8.png",
+      "iconPath": "7.png",
+      "pagePath": "pages/sxiaoxi/sxiaoxi",
+      "text": "我的消息",
+      "class": "menu-item",
+      "active": false
+    },
+    {
+      "selectedIconPath": "6.png",
+      "iconPath": "5.png",
+      "pagePath": "pages/scenter/scenter",
+      "text": "个人中心",
+      "class": "menu-item",
+      "active": false
+    }
+  ],
+  "position": "bottom"
+  }
+}

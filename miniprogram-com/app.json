@@ -37,16 +37,16 @@
   "selectedColor": "#11cd6e",
   "borderStyle": "white",
   "list": [{
-    "selectedIconPath": "1.png",
-    "iconPath": "2.png",
+    "selectedIconPath": "2.png",
+    "iconPath": "1.png",
     "pagePath": "pages/cworkspace/cworkspace",
     "text": " 工作区",
     "class": "menu-item1",
     "active": false
   },
   {
-    "selectedIconPath": "3.png",
-    "iconPath": "4.png",
+    "selectedIconPath": "4.png",
+    "iconPath": "3.png",
     "pagePath": "pages/cfabu/cfabu",
     "text": "我的发布",
     "class": "menu-item1",
@@ -61,8 +61,8 @@
     "active": false
   },
   {
-    "selectedIconPath": "5.png",
-    "iconPath": "6.png",
+    "selectedIconPath": "6.png",
+    "iconPath": "5.png",
     "pagePath": "pages/ccenter/ccenter",
     "text": "企业中心",
     "class": "menu-item1",

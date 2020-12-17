@@ -71,15 +71,15 @@ App({
   editTabBar: function () {
     //使用getCurrentPages可以获取当前加载中所有的页面对象的一个数组，数组最后一个就是当前页面。
 
-    var pagePath = "../miniprogram-com/pages/login/login"; //当前页面url
+    var pagePath = "../miniprogram-stu/pages/login/login"; //当前页面url
     if (pagePath.indexOf('/') != 0) {
       pagePath = '/' + pagePath;
     }
+
   },
 
 
   globalData: {
-    list: [],
     url: 'http://127.0.0.1:8000/wechat',
     userInfo: "",
     user: "",
@@ -93,6 +93,6 @@ App({
     works: "",
     stuNumber: "",
     jobType: "",
-    ow_number: "",
+    ow_number: ""
   }
 })
