@@ -9,24 +9,6 @@ import json
 
 #后台管理界面
 
-#对企业评价——HHL 12/11
-def outwork_feedback(request):
-    out_feed = ["balabala"]
-    feed_content = ["bilibili"]
-    return render(request, 'wechat/outwork_feedback.html')
-
-#对校内兼职评价——HHL 12/11
-def inwork_feedback(request):
-    in_feed = ["jijiwaiwai"]
-    feed_content = ["jijizhazha"]
-    return render(request, 'wechat/inwork_feedback.html')
-
-#学生评价展示——HHL 12/13
-def stu_feedback_show(request):
-    stu_feed = ["哇哇哇"]
-    feed_content = ["awsl"]
-    return render(request, 'wechat/stu_feedback_show.html')
-
 #一大波界面导入
 #首页
 def index(request):
@@ -477,15 +459,6 @@ def stu_feedback_edit(request):
     return render(request, 'wechat/stu_feedback_edit.html')
 
 
-
-
-
-
-
-#企业列表界面
-def company_list(request):
-    company_list = Tbcompany.objects.all()
-    return render(request, 'wechat/company_list.html', {'company_list': company_list})
 
 
 #贫困生的兼职查看！！！！

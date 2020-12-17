@@ -22,6 +22,7 @@
   </head>
 
   <body>
+                                <!--可加搜索框！！！！-->
     <div class="x-body">
 
       <table class="layui-table">
@@ -39,8 +40,9 @@
             <th>邮箱</th>
             <th>年级</th>
             <th>专业</th>
+            <th>是否贫困</th>
             <th>简历</th>
-            <th>工作情况</th>
+            <th>工作经历</th>
           </tr>
         </thead>
         <tbody>
@@ -58,6 +60,7 @@
             <td>{{ line.e_mail }}</td>
             <td>{{ line.grade }}</td>
             <td>{{ line.major }}</td>
+            <td>{{ line.pov_identity }}</td>
             <td class="td-status">
               <a href="../stu_jianli/?res_num={{ line.res_id }}"><span class="layui-btn layui-btn-normal layui-btn-mini">查看</span></a></td>
             <td class="td-status">
