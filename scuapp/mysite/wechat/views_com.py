@@ -329,6 +329,13 @@ def Com_interview_back_send(request):
             ia_time = applytime1 + "或" + applytime2
         if applytime2 != "" and applytime3 != "":
             ia_time = applytime1 + "或" + applytime2 + "或" + applytime3  # 考虑存在空时间段
+        TbinterviewApply.objects.filter(ow_number=ow_number).update(ia_time=ia_time,
+                                                             ia_name=ia_name,
+                                                             phonenumber=phonenumber,
+                                                             a_time=a_time,apply_status="待审核")
+        return HttpResponse("修改成功")
+    else:
+        return HttpResponse("请求错误")
 
 
 #企业面试结果修改界面 未加url 未调试
