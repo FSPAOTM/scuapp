@@ -375,8 +375,10 @@ def stu_feedback_list(request):
         dictionary1["iw_number"] = i.iw_number
         dictionary1["work"] = i.work
         dictionary1["inr_phonenum"] = inResult.inr_phonenum
+
         dictionary1["stu_list"] = []
         list2 = Tbapplication.objects.filter(iw_number=i)
+        dictionary1["num"] = str(len(list2)+1)
         for j in list2:
             dictionary2 = {}
             dictionary2["name"] = j.stu.name

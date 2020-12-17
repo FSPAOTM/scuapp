@@ -44,13 +44,12 @@
         <tbody>
         {% for line in stu_feedback_list %}
         <tr>
-            <td>
+            <td rowspan={{ line.num }}>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <td>{{ line.iw_number }}</td>
-            <td>{{ line.work }}</td>
-            <td>{{ line.inr_phonenum }}</td>
-            <td><table>
+            <td rowspan={{ line.num }}>{{ line.iw_number }}</td>
+            <td rowspan={{ line.num }}>{{ line.work }}</td>
+            <td rowspan={{ line.num }}>{{ line.inr_phonenum }}</td>
             {% for li in line.stu_list %}
                 <tr>
                     <td>{{ li.name }}</td>
@@ -60,13 +59,12 @@
                 <!--接口修改-->
               <a href="../stu_feedback_edit/?fd_num=[{{ li.stu_id }},{{ li.iw_number }}]"><span class="layui-btn layui-btn-normal layui-btn-mini">{{ li.pingjia }}</span></a></td>
                 </tr>
-                {% endfor %}
-            </table></td>
-            <td class="td-status">
+            {% endfor %}
+             <td  class="td-status" rowspan={{ line.num }}>
               <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.in_status }}</span></td>
-            <td class="td-manage">
+            <td  class="td-manage" rowspan={{ line.num }}>
               <a title="工作结束" href="../inWork_finish/?finish_num={{ line.iw_number }}" >
-                <i class="layui-icon">&#xe723;</i> <!--操作权限-->
+                <i class="iconfont">&#xe723;</i> <!--操作权限-->
               </a>
             </td>
         </tr>
