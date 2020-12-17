@@ -65,8 +65,9 @@ def Stu_result_show(request):
     for i in application1:
         if i.iw_number is not None:
             inResult = TbinResult.objects.get(iw_number =i.iw_number)
-            plays.append({'type':"校内兼职",'iw_number': i.iw_number.iw_number, 'post': i.iw_number.iw_post, 'result': "您已被录用，请及时联系负责人并按时报到",
-                          'time': inResult.r_time,'phonenum': inResult.r_time,'ps': inResult.r_ps})
+            result = "您已被录用，请在" + inResult.r_time +"前联系负责人并按时报到"
+            plays.append({'type':"校内兼职",'iw_number': i.iw_number.iw_number, 'post': i.iw_number.iw_post, 'result': result,
+                          'phonenum': inResult.inr_phonenum,'ps': inResult.r_ps})
         else:
             interviewApply = TbinterviewApply.objects.get(ow_number =i.ow_number)
             interviewNotice = TbinterviewNotice.objects.get(ia_number=interviewApply.ia_number)
@@ -84,6 +85,26 @@ def Stu_result_show(request):
     return HttpResponse(plays_json)
 
 #学生工作结果确认
+def Stu_result_sure(request):
+    if request.method == "POST":
+        type = request.POST.get('type')
+        stu_id = request.POST.get('user')
+        student = Tbstudent.objects.get(stu_id=stu_id)
+        number = request.POST.get('number')
+        if type == "校内兼职":
+            iw_number = TbinWork.objects.get(iw_number=number)
+            Tbapplication.objects.filter(stu=student).filter(iw_number=iw_number).update(s_sure="已确认")
+            views01.in_result_sure(number)
+            return HttpResponse("确认成功")
+        else:
+            ow_number = TboutWork.objects.get(ow_number=number)
+            Tbapplication.objects.filter(stu=student).filter(ow_number=ow_number).update(s_sure="已确认")
+            views01.out_result_sure(number)
+            return HttpResponse("确认成功")
+    else:
+        return HttpResponse("请求错误")
+
+
 
 #sfeedback 未调试
 def feedbackEr(request):
