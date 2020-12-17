@@ -68,6 +68,14 @@
       </view>
     </view>
 
+    <view class="section">
+      <view class="jieshang" style="padding-left:30rpx;font-size:15px">应聘理由</view>
+      <view class="xian"></view>
+      <view style=" height: 150px;">
+        <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{reason}}</text>
+      </view>
+    </view>
+
     <view class="btn1">
       <input type="button" id="leftButton" onclick="login()" />
     </view>

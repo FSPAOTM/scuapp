@@ -16,9 +16,6 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    this.setData({
-      user: options.user
-    })
     wx.request({
       url: app.globalData.url + '/Com_interview_back_show/', 
       method: "GET",

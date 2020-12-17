@@ -21,6 +21,7 @@ Page({
     project: "",
     practice: "",
     works: "",
+    reason:""
   },
 
   /**
@@ -45,17 +46,19 @@ Page({
     console.log(this.data.stu_number)
 
     wx.request({
-      url: app.globalData.url + '/Insert_resume_show/', //*待修改
+      url: app.globalData.url + '/Com_Insert_resume_show/', 
       method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        stuNumber: this.data.stu_number
+        stuNumber: this.data.stu_number,
+        ow_number:this.data.ow_number
       },
       success: (res) => {
         /*console.log(res.data);*/
         if (res.statusCode == 200) {
+          console.log(res.data)
           this.setData({
             name: res.data.name,
             age: res.data.age,
@@ -66,6 +69,7 @@ Page({
             project: res.data.res_proj,
             practice: res.data.res_extra,
             works: res.data.res_per,
+            reason:res.data.reason
           })
         }
       }
@@ -110,7 +114,7 @@ Page({
 
   confirm1: function () {
     wx.request({
-      url: app.globalData.url + '/Modify_applystatus/', //待修改：状态改为“已通过”
+      url: app.globalData.url + '/Modify_applystatus/', 
       method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -138,7 +142,7 @@ Page({
 
   confirm2: function () {
     wx.request({
-      url: app.globalData.url + '/Modify_applystatus/', //待修改：状态改为“未通过”
+      url: app.globalData.url + '/Modify_applystatus/', 
       method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"

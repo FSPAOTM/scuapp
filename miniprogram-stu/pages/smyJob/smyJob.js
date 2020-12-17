@@ -1,4 +1,4 @@
-// pages/smyJob/smyJob.js
+// pages/smyJob/smyJob.js//这一页只能显示3个工作【高度不对】
 const app = getApp()
 var openid = wx.getStorageSync("openid");
 Page({
@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    show:"",
+    show: "",
     isShow: true,
     workinfo1: [],
     workinfo2: [],
@@ -87,7 +87,17 @@ Page({
           var i;
           for (i = 0; i < res.data.length; i++) {
             if (res.statusCode == 200) {
-              if (res.data[i].status == "已报名") {
+              if (res.data[i].status == "待审核") {
+                that.data.workinfo1.push(res.data[i])
+                that.setData({
+                  workinfo1: that.data.workinfo1
+                })
+              } else if (res.data[i].status == "表筛通过") {
+                that.data.workinfo1.push(res.data[i])
+                that.setData({
+                  workinfo1: that.data.workinfo1
+                })
+              } else if (res.data[i].status == "已报名") {
                 that.data.workinfo1.push(res.data[i])
                 that.setData({
                   workinfo1: that.data.workinfo1
@@ -299,7 +309,17 @@ Page({
         var i;
         for (i = 0; i < res.data.length; i++) {
           if (res.statusCode == 200) {
-            if (res.data[i].status == "已报名") {
+            if (res.data[i].status == "待审核") {
+              that.data.workinfo1.push(res.data[i])
+              that.setData({
+                workinfo1: that.data.workinfo1
+              })
+            } else if (res.data[i].status == "表筛通过") {
+              that.data.workinfo1.push(res.data[i])
+              that.setData({
+                workinfo1: that.data.workinfo1
+              })
+            } else if (res.data[i].status == "已报名") {
               that.data.workinfo1.push(res.data[i])
               that.setData({
                 workinfo1: that.data.workinfo1

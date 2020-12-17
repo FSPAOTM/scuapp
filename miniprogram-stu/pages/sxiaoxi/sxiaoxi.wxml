@@ -9,7 +9,7 @@
       <view class="bdstk">
         <image class="image" src="mianshi.png"></image>
         <text class="text">面试通知</text>
-        <view class='bubble2'>
+        <view class='bubble2'  wx:if="{{show1}}">
           <view class='num'>{{count1}}</view>
         </view>
       </view>
@@ -18,7 +18,7 @@
       <view class="bdstk">
         <image class="image" src="jieguo.png"></image>
         <text class="text">结果通知</text>
-        <view class='bubble2'>
+        <view class='bubble2'  wx:if="{{show2}}">
           <view class='num'>{{count2}}</view>
         </view>
       </view>

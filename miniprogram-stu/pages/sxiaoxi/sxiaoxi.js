@@ -8,6 +8,8 @@ Page({
   data: {
     mianshitongzhi:[],
     jieguotongzhi:[],
+    show1:true,
+    show2:true,
     count1:"",
     count2:"",
   },
@@ -43,7 +45,7 @@ Page({
         if (res.statusCode == 200) {
           that.setData({
             mianshitongzhi: res.data,
-            count1:res.data.length//待修改
+            count1:res.data.length
           })
         }
       }

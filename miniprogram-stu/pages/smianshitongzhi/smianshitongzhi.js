@@ -47,7 +47,7 @@ Page({
     var ow_number = that.data.mianshitongzhi[e].ow_number;
     console.log("++++++", ev, that)
     wx.request({
-      url: app.globalData.url + '/Stu_interview_notice_sure/', //确认面试信息，状态改为“已确认”
+      url: app.globalData.url + '/Stu_interview_notice_sure/', 
       method: "POST",
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'

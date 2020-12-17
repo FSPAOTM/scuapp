@@ -104,6 +104,11 @@ Page({
               that.setData({
                 workinfo3: that.data.workinfo3
               })
+            } else if (res.data[i].status == "面试中") {
+              that.data.workinfo3.push(res.data[i])
+              that.setData({
+                workinfo3: that.data.workinfo3
+              })
             } else if (res.data[i].status == "已录用") {
               that.data.workinfo4.push(res.data[i])
               that.setData({

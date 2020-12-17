@@ -160,17 +160,20 @@
 }
 
 .btn-view {
-  width: 100%;
+  width: 80%;
   padding: 20rpx 0;
   background-color: white;
+  display: flex;
+  flex-direction: row;
   position: fixed;
-  bottom: 0;
-  left: 0;
+  bottom: 5px;
+  left: auto;
+  right: auto;
 }
 
 .btn {
-  width: 80%;
-  font-size: 14px;
+  width: fit-content!important;
+  font-size: 13px;
 }
 
 .h1 {
