@@ -1,11 +1,12 @@
 // pages/smianshitongzhi/smianshitongzhi.js
-const app=getApp()
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    isShow: false,
     user: "",
     mianshitongzhi: []
   },
@@ -15,11 +16,8 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    this.setData({
-      user: options.user
-    })
     wx.request({
-      url: app.globalData.url + '/Stu_interview_notice_show/', //res.data里面包括post/time/place/ow_number
+      url: app.globalData.url + '/Stu_interview_notice_show/', 
       method: "GET",
       header: {
         'Content-Type': 'application/json'
@@ -32,6 +30,11 @@ Page({
         if (res.statusCode == 200) {
           that.setData({
             mianshitongzhi: res.data
+          })
+        }
+        if (that.data.mianshitongzhi.length == 0) {
+          that.setData({
+            isShow: true
           })
         }
       }
@@ -58,12 +61,57 @@ Page({
         if (res.statusCode == 200) {
           wx.showToast({
             title: '如需再次查看，请前往【我的兼职】',
-            duration: 2000
+            icon: 'none',
+            duration: 3000
           })
-        }
+        };
+        setTimeout(function () {
+          that.onRefresh()
+        }, 3000)
       }
     })
   },
+
+  onRefresh() {
+    //在当前页面显示导航条加载动画
+    wx.showNavigationBarLoading();
+    //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
+    this.getData();
+  },
+  getData() {
+    let that = this;
+    wx.request({
+      url: app.globalData.url + '/Stu_interview_notice_show/', //res.data里面包括post/time/place/ow_number
+      method: "GET",
+      header: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        user: app.globalData.user
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          that.setData({
+            mianshitongzhi: res.data
+          })
+        }
+        if (that.data.mianshitongzhi.length == 0) {
+          that.setData({
+            isShow: true
+          })
+        }
+        //隐藏loading 提示框
+        wx.hideLoading();
+        //隐藏导航条加载动画
+        wx.hideNavigationBarLoading();
+        //停止下拉刷新
+        wx.stopPullDownRefresh();
+      }
+    })
+  },
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -97,7 +145,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.onRefresh();
   },
 
   /**

@@ -130,7 +130,7 @@ Page({
               })
               setTimeout(function () {
                 wx.switchTab({
-                  url: '../smyJob/smyJob',
+                  url: '../smyJob/smyJob?show=refresh',
                 })
               }, 2000)
             }

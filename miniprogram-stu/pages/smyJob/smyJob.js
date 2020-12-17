@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show:"",
     isShow: true,
     workinfo1: [],
     workinfo2: [],
@@ -55,78 +56,68 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    /** 
-     * 获取系统信息,系统宽高
-     */
-    wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-          winWidth: res.windowWidth,
-          winHeight: res.windowHeight
-        });
-      }
-    });
-    wx.request({
-      url: app.globalData.url + '/Show_myjob/',
-      header: {
-        'Content-Type': 'application/json'
-      },
-      method: "GET",
-      data: {
-        user: app.globalData.user
-      },
-      success: function (res) {
-        console.log(res);
-        var i;
-        for (i = 0; i < res.data.length; i++) {
-          if (res.statusCode == 200) {
-            if (res.data[i].status == "已报名") {
-              that.data.workinfo1.push(res.data[i])
-              that.setData({
-                workinfo1: that.data.workinfo1
-              })
-            } else if (res.data[i].status == "面试中") {
-              that.data.workinfo2.push(res.data[i])
-              that.setData({
-                workinfo2: that.data.workinfo2
-              })
-            } else if (res.data[i].status == "已录用") {
-              that.data.workinfo3.push(res.data[i])
-              that.setData({
-                workinfo3: that.data.workinfo3
-              })
-            } else if (res.data[i].status == "待评价") {
-              that.data.workinfo5.push(res.data[i])
-              that.setData({
-                workinfo5: that.data.workinfo5
-              })
-            } else if (res.data[i].status == "已评价") {
-              that.data.workinfo5.push(res.data[i])
-              that.setData({
-                workinfo5: that.data.workinfo5
-              })
+    that.setData({
+      show: options.show
+    })
+    if (that.data.show == "refresh") {
+      that.onRefresh();
+    } else {
+      /** 
+       * 获取系统信息,系统宽高
+       */
+      wx.getSystemInfo({
+        success: function (res) {
+          that.setData({
+            winWidth: res.windowWidth,
+            winHeight: res.windowHeight
+          });
+        }
+      });
+      wx.request({
+        url: app.globalData.url + '/Show_myjob/',
+        header: {
+          'Content-Type': 'application/json'
+        },
+        method: "GET",
+        data: {
+          user: app.globalData.user
+        },
+        success: function (res) {
+          console.log(res);
+          var i;
+          for (i = 0; i < res.data.length; i++) {
+            if (res.statusCode == 200) {
+              if (res.data[i].status == "已报名") {
+                that.data.workinfo1.push(res.data[i])
+                that.setData({
+                  workinfo1: that.data.workinfo1
+                })
+              } else if (res.data[i].status == "面试中") {
+                that.data.workinfo2.push(res.data[i])
+                that.setData({
+                  workinfo2: that.data.workinfo2
+                })
+              } else if (res.data[i].status == "已录用") {
+                that.data.workinfo3.push(res.data[i])
+                that.setData({
+                  workinfo3: that.data.workinfo3
+                })
+              } else if (res.data[i].status == "待评价") {
+                that.data.workinfo5.push(res.data[i])
+                that.setData({
+                  workinfo5: that.data.workinfo5
+                })
+              } else if (res.data[i].status == "已评价") {
+                that.data.workinfo5.push(res.data[i])
+                that.setData({
+                  workinfo5: that.data.workinfo5
+                })
+              }
             }
           }
         }
-      }
-    });
-    /*wx.request({
-      url: app.globalData.url + '/Show_myojob/',
-      header: {
-        'Content-Type': 'application/json'
-      },
-      data:{
-        user:app.globalData.user
-      },
-      success: function (res) {
-        console.log(res);
-        if (res.statusCode == 200) {
-          that.setData({
-            oworkinfo: res.data
-          })
-        }
-      }
-    })*/
+      })
+    }
   },
 
   xq1(ev) {
@@ -328,7 +319,7 @@ Page({
               that.setData({
                 workinfo5: that.data.workinfo5
               })
-            }else if (res.data[i].status == "已评价") {
+            } else if (res.data[i].status == "已评价") {
               that.data.workinfo5.push(res.data[i])
               that.setData({
                 workinfo5: that.data.workinfo5

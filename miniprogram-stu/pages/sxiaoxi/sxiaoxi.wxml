@@ -9,12 +9,22 @@
    <view class="bdstk" >
     <image class="image" src="mianshi.png"></image>
     <text class="text">面试通知</text> 
+    <view class='dialog-nums'>
+        <view class='bubble3'>
+          <view class='num'>{{count1}}</view>
+        </view>
+      </view>
    </view>
   </button>
   <button formType="submit" class="btbdstk" bindtap="jieguo" >
    <view class="bdstk" >
     <image class="image" src="jieguo.png"></image>
     <text class="text">结果通知</text> 
+    <view class='dialog-nums'>
+        <view class='bubble3'><!--两个class的样式看一下-->
+          <view class='num'>{{count2}}</view>
+        </view>
+      </view>
    </view>
   </button>
   </view>
