@@ -84,7 +84,7 @@ def Stu_result_show(request):
     plays_json = json.dumps(plays, ensure_ascii=False)
     return HttpResponse(plays_json)
 
-#学生工作结果确认
+#sjieguotongzhi 学生工作结果确认
 def Stu_result_sure(request):
     if request.method == "POST":
         type = request.POST.get('type')
