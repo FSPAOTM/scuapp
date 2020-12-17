@@ -50,7 +50,7 @@ def Stu_interview_notice_sure(request):
                 sure[k] = "已确认"
             k = k + 1
         interviewNotice.update(s_sure=sure)
-        views01.interview_sure(interviewNotice.i_number)
+        views01.interview_sure(interviewNotice[0].i_number)
         return HttpResponse("确认成功")
     else:
         return HttpResponse("请求错误")

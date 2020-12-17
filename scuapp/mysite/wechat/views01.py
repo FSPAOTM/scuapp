@@ -40,7 +40,8 @@ def interview_sure(k): #k为i_number
         for j in sure:
             if j != "已确认":
                 return()
-        interviewApply = TbinterviewApply.objects.get(ia_number=interviewNotice.ia_number)
+        #Apply = TbinterviewApply.objects.get(ia_number=interviewNotice.ia_number)
+        interviewApply = TbinterviewApply.objects.filter(ia_number=interviewNotice.ia_number)
         TboutWork.objects.filter(ow_number=interviewApply.ow_number.ow_number).update(ow_status="面试阶段")
         interviewApply.update(apply_status = "面试阶段")
         return ()

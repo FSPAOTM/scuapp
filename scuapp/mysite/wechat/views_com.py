@@ -277,8 +277,8 @@ def Com_interview_notice_sure(request):
         ow_number = TboutWork.objects.get(ow_number=number)
         interviewApply = TbinterviewApply.objects.get(ow_number=ow_number)
         interviewNotice = TbinterviewNotice.objects.filter(ia_number=interviewApply.ia_number)
-        views01.interview_sure(interviewNotice.i_number)
         interviewNotice.update(c_sure="已确认")
+        views01.interview_sure(interviewNotice[0].i_number)
         return HttpResponse("确认成功")
     else:
         return HttpResponse("请求错误")
