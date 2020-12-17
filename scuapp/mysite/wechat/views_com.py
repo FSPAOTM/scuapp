@@ -344,13 +344,15 @@ def Com_work_back_edit(request):
         outWork = TboutWork.objects.get(ow_number=ow_number)
         return HttpResponse(json.dumps({
             'Name': outWork.ow_post,
-            'post': outWork.w_time,
-            'manager': outWork.w_place,
-            'phonenum': outWork.w_place_detail,
-            'phonenum': outWork.work,
-            'phonenum': outWork.w_salary,
-            'phonenum': outWork.w_reuire,
-            'phonenum': outWork.w_amount,'phonenum': outWork.ddl_time,'phonenum': outWork.w_amount,}))
+            'jobtime': outWork.w_time,
+            'location': outWork.w_place,
+            'detail': outWork.w_place_detail,
+            'description': outWork.work,
+            'salary': outWork.w_salary,
+            'ask': outWork.w_reuire,
+            'num': outWork.w_amount,
+            'endingtime': outWork.ddl_time,
+            'ps': outWork.w_ps}))
     else:
         return HttpResponse("请求错误")
 
@@ -372,10 +374,10 @@ def Com_Insert_resume_show(request):
         res_proj=resume.res_proj
         res_extra=resume.res_extra
         res_per=resume.res_per
-        application = Tbapplication.objects.filter(stu=user).filter(ow_number=outWork)
+        application = Tbapplication.objects.filter(stu=user).get(ow_number=outWork)
         reason = application.ap_reson
-        return HttpResponse(json.dumps(
-            {"name": name,
+        return HttpResponse(json.dumps({
+             "name": name,
              "age": age,
              "sex": sex,
              "res_asses": res_asses,
