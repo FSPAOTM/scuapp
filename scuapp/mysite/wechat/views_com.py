@@ -337,6 +337,56 @@ def Com_interview_back_send(request):
     else:
         return HttpResponse("请求错误")
 
+#cinterviewModify 企业工作申请修改显示
+def Com_work_back_edit(request):
+    if request.method == "POST":
+        ow_number = request.POST.get('ow_number')
+        outWork = TboutWork.objects.get(ow_number=ow_number)
+        return HttpResponse(json.dumps({
+            'Name': outWork.ow_post,
+            'post': outWork.w_time,
+            'manager': outWork.w_place,
+            'phonenum': outWork.w_place_detail,
+            'phonenum': outWork.work,
+            'phonenum': outWork.w_salary,
+            'phonenum': outWork.w_reuire,
+            'phonenum': outWork.w_amount,'phonenum': outWork.ddl_time,'phonenum': outWork.w_amount,}))
+    else:
+        return HttpResponse("请求错误")
+
+#cresumeReview 企业端简历显示功能
+def Com_Insert_resume_show(request):
+    if request.method == "POST":
+        stu_id = request.POST.get('stuNumber') # 唯一标识简历的全局变量
+        ow_number = request.POST.get('ow_number')
+        outWork = TboutWork.objects.get(ow_number=ow_number)
+        user = Tbstudent.objects.get(stu_id=stu_id)
+        res_id = user.res_id.res_id
+        resume= Tbresume.objects.get(res_id=res_id)
+        name=resume.name
+        age=resume.age
+        sex=resume.sex
+        res_asses=resume.res_asses
+        res_edu=resume.res_edu
+        res_work=resume.res_work
+        res_proj=resume.res_proj
+        res_extra=resume.res_extra
+        res_per=resume.res_per
+        application = Tbapplication.objects.filter(stu=user).filter(ow_number=outWork)
+        reason = application.ap_reson
+        return HttpResponse(json.dumps(
+            {"name": name,
+             "age": age,
+             "sex": sex,
+             "res_asses": res_asses,
+             "res_edu": res_edu,
+             "res_work": res_work,
+             "res_proj": res_proj,
+             "res_extra": res_extra,
+             "res_per": res_per,
+             "reason": reason}))
+    else:
+        return HttpResponse("请求错误")
 
 #企业面试结果修改界面 未加url 未调试
 def Modify_interview_status(request):

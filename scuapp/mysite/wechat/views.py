@@ -170,7 +170,7 @@ def Show_student_name(request):
     else:
         return HttpResponse("请求错误")
 
-#sinfoShow 简历显示功能  #cresumeReview 企业端简历显示功能
+#sinfoShow 学生端 简历显示功能
 def Insert_resume_show(request):
     if request.method == "POST":
         stu_id = request.POST.get('stuNumber') # 唯一标识简历的全局变量

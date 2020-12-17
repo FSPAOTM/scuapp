@@ -4,6 +4,7 @@ from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork
 from django.http import JsonResponse
 from django.utils import timezone
 import json
+from django.db.models import Q
 from itertools import chain
 from . import views01
 #小程序界面
@@ -76,9 +77,9 @@ def Stu_result_show(request):
             plays.append({'type': "校外兼职", 'ow_number': i.ow_number.ow_number, 'post': i.ow_number.ow_post,
                           'result': "您已被录用，请按时报到",
                           'time': interviewResult.ir_rtime, 'address': address, 'ps': interviewResult.ir_ps})
-    application2 = Tbapplication.objects.filter(stu=student).filter(apply_status="未录用")
+    application2 = Tbapplication.objects.filter(stu=student).filter(Q(apply_status="未录用") | Q(apply_status="表筛未通过"))
     for j in application2:
-        if j.ow_number.ow_status =="面试通知中":
+        if j.ow_number.ow_status =="面试通知中" or j.ow_number.ow_status =="面试阶段"or j.ow_number.ow_status =="结果通知中":
             plays.append({'type': "校外兼职", 'ow_number': j.ow_number.ow_number, 'post': j.ow_number.ow_post,
                           'result': "很遗憾，您未被录用,请继续加油"})
     plays_json = json.dumps(plays, ensure_ascii=False)
