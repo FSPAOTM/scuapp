@@ -7,6 +7,7 @@ Page({
    */
   data: {
     mianshitongzhi:[],
+    jieguotongzhi:[],
     count1:"",
     count2:"",
   },
@@ -42,7 +43,27 @@ Page({
         if (res.statusCode == 200) {
           that.setData({
             mianshitongzhi: res.data,
-            count1:res.data[0].count//待修改
+            count1:res.data.length//待修改
+          })
+        }
+      }
+    })
+
+    wx.request({
+      url: app.globalData.url + '/Stu_interview_notice_show/', //待修改
+      method: "GET",
+      header: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        user: app.globalData.user
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          that.setData({
+            jieguotongzhi: res.data,
+            count2:res.data.length//待修改
           })
         }
       }

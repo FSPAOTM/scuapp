@@ -6,8 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    show1:false,
-    show2:true,
+    show1: false,
+    show2: true,
+    show: "",
     jobinfo1: [],
     jobinfo2: [],
     jobinfo3: [],
@@ -54,7 +55,7 @@ Page({
     })
   },
 
-  jiesuan(ev){
+  jiesuan(ev) {
     var that = this;
     console.log(that.data.jobinfo5);
     var e = ev.currentTarget.dataset.index;
@@ -63,7 +64,7 @@ Page({
     var ow_number = that.data.jobinfo5[e].ow_number;
     console.log(ow_number)
     wx.request({
-      url: app.globalData.url + '/Get_outwork_info_end/',//待修改
+      url: app.globalData.url + '/Get_outwork_info_end/', //待修改
       method: "POST",
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -77,8 +78,8 @@ Page({
           if (res.data == "修改成功") {
             that.onRefresh();
             that.setData({
-              show1:true,
-              show2:false
+              show1: true,
+              show2: false
             })
           }
         }
@@ -98,79 +99,86 @@ Page({
         that.setData({
           winWidth: res.windowWidth,
           winHeight: res.windowHeight
-        });
+        });//系统宽高有问题
       }
     });
-    
-    wx.request({
-      url: app.globalData.url + '/Get_outwork_info/',
-      method: "GET",
-      header: {
-        'Content-Type': 'application/json'
-      },
-      data: {
-        user: app.globalData.user
-      },
-      success: function (res) {
-        console.log(res);
-        var i;
-        for (i = 0; i < res.data.length; i++) {
-          if (res.statusCode == 200) {
-            if (res.data[i].status == "待审核") {
-              that.data.jobinfo1.push(res.data[i])
-              that.setData({
-                jobinfo1: that.data.jobinfo1
-              })
-            } else if (res.data[i].status == "报名中") {
-              that.data.jobinfo1.push(res.data[i])
-              that.setData({
-                jobinfo1: that.data.jobinfo1
-              })
-            } else if (res.data[i].status == "报名结束") {
-              that.data.jobinfo2.push(res.data[i])
-              that.setData({
-                jobinfo2: that.data.jobinfo2
-              })
-            } else if (res.data[i].status == "面试申请中") {
-              that.data.jobinfo3.push(res.data[i])
-              that.setData({
-                jobinfo3: that.data.jobinfo3
-              })
-            }else if (res.data[i].status == "面试通知中") {
-              that.data.jobinfo3.push(res.data[i])
-              that.setData({
-                jobinfo3: that.data.jobinfo3
-              })
-            } else if (res.data[i].status == "面试阶段") {
-              that.data.jobinfo3.push(res.data[i])
-              that.setData({
-                jobinfo3: that.data.jobinfo3
-              })
-            }else if (res.data[i].status == "结果通知中") {
-              that.data.jobinfo3.push(res.data[i])
-              that.setData({
-                jobinfo3: that.data.jobinfo3
-              })
-            } else if (res.data[i].status == "工作中") {
-              that.data.jobinfo4.push(res.data[i])
-              that.setData({
-                jobinfo4: that.data.jobinfo4
-              })
-            } else if (res.data[i].status == "待评价") {
-              that.data.jobinfo5.push(res.data[i])
-              that.setData({
-                jobinfo5: that.data.jobinfo5
-              })
-            } else if (res.data[i].status == "已结束") {
-              that.data.jobinfo5.push(res.data[i])
-              that.setData({
-                jobinfo5: that.data.jobinfo5
-              })
+    that.setData({
+      show: options.show
+    })
+    console.log(that.data.show)
+    if (that.data.show == "refresh") {
+      that.onRefresh();
+    } else {
+      wx.request({
+        url: app.globalData.url + '/Get_outwork_info/',
+        method: "GET",
+        header: {
+          'Content-Type': 'application/json'
+        },
+        data: {
+          user: app.globalData.user
+        },
+        success: function (res) {
+          console.log(res);
+          var i;
+          for (i = 0; i < res.data.length; i++) {
+            if (res.statusCode == 200) {
+              if (res.data[i].status == "待审核") {
+                that.data.jobinfo1.push(res.data[i])
+                that.setData({
+                  jobinfo1: that.data.jobinfo1
+                })
+              } else if (res.data[i].status == "报名中") {
+                that.data.jobinfo1.push(res.data[i])
+                that.setData({
+                  jobinfo1: that.data.jobinfo1
+                })
+              } else if (res.data[i].status == "报名结束") {
+                that.data.jobinfo2.push(res.data[i])
+                that.setData({
+                  jobinfo2: that.data.jobinfo2
+                })
+              } else if (res.data[i].status == "面试申请中") {
+                that.data.jobinfo3.push(res.data[i])
+                that.setData({
+                  jobinfo3: that.data.jobinfo3
+                })
+              } else if (res.data[i].status == "面试通知中") {
+                that.data.jobinfo3.push(res.data[i])
+                that.setData({
+                  jobinfo3: that.data.jobinfo3
+                })
+              } else if (res.data[i].status == "面试阶段") {
+                that.data.jobinfo3.push(res.data[i])
+                that.setData({
+                  jobinfo3: that.data.jobinfo3
+                })
+              } else if (res.data[i].status == "结果通知中") {
+                that.data.jobinfo3.push(res.data[i])
+                that.setData({
+                  jobinfo3: that.data.jobinfo3
+                })
+              } else if (res.data[i].status == "工作中") {
+                that.data.jobinfo4.push(res.data[i])
+                that.setData({
+                  jobinfo4: that.data.jobinfo4
+                })
+              } else if (res.data[i].status == "待评价") {
+                that.data.jobinfo5.push(res.data[i])
+                that.setData({
+                  jobinfo5: that.data.jobinfo5
+                })
+              } else if (res.data[i].status == "已结束") {
+                that.data.jobinfo5.push(res.data[i])
+                that.setData({
+                  jobinfo5: that.data.jobinfo5
+                })
+              }
             }
           }
         }
-      }
-    })
+      })
+    }
   },
 
 
@@ -276,15 +284,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    app.editTabBar1();
+    app.editTabBar();
   },
   onRefresh() {
     //在当前页面显示导航条加载动画
     wx.showNavigationBarLoading();
     //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
-    wx.showLoading({
-      title: '刷新中...',
-    })
     this.getData();
   },
   getData() {
@@ -310,7 +315,12 @@ Page({
         var i;
         for (i = 0; i < res.data.length; i++) {
           if (res.statusCode == 200) {
-            if (res.data[i].status == "报名中") {
+            if (res.data[i].status == "待审核") {
+              that.data.jobinfo1.push(res.data[i])
+              that.setData({
+                jobinfo1: that.data.jobinfo1
+              })
+            } else if (res.data[i].status == "报名中") {
               that.data.jobinfo1.push(res.data[i])
               that.setData({
                 jobinfo1: that.data.jobinfo1
@@ -320,7 +330,22 @@ Page({
               that.setData({
                 jobinfo2: that.data.jobinfo2
               })
-            } else if (res.data[i].status == "面试中") {
+            } else if (res.data[i].status == "面试申请中") {
+              that.data.jobinfo3.push(res.data[i])
+              that.setData({
+                jobinfo3: that.data.jobinfo3
+              })
+            } else if (res.data[i].status == "面试通知中") {
+              that.data.jobinfo3.push(res.data[i])
+              that.setData({
+                jobinfo3: that.data.jobinfo3
+              })
+            } else if (res.data[i].status == "面试阶段") {
+              that.data.jobinfo3.push(res.data[i])
+              that.setData({
+                jobinfo3: that.data.jobinfo3
+              })
+            } else if (res.data[i].status == "结果通知中") {
               that.data.jobinfo3.push(res.data[i])
               that.setData({
                 jobinfo3: that.data.jobinfo3
@@ -329,6 +354,11 @@ Page({
               that.data.jobinfo4.push(res.data[i])
               that.setData({
                 jobinfo4: that.data.jobinfo4
+              })
+            } else if (res.data[i].status == "待评价") {
+              that.data.jobinfo5.push(res.data[i])
+              that.setData({
+                jobinfo5: that.data.jobinfo5
               })
             } else if (res.data[i].status == "已结束") {
               that.data.jobinfo5.push(res.data[i])

@@ -69,6 +69,21 @@ margin-right: 200rpx;
 }
 
 /*气泡样式*/
+.bubble2{
+  background-color:rgb(216, 48, 48);
+  border-radius: 80rpx;
+  width: 40rpx;
+  height: 40rpx;
+  /* margin-left: 200rpx; */
+  margin-top: 20rpx;
+}
+.bubble2 .num{
+  font-size: 28rpx;
+  color: #ffffff;
+  font-weight: 500;
+  margin-left: 12rpx;
+}
+
 .bubble3{
   background-color: #4074DD;
   border-radius: 80rpx;

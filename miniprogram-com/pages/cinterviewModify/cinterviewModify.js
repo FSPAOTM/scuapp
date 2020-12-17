@@ -37,10 +37,10 @@ Page({
       ow_number: options.ow_number
     })
     wx.request({
-      url: app.globalData.url + '/Show_work/', //待修改
+      url: app.globalData.url + '/Com_interview_back_edit/', 
       method: "POST",
       header: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
       data: {
         ow_number: that.data.ow_number
@@ -52,12 +52,7 @@ Page({
           that.setData({
             post: res.data.post,
             manager: res.data.manager,
-            phone: res.data.phone
-          })
-        }
-        if (that.data.mianshitongzhi.length == 0) {
-          that.setData({
-            isShow: true
+            phone: res.data.phonenum
           })
         }
       }
@@ -186,7 +181,7 @@ Page({
       }, 2000)
     }else {
       wx.request({
-        url: app.globalData.url + '/Company_apply_interviewtime/',//待修改
+        url: app.globalData.url + '/Com_interview_back_send/',
         method: "POST",
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
@@ -195,7 +190,7 @@ Page({
           ow_number: that.data.ow_number,
           post: that.data.post,
           manager: that.data.manager,
-          phone: that.data.phonenum,
+          phone: that.data.phone,
           applytime1: that.data.applytime1,
           applytime2: that.data.applytime2,
           applytime3: that.data.applytime3,

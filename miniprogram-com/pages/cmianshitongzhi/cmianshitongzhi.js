@@ -17,7 +17,7 @@ Page({
   onLoad: function (options) {
     let that = this;
     wx.request({
-      url: app.globalData.url + '/Com_interview_notice_show/', //待修改,res.data里面包括post/time/place/ow_number
+      url: app.globalData.url + '/Com_interview_notice_show/', 
       method: "GET",
       header: {
         'Content-Type': 'application/json'

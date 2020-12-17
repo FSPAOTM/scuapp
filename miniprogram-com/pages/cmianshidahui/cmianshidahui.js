@@ -8,7 +8,7 @@ Page({
   data: {
     isShow:false,
     user: "",
-    info: []
+    mianshidahui: []
   },
 
   /**
@@ -20,7 +20,7 @@ Page({
       user: options.user
     })
     wx.request({
-      url: app.globalData.url + '/Show_work/', //待修改,res.data里面包括post/reason/ow_number
+      url: app.globalData.url + '/Com_interview_back_show/', 
       method: "GET",
       header: {
         'Content-Type': 'application/json'
@@ -32,10 +32,10 @@ Page({
         console.log(res);
         if (res.statusCode == 200) {
           that.setData({
-            info: res.data
+            mianshidahui: res.data
           })
         }
-        if (that.data.mianshitongzhi.length == 0) {
+        if (that.data.mianshidahui.length == 0) {
           that.setData({
             isShow: true
           })
@@ -47,12 +47,17 @@ Page({
   reapply(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
-    var ow_number = that.data.info[e].ow_number;
+    var ow_number = that.data.mianshidahui[e].ow_number;
     console.log("++++++", ev, that)
+    if(that.data.mianshidahui[e].type=="面试申请"){
     wx.navigateTo({
       url: '../cinterviewModify/cinterviewModify?ow_number='+ow_number,
     })
-  },
+  }else if(that.data.mianshidahui[e].type=="兼职申请"){
+    wx.navigateTo({
+      url: '../cjobModify/cjobModify?ow_number='+ow_number+'show02=true',//差接口
+    })
+  }},
 
   /**
    * 生命周期函数--监听页面初次渲染完成

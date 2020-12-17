@@ -227,13 +227,13 @@ Page({
             })
             if (res.data == "发布成功") {
               wx.showToast({
-                title: '提交成功！！！', //这里打印出登录成功
+                title: '提交成功！', //这里打印出登录成功
                 icon: 'success',
                 duration: 1000
               })
               setTimeout(function () {
-                wx.navigateTo({
-                  url: '../cfabu/cfabu',
+                wx.switchTab({
+                  url: '../cfabu/cfabu?show=refresh',
                 })
               }, 2000)
             }

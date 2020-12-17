@@ -7,7 +7,7 @@
   </view>
   <view class="xian2"></view>
   <view class="content" style=" height: 200px;">
-    <text style="font-size:15px; margin-top:10px; margin-left:30rpx;;" maxlength='300'>面试岗位：{{item.post}}</text>
+    <text style="font-size:15px; margin-top:10px; margin-left:30rpx;;" maxlength='300'>申请面试岗位：{{item.post}}</text>
     <text style="font-size:15px; margin-top:10px; margin-left:30rpx;;" maxlength='300'>面试时间：</text>
     <text style="font-size:15px; margin-top:10px; margin-left:30rpx;;" maxlength='300'>{{item.time}}</text>
     <text style="font-size:15px; margin-top:10px; margin-left:30rpx;;" maxlength='300'>面试地点：{{item.place}}</text>
@@ -16,5 +16,5 @@
 </view>
 
 <view class="after" wx:if="{{isShow}}">
-  <text>暂无需确认面试通知</text>
+  <text>暂无需确认的面试通知</text>
 </view>

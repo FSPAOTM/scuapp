@@ -6,7 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    mianshitongzhi:[],
+    dahuitongzhi:[],
+    count1:"",
+    count2:"",
+    show1:true,
+    show2:true
   },
 
   /**
@@ -26,7 +31,57 @@ Page({
   },
 
   onLoad: function (options) {
+    let that = this;
+    wx.request({
+      url: app.globalData.url + '/Com_interview_notice_show/', 
+      method: "GET",
+      header: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        user: app.globalData.user
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          that.setData({
+            mianshitongzhi: res.data,
+            count1:res.data.length
+          })
+          if(that.data.count1==0){
+            that.setData({
+              show1:false
+            })
+          }
+        }
+      }
+    })
 
+    wx.request({
+      url: app.globalData.url + '/Com_interview_back_show/', //待修改
+      method: "GET",
+      header: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        user: app.globalData.user
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          that.setData({
+            dahuitongzhi: res.data,
+            count2:res.data.length
+          })
+          if(that.data.count2==0){
+            that.setData({
+              show2:false
+            })
+          }
+        }
+        
+      }
+    })
   },
 
   /**

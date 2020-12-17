@@ -7,6 +7,10 @@
   margin:30rpx; 
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+}
 
 .tongzhi{
   margin-top:20rpx;
