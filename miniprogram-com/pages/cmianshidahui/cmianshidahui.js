@@ -52,9 +52,48 @@ Page({
     })
   }else if(that.data.mianshidahui[e].type=="兼职申请"){
     wx.navigateTo({
-      url: '../cjobModify/cjobModify?ow_number='+ow_number+'show02=true',//差接口
+      url: '../cjobModify/cjobModify?ow_number='+ow_number+'&show02=true&operation=dahui',//差接口
     })
   }},
+
+  onRefresh() {
+    //在当前页面显示导航条加载动画
+    wx.showNavigationBarLoading();
+    //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
+    this.getData();
+  },
+  getData() {
+    let that = this;
+    wx.request({
+      url: app.globalData.url + '/Com_interview_back_show/', 
+      method: "GET",
+      header: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        user: app.globalData.user
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          that.setData({
+            mianshidahui: res.data
+          })
+        }
+        if (that.data.mianshidahui.length == 0) {
+          that.setData({
+            isShow: true
+          })
+        }
+        //隐藏loading 提示框
+        wx.hideLoading();
+        //隐藏导航条加载动画
+        wx.hideNavigationBarLoading();
+        //停止下拉刷新
+        wx.stopPullDownRefresh();
+      }
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -88,7 +127,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.onRefresh();
   },
 
   /**

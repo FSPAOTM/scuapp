@@ -47,7 +47,7 @@ Page({
     var ow_number = that.data.mianshitongzhi[e].ow_number;
     console.log("++++++", ev, that)
     wx.request({
-      url: app.globalData.url + '/Com_interview_notice_sure/', //待修改——确认面试信息，状态改为“已确认”
+      url: app.globalData.url + '/Com_interview_notice_sure/', 
       method: "POST",
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -80,7 +80,7 @@ Page({
   getData() {
     let that = this;
     wx.request({
-      url: app.globalData.url + '/Com_interview_notice_show/', //res.data里面包括post/time/place/ow_number
+      url: app.globalData.url + '/Com_interview_notice_show/',
       method: "GET",
       header: {
         'Content-Type': 'application/json'

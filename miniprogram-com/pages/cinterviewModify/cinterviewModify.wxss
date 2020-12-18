@@ -17,6 +17,14 @@
   margin-bottom: 15px;
 }
 
+.icon{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+
 .a1{
 height: 100%;
 width: 100%;

@@ -78,6 +78,18 @@ Page({
     });
   },
 
+time2(){
+this.setData({
+  show1:true
+})
+},
+
+time3(){
+  this.setData({
+    show2:true
+  })
+},
+
   changeDateTimeColumn1(e) {
     var arr = this.data.dateTime1, dateArr = this.data.dateTimeArray1;
 
@@ -89,9 +101,6 @@ Page({
       dateTime1: arr,
       applytime1:(2020+arr[0]) +"-"+ (1+arr[1]) +"-"+ (1+arr[2]) +" "+ arr[3] +":"+ arr[4]
     });
-    this.setData({
-      show1:true
-    })
   },
 
   changeDateTimeColumn2(e) {
@@ -105,9 +114,6 @@ Page({
       dateTime2: arr,
       applytime2:(2020+arr[0]) +"-"+ (1+arr[1]) +"-"+ (1+arr[2]) +" "+ arr[3] +":"+ arr[4]
     });
-    this.setData({
-      show2:true
-    })
   },
 
   changeDateTimeColumn3(e) {
@@ -161,7 +167,7 @@ Page({
       setTimeout(function () {
         wx.hideToast()
       }, 2000)
-    } else if (this.data.phonenum.length == 0) {
+    } else if (this.data.phone.length == 0) {
       wx.showToast({
         title: '手机号不能为空!',
         icon: 'none',

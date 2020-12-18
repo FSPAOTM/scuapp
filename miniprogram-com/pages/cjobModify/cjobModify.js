@@ -6,10 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    show01:false,
-    show02:false,
-    company: "",
-    ow_number:"",
+    show01: false,
+    show02: false,
+    operation:"",
+    ow_number: "",
+    company:"",
     Name: "",
     jobtime: "",
     location: "",
@@ -23,22 +24,68 @@ Page({
   },
 
   onLoad: function (options) {
-    this.setData({
+    let that = this
+    that.setData({
       ow_number:options.ow_number,
-      Name: options.post,
-      jobtime: options.time,
-      location: options.location,
-      detail: options.detail,
-      salary: options.salary,
-      description: options.description,
-      ask: options.ask,
-      num: options.num,
-      endingtime: options.ddl,
-      ps: options.ps,
-      show01: (options.show01 == 'true') ? true : false,
+      operation: options.operation,
       show02: (options.show02 == 'true') ? true : false,
     })
-    console.log(this.data.show01)
+    console.log(that.data.ow_number)
+    console.log(that.data.show02)
+    if (that.data.operation == "dahui") {
+      wx.request({
+        url: app.globalData.url + '/Com_work_back_edit/',
+        method: "POST",
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        data: {
+          ow_number: that.data.ow_number
+        },
+        success: (res) => {
+          /*console.log(res.data);*/
+          if (res.statusCode == 200) {
+            console.log(res.data)
+            that.setData({
+              Name: res.data.Name,
+              jobtime: res.data.jobtime,
+              location: res.data.location,
+              detail: res.data.detail,
+              salary: res.data.salary,
+              description: res.data.description,
+              ask: res.data.ask,
+              num: res.data.num,
+              endingtime: res.data.endingtime,
+              ps: res.data.ps,
+            })
+          } else {
+            wx.showToast({
+              title: '请求错误',
+              icon: 'none',
+              duration: 1000
+            })
+          }
+        }
+      })
+    } else {
+      that.setData({
+        ow_number: options.ow_number,
+        Name: options.post,
+        jobtime: options.time,
+        location: options.location,
+        detail: options.detail,
+        salary: options.salary,
+        description: options.description,
+        ask: options.ask,
+        num: options.num,
+        endingtime: options.ddl,
+        ps: options.ps,
+        show01: (options.show01 == 'true') ? true : false,
+        show02: (options.show02 == 'true') ? true : false,
+      })
+      console.log(that.data.show01)
+      console.log(that.data.show01)
+    }
   },
 
   blurname: function (e) {
@@ -185,7 +232,7 @@ Page({
       setTimeout(function () {
         wx.hideToast()
       }, 2000)
-    } else{
+    } else {
       wx.request({
         url: app.globalData.url + '/Modify_outwork_info/',
         method: "POST",
@@ -193,7 +240,7 @@ Page({
           "Content-Type": "application/x-www-form-urlencoded"
         },
         data: {
-          ow_number:that.data.ow_number,
+          ow_number: that.data.ow_number,
           company: app.globalData.user,
           Name: that.data.Name,
           jobtime: that.data.jobtime,
@@ -219,7 +266,7 @@ Page({
                 duration: 1000
               })
               setTimeout(function () {
-                wx.navigateTo({
+                wx.switchTab({
                   url: '../cfabu/cfabu',
                 })
               }, 2000)
@@ -321,12 +368,13 @@ Page({
       }, 2000)
     } else {
       wx.request({
-        url: app.globalData.url + '/Part_time_post/',
+        url: app.globalData.url + '/Modify_outwork_info/',
         method: "POST",
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
         data: {
+          ow_number:that.data.ow_number,
           company: app.globalData.user,
           Name: that.data.Name,
           jobtime: that.data.jobtime,
@@ -345,14 +393,14 @@ Page({
             this.setData({
               result: res.data
             })
-            if (res.data == "发布成功") {
+            if (res.data == "修改成功") {
               wx.showToast({
                 title: '提交成功！！！', //这里打印出登录成功
                 icon: 'success',
                 duration: 1000
               })
               setTimeout(function () {
-                wx.navigateTo({
+                wx.switchTab({
                   url: '../cfabu/cfabu',
                 })
               }, 2000)
