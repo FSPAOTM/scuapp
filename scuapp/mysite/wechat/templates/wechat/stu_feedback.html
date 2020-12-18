@@ -55,8 +55,7 @@
             <td  class="td-status">
               <span class="button1 {{ line.btn_color1 }} button-mini">{{ line.stu_pingjia }}</span></td>
             <td class="td-status">
-              <a href="../stu_feedback_edit/?fd_num=[{{ line.stu_id }},{{ line.iw_number }}]">
-                  <span class="button1 {{ line.btn_color2 }} button-mini">{{ line.pingjia }}</span></a></td>
+              <span class="button1 {{ line.btn_color2 }} button-mini" onclick="x_admin_show('填写评价','../stu_feedback_edit/?fd_num=[{{ line.stu_id }},{{ line.iw_number }}]',800,600)">{{ line.pingjia }}</span></td>
             <td  class="td-status" rowspan={{ line.num }}>
               <span class="button1 {{ line.btn_color }} button-mini">{{ line.in_status }}</span></td>
             <td  class="td-manage" rowspan={{ line.num }}>
@@ -76,8 +75,7 @@
                     <span class="button1 {{ li.btn_color1 }} button-mini">{{ li.stu_pingjia }}</span></td>
             <td class="td-status">
                 <!--接口修改-->
-              <a href="../stu_feedback_edit/?fd_num=[{{ li.stu_id }},{{ line.iw_number }}]">
-                  <span class="button1 {{ li.btn_color2 }} button-mini">{{ li.pingjia }}</span></a></td>
+                  <span class="button1 {{ li.btn_color2 }} button-mini" onclick="x_admin_show('填写评价','../stu_feedback_edit/?fd_num=[{{ line.stu_id }},{{ line.iw_number }}]',800,600)">{{ li.pingjia }}</span></td>
                 </tr>
             {% endfor %}
         {% endfor %}
