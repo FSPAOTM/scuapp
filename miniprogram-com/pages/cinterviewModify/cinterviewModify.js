@@ -207,9 +207,9 @@ time3(){
             this.setData({
               result: res.data
             })
-            if (res.data == "提交成功") {
+            if (res.data == "修改成功") {
               wx.showToast({
-                title: '申请提交成功！！！', //这里打印出登录成功
+                title: '申请修改成功！', //这里打印出登录成功
                 icon: 'success',
                 duration: 1000
               })
