@@ -72,12 +72,12 @@ def interview_list(request):
                 dictionary["c_sure"] = interviewNotice.c_sure
             else:
                 dictionary["c_sure"] = "未开启"
-            if dictionary["apply_status"] == "未开启":
-                dictionary["btn_colors"] = "button-color4"
-            if dictionary["apply_status"] == "未确认":
+            if dictionary["c_sure"] == "未开启":
+                dictionary["btn_colors"] = "button-color3"
+            if dictionary["c_sure"] == "未确认":
                 dictionary["btn_colors"] = "button-color5"
-            if dictionary["apply_status"] == "已确认":
-                dictionary["btn_colors"] = "button-color6"
+            if dictionary["c_sure"] == "已确认":
+                dictionary["btn_colors"] = "button-color2"
             interview_list.append(dictionary)
     return render(request, 'wechat/interview_list.html', {'interview_list': interview_list})
 
@@ -356,14 +356,18 @@ def stu_feedback_list(request):
         if i.In_status == "工作中":
             dictionary1["stu_pingjia"] = "未开启"
             dictionary1["pingjia"] = "未开启"
+            dictionary1["btn_color1"] = "button-color5"
+            dictionary1["btn_color2"] = "button-color5"
         else:
             dictionary1["stu_pingjia"] = list2[0].apply_status
             fb_direction = "企业评价学生"
             filterResult = TbfeedbackEr.objects.filter(stu=list2[0].stu).filter(iw_number=i).filter(fb_direction=fb_direction)
             if len(filterResult) > 0:
                 dictionary1["pingjia"] = "已评价"
+                dictionary1["btn_color1"] = "button-color2"
             else:
                 dictionary1["pingjia"] = "请评价"
+                dictionary1["btn_color1"] = "button-color6"
         dictionary1["num"] = str(len(list2))
         list3 = Tbapplication.objects.filter(iw_number=i).exclude(stu=list2[0].stu)
         for j in list3:
@@ -381,8 +385,42 @@ def stu_feedback_list(request):
                     dictionary2["pingjia"] = "已评价"
                 else:
                     dictionary2["pingjia"] = "请评价"
+
+            if dictionary2["pingjia"] == "未开启":
+                dictionary2["btn_color2"] = "button-color3"
+            if dictionary2["pingjia"] == "待评价":
+                dictionary2["btn_color2"] = "button-color4"
+            if dictionary2["pingjia"] == "已评价":
+                dictionary2["btn_color2"] = "button-color2"
+            if dictionary2["stu_pingjia"] == "未开启":
+                dictionary2["btn_color1"] = "button-color3"
+            if dictionary2["stu_pingjia"] == "待评价":
+                dictionary2["btn_color1"] = "button-color4"
+            if dictionary2["stu_pingjia"] == "已评价":
+                dictionary2["btn_color1"] = "button-color2"
             dictionary1["stu_list"].append(dictionary2)
         dictionary1["in_status"] = i.In_status
+        if dictionary1["in_status"] == "已结束":
+            dictionary1["btn_color"] = "button-color5"
+        if dictionary1["in_status"] == "工作中":
+            dictionary1["btn_color"] = "button-color2"
+        if dictionary1["in_status"] == "待评价":
+            dictionary1["btn_color"] = "button-color3"
+        if dictionary1["in_status"] == "工作结束":
+            dictionary1["btn_color"] = "button-color4"
+
+        if dictionary1["pingjia"] == "未开启":
+            dictionary1["btn_color2"] = "button-color3"
+        if dictionary1["pingjia"] == "待评价":
+            dictionary1["btn_color2"] = "button-color4"
+        if dictionary1["pingjia"] == "已评价":
+            dictionary1["btn_color2"] = "button-color2"
+        if dictionary1["stu_pingjia"] == "未开启":
+            dictionary1["btn_color1"] = "button-color3"
+        if dictionary1["stu_pingjia"] == "待评价":
+            dictionary1["btn_color1"] = "button-color4"
+        if dictionary1["stu_pingjia"] == "已评价":
+            dictionary1["btn_color1"] = "button-color2"
         stu_feedback_list.append(dictionary1)
     return render(request, 'wechat/stu_feedback.html', {'stu_feedback_list': stu_feedback_list})
 
