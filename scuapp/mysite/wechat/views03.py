@@ -19,9 +19,7 @@ def stu_manage_list(request):
 
 #学生简历查看界面 修改中... 未添加URL
 def stu_manage_resume_list(request):
-    return render(request, 'wechat/stu_resume.html')
-
-
+    return render(request, 'wechat/stu_resume(弃用).html')
 
 #企业管理
 #企业列表界面——HHL
@@ -47,6 +45,8 @@ def stu_feedback_show(request):
     stu_feed = ["哇哇哇"]
     feed_content = ["awsl"]
     return render(request, 'wechat/stu_feedback_show.html')
+
+
 
 
 
