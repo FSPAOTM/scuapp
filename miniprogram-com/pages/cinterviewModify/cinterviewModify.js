@@ -1,21 +1,24 @@
 // pages/cinterviewModify/cinterviewModify.js
 var dateTimePicker = require('outer.js');
-const app=getApp()
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    show1:false,
-    show2:false,
+    show1: false,
+    show2: false,
+    show01: true,
+    show02: false,
+    show03: false,
     ow_number: "",
     post: "",
     manager: "",
     phone: "",
-    applytime1:"",
-    applytime2:"",
-    applytime3:"",
+    applytime1: "",
+    applytime2: "",
+    applytime3: "",
     dateTimeArray: null,
     dateTime: null,
     dateTimeArray1: null,
@@ -37,7 +40,7 @@ Page({
       ow_number: options.ow_number
     })
     wx.request({
-      url: app.globalData.url + '/Com_interview_back_edit/', 
+      url: app.globalData.url + '/Com_interview_back_edit/',
       method: "POST",
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -65,7 +68,11 @@ Page({
     // 精确到分的处理，将数组的秒去掉
     var lastArray = obj1.dateTimeArray.pop();
     var lastTime = obj1.dateTime.pop();
-    
+    var lastArray2 = obj2.dateTimeArray.pop();
+    var lastTime2 = obj2.dateTime.pop();
+    var lastArray3 = obj3.dateTimeArray.pop();
+    var lastTime3 = obj3.dateTime.pop();
+
     this.setData({
       dateTime: obj.dateTime,
       dateTimeArray: obj.dateTimeArray,
@@ -78,54 +85,98 @@ Page({
     });
   },
 
-time2(){
-this.setData({
-  show1:true
-})
-},
+  time2() {
+    if (this.data.show2 == false) {
+      this.setData({
+        show1: true,
+        show01: false,
+        show02: true
+      })
+    } else {
+      this.setData({
+        show1: true,
+        show01: false,
+        show02: false,
+        show03: false
+      })
+    }
+  },
 
-time3(){
-  this.setData({
-    show2:true
-  })
-},
+  delete2() {
+    if (this.data.show2 == false) {
+      this.setData({
+        show1: false,
+        show01: true,
+        show02: false,
+        applytime2: ""
+      })
+    } else {
+      this.setData({
+        show1: false,
+        show01: false,
+        show03: true,
+        applytime2: ""
+      })
+    }
+  },
+
+  time3() {
+    this.setData({
+      show2: true,
+      show01: false,
+      show02: false,
+      show03: false
+    })
+  },
+
+  delete3() {
+    this.setData({
+      show2: false,
+      show01: false,
+      show02: true,
+      applytime3: "",
+    })
+  },
 
   changeDateTimeColumn1(e) {
-    var arr = this.data.dateTime1, dateArr = this.data.dateTimeArray1;
+    var arr = this.data.dateTime1,
+      dateArr = this.data.dateTimeArray1;
 
     arr[e.detail.column] = e.detail.value;
     dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
 
-    this.setData({ 
+    this.setData({
       dateTimeArray1: dateArr,
       dateTime1: arr,
-      applytime1:(2020+arr[0]) +"-"+ (1+arr[1]) +"-"+ (1+arr[2]) +" "+ arr[3] +":"+ arr[4]
+      applytime1: (2020 + arr[0]) + "-" + (1 + arr[1]) + "-" + (1 + arr[2]) + " " + arr[3] + ":" + arr[4]
     });
   },
 
   changeDateTimeColumn2(e) {
-    var arr = this.data.dateTime2, dateArr = this.data.dateTimeArray2;
+    var arr = this.data.dateTime2,
+      dateArr = this.data.dateTimeArray2;
 
     arr[e.detail.column] = e.detail.value;
     dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
 
-    this.setData({ 
+    this.setData({
       dateTimeArray2: dateArr,
       dateTime2: arr,
-      applytime2:(2020+arr[0]) +"-"+ (1+arr[1]) +"-"+ (1+arr[2]) +" "+ arr[3] +":"+ arr[4]
+      applytime2: (2020 + arr[0]) + "-" + (1 + arr[1]) + "-" + (1 + arr[2]) + " " + arr[3] + ":" + arr[4]
     });
   },
 
   changeDateTimeColumn3(e) {
-    var arr = this.data.dateTime3, dateArr = this.data.dateTimeArray3;
+    var arr = this.data.dateTime3,
+      dateArr = this.data.dateTimeArray3;
 
     arr[e.detail.column] = e.detail.value;
     dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
 
-    this.setData({ 
+    this.setData({
       dateTimeArray3: dateArr,
       dateTime3: arr,
-      applytime3:(2020+arr[0]) +"-"+ (1+arr[1]) +"-"+ (1+arr[2]) +" "+ arr[3] +":"+ arr[4]
+      applytime3: (2020 + arr[0]) + "-" + (1 + arr[1]) + "-" + (1 + arr[2]) + " " + arr[3] + ":" + arr[4]
     });
   },
 
@@ -176,7 +227,7 @@ time3(){
       setTimeout(function () {
         wx.hideToast()
       }, 2000)
-    }else if (this.data.applytime1.length == 0) {
+    } else if (this.data.applytime1.length == 0) {
       wx.showToast({
         title: '面试申请时间不能为空!',
         icon: 'none',
@@ -185,7 +236,7 @@ time3(){
       setTimeout(function () {
         wx.hideToast()
       }, 2000)
-    }else {
+    } else {
       wx.request({
         url: app.globalData.url + '/Com_interview_back_send/',
         method: "POST",

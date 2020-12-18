@@ -8,6 +8,24 @@
   width: 100%;
 }
 
+.detail {
+  margin-left:10px;
+  color:#323232;
+  display:flex;
+  flex-direction: row;
+  margin-top:40rpx;
+  height: 100%;
+  width: 100%;
+}
+
+
+.detail .img{
+  margin-top: 3px;
+  margin-left: 5px;
+  width: 12px;
+  height: 12px;
+}
+
 .title{
   font-family:"黑体" ;
   font-weight: 1000;
