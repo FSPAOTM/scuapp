@@ -105,10 +105,8 @@ def Stu_result_sure(request):
     else:
         return HttpResponse("请求错误")
 
-
-
-#sfeedback 未调试
-def feedbackEr(request):
+#sfeedback 学生评价工作 未调试
+def Stu_feedbackEr(request):
     if request.method == "POST":
         stu = request.POST.get('stuNumber')
         ow_number = request.POST.get('ow_number')
@@ -130,16 +128,18 @@ def feedbackEr(request):
         fb_content.append(more)
         stu = Tbstudent.objects.get(stu_id=stu)
         if iw_number != '':
-            iw_number = TbinWork.objects.get(iw_number=iw_number)
-            result = TbfeedbackEr.objects.create(fb_content=fb_content, fb_direction='学生评价企业',fb_time=timezone.now(), iw_number=iw_number,stu=stu)
-            Tbapplication.objects.filter(stu=stu,iw_number=iw_number).update(apply_status='已评价')
-
+            inWork = TbinWork.objects.get(iw_number=iw_number)
+            result = TbfeedbackEr.objects.create(fb_content=fb_content, fb_direction='学生评价企业',fb_time=timezone.now(), iw_number=inWork,stu=stu)
+            Tbapplication.objects.filter(stu=stu,iw_number=inWork).update(apply_status='已评价')
+            views01.in_feedback_over(iw_number)
         else:
-            ow_number = TboutWork.objects.get(ow_number=ow_number)
-            result = TbfeedbackEr.objects.create(fb_content=fb_content, fb_direction='学生评价企业',fb_time=timezone.now(), ow_number=ow_number,stu=stu)
-            Tbapplication.objects.filter(stu=stu,ow_number=ow_number).update(apply_status='已评价')
+            outWork = TboutWork.objects.get(ow_number=ow_number)
+            result = TbfeedbackEr.objects.create(fb_content=fb_content, fb_direction='学生评价企业',fb_time=timezone.now(), ow_number=outWork,stu=stu)
+            Tbapplication.objects.filter(stu=stu,ow_number=outWork).update(apply_status='已评价')
+            views01.out_feedback_over(ow_number)
         result.save()
         return HttpResponse("评价成功")
     else:
         return HttpResponse("请求错误")
 
+#评价显示

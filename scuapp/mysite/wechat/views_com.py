@@ -1,8 +1,7 @@
 import datetime
-
 from django.shortcuts import HttpResponse,render
 from django.template import loader
-from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication,TbinterviewApply,TbinterviewNotice
+from .models import Tbcompany, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication,TbinterviewApply,TbinterviewNotice,TbfeedbackEr
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.utils import timezone
@@ -388,7 +387,8 @@ def Com_Insert_resume_show(request):
              "reason": reason}))
     else:
         return HttpResponse("请求错误")
-#cfabu 企业端结算工作 已结算按钮
+
+#cfabu 企业端结算工作 已结算按钮 未调试
 def Com_work_paid(request):
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
@@ -396,6 +396,35 @@ def Com_work_paid(request):
         TboutWork.objects.filter(ow_number=ow_number).update(ow_status="待评价")
         Tbapplication.objects.filter(ow_number=outwork).filter(apply_status="工作结束").update(apply_status="待评价")
         return HttpResponse("修改成功")
+    else:
+        return HttpResponse("请求错误")
+
+#cfeedback 企业评价学生 未调试
+def Com_feedbackEr(request):
+    if request.method == "POST":
+        stu = request.POST.get('stuNumber')
+        ow_number = request.POST.get('ow_number')
+        score = request.POST.get('score')
+        serious = request.POST.get('serious')
+        manner = request.POST.get('manner')
+        timely = request.POST.get('timely')
+        labor = request.POST.get('labor')
+        ability = request.POST.get('ability')
+        more = request.POST.get('more')
+        fb_content = []
+        fb_content.append(score)
+        fb_content.append(serious)
+        fb_content.append(timely)
+        fb_content.append(manner)
+        fb_content.append(labor)
+        fb_content.append(ability)
+        fb_content.append(more)
+        stu = Tbstudent.objects.get(stu_id=stu)
+        outWork = TboutWork.objects.get(ow_number=ow_number)
+        result = TbfeedbackEr.objects.create(fb_content=fb_content, fb_direction='企业评价学生',fb_time=timezone.now(), ow_number=outWork,stu=stu)
+        views01.out_feedback_over(ow_number)
+        result.save()
+        return HttpResponse("评价成功")
     else:
         return HttpResponse("请求错误")
 
@@ -416,5 +445,5 @@ def Modify_interview_status(request):
 
 #面试结果表生成（需要 修改工作状态 “面试阶段”到 “结果通知中”）（校外）
 
-
+#评价显示
 

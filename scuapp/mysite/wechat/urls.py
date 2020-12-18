@@ -48,18 +48,15 @@ urlpatterns = [
     path('Com_Insert_resume_show/',views_com.Com_Insert_resume_show, name='Com_Insert_resume_show'),
     path('Com_work_back_edit/',views_com.Com_work_back_edit, name='Com_work_back_edit'),
     path('Com_work_paid/',views_com.Com_work_paid, name='Com_work_paid'),
-
+    path('Com_feedbackEr/',views_com.Com_feedbackEr, name='Com_feedbackEr'),
 
          ###lhy修改 学生
     path('Stu_interview_notice_show/', views_stu.Stu_interview_notice_show, name='Stu_interview_notice_show'),
     path('Stu_interview_notice_sure/', views_stu.Stu_interview_notice_sure, name='Stu_interview_notice_sure'),
     path('Stu_result_show/', views_stu.Stu_result_show, name='Stu_result_show'),
     path('Stu_result_sure/', views_stu.Stu_result_sure, name='Stu_result_sure'),
+    path('Stu_feedbackEr/', views_stu.Stu_feedbackEr, name='Stu_feedbackEr'),
 
-
-
-        ###待修改
-    path('feedbackEr/', views_stu.feedbackEr, name='feedbackEr'),
 
 
     #后台管理界面
