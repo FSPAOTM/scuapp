@@ -101,7 +101,6 @@ def Get_outwork_info(request):
     return HttpResponse(plays_json)
 
 #cfabu 修改工作状态 “工作中” 到 “工作结束”
-@csrf_exempt
 def Get_outwork_info_end(request):
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
@@ -387,6 +386,16 @@ def Com_Insert_resume_show(request):
              "res_extra": res_extra,
              "res_per": res_per,
              "reason": reason}))
+    else:
+        return HttpResponse("请求错误")
+#cfabu 企业端结算工作 已结算按钮
+def Com_work_paid(request):
+    if request.method == "POST":
+        ow_number = request.POST.get('ow_number')
+        outwork = TboutWork.objects.get(ow_number=ow_number)
+        TboutWork.objects.filter(ow_number=ow_number).update(ow_status="待评价")
+        Tbapplication.objects.filter(ow_number=outwork).filter(apply_status="工作结束").update(apply_status="待评价")
+        return HttpResponse("修改成功")
     else:
         return HttpResponse("请求错误")
 

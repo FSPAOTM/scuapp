@@ -37,6 +37,8 @@
             <th>岗位</th>
             <th>用人部门</th>
             <th>工作内容</th>
+            <th>入职时间</th>
+            <th>离职时间</th>
             <th>录取状态</th>
             <th>工作状态</th>
           </tr>
@@ -51,6 +53,10 @@
             <td>{{ li.iw_post }}</td>
             <td>{{ li.iw_depart }}</td>
             <td>{{ li.work }}</td>
+            <td>{{ li.begin_time }}</td>
+            <td>{{ li.end_time }}</td>
+            <td>{{ li.apply_status }}</td>
+            <td>{{ li.In_status }}</td>
         </tr>
         {% endfor %}
         </tbody>
@@ -74,21 +80,27 @@
             <th>企业名称</th>
             <th>工作内容</th>
             <th>应聘理由</th>
-            <th>工作</th>
+            <th>入职时间</th>
+            <th>离职时间</th>
             <th>录取状态</th>
             <th>工作状态</th>
           </tr>
         </thead>
         <tbody>
-        {% for line in stu_outwork %}
+        {% for li in stu_outwork %}
         <tr>
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <td>{{ line.ow_number }}</td>
-            <td>{{ line.ow_post }}</td>
-            <td>{{ line.com_name }}</td>
-            <td>{{ line.work }}</td>
+            <td>{{ li.ow_number }}</td>
+            <td>{{ li.ow_post }}</td>
+            <td>{{ li.com_name }}</td>
+            <td>{{ li.work }}</td>
+            <td>{{ li.reason }}</td>
+            <td>{{ li.begin_time }}</td>
+            <td>{{ li.end_time }}</td>
+            <td>{{ li.apply_status }}</td>
+            <td>{{ li.ow_status }}</td>
         </tr>
         {% endfor %}
         </tbody>

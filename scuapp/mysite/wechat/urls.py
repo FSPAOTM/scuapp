@@ -47,6 +47,7 @@ urlpatterns = [
     path('Com_interview_back_send/',views_com.Com_interview_back_send, name='Com_interview_back_send'),
     path('Com_Insert_resume_show/',views_com.Com_Insert_resume_show, name='Com_Insert_resume_show'),
     path('Com_work_back_edit/',views_com.Com_work_back_edit, name='Com_work_back_edit'),
+    path('Com_work_paid/',views_com.Com_work_paid, name='Com_work_paid'),
 
 
          ###lhy修改 学生
