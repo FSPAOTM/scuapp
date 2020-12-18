@@ -351,7 +351,7 @@ def Com_work_back_edit(request):
             'salary': outWork.w_salary,
             'ask': outWork.w_reuire,
             'num': outWork.w_amount,
-            'endingtime': outWork.ddl_time,
+            'endingtime': str(outWork.ddl_time),
             'ps': outWork.w_ps}))
     else:
         return HttpResponse("请求错误")
