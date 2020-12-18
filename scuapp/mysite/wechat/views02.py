@@ -27,7 +27,38 @@ def inwork_foregetpwd(request):
     return render(request, 'wechat/inwork_foregetpwd.html')
 #校内兼职信息展示界面
 def inwork_list(request):
-    inwork_list = TbinWork.objects.all()
+    inwork_list = []
+    list = TbinWork.objects.all()
+    for i in list:
+        dic = {}
+        dic["iw_number"] = i.iw_number
+        dic["iw_post"] = i.iw_post
+        dic["iw_depart"] = i.iw_depart
+        dic["w_time"] = i.w_time
+        dic["w_place"] = i.w_place
+        dic["work"] = i.work
+        dic["w_salary"] = i.w_salary
+        dic["w_reuire"] = i.w_reuire
+        dic["w_amoubt"] = i.w_amount
+        dic["ddl_time"] = i.ddl_time
+        dic["inpub_time"] = i.inpub_time
+        dic["w_ps"] = i.w_ps
+        dic["In_status"] = i.In_status
+        if dic["In_status"] == "待评价":
+            dic["btn_color"] = "button-color4"
+        if dic["In_status"] == "报名中":
+            dic["btn_color"] = "button-color3"
+        if dic["In_status"] == "工作中":
+            dic["btn_color"] = "button-color2"
+        if dic["In_status"] == "报名结束":
+            dic["btn_color"] = "button-color5"
+        if dic["In_status"] == "结果通知中":
+            dic["btn_color"] = "button-color1"
+        if dic["In_status"] == "工作结束":
+            dic["btn_color"] = "button-color6"
+        if dic["In_status"] == "已结束":
+            dic["btn_color"] = "button-color7"
+        inwork_list.append(dic)
     return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
 #校内兼职信息发布界面
 def inwork_add(request):

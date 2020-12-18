@@ -27,6 +27,11 @@ def company_manage_list(request):
     company_list = Tbcompany.objects.all()
     return render(request, 'wechat/company_list.html', {'company_list': company_list})
 
+#企业所发布兼职——HHL
+def company_work(request):
+    company_work = []
+    return render(request, 'wechat/company_work.html', {'company_work': company_work})
+
 #评价管理
 #校外兼职评价展示界面——HHL 12/11
 def outwork_feedback(request):
