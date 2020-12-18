@@ -50,17 +50,13 @@
             <td rowspan={{ line.num }}>{{ line.iw_number }}</td>
             <td rowspan={{ line.num }}>{{ line.work }}</td>
             <td rowspan={{ line.num }}>{{ line.inr_phonenum }}</td>
-            {% for li in line.stu_list %}
-                <tr>
-                    <td>{{ li.name }}</td>
-                    <td>{{ li.stu_id }}</td>
-                    <td>{{ li.stu_pingjia }}</td>
+            <td>{{ line.name }}</td>
+            <td>{{ line.stu_id }}</td>
+            <td>{{ line.stu_pingjia }}</td>
             <td class="td-status">
                 <!--接口修改-->
-              <a href="../stu_feedback_edit/?fd_num=[{{ li.stu_id }},{{ li.iw_number }}]"><span class="layui-btn layui-btn-normal layui-btn-mini">{{ li.pingjia }}</span></a></td>
-                </tr>
-            {% endfor %}
-             <td  class="td-status" rowspan={{ line.num }}>
+              <a href="../stu_feedback_edit/?fd_num=[{{ line.stu_id }},{{ line.iw_number }}]"><span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.pingjia }}</span></a></td>
+            <td  class="td-status" rowspan={{ line.num }}>
               <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.in_status }}</span></td>
             <td  class="td-manage" rowspan={{ line.num }}>
               <a title="工作结束" href="../management_inWork_end/?finish_num={{ line.iw_number }}" >
@@ -71,6 +67,16 @@
               </a>
             </td>
         </tr>
+            {% for li in line.stu_list %}
+                <tr>
+                    <td>{{ li.name }}</td>
+                    <td>{{ li.stu_id }}</td>
+                    <td>{{ li.stu_pingjia }}</td>
+            <td class="td-status">
+                <!--接口修改-->
+              <a href="../stu_feedback_edit/?fd_num=[{{ li.stu_id }},{{ line.iw_number }}]"><span class="layui-btn layui-btn-normal layui-btn-mini">{{ li.pingjia }}</span></a></td>
+                </tr>
+            {% endfor %}
         {% endfor %}
         </tbody>
       </table>

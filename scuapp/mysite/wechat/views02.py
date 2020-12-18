@@ -351,8 +351,22 @@ def stu_feedback_list(request):
         dictionary1["inr_phonenum"] = inResult.inr_phonenum
         dictionary1["stu_list"] = []
         list2 = Tbapplication.objects.filter(iw_number=i)
-        dictionary1["num"] = str(len(list2)+1)
-        for j in list2:
+        dictionary1["name"] = list2[0].stu.name
+        dictionary1["stu_id"] = list2[0].stu.stu_id
+        if i.In_status == "工作中":
+            dictionary1["stu_pingjia"] = "未开启"
+            dictionary1["pingjia"] = "未开启"
+        else:
+            dictionary1["stu_pingjia"] = list2[0].apply_status
+            fb_direction = "企业评价学生"
+            filterResult = TbfeedbackEr.objects.filter(stu=list2[0].stu).filter(iw_number=i).filter(fb_direction=fb_direction)
+            if len(filterResult) > 0:
+                dictionary1["pingjia"] = "已评价"
+            else:
+                dictionary1["pingjia"] = "请评价"
+        dictionary1["num"] = str(len(list2))
+        list3 = Tbapplication.objects.filter(iw_number=i).exclude(stu=list2[0].stu)
+        for j in list3:
             dictionary2 = {}
             dictionary2["name"] = j.stu.name
             dictionary2["stu_id"] = j.stu.stu_id
@@ -380,7 +394,8 @@ def management_inWork_end(request):
         TbinWork.objects.filter(iw_number=iw_number).update(In_status="工作结束")
         Tbapplication.objects.filter(iw_number=inWork).filter(apply_status="已录用").update(apply_status="工作结束")
         stu_feedback_list = []
-        list1 = TbinWork.objects.filter(Q(In_status="已结束") | Q(In_status="工作中") | Q(In_status="待评价")| Q(In_status="工作结束"))
+        list1 = TbinWork.objects.filter(
+            Q(In_status="已结束") | Q(In_status="工作中") | Q(In_status="待评价") | Q(In_status="工作结束"))
         for i in list1:
             inResult = TbinResult.objects.get(iw_number=i)
             dictionary1 = {}
@@ -389,8 +404,23 @@ def management_inWork_end(request):
             dictionary1["inr_phonenum"] = inResult.inr_phonenum
             dictionary1["stu_list"] = []
             list2 = Tbapplication.objects.filter(iw_number=i)
-            dictionary1["num"] = str(len(list2) + 1)
-            for j in list2:
+            dictionary1["name"] = list2[0].stu.name
+            dictionary1["stu_id"] = list2[0].stu.stu_id
+            if i.In_status == "工作中":
+                dictionary1["stu_pingjia"] = "未开启"
+                dictionary1["pingjia"] = "未开启"
+            else:
+                dictionary1["stu_pingjia"] = list2[0].apply_status
+                fb_direction = "企业评价学生"
+                filterResult = TbfeedbackEr.objects.filter(stu=list2[0].stu).filter(iw_number=i).filter(
+                    fb_direction=fb_direction)
+                if len(filterResult) > 0:
+                    dictionary1["pingjia"] = "已评价"
+                else:
+                    dictionary1["pingjia"] = "请评价"
+            dictionary1["num"] = str(len(list2))
+            list3 = Tbapplication.objects.filter(iw_number=i).exclude(stu=list2[0].stu)
+            for j in list3:
                 dictionary2 = {}
                 dictionary2["name"] = j.stu.name
                 dictionary2["stu_id"] = j.stu.stu_id
@@ -400,7 +430,8 @@ def management_inWork_end(request):
                 else:
                     dictionary2["stu_pingjia"] = j.apply_status
                     fb_direction = "企业评价学生"
-                    filterResult = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=i).filter(fb_direction=fb_direction)
+                    filterResult = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=i).filter(
+                        fb_direction=fb_direction)
                     if len(filterResult) > 0:
                         dictionary2["pingjia"] = "已评价"
                     else:
@@ -420,7 +451,8 @@ def management_inWork_paid(request):
         TbinWork.objects.filter(iw_number=iw_number).update(In_status="待评价")
         Tbapplication.objects.filter(iw_number=inWork).filter(apply_status="工作结束").update(apply_status="待评价")
         stu_feedback_list = []
-        list1 = TbinWork.objects.filter(Q(In_status="已结束") | Q(In_status="工作中") | Q(In_status="待评价")| Q(In_status="工作结束"))
+        list1 = TbinWork.objects.filter(
+            Q(In_status="已结束") | Q(In_status="工作中") | Q(In_status="待评价") | Q(In_status="工作结束"))
         for i in list1:
             inResult = TbinResult.objects.get(iw_number=i)
             dictionary1 = {}
@@ -429,8 +461,23 @@ def management_inWork_paid(request):
             dictionary1["inr_phonenum"] = inResult.inr_phonenum
             dictionary1["stu_list"] = []
             list2 = Tbapplication.objects.filter(iw_number=i)
-            dictionary1["num"] = str(len(list2) + 1)
-            for j in list2:
+            dictionary1["name"] = list2[0].stu.name
+            dictionary1["stu_id"] = list2[0].stu.stu_id
+            if i.In_status == "工作中":
+                dictionary1["stu_pingjia"] = "未开启"
+                dictionary1["pingjia"] = "未开启"
+            else:
+                dictionary1["stu_pingjia"] = list2[0].apply_status
+                fb_direction = "企业评价学生"
+                filterResult = TbfeedbackEr.objects.filter(stu=list2[0].stu).filter(iw_number=i).filter(
+                    fb_direction=fb_direction)
+                if len(filterResult) > 0:
+                    dictionary1["pingjia"] = "已评价"
+                else:
+                    dictionary1["pingjia"] = "请评价"
+            dictionary1["num"] = str(len(list2))
+            list3 = Tbapplication.objects.filter(iw_number=i).exclude(stu=list2[0].stu)
+            for j in list3:
                 dictionary2 = {}
                 dictionary2["name"] = j.stu.name
                 dictionary2["stu_id"] = j.stu.stu_id
@@ -440,7 +487,8 @@ def management_inWork_paid(request):
                 else:
                     dictionary2["stu_pingjia"] = j.apply_status
                     fb_direction = "企业评价学生"
-                    filterResult = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=i).filter(fb_direction=fb_direction)
+                    filterResult = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=i).filter(
+                        fb_direction=fb_direction)
                     if len(filterResult) > 0:
                         dictionary2["pingjia"] = "已评价"
                     else:

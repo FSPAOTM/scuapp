@@ -337,7 +337,7 @@ def Com_interview_back_send(request):
     else:
         return HttpResponse("请求错误")
 
-#cinterviewModify 企业工作申请修改显示
+#cjobModify 企业工作申请修改显示
 def Com_work_back_edit(request):
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
