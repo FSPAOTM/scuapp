@@ -38,7 +38,7 @@
             <th>用人部门</th>
             <th>工作内容</th>
             <th>入职时间</th>
-            <th>离职时间</th>
+            <th>结束时间</th>
             <th>录取状态</th>
             <th>工作状态</th>
           </tr>
@@ -55,8 +55,10 @@
             <td>{{ li.work }}</td>
             <td>{{ li.begin_time }}</td>
             <td>{{ li.end_time }}</td>
-            <td>{{ li.apply_status }}</td>
-            <td>{{ li.In_status }}</td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ li.apply_status }}</span></td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ li.In_status }}</span></td>
         </tr>
         {% endfor %}
         </tbody>
@@ -81,7 +83,7 @@
             <th>工作内容</th>
             <th>应聘理由</th>
             <th>入职时间</th>
-            <th>离职时间</th>
+            <th>结束时间</th>
             <th>录取状态</th>
             <th>工作状态</th>
           </tr>
@@ -99,8 +101,10 @@
             <td>{{ li.reason }}</td>
             <td>{{ li.begin_time }}</td>
             <td>{{ li.end_time }}</td>
-            <td>{{ li.apply_status }}</td>
-            <td>{{ li.ow_status }}</td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ li.apply_status }}</span></td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ li.ow_status }}</span></td>
         </tr>
         {% endfor %}
         </tbody>

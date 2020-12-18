@@ -33,6 +33,7 @@ def in_feedback_over(k): #k为iw_number
             return ()
     number.update(In_status="已结束")
     return ()
+
 #判断面试通知是否确认完毕（修改工作状态“面试通知中”到“面试阶段”，修改面试申请状态“面试通知中”到“面试阶段”）（校外）
 def interview_sure(k): #k为i_number
     interviewNotice = TbinterviewNotice.objects.get(i_number = k)
@@ -49,7 +50,6 @@ def interview_sure(k): #k为i_number
         return ()
     else:
         return()
-
 #判断结果通知是否确认完毕（修改工作状态“结果通过中”到“工作中”）（校外）
 def out_result_sure(k): #k为ow_number
     ow_number = TboutWork.objects.get(ow_number=k)

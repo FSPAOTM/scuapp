@@ -11,7 +11,6 @@ from . import views01
 from itertools import chain
 #以下是企业
 #ccenter返回企业名称
-@csrf_exempt
 def Show_company_name(request):
     if request.method == "POST":
         phone_num = request.POST.get('phone')  #前端从Get_outwork_info界面接收ow_number并存为全局变量
@@ -21,9 +20,7 @@ def Show_company_name(request):
         #print(json.dumps({"name":com_name}))
     else:
         return HttpResponse("请求错误")
-
 #cinfofill企业信息修改显示功能
-@csrf_exempt
 def Company_info_showmodiify(request):
     if request.method == "POST":
         phone_num = request.POST.get('phone')  # 唯一标识简历的全局变量
@@ -46,9 +43,7 @@ def Company_info_showmodiify(request):
              "condition": com_condition}))
     else:
         return HttpResponse("请求错误")
-
 #cinfofill企业信息修改功能
-@csrf_exempt
 def Company_info_modiify(request):
     if request.method == "POST":
         com_License = request.POST.get('cno')  # 唯一标识简历的全局变量
@@ -63,9 +58,7 @@ def Company_info_modiify(request):
         return HttpResponse("填写完成")
     else:
         return HttpResponse("请求错误")
-
 #cjobrelease企业兼职信息发布功能
-@csrf_exempt
 def Part_time_post(request):
     if request.method == "POST":
         phone_num = request.POST.get('company')
@@ -86,9 +79,7 @@ def Part_time_post(request):
         return HttpResponse("发布成功")
     else:
         return HttpResponse("请求错误")
-
 #cfabu 企业兼职信息展示功能 后期尝试完善在这里传already
-@csrf_exempt
 def Get_outwork_info(request):
     phone_num = request.GET.get('user')#获取全局变量
     com = Tbcompany.objects.get(phone_num=phone_num)
@@ -98,8 +89,7 @@ def Get_outwork_info(request):
         plays.append({'ow_number':i.ow_number,'post':i.ow_post,'time':str(i.w_time),'location':i.w_place,'detail':i.w_place_detail,'description':i.work,'salary':i.w_salary,'ask':i.w_reuire,'num':i.w_amount,'ddl':str(i.ddl_time),'ps':i.w_ps,'status':i.ow_status})
     plays_json = json.dumps(plays,ensure_ascii=False)
     return HttpResponse(plays_json)
-
-#cfabu 修改工作状态 “工作中” 到 “工作结束”
+#cfabu 修改工作状态 “工作中” 到 “工作结束” 工作结束按钮
 def Get_outwork_info_end(request):
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
@@ -109,9 +99,7 @@ def Get_outwork_info_end(request):
         return HttpResponse("修改成功")
     else:
         return HttpResponse("请求错误")
-
 #cjobshow 企业发布兼职信息展示功能
-@csrf_exempt
 def Get_outwork_detail_info(request):
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
@@ -141,9 +129,7 @@ def Get_outwork_detail_info(request):
             "already": already}))
     else:
         return HttpResponse("请求错误")
-
 #cjobshow后的企业兼职信息修改界面
-@csrf_exempt
 def Modify_outwork_info(request):
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
@@ -173,9 +159,7 @@ class DateEncoder(json.JSONEncoder):
             return obj.strftime("%Y-%m-%d %H:%M:%S")
         else:
             return json.JSONEncoder.default(self,obj)
-
 #cworkspace 企业端报名者显示功能
-@csrf_exempt
 def Show_applicant(request):
     if request.method == "GET":
         phone_num = request.GET.get('user')
@@ -193,9 +177,6 @@ def Show_applicant(request):
         return HttpResponse(plays_json)
     else:
         return HttpResponse("请求错误")
-
-#cresumeReview 接口直接调用sinfoShow 简历显示功能????
-
 #cresumeReview 点击接受后改变applystatus状态
 def Modify_applystatus(request):
     if request.method == "POST":
@@ -213,7 +194,6 @@ def Modify_applystatus(request):
             return HttpResponse("修改失败")
     else:
         return HttpResponse("请求错误")
-
 #cinterview 企业面试申请
 @csrf_exempt
 def Company_apply_interviewtime(request):
@@ -253,7 +233,6 @@ def Company_apply_interviewtime(request):
             return HttpResponse("存在学生简历未初步审核,无法申请面试")
     else:
         return HttpResponse("请求错误")
-
 #cmianshitongzhi 企业面试通知显示
 def Com_interview_notice_show(request):
     phone_num = request.GET.get('user')
@@ -267,7 +246,6 @@ def Com_interview_notice_show(request):
             plays.append({'ow_number': i.ow_number, 'post': i.ow_post, 'time': interviewNotice.in_time, 'place': interviewNotice.i_address})
     plays_json = json.dumps(plays, ensure_ascii=False)
     return HttpResponse(plays_json)
-
 #cmianshitongzhi 企业面试通知确认
 def Com_interview_notice_sure(request):
     if request.method == "POST":
@@ -280,7 +258,6 @@ def Com_interview_notice_sure(request):
         return HttpResponse("确认成功")
     else:
         return HttpResponse("请求错误")
-
 #cmianshidahui 企业面试打回理由显示
 def Com_interview_back_show(request):
     phone_num = request.GET.get('user')
@@ -297,7 +274,6 @@ def Com_interview_back_show(request):
         plays.append({'type': "兼职申请", 'ow_number': j.ow_number, 'post': j.ow_post, 'back_reason': j.back_reason})
     plays_json = json.dumps(plays, ensure_ascii=False)
     return HttpResponse(plays_json)
-
 #cinterviewModify 企业面试申请时间修改显示
 def Com_interview_back_edit(request):
     if request.method == "POST":
@@ -307,7 +283,6 @@ def Com_interview_back_edit(request):
         return HttpResponse(json.dumps({'ow_number': number, 'post': ow_number.ow_post, 'manager': interviewApply.ia_name, 'phonenum': interviewApply.phonenumber}))
     else:
         return HttpResponse("请求错误")
-
 #cinterviewModify 企业面试申请重提交
 def Com_interview_back_send(request):
     if request.method == "POST":
@@ -334,7 +309,6 @@ def Com_interview_back_send(request):
         return HttpResponse("修改成功")
     else:
         return HttpResponse("请求错误")
-
 #cjobModify 企业工作申请修改显示
 def Com_work_back_edit(request):
     if request.method == "POST":
@@ -353,7 +327,6 @@ def Com_work_back_edit(request):
             'ps': outWork.w_ps}))
     else:
         return HttpResponse("请求错误")
-
 #cresumeReview 企业端简历显示功能
 def Com_Insert_resume_show(request):
     if request.method == "POST":
