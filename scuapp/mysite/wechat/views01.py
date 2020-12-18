@@ -76,7 +76,6 @@ def in_result_sure(k): #k为iw_number
         return ()
     else:
         return ()
-
 ######后台管理界面
 #校内兼职报名处理界面
 def inworking_list(request):

@@ -176,7 +176,7 @@ class DateEncoder(json.JSONEncoder):
         else:
             return json.JSONEncoder.default(self,obj)
 
-#cworkspace 企业端报名者显示功能 返回岗位报名者 未调试
+#cworkspace 企业端报名者显示功能
 @csrf_exempt
 def Show_applicant(request):
     if request.method == "GET":
