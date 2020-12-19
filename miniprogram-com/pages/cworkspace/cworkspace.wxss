@@ -205,10 +205,16 @@
 }
 
 .time{
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  margin-left: 60px;
   margin-top: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.areas{
+  margin-top: 10px!important;
+  width:95%!important;
+  font-size:13px
 }
 
 .fold__panel {

@@ -200,6 +200,7 @@ Page({
             }else if (res.data == "存在学生简历未初步审核,无法申请面试"){
               wx.showToast({
                 title: '存在学生简历未初步审核,无法申请面试',
+                icon:'none',
                 duration: 2000
               })
             }

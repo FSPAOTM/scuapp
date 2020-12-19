@@ -57,7 +57,7 @@ Page({
   sure1(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
-    var number = that.data.jieguotongzhi1[e].number;
+    var number = that.data.jieguotongzhi1[e].iw_number;
     var type = that.data.jieguotongzhi1[e].type;
     console.log("++++++", ev, that)
     wx.request({
@@ -90,7 +90,7 @@ Page({
   sure2(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
-    var number = that.data.jieguotongzhi2[e].number;
+    var number = that.data.jieguotongzhi2[e].ow_number;
     var type = that.data.jieguotongzhi2[e].type;
     console.log("++++++", ev, that)
     wx.request({
@@ -144,6 +144,7 @@ Page({
       success: function (res) {
         console.log(res);
         if (res.statusCode == 200) {
+          var i;
           for (i = 0; i < res.data.length; i++) {
             if (res.statusCode == 200) {
               if (res.data[i].type == "校内兼职") {

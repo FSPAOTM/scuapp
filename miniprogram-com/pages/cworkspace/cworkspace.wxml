@@ -59,7 +59,7 @@
           <!-- 标题 -->
           <view class="fold__item--head"  data-index="{{index}}" bindtap="listDataClick">
             <view class="fold__head--l">
-              <text class="fold__head--title ellipsis">岗位：{{item.post}}</text>
+              <text class="fold__head--title ellibeizhuis">岗位：{{item.post}}</text>
             </view>
             <view class="fold__head--r {{showIndex==index?'on':''}}">
               <i-icon type="arrow-down" size="24" color="#EBEBEB" />
@@ -132,19 +132,19 @@
       <modal hidden="{{hiddenmodalput}}" title="报到时间通知" confirm-text="确认" cancel-text="取消" bindcancel="cancel"
         bindconfirm="confirm">
         <view>
-          <text class='a1' style="font-size:18px;">选择岗位首次报道时间</text>
-          <picker class="time" mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1"
+          <text class='a1' style="font-size:15px;color:black">选择岗位首次报道时间</text>
+          <picker  mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1"
             bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
-            <view style="font-size:30rpx;">
+            <view class="time" style="font-size:13px;">
               {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}}
               {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
             </view>
           </picker>
         </view>
 
-        <text class='a1' style="font-size:18px;">备注</text>
-        <textarea name="ps" class="areas" placeholder='备注（最多200字）' placeholder-class='placeholder' minlength="{{min}}"
-          maxlength="{{max}}" bindinput="inputs" bindblur="blurps" auto-focus>{{ps}}</textarea>
+        <text class='a1' style="font-size:15px;color:black;margin-bottom:5px">备注</text>
+        <textarea name="beizhu" class="areas" placeholder='报到地点已默认工作详细地址，此处可填报道要求等内容（最多200字）' placeholder-class='placeholder' minlength="{{min}}"
+          maxlength="{{max}}"  bindinput="blurbeizhu" auto-focus>{{beizhu}}</textarea>
 
       </modal>
     </swiper-item>

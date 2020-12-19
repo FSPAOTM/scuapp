@@ -112,6 +112,11 @@ Page({
                 that.setData({
                   workinfo3: that.data.workinfo3
                 })
+              } else if (res.data[i].status == "工作结束") {
+                that.data.workinfo5.push(res.data[i])
+                that.setData({
+                  workinfo5: that.data.workinfo5
+                })
               } else if (res.data[i].status == "待评价") {
                 that.data.workinfo5.push(res.data[i])
                 that.setData({

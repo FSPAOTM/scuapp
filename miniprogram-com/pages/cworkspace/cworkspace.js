@@ -36,7 +36,7 @@ Page({
     numbers: [],
     count: "",
     baodaotime1: "",
-    ps: ""
+    beizhu: ""
   },
 
   modalput() {
@@ -177,6 +177,11 @@ Page({
               that.setData({
                 workinfo2: that.data.workinfo2
               })
+            } else if (res.data[i].status == "未录用") {
+              that.data.workinfo2.push(res.data[i])
+              that.setData({
+                workinfo2: that.data.workinfo2
+              })
             } else if (res.data[i].status == "表筛通过") {
               that.data.workinfo3.push(res.data[i])
               that.setData({
@@ -192,7 +197,17 @@ Page({
               that.setData({
                 workinfo4: that.data.workinfo4
               })
-            } else if (res.data[i].status == "已结算") {
+            } else if (res.data[i].status == "工作结束") {
+              that.data.workinfo5.push(res.data[i])
+              that.setData({
+                workinfo5: that.data.workinfo5
+              })
+            }else if (res.data[i].status == "待评价") {
+              that.data.workinfo5.push(res.data[i])
+              that.setData({
+                workinfo5: that.data.workinfo5
+              })
+            }else if (res.data[i].status == "已评价") {
               that.data.workinfo5.push(res.data[i])
               that.setData({
                 workinfo5: that.data.workinfo5
@@ -228,11 +243,12 @@ Page({
       dateTime1: arr,
       baodaotime1: (2020 + arr[0]) + "-" + (1 + arr[1]) + "-" + (1 + arr[2]) + " " + arr[3] + ":" + arr[4]
     });
+    console.log(this.data.baodaotime1)
   },
 
-  blurps(e) {
+  blurbeizhu(e) {
     this.setData({
-      ps: e.detail.value
+      beizhu: e.detail.value
     })
   },
 
@@ -264,7 +280,6 @@ Page({
         var j;
         for (j = 0; j < this.data.mingdan.length; j++) {
           if (item.ow_number == this.data.mingdan[j].ow_number && item.stu_number == this.data.mingdan[j].stu_number) {
-            console.log("hhhh")
             this.data.mingdan.splice(j, 1)
             this.setData({
               mingdan: this.data.mingdan
@@ -364,7 +379,7 @@ Page({
         mingdan: JSON.stringify(this.data.mingdan),
         count: this.data.count,
         time: this.data.baodaotime1,
-        ps: this.data.ps,
+        beizhu: this.data.beizhu,
       },
       success: (res) => {
         /*console.log(res.data);*/
@@ -374,7 +389,7 @@ Page({
               mingdan: [],
               count: "",
               time: "",
-              ps: ""
+              beizhu: ""
             })
             this.setData({
               hiddenmodalput: true
@@ -544,6 +559,11 @@ Page({
                 workinfo2: that.data.workinfo2
               })
             } else if (res.data[i].status == "表筛通过") {
+              that.data.workinfo3.push(res.data[i])
+              that.setData({
+                workinfo3: that.data.workinfo3
+              })
+            } else if (res.data[i].status == "面试中") {
               that.data.workinfo3.push(res.data[i])
               that.setData({
                 workinfo3: that.data.workinfo3
