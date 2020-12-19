@@ -423,18 +423,20 @@ def Com_work_employed(request):
         mingdan = json.loads(mingdan)
         number=[]
         for i in mingdan:
-            if i.ow_number not in number:
-                number.append(i.ow_number)
+            dict={}
+            dict["ow_number"]=i["ow_number"]
+            if dict not in number:
+                number.append(dict)
         for j in number:
             ir_result=[]
-            outwork = TboutWork.objects.get(ow_number=j)
+            outwork = TboutWork.objects.get(ow_number=j["ow_number"])
             interviewApply = TbinterviewApply.objects.get(ow_number=outwork)
             interviewNotice = TbinterviewNotice.objects.get(ia_number=interviewApply.ia_number)
             for i in mingdan:
-                if i.ow_number == j:
-                    stu=Tbstudent.objects.get(stu_id=i.stu_number)
+                if i["ow_number"] == j["ow_number"]:
+                    stu=Tbstudent.objects.get(stu_id=i["stu_number"])
                     Tbapplication.objects.filter(stu=stu, ow_number=outwork).update(apply_status="已录用")
-                    ir_result.append(i.stu_number)
+                    ir_result.append(i["stu_number"])
             interviewResult = TbinterviewResult.objects.create(ir_rtime=ir_rtime,ir_result=ir_result,ir_ps=ir_ps,ir_time=timezone.now(),i_number=interviewNotice)
             interviewResult.save()
             list = Tbapplication.objects.filter(ow_number=outwork)
@@ -443,7 +445,7 @@ def Com_work_employed(request):
                 if i.apply_status == "面试中":
                     k = k + 1
             if k == 0:
-                TboutWork.objects.filter(ow_number=j).filter(ow_status="面试阶段").update(ow_status="结果通知中")
+                TboutWork.objects.filter(ow_number=j["ow_number"]).filter(ow_status="面试阶段").update(ow_status="结果通知中")
         return HttpResponse("通知成功")
     else:
         return HttpResponse("请求错误")
@@ -453,18 +455,19 @@ def Com_work_unemployed(request):
     if request.method == "POST":
         mingdan = request.POST.get('mingdan')
         count = request.POST.get('count')
-        mingdan = json.loads(mingdan)
+        result = mingdan.replace("'", '"')
+        mingdan = json.loads(result)
         number=[]
         for i in mingdan:
-            dict={}
-            dict["ow_number"]=i.ow_number
-            if dict not in number:
-                number.append(dict)
+            dictionary = {}
+            dictionary["ow_number"] = i["ow_number"]
+            if dictionary not in number:
+                number.append(dictionary)
         for j in number:
-            outwork = TboutWork.objects.get(ow_number=j.ow_number)
+            outwork = TboutWork.objects.get(ow_number=j["ow_number"])
             for i in mingdan:
-                if i.ow_number == j.ow_number:
-                    stu=Tbstudent.objects.get(stu_id=i.stu_number)
+                if i["ow_number"] == j["ow_number"]:
+                    stu=Tbstudent.objects.get(stu_id=i["stu_number"])
                     Tbapplication.objects.filter(stu=stu, ow_number=outwork).update(apply_status="未录用")
             list = Tbapplication.objects.filter(ow_number=outwork)
             k = 0
@@ -472,7 +475,7 @@ def Com_work_unemployed(request):
                 if i.apply_status == "面试中":
                     k = k + 1
             if k == 0:
-                TboutWork.objects.filter(ow_number=j).filter(ow_status="面试阶段").update(ow_status="结果通知中")
+                TboutWork.objects.filter(ow_number=j["ow_number"]).filter(ow_status="面试阶段").update(ow_status="结果通知中")
         return HttpResponse("通知成功")
     else:
         return HttpResponse("请求错误")
