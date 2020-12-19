@@ -125,7 +125,7 @@ Page({
 
 
     wx.request({
-      url: app.globalData.url + '/feedbackEr/', 
+      url: app.globalData.url + '/Stu_feedbackEr/', 
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },

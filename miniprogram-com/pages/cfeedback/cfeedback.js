@@ -131,7 +131,7 @@ Page({
 
 
     wx.request({
-      url: app.globalData.url + '/feedbackEr/', //待修改
+      url: app.globalData.url + '/Com_feedbackEr/',//待调试
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },

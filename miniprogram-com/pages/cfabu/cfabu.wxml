@@ -107,13 +107,13 @@
 
     <swiper-item>
       <view class="jobrelease_management" wx:for="{{jobinfo5}}" wx:key="key" wx:for-item="item" wx:for-index="index">
-        <view class='nav-class' bindtap="cjobshow5" data-index="{{index}}">
+        <view class='nav-class'  data-index="{{index}}"><!--bindtap="cjobshow5"-->
           <view class='detailView' style="padding-left:45rpx;">
             <text class='zi'>岗位</text>
             <text class='title'>{{item.post}}</text>
             <text class="state" wx:if="{{show1}}">{{item.status}}</text>
-            <button class="end" bindtap="jiesuan" data-index="{{index}}" wx:if="{{show2}}">已结算</button>
-            <button class="end1"  wx:if="{{show3}}">已结算</button>
+            <button class="end" bindtap="jiesuan" data-index="{{index}}" wx:if="{{item.show2}}">已结算</button>
+            <button class="end1"  wx:if="{{item.show3}}">已结算</button>
           </view>
         </view>
         <view class="line"></view>

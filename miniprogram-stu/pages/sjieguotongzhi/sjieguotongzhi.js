@@ -1,4 +1,5 @@
 // pages/sjieguotongzhi/sjieguotongzhi.js
+const app=getApp()
 Page({
 
   /**
@@ -27,6 +28,7 @@ Page({
       success: function (res) {
         console.log(res);
         if (res.statusCode == 200) {
+          var i
           for (i = 0; i < res.data.length; i++) {
             if (res.statusCode == 200) {
               if (res.data[i].type == "校内兼职") {

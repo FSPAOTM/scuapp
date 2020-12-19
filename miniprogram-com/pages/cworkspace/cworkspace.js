@@ -1,12 +1,14 @@
 // pages/cworkspace/cworkspace.js
 const app = getApp();
-var dateTimePicker = require('outer.js');
+var dateTimePicker = require('outer3.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    showIndex: "",
+    show:false,
     //tap切换自定义宽高
     winWidth: 0,
     winHeight: 0,
@@ -18,7 +20,13 @@ Page({
     idArr: [
 
     ],
-    hiddenmodalput:true,
+    hiddenmodalput: true,
+    dateTimeArray: null,
+    dateTime: null,
+    dateTimeArray1: null,
+    dateTime1: null,
+    startYear: 2020,
+    endYear: 2022,
     workinfo1: [],
     workinfo2: [],
     workinfo3: [],
@@ -31,11 +39,11 @@ Page({
     ps: ""
   },
 
-modalput(){
-  this.setData({
-    hiddenmodalput: !this.data.hiddenmodalput,
-  })
-},
+  modalput() {
+    this.setData({
+      hiddenmodalput: !this.data.hiddenmodalput,
+    })
+  },
 
   swichNav: function (e) {
     var that = this;
@@ -60,7 +68,17 @@ modalput(){
     }
   },
 
-
+  listDataClick(e) {
+    if (e.currentTarget.dataset.index != this.data.showIndex) {
+      this.setData({
+        showIndex: e.currentTarget.dataset.index
+      })
+    } else {
+      this.setData({
+        showIndex: 0
+      })
+    }
+  },
 
 
   /**
@@ -93,14 +111,66 @@ modalput(){
         console.log(res);
         console.log(res.data[0].status);
         var i;
+        var baominger = []
         for (i = 0; i < res.data.length; i++) {
           if (res.statusCode == 200) {
             if (res.data[i].status == "待审核") {
-              that.data.workinfo1.push(res.data[i])
-              //that.data.user1.push(res.data[i].user)
+              var baoming = {}
+              var person = {}
+              baoming.ow_number = res.data[i].ow_number;
+              baoming.user = res.data[i].user;
+              baoming.stu_number = res.data[i].stu_number;
+              if (that.data.workinfo1.length >= 1) {
+                var j;
+                var m;
+                for (m = 0; m < that.data.workinfo1.length; m++) {
+                  console.log(that.data.workinfo1[m])
+                  if (that.data.workinfo1[m].baominger.length >= 1) {
+                    for (j = 0; j < that.data.workinfo1[m].baominger.length; j++) {
+                      if (res.data[i].ow_number == that.data.workinfo1[m].baominger[j].ow_number) {
+                        baominger.push(baoming)
+                        that.setData({
+                          workinfo1: that.data.workinfo1
+                        })
+                        break;
+                      } else {
+                        var baoming = {}
+                        var baominger = []
+                        var person = {}
+                        baoming.ow_number = res.data[i].ow_number;
+                        baoming.user = res.data[i].user;
+                        baoming.stu_number=res.data[i].stu_number
+                        baominger.push(baoming)
+                        baominger = baominger
+                        person.post = res.data[i].post
+                        person.baominger = baominger
+                        that.data.workinfo1.push(person)
+                        that.setData({
+                          workinfo1: that.data.workinfo1
+                        })
+                      }
+                    }
+                    break;
+                  } else {
+                    baominger.push(baoming)
+                    baominger = baominger
+                  }
+                }
+              } else {
+                console.log(that.data.workinfo1[m])
+                baominger.push(baoming)
+                baominger = baominger
+                person.post = res.data[i].post
+                person.baominger = baominger
+                that.data.workinfo1.push(person)
+                that.setData({
+                  workinfo1: that.data.workinfo1
+                })
+              }
+              /*that.data.workinfo1.push(res.data[i])
               that.setData({
                 workinfo1: that.data.workinfo1
-              })
+              })*/
               console.log(that.data.workinfo1)
             } else if (res.data[i].status == "表筛未通过") {
               that.data.workinfo2.push(res.data[i])
@@ -285,16 +355,16 @@ modalput(){
    */
   confirm: function () {
     wx.request({
-      url: app.globalData.url + '/Show_outwork_detail/', //待修改
+      url: app.globalData.url + '/Com_work_employed/', //待修改，已通过名单
       method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        mingdan: this.data.mingdan,
+        mingdan: JSON.stringify(this.data.mingdan),
         count: this.data.count,
         time: this.data.baodaotime1,
-        ps: this.data.ps
+        ps: this.data.ps,
       },
       success: (res) => {
         /*console.log(res.data);*/
@@ -318,14 +388,14 @@ modalput(){
 
   weitongguo() {
     wx.request({
-      url: app.globalData.url + '/Show_outwork_detail/', //待修改,未通过名单
+      url: app.globalData.url + '/Com_work_unemployed/', //待修改,未通过名单
       method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        mingdan: this.data.mingdan,
-        count: this.data.count
+        mingdan: JSON.stringify(this.data.mingdan),
+        count: this.data.count,
       },
       success: (res) => {
         /*console.log(res.data);*/
@@ -338,15 +408,14 @@ modalput(){
       }
     })
   },
-  
+
 
   yibaoming: function (ev) {
     var that = this;
-    var e = ev.currentTarget.dataset.index;
-    console.log(e)
-    console.log(that.data.workinfo1[e])
-    var ow_number = that.data.workinfo1[e].ow_number;
-    var stu_number = that.data.workinfo1[e].stu_number;
+    var ow_number = ev.currentTarget.dataset.name1;
+    var stu_number = ev.currentTarget.dataset.name2;
+    console.log(ow_number)
+    console.log(stu_number)
     console.log("++++++", ev, that)
     wx.setStorageSync("ow_number", ow_number), wx.setStorageSync("stu_number", stu_number), wx.navigateTo({
       url: "../cresumeReview/cresumeReview"
@@ -412,14 +481,62 @@ modalput(){
         console.log(res);
         console.log(res.data[0].status);
         var i;
+        var baominger = []
         for (i = 0; i < res.data.length; i++) {
           if (res.statusCode == 200) {
             if (res.data[i].status == "待审核") {
-              that.data.workinfo1.push(res.data[i])
-              //that.data.user1.push(res.data[i].user)
-              that.setData({
-                workinfo1: that.data.workinfo1
-              })
+              var baoming = {}
+              var person = {}
+              baoming.ow_number = res.data[i].ow_number;
+              baoming.user = res.data[i].user;
+              baoming.stu_number = res.data[i].stu_number;
+              if (that.data.workinfo1.length >= 1) {
+                var j;
+                var m;
+                for (m = 0; m < that.data.workinfo1.length; m++) {
+                  console.log(that.data.workinfo1[m])
+                  if (that.data.workinfo1[m].baominger.length >= 1) {
+                    for (j = 0; j < that.data.workinfo1[m].baominger.length; j++) {
+                      if (res.data[i].ow_number == that.data.workinfo1[m].baominger[j].ow_number) {
+                        baominger.push(baoming)
+                        that.setData({
+                          workinfo1: that.data.workinfo1
+                        })
+                        break;
+                      } else {
+                        var baoming = {}
+                        var baominger = []
+                        var person = {}
+                        baoming.ow_number = res.data[i].ow_number;
+                        baoming.user = res.data[i].user;
+                        baoming.stu_number=res.data[i].stu_number
+                        baominger.push(baoming)
+                        baominger = baominger
+                        person.post = res.data[i].post
+                        person.baominger = baominger
+                        that.data.workinfo1.push(person)
+                        that.setData({
+                          workinfo1: that.data.workinfo1
+                        })
+                      }
+                    }
+                    break;
+                  } else {
+                    baominger.push(baoming)
+                    baominger = baominger
+                  }
+                }
+              } else {
+                console.log(that.data.workinfo1[m])
+                baominger.push(baoming)
+                baominger = baominger
+                person.post = res.data[i].post
+                person.baominger = baominger
+                that.data.workinfo1.push(person)
+                that.setData({
+                  workinfo1: that.data.workinfo1
+                })
+              }
               console.log(that.data.workinfo1)
             } else if (res.data[i].status == "表筛未通过") {
               that.data.workinfo2.push(res.data[i])

@@ -7,8 +7,6 @@ Page({
    */
   data: {
     show1: false,
-    show2: true,
-    show3:false,
     show: "",
     jobinfo1: [],
     jobinfo2: [],
@@ -168,22 +166,16 @@ Page({
                 that.data.jobinfo5.push(res.data[i])
                 that.setData({
                   jobinfo5: that.data.jobinfo5,
-                  show2: true,
-                  show3: false
                 })
               } else if (res.data[i].status == "待评价") {
                 that.data.jobinfo5.push(res.data[i])
                 that.setData({
                   jobinfo5: that.data.jobinfo5,
-                  show2: false,
-                  show3: true
                 })
               } else if (res.data[i].status == "已结束") {
                 that.data.jobinfo5.push(res.data[i])
                 that.setData({
                   jobinfo5: that.data.jobinfo5,
-                  show2: false,
-                  show3: true
                 })
               }
             }
@@ -371,22 +363,16 @@ Page({
               that.data.jobinfo5.push(res.data[i])
               that.setData({
                 jobinfo5: that.data.jobinfo5,
-                show2: true,
-                show3: false
               })
             } else if (res.data[i].status == "待评价") {
               that.data.jobinfo5.push(res.data[i])
               that.setData({
                 jobinfo5: that.data.jobinfo5,
-                show2: false,
-                show3: true
               })
             } else if (res.data[i].status == "已结束") {
               that.data.jobinfo5.push(res.data[i])
               that.setData({
                 jobinfo5: that.data.jobinfo5,
-                show2: false,
-                show3: true
               })
             }
           }
