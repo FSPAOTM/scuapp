@@ -1,7 +1,7 @@
 import datetime
 from django.shortcuts import HttpResponse,render
 from django.template import loader
-from .models import Tbcompany, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication,TbinterviewApply,TbinterviewNotice,TbfeedbackEr
+from .models import Tbcompany, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication,TbinterviewApply,TbinterviewNotice,TbfeedbackEr,TbinterviewResult
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.utils import timezone
@@ -413,37 +413,65 @@ def Com_feedbackEr(request):
     else:
         return HttpResponse("请求错误")
 
-#cworkspace 企业工作录取结果通知 未加url 未调试
+#cworkspace 企业工作录取结果通知 未调试
 def Com_work_employed(request):
     if request.method == "POST":
         mingdan = request.POST.get('mingdan')
         count = request.POST.get('count')
         ir_rtime = request.POST.get('time')
         ir_ps = request.POST.get('ps')
-
-        judge = request.POST.get('传判断参数，为1则为面试通过，为2则为面试不通过')
-        filterResult1 = Tbapplication.objects.filter(stu='', ow_number="")
-        if len(filterResult1) > 0 and judge=="1":  #判断参数未固定
-            filterResult1.update(apply_status = '已录用')
-            return HttpResponse("请求成功")
-        else:
-            return HttpResponse("请求错误")
+        number=[]
+        for i in mingdan:
+            if i[0] not in number:
+                number.append(i[0])
+        for j in number:
+            ir_result=[]
+            outwork = TboutWork.objects.get(ow_number=j)
+            interviewApply = TbinterviewApply.objects.get(ow_number=outwork)
+            interviewNotice = TbinterviewNotice.objects.get(ia_number=interviewApply.ia_number)
+            for i in mingdan:
+                if i[0] == j:
+                    stu=Tbstudent.objects.get(stu_id=i[1])
+                    Tbapplication.objects.filter(stu=stu, ow_number=outwork).update(apply_status="已录用")
+                    ir_result.append(i[1])
+            interviewResult = TbinterviewResult.objects.create(ir_rtime=ir_rtime,ir_result=ir_result,ir_ps=ir_ps,ir_time=timezone.now(),i_number=interviewNotice)
+            interviewResult.save()
+            list = Tbapplication.objects.filter(ow_number=outwork)
+            k = 0
+            for i in list:
+                if i.apply_status == "面试中":
+                    k = k + 1
+            if k == 0:
+                TboutWork.objects.filter(ow_number=j).filter(ow_status="面试阶段").update(ow_status="结果通知中")
+        return HttpResponse("通知成功")
     else:
         return HttpResponse("请求错误")
 
-#cworkspace 企业工作未录取结果通知 未加url 未调试
+#cworkspace 企业工作未录取结果通知 未调试
 def Com_work_unemployed(request):
     if request.method == "POST":
         mingdan = request.POST.get('mingdan')
         count = request.POST.get('count')
-
-        if len() > 0:  #判断参数未固定
-            return HttpResponse("请求成功")
-        else:
-            return HttpResponse("请求错误")
+        number=[]
+        for i in mingdan:
+            if i[0] not in number:
+                number.append(i[0])
+        for j in number:
+            outwork = TboutWork.objects.get(ow_number=j)
+            for i in mingdan:
+                if i[0] == j:
+                    stu=Tbstudent.objects.get(stu_id=i[1])
+                    Tbapplication.objects.filter(stu=stu, ow_number=outwork).update(apply_status="未录用")
+            list = Tbapplication.objects.filter(ow_number=outwork)
+            k = 0
+            for i in list:
+                if i.apply_status == "面试中":
+                    k = k + 1
+            if k == 0:
+                TboutWork.objects.filter(ow_number=j).filter(ow_status="面试阶段").update(ow_status="结果通知中")
+        return HttpResponse("通知成功")
     else:
         return HttpResponse("请求错误")
-#面试结果表生成（需要 修改工作状态 “面试阶段”到 “结果通知中”）（校外）
 
 #评价显示
 
