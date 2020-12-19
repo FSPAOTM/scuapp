@@ -16,7 +16,7 @@
   </scroll-view>
 </view>
 <view class="container">
-    <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px">
+    <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height: 1020rpx">
       <!--<swiper-item>
       <view class="container">
         <view class="post" wx:for="{{workinfo1}}" wx:for-item="item" wx:for-index="index">
@@ -112,9 +112,24 @@
           </view>
         </view>-->
         <view class='btn-view'>
-          <button class='btn' bindtap="tongguo">通过面试</button>
+          <button class='btn' bindtap="modalput">通过面试</button>
           <button class='btn' bindtap="weitongguo">未通过面试</button>
         </view>
+
+        <!--弹窗-->
+<modal hidden="{{hiddenmodalput}}" title="报到时间通知" confirm-text="确认" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+  <view>
+  <text class='a1' style="font-size:26rpx;">选择岗位首次报道时间</text>
+  <picker  class="time" mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+    <view style="font-size:30rpx;">
+      {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+    </view>
+  </picker>
+</view>
+
+<textarea name="ps" class="areas" placeholder='备注（最多200字）' placeholder-class='placeholder' minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" bindblur="blurps" auto-focus>{{ps}}</textarea>
+
+</modal>
       </swiper-item>
 
 

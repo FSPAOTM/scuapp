@@ -1,5 +1,6 @@
 // pages/cworkspace/cworkspace.js
 const app = getApp();
+var dateTimePicker = require('outer3.js');
 Page({
 
   /**
@@ -17,6 +18,7 @@ Page({
     idArr: [
 
     ],
+    hiddenmodalput:true,
     workinfo1: [],
     workinfo2: [],
     workinfo3: [],
@@ -24,8 +26,16 @@ Page({
     workinfo5: [],
     mingdan: [],
     numbers: [],
-    count: ""
+    count: "",
+    baodaotime1: "",
+    ps: ""
   },
+
+modalput(){
+  this.setData({
+    hiddenmodalput: !this.data.hiddenmodalput,
+  })
+},
 
   swichNav: function (e) {
     var that = this;
@@ -50,6 +60,9 @@ Page({
     }
   },
 
+
+
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -66,11 +79,6 @@ Page({
         });
       }
     });
-
-    that.setData({
-      'stu1.index': '', //给教师对象增加名字属性
-      'stu1.name': ''
-    })
 
     wx.request({
       url: app.globalData.url + '/Show_applicant/',
@@ -124,6 +132,38 @@ Page({
         }
       }
     });
+    // 获取完整的年月日 时分秒，以及默认显示的数组
+    var obj = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
+    var obj1 = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
+    // 精确到分的处理，将数组的秒去掉
+    var lastArray = obj1.dateTimeArray.pop();
+    var lastTime = obj1.dateTime.pop();
+    this.setData({
+      dateTime: obj.dateTime,
+      dateTimeArray: obj.dateTimeArray,
+      dateTimeArray1: obj1.dateTimeArray,
+      dateTime1: obj1.dateTime,
+    })
+  },
+
+  changeDateTimeColumn1(e) {
+    var arr = this.data.dateTime1,
+      dateArr = this.data.dateTimeArray1;
+
+    arr[e.detail.column] = e.detail.value;
+    dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
+
+    this.setData({
+      dateTimeArray1: dateArr,
+      dateTime1: arr,
+      baodaotime1: (2020 + arr[0]) + "-" + (1 + arr[1]) + "-" + (1 + arr[2]) + " " + arr[3] + ":" + arr[4]
+    });
+  },
+
+  blurps(e) {
+    this.setData({
+      ps: e.detail.value
+    })
   },
 
   itemSelected: function (e) {
@@ -215,56 +255,90 @@ Page({
     })
     console.log(this.data.numbers)
     console.log(count)
-  
   },
 
-tongguo(){
-  wx.request({
-    url: app.globalData.url + '/Show_outwork_detail/',//待修改
-    method: "POST",
-    header: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    data: {
-      ow_number: ow_number,
-      mingdan:this.data.mingdan,
-      count:this.data.count
-    },
-    success: (res) => {
-      /*console.log(res.data);*/
-      if (res.statusCode == 200) {
-        this.setData({
-          mingdan:[]
-        })
-        this.onRefresh();
-      }
-    }
-  })
-},
+  /**
+   * 弹窗
+   */
+  showDialogBtn: function () {
+    this.setData({
+      hiddenmodalput: !this.data.hiddenmodalput
+    })
+  },
 
-weitongguo(){
-  wx.request({
-    url: app.globalData.url + '/Show_outwork_detail/',//待修改
-    method: "POST",
-    header: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    data: {
-      ow_number: ow_number,
-      mingdan:this.data.mingdan,
-      count:this.data.count
-    },
-    success: (res) => {
-      /*console.log(res.data);*/
-      if (res.statusCode == 200) {
-        this.setData({
-          mingdan:[]
-        })
-        this.onRefresh();
+  /**
+   * 弹出框蒙层截断touchmove事件
+   */
+  preventTouchMove: function () {},
+
+
+  /**
+   * 对话框取消按钮点击事件
+   */
+  cancel: function () {
+    this.setData({
+      hiddenmodalput: true
+    });
+  },
+  /**
+   * 对话框确认按钮点击事件
+   */
+  confirm: function () {
+    wx.request({
+      url: app.globalData.url + '/Show_outwork_detail/', //待修改
+      method: "POST",
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        mingdan: this.data.mingdan,
+        count: this.data.count,
+        time: this.data.baodaotime1,
+        ps: this.data.ps
+      },
+      success: (res) => {
+        /*console.log(res.data);*/
+        if (res.statusCode == 200) {
+          if (res.data == "通知成功") {
+            this.setData({
+              mingdan: [],
+              count: "",
+              time: "",
+              ps: ""
+            })
+            this.setData({
+              hiddenmodalput: true
+            });
+            this.onRefresh();
+          }
+        }
       }
-    }
-  })
-},
+    })
+  },
+
+  weitongguo() {
+    wx.request({
+      url: app.globalData.url + '/Show_outwork_detail/', //待修改,未通过名单
+      method: "POST",
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        mingdan: this.data.mingdan,
+        count: this.data.count
+      },
+      success: (res) => {
+        /*console.log(res.data);*/
+        if (res.statusCode == 200) {
+          this.setData({
+            mingdan: []
+          })
+          this.onRefresh();
+        }
+      }
+    })
+  },
+  
 
   yibaoming: function (ev) {
     var that = this;
@@ -378,7 +452,7 @@ weitongguo(){
         wx.stopPullDownRefresh();
       }
     });
-    
+
   },
 
   /**

@@ -18,7 +18,7 @@
 </view>
 
 <view class="container">
-  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height: {{winHeight}}rpx">
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height: 1020rpx">
 
     <swiper-item>
       <view class="jobrelease_management" wx:for="{{jobinfo1}}" wx:key="key" wx:for-item="item" wx:for-index="index">
