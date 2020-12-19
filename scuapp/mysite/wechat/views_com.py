@@ -420,6 +420,7 @@ def Com_work_employed(request):
         count = request.POST.get('count')
         ir_rtime = request.POST.get('time')
         ir_ps = request.POST.get('ps')
+        mingdan = json.loads(mingdan)
         number=[]
         for i in mingdan:
             if i[0] not in number:
@@ -452,6 +453,7 @@ def Com_work_unemployed(request):
     if request.method == "POST":
         mingdan = request.POST.get('mingdan')
         count = request.POST.get('count')
+        mingdan = json.loads(mingdan)
         number=[]
         for i in mingdan:
             if i[0] not in number:
