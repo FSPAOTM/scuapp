@@ -1,6 +1,6 @@
 // pages/cworkspace/cworkspace.js
 const app = getApp();
-var dateTimePicker = require('outer3.js');
+var dateTimePicker = require('outer.js');
 Page({
 
   /**

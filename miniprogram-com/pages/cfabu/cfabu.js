@@ -8,6 +8,7 @@ Page({
   data: {
     show1: false,
     show2: true,
+    show3:false,
     show: "",
     jobinfo1: [],
     jobinfo2: [],
@@ -64,7 +65,7 @@ Page({
     var ow_number = that.data.jobinfo5[e].ow_number;
     console.log(ow_number)
     wx.request({
-      url: app.globalData.url + '/Get_outwork_info_end/', //待修改
+      url: app.globalData.url + '/Com_work_paid/',
       method: "POST",
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -99,7 +100,7 @@ Page({
         that.setData({
           winWidth: res.windowWidth,
           winHeight: res.windowHeight
-        });//系统宽高有问题
+        }); //系统宽高有问题
       }
     });
     that.setData({
@@ -163,15 +164,26 @@ Page({
                 that.setData({
                   jobinfo4: that.data.jobinfo4
                 })
+              } else if (res.data[i].status == "工作结束") {
+                that.data.jobinfo5.push(res.data[i])
+                that.setData({
+                  jobinfo5: that.data.jobinfo5,
+                  show2: true,
+                  show3: false
+                })
               } else if (res.data[i].status == "待评价") {
                 that.data.jobinfo5.push(res.data[i])
                 that.setData({
-                  jobinfo5: that.data.jobinfo5
+                  jobinfo5: that.data.jobinfo5,
+                  show2: false,
+                  show3: true
                 })
               } else if (res.data[i].status == "已结束") {
                 that.data.jobinfo5.push(res.data[i])
                 that.setData({
-                  jobinfo5: that.data.jobinfo5
+                  jobinfo5: that.data.jobinfo5,
+                  show2: false,
+                  show3: true
                 })
               }
             }
@@ -355,15 +367,26 @@ Page({
               that.setData({
                 jobinfo4: that.data.jobinfo4
               })
+            } else if (res.data[i].status == "工作结束") {
+              that.data.jobinfo5.push(res.data[i])
+              that.setData({
+                jobinfo5: that.data.jobinfo5,
+                show2: true,
+                show3: false
+              })
             } else if (res.data[i].status == "待评价") {
               that.data.jobinfo5.push(res.data[i])
               that.setData({
-                jobinfo5: that.data.jobinfo5
+                jobinfo5: that.data.jobinfo5,
+                show2: false,
+                show3: true
               })
             } else if (res.data[i].status == "已结束") {
               that.data.jobinfo5.push(res.data[i])
               that.setData({
-                jobinfo5: that.data.jobinfo5
+                jobinfo5: that.data.jobinfo5,
+                show2: false,
+                show3: true
               })
             }
           }

@@ -113,6 +113,7 @@
             <text class='title'>{{item.post}}</text>
             <text class="state" wx:if="{{show1}}">{{item.status}}</text>
             <button class="end" bindtap="jiesuan" data-index="{{index}}" wx:if="{{show2}}">已结算</button>
+            <button class="end1"  wx:if="{{show3}}">已结算</button>
           </view>
         </view>
         <view class="line"></view>
