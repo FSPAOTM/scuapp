@@ -456,13 +456,13 @@ def Com_work_unemployed(request):
         mingdan = json.loads(mingdan)
         number=[]
         for i in mingdan:
-            if i[0] not in number:
-                number.append(i[0])
+            if i.ow_number not in number:
+                number.append(i.ow_number)
         for j in number:
             outwork = TboutWork.objects.get(ow_number=j)
             for i in mingdan:
-                if i[0] == j:
-                    stu=Tbstudent.objects.get(stu_id=i[1])
+                if i.ow_number == j:
+                    stu=Tbstudent.objects.get(stu_id=i.stu_number)
                     Tbapplication.objects.filter(stu=stu, ow_number=outwork).update(apply_status="未录用")
             list = Tbapplication.objects.filter(ow_number=outwork)
             k = 0
