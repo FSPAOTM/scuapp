@@ -419,7 +419,7 @@ def Com_work_employed(request):
         mingdan = request.POST.get('mingdan')
         count = request.POST.get('count')
         ir_rtime = request.POST.get('time')
-        ir_ps = request.POST.get('ps')
+        ir_ps = request.POST.get('beizhu')
         mingdan = json.loads(mingdan)
         number=[]
         for i in mingdan:
