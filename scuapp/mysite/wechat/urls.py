@@ -49,6 +49,8 @@ urlpatterns = [
     path('Com_work_back_edit/',views_com.Com_work_back_edit, name='Com_work_back_edit'),
     path('Com_work_paid/',views_com.Com_work_paid, name='Com_work_paid'),
     path('Com_feedbackEr/',views_com.Com_feedbackEr, name='Com_feedbackEr'),
+    path('Com_work_employed/',views_com.Com_work_employed, name='Com_work_employed'),
+    path('Com_work_unemployed/',views_com.Com_work_unemployed, name='Com_work_unemployed'),
 
          ###lhy修改 学生
     path('Stu_interview_notice_show/', views_stu.Stu_interview_notice_show, name='Stu_interview_notice_show'),

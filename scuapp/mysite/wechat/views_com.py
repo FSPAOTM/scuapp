@@ -86,7 +86,19 @@ def Get_outwork_info(request):
     result = TboutWork.objects.filter(com_number=com)#获取对象
     plays = []
     for i in result:
-        plays.append({'ow_number':i.ow_number,'post':i.ow_post,'time':str(i.w_time),'location':i.w_place,'detail':i.w_place_detail,'description':i.work,'salary':i.w_salary,'ask':i.w_reuire,'num':i.w_amount,'ddl':str(i.ddl_time),'ps':i.w_ps,'status':i.ow_status})
+        if i.ow_status =="工作结束":
+            plays.append({'ow_number':i.ow_number,'post':i.ow_post,'time':str(i.w_time),'location':i.w_place,'detail':i.w_place_detail,'description':i.work,'salary':i.w_salary,'ask':i.w_reuire,'num':i.w_amount,'ddl':str(i.ddl_time),'ps':i.w_ps,'status':i.ow_status,'show2': True,'show3': False})
+        else:
+            if i.ow_status =="待评价" or i.ow_status =="已结束":
+                plays.append({'ow_number': i.ow_number, 'post': i.ow_post, 'time': str(i.w_time), 'location': i.w_place,
+                              'detail': i.w_place_detail, 'description': i.work, 'salary': i.w_salary,
+                              'ask': i.w_reuire, 'num': i.w_amount, 'ddl': str(i.ddl_time), 'ps': i.w_ps,
+                              'status': i.ow_status, 'show2': False, 'show3': True})
+            else:
+                plays.append({'ow_number': i.ow_number, 'post': i.ow_post, 'time': str(i.w_time), 'location': i.w_place,
+                              'detail': i.w_place_detail, 'description': i.work, 'salary': i.w_salary,
+                              'ask': i.w_reuire, 'num': i.w_amount, 'ddl': str(i.ddl_time), 'ps': i.w_ps,
+                              'status': i.ow_status})
     plays_json = json.dumps(plays,ensure_ascii=False)
     return HttpResponse(plays_json)
 #cfabu 修改工作状态 “工作中” 到 “工作结束” 工作结束按钮
@@ -401,13 +413,16 @@ def Com_feedbackEr(request):
     else:
         return HttpResponse("请求错误")
 
-#企业面试结果修改界面 未加url 未调试
-def Modify_interview_status(request):
+#cworkspace 企业工作录取结果通知 未加url 未调试
+def Com_work_employed(request):
     if request.method == "POST":
-        ow_number = request.POST.get('XXXXX')
-        stu = request.POST.get('XXXXX')
+        mingdan = request.POST.get('mingdan')
+        count = request.POST.get('count')
+        ir_rtime = request.POST.get('time')
+        ir_ps = request.POST.get('ps')
+
         judge = request.POST.get('传判断参数，为1则为面试通过，为2则为面试不通过')
-        filterResult1 = Tbapplication.objects.filter(stu=stu, ow_number=ow_number)
+        filterResult1 = Tbapplication.objects.filter(stu='', ow_number="")
         if len(filterResult1) > 0 and judge=="1":  #判断参数未固定
             filterResult1.update(apply_status = '已录用')
             return HttpResponse("请求成功")
@@ -416,6 +431,18 @@ def Modify_interview_status(request):
     else:
         return HttpResponse("请求错误")
 
+#cworkspace 企业工作未录取结果通知 未加url 未调试
+def Com_work_unemployed(request):
+    if request.method == "POST":
+        mingdan = request.POST.get('mingdan')
+        count = request.POST.get('count')
+
+        if len() > 0:  #判断参数未固定
+            return HttpResponse("请求成功")
+        else:
+            return HttpResponse("请求错误")
+    else:
+        return HttpResponse("请求错误")
 #面试结果表生成（需要 修改工作状态 “面试阶段”到 “结果通知中”）（校外）
 
 #评价显示
