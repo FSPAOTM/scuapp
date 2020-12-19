@@ -17,7 +17,7 @@ def stu_manage_list(request):
     stu_list = Tbstudent.objects.all()
     return render(request, 'wechat/stu_list.html', {'stu_list': stu_list})
 
-#学生工作经历详情界面(修改ing)
+#学生工作经历详情界面
 def stu_experience(request):
     stu_id = request.GET.get('stu_num')
     stu = Tbstudent.objects.get(stu_id=stu_id)
@@ -33,18 +33,21 @@ def stu_experience(request):
             dictionary["work"] = i.iw_number.work
             dictionary["apply_status"] = i.apply_status
             dictionary["In_status"] = i.iw_number.In_status
-            Result0 = TbinResult.objects.filter(iw_number=i.iw_number)
-            if len(Result0) > 0:
-                Result1 = TbinResult.objects.get(iw_number=i.iw_number)
-                dictionary["begin_time"] = Result1.r_time
+            inResult = TbinResult.objects.filter(iw_number=i.iw_number)
+            if len(inResult) > 0:
+                inResult1 = TbinResult.objects.get(iw_number=i.iw_number)
+                dictionary["begin_time"] = inResult1.r_time
+                feedbackEr0 = TbfeedbackEr.objects.filter(stu=stu).filter(iw_number=i.iw_number).filter(
+                    fb_direction="学生评价企业")
+                if len(feedbackEr0) > 0:
+                    feedbackEr1 = TbfeedbackEr.objects.filter(stu=stu).filter(iw_number=i.iw_number).get(
+                        fb_direction="学生评价企业")
+                    dictionary["end_time"] = str(feedbackEr1.fb_time)
+                else:
+                    dictionary["end_time"] = "未结束"
             else:
                 dictionary["begin_time"] = "未入职"
-            feedbackEr0 = TbfeedbackEr.objects.filter(stu=stu).filter(iw_number=i.iw_number).filter(fb_direction="学生评价企业")
-            if len(feedbackEr0) > 0:
-                feedbackEr1 = TbfeedbackEr.objects.filter(stu=stu).filter(iw_number=i.iw_number).get(fb_direction="学生评价企业")
-                dictionary["end_time"] = str(feedbackEr1.fb_time)
-            else:
-                dictionary["end_time"] = "未结束"
+                dictionary["end_time"] = "未入职"
             stu_inwork.append(dictionary)
         else:
             dictionary1 = {}
@@ -55,29 +58,34 @@ def stu_experience(request):
             dictionary1["apply_status"] = i.apply_status
             dictionary1["ow_status"] = i.ow_number.ow_status
             dictionary1["reason"] = i.ap_reson
-            if dictionary1["ow_status"]==" ":
-
-
-
-
+            interviewApply = TbinterviewApply.objects.filter(ow_number=i.ow_number)
+            if len(interviewApply)>0:
                 interviewApply = TbinterviewApply.objects.get(ow_number=i.ow_number)
-                interviewNotice = TbinterviewNotice.objects.get(ia_number=interviewApply.ia_number)
-                interviewResult = TbinterviewResult.objects.get(i_number=interviewNotice)
-                Result0 = TbinterviewResult.objects.filter(iw_number=i.iw_number)
-            if len(Result0) > 0:
-                Result1 = TbinResult.objects.get(iw_number=i.iw_number)
-                dictionary1["begin_time"] = Result1.r_time
+                interviewNotice = TbinterviewNotice.objects.filter(ia_number=interviewApply.ia_number)
+                if len(interviewNotice)>0:
+                    interviewNotice = TbinterviewNotice.objects.get(ia_number=interviewApply.ia_number)
+                    interviewResult = TbinterviewResult.objects.filter(i_number=interviewNotice)
+                    if len(interviewResult)>0:
+                        interviewResult = TbinterviewResult.objects.get(i_number=interviewNotice)
+                        dictionary1["begin_time"]=interviewResult.ir_rtime
+                        feedbackEr0 = TbfeedbackEr.objects.filter(stu=stu).filter(ow_number=i.ow_number).filter(
+                            fb_direction="学生评价企业")
+                        if len(feedbackEr0) > 0:
+                            feedbackEr1 = TbfeedbackEr.objects.filter(stu=stu).filter(ow_number=i.ow_number).get(
+                                fb_direction="学生评价企业")
+                            dictionary1["end_time"] = str(feedbackEr1.fb_time)
+                        else:
+                            dictionary1["end_time"] = "未结束"
+                    else:
+                        dictionary1["begin_time"] = "未入职"
+                        dictionary1["end_time"] = "未入职"
+                else:
+                    dictionary1["begin_time"] = "未入职"
+                    dictionary1["end_time"] = "未入职"
             else:
                 dictionary1["begin_time"] = "未入职"
-            feedbackEr0 = TbfeedbackEr.objects.filter(stu=stu).filter(iw_number=i.iw_number).filter(
-                fb_direction="学生评价企业")
-            if len(feedbackEr0) > 0:
-                feedbackEr1 = TbfeedbackEr.objects.filter(stu=stu).filter(iw_number=i.iw_number).get(
-                    fb_direction="学生评价企业")
-                dictionary1["end_time"] = str(feedbackEr1.fb_time)
-            else:
-                dictionary1["end_time"] = "未结束"
-            stu_inwork.append(dictionary1)
+                dictionary1["end_time"] = "未入职"
+            stu_outwork.append(dictionary1)
     return render(request, 'wechat/stu_work.html', {'stu_inwork': stu_inwork, 'stu_outwork': stu_outwork})
 
 

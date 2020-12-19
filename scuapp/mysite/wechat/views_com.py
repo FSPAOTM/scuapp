@@ -79,7 +79,7 @@ def Part_time_post(request):
         return HttpResponse("发布成功")
     else:
         return HttpResponse("请求错误")
-#cfabu 企业兼职信息展示功能 后期尝试完善在这里传already
+#cfabu 企业兼职信息展示功能 后期尝试完善在这里传already 未调试
 def Get_outwork_info(request):
     phone_num = request.GET.get('user')#获取全局变量
     com = Tbcompany.objects.get(phone_num=phone_num)
