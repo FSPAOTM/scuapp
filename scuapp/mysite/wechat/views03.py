@@ -25,7 +25,7 @@ def stu_experience(request):
     stu_inwork=[]
     stu_outwork=[]
     for i in list:
-        if i.ow_number =="":
+        if i.ow_number is None:
             dictionary = {}
             dictionary["iw_number"] = i.iw_number.iw_number
             dictionary["iw_post"] = i.iw_number.iw_post

@@ -509,7 +509,10 @@ def management_outWork_reject(request):
     outWork = TboutWork.objects.get(ow_number=ow_number)
     if outWork.ow_status == "待审核" or outWork.ow_status == "已打回" :
         c_phonenum = outWork.com_number.phone_num
-        back_reason = outWork.back_reason
+        if outWork.back_reason is None:
+            back_reason = ""
+        else:
+            back_reason = outWork.back_reason
         return render(request, 'wechat/reject_result.html', {'ow_number': ow_number,'c_phonenum':c_phonenum,'back_reason': back_reason})
     else:
         return render(request, 'wechat/manage_error.html')

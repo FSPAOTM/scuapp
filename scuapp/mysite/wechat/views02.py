@@ -180,8 +180,12 @@ def interview_notice_send(request):
             for j in stu:
                 k=k+1
             i_num = str(k)+"人"
+            if interviewNotice.i_address is None:
+                i_address = ""
+            else:
+                i_address = interviewNotice.i_address
             return render(request, 'wechat/notice_send.html', {'i_number': interviewNotice.i_number, 'ia_number': interviewNotice.ia_number, 'i_com': i_com,
-                 'i_num': i_num, 'in_time': interviewNotice.in_time, 'i_address': interviewNotice.i_address})
+                 'i_num': i_num, 'in_time': interviewNotice.in_time, 'i_address': i_address})
         else:
             apply = Tbapplication.objects.filter(ow_number=outwork.ow_number).filter(apply_status="表筛通过")
             stu = []
@@ -265,7 +269,10 @@ def interview_back_reason(request):
     outwork = interviewApply.ow_number
     if interviewApply.apply_status == "待审核" or interviewApply.apply_status == "已打回":
         c_phonenum = interviewApply.phonenumber
-        back_reason = interviewApply.back_reason
+        if interviewApply.back_reason is None:
+            back_reason = ""
+        else:
+            back_reason = interviewApply.back_reason
         return render(request, 'wechat/back_reason.html', {'ow_number': outwork.ow_number,'ia_number':ia_number,'c_phonenum':c_phonenum,'back_reason': back_reason})
     else:
         return render(request, 'wechat/manage_error.html')
@@ -370,7 +377,7 @@ def interview_stu_result(request):
     return render(request, 'wechat/stu_result.html', {'stu_result': stu_result})
 
 #校内兼职学生评价
-#评价学生管理总列表  （界面改后待改）
+#评价学生管理总列表
 def stu_feedback_list(request):
     stu_feedback_list = []
     list1 = TbinWork.objects.filter(Q(In_status="已结束") | Q(In_status="工作中") | Q(In_status="待评价")| Q(In_status="工作结束"))
@@ -455,7 +462,7 @@ def stu_feedback_list(request):
         stu_feedback_list.append(dictionary1)
     return render(request, 'wechat/stu_feedback.html', {'stu_feedback_list': stu_feedback_list})
 
-#校内工作结束  （界面改后待改）
+#校内工作结束
 def management_inWork_end(request):
     iw_number = request.GET.get('finish_num')
     inWork=TbinWork.objects.get(iw_number=iw_number)
@@ -512,7 +519,7 @@ def management_inWork_end(request):
     else:
         return render(request, 'wechat/manage_error.html')
 
-#校内工作结算  （界面改后待改）
+#校内工作结算
 def management_inWork_paid(request):
     iw_number = request.GET.get('finish_num')
     inWork=TbinWork.objects.get(iw_number=iw_number)

@@ -39,12 +39,12 @@
 .button1:last-child{border-radius:0 2px 2px 0}
 .button1+.button1{margin-left:0}
 
-.button-color1{background-color: #0D41FF}
-.button-color2{background-color: #29ff34}
+.button-color1{background-color: #CCA54C}
+.button-color2{background-color: #81A346}
 .button-color3{background-color: #F1D02B}
 .button-color4{background-color: #E8740C}
-.button-color5{background-color: #FF0000}
-.button-color6{background-color: #9D0CE8}
+.button-color5{background-color: #F05226}
+.button-color6{background-color: #9E5465}
 .button-color7{background-color: rgba(0,203,155,0.96)}
 
 
