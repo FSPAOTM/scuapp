@@ -119,6 +119,7 @@ urlpatterns = [
     #用户管理
     path('stu_manage_list/', views03.stu_manage_list, name='stu_manage_list'),
     path('stu_experience/', views03.stu_experience, name='stu_experience'),
+    path('stu_manage_resume_list/', views03.stu_manage_resume_list, name='stu_manage_resume_list'),
 
 
     #待修改

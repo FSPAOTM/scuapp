@@ -89,9 +89,12 @@ def stu_experience(request):
     return render(request, 'wechat/stu_work.html', {'stu_inwork': stu_inwork, 'stu_outwork': stu_outwork})
 
 
-#学生简历查看界面 修改中... 未添加URL
+#学生简历查看界面 修改中
 def stu_manage_resume_list(request):
-    return render(request, 'wechat/stu_resume.html')
+    str = request.GET.get('res_num')
+    res_id =str[17:27]
+    resume = Tbresume.objects.get(res_id=res_id)
+    return render(request, 'wechat/stu_resume.html',{'resume': resume})
 
 #企业管理
 #企业列表界面——HHL
