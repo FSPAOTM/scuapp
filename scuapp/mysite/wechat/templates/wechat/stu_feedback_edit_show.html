@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>学生评价展示</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../static/wechat/css/font.css">
+    <link rel="stylesheet" href="../../static/wechat/css/xadmin.css">
+    <link href="../../static/wechat/css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../static/wechat/js/js1.js"></script>
+    <script type="text/javascript" src="../../static/wechat/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../static/wechat/js/xadmin.js"></script>
+    <script src="../static/js/js2.js"></script>
+    <script src="../static/js/js3.js"></script>
+</head>
+
+<body>
+    <!--<div class="formbody">
+        <a href="../stu_feedback_list/"><button class="layui-btn" >返回</button></a>-->
+    <div class="formtitle"><span>学生评价展示</span></div>
+
+    <form action="#" method="post">
+        <ul class="forminfo">
+            <li><label style="font-size: 16px">学号</label><input name="stu_id" value="{{ stu_id }}" type="text" class="dfinput" readonly/></li>
+            <li><label style="font-size: 16px">姓名</label><input name="name" value="{{ name }}" type="text" class="dfinput" readonly/></li>
+            <li><label style="font-size: 16px">岗位</label><input value="{{ work }}" name="work" type="text" class="dfinput" readonly/></li>
+            <li><label style="font-size: 16px">分数</label><input value="{{ score }}" name="score" type="text" class="dfinput" readonly/></li>
+            <li></li>
+            <li><label style="font-size: 16px">评价</label><textarea name="fb_content" cols="" rows="" class="textinput" readonly>{{ content }}</textarea></li>
+            <li><label style="font-size: 16px">评价时间</label><input value="{{ time }}" name="time" type="text" class="dfinput" readonly/></li>
+            <!--提交按钮绑定另一接口-->
+        </ul>
+    </form>
+
+
+</div>
+
+</body>
+
+</html>

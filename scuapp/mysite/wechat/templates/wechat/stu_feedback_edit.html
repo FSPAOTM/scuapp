@@ -16,12 +16,6 @@
     <script type="text/javascript" src="../../static/wechat/js/xadmin.js"></script>
     <script src="../static/js/js2.js"></script>
     <script src="../static/js/js3.js"></script>
-    <script>
-        function success(){
-            if(back_reason.value != "")
-            alert("操作成功！")
-        }
-    </script>
 </head>
 
 <body>
@@ -42,15 +36,15 @@
                 <label style="font-size: 14px"><input name="score" type="radio" value="5">&nbsp;&nbsp;5</label>
             </li>
             <li><label style="font-size: 16px">内容</label>
-                <label style="font-size: 14px"><input name="class" type="checkbox" value="认真负责">&nbsp;&nbsp;认真负责</label>
-                <label style="font-size: 14px"><input name="class" type="checkbox" value="态度端正">&nbsp;&nbsp;态度端正</label>
-                <label style="font-size: 14px"><input name="class" type="checkbox" value="联系及时">&nbsp;&nbsp;联系及时</label>
-                <label style="font-size: 14px"><input name="class" type="checkbox" value="吃苦耐劳">&nbsp;&nbsp;吃苦耐劳</label>
-                <label style="font-size: 14px"><input name="class" type="checkbox" value="工作能力强">&nbsp;&nbsp;工作能力强</label>
+                <label style="font-size: 14px"><input name="class1" type="radio" value="认真负责">&nbsp;&nbsp;认真负责</label>
+                <label style="font-size: 14px"><input name="class2" type="radio" value="态度端正">&nbsp;&nbsp;态度端正</label>
+                <label style="font-size: 14px"><input name="class3" type="radio" value="联系及时">&nbsp;&nbsp;联系及时</label>
+                <label style="font-size: 14px"><input name="class4" type="radio" value="吃苦耐劳">&nbsp;&nbsp;吃苦耐劳</label>
+                <label style="font-size: 14px"><input name="class5" type="radio" value="工作能力强">&nbsp;&nbsp;工作能力强</label>
             </li>
             <li></li>
-            <li><label style="font-size: 16px">评价</label><textarea name="fb_content" cols="" rows="" class="textinput" required>{{ fb_content }}</textarea><i>*</i></li>
-            <li><label>&nbsp</label><input name="保存" onclick="success()" type="submit" class="btn" value="保存"/><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><a href="../interview_back_reason_send/?submit_num={{ ia_number }}"><input name="" type="button" class="btn" value="提交"/></a></li>
+            <li><label style="font-size: 16px">评价</label><textarea name="fb_content" cols="" rows="" class="textinput" required></textarea><i>*</i></li>
+            <li><label>&nbsp</label><input name="提交" type="submit" class="btn" value="提交"/></li>
             <!--提交按钮绑定另一接口-->
         </ul>
     </form>

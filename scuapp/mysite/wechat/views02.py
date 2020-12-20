@@ -576,13 +576,33 @@ def management_inWork_paid(request):
     else:
         return render(request, 'wechat/manage_error.html')
 
-#编辑学生评价(界面需修改）
+#校内编辑学生评价
 def stu_feedback_edit(request):
     fd_list = request.GET.get('fd_list')
     fd_list = json.loads(fd_list)
     pingjia =fd_list[2]
     iw_number = fd_list[1]
     stu_id = fd_list[0]
+    inWork = TbinWork.objects.get(iw_number=iw_number)
+    stu =Tbstudent.objects.get(stu_id=stu_id)
+    if pingjia =="请评价":
+        return render(request, 'wechat/stu_feedback_edit.html', {'stu_id': stu_id,'name': stu.name,'work': inWork.iw_post})
+    if pingjia =="已评价":
+        feedbackEr = TbfeedbackEr.objects.filter(stu =stu).filter(iw_number =inWork).get(fb_direction="企业评价学生")
+        fb_content = json.loads(feedbackEr.fb_content)
+        content =""
+        for i in fb_content:
+            if i !=0 and i !="":
+                content = content + i
+        if content =="":
+            content = "无多余评价"
+
+        return render(request, 'wechat/stu_feedback_edit_show.html',
+                      {'stu_id': stu_id, 'name': stu.name, 'work': inWork.iw_post, "score" : fb_content[0] , "content" : content, "time":str(feedbackEr.fb_time)})
+
+
+
+
 
 
     return render(request, 'wechat/stu_feedback_edit.html')
