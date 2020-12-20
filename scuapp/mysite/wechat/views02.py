@@ -412,7 +412,7 @@ def stu_feedback_list(request):
             dictionary2 = {}
             dictionary2["name"] = j.stu.name
             dictionary2["stu_id"] = j.stu.stu_id
-            if i.In_status == "工作中":
+            if i.In_status == "工作中"or i.In_status == "工作结束":
                 dictionary2["stu_pingjia"] = "未开启"
                 dictionary2["pingjia"] = "未开启"
             else:
@@ -504,7 +504,7 @@ def management_inWork_end(request):
                 dictionary2 = {}
                 dictionary2["name"] = j.stu.name
                 dictionary2["stu_id"] = j.stu.stu_id
-                if i.In_status == "工作中":
+                if i.In_status == "工作中"or i.In_status == "工作结束":
                     dictionary2["stu_pingjia"] = "未开启"
                     dictionary2["pingjia"] = "未开启"
                 else:
@@ -599,7 +599,7 @@ def management_inWork_paid(request):
                 dictionary2 = {}
                 dictionary2["name"] = j.stu.name
                 dictionary2["stu_id"] = j.stu.stu_id
-                if i.In_status == "工作中":
+                if i.In_status == "工作中"or i.In_status == "工作结束":
                     dictionary2["stu_pingjia"] = "未开启"
                     dictionary2["pingjia"] = "未开启"
                 else:
@@ -759,7 +759,7 @@ def stu_feedback_edit_save(request):
                 dictionary2 = {}
                 dictionary2["name"] = j.stu.name
                 dictionary2["stu_id"] = j.stu.stu_id
-                if i.In_status == "工作中":
+                if i.In_status == "工作中"or i.In_status == "工作结束":
                     dictionary2["stu_pingjia"] = "未开启"
                     dictionary2["pingjia"] = "未开启"
                 else:
