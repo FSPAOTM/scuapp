@@ -578,10 +578,15 @@ def management_inWork_paid(request):
 
 #编辑学生评价(界面需修改）
 def stu_feedback_edit(request):
-#判断状态、表是否存在跳转不同界面与逻辑
+    fd_list = request.GET.get('fd_list')
+    fd_list = json.loads(fd_list)
+    pingjia =fd_list[2]
+    iw_number = fd_list[1]
+    stu_id = fd_list[0]
+
 
     return render(request, 'wechat/stu_feedback_edit.html')
-
+#判断状态、表是否存在跳转不同界面与逻辑
 
 
 

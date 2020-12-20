@@ -55,7 +55,7 @@
             <td  class="td-status">
               <span class="button1 {{ line.btn_color1 }} button-mini">{{ line.stu_pingjia }}</span></td>
             <td class="td-status">
-              <span class="button1 {{ line.btn_color2 }} button-mini" onclick="x_admin_show('填写评价','../stu_feedback_edit/?fd_num=[{{ line.stu_id }},{{ line.iw_number }}]',800,600)">{{ line.pingjia }}</span></td>
+              <span class="button1 {{ line.btn_color2 }} button-mini" onclick="x_admin_show('填写评价','../stu_feedback_edit/?fd_list=[{{ line.stu_id }},{{ line.iw_number }},{{ line.pingjia }}]',800,600)">{{ line.pingjia }}</span></td>
             <td  class="td-status" rowspan={{ line.num }}>
               <span class="button1 {{ line.btn_color }} button-mini">{{ line.in_status }}</span></td>
             <td  class="td-manage" rowspan={{ line.num }}>
