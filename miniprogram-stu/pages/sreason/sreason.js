@@ -55,7 +55,7 @@ Page({
           } else if (res.data == "该学生已报名") {
             wx.showToast({
               title: '请勿重复报名！',
-              icon: 'success',
+              icon: 'none',
               duration: 2000
             })
             setTimeout(function () {

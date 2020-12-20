@@ -133,6 +133,12 @@ Page({
                   url: '../smyJob/smyJob?show=refresh',
                 })
               }, 2000)
+            }else if(res.data == "该学生已报名"){
+              wx.showToast({
+                title: '请勿重复报名',
+                icon: 'none',
+                duration: 2000
+              })
             }
           }
         }
