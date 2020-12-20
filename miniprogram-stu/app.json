@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/login/login",
     "pages/index/index",
     "pages/logs/logs",
     "pages/sjieguotongzhi/sjieguotongzhi",
@@ -9,7 +10,7 @@
     "pages/spingjia/spingjia",
     "pages/sfeedback/sfeedback",
     "pages/smyJob/smyJob",
-    "pages/login/login",
+    
     "pages/repwd1/repwd1",
     "pages/sbaoming/sbaoming",
     "pages/sallJob/sallJob",

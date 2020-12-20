@@ -373,7 +373,7 @@ def Com_Insert_resume_show(request):
     else:
         return HttpResponse("请求错误")
 
-#cfabu 企业端结算工作 已结算按钮 未调试
+#cfabu 企业端结算工作 已结算按钮
 def Com_work_paid(request):
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
@@ -384,7 +384,7 @@ def Com_work_paid(request):
     else:
         return HttpResponse("请求错误")
 
-#cfeedback 企业评价学生 未调试
+#cfeedback 企业评价学生
 def Com_feedbackEr(request):
     if request.method == "POST":
         stu = request.POST.get('stuNumber')
@@ -413,7 +413,7 @@ def Com_feedbackEr(request):
     else:
         return HttpResponse("请求错误")
 
-#cworkspace 企业工作录取结果通知 未调试
+#cworkspace 企业工作录取结果通知
 def Com_work_employed(request):
     if request.method == "POST":
         mingdan = request.POST.get('mingdan')
@@ -450,7 +450,7 @@ def Com_work_employed(request):
     else:
         return HttpResponse("请求错误")
 
-#cworkspace 企业工作未录取结果通知 未调试
+#cworkspace 企业工作未录取结果通知
 def Com_work_unemployed(request):
     if request.method == "POST":
         mingdan = request.POST.get('mingdan')
@@ -480,5 +480,50 @@ def Com_work_unemployed(request):
     else:
         return HttpResponse("请求错误")
 
-#评价显示
+#cpingjia 评价企业展示 未调试
+def Com_pingjia_me(request):
+    phone_num = request.GET.get('user')
+    com = Tbcompany.objects.get(phone_num=phone_num)
+    outWork = TboutWork.objects.filter(com_number=com)
+    plays = []
+    for i in outWork:
+        feedbackEr = TbfeedbackEr.objects.filter(ow_number=i).filter(fb_direction="学生评价企业")
+        for j in feedbackEr:
+            b_content0 = j.fb_content.replace("'", '"')
+            fb_content = json.loads(b_content0)
+            content = ""
+            for i in fb_content:
+                if i != fb_content[0] and i != "":
+                    content = content + i + ","
+            if content == "":
+                content = "无评价内容"
+            else:
+                content = content[:-1]
+            plays.append({'stu':"匿名用户",'ow_number': j.ow_number.ow_number, 'post': j.ow_number.ow_post, 'time': str(j.fb_time),'score': fb_content[0],'content': content})
+    plays_json = json.dumps(plays, ensure_ascii=False)
+    return HttpResponse(plays_json)
 
+#cpingjia 企业的评价展示 未调试
+def Com_my_pingjia(request):
+    phone_num = request.GET.get('user')
+    com = Tbcompany.objects.get(phone_num=phone_num)
+    outWork = TboutWork.objects.filter(com_number=com)
+    plays = []
+    for i in outWork:
+        feedbackEr = TbfeedbackEr.objects.filter(ow_number=i).filter(fb_direction="企业评价学生")
+        for j in feedbackEr:
+            b_content0 = j.fb_content.replace("'", '"')
+            fb_content = json.loads(b_content0)
+            content = ""
+            for i in fb_content:
+                if i != fb_content[0] and i != "":
+                    content = content + i + ","
+            if content == "":
+                content = "无评价内容"
+            else:
+                content = content[:-1]
+            plays.append(
+                {'stu': j.stu.name, 'ow_number': j.ow_number.ow_number, 'post': j.ow_number.ow_post, 'time': str(j.fb_time),
+                 'score': fb_content[0], 'content': content})
+    plays_json = json.dumps(plays, ensure_ascii=False)
+    return HttpResponse(plays_json)
