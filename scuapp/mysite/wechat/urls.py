@@ -116,6 +116,10 @@ urlpatterns = [
     path('interview_stu_result/', views02.interview_stu_result, name='interview_stu_result'),
     path('management_inWork_end/', views02.management_inWork_end, name='management_inWork_end'),
     path('management_inWork_paid/', views02.management_inWork_paid, name='management_inWork_paid'),
+    path('stu_feedback_edit/', views02.stu_feedback_edit, name='stu_feedback_edit'),
+    path('stu_feedback_list/', views02.stu_feedback_list, name='stu_feedback_list'),
+    path('stu_feedback_edit_save/', views02.stu_feedback_edit_save, name='stu_feedback_edit_save'),
+
     #用户管理
     path('stu_manage_list/', views03.stu_manage_list, name='stu_manage_list'),
     path('stu_experience/', views03.stu_experience, name='stu_experience'),
@@ -123,9 +127,6 @@ urlpatterns = [
 
 
     #待修改
-    path('stu_feedback_edit/', views02.stu_feedback_edit, name='stu_feedback_edit'),
-    path('stu_feedback_list/', views02.stu_feedback_list, name='stu_feedback_list'),
-
 
     path('company_manage_list/', views03.company_manage_list, name='company_manage_list'),
     path('outwork_feedback/', views03.outwork_feedback, name='outwork_feedback'),

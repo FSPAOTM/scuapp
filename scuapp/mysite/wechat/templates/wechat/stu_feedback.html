@@ -75,7 +75,7 @@
                     <span class="button1 {{ li.btn_color1 }} button-mini">{{ li.stu_pingjia }}</span></td>
             <td class="td-status">
                 <!--接口修改-->
-                  <span class="button1 {{ li.btn_color2 }} button-mini" onclick="x_admin_show('填写评价','../stu_feedback_edit/?fd_num=[{{ line.stu_id }},{{ line.iw_number }}]',800,600)">{{ li.pingjia }}</span></td>
+                  <span class="button1 {{ li.btn_color2 }} button-mini" onclick="x_admin_show('填写评价','../stu_feedback_edit/?fd_list=[{{ li.stu_id }},{{ line.iw_number }},{{ li.pingjia }}]',800,600)">{{ li.pingjia }}</span></td>
                 </tr>
             {% endfor %}
         {% endfor %}

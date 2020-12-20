@@ -385,7 +385,7 @@ def stu_feedback_list(request):
         inResult = TbinResult.objects.get(iw_number=i)
         dictionary1 = {}
         dictionary1["iw_number"] = i.iw_number
-        dictionary1["work"] = i.work
+        dictionary1["work"] = i.iw_post
         dictionary1["inr_phonenum"] = inResult.inr_phonenum
         dictionary1["stu_list"] = []
         list2 = Tbapplication.objects.filter(iw_number=i)
@@ -466,7 +466,7 @@ def stu_feedback_list(request):
 def management_inWork_end(request):
     iw_number = request.GET.get('finish_num')
     inWork=TbinWork.objects.get(iw_number=iw_number)
-    if inWork.In_status == "工作中" or inWork.In_status == "工作结束":
+    if inWork.In_status == "工作中":
         TbinWork.objects.filter(iw_number=iw_number).update(In_status="工作结束")
         Tbapplication.objects.filter(iw_number=inWork).filter(apply_status="已录用").update(apply_status="工作结束")
         stu_feedback_list = []
@@ -476,7 +476,7 @@ def management_inWork_end(request):
             inResult = TbinResult.objects.get(iw_number=i)
             dictionary1 = {}
             dictionary1["iw_number"] = i.iw_number
-            dictionary1["work"] = i.work
+            dictionary1["work"] = i.iw_post
             dictionary1["inr_phonenum"] = inResult.inr_phonenum
             dictionary1["stu_list"] = []
             list2 = Tbapplication.objects.filter(iw_number=i)
@@ -485,6 +485,8 @@ def management_inWork_end(request):
             if i.In_status == "工作中":
                 dictionary1["stu_pingjia"] = "未开启"
                 dictionary1["pingjia"] = "未开启"
+                dictionary1["btn_color1"] = "button-color5"
+                dictionary1["btn_color2"] = "button-color5"
             else:
                 dictionary1["stu_pingjia"] = list2[0].apply_status
                 fb_direction = "企业评价学生"
@@ -492,8 +494,10 @@ def management_inWork_end(request):
                     fb_direction=fb_direction)
                 if len(filterResult) > 0:
                     dictionary1["pingjia"] = "已评价"
+                    dictionary1["btn_color1"] = "button-color2"
                 else:
                     dictionary1["pingjia"] = "请评价"
+                    dictionary1["btn_color1"] = "button-color6"
             dictionary1["num"] = str(len(list2))
             list3 = Tbapplication.objects.filter(iw_number=i).exclude(stu=list2[0].stu)
             for j in list3:
@@ -512,8 +516,42 @@ def management_inWork_end(request):
                         dictionary2["pingjia"] = "已评价"
                     else:
                         dictionary2["pingjia"] = "请评价"
+
+                if dictionary2["pingjia"] == "未开启":
+                    dictionary2["btn_color2"] = "button-color3"
+                if dictionary2["pingjia"] == "待评价":
+                    dictionary2["btn_color2"] = "button-color4"
+                if dictionary2["pingjia"] == "已评价":
+                    dictionary2["btn_color2"] = "button-color2"
+                if dictionary2["stu_pingjia"] == "未开启":
+                    dictionary2["btn_color1"] = "button-color3"
+                if dictionary2["stu_pingjia"] == "待评价":
+                    dictionary2["btn_color1"] = "button-color4"
+                if dictionary2["stu_pingjia"] == "已评价":
+                    dictionary2["btn_color1"] = "button-color2"
                 dictionary1["stu_list"].append(dictionary2)
             dictionary1["in_status"] = i.In_status
+            if dictionary1["in_status"] == "已结束":
+                dictionary1["btn_color"] = "button-color5"
+            if dictionary1["in_status"] == "工作中":
+                dictionary1["btn_color"] = "button-color2"
+            if dictionary1["in_status"] == "待评价":
+                dictionary1["btn_color"] = "button-color3"
+            if dictionary1["in_status"] == "工作结束":
+                dictionary1["btn_color"] = "button-color4"
+
+            if dictionary1["pingjia"] == "未开启":
+                dictionary1["btn_color2"] = "button-color3"
+            if dictionary1["pingjia"] == "待评价":
+                dictionary1["btn_color2"] = "button-color4"
+            if dictionary1["pingjia"] == "已评价":
+                dictionary1["btn_color2"] = "button-color2"
+            if dictionary1["stu_pingjia"] == "未开启":
+                dictionary1["btn_color1"] = "button-color3"
+            if dictionary1["stu_pingjia"] == "待评价":
+                dictionary1["btn_color1"] = "button-color4"
+            if dictionary1["stu_pingjia"] == "已评价":
+                dictionary1["btn_color1"] = "button-color2"
             stu_feedback_list.append(dictionary1)
         return render(request, 'wechat/stu_feedback.html', {'stu_feedback_list': stu_feedback_list})
     else:
@@ -523,7 +561,7 @@ def management_inWork_end(request):
 def management_inWork_paid(request):
     iw_number = request.GET.get('finish_num')
     inWork=TbinWork.objects.get(iw_number=iw_number)
-    if inWork.In_status == "工作结束" or inWork.In_status == "待评价":
+    if inWork.In_status == "工作结束":
         TbinWork.objects.filter(iw_number=iw_number).update(In_status="待评价")
         Tbapplication.objects.filter(iw_number=inWork).filter(apply_status="工作结束").update(apply_status="待评价")
         stu_feedback_list = []
@@ -533,7 +571,7 @@ def management_inWork_paid(request):
             inResult = TbinResult.objects.get(iw_number=i)
             dictionary1 = {}
             dictionary1["iw_number"] = i.iw_number
-            dictionary1["work"] = i.work
+            dictionary1["work"] = i.iw_post
             dictionary1["inr_phonenum"] = inResult.inr_phonenum
             dictionary1["stu_list"] = []
             list2 = Tbapplication.objects.filter(iw_number=i)
@@ -542,6 +580,8 @@ def management_inWork_paid(request):
             if i.In_status == "工作中":
                 dictionary1["stu_pingjia"] = "未开启"
                 dictionary1["pingjia"] = "未开启"
+                dictionary1["btn_color1"] = "button-color5"
+                dictionary1["btn_color2"] = "button-color5"
             else:
                 dictionary1["stu_pingjia"] = list2[0].apply_status
                 fb_direction = "企业评价学生"
@@ -549,8 +589,10 @@ def management_inWork_paid(request):
                     fb_direction=fb_direction)
                 if len(filterResult) > 0:
                     dictionary1["pingjia"] = "已评价"
+                    dictionary1["btn_color1"] = "button-color2"
                 else:
                     dictionary1["pingjia"] = "请评价"
+                    dictionary1["btn_color1"] = "button-color6"
             dictionary1["num"] = str(len(list2))
             list3 = Tbapplication.objects.filter(iw_number=i).exclude(stu=list2[0].stu)
             for j in list3:
@@ -569,8 +611,42 @@ def management_inWork_paid(request):
                         dictionary2["pingjia"] = "已评价"
                     else:
                         dictionary2["pingjia"] = "请评价"
+
+                if dictionary2["pingjia"] == "未开启":
+                    dictionary2["btn_color2"] = "button-color3"
+                if dictionary2["pingjia"] == "待评价":
+                    dictionary2["btn_color2"] = "button-color4"
+                if dictionary2["pingjia"] == "已评价":
+                    dictionary2["btn_color2"] = "button-color2"
+                if dictionary2["stu_pingjia"] == "未开启":
+                    dictionary2["btn_color1"] = "button-color3"
+                if dictionary2["stu_pingjia"] == "待评价":
+                    dictionary2["btn_color1"] = "button-color4"
+                if dictionary2["stu_pingjia"] == "已评价":
+                    dictionary2["btn_color1"] = "button-color2"
                 dictionary1["stu_list"].append(dictionary2)
             dictionary1["in_status"] = i.In_status
+            if dictionary1["in_status"] == "已结束":
+                dictionary1["btn_color"] = "button-color5"
+            if dictionary1["in_status"] == "工作中":
+                dictionary1["btn_color"] = "button-color2"
+            if dictionary1["in_status"] == "待评价":
+                dictionary1["btn_color"] = "button-color3"
+            if dictionary1["in_status"] == "工作结束":
+                dictionary1["btn_color"] = "button-color4"
+
+            if dictionary1["pingjia"] == "未开启":
+                dictionary1["btn_color2"] = "button-color3"
+            if dictionary1["pingjia"] == "待评价":
+                dictionary1["btn_color2"] = "button-color4"
+            if dictionary1["pingjia"] == "已评价":
+                dictionary1["btn_color2"] = "button-color2"
+            if dictionary1["stu_pingjia"] == "未开启":
+                dictionary1["btn_color1"] = "button-color3"
+            if dictionary1["stu_pingjia"] == "待评价":
+                dictionary1["btn_color1"] = "button-color4"
+            if dictionary1["stu_pingjia"] == "已评价":
+                dictionary1["btn_color1"] = "button-color2"
             stu_feedback_list.append(dictionary1)
         return render(request, 'wechat/stu_feedback.html', {'stu_feedback_list': stu_feedback_list})
     else:
@@ -579,34 +655,162 @@ def management_inWork_paid(request):
 #校内编辑学生评价
 def stu_feedback_edit(request):
     fd_list = request.GET.get('fd_list')
-    fd_list = json.loads(fd_list)
-    pingjia =fd_list[2]
-    iw_number = fd_list[1]
-    stu_id = fd_list[0]
+    local1 =fd_list.rfind(",")+1
+    local2 = fd_list.rfind(",",0,15)+1
+    local3 = local1-1
+    pingjia =fd_list[local1:]
+    pingjia =pingjia.replace("]","")
+    iw_number = fd_list[local2:local3]
+    stu_id = fd_list[1:14]
     inWork = TbinWork.objects.get(iw_number=iw_number)
     stu =Tbstudent.objects.get(stu_id=stu_id)
     if pingjia =="请评价":
-        return render(request, 'wechat/stu_feedback_edit.html', {'stu_id': stu_id,'name': stu.name,'work': inWork.iw_post})
+        return render(request, 'wechat/stu_feedback_edit.html', {'stu_id': stu_id,'name': stu.name,'work': inWork.iw_post,'iw_number':iw_number})
     if pingjia =="已评价":
         feedbackEr = TbfeedbackEr.objects.filter(stu =stu).filter(iw_number =inWork).get(fb_direction="企业评价学生")
-        fb_content = json.loads(feedbackEr.fb_content)
+        b_content0 = feedbackEr.fb_content.replace("'",'"')
+        fb_content = json.loads(b_content0)
         content =""
         for i in fb_content:
-            if i !=0 and i !="":
-                content = content + i
+            if i != fb_content[0] and i !="":
+                content = content + i +","
         if content =="":
-            content = "无多余评价"
-
+            content = "无评价内容"
+        else:
+            content = content[:-1]
         return render(request, 'wechat/stu_feedback_edit_show.html',
                       {'stu_id': stu_id, 'name': stu.name, 'work': inWork.iw_post, "score" : fb_content[0] , "content" : content, "time":str(feedbackEr.fb_time)})
+    if pingjia =="未开启":
+        return render(request, 'wechat/manage_feedback_error.html')
 
+#校内编辑学生评价提交
+def stu_feedback_edit_save(request):
+    if request.method == "POST":
+        stu_id = request.POST.get('stu_id')
+        iw_number = request.POST.get('iw_number')
+        score = request.POST.get('score')
+        class1 = request.POST.get('class1')
+        class2 = request.POST.get('class2')
+        class3 = request.POST.get('class3')
+        class4 = request.POST.get('class4')
+        class5 = request.POST.get('class5')
+        content = request.POST.get('fb_content')
+        fb_content = []
+        fb_content.append(score)
+        if class1 is not None:
+            fb_content.append(class1)
+        else:
+            fb_content.append("")
+        if class2 is not None:
+            fb_content.append(class2)
+        else:
+            fb_content.append("")
+        if class3 is not None:
+            fb_content.append(class3)
+        else:
+            fb_content.append("")
+        if class4 is not None:
+            fb_content.append(class4)
+        else:
+            fb_content.append("")
+        if class5 is not None:
+            fb_content.append(class5)
+        else:
+            fb_content.append("")
+        fb_content.append(content)
+        stu = Tbstudent.objects.get(stu_id=stu_id)
+        inWork = TbinWork.objects.get(iw_number=iw_number)
+        result = TbfeedbackEr.objects.create(fb_content=fb_content, fb_direction='企业评价学生', fb_time=timezone.now(),
+                                             iw_number=inWork, stu=stu)
+        views01.in_feedback_over(iw_number)
+        result.save()
+        stu_feedback_list = []
+        list1 = TbinWork.objects.filter(
+            Q(In_status="已结束") | Q(In_status="工作中") | Q(In_status="待评价") | Q(In_status="工作结束"))
+        for i in list1:
+            inResult = TbinResult.objects.get(iw_number=i)
+            dictionary1 = {}
+            dictionary1["iw_number"] = i.iw_number
+            dictionary1["work"] = i.iw_post
+            dictionary1["inr_phonenum"] = inResult.inr_phonenum
+            dictionary1["stu_list"] = []
+            list2 = Tbapplication.objects.filter(iw_number=i)
+            dictionary1["name"] = list2[0].stu.name
+            dictionary1["stu_id"] = list2[0].stu.stu_id
+            if i.In_status == "工作中":
+                dictionary1["stu_pingjia"] = "未开启"
+                dictionary1["pingjia"] = "未开启"
+                dictionary1["btn_color1"] = "button-color5"
+                dictionary1["btn_color2"] = "button-color5"
+            else:
+                dictionary1["stu_pingjia"] = list2[0].apply_status
+                fb_direction = "企业评价学生"
+                filterResult = TbfeedbackEr.objects.filter(stu=list2[0].stu).filter(iw_number=i).filter(
+                    fb_direction=fb_direction)
+                if len(filterResult) > 0:
+                    dictionary1["pingjia"] = "已评价"
+                    dictionary1["btn_color1"] = "button-color2"
+                else:
+                    dictionary1["pingjia"] = "请评价"
+                    dictionary1["btn_color1"] = "button-color6"
+            dictionary1["num"] = str(len(list2))
+            list3 = Tbapplication.objects.filter(iw_number=i).exclude(stu=list2[0].stu)
+            for j in list3:
+                dictionary2 = {}
+                dictionary2["name"] = j.stu.name
+                dictionary2["stu_id"] = j.stu.stu_id
+                if i.In_status == "工作中":
+                    dictionary2["stu_pingjia"] = "未开启"
+                    dictionary2["pingjia"] = "未开启"
+                else:
+                    dictionary2["stu_pingjia"] = j.apply_status
+                    fb_direction = "企业评价学生"
+                    filterResult = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=i).filter(
+                        fb_direction=fb_direction)
+                    if len(filterResult) > 0:
+                        dictionary2["pingjia"] = "已评价"
+                    else:
+                        dictionary2["pingjia"] = "请评价"
 
+                if dictionary2["pingjia"] == "未开启":
+                    dictionary2["btn_color2"] = "button-color3"
+                if dictionary2["pingjia"] == "待评价":
+                    dictionary2["btn_color2"] = "button-color4"
+                if dictionary2["pingjia"] == "已评价":
+                    dictionary2["btn_color2"] = "button-color2"
+                if dictionary2["stu_pingjia"] == "未开启":
+                    dictionary2["btn_color1"] = "button-color3"
+                if dictionary2["stu_pingjia"] == "待评价":
+                    dictionary2["btn_color1"] = "button-color4"
+                if dictionary2["stu_pingjia"] == "已评价":
+                    dictionary2["btn_color1"] = "button-color2"
+                dictionary1["stu_list"].append(dictionary2)
+            dictionary1["in_status"] = i.In_status
+            if dictionary1["in_status"] == "已结束":
+                dictionary1["btn_color"] = "button-color5"
+            if dictionary1["in_status"] == "工作中":
+                dictionary1["btn_color"] = "button-color2"
+            if dictionary1["in_status"] == "待评价":
+                dictionary1["btn_color"] = "button-color3"
+            if dictionary1["in_status"] == "工作结束":
+                dictionary1["btn_color"] = "button-color4"
 
-
-
-
-    return render(request, 'wechat/stu_feedback_edit.html')
-#判断状态、表是否存在跳转不同界面与逻辑
+            if dictionary1["pingjia"] == "未开启":
+                dictionary1["btn_color2"] = "button-color3"
+            if dictionary1["pingjia"] == "待评价":
+                dictionary1["btn_color2"] = "button-color4"
+            if dictionary1["pingjia"] == "已评价":
+                dictionary1["btn_color2"] = "button-color2"
+            if dictionary1["stu_pingjia"] == "未开启":
+                dictionary1["btn_color1"] = "button-color3"
+            if dictionary1["stu_pingjia"] == "待评价":
+                dictionary1["btn_color1"] = "button-color4"
+            if dictionary1["stu_pingjia"] == "已评价":
+                dictionary1["btn_color1"] = "button-color2"
+            stu_feedback_list.append(dictionary1)
+        return render(request, 'wechat/stu_feedback.html', {'stu_feedback_list': stu_feedback_list})
+    else:
+        return HttpResponse("请求错误")
 
 
 
