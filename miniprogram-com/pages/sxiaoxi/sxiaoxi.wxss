@@ -1,0 +1,192 @@
+/* pages/sxiaoxi/sxiaoxi.wxss */
+
+.message-list{
+  /* background-color:#f2f2f2; */
+  display: flex;
+  flex-direction: column;
+}
+.user{
+  display: flex;
+  flex-direction: row;
+}
+.user-content{
+  display: flex;
+  flex-direction: column;
+}
+.header-icon{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 80rpx;
+  margin-left: 20rpx;
+  margin-top: 26rpx;
+}
+.firstline{
+  display: flex;
+  flex-direction: row;
+}
+.apart{
+  margin-left: 30rpx;
+  display: flex;
+  flex-direction: row;
+  width: 400rpx;
+}
+.username{
+  font-size: 30rpx;
+  margin-top: 26rpx;
+  font-weight: 400;
+}
+
+.time{
+  display: flex;
+  width: 60rpx;
+  font-size: 24rpx;
+  margin-top: 36rpx;
+  color: #aeaeae;
+  margin-left: 140rpx;
+}
+
+.time-num{
+margin-right: 200rpx; 
+}
+
+/*内容第二行*/
+.secondline{
+  display: flex;
+  flex-direction: row;
+}
+/*对话框消息内容*/
+.dialog{
+  width: 545rpx;
+  font-size: 26rpx;
+  color: #aeaeae;
+  margin-left: 30rpx;
+  margin-top: 15rpx;
+}
+
+/*对话框提示数目*/
+.dialog-nums{
+ width: 100rpx;
+}
+
+/*气泡样式*/
+.bubble3{
+  background-color: #4074DD;
+  border-radius: 80rpx;
+  width: 40rpx;
+  height: 40rpx;
+  /* margin-left: 200rpx; */
+  margin-top: 20rpx;
+}
+.bubble3 .num{
+  font-size: 28rpx;
+  color: #ffffff;
+  font-weight: 500;
+  margin-left: 12rpx;
+}
+/*分割线*/
+.linecut{
+  width: 100%;
+  height: 2rpx;
+  background-color: #F2F2F2;
+  margin-top: 26rpx;
+}
+
+
+
+
+/* 按钮 */
+.baise{
+  background:#F2F2F2;
+  display:flex;
+  position:fixed; 
+  width:100%;
+  height:135rpx;
+  z-index:665;
+
+}
+.anniu{
+ display:flex;
+ position:fixed; 
+ width:100%;
+ z-index:666;
+}
+
+.btbdstk{
+ width:100%;
+ background:white;
+}
+
+.bdstk{
+  width:100%;
+  text-align: center;
+  line-height:60rpx;
+  display: flex;
+ }
+
+.text{
+  font-size:27rpx;
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+  text-align: center;
+  color:#696969;
+}
+
+ 
+.image{
+  width: 45px;
+  height: 45px;
+  margin-top: 5rpx;
+}
+
+.standView{
+  width: 100%;
+  height: 140rpx;
+}
+/* pages/chatlist/chatlist.wxss */
+/**index.wxss**/
+.top{
+  margin-top: 5rpx;
+}
+.userItem{
+  height:80rpx;
+  padding:5px 10px;
+  display: flex;
+  border-bottom:1px solid #ddd;
+}
+.marks{
+  border-radius: 20px;
+  background-color: red;
+  height: 50rpx;
+  width: 50rpx;
+  float: right;
+
+}
+.userItem image{
+  width:80rpx;
+  height: 80rpx;
+  margin-right: 10px;
+}
+.userItem .name{
+  font-size: 15px;
+  padding:5px 0;
+  font-weight: bold;
+  flex:2;
+}
+.userItem .time{
+  font-size: 13px;
+}
+
+.message{
+  color: gray;
+  margin-top:10px;
+}
+.messagetime{
+  color:gray;
+  font-size:13px;
+}
+
+.tips{
+  margin-top:50px;
+  color: gray;
+  text-align: center;
+}

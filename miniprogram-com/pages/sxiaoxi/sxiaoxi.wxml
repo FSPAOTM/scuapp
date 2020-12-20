@@ -1,0 +1,47 @@
+<!--pages/sxiaoxi/sxiaoxi.wxml-->
+
+<view class="standView">
+ <!--背景层-->
+ <view class="baise"></view>
+ <!--按钮-->
+ <view class="anniu">
+  <button formType="submit" class="btbdstk" bindtap="mianshi" >
+   <view class="bdstk" >
+    <image class="image" src="mianshi.png"></image>
+    <text class="text">面试通知</text> 
+   </view>
+  </button>
+  <button formType="submit" class="btbdstk" bindtap="jieguo" >
+   <view class="bdstk" >
+    <image class="image" src="jieguo.png"></image>
+    <text class="text">结果通知</text> 
+   </view>
+  </button>
+  </view>
+</view>
+
+<scroll-view scroll-y="true" class = "top">
+  <view class="tips" wx:if="{{!list.length}}">
+    正在载入聊天列表，请稍候...
+  </view>
+  <view class="item-avatar-md" wx:for="{{list}}" wx:key="id" wx:for-item="i" wx:for-index="index" data-index="{{index}}" data-name="{{i.name}}" data-id="{{i.id}}" bindtap="goPage" >
+          <view class="marks" wx:if="{{i.count}}">
+            <text>{{i.count}}</text>
+          </view>
+          <image src="{{i.avatar}}"></image>
+          <view class="item-text">
+            <view class="text_box">
+              <view class="flex">
+                <text class="title">{{i.name}}</text>
+              </view>
+              <view class="flex">
+                <text class="message">{{i.text}}</text>
+              </view>
+            </view>
+          </view>
+           <view class="item-time padding_half">
+            <text class="messagetime">{{i.updated}}</text>
+          </view>  
+  </view>
+</scroll-view>
+<!-- wx:if="{{i.name!=name}}" -->
