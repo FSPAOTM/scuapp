@@ -391,7 +391,7 @@ def stu_feedback_list(request):
         list2 = Tbapplication.objects.filter(iw_number=i)
         dictionary1["name"] = list2[0].stu.name
         dictionary1["stu_id"] = list2[0].stu.stu_id
-        if i.In_status == "工作中":
+        if i.In_status == "工作中"  or i.In_status == "工作结束":
             dictionary1["stu_pingjia"] = "未开启"
             dictionary1["pingjia"] = "未开启"
             dictionary1["btn_color1"] = "button-color5"
@@ -482,7 +482,7 @@ def management_inWork_end(request):
             list2 = Tbapplication.objects.filter(iw_number=i)
             dictionary1["name"] = list2[0].stu.name
             dictionary1["stu_id"] = list2[0].stu.stu_id
-            if i.In_status == "工作中":
+            if i.In_status == "工作中" or i.In_status == "工作结束":
                 dictionary1["stu_pingjia"] = "未开启"
                 dictionary1["pingjia"] = "未开启"
                 dictionary1["btn_color1"] = "button-color5"
@@ -577,7 +577,7 @@ def management_inWork_paid(request):
             list2 = Tbapplication.objects.filter(iw_number=i)
             dictionary1["name"] = list2[0].stu.name
             dictionary1["stu_id"] = list2[0].stu.stu_id
-            if i.In_status == "工作中":
+            if i.In_status == "工作中"  or i.In_status == "工作结束":
                 dictionary1["stu_pingjia"] = "未开启"
                 dictionary1["pingjia"] = "未开启"
                 dictionary1["btn_color1"] = "button-color5"
@@ -737,7 +737,7 @@ def stu_feedback_edit_save(request):
             list2 = Tbapplication.objects.filter(iw_number=i)
             dictionary1["name"] = list2[0].stu.name
             dictionary1["stu_id"] = list2[0].stu.stu_id
-            if i.In_status == "工作中":
+            if i.In_status == "工作中"  or i.In_status == "工作结束":
                 dictionary1["stu_pingjia"] = "未开启"
                 dictionary1["pingjia"] = "未开启"
                 dictionary1["btn_color1"] = "button-color5"
