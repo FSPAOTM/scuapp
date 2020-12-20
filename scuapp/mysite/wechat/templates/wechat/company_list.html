@@ -39,7 +39,7 @@
             <th>营业执照号</th>
             <th>经营状况</th>
             <th>公司业务</th>
-            <th>兼职发布</th>
+            <th>兼职发布情况</th>
           </tr>
         </thead>
         <tbody>
@@ -59,7 +59,7 @@
             <td>{{ line.com_business }}</td>
             <td class="td-status">
                 <!--接口修改-->
-              <a href="../company_work/"><span class="layui-btn layui-btn-normal layui-btn-mini">查看</span></a></td>
+              <a href="../company_work/?com_num={{ line.com_number }}"><span class="button1 button-color2 button-mini">查看</span></a></td>
         </tr>
         {% endfor %}
         </tbody>

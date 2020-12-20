@@ -34,10 +34,10 @@
             <th>岗位编号</th>
             <th>岗位名称</th>
             <th>工作时间</th>
-            <th>工作区域</th>
-            <th>工作详细地点</th>
+            <th>工作地址</th>
             <th>工作内容</th>
             <th>信息发布时间</th>
+            <th>招聘与录用情况</th>
             <th>岗位状态</th>
         </tr>
         </thead>
@@ -51,11 +51,12 @@
             <td>{{ line.ow_post }}</td>
             <td>{{ line.w_time }}</td>
             <td>{{ line.w_place }}</td>
-            <td>{{ line.w_place_detail }}</td>
             <td>{{ line.work }}</td>
             <td>{{ line.ipub_time }}</td>
             <td class="td-status">
-              <span class="button1 {{ line.btn_color }} button-mini">{{ line.ow_status }}</span></td>
+                <span class="button1 button-color1 button-mini" onclick="x_admin_show('招聘与录用','../company_employed/?ow_number={{ line.ow_number }}',800,600)">查看</span></td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.ow_status }}</span></td>
         </tr>
         {% endfor %}
         </tbody>

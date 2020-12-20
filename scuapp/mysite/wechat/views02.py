@@ -40,8 +40,8 @@ def inwork_list(request):
         dic["w_salary"] = i.w_salary
         dic["w_reuire"] = i.w_reuire
         dic["w_amoubt"] = i.w_amount
-        dic["ddl_time"] = i.ddl_time
-        dic["inpub_time"] = i.inpub_time
+        dic["ddl_time"] = str(i.ddl_time)
+        dic["inpub_time"] = str(i.inpub_time)
         dic["w_ps"] = i.w_ps
         dic["In_status"] = i.In_status
         if dic["In_status"] == "待评价":

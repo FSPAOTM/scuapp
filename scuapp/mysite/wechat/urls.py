@@ -126,11 +126,12 @@ urlpatterns = [
     path('stu_manage_list/', views03.stu_manage_list, name='stu_manage_list'),
     path('stu_experience/', views03.stu_experience, name='stu_experience'),
     path('stu_manage_resume_list/', views03.stu_manage_resume_list, name='stu_manage_resume_list'),
+    path('company_manage_list/', views03.company_manage_list, name='company_manage_list'),
+    path('company_work/', views03.company_work, name='company_work'),
+
 
 
     #待修改
-
-    path('company_manage_list/', views03.company_manage_list, name='company_manage_list'),
     path('outwork_feedback/', views03.outwork_feedback, name='outwork_feedback'),
     path('inwork_feedback/', views03.inwork_feedback, name='inwork_feedback'),
     path('stu_feedback_show/', views03.stu_feedback_show, name='stu_feedback_show'),

@@ -97,14 +97,58 @@ def stu_manage_resume_list(request):
     return render(request, 'wechat/stu_resume.html',{'resume': resume})
 
 #企业管理
-#企业列表界面——HHL
+#企业列表界面
 def company_manage_list(request):
-    company_list = Tbcompany.objects.all()
+    company = Tbcompany.objects.all()
+    company_list=[]
+    for i in company:
+        dictionary = {}
+        dictionary["com_number"] = i.com_number
+        dictionary["com_name"] = i.com_name
+        dictionary["phone_num"] = i.phone_num
+        dictionary["com_leader"] = i.com_leader
+        dictionary["com_address"] = i.com_address
+        dictionary["e_mail"] = i.e_mail
+        dictionary["com_License"] = i.com_License.com_license
+        dictionary["com_condition"] = i.com_license.com_condition
+        dictionary["com_business"] = i.com_license.com_business
+        company_list.append(dictionary)
     return render(request, 'wechat/company_list.html', {'company_list': company_list})
 
-#企业所发布兼职——HHL
+#企业所发布兼职列表
 def company_work(request):
+    com_num = request.GET.get('com_num')
+    company = Tbcompany.objects.get(com_number = com_num)
+    outwork = TboutWork.objects.filter(com_number = company)
     company_work = []
+    for i in outwork:
+        dictionary = {}
+        dictionary["ow_number"] = i.ow_number
+        dictionary["ow_post"] = i.ow_post
+        dictionary["w_time"] = i.w_time
+        dictionary["w_place"] = i.w_place
+        dictionary["work"] = i.work
+        dictionary["ipub_time"] = str(i.ipub_time)
+        dictionary["ow_status"] = i.ow_status
+        company_work.append(dictionary)
+    return render(request, 'wechat/company_work.html', {'company_work': company_work})
+
+#企业兼职录取与招聘情况
+def company_employed(request):
+    ow_number = request.GET.get('ow_number')
+    company = Tbcompany.objects.get(com_number = com_num)
+    outwork = TboutWork.objects.filter(com_number = company)
+    company_work = []
+    for i in outwork:
+        dictionary = {}
+        dictionary["ow_number"] = i.ow_number
+        dictionary["ow_post"] = i.ow_post
+        dictionary["w_time"] = i.w_time
+        dictionary["w_place"] = i.w_place
+        dictionary["work"] = i.work
+        dictionary["ipub_time"] = str(i.ipub_time)
+        dictionary["ow_status"] = i.ow_status
+        company_work.append(dictionary)
     return render(request, 'wechat/company_work.html', {'company_work': company_work})
 
 #评价管理
