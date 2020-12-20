@@ -89,7 +89,7 @@ def stu_experience(request):
     return render(request, 'wechat/stu_work.html', {'stu_inwork': stu_inwork, 'stu_outwork': stu_outwork})
 
 
-#学生简历查看界面 修改中
+#学生简历查看界面（界面 emmm)
 def stu_manage_resume_list(request):
     str = request.GET.get('res_num')
     res_id =str[17:27]
