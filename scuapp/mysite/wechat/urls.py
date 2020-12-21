@@ -67,8 +67,8 @@ urlpatterns = [
 
     #后台管理界面
     #登录注册等
-    path('', views02.index, name='index'),
-    path('index/', views02.index, name='index'),
+    #path('', views02.index, name='index0'),
+    path('index0/', views02.index, name='index0'),
     path('manage/', views02.manage, name='manage'),
     path('login/', views02.login, name='login'),
     path('register/', views02.register, name='register'),
