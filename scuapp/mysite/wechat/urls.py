@@ -61,7 +61,9 @@ urlpatterns = [
     path('Stu_result_sure/', views_stu.Stu_result_sure, name='Stu_result_sure'),
     path('Stu_feedbackEr/', views_stu.Stu_feedbackEr, name='Stu_feedbackEr'),
 
-
+#聊天室界面
+    path('', views_chat.index, name='index'),
+    path('<str:room_name>/', views_chat.room, name='room'),
 
     #后台管理界面
     #登录注册等

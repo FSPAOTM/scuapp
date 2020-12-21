@@ -1,11 +1,12 @@
 from django.db import models
+from django.forms import JSONField
 
 
 class Tbapplication(models.Model):
     ap_number = models.AutoField(db_column='AP_Number', primary_key=True)  # Field name made lowercase.
     ap_reson = models.TextField(db_column='AP_Reson', blank=True, null=True)  # Field name made lowercase.
     ap_time = models.DateTimeField(db_column='AP_Time')  # Field name made lowercase.
-    ap_abletime = models.CharField(db_column='AP_AbleTime', max_length=60, blank=True, null=True)  # 未使用
+    ap_abletime = models.CharField(db_column='AP_AbleTime', max_length=60, blank=True, null=True)  # Field name made lowercase.
     ow_number = models.ForeignKey('TboutWork', models.DO_NOTHING, db_column='OW_Number', null=True)  # Field name made lowercase.
     stu = models.ForeignKey('Tbstudent', models.DO_NOTHING, db_column='Stu_ID')  # Field name made lowercase.
     apply_status = models.CharField(db_column='apply_status', max_length=255, default='待审核')
@@ -183,11 +184,14 @@ class Tbqualify(models.Model):
 
 class Tbquery(models.Model):
     q_number = models.AutoField(db_column='Q_Number', primary_key=True)  # Field name made lowercase.
-    q_content = models.CharField(db_column='Q_Content', max_length=200)  # Field name made lowercase.
-    q_time = models.DateTimeField(db_column='Q_Time')  # Field name made lowercase.
-    q_direc = models.CharField(db_column='Q_direc', max_length=10)  # Field name made lowercase.
-    com_number1 = models.ForeignKey('Tbcompany', models.DO_NOTHING, db_column='Com_Number1')  # Field name made lowercase.
-    stu_id1 = models.ForeignKey('Tbstudent', models.DO_NOTHING, db_column='Stu_ID1')  # Field name made lowercase.
+    q_content = models.CharField(db_column='Q_Content', max_length=200,null=True)  # Field name made lowercase.
+    q_time = models.CharField(db_column='Q_Time',max_length=255,null=True)  # Field name made lowercase.#修改过
+    q_direc = models.CharField(db_column='Q_direc', max_length=10,null=True)  # Field name made lowercase.
+    com_number1 = models.ForeignKey('Tbcompany', models.DO_NOTHING, db_column='Com_Number1',null=True)  # Field name made lowercase.
+    stu_id1 = models.ForeignKey('Tbstudent', models.DO_NOTHING, db_column='Stu_ID1',null=True)  # Field name made lowercase.
+    From_name = models.CharField(db_column='From_name',max_length=255,null=True)
+    To_name = models.CharField(db_column='To_name',max_length=255,null=True)
+    Isread = models.IntegerField(db_column='Isread',null=True)
 
     class Meta:
         managed = False
