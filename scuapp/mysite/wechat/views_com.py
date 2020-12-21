@@ -184,7 +184,12 @@ def Show_applicant(request):
             result = Tbapplication.objects.filter(ow_number=ow_number)
             for item in result:
                 ap_time = json.dumps(item.ap_time, cls=DateEncoder)
-                plays.append({'ow_number': ow_number,'post': ow_post, 'stu_number': item.stu.stu_id, 'user':item.stu.name, 'status':item.apply_status, 'ap_time':ap_time})
+                if item.apply_status =="已评价":
+                    plays.append({'ow_number': ow_number,'post': ow_post, 'stu_number': item.stu.stu_id, 'user':item.stu.name, 'status':item.apply_status, 'ap_time':ap_time, 'pingjia':False})
+                else:
+                    plays.append(
+                        {'ow_number': ow_number, 'post': ow_post, 'stu_number': item.stu.stu_id, 'user': item.stu.name,
+                         'status': item.apply_status, 'ap_time': ap_time, 'pingjia': True})
         plays_json = json.dumps(plays, ensure_ascii=False)
         return HttpResponse(plays_json)
     else:
