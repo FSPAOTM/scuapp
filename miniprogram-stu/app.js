@@ -3,10 +3,17 @@ var app=getApp()
 App({
   onLaunch: function () {
     var that=this;
+
+    //this.sendmsg()
+    wx.onSocketClose(function (res) {
+      console.log("disconnect")
+    })
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+
     // 登录
     wx.login({
       success: res => {
@@ -45,6 +52,7 @@ App({
         }
       }
     })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -64,6 +72,26 @@ App({
           })
         }
       }
+    })
+  },
+
+  linkSocket() {
+    var that = this
+    wx.connectSocket({
+      url: "ws://127.0.0.1:8000/ws/chat/17188385280/",
+      header: {
+        'content-type': 'application/json'
+      },
+    });
+
+    wx.onSocketOpen((result) => {
+      console.log('yijing open')
+    })
+
+    wx.onSocketMessage((result) => {
+      let msg = JSON.parse(result.data);
+      console.log("我在app.js");
+      this.globalData.msgList.push(msg);
     })
   },
 
@@ -93,6 +121,22 @@ App({
     works: "",
     stuNumber: "",
     jobType: "",
-    ow_number: ""
+    ow_number: "",
+    friendlist: ["17188385280", "show", "as先生", "22先生", "练习生"],
+    msgList: [{
+        from: 'server',
+        to: 'text',
+        content: '你好',
+        time: '2020.10.10',
+        isread: 1
+      },
+      {
+        from: '17188385280',
+        to: 'text',
+        content: '如有疑问欢迎咨询',
+        time: '2020.10.10',
+        isread: 1
+      }
+    ]
   }
 })

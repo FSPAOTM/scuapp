@@ -69,21 +69,6 @@ margin-right: 200rpx;
 }
 
 /*气泡样式*/
-.bubble2{
-  background-color:rgb(216, 48, 48);
-  border-radius: 80rpx;
-  width: 40rpx;
-  height: 40rpx;
-  /* margin-left: 200rpx; */
-  margin-top: 20rpx;
-}
-.bubble2 .num{
-  font-size: 28rpx;
-  color: #ffffff;
-  font-weight: 500;
-  margin-left: 12rpx;
-}
-
 .bubble3{
   background-color: #4074DD;
   border-radius: 80rpx;
@@ -157,4 +142,51 @@ margin-right: 200rpx;
   width: 100%;
   height: 140rpx;
 }
+/* pages/chatlist/chatlist.wxss */
+/**index.wxss**/
+.top{
+  margin-top: 5rpx;
+}
+.userItem{
+  height:80rpx;
+  padding:5px 10px;
+  display: flex;
+  border-bottom:1px solid #ddd;
+}
+.marks{
+  border-radius: 20px;
+  background-color: red;
+  height: 50rpx;
+  width: 50rpx;
+  float: right;
 
+}
+.userItem image{
+  width:80rpx;
+  height: 80rpx;
+  margin-right: 10px;
+}
+.userItem .name{
+  font-size: 15px;
+  padding:5px 0;
+  font-weight: bold;
+  flex:2;
+}
+.userItem .time{
+  font-size: 13px;
+}
+
+.message{
+  color: gray;
+  margin-top:10px;
+}
+.messagetime{
+  color:gray;
+  font-size:13px;
+}
+
+.tips{
+  margin-top:50px;
+  color: gray;
+  text-align: center;
+}

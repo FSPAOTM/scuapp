@@ -77,6 +77,26 @@ App({
     }
   },
 
+  linkSocket() {
+    var that = this
+    wx.connectSocket({
+      url: "ws://127.0.0.1:8000/ws/chat/17188385280/",
+      header: {
+        'content-type': 'application/json'
+      },
+    });
+
+    wx.onSocketOpen((result) => {
+      console.log('yijing open')
+    })
+
+    wx.onSocketMessage((result) => {
+      let msg = JSON.parse(result.data);
+      console.log("我在app.js");
+      this.globalData.msgList.push(msg);
+    })
+  },
+
 
   globalData: {
     list: [],
@@ -94,5 +114,21 @@ App({
     stuNumber: "",
     jobType: "",
     ow_number: "",
+    friendlist: ["2018141093036", "show", "as先生", "22先生", "练习生"],
+    msgList: [{
+        from: 'server',
+        to: 'text',
+        content: '你好',
+        time: '2020.10.10',
+        isread: 1
+      },
+      {
+        from: '中公教育',
+        to: 'text',
+        content: '如有疑问欢迎咨询',
+        time: '2020.10.10',
+        isread: 1
+      }
+    ]
   }
 })

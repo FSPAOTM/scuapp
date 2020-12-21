@@ -11,7 +11,44 @@ Page({
     count1:"",
     count2:"",
     show1:true,
-    show2:true
+    show2:true,
+    name: '',
+    list: [{
+      id: "001",
+      name: "2018141093036",
+      count: "2",
+      avatar: "../../images/head.png",
+      text: "正在载入聊天列表，请稍候",
+      updated: "2020.11.02"
+    }, {
+      id: "002",
+      name: "show",
+      count: "2",
+      avatar: "../../images/head.png",
+      text: "正在载入聊天列表，请稍候",
+      updated: new Date()
+    }, {
+      id: "003",
+      name: "as先生",
+      count: "2",
+      avatar: "../../images/head.png",
+      text: "正在载入聊天列表，请稍候",
+      updated: new Date()
+    }, {
+      id: "004",
+      name: "练习生",
+      count: "0",
+      avatar: "../../images/head.png",
+      text: "邮票吗",
+      updated: new Date()
+    }, {
+      id: "005",
+      name: "练习生o",
+      count: "2",
+      avatar: "../../images/head.png",
+      text: "正在载入聊天列表，请稍候",
+      updated: new Date()
+    }],
   },
 
   /**
@@ -29,8 +66,21 @@ Page({
       url: '../cmianshidahui/cmianshidahui?user=' + app.globalData.user,
     })
   },
-
+  goPage(e) {
+    let newlist = this.data.list
+    const index = e.currentTarget.dataset.index
+    newlist[index].count = 0;
+    this.setData({
+      list: newlist
+    })
+    wx.navigateTo({
+      url: '../schatting/schatting?name=' + e.currentTarget.dataset.name  /**?? */
+    })
+  },
   onLoad: function (options) {
+    this.setData({
+      name: app.globalData.user
+    })
     let that = this;
     wx.request({
       url: app.globalData.url + '/Com_interview_notice_show/', 
