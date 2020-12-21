@@ -25,6 +25,9 @@
 
   <body>
     <div class="x-body">
+        <xblock>
+            <a href="../company_manage_list/"><button class="layui-btn">返回</button></a>
+        </xblock>
       <table class="layui-table">
         <thead>
           <tr>
@@ -54,7 +57,7 @@
             <td>{{ line.work }}</td>
             <td>{{ line.ipub_time }}</td>
             <td class="td-status">
-                <span class="button1 button-color1 button-mini" onclick="x_admin_show('招聘与录用','../company_employed/?ow_number={{ line.ow_number }}',800,600)">查看</span></td>
+                <span class="button1 button-color1 button-mini" onclick="x_admin_show('招聘与录用情况','../company_employed/?ow_number={{ line.ow_number }}',800,600)">查看</span></td>
             <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.ow_status }}</span></td>
         </tr>

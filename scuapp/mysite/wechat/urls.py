@@ -1,6 +1,6 @@
 from django.urls import path
 
-from . import views,views_com,views_stu,views01,views02,views03
+from . import views,views_com,views_stu,views01,views02,views03,views_chat
 
 app_name = 'wechat'
 urlpatterns = [
@@ -123,14 +123,17 @@ urlpatterns = [
     path('stu_feedback_edit/', views02.stu_feedback_edit, name='stu_feedback_edit'),
     path('stu_feedback_list/', views02.stu_feedback_list, name='stu_feedback_list'),
     path('stu_feedback_edit_save/', views02.stu_feedback_edit_save, name='stu_feedback_edit_save'),
-
     #用户管理
     path('stu_manage_list/', views03.stu_manage_list, name='stu_manage_list'),
     path('stu_experience/', views03.stu_experience, name='stu_experience'),
     path('stu_manage_resume_list/', views03.stu_manage_resume_list, name='stu_manage_resume_list'),
     path('company_manage_list/', views03.company_manage_list, name='company_manage_list'),
     path('company_work/', views03.company_work, name='company_work'),
-
+    path('company_employed/', views03.company_employed, name='company_employed'),
+    path('manager_manage_list/', views03.manager_manage_list, name='manager_manage_list'),
+    path('manager_ifo/', views03.manager_ifo, name='manager_ifo'),
+    path('manager_ifo_submit/', views03.manager_ifo_submit, name='manager_ifo_submit'),
+    #评价管理
 
 
     #待修改

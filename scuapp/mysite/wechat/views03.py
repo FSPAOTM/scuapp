@@ -1,6 +1,6 @@
 from django.shortcuts import HttpResponse,render
 from django.utils import timezone
-from .models import Tbcompany, Tbstudent,Tbresume, Tbqualify, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply, TbinterviewResult, TbinterviewNotice, TbfeedbackEr, TbfeedbackStu
+from .models import Tbcompany, Tbstudent,Tbresume, Tbqualify, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply, TbinterviewResult, TbinterviewNotice, TbfeedbackEr, TbfeedbackStu,Tbmanager
 from django.db.models import Q
 from threading import Timer
 from django.http import JsonResponse
@@ -10,13 +10,11 @@ import json
 #后台管理界面
 
 #用户管理
-
 #学生管理
 #学生列表界面
 def stu_manage_list(request):
     stu_list = Tbstudent.objects.all()
     return render(request, 'wechat/stu_list.html', {'stu_list': stu_list})
-
 #学生工作经历详情界面
 def stu_experience(request):
     stu_id = request.GET.get('stu_num')
@@ -87,15 +85,12 @@ def stu_experience(request):
                 dictionary1["end_time"] = "未入职"
             stu_outwork.append(dictionary1)
     return render(request, 'wechat/stu_work.html', {'stu_inwork': stu_inwork, 'stu_outwork': stu_outwork})
-
-
 #学生简历查看界面（界面 emmm)
 def stu_manage_resume_list(request):
     str = request.GET.get('res_num')
     res_id =str[17:27]
     resume = Tbresume.objects.get(res_id=res_id)
     return render(request, 'wechat/stu_resume.html',{'resume': resume})
-
 #企业管理
 #企业列表界面
 def company_manage_list(request):
@@ -110,11 +105,10 @@ def company_manage_list(request):
         dictionary["com_address"] = i.com_address
         dictionary["e_mail"] = i.e_mail
         dictionary["com_License"] = i.com_License.com_license
-        dictionary["com_condition"] = i.com_license.com_condition
-        dictionary["com_business"] = i.com_license.com_business
+        dictionary["com_condition"] = i.com_License.com_condition
+        dictionary["com_business"] = i.com_License.com_business
         company_list.append(dictionary)
     return render(request, 'wechat/company_list.html', {'company_list': company_list})
-
 #企业所发布兼职列表
 def company_work(request):
     com_num = request.GET.get('com_num')
@@ -126,36 +120,142 @@ def company_work(request):
         dictionary["ow_number"] = i.ow_number
         dictionary["ow_post"] = i.ow_post
         dictionary["w_time"] = i.w_time
-        dictionary["w_place"] = i.w_place
+        dictionary["w_place"] = i.w_place +i.w_place_detail
         dictionary["work"] = i.work
         dictionary["ipub_time"] = str(i.ipub_time)
         dictionary["ow_status"] = i.ow_status
         company_work.append(dictionary)
     return render(request, 'wechat/company_work.html', {'company_work': company_work})
-
 #企业兼职录取与招聘情况
 def company_employed(request):
     ow_number = request.GET.get('ow_number')
-    company = Tbcompany.objects.get(com_number = com_num)
-    outwork = TboutWork.objects.filter(com_number = company)
-    company_work = []
-    for i in outwork:
+    outwork = TboutWork.objects.get(ow_number = ow_number)
+    list = Tbapplication.objects.filter(ow_number = outwork)
+    company_employed_list = []
+    for i in list:
         dictionary = {}
-        dictionary["ow_number"] = i.ow_number
-        dictionary["ow_post"] = i.ow_post
-        dictionary["w_time"] = i.w_time
-        dictionary["w_place"] = i.w_place
-        dictionary["work"] = i.work
-        dictionary["ipub_time"] = str(i.ipub_time)
-        dictionary["ow_status"] = i.ow_status
-        company_work.append(dictionary)
-    return render(request, 'wechat/company_work.html', {'company_work': company_work})
-
+        dictionary["stu_id"] = i.stu.stu_id
+        dictionary["name"] = i.stu.name
+        dictionary["phonenumber"] = i.stu.phonenumber_phonenumberphonenumber_phonenumber
+        dictionary["apply_status"] = i.apply_status
+        company_employed_list.append(dictionary)
+    return render(request, 'wechat/company_employed.html', {'company_employed_list': company_employed_list})
+#管理员管理
+#管理员列表总界面
+def manager_manage_list(request):
+    manager = Tbmanager.objects.all()
+    manager_list=[]
+    for i in manager:
+        dictionary = {}
+        dictionary["manager_id"] = i.manager_id
+        dictionary["name"] = i.name
+        if i.sex is not None:
+            if i.sex =="":
+                dictionary["sex"] = "待完善"
+            else:
+                dictionary["sex"] = i.sex
+        else:
+            dictionary["sex"] = "待完善"
+        dictionary["phonenumber"] = i.phonenumber
+        if i.school is not None:
+            if i.school =="":
+                dictionary["school"] = "待完善"
+            else:
+                dictionary["school"] = i.school
+        else:
+            dictionary["school"] = "待完善"
+        if i.e_mail is not None:
+            if i.e_mail =="":
+                dictionary["e_mail"] = "待完善"
+            else:
+                dictionary["e_mail"] = i.e_mail
+        else:
+            dictionary["e_mail"] = "待完善"
+        manager_list.append(dictionary)
+    return render(request, 'wechat/manager_list.html', {'manager_list': manager_list})
+#管理员信息完善界面
+def manager_ifo(request):
+    manager_id = request.GET.get('manager_id')
+    manager0 = Tbmanager.objects.get(manager_id=manager_id)
+    manager = []
+    dictionary = {}
+    dictionary["manager_id"] = manager0.manager_id
+    dictionary["name"] = manager0.name
+    if manager0.sex is not None:
+        dictionary["sex"] = manager0.sex
+    else:
+        dictionary["sex"] = ""
+    dictionary["phonenumber"] = manager0.phonenumber
+    if manager0.school is not None:
+        dictionary["school"] = manager0.school
+    else:
+        dictionary["school"] = ""
+    if manager0.e_mail is not None:
+        dictionary["e_mail"] = manager0.e_mail
+    else:
+        dictionary["e_mail"] = ""
+    manager.append(dictionary)
+    return render(request, 'wechat/manager_infomation.html', {'manager': manager})
+#管理员信息完善界面(提交按钮）
+def manager_ifo_submit(request):
+    if request.method == "POST":
+        manager_id = request.POST.get('manager_id')
+        name = request.POST.get('name')
+        sex = request.POST.get('sex')
+        phonenumber = request.POST.get('phonenumber')
+        school = request.POST.get('school')
+        e_mail = request.POST.get('e_mail')
+        Tbmanager.objects.filter(manager_id=manager_id).update(name= name,sex=sex,phonenumber=phonenumber,school=school,e_mail=e_mail)
+        manager = Tbmanager.objects.all()
+        manager_list = []
+        for i in manager:
+            dictionary = {}
+            dictionary["manager_id"] = i.manager_id
+            dictionary["name"] = i.name
+            if i.sex is not None:
+                if i.sex == "":
+                    dictionary["sex"] = "待完善"
+                else:
+                    dictionary["sex"] = i.sex
+            else:
+                dictionary["sex"] = "待完善"
+            dictionary["phonenumber"] = i.phonenumber
+            if i.school is not None:
+                if i.school == "":
+                    dictionary["school"] = "待完善"
+                else:
+                    dictionary["school"] = i.school
+            else:
+                dictionary["school"] = "待完善"
+            if i.e_mail is not None:
+                if i.e_mail == "":
+                    dictionary["e_mail"] = "待完善"
+                else:
+                    dictionary["e_mail"] = i.e_mail
+            else:
+                dictionary["e_mail"] = "待完善"
+            manager_list.append(dictionary)
+        return render(request, 'wechat/manager_list.html', {'manager_list': manager_list})
+    else:
+        return HttpResponse("请求错误")
 #评价管理
-#校外兼职评价展示界面——HHL 12/11
+#校外兼职评价展示界面
 def outwork_feedback(request):
-    out_feed = ["balabala"]
-    feed_content = ["bilibili"]
+    list0 = TbfeedbackEr.objects.all()
+    out_feed = []
+    for i in list0:
+        if i.ow_number is not None:
+            dictionary1 = {}
+            feed_content = []
+            dictionary1["manager_id"] = i.manager_id
+            dictionary1["name"] = i.name
+
+
+            out_feed.append(dictionary1)
+
+
+
+
     return render(request, 'wechat/outwork_feedback.html')
 
 #校内兼职评价展示界面——HHL 12/11
