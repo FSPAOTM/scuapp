@@ -105,7 +105,7 @@ def Stu_result_sure(request):
     else:
         return HttpResponse("请求错误")
 
-#sfeedback 学生评价工作 未调试
+#sfeedback 学生评价工作
 def Stu_feedbackEr(request):
     if request.method == "POST":
         stu = request.POST.get('stuNumber')
@@ -142,4 +142,43 @@ def Stu_feedbackEr(request):
     else:
         return HttpResponse("请求错误")
 
-#评价显示
+#校外评价显示
+def outwork_feedback_show(request):
+    ow_number = request.GET.get('ow_number')
+    outwork = TboutWork.objects.get(ow_number=ow_number)
+    out_feed = []
+    dictionary1 = {}
+    dictionary1["com_name"] = outwork.com_number.com_name
+    count = 0
+    n=0
+    feed_content = []
+    worklist = TboutWork.objects.filter(com_number=outwork.com_number)
+    for j in worklist:
+        feedbackEr = TbfeedbackEr.objects.filter(ow_number=j).filter(fb_direction="学生评价企业")
+        for k in feedbackEr:
+            dictionary2 = {}
+            dictionary2["name"] = "匿名用户"
+            dictionary2["work"] = j.ow_post
+            b_content0 = k.fb_content.replace("'", '"')
+            fb_content = json.loads(b_content0)
+            content = ""
+            for i in fb_content:
+                if i != fb_content[0] and i != "":
+                    content = content + i + ","
+            if content == "":
+                content = "无评价内容"
+            else:
+                content = content[:-1]
+            count = count + int(fb_content[0])
+            n=n+1
+            dictionary2["fb_content2"] = content
+            dictionary2["fb_time"] = k.fb_time
+            feed_content.append(dictionary2)
+    dictionary1["feed_content"] = feed_content #列表
+    if count !=0:
+        f = count / n
+        dictionary1["num"] = n #条数
+        dictionary1["fb_content1"] = '%.1f' % f #评分
+        out_feed.append(dictionary1)
+    plays_json = json.dumps(out_feed, ensure_ascii=False)
+    return HttpResponse(plays_json)

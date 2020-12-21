@@ -60,8 +60,9 @@ urlpatterns = [
     path('Stu_result_show/', views_stu.Stu_result_show, name='Stu_result_show'),
     path('Stu_result_sure/', views_stu.Stu_result_sure, name='Stu_result_sure'),
     path('Stu_feedbackEr/', views_stu.Stu_feedbackEr, name='Stu_feedbackEr'),
+    path('outwork_feedback_show/', views_stu.outwork_feedback_show, name='outwork_feedback_show'),
 
-#聊天室界面
+    #聊天室界面
     path('', views_chat.index, name='index'),
     path('chat/<str:room_name>/', views_chat.room, name='room'),
 
@@ -135,13 +136,8 @@ urlpatterns = [
     path('manager_ifo_submit/', views03.manager_ifo_submit, name='manager_ifo_submit'),
     #评价管理
     path('outwork_feedback/', views03.outwork_feedback, name='outwork_feedback'),
-
-
-    #待修改
     path('inwork_feedback/', views03.inwork_feedback, name='inwork_feedback'),
     path('stu_feedback_show/', views03.stu_feedback_show, name='stu_feedback_show'),
-
-
 
     # path('<CharField:manager_id>/results/', views01.results, name='results'),
     # path('<CharField:manager_id/vote/', views01.vote, name='vote'),

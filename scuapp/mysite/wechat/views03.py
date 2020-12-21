@@ -327,18 +327,19 @@ def stu_feedback_show(request):
     stu_feed = []
     for i in list0:
         dictionary1 = {}
-        dictionary1["name"] = i.com_number
-        dictionary1["stu_id"] = i.com_name
+        dictionary1["name"] = i.name
+        dictionary1["stu_id"] = i.stu_id
         count = 0
         n=0
         feed_content = []
-        worklist = TboutWork.objects.filter(com_number=i)
-        for j in worklist:
-            feedbackEr = TbfeedbackEr.objects.filter(ow_number=j).filter(fb_direction="学生评价企业")
-            for k in feedbackEr:
+        feedbackEr = TbfeedbackEr.objects.filter(stu=i).filter(fb_direction="企业评价学生")
+        for k in feedbackEr:
+            if k.iw_number is not None:
                 dictionary2 = {}
-                dictionary2["nickname"] = k.stu.nickname
-                dictionary2["work"] = j.ow_post
+                dictionary2["css"] = "comment-type1"
+                dictionary2["type"] = "校内"
+                dictionary2["depart"] = k.iw_number.iw_depart
+                dictionary2["work"] = k.iw_number.iw_post
                 b_content0 = k.fb_content.replace("'", '"')
                 fb_content = json.loads(b_content0)
                 content = ""
@@ -354,6 +355,27 @@ def stu_feedback_show(request):
                 dictionary2["fb_content2"] = content
                 dictionary2["fb_time"] = k.fb_time
                 feed_content.append(dictionary2)
+            else:
+                dictionary2 = {}
+                dictionary2["css"] = "comment-type2"
+                dictionary2["type"] = "校外"
+                dictionary2["depart"] = k.ow_number.com_number.com_name
+                dictionary2["work"] = k.ow_number.ow_post
+                b_content0 = k.fb_content.replace("'", '"')
+                fb_content = json.loads(b_content0)
+                content = ""
+                for i in fb_content:
+                    if i != fb_content[0] and i != "":
+                        content = content + i + ","
+                if content == "":
+                    content = "无评价内容"
+                else:
+                    content = content[:-1]
+                count = count + int(fb_content[0])
+                n = n + 1
+                dictionary2["fb_content2"] = content
+                dictionary2["fb_time"] = k.fb_time
+                feed_content.append(dictionary2)
         dictionary1["feed_content"] = feed_content
         if count !=0:
             f = count / n
@@ -361,7 +383,6 @@ def stu_feedback_show(request):
             dictionary1["fb_content1"] = '%.1f' % f
             stu_feed.append(dictionary1)
     return render(request, 'wechat/stu_feedback_show.html', {'stu_feed': stu_feed})
-
 
 
 
