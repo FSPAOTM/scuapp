@@ -114,6 +114,22 @@ App({
     works: "",
     stuNumber: "",
     jobType: "",
-    ow_number: ""
+    ow_number: "",
+    friendlist: ["17188385280", "show", "as先生", "22先生", "练习生"],
+    msgList: [{
+        from: 'server',
+        to: 'text',
+        content: '你好',
+        time: '2020.10.10',
+        isread: 1
+      },
+      {
+        from: 'cc先生',
+        to: 'text',
+        content: '欢迎咨询',
+        time: '2020.10.10',
+        isread: 1
+      }
+    ]
   }
 })

@@ -20,7 +20,8 @@
     "pages/sinfoFill/sinfoFill",
     "pages/sinfoModify/sinfoModify",
     "pages/sinfoShow/sinfoShow",
-    "pages/regStudent/regStudent"
+    "pages/regStudent/regStudent",
+    "pages/schatting/schatting"
   ],
   "window": {
     "backgroundTextStyle": "light",

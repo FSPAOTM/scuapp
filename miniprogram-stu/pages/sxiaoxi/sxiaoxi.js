@@ -15,7 +15,7 @@ Page({
     name: '',
     list: [{
       id: "001",
-      name: "18310086086",
+      name: "17188385280",
       count: "2",
       avatar: "../../images/head.png",
       text: "正在载入聊天列表，请稍候",
@@ -79,6 +79,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      name: app.globalData.user
+    })
     let that = this;
     wx.request({
       url: app.globalData.url + '/Stu_interview_notice_show/', 
