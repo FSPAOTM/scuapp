@@ -35,19 +35,20 @@
             <div class="wrapper">
                 <div class="row">
                     <div class="col-sm-12">
+                    {% for line in in_feed %}
                         <section class="panel">
                             <header class="panel-heading">
-                                {% for line in in_feed %}
+                                <p>{{ line.number }}</p>
                                 <span style="font-size: 24px">{{ line.iw_depart }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <span class="pingfen" style="color: #0C0C0C">评价条数：{{ line.num }}&nbsp;&nbsp;&nbsp;</span>
                                 <span class="pingfen">评分：{{ line.fb_content1 }}</span>
                                 <span class="tools pull-right">
                                     <a href="javascript:;" class="fa fa-chevron-down"></a>
-                                    <a href="javascript:;" class="fa fa-times"></a>
                                 </span>
                             </header>
                             <div class="panel-body">
                                 <div class="comments">
-                                    {% for li in feed_content %}
+                                    {% for li in line.feed_content %}
                                     <div class="comment-wrap">
                                         <div class="comment-block">
                                             <div class="bottom-comment">
@@ -61,10 +62,9 @@
                                                 <div class="comment-date">{{ li.fb_time }}</div>
                                             </div>.
                                         </div>
-                                    {% endfor %}
                                     </div>
+                                    {% endfor %}
                                 </div>
-
                             </div>
                         </section>
                         {% endfor %}

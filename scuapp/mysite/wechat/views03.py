@@ -275,30 +275,29 @@ def outwork_feedback(request):
         dictionary1["feed_content"] = feed_content
         if count !=0:
             f = count / n
+            dictionary1["num"] = n
             dictionary1["fb_content1"] = '%.1f' % f
             out_feed.append(dictionary1)
     return render(request, 'wechat/outwork_feedback.html', {'out_feed': out_feed})
 
-#校内兼职评价展示界面——HHL 12/11
+#校内兼职评价展示界面
 def inwork_feedback(request):
-    list0 = Tbcompany.objects.all()
+    list0 =["教务处","党政办","纪委办","资产处","志愿队","校工会","学工部","出国培训部","科研院","安保处","后勤部","学院","教师","其他"]
     in_feed = []
-
-
+    number=3000000000
     for i in list0:
         dictionary1 = {}
-        dictionary1["com_number"] = i.com_number
-        dictionary1["com_name"] = i.com_name
+        dictionary1["iw_depart"] = i
         count = 0
         n=0
         feed_content = []
-        worklist = TboutWork.objects.filter(com_number=i)
+        worklist = TbinWork.objects.filter(iw_depart=i)
         for j in worklist:
-            feedbackEr = TbfeedbackEr.objects.filter(ow_number=j).filter(fb_direction="学生评价企业")
+            feedbackEr = TbfeedbackEr.objects.filter(iw_number=j).filter(fb_direction="学生评价企业")
             for k in feedbackEr:
                 dictionary2 = {}
                 dictionary2["nickname"] = k.stu.nickname
-                dictionary2["work"] = j.ow_post
+                dictionary2["work"] = j.iw_post
                 b_content0 = k.fb_content.replace("'", '"')
                 fb_content = json.loads(b_content0)
                 content = ""
@@ -317,12 +316,12 @@ def inwork_feedback(request):
         dictionary1["feed_content"] = feed_content
         if count !=0:
             f = count / n
+            number = number + 1
+            dictionary1["number"] = number
+            dictionary1["num"] = n
             dictionary1["fb_content1"] = '%.1f' % f
             in_feed.append(dictionary1)
-    return render(request, 'wechat/outwork_feedback.html', {'in_feed': in_feed})
-
-    feed_content = ["jijizhazha"]
-    return render(request, 'wechat/inwork_feedback.html')
+    return render(request, 'wechat/inwork_feedback.html', {'in_feed': in_feed})
 
 #学生评价展示界面——HHL 12/13
 def stu_feedback_show(request):
