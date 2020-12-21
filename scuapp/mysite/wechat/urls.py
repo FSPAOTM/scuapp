@@ -5,6 +5,7 @@ from . import views,views_com,views_stu,views01,views02,views03,views_chat
 app_name = 'wechat'
 urlpatterns = [
     #小程序界面
+    #学生
     path('dengluzhuce_login/', views.dengluzhuce_login, name='dengluzhuce_login'),
     path('Manage_register/', views.Manage_register, name='Manage_register'),
     path('Student_register/', views.Student_register, name='Student_register'),
@@ -26,6 +27,13 @@ urlpatterns = [
     path('Enroll_in_work/', views.Enroll_in_work, name='Enroll_in_work'),
     path('Enroll_in_inwork/', views.Enroll_in_inwork, name='Enroll_in_inwork'),
     path('Show_myjob/', views.Show_myjob, name='Show_myjob'),
+    path('Stu_interview_notice_show/', views_stu.Stu_interview_notice_show, name='Stu_interview_notice_show'),
+    path('Stu_interview_notice_sure/', views_stu.Stu_interview_notice_sure, name='Stu_interview_notice_sure'),
+    path('Stu_result_show/', views_stu.Stu_result_show, name='Stu_result_show'),
+    path('Stu_result_sure/', views_stu.Stu_result_sure, name='Stu_result_sure'),
+    path('Stu_feedbackEr/', views_stu.Stu_feedbackEr, name='Stu_feedbackEr'),
+    path('outwork_feedback_com/', views_stu.outwork_feedback_com, name='outwork_feedback_com'),
+    path('outwork_feedback_detail/', views_stu.outwork_feedback_detail, name='outwork_feedback_detail'),
     #企业
     path('Show_company_name/', views_com.Show_company_name, name='Show_company_name'),
     path('Company_info_showmodiify/', views_com.Company_info_showmodiify, name='Company_info_showmodiify'),
@@ -36,8 +44,6 @@ urlpatterns = [
     path('Modify_outwork_info/', views_com.Modify_outwork_info, name='Modify_outwork_info'),
     path('Show_applicant/', views_com.Show_applicant, name='Show_applicant'),
     path('Modify_applystatus/', views_com.Modify_applystatus, name='Modify_applystatus'),
-
-         ####lhy修改 企业
     path('Get_outwork_info_end/', views_com.Get_outwork_info_end, name='Get_outwork_info_end'),
     path('Company_apply_interviewtime/', views_com.Company_apply_interviewtime, name='Company_apply_interviewtime'),
     path('Com_interview_notice_show/',views_com.Com_interview_notice_show, name='Com_interview_notice_show'),
@@ -53,18 +59,10 @@ urlpatterns = [
     path('Com_work_unemployed/',views_com.Com_work_unemployed, name='Com_work_unemployed'),
     path('Com_pingjia_me/',views_com.Com_pingjia_me, name='Com_pingjia_me'),
     path('Com_my_pingjia/',views_com.Com_my_pingjia, name='Com_my_pingjia'),
-
-         ###lhy修改 学生
-    path('Stu_interview_notice_show/', views_stu.Stu_interview_notice_show, name='Stu_interview_notice_show'),
-    path('Stu_interview_notice_sure/', views_stu.Stu_interview_notice_sure, name='Stu_interview_notice_sure'),
-    path('Stu_result_show/', views_stu.Stu_result_show, name='Stu_result_show'),
-    path('Stu_result_sure/', views_stu.Stu_result_sure, name='Stu_result_sure'),
-    path('Stu_feedbackEr/', views_stu.Stu_feedbackEr, name='Stu_feedbackEr'),
-    path('outwork_feedback_show/', views_stu.outwork_feedback_show, name='outwork_feedback_show'),
-
     #聊天室界面
     path('', views_chat.index, name='index'),
     path('chat/<str:room_name>/', views_chat.room, name='room'),
+
 
     #后台管理界面
     #登录注册等
@@ -138,8 +136,5 @@ urlpatterns = [
     path('outwork_feedback/', views03.outwork_feedback, name='outwork_feedback'),
     path('inwork_feedback/', views03.inwork_feedback, name='inwork_feedback'),
     path('stu_feedback_show/', views03.stu_feedback_show, name='stu_feedback_show'),
-
-    # path('<CharField:manager_id>/results/', views01.results, name='results'),
-    # path('<CharField:manager_id/vote/', views01.vote, name='vote'),
 
 ]

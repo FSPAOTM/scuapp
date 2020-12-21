@@ -142,16 +142,35 @@ def Stu_feedbackEr(request):
     else:
         return HttpResponse("请求错误")
 
-#校外评价显示
-def outwork_feedback_show(request):
+#校外评价总显示
+def outwork_feedback_com(request):
     ow_number = request.GET.get('ow_number')
     outwork = TboutWork.objects.get(ow_number=ow_number)
-    out_feed = []
-    dictionary1 = {}
-    dictionary1["com_name"] = outwork.com_number.com_name
+    out_feed=[]
     count = 0
     n=0
+    worklist = TboutWork.objects.filter(com_number=outwork.com_number)
+    for j in worklist:
+        feedbackEr = TbfeedbackEr.objects.filter(ow_number=j).filter(fb_direction="学生评价企业")
+        for k in feedbackEr:
+            b_content0 = k.fb_content.replace("'", '"')
+            fb_content = json.loads(b_content0)
+            count = count + int(fb_content[0])
+            n=n+1
+    if count !=0:
+        f = count / n
+        score = '%.1f' % f #评分
+        out_feed.append({'com_name': outwork.com_number.com_name, 'score': score})
+        plays_json = json.dumps(out_feed, ensure_ascii=False)
+        return HttpResponse(plays_json)
+    else:
+        return HttpResponse("该公司暂无评价")
+
+def outwork_feedback_detail(request):
+    ow_number = request.GET.get('ow_number')
+    outwork = TboutWork.objects.get(ow_number=ow_number)
     feed_content = []
+    n=0
     worklist = TboutWork.objects.filter(com_number=outwork.com_number)
     for j in worklist:
         feedbackEr = TbfeedbackEr.objects.filter(ow_number=j).filter(fb_direction="学生评价企业")
@@ -169,16 +188,13 @@ def outwork_feedback_show(request):
                 content = "无评价内容"
             else:
                 content = content[:-1]
-            count = count + int(fb_content[0])
             n=n+1
-            dictionary2["fb_content2"] = content
+            dictionary2["score"] = fb_content[0]
+            dictionary2["fb_content"] = content
             dictionary2["fb_time"] = k.fb_time
             feed_content.append(dictionary2)
-    dictionary1["feed_content"] = feed_content #列表
-    if count !=0:
-        f = count / n
-        dictionary1["num"] = n #条数
-        dictionary1["fb_content1"] = '%.1f' % f #评分
-        out_feed.append(dictionary1)
-    plays_json = json.dumps(out_feed, ensure_ascii=False)
-    return HttpResponse(plays_json)
+    if n !=0:
+        plays_json = json.dumps(feed_content, ensure_ascii=False)
+        return HttpResponse(plays_json)
+    else:
+        return HttpResponse("该公司暂无评价")
