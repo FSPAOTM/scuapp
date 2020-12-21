@@ -67,7 +67,7 @@ urlpatterns = [
 
     #后台管理界面
     #登录注册等
-    #path('', views02.index, name='index0'),
+    #path('', views02.index, name='index'),
     path('index/', views02.index, name='index'),
     path('manage/', views02.manage, name='manage'),
     path('login/', views02.login, name='login'),
@@ -134,10 +134,10 @@ urlpatterns = [
     path('manager_ifo/', views03.manager_ifo, name='manager_ifo'),
     path('manager_ifo_submit/', views03.manager_ifo_submit, name='manager_ifo_submit'),
     #评价管理
+    path('outwork_feedback/', views03.outwork_feedback, name='outwork_feedback'),
 
 
     #待修改
-    path('outwork_feedback/', views03.outwork_feedback, name='outwork_feedback'),
     path('inwork_feedback/', views03.inwork_feedback, name='inwork_feedback'),
     path('stu_feedback_show/', views03.stu_feedback_show, name='stu_feedback_show'),
 
