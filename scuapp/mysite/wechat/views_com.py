@@ -79,7 +79,7 @@ def Part_time_post(request):
         return HttpResponse("发布成功")
     else:
         return HttpResponse("请求错误")
-#cfabu 企业兼职信息展示功能 后期尝试完善在这里传already 未调试
+#cfabu 企业兼职信息展示功能 后期尝试完善在这里传already
 def Get_outwork_info(request):
     phone_num = request.GET.get('user')#获取全局变量
     com = Tbcompany.objects.get(phone_num=phone_num)
@@ -485,7 +485,7 @@ def Com_work_unemployed(request):
     else:
         return HttpResponse("请求错误")
 
-#cpingjia 评价企业展示 未调试
+#cpingjia 评价企业展示
 def Com_pingjia_me(request):
     phone_num = request.GET.get('user')
     com = Tbcompany.objects.get(phone_num=phone_num)
@@ -508,7 +508,7 @@ def Com_pingjia_me(request):
     plays_json = json.dumps(plays, ensure_ascii=False)
     return HttpResponse(plays_json)
 
-#cpingjia 企业的评价展示 未调试
+#cpingjia 企业的评价展示
 def Com_my_pingjia(request):
     phone_num = request.GET.get('user')
     com = Tbcompany.objects.get(phone_num=phone_num)
