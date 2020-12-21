@@ -63,12 +63,12 @@ urlpatterns = [
 
 #聊天室界面
     path('', views_chat.index, name='index'),
-    path('<str:room_name>/', views_chat.room, name='room'),
+    path('chat/<str:room_name>/', views_chat.room, name='room'),
 
     #后台管理界面
     #登录注册等
     #path('', views02.index, name='index0'),
-    path('index0/', views02.index, name='index0'),
+    path('index/', views02.index, name='index'),
     path('manage/', views02.manage, name='manage'),
     path('login/', views02.login, name='login'),
     path('register/', views02.register, name='register'),
