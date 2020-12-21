@@ -1,4 +1,5 @@
 // pages/pingjia/pingjia.js
+const app=getApp()
 Page({
 
   /**
@@ -10,6 +11,7 @@ Page({
     winWidth: 0,
     winHeight: 0,
     isShow: false,
+    currentTab: 0,
   },
 
   swichNav: function (e) {
@@ -52,7 +54,7 @@ Page({
       }
     });
     wx.request({
-      url: app.globalData.url + '/Show_work/',//待修改
+      url: app.globalData.url + '/Com_my_pingjia/',
       method: "GET",
       header: {
         'Content-Type': 'application/json'
@@ -63,14 +65,14 @@ Page({
       success: function (res) {
         console.log(res);
         if (res.statusCode == 200) {
-          self.setData({
+          that.setData({
             mypingjia: res.data
           })
         }
       }
     })
     wx.request({
-      url: app.globalData.url + '/Show_work/',//待修改
+      url: app.globalData.url + '/Com_pingjia_me/',
       method: "GET",
       header: {
         'Content-Type': 'application/json'
@@ -81,7 +83,7 @@ Page({
       success: function (res) {
         console.log(res);
         if (res.statusCode == 200) {
-          self.setData({
+          that.setData({
             stupingjia: res.data
           })
         }

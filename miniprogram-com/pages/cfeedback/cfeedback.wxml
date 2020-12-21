@@ -23,7 +23,7 @@
       <text>内 容</text>
     </view>
     <view class='right'>
-      <text bindtap='label' class="{{attitude===true ? 'labelColor':''}}" data-index="{{attitude}}">认真负责</text>
+      <text bindtap='label' class="{{attitude===false ? 'labelColor':''}}" data-index="{{attitude}}">认真负责</text>
       <text bindtap='label1' class="{{time===false? 'labelColor':''}}" data-index="{{time}}">态度端正</text>
       <text bindtap='label2' class="{{efficiency===false?'labelColor':''}}" data-index="{{efficiency}}">联系及时</text>
       <text bindtap='label3' class="{{environment===false?'labelColor':''}}" data-index="{{environment}}">吃苦耐劳</text>

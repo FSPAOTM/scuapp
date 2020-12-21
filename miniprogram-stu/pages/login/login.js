@@ -52,7 +52,6 @@ Page({
   formSubmit: function (e) {
     var self = this;
     console.log(e);
-    this.linkSocket();
     self.setData({
       disabled: true
     });
@@ -126,6 +125,7 @@ Page({
       }
     })
   },
+
   linkSocket() {
     wx.connectSocket({
       url: "ws://127.0.0.1:8000/ws/chat/"+this.data.no+"/",
@@ -136,7 +136,7 @@ Page({
       console.log('yijing open')
     }) 
 },
-  
+
   /**
    * 生命周期函数--监听页面加载
    */

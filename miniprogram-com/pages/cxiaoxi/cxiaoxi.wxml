@@ -54,3 +54,60 @@
   </view>
 </scroll-view>
 <!-- wx:if="{{i.name!=name}}" -->
+<!--私信消息列表
+<scroll-view scroll-y="true" class="message-list" style="margin-top:{{navH+47}}px;height:1200rpx">
+
+  <view class='user' bindtap='goTocontactPage'>
+    <image class='header-icon' src='yh1.png'></image>
+    <view class='user-content'>
+      <view class='firstline'>
+        <view class='apart'>
+          <view class='username'>
+            <text>用户1</text>
+          </view>
+        </view>
+        <view class='time'>
+          <view class='time-num'>9:36</view>
+        </view>
+      </view>
+      <view class='secondline'>
+        <view class='dialog'>
+          <text>你想要怎么拍呢？</text>
+        </view>
+        <view class='dialog-nums'>
+          <view class='bubble3'>
+            <view class='num'>2</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='linecut'></view>
+
+  <view class='user' bindtap='goTocontactPage'>
+    <image class='header-icon' src='yh2.png'></image>
+    <view class='user-content'>
+      <view class='firstline'>
+        <view class='apart'>
+          <view class='username'>
+            <text>用户2</text>
+          </view>
+        </view>
+        <view class='time'>
+          <view class='time-num'>8:16</view>
+        </view>
+      </view>
+      <view class='secondline'>
+        <view class='dialog'>
+          <text>约拍时间是这周六下午的两点钟</text>
+        </view>
+        <view class='dialog-nums'>
+          <view class='bubble3'>
+            <view class='num'>1</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>-->

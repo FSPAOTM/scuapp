@@ -32,6 +32,14 @@ Page({
     max: 200, //最多字数 (根据自己需求改变)
     pics: [],
   },
+
+  onLoad: function (options) {
+    this.setData({
+      stu_number:options.stu_number,
+      ow_number:options.ow_number
+    })
+  },
+
   // 星星点击事件
   starTap: function (e) {
     var that = this;
@@ -113,23 +121,6 @@ Page({
   
   change() {
     let that = this;
-    var ow_number = -1
-    var ow_number = wx.getStorageSync("ow_number");
-    app.globalData.ow_number = ow_number;
-    wx.removeStorageSync("ow_number");
-    this.setData({
-      ow_number: ow_number
-    })
-    console.log(this.data.ow_number)
-    var stu_number = -1
-    var stu_number = wx.getStorageSync("stu_number");
-    wx.removeStorageSync("stu_number");
-    this.setData({
-      stu_number: stu_number
-    })
-
-
-
     wx.request({
       url: app.globalData.url + '/Com_feedbackEr/',//待调试
       header: {
@@ -138,7 +129,7 @@ Page({
       method: "POST",
       data: {
         com:app.globalData.user,
-        stuNumber:that.data.stuNumber,
+        stuNumber:that.data.stu_number,
         ow_number: that.data.ow_number,
         score: that.data.wjxScore,
         serious: that.data.serious,

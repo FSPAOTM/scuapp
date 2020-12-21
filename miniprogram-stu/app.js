@@ -3,17 +3,10 @@ var app=getApp()
 App({
   onLaunch: function () {
     var that=this;
-
-    //this.sendmsg()
-    wx.onSocketClose(function (res) {
-      console.log("disconnect")
-    })
-
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
     // 登录
     wx.login({
       success: res => {
@@ -52,7 +45,6 @@ App({
         }
       }
     })
-
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -75,6 +67,18 @@ App({
     })
   },
 
+  //第一种底部  
+  editTabBar: function () {
+    //使用getCurrentPages可以获取当前加载中所有的页面对象的一个数组，数组最后一个就是当前页面。
+
+    var pagePath = "../miniprogram-stu/pages/login/login"; //当前页面url
+    if (pagePath.indexOf('/') != 0) {
+      pagePath = '/' + pagePath;
+    }
+
+  },
+
+  
   linkSocket() {
     var that = this
     wx.connectSocket({
@@ -95,17 +99,6 @@ App({
     })
   },
 
-  //第一种底部  
-  editTabBar: function () {
-    //使用getCurrentPages可以获取当前加载中所有的页面对象的一个数组，数组最后一个就是当前页面。
-
-    var pagePath = "../miniprogram-stu/pages/login/login"; //当前页面url
-    if (pagePath.indexOf('/') != 0) {
-      pagePath = '/' + pagePath;
-    }
-
-  },
-
 
   globalData: {
     url: 'http://127.0.0.1:8000/wechat',
@@ -121,22 +114,6 @@ App({
     works: "",
     stuNumber: "",
     jobType: "",
-    ow_number: "",
-    friendlist: ["17188385280", "show", "as先生", "22先生", "练习生"],
-    msgList: [{
-        from: 'server',
-        to: 'text',
-        content: '你好',
-        time: '2020.10.10',
-        isread: 1
-      },
-      {
-        from: '17188385280',
-        to: 'text',
-        content: '如有疑问欢迎咨询',
-        time: '2020.10.10',
-        isread: 1
-      }
-    ]
+    ow_number: ""
   }
 })

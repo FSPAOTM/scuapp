@@ -29,7 +29,7 @@
   flex-direction: row;
   width: 400rpx;
   font-size: 26rpx;
-  margin-top: 30rpx;
+  margin-top: 36rpx;
   font-weight: 400;
   color: #aeaeae;
 }
@@ -44,7 +44,7 @@
 }
 
 .time-num{
-margin-right: 100rpx; 
+margin-right: 20rpx; 
 }
 
 /*内容第二行*/
@@ -141,14 +141,17 @@ color: #666;
 
 
 .db{
-  display:block;
+  display:flex;
+  flex-direction: column;
 }
 .dn{
   display:none;
 }
 
 .title_icon{
-  margin-left: 330px;
+  float: right;
+  margin-top: 36rpx;
+  margin-right: 20px;
   width: 20px;
   height:20px ;
 }

@@ -18,9 +18,6 @@
 .postt {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
 }
 
 .post {
@@ -41,16 +38,23 @@
 
 .jobb {
   margin-left: 10px;
+  
 }
 
 .xiangqing {
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .xian {
-  width: 90%;
+  width: 90%!important;
   background: #ccc;
-  height: 2rpx;
+  height: 4rpx;
+}
+
+.arrow{
+  color:  #ccc;
+  float: right;
+  padding-right: 25px!important;
 }
 
 .icon-xiala,
@@ -101,16 +105,6 @@
   padding: 20rpx;
 }
 
-.zi {
-  border: 2rpx #FA8D33 solid;
-  color: #FA8D33;
-  padding: 2rpx 10rpx;
-  font-size: 18rpx;
-  margin-right: 22rpx;
-  border-radius: 9rpx;
-
-}
-
 .title {
   font-weight: 600;
   line-height: 20rpx;
@@ -131,6 +125,14 @@
   font-size: 28rpx;
   font-weight: 600;
 
+}
+
+.prix1 {
+  color: #FA7C15;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 20px;
+  flex-basis: 100px;
 }
 
 .select_icon {
@@ -218,20 +220,22 @@
 }
 
 .fold__panel {
-  
   margin-top:10px ;
   padding-left: 15px;
   padding-right: 15px;
 }
 
 .fold__items {
-  width: 90%!important;
+  width: 80%!important;
   background: #FFFFFF;
   box-shadow: -6px 0px 29px 0px #E7E7E7;
   border-radius: 10px;
   margin-bottom: 10px;
+  margin-right: 5px!important;
   padding: 15px;
 }
+
+
 
 .fold__item--head {
   display: flex;
@@ -268,9 +272,31 @@
   transition: all 0.4s;
 }
 
+.llist{
+  margin-left:25px;
+  margin-top:10px
+}
+
 .ellipsis {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   display: block;
+}
+
+.yijiesuan{
+  margin-top:10px ;
+  padding-left: 15px;
+  padding-right: 20px;
+}
+
+.jiesuan{
+  width: 80%!important;
+  background: #FFFFFF;
+  box-shadow: -6px 0px 29px 0px #E7E7E7;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding:15px;
+  display: flex;
+  flex-direction: row;
 }

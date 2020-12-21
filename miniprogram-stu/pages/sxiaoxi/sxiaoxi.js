@@ -6,10 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
+    mianshitongzhi:[],
+    jieguotongzhi:[],
+    show1:true,
+    show2:true,
+    count1:"",
+    count2:"",
     name: '',
     list: [{
       id: "001",
-      name: "17188385280",
+      name: "18310086086",
       count: "2",
       avatar: "../../images/head.png",
       text: "正在载入聊天列表，请稍候",
@@ -43,7 +49,6 @@ Page({
       text: "正在载入聊天列表，请稍候",
       updated: new Date()
     }],
-   
   },
 
   mianshi() {
@@ -57,6 +62,7 @@ Page({
       url: '../sjieguotongzhi/sjieguotongzhi?user=' + app.globalData.user,
     })
   },
+
   goPage(e) {
     let newlist = this.data.list
     const index = e.currentTarget.dataset.index
@@ -68,12 +74,50 @@ Page({
       url: '../schatting/schatting?name=' + e.currentTarget.dataset.name  /**?? */
     })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      name: app.globalData.user
+    let that = this;
+    wx.request({
+      url: app.globalData.url + '/Stu_interview_notice_show/', 
+      method: "GET",
+      header: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        user: app.globalData.user
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          that.setData({
+            mianshitongzhi: res.data,
+            count1:res.data.length
+          })
+        }
+      }
+    })
+
+    wx.request({
+      url: app.globalData.url + '/Stu_interview_notice_show/', //待修改
+      method: "GET",
+      header: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        user: app.globalData.user
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          that.setData({
+            jieguotongzhi: res.data,
+            count2:res.data.length//待修改
+          })
+        }
+      }
     })
   },
 

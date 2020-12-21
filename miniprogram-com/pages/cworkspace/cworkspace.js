@@ -8,7 +8,7 @@ Page({
    */
   data: {
     showIndex: "",
-    show:false,
+    show: false,
     //tap切换自定义宽高
     winWidth: 0,
     winHeight: 0,
@@ -135,18 +135,20 @@ Page({
                         break;
                       } else {
                         var baoming = {}
-                        var baominger = []
+                        var baominger2 = []
                         var person = {}
+                        var info1 = []
                         baoming.ow_number = res.data[i].ow_number;
                         baoming.user = res.data[i].user;
-                        baoming.stu_number=res.data[i].stu_number
-                        baominger.push(baoming)
-                        baominger = baominger
+                        baoming.stu_number = res.data[i].stu_number
+                        baominger2.push(baoming)
+                        baominger = baominger.concat(baominger2)
                         person.post = res.data[i].post
                         person.baominger = baominger
-                        that.data.workinfo1.push(person)
+                        info1.push(person)
+                        info1 = info1
                         that.setData({
-                          workinfo1: that.data.workinfo1
+                          workinfo1: that.data.workinfo1.concat(info1)
                         })
                       }
                     }
@@ -202,12 +204,12 @@ Page({
               that.setData({
                 workinfo5: that.data.workinfo5
               })
-            }else if (res.data[i].status == "待评价") {
+            } else if (res.data[i].status == "待评价") {
               that.data.workinfo5.push(res.data[i])
               that.setData({
                 workinfo5: that.data.workinfo5
               })
-            }else if (res.data[i].status == "已评价") {
+            } else if (res.data[i].status == "已评价") {
               that.data.workinfo5.push(res.data[i])
               that.setData({
                 workinfo5: that.data.workinfo5
@@ -437,7 +439,18 @@ Page({
     })
   },
 
-
+  feedback(ev){
+    var that = this;
+    var e = ev.currentTarget.dataset.index;
+    var ow_number = that.data.workinfo5[e].ow_number
+    var stu_number = that.data.workinfo5[e].stu_number;
+    console.log(ow_number)
+    console.log(stu_number)
+    console.log("++++++", ev, that)
+    wx.navigateTo({
+      url: "../cfeedback/cfeedback?ow_number="+ow_number+'&stu_number='+stu_number
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -520,18 +533,20 @@ Page({
                         break;
                       } else {
                         var baoming = {}
-                        var baominger = []
+                        var baominger2 = []
                         var person = {}
+                        var info1 = []
                         baoming.ow_number = res.data[i].ow_number;
                         baoming.user = res.data[i].user;
-                        baoming.stu_number=res.data[i].stu_number
-                        baominger.push(baoming)
-                        baominger = baominger
+                        baoming.stu_number = res.data[i].stu_number
+                        baominger2.push(baoming)
+                        baominger = baominger.concat(baominger2)
                         person.post = res.data[i].post
                         person.baominger = baominger
-                        that.data.workinfo1.push(person)
+                        info1.push(person)
+                        info1 = info1
                         that.setData({
-                          workinfo1: that.data.workinfo1
+                          workinfo1: that.data.workinfo1.concat(info1)
                         })
                       }
                     }

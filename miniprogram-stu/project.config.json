@@ -48,14 +48,6 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "current": -1,
-      "list": []
-    },
-    "conversation": {
-      "current": -1,
-      "list": []
-    },
     "plugin": {
       "list": []
     },
@@ -68,23 +60,122 @@
     "miniprogram": {
       "list": [
         {
-          "id": -1,
-          "name": "pages/index/index",
-          "pathName": "pages/index/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
           "name": "pages/login/login",
           "pathName": "pages/login/login",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/sinfoShow/sinfoShow",
+          "pathName": "pages/sinfoShow/sinfoShow",
           "query": "",
           "scene": null
         },
         {
           "id": -1,
+          "name": "pages/repwd2/repwd2",
+          "pathName": "pages/repwd2/repwd2",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/smyJob/smyJob",
+          "pathName": "pages/smyJob/smyJob",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/sbaoming/sbaoming",
+          "pathName": "pages/sbaoming/sbaoming",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/sreason/sreason",
+          "pathName": "pages/sreason/sreason",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/sallJob/sallJob",
+          "pathName": "pages/sallJob/sallJob",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/repwd1/repwd1",
+          "pathName": "pages/repwd1/repwd1",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/repwd1-1/repwd1-1",
+          "pathName": "pages/repwd1-1/repwd1-1",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/scenter/scenter",
+          "pathName": "pages/scenter/scenter",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sinfoFill/sinfoFill",
+          "pathName": "pages/sinfoFill/sinfoFill",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sinfoShow/sinfoShow",
+          "pathName": "pages/sinfoShow/sinfoShow",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/regStudent/regStudent",
+          "pathName": "pages/regStudent/regStudent",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sinfoModify/sinfoModify",
+          "pathName": "pages/sinfoModify/sinfoModify",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/spingjia/spingjia",
+          "pathName": "pages/spingjia/spingjia",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sfeedback/sfeedback",
+          "pathName": "pages/sfeedback/sfeedback",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "pages/sxiaoxi/sxiaoxi",
           "pathName": "pages/sxiaoxi/sxiaoxi",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sjieguotongzhi/sjieguotongzhi",
+          "pathName": "pages/sjieguotongzhi/sjieguotongzhi",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/smianshitongzhi/smianshitongzhi",
+          "pathName": "pages/smianshitongzhi/smianshitongzhi",
+          "query": "",
           "scene": null
         }
       ]

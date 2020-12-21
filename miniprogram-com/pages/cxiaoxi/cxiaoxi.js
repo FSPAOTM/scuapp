@@ -66,6 +66,7 @@ Page({
       url: '../cmianshidahui/cmianshidahui?user=' + app.globalData.user,
     })
   },
+
   goPage(e) {
     let newlist = this.data.list
     const index = e.currentTarget.dataset.index
@@ -77,10 +78,8 @@ Page({
       url: '../schatting/schatting?name=' + e.currentTarget.dataset.name  /**?? */
     })
   },
+
   onLoad: function (options) {
-    this.setData({
-      name: app.globalData.user
-    })
     let that = this;
     wx.request({
       url: app.globalData.url + '/Com_interview_notice_show/', 
@@ -129,7 +128,6 @@ Page({
             })
           }
         }
-        
       }
     })
   },
