@@ -15,7 +15,7 @@ Page({
     name: '',
     list: [{
       id: "001",
-      name: "17188385280",
+      name: "18310086086",//17188385280
       count: "2",
       avatar: "../../images/head.png",
       text: "正在载入聊天列表，请稍候",

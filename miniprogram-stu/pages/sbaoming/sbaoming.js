@@ -106,6 +106,11 @@ Page({
     }
   },
 
+spingjiashow(){
+  wx.navigateTo({
+    url: '../spingjiashow/spingjiashow?ow_number='+this.data.ow_number,
+  })
+},
 
   reason() {
     if (this.data.type == "校内") {

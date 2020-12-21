@@ -91,7 +91,7 @@
   <view class="baise"></view>
  <!--底部按钮-->
  <view class="anniu">
-  <button formType="submit" class="btbdstk" bindtap="resetSalaryBtnClick" >
+  <button formType="submit" class="btbdstk" bindtap="spingjiashow" >
     <image class="image" src="pj.png"></image>
    <view class="bdstk" >
     <text >评价</text> 

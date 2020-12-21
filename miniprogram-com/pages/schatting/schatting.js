@@ -41,10 +41,10 @@ Page({
     this.setData({
       //to: options.stu_number,
       //to_name:options.name,
-      to:options.name,
+      to: options.name,
       name: app.globalData.user,
       msgList: app.globalData.msgList,
-    }); 
+    });
     this.receivemsg();
   },
 

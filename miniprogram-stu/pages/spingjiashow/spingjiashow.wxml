@@ -1,0 +1,35 @@
+<!--pages/spingjiashow/spingjiashow.wxml-->
+<view class="header">
+  <!-- <image src="{{thumb}}" class="thumb"></image> -->
+  <view class="thumb">
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <view class='nickname'>
+    <text class="nickname">{{com_name}}</text>
+    <text class="prix2" wx:if="{{show}}">{{score}} 分</text>
+  </view>
+</view>
+
+
+<view wx:if="{{show}}" class='user-content' wx:for="{{pingjia}}" wx:key="key" wx:for-item="item" wx:for-index="index">
+  <view class='firstline'>
+    <view class='apart'>
+      <text class='apart1'>匿名用户</text>
+      <text class='apart1'>（{{item.work}}）</text>
+      <text class="prix1" >{{item.score}}.0 分</text>
+    </view>
+    <view class='time'>
+      <view class='time-num'>{{item.fb_time}}</view>
+    </view>
+  </view>
+  <view class='secondline'>
+    <view class='dialog'>
+      <text>{{item.fb_content}}</text>
+    </view>
+  </view>
+<view class='linecut'></view>
+</view>
+
+<view class="after" wx:if="{{isShow}}">
+  <text>该企业暂无评价</text>
+</view>

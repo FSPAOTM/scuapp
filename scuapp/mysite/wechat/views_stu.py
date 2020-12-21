@@ -188,7 +188,7 @@ def outwork_feedback_detail(request):
             n=n+1
             dictionary2["score"] = fb_content[0]
             dictionary2["fb_content"] = content
-            dictionary2["fb_time"] = k.fb_time
+            dictionary2["fb_time"] = str(k.fb_time)
             feed_content.append(dictionary2)
     if n !=0:
         plays_json = json.dumps(feed_content, ensure_ascii=False)

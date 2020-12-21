@@ -19,8 +19,7 @@
 
     <swiper-item>
 
-      <view class='user-content' wx:for="{{mypingjia}}" wx:key="key" wx:for-item="item" wx:for-index="index"
-        data-index="{{index}}">
+      <view class='user-content' wx:for="{{mypingjia}}" wx:key="key" wx:for-item="item" wx:for-index="index">
         <view class='firstline'>
           <view class='apart'>
             <text>{{item.stu}}</text>
