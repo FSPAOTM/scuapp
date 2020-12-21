@@ -146,7 +146,6 @@ def Stu_feedbackEr(request):
 def outwork_feedback_com(request):
     ow_number = request.GET.get('ow_number')
     outwork = TboutWork.objects.get(ow_number=ow_number)
-    out_feed=[]
     count = 0
     n=0
     worklist = TboutWork.objects.filter(com_number=outwork.com_number)
@@ -160,9 +159,7 @@ def outwork_feedback_com(request):
     if count !=0:
         f = count / n
         score = '%.1f' % f #评分
-        out_feed.append({'com_name': outwork.com_number.com_name, 'score': score})
-        plays_json = json.dumps(out_feed, ensure_ascii=False)
-        return HttpResponse(plays_json)
+        return HttpResponse(json.dumps({'com_name': outwork.com_number.com_name, 'score': score}))
     else:
         return HttpResponse("该公司暂无评价")
 
