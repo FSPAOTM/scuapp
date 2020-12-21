@@ -51,6 +51,7 @@ Page({
   },
   formSubmit: function (e) {
     var self = this;
+    this.linkSocket();
     console.log(e);
     self.setData({
       disabled: true
