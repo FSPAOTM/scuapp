@@ -35,11 +35,12 @@
             <div class="wrapper">
                 <div class="row">
                     <div class="col-sm-12">
+                    {% for line in stu_feed %}
                         <section class="panel">
                             <header class="panel-heading">
-                                {% for line in stu_feed %}
-                                <span style="font-size: 16px">{{ line.name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                <span style="font-size: 14px">{{ line.stu_id }}</span>
+                                <p>{{ line.stu_id }}</p>
+                                <span style="font-size: 18px">{{ line.name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <span class="pingfen" style="color: #4a596f">评价条数：{{ line.num }}&nbsp;&nbsp;&nbsp;</span>
                                 <span class="pingfen">评分：{{ line.fb_content1 }}</span>
                                 <span class="tools pull-right">
                                     <a href="javascript:;" class="fa fa-chevron-down"></a>
@@ -47,7 +48,7 @@
                             </header>
                             <div class="panel-body">
                                 <div class="comments">
-                                    {% for li in feed_content %}
+                                    {% for li in line.feed_content %}
                                     <div class="{{ li.css }}">{{ li.type }}</div>
                                         <div class="comment-wrap">
                                         <div class="comment-block">
@@ -57,15 +58,14 @@
                                             <div class="bottom-comment">
                                                 <div class="comment-person">{{ li.work }}</div>
                                             </div>
-                                            <p class="comment-text">{{ li.fb_content }}</p>
+                                            <p class="comment-text">{{ li.fb_content2 }}</p>
                                             <div class="bottom-comment">
                                                 <div class="comment-date">{{ li.fb_time }}</div>
                                             </div>.
                                         </div>
-                                    {% endfor %}
                                     </div>
+                                    {% endfor %}
                                 </div>
-
                             </div>
                         </section>
                         {% endfor %}
