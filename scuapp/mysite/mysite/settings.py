@@ -89,10 +89,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'scuapp',
-        'HOST': '127.0.0.1',
+        'HOST': '49.235.199.231',
         'PORT': 3306,
         'USER': 'root',
-        'PASSWORD': '12345678',
+            'PASSWORD': 'QWER01asdf02',
         'TEST': {
                     'NAME': 'mytestdatabase',
                 },
