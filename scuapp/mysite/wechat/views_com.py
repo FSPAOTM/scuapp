@@ -184,7 +184,8 @@ def Show_applicant(request):
             result = Tbapplication.objects.filter(ow_number=ow_number)
             for item in result:
                 ap_time = json.dumps(item.ap_time, cls=DateEncoder)
-                if item.apply_status =="已评价":
+                filterResult1 = TbfeedbackEr.objects.filter(stu=item.stu, ow_number=i)
+                if len(filterResult1) >0:
                     plays.append({'ow_number': ow_number,'post': ow_post, 'stu_number': item.stu.stu_id, 'user':item.stu.name, 'status':item.apply_status, 'ap_time':ap_time, 'pingjia':False})
                 else:
                     plays.append(
