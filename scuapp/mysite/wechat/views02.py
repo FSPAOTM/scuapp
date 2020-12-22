@@ -80,7 +80,7 @@ def outwork_list(request):
         dic["w_amount"] = i.w_amount
         dic["ddl_time"] = str(i.ddl_time)
         dic["ipub_time"] = str(i.ipub_time)
-        dic["com_number.com_number"] = i.com_number.com_number
+        dic["com_number"] = i.com_number.com_number
         dic["w_ps"] = i.w_ps
         dic["ow_status"] = i.ow_status
         if dic["ow_status"] == "报名结束":
