@@ -121,21 +121,39 @@ Page({
   },
 
   time3() {
-    this.setData({
-      show2: true,
-      show01: false,
-      show02: false,
-      show03: false
-    })
+    if (this.data.show1 == true) {
+      this.setData({
+        show2: true,
+        show01: false,
+        show02: false,
+        show03: false
+      })
+    } else {
+      this.setData({
+        show1: true,
+        show01: false,
+        show02: true
+      })
+    }
   },
 
   delete3() {
-    this.setData({
-      show2: false,
-      show01: false,
-      show02: true,
-      applytime3: "",
-    })
+    if (this.show2 == true) {
+      this.setData({
+        show2: false,
+        show01: false,
+        show02: true,
+        applytime3: "",
+      })
+    } else {
+      this.setData({
+        show2: false,
+        show01: false,
+        show02: true,
+        show03: false,
+        applytime3: "",
+      })
+    }
   },
 
   changeDateTimeColumn1(e) {

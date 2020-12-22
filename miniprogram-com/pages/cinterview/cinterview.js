@@ -7,6 +7,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show1: false,
+    show2: false,
+    show01: true,
+    show02: false,
+    show03: false,
     ow_number:"",
     user:"",
     post:"",
@@ -68,6 +73,85 @@ Page({
   changeDateTime1(e) {
     this.setData({ dateTime1: e.detail.value });
   },*/
+
+
+  time2() {
+    if (this.data.show2 == false) {
+      this.setData({
+        show1: true,
+        show01: false,
+        show02: true
+      })
+    } else {
+      this.setData({
+        show1: true,
+        show01: false,
+        show02: false,
+        show03: false
+      })
+    }
+  },
+
+  delete2() {
+    if (this.data.show2 == false) {
+      this.setData({
+        show1: false,
+        show01: true,
+        show02: false,
+        applytime2: ""
+      })
+    } else if(this.data.show01==true){
+      this.setData({
+        show1: false,
+        show01: false,
+        show03: false,
+        applytime2: ""
+      })
+    }else{
+      this.setData({
+        show1: false,
+        show01: false,
+        show03: true,
+        applytime2: ""
+      })
+    }
+  },
+
+  time3() {
+    if (this.data.show1 == true) {
+      this.setData({
+        show2: true,
+        show01: false,
+        show02: false,
+        show03: false
+      })
+    } else {
+      this.setData({
+        show1: true,
+        show01: false,
+        show02: true
+      })
+    }
+  },
+
+  delete3() {
+    if (this.show2 == true) {
+      this.setData({
+        show2: false,
+        show01: false,
+        show02: true,
+        applytime3: "",
+      })
+    } else {
+      this.setData({
+        show2: false,
+        show01: false,
+        show02: true,
+        show03: false,
+        applytime3: "",
+      })
+    }
+  },
 
   changeDateTimeColumn1(e) {
     var arr = this.data.dateTime1, dateArr = this.data.dateTimeArray1;

@@ -1,11 +1,28 @@
-/* pages/cinterview/cinterview.wxss */
+/* pages/cinterviewModify/cinterviewModify.wxss */
 .detailView {
   margin-left:10px;
   color:#323232;
   display:flex;
   margin-top:40rpx;
-  height: 100%;
   width: 100%;
+}
+
+
+.detail {
+  margin-left:10px;
+  color:#323232;
+  display:flex;
+  flex-direction: row;
+  margin-top:40rpx;
+  width: 100%;
+}
+
+
+.detail .img{
+  margin-top: 3px;
+  margin-left: 5px;
+  width: 12px;
+  height: 12px;
 }
 
 .title{
@@ -15,6 +32,15 @@
   text-align: center;
   margin-top: 5px;
   margin-bottom: 15px;
+}
+
+.icon .img{
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  width: 20px;
+  height: 20px;
 }
 
 .a1{
