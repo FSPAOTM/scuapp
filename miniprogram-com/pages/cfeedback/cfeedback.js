@@ -122,7 +122,7 @@ Page({
   change() {
     let that = this;
     wx.request({
-      url: app.globalData.url + '/Com_feedbackEr/',//待调试
+      url: app.globalData.url + '/Com_feedbackEr/',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
@@ -149,7 +149,7 @@ Page({
           })
           setTimeout(function () {
             wx.reLaunch({
-              url: '../cworkspace/cworkspace?pingjia=1'
+              url: '../cworkspace/cworkspace?currentTab=4'
             })
           }, 1500)
         }
