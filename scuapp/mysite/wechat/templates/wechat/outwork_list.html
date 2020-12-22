@@ -80,7 +80,7 @@
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <form name="ow_number"><td>{{ line.ow_number }}</td></form><!--method="post" action="../management_inWork_reset_show/"-->
+            <td>{{ line.ow_number }}</td>
             <td>{{ line.ow_post }}</td>
             <td>{{ line.w_time }}</td>
             <td>{{ line.w_place }}</td>
@@ -94,7 +94,7 @@
             <td>{{ line.com_number.com_number }}</td>
             <td>{{ line.w_ps }}</td>
             <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.ow_status }}</span></td>
+              <span class="button1 {{ line.btn_color }} button-mini">{{ line.ow_status }}</span></td>
             <td class="td-manage">
               <a  href="../management_outWork_stop/?stop_num={{ line.ow_number }}"  title="中止">
                 <i class="iconfont">&#xe6ce;</i>
@@ -121,7 +121,6 @@
           <a class="num" href="">1</a>
           <span class="current">2</span>
           <a class="num" href="">3</a>
-          <a class="num" href="">489</a>
           <a class="next" href="">&gt;&gt;</a>
         </div>
       </div>

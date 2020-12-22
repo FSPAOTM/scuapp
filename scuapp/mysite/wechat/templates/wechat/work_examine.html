@@ -59,7 +59,7 @@
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <form name="ow_number"><td>{{ line.ow_number }}</td></form>
+            <td>{{ line.ow_number }}</td>
             <td>{{ line.ow_post }}</td>
             <td>{{ line.w_time }}</td>
             <td>{{ line.w_place }}</td>
@@ -73,10 +73,10 @@
             <td>{{ line.com_number.com_number }}</td>
             <td>{{ line.w_ps }}</td>
             <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.ow_status }}</span></td>
+              <span class="button1 {{ line.btn_color }} button-mini">{{ line.ow_status }}</span></td>
             <td class="td-manage">
-              <a href="../management_outWork_pass/?pass_num={{ line.ow_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">通过</span></a>
-              <p><br><a href="../management_outWork_reject/?reject_num={{ line.ow_number }}"><span class="layui-btn layui-btn-normal layui-btn-mini">打回</span></a>
+              <a href="../management_outWork_pass/?pass_num={{ line.ow_number }}"><span class="button1 button-color2 button-mini">通过</span></a>
+              <p><br><a href="../management_outWork_reject/?reject_num={{ line.ow_number }}"><span class="button1 button-color4 button-mini">打回</span></a>
             </td>
         </tr>
         {% endfor %}
