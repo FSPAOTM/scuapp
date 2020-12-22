@@ -86,6 +86,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    that.setData({
+      currentTab:options.currentTab
+    })
     /** 
      * 获取系统信息,系统宽高
      */
@@ -484,6 +487,7 @@ Page({
     //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
     wx.showLoading({
       title: '刷新中...',
+      duration: 1000
     })
     this.getData();
   },
@@ -573,6 +577,11 @@ Page({
               that.setData({
                 workinfo2: that.data.workinfo2
               })
+            } else if (res.data[i].status == "未录用") {
+              that.data.workinfo2.push(res.data[i])
+              that.setData({
+                workinfo2: that.data.workinfo2
+              })
             } else if (res.data[i].status == "表筛通过") {
               that.data.workinfo3.push(res.data[i])
               that.setData({
@@ -588,7 +597,17 @@ Page({
               that.setData({
                 workinfo4: that.data.workinfo4
               })
-            } else if (res.data[i].status == "已结算") {
+            } else if (res.data[i].status == "工作结束") {
+              that.data.workinfo5.push(res.data[i])
+              that.setData({
+                workinfo5: that.data.workinfo5
+              })
+            } else if (res.data[i].status == "待评价") {
+              that.data.workinfo5.push(res.data[i])
+              that.setData({
+                workinfo5: that.data.workinfo5
+              })
+            } else if (res.data[i].status == "已评价") {
               that.data.workinfo5.push(res.data[i])
               that.setData({
                 workinfo5: that.data.workinfo5
