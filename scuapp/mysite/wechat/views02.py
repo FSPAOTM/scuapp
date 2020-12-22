@@ -435,8 +435,24 @@ def interview_stu_result(request):
         dictionary["apply_status"] = application.apply_status
         if dictionary["apply_status"] == "未录用":
             dictionary["s_sure"] = "未开启"
+            dictionary["btn_color1"] = "button-color4"
+            dictionary["btn_color2"] = "button-color4"
         else:
             dictionary["s_sure"] = application.s_sure
+        if dictionary["apply_status"] == "表筛未通过":
+            dictionary["btn_color1"] = "button-color5"
+        if dictionary["apply_status"] == "已评价":
+            dictionary["btn_color1"] = "button-color2"
+        if dictionary["apply_status"] == "已录用":
+            dictionary["btn_color1"] = "button-color7"
+        if dictionary["apply_status"] == "工作结束":
+            dictionary["btn_color1"] = "button-color1"
+        if dictionary["apply_status"] == "待评价":
+            dictionary["btn_color1"] = "button-color3"
+        if dictionary["s_sure"] == "未确认":
+            dictionary["btn_color2"] = "button-color5"
+        if dictionary["s_sure"] == "已确认":
+            dictionary["btn_color2"] = "button-color2"
         stu_result.append(dictionary)
     return render(request, 'wechat/stu_result.html', {'stu_result': stu_result})
 

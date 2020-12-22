@@ -53,9 +53,9 @@
             <td>{{ line.phonenumber }}</td>
             <td>{{ line.grade }}</td>
             <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.apply_status }}</span></td>
+              <span class="button1 {{ line.btn_color1 }} button-mini">{{ line.apply_status }}</span></td>
             <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.s_sure }}</span></td>
+              <span class="button1 {{ line.btn_color2 }} button-mini">{{ line.s_sure }}</span></td>
         </tr>
         {% endfor %}
         </tbody>
