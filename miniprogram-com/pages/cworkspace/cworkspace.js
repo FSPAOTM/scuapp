@@ -86,9 +86,11 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    that.setData({
-      currentTab:options.currentTab
-    })
+    if (options.currentTab != '') {
+      that.setData({
+        currentTab: options.currentTab
+      })
+    }
     /** 
      * 获取系统信息,系统宽高
      */
@@ -120,49 +122,42 @@ Page({
             if (res.data[i].status == "待审核") {
               var baoming = {}
               var person = {}
-              baoming.ow_number = res.data[i].ow_number;
-              baoming.user = res.data[i].user;
-              baoming.stu_number = res.data[i].stu_number;
+              var count = 0
               if (that.data.workinfo1.length >= 1) {
-                var j;
                 var m;
                 for (m = 0; m < that.data.workinfo1.length; m++) {
                   console.log(that.data.workinfo1[m])
-                  if (that.data.workinfo1[m].baominger.length >= 1) {
-                    for (j = 0; j < that.data.workinfo1[m].baominger.length; j++) {
-                      if (res.data[i].ow_number == that.data.workinfo1[m].baominger[j].ow_number) {
-                        baominger.push(baoming)
-                        that.setData({
-                          workinfo1: that.data.workinfo1
-                        })
-                        break;
-                      } else {
-                        var baoming = {}
-                        var baominger2 = []
-                        var person = {}
-                        var info1 = []
-                        baoming.ow_number = res.data[i].ow_number;
-                        baoming.user = res.data[i].user;
-                        baoming.stu_number = res.data[i].stu_number
-                        baominger2.push(baoming)
-                        baominger = baominger.concat(baominger2)
-                        person.post = res.data[i].post
-                        person.baominger = baominger
-                        info1.push(person)
-                        info1 = info1
-                        that.setData({
-                          workinfo1: that.data.workinfo1.concat(info1)
-                        })
-                      }
-                    }
+                  console.log(that.data.workinfo1.length)
+                  if (res.data[i].ow_number == that.data.workinfo1[m].baominger[0].ow_number) {
+                    baoming.ow_number = res.data[i].ow_number;
+                    baoming.user = res.data[i].user;
+                    baoming.stu_number = res.data[i].stu_number;
+                    that.data.workinfo1[m].baominger.push(baoming)
+                    that.setData({
+                      workinfo1: that.data.workinfo1
+                    })
                     break;
-                  } else {
-                    baominger.push(baoming)
-                    baominger = baominger
+                  }else{
+                    count = count + 1
                   }
                 }
+                if (count == that.data.workinfo1.length) {
+                  var baominger2 = []
+                  baoming.ow_number = res.data[i].ow_number;
+                  baoming.user = res.data[i].user;
+                  baoming.stu_number = res.data[i].stu_number;
+                  baominger2.push(baoming)
+                  person.post = res.data[i].post
+                  person.baominger = baominger2
+                  that.data.workinfo1.push(person)
+                  that.setData({
+                    workinfo1: that.data.workinfo1
+                  })
+                }
               } else {
-                console.log(that.data.workinfo1[m])
+                baoming.ow_number = res.data[i].ow_number;
+                baoming.user = res.data[i].user;
+                baoming.stu_number = res.data[i].stu_number;
                 baominger.push(baoming)
                 baominger = baominger
                 person.post = res.data[i].post
@@ -172,10 +167,6 @@ Page({
                   workinfo1: that.data.workinfo1
                 })
               }
-              /*that.data.workinfo1.push(res.data[i])
-              that.setData({
-                workinfo1: that.data.workinfo1
-              })*/
               console.log(that.data.workinfo1)
             } else if (res.data[i].status == "表筛未通过") {
               that.data.workinfo2.push(res.data[i])
@@ -442,7 +433,7 @@ Page({
     })
   },
 
-  feedback(ev){
+  feedback(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
     var ow_number = that.data.workinfo5[e].ow_number
@@ -451,7 +442,7 @@ Page({
     console.log(stu_number)
     console.log("++++++", ev, that)
     wx.navigateTo({
-      url: "../cfeedback/cfeedback?ow_number="+ow_number+'&stu_number='+stu_number
+      url: "../cfeedback/cfeedback?ow_number=" + ow_number + '&stu_number=' + stu_number
     })
   },
 
@@ -519,49 +510,42 @@ Page({
             if (res.data[i].status == "待审核") {
               var baoming = {}
               var person = {}
-              baoming.ow_number = res.data[i].ow_number;
-              baoming.user = res.data[i].user;
-              baoming.stu_number = res.data[i].stu_number;
+              var count = 0
               if (that.data.workinfo1.length >= 1) {
-                var j;
                 var m;
                 for (m = 0; m < that.data.workinfo1.length; m++) {
                   console.log(that.data.workinfo1[m])
-                  if (that.data.workinfo1[m].baominger.length >= 1) {
-                    for (j = 0; j < that.data.workinfo1[m].baominger.length; j++) {
-                      if (res.data[i].ow_number == that.data.workinfo1[m].baominger[j].ow_number) {
-                        baominger.push(baoming)
-                        that.setData({
-                          workinfo1: that.data.workinfo1
-                        })
-                        break;
-                      } else {
-                        var baoming = {}
-                        var baominger2 = []
-                        var person = {}
-                        var info1 = []
-                        baoming.ow_number = res.data[i].ow_number;
-                        baoming.user = res.data[i].user;
-                        baoming.stu_number = res.data[i].stu_number
-                        baominger2.push(baoming)
-                        baominger = baominger.concat(baominger2)
-                        person.post = res.data[i].post
-                        person.baominger = baominger
-                        info1.push(person)
-                        info1 = info1
-                        that.setData({
-                          workinfo1: that.data.workinfo1.concat(info1)
-                        })
-                      }
-                    }
+                  console.log(that.data.workinfo1.length)
+                  if (res.data[i].ow_number == that.data.workinfo1[m].baominger[0].ow_number) {
+                    baoming.ow_number = res.data[i].ow_number;
+                    baoming.user = res.data[i].user;
+                    baoming.stu_number = res.data[i].stu_number;
+                    that.data.workinfo1[m].baominger.push(baoming)
+                    that.setData({
+                      workinfo1: that.data.workinfo1
+                    })
                     break;
-                  } else {
-                    baominger.push(baoming)
-                    baominger = baominger
+                  }else{
+                    count = count + 1
                   }
                 }
+                if (count == that.data.workinfo1.length) {
+                  var baominger2 = []
+                  baoming.ow_number = res.data[i].ow_number;
+                  baoming.user = res.data[i].user;
+                  baoming.stu_number = res.data[i].stu_number;
+                  baominger2.push(baoming)
+                  person.post = res.data[i].post
+                  person.baominger = baominger2
+                  that.data.workinfo1.push(person)
+                  that.setData({
+                    workinfo1: that.data.workinfo1
+                  })
+                }
               } else {
-                console.log(that.data.workinfo1[m])
+                baoming.ow_number = res.data[i].ow_number;
+                baoming.user = res.data[i].user;
+                baoming.stu_number = res.data[i].stu_number;
                 baominger.push(baoming)
                 baominger = baominger
                 person.post = res.data[i].post
