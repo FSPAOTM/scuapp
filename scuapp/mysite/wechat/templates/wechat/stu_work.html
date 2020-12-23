@@ -57,9 +57,9 @@
             <td>{{ li.begin_time }}</td>
             <td>{{ li.end_time }}</td>
             <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ li.apply_status }}</span></td>
+              <span class="button1 {{ li.btn_color1 }} button-mini">{{ li.apply_status }}</span></td>
             <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ li.In_status }}</span></td>
+              <span class="button1 {{ li.btn_color2 }} button-mini">{{ li.In_status }}</span></td>
         </tr>
         {% endfor %}
         </tbody>
@@ -103,9 +103,9 @@
             <td>{{ li.begin_time }}</td>
             <td>{{ li.end_time }}</td>
             <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ li.apply_status }}</span></td>
+              <span class="button1 {{ li.btn_color3 }} button-mini">{{ li.apply_status }}</span></td>
             <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ li.ow_status }}</span></td>
+              <span class="button1 {{ li.btn_color4 }} button-mini">{{ li.ow_status }}</span></td>
         </tr>
         {% endfor %}
         </tbody>

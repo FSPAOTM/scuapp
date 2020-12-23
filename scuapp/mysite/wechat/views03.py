@@ -46,6 +46,32 @@ def stu_experience(request):
             else:
                 dictionary["begin_time"] = "未入职"
                 dictionary["end_time"] = "未入职"
+            if dictionary["In_status"] == "待评价":
+                dictionary["btn_color2"] = "button-color4"
+            if dictionary["In_status"] == "报名中":
+                dictionary["btn_color2"] = "button-color3"
+            if dictionary["In_status"] == "工作中":
+                dictionary["btn_color2"] = "button-color2"
+            if dictionary["In_status"] == "报名结束":
+                dictionary["btn_color2"] = "button-color5"
+            if dictionary["In_status"] == "结果通知中":
+                dictionary["btn_color2"] = "button-color1"
+            if dictionary["In_status"] == "工作结束":
+                dictionary["btn_color2"] = "button-color6"
+            if dictionary["In_status"] == "已结束":
+                dictionary["btn_color2"] = "button-color7"
+
+            if dictionary["apply_status"] == "已评价":
+                dictionary["btn_color1"] = "button-color2"
+            if dictionary["apply_status"] == "已报名":
+                dictionary["btn_color1"] = "button-color3"
+            if dictionary["apply_status"] == "已录用":
+                dictionary["btn_color1"] = "button-color4"
+            if dictionary["apply_status"] == "工作结束":
+                dictionary["btn_color1"] = "button-color5"
+            if dictionary["apply_status"] == "待评价":
+                dictionary["btn_color1"] = "button-color1"
+
             stu_inwork.append(dictionary)
         else:
             dictionary1 = {}
@@ -83,6 +109,47 @@ def stu_experience(request):
             else:
                 dictionary1["begin_time"] = "未入职"
                 dictionary1["end_time"] = "未入职"
+            if dictionary1["ow_status"] == "报名结束":
+                dictionary1["btn_color4"] = "button-color5"
+            if dictionary1["ow_status"] == "待评价":
+                dictionary1["btn_color4"] = "button-color4"
+            if dictionary1["ow_status"] == "已打回":
+                dictionary1["btn_color4"] = "button-color3"
+            if dictionary1["ow_status"] == "结果通知中":
+                dictionary1["btn_color4"] = "button-color2"
+            if dictionary1["ow_status"] == "面试通知中":
+                dictionary1["btn_color4"] = "button-color1"
+            if dictionary1["ow_status"] == "面试申请中":
+                dictionary1["btn_color4"] = "button-color8"
+            if dictionary1["ow_status"] == "工作中":
+                dictionary1["btn_color4"] = "button-color7"
+            if dictionary1["ow_status"] == "待审核":
+                dictionary1["btn_color4"] = "button-color6"
+            if dictionary1["ow_status"] == "面试阶段":
+                dictionary1["btn_color4"] = "button-color9"
+            if dictionary1["ow_status"] == "工作结束":
+                dictionary1["btn_color4"] = "button-color10"
+            if dictionary1["ow_status"] == "已结束":
+                dictionary1["btn_color4"] = "button-color11"
+            if dictionary1["ow_status"] == "报名中":
+                dictionary1["btn_color4"] = "button-color12"
+
+            if dictionary1["apply_status"] == "表筛未通过":
+                dictionary1["btn_color3"] = "button-color5"
+            if dictionary1["apply_status"] == "已评价":
+                dictionary1["btn_color3"] = "button-color2"
+            if dictionary1["apply_status"] == "已录用":
+                dictionary1["btn_color3"] = "button-color7"
+            if dictionary1["apply_status"] == "工作结束":
+                dictionary1["btn_color3"] = "button-color1"
+            if dictionary1["apply_status"] == "待评价":
+                dictionary1["btn_color3"] = "button-color3"
+            if dictionary1["apply_status"] == "面试中":
+                dictionary1["btn_color3"] = "button-color1"
+            if dictionary1["apply_status"] == "待审核":
+                dictionary1["btn_color3"] = "button-color6"
+            if dictionary1["apply_status"] == "未录用":
+                dictionary1["btn_color3"] = "button-color8"
             stu_outwork.append(dictionary1)
     return render(request, 'wechat/stu_work.html', {'stu_inwork': stu_inwork, 'stu_outwork': stu_outwork})
 #学生简历查看界面（界面 emmm)
@@ -124,6 +191,30 @@ def company_work(request):
         dictionary["work"] = i.work
         dictionary["ipub_time"] = str(i.ipub_time)
         dictionary["ow_status"] = i.ow_status
+        if dictionary["ow_status"] == "报名结束":
+            dictionary["btn_color4"] = "button-color5"
+        if dictionary["ow_status"] == "待评价":
+            dictionary["btn_color4"] = "button-color4"
+        if dictionary["ow_status"] == "已打回":
+            dictionary["btn_color4"] = "button-color3"
+        if dictionary["ow_status"] == "结果通知中":
+            dictionary["btn_color4"] = "button-color2"
+        if dictionary["ow_status"] == "面试通知中":
+            dictionary["btn_color4"] = "button-color1"
+        if dictionary["ow_status"] == "面试申请中":
+            dictionary["btn_color4"] = "button-color8"
+        if dictionary["ow_status"] == "工作中":
+            dictionary["btn_color4"] = "button-color7"
+        if dictionary["ow_status"] == "待审核":
+            dictionary["btn_color4"] = "button-color6"
+        if dictionary["ow_status"] == "面试阶段":
+            dictionary["btn_color4"] = "button-color9"
+        if dictionary["ow_status"] == "工作结束":
+            dictionary["btn_color4"] = "button-color10"
+        if dictionary["ow_status"] == "已结束":
+            dictionary["btn_color4"] = "button-color11"
+        if dictionary["ow_status"] == "报名中":
+            dictionary["btn_color4"] = "button-color12"
         company_work.append(dictionary)
     return render(request, 'wechat/company_work.html', {'company_work': company_work})
 #企业兼职录取与招聘情况
@@ -138,6 +229,22 @@ def company_employed(request):
         dictionary["name"] = i.stu.name
         dictionary["phonenumber"] = i.stu.phonenumber_phonenumberphonenumber_phonenumber
         dictionary["apply_status"] = i.apply_status
+        if dictionary["apply_status"] == "表筛未通过":
+            dictionary["btn_color3"] = "button-color5"
+        if dictionary["apply_status"] == "已评价":
+            dictionary["btn_color3"] = "button-color2"
+        if dictionary["apply_status"] == "已录用":
+            dictionary["btn_color3"] = "button-color7"
+        if dictionary["apply_status"] == "工作结束":
+            dictionary["btn_color3"] = "button-color1"
+        if dictionary["apply_status"] == "待评价":
+            dictionary["btn_color3"] = "button-color3"
+        if dictionary["apply_status"] == "面试中":
+            dictionary["btn_color3"] = "button-color1"
+        if dictionary["apply_status"] == "待审核":
+            dictionary["btn_color3"] = "button-color6"
+        if dictionary["apply_status"] == "未录用":
+            dictionary["btn_color3"] = "button-color8"
         company_employed_list.append(dictionary)
     return render(request, 'wechat/company_employed.html', {'company_employed_list': company_employed_list})
 #管理员管理

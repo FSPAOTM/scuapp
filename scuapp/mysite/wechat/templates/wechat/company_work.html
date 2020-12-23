@@ -59,7 +59,7 @@
             <td class="td-status">
                 <span class="button1 button-color1 button-mini" onclick="x_admin_show('招聘与录用情况','../company_employed/?ow_number={{ line.ow_number }}',800,600)">查看</span></td>
             <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">{{ line.ow_status }}</span></td>
+              <span class="button1 {{ line.btn_color4 }} button-mini">{{ line.ow_status }}</span></td>
         </tr>
         {% endfor %}
         </tbody>
