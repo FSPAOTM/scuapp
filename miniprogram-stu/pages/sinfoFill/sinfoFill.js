@@ -32,6 +32,8 @@ Page({
     works: "",
     stuNumber: "",
     result: "",
+    checked1:false,
+    checked2:false
   },
 
   onLoad: function (e) {
@@ -61,6 +63,15 @@ Page({
             works: res.data.res_per,
           })
           app.globalData.age = this.data.age;
+          if(this.data.gender=="男"){
+            this.setData({
+              checked1:true
+            })
+          }else{
+            this.setData({
+              checked2:true
+            })
+          }
         }
       }
     })

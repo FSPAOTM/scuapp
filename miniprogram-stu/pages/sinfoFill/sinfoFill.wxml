@@ -28,9 +28,9 @@
       <view class='form-group'>
         <radio-group name="gender" bindchange="genderchange">
           <label>
-            <radio value="男" style="padding-left:30rpx" />男</label>
+            <radio value="男" style="padding-left:30rpx"  checked="{{checked1}}"/>男</label>
           <label>
-            <radio value="女" style="padding-left:30rpx" />女</label>
+            <radio value="女" style="padding-left:30rpx"  checked="{{checked2}}"/>女</label>
         </radio-group>
       </view>
     </view>
