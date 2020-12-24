@@ -114,6 +114,7 @@ Page({
     this.setData({
       ps: e.detail.value
     })
+    var ps=this.data.ps
   },
 
   formSubmit: function (e) {

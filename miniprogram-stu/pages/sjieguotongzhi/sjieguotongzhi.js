@@ -61,7 +61,73 @@ Page({
     var type = that.data.jieguotongzhi1[e].type;
     console.log("++++++", ev, that)
     wx.request({
-      url: app.globalData.url + '/Stu_result_sure/', //待修改
+      url: app.globalData.url + '/Stu_result_sure/', 
+      method: "POST",
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        user: app.globalData.user,
+        type:type,
+        number: number
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          wx.showToast({
+            title: '如需再次查看，请前往【我的兼职】',
+            icon: 'none',
+            duration: 3000
+          })
+        };
+        setTimeout(function () {
+          that.onRefresh()
+        }, 3000)
+      }
+    })
+  },
+
+  sure11(ev) {
+    var that = this;
+    var e = ev.currentTarget.dataset.index;
+    var number = that.data.jieguotongzhi1[e].iw_number;
+    var type = that.data.jieguotongzhi1[e].type;
+    console.log("++++++", ev, that)
+    wx.request({
+      url: app.globalData.url + '/Stu_result_sure/', 
+      method: "POST",
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        user: app.globalData.user,
+        type:type,
+        number: number
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          wx.showToast({
+            title: '确认成功',
+            icon: 'none',
+            duration: 3000
+          })
+        };
+        setTimeout(function () {
+          that.onRefresh()
+        }, 3000)
+      }
+    })
+  },
+
+  sure2(ev) {
+    var that = this;
+    var e = ev.currentTarget.dataset.index;
+    var number = that.data.jieguotongzhi2[e].ow_number;
+    var type = that.data.jieguotongzhi2[e].type;
+    console.log("++++++", ev, that)
+    wx.request({
+      url: app.globalData.url + '/Stu_result_sure/',
       method: "POST",
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -94,7 +160,7 @@ Page({
     var type = that.data.jieguotongzhi2[e].type;
     console.log("++++++", ev, that)
     wx.request({
-      url: app.globalData.url + '/Stu_result_sure/', //待修改
+      url: app.globalData.url + '/Stu_result_sure/',
       method: "POST",
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -108,7 +174,7 @@ Page({
         console.log(res);
         if (res.statusCode == 200) {
           wx.showToast({
-            title: '如需再次查看，请前往【我的兼职】',
+            title: '确认成功',
             icon: 'none',
             duration: 3000
           })

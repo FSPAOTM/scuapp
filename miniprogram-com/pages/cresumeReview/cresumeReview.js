@@ -127,7 +127,7 @@ Page({
       success: (res) => {
         if (res.statusCode == 200) {
           wx.reLaunch({
-            url: '../cworkspace/cworkspace',
+            url: '../cworkspace/cworkspace?currentTab=2',
           })
           this.setData({
 
@@ -155,7 +155,7 @@ Page({
       success: (res) => {
         if (res.statusCode == 200) {
           wx.reLaunch({
-            url: '../cworkspace/cworkspace',
+            url: '../cworkspace/cworkspace?currentTab=1',
           })
           this.setData({
 

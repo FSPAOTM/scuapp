@@ -278,7 +278,7 @@ Page({
               })
               setTimeout(function () {
                 wx.reLaunch({
-                  url: '../cfabu/cfabu?operation=已申请',
+                  url: '../cfabu/cfabu?currentTab=2',
                 })
               }, 2000)
             }else if (res.data == "存在学生简历未初步审核,无法申请面试"){

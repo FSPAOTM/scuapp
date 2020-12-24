@@ -26,12 +26,8 @@ Page({
 
   jieshu(ev) {
     var that = this;
-    console.log(that.data.jobinfo4);
     var e = ev.currentTarget.dataset.index;
-    console.log(e);
-    console.log(that.data.jobinfo4[e]);
     var ow_number = that.data.jobinfo4[e].ow_number;
-    console.log(ow_number)
     wx.request({
       url: app.globalData.url + '/Get_outwork_info_end/',
       method: "POST",
@@ -46,7 +42,7 @@ Page({
         if (res.statusCode == 200) {
           if (res.data == "修改成功") {
             wx.reLaunch({
-              url: '../cfabu/cfabu',
+              url: '../cfabu/cfabu?currentTab=4',
             })
           }
         }
@@ -56,12 +52,8 @@ Page({
 
   jiesuan(ev) {
     var that = this;
-    console.log(that.data.jobinfo5);
     var e = ev.currentTarget.dataset.index;
-    console.log(e);
-    console.log(that.data.jobinfo5[e]);
     var ow_number = that.data.jobinfo5[e].ow_number;
-    console.log(ow_number)
     wx.request({
       url: app.globalData.url + '/Com_work_paid/',
       method: "POST",
@@ -90,6 +82,11 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
+    if (options.currentTab != '') {
+      that.setData({
+        currentTab: options.currentTab
+      })
+    }
     /** 
      * 获取系统信息,系统宽高
      */
@@ -188,10 +185,7 @@ Page({
 
   cjobshow1: function (ev) {
     var that = this;
-    console.log(that.data.jobinfo1);
     var e = ev.currentTarget.dataset.index;
-    console.log(e);
-    console.log(that.data.jobinfo1[e]);
     var ow_number = that.data.jobinfo1[e].ow_number;
     console.log("++++++", ev, that)
     wx.setStorageSync("ow_number", ow_number), wx.navigateTo({
@@ -201,10 +195,7 @@ Page({
 
   cjobshow2: function (ev) {
     var that = this;
-    console.log(that.data.jobinfo2);
     var e = ev.currentTarget.dataset.index;
-    console.log(e);
-    console.log(that.data.jobinfo2[e]);
     var ow_number = that.data.jobinfo2[e].ow_number;
     console.log("++++++", ev, that)
     wx.setStorageSync("ow_number", ow_number), wx.navigateTo({
@@ -214,10 +205,7 @@ Page({
 
   cjobshow3: function (ev) {
     var that = this;
-    console.log(that.data.jobinfo3);
     var e = ev.currentTarget.dataset.index;
-    console.log(e);
-    console.log(that.data.jobinfo3[e]);
     var ow_number = that.data.jobinfo3[e].ow_number;
     console.log("++++++", ev, that)
     wx.setStorageSync("ow_number", ow_number), wx.navigateTo({
@@ -227,10 +215,7 @@ Page({
 
   cjobshow4: function (ev) {
     var that = this;
-    console.log(that.data.jobinfo4);
     var e = ev.currentTarget.dataset.index;
-    console.log(e);
-    console.log(that.data.jobinfo4[e]);
     var ow_number = that.data.jobinfo4[e].ow_number;
     console.log("++++++", ev, that)
     wx.setStorageSync("ow_number", ow_number), wx.navigateTo({
@@ -241,10 +226,7 @@ Page({
 
   cjobshow5: function (ev) {
     var that = this;
-    console.log(that.data.jobinfo5);
     var e = ev.currentTarget.dataset.index;
-    console.log(e);
-    console.log(that.data.jobinfo5[e]);
     var ow_number = that.data.jobinfo5[e].ow_number;
     console.log("++++++", ev, that)
     wx.setStorageSync("ow_number", ow_number), wx.navigateTo({

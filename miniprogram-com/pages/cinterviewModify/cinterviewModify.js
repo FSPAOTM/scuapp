@@ -284,7 +284,7 @@ Page({
               })
               setTimeout(function () {
                 wx.reLaunch({
-                  url: '../cfabu/cfabu?operation=已申请',
+                  url: '../cfabu/cfabu?currentTab=2',
                 })
               }, 2000)
             }

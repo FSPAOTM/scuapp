@@ -114,7 +114,6 @@ Page({
       },
       success: function (res) {
         console.log(res);
-        console.log(res.data[0].status);
         var i;
         var baominger = []
         for (i = 0; i < res.data.length; i++) {
@@ -126,8 +125,6 @@ Page({
               if (that.data.workinfo1.length >= 1) {
                 var m;
                 for (m = 0; m < that.data.workinfo1.length; m++) {
-                  console.log(that.data.workinfo1[m])
-                  console.log(that.data.workinfo1.length)
                   if (res.data[i].ow_number == that.data.workinfo1[m].baominger[0].ow_number) {
                     baoming.ow_number = res.data[i].ow_number;
                     baoming.user = res.data[i].user;
@@ -239,7 +236,6 @@ Page({
       dateTime1: arr,
       baodaotime1: (2020 + arr[0]) + "-" + (1 + arr[1]) + "-" + (1 + arr[2]) + " " + arr[3] + ":" + arr[4]
     });
-    console.log(this.data.baodaotime1)
   },
 
   blurbeizhu(e) {
@@ -334,8 +330,6 @@ Page({
     this.setData({
       count: count
     })
-    console.log(this.data.numbers)
-    console.log(count)
   },
 
   /**
@@ -366,7 +360,7 @@ Page({
    */
   confirm: function () {
     wx.request({
-      url: app.globalData.url + '/Com_work_employed/', //待修改，已通过名单
+      url: app.globalData.url + '/Com_work_employed/', //已通过名单
       method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -378,7 +372,6 @@ Page({
         beizhu: this.data.beizhu,
       },
       success: (res) => {
-        /*console.log(res.data);*/
         if (res.statusCode == 200) {
           if (res.data == "通知成功") {
             this.setData({
@@ -399,7 +392,7 @@ Page({
 
   weitongguo() {
     wx.request({
-      url: app.globalData.url + '/Com_work_unemployed/', //待修改,未通过名单
+      url: app.globalData.url + '/Com_work_unemployed/', //未通过名单
       method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -409,7 +402,6 @@ Page({
         count: this.data.count,
       },
       success: (res) => {
-        /*console.log(res.data);*/
         if (res.statusCode == 200) {
           this.setData({
             mingdan: []
@@ -425,8 +417,6 @@ Page({
     var that = this;
     var ow_number = ev.currentTarget.dataset.name1;
     var stu_number = ev.currentTarget.dataset.name2;
-    console.log(ow_number)
-    console.log(stu_number)
     console.log("++++++", ev, that)
     wx.setStorageSync("ow_number", ow_number), wx.setStorageSync("stu_number", stu_number), wx.navigateTo({
       url: "../cresumeReview/cresumeReview"
@@ -438,8 +428,6 @@ Page({
     var e = ev.currentTarget.dataset.index;
     var ow_number = that.data.workinfo5[e].ow_number
     var stu_number = that.data.workinfo5[e].stu_number;
-    console.log(ow_number)
-    console.log(stu_number)
     console.log("++++++", ev, that)
     wx.navigateTo({
       url: "../cfeedback/cfeedback?ow_number=" + ow_number + '&stu_number=' + stu_number
@@ -502,7 +490,6 @@ Page({
       },
       success: function (res) {
         console.log(res);
-        console.log(res.data[0].status);
         var i;
         var baominger = []
         for (i = 0; i < res.data.length; i++) {
@@ -514,8 +501,6 @@ Page({
               if (that.data.workinfo1.length >= 1) {
                 var m;
                 for (m = 0; m < that.data.workinfo1.length; m++) {
-                  console.log(that.data.workinfo1[m])
-                  console.log(that.data.workinfo1.length)
                   if (res.data[i].ow_number == that.data.workinfo1[m].baominger[0].ow_number) {
                     baoming.ow_number = res.data[i].ow_number;
                     baoming.user = res.data[i].user;

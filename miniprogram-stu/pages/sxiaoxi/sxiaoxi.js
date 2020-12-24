@@ -66,12 +66,17 @@ Page({
             mianshitongzhi: res.data,
             count1:res.data.length
           })
+          if(that.data.count1==0){
+            that.setData({
+              show1:false
+            })
+          }
         }
       }
     })
 
     wx.request({
-      url: app.globalData.url + '/Stu_interview_notice_show/', //待修改
+      url: app.globalData.url + '/Stu_result_show/', 
       method: "GET",
       header: {
         'Content-Type': 'application/json'
@@ -84,8 +89,13 @@ Page({
         if (res.statusCode == 200) {
           that.setData({
             jieguotongzhi: res.data,
-            count2:res.data.length//待修改
+            count2:res.data.length
           })
+          if(that.data.count2==0){
+            that.setData({
+              show2:false
+            })
+          }
         }
       }
     })
