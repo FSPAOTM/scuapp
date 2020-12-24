@@ -3,7 +3,7 @@ from django.utils import timezone
 from .models import Tbcompany, Tbstudent,Tbresume, Tbqualify, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply, TbinterviewResult, TbinterviewNotice, TbfeedbackEr, TbfeedbackStu,Tbmanager
 from django.db.models import Q
 from threading import Timer
-from django.http import JsonResponse
+from django.http import HttpResponseRedirect
 from . import views01
 import json
 
@@ -313,36 +313,7 @@ def manager_ifo_submit(request):
         school = request.POST.get('school')
         e_mail = request.POST.get('e_mail')
         Tbmanager.objects.filter(manager_id=manager_id).update(name= name,sex=sex,phonenumber=phonenumber,school=school,e_mail=e_mail)
-        manager = Tbmanager.objects.all()
-        manager_list = []
-        for i in manager:
-            dictionary = {}
-            dictionary["manager_id"] = i.manager_id
-            dictionary["name"] = i.name
-            if i.sex is not None:
-                if i.sex == "":
-                    dictionary["sex"] = "待完善"
-                else:
-                    dictionary["sex"] = i.sex
-            else:
-                dictionary["sex"] = "待完善"
-            dictionary["phonenumber"] = i.phonenumber
-            if i.school is not None:
-                if i.school == "":
-                    dictionary["school"] = "待完善"
-                else:
-                    dictionary["school"] = i.school
-            else:
-                dictionary["school"] = "待完善"
-            if i.e_mail is not None:
-                if i.e_mail == "":
-                    dictionary["e_mail"] = "待完善"
-                else:
-                    dictionary["e_mail"] = i.e_mail
-            else:
-                dictionary["e_mail"] = "待完善"
-            manager_list.append(dictionary)
-        return render(request, 'wechat/manager_list.html', {'manager_list': manager_list})
+        return HttpResponseRedirect('../manager_manage_list/')
     else:
         return HttpResponse("请求错误")
 #评价管理

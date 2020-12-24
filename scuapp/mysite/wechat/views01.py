@@ -1,5 +1,6 @@
-from django.shortcuts import HttpResponse,render,HttpResponseRedirect
+from django.shortcuts import HttpResponse,render
 from django.utils import timezone
+from django.http import HttpResponseRedirect
 from .models import Tbcompany, Tbmanager, Tbstudent,TbinWork, TboutWork, TbinResult, Tbapplication,TbfeedbackEr,TbinterviewApply,TbinterviewNotice
 from django.db.models import Q
 import json
@@ -179,7 +180,7 @@ def management_inWork_release(request):
         inWork=TbinWork.objects.create(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
                                        w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
         inWork.save()
-        return HttpResponseRedirect('inwork_list/')
+        return HttpResponseRedirect('../inwork_list/')
     else:
         return HttpResponse("请求错误")
 #校内兼职信息修改
@@ -204,117 +205,21 @@ def management_inWork_reset(request):
         w_ps = request.POST.get('W_ps')
         TbinWork.objects.filter(iw_number=iw_number).update(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
                                        w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
-        inwork_list = []
-        list = TbinWork.objects.all()
-        for i in list:
-            dic = {}
-            dic["iw_number"] = i.iw_number
-            dic["iw_post"] = i.iw_post
-            dic["iw_depart"] = i.iw_depart
-            dic["w_time"] = i.w_time
-            dic["w_place"] = i.w_place
-            dic["work"] = i.work
-            dic["w_salary"] = i.w_salary
-            dic["w_reuire"] = i.w_reuire
-            dic["w_amount"] = i.w_amount
-            dic["ddl_time"] = str(i.ddl_time)
-            dic["inpub_time"] = str(i.inpub_time)
-            dic["w_ps"] = i.w_ps
-            dic["In_status"] = i.In_status
-            if dic["In_status"] == "待评价":
-                dic["btn_color"] = "button-color4"
-            if dic["In_status"] == "报名中":
-                dic["btn_color"] = "button-color3"
-            if dic["In_status"] == "工作中":
-                dic["btn_color"] = "button-color2"
-            if dic["In_status"] == "报名结束":
-                dic["btn_color"] = "button-color5"
-            if dic["In_status"] == "结果通知中":
-                dic["btn_color"] = "button-color1"
-            if dic["In_status"] == "工作结束":
-                dic["btn_color"] = "button-color6"
-            if dic["In_status"] == "已结束":
-                dic["btn_color"] = "button-color7"
-            inwork_list.append(dic)
-        return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+        return HttpResponseRedirect('../inwork_list/')
     else:
         return HttpResponse("请求错误")
 #校内兼职信息删除
 def management_inWork_delete(request):
     iw_number = request.GET.get('delete_num')
     TbinWork.objects.filter(iw_number=iw_number).delete()  #批量删除
-    inwork_list = []
-    list = TbinWork.objects.all()
-    for i in list:
-        dic = {}
-        dic["iw_number"] = i.iw_number
-        dic["iw_post"] = i.iw_post
-        dic["iw_depart"] = i.iw_depart
-        dic["w_time"] = i.w_time
-        dic["w_place"] = i.w_place
-        dic["work"] = i.work
-        dic["w_salary"] = i.w_salary
-        dic["w_reuire"] = i.w_reuire
-        dic["w_amount"] = i.w_amount
-        dic["ddl_time"] = str(i.ddl_time)
-        dic["inpub_time"] = str(i.inpub_time)
-        dic["w_ps"] = i.w_ps
-        dic["In_status"] = i.In_status
-        if dic["In_status"] == "待评价":
-            dic["btn_color"] = "button-color4"
-        if dic["In_status"] == "报名中":
-            dic["btn_color"] = "button-color3"
-        if dic["In_status"] == "工作中":
-            dic["btn_color"] = "button-color2"
-        if dic["In_status"] == "报名结束":
-            dic["btn_color"] = "button-color5"
-        if dic["In_status"] == "结果通知中":
-            dic["btn_color"] = "button-color1"
-        if dic["In_status"] == "工作结束":
-            dic["btn_color"] = "button-color6"
-        if dic["In_status"] == "已结束":
-            dic["btn_color"] = "button-color7"
-        inwork_list.append(dic)
-    return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+    return HttpResponseRedirect('../inwork_list/')
 #校内兼职中止
 def management_inWork_stop(request):
     iw_number = request.GET.get('stop_num')
     inWork=TbinWork.objects.get(iw_number=iw_number)
     if inWork.In_status == "报名中" or inWork.In_status == "报名结束" or inWork.In_status == "中止":
         TbinWork.objects.filter(iw_number=iw_number).update(In_status="中止")  #批量中止
-        inwork_list = []
-        list = TbinWork.objects.all()
-        for i in list:
-            dic = {}
-            dic["iw_number"] = i.iw_number
-            dic["iw_post"] = i.iw_post
-            dic["iw_depart"] = i.iw_depart
-            dic["w_time"] = i.w_time
-            dic["w_place"] = i.w_place
-            dic["work"] = i.work
-            dic["w_salary"] = i.w_salary
-            dic["w_reuire"] = i.w_reuire
-            dic["w_amount"] = i.w_amount
-            dic["ddl_time"] = str(i.ddl_time)
-            dic["inpub_time"] = str(i.inpub_time)
-            dic["w_ps"] = i.w_ps
-            dic["In_status"] = i.In_status
-            if dic["In_status"] == "待评价":
-                dic["btn_color"] = "button-color4"
-            if dic["In_status"] == "报名中":
-                dic["btn_color"] = "button-color3"
-            if dic["In_status"] == "工作中":
-                dic["btn_color"] = "button-color2"
-            if dic["In_status"] == "报名结束":
-                dic["btn_color"] = "button-color5"
-            if dic["In_status"] == "结果通知中":
-                dic["btn_color"] = "button-color1"
-            if dic["In_status"] == "工作结束":
-                dic["btn_color"] = "button-color6"
-            if dic["In_status"] == "已结束":
-                dic["btn_color"] = "button-color7"
-            inwork_list.append(dic)
-        return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+        return HttpResponseRedirect('../inwork_list/')
     else:
         return render(request, 'wechat/manage_error.html')
 #校内兼职启用
@@ -323,39 +228,7 @@ def management_inWork_begin(request):
     inWork = TbinWork.objects.get(iw_number=iw_number)
     if inWork.In_status == "报名中" or inWork.In_status == "报名结束" or inWork.In_status == "中止":
         TbinWork.objects.filter(iw_number=iw_number).update(In_status="报名中")  #批量启用
-        inwork_list = []
-        list = TbinWork.objects.all()
-        for i in list:
-            dic = {}
-            dic["iw_number"] = i.iw_number
-            dic["iw_post"] = i.iw_post
-            dic["iw_depart"] = i.iw_depart
-            dic["w_time"] = i.w_time
-            dic["w_place"] = i.w_place
-            dic["work"] = i.work
-            dic["w_salary"] = i.w_salary
-            dic["w_reuire"] = i.w_reuire
-            dic["w_amount"] = i.w_amount
-            dic["ddl_time"] = str(i.ddl_time)
-            dic["inpub_time"] = str(i.inpub_time)
-            dic["w_ps"] = i.w_ps
-            dic["In_status"] = i.In_status
-            if dic["In_status"] == "待评价":
-                dic["btn_color"] = "button-color4"
-            if dic["In_status"] == "报名中":
-                dic["btn_color"] = "button-color3"
-            if dic["In_status"] == "工作中":
-                dic["btn_color"] = "button-color2"
-            if dic["In_status"] == "报名结束":
-                dic["btn_color"] = "button-color5"
-            if dic["In_status"] == "结果通知中":
-                dic["btn_color"] = "button-color1"
-            if dic["In_status"] == "工作结束":
-                dic["btn_color"] = "button-color6"
-            if dic["In_status"] == "已结束":
-                dic["btn_color"] = "button-color7"
-            inwork_list.append(dic)
-        return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+        return HttpResponseRedirect('../inwork_list/')
     else:
         return render(request, 'wechat/manage_error.html')
 #校内兼职信息搜索
@@ -469,100 +342,14 @@ def management_outwork_search(request):
 def management_outWork_delete(request):
     ow_number = request.GET.get('delete_num')
     TboutWork.objects.filter(ow_number=ow_number).delete()  #批量删除
-    list = TboutWork.objects.all()
-    outwork_list = []
-    for i in list:
-        dic = {}
-        dic["ow_number"] = i.ow_number
-        dic["ow_post"] = i.ow_post
-        dic["w_time"] = i.w_time
-        dic["w_place"] = i.w_place
-        dic["w_place_detail"] = i.w_place_detail
-        dic["work"] = i.work
-        dic["w_salary"] = i.w_salary
-        dic["w_reuire"] = i.w_reuire
-        dic["w_amount"] = i.w_amount
-        dic["ddl_time"] = str(i.ddl_time)
-        dic["ipub_time"] = str(i.ipub_time)
-        dic["com_number"] = i.com_number.com_number
-        dic["w_ps"] = i.w_ps
-        dic["ow_status"] = i.ow_status
-        if dic["ow_status"] == "报名结束":
-            dic["btn_color"] = "button-color5"
-        if dic["ow_status"] == "待评价":
-            dic["btn_color"] = "button-color4"
-        if dic["ow_status"] == "已打回":
-            dic["btn_color"] = "button-color3"
-        if dic["ow_status"] == "结果通知中":
-            dic["btn_color"] = "button-color2"
-        if dic["ow_status"] == "面试通知中":
-            dic["btn_color"] = "button-color1"
-        if dic["ow_status"] == "面试申请中":
-            dic["btn_color"] = "button-color8"
-        if dic["ow_status"] == "工作中":
-            dic["btn_color"] = "button-color7"
-        if dic["ow_status"] == "待审核":
-            dic["btn_color"] = "button-color6"
-        if dic["ow_status"] == "面试阶段":
-            dic["btn_color"] = "button-color9"
-        if dic["ow_status"] == "工作结束":
-            dic["btn_color"] = "button-color10"
-        if dic["ow_status"] == "已结束":
-            dic["btn_color"] = "button-color11"
-        if dic["ow_status"] == "报名中":
-            dic["btn_color"] = "button-color12"
-        outwork_list.append(dic)
-    return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
+    return HttpResponseRedirect('../outwork_list/')
 #校外兼职中止
 def management_outWork_stop(request):
     ow_number = request.GET.get('stop_num')
     outWork = TboutWork.objects.get(ow_number=ow_number)
     if outWork.ow_status == "报名中" or outWork.ow_status == "待审核" or outWork.ow_status == "中止":
         TboutWork.objects.filter(ow_number=ow_number).update(ow_status="中止")  #批量中止
-        outwork_list = []
-        list = TboutWork.objects.all()
-        for i in list:
-            dic = {}
-            dic["ow_number"] = i.ow_number
-            dic["ow_post"] = i.ow_post
-            dic["w_time"] = i.w_time
-            dic["w_place"] = i.w_place
-            dic["w_place_detail"] = i.w_place_detail
-            dic["work"] = i.work
-            dic["w_salary"] = i.w_salary
-            dic["w_reuire"] = i.w_reuire
-            dic["w_amount"] = i.w_amount
-            dic["ddl_time"] = str(i.ddl_time)
-            dic["ipub_time"] = str(i.ipub_time)
-            dic["com_number"] = i.com_number.com_number
-            dic["w_ps"] = i.w_ps
-            dic["ow_status"] = i.ow_status
-            if dic["ow_status"] == "报名结束":
-                dic["btn_color"] = "button-color5"
-            if dic["ow_status"] == "待评价":
-                dic["btn_color"] = "button-color4"
-            if dic["ow_status"] == "已打回":
-                dic["btn_color"] = "button-color3"
-            if dic["ow_status"] == "结果通知中":
-                dic["btn_color"] = "button-color2"
-            if dic["ow_status"] == "面试通知中":
-                dic["btn_color"] = "button-color1"
-            if dic["ow_status"] == "面试申请中":
-                dic["btn_color"] = "button-color8"
-            if dic["ow_status"] == "工作中":
-                dic["btn_color"] = "button-color7"
-            if dic["ow_status"] == "待审核":
-                dic["btn_color"] = "button-color6"
-            if dic["ow_status"] == "面试阶段":
-                dic["btn_color"] = "button-color9"
-            if dic["ow_status"] == "工作结束":
-                dic["btn_color"] = "button-color10"
-            if dic["ow_status"] == "已结束":
-                dic["btn_color"] = "button-color11"
-            if dic["ow_status"] == "报名中":
-                dic["btn_color"] = "button-color12"
-            outwork_list.append(dic)
-        return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
+        return HttpResponseRedirect('../outwork_list/')
     else:
         return render(request, 'wechat/manage_error.html')
 #校外兼职启用
@@ -571,50 +358,7 @@ def management_outWork_begin(request):
     outWork = TboutWork.objects.get(ow_number=ow_number)
     if outWork.ow_status == "报名中" or outWork.ow_status == "待审核" or outWork.ow_status == "中止":
         TboutWork.objects.filter(ow_number=ow_number).update(ow_status="待审核")  #批量启用
-        outwork_list = []
-        list = TboutWork.objects.all()
-        for i in list:
-            dic = {}
-            dic["ow_number"] = i.ow_number
-            dic["ow_post"] = i.ow_post
-            dic["w_time"] = i.w_time
-            dic["w_place"] = i.w_place
-            dic["w_place_detail"] = i.w_place_detail
-            dic["work"] = i.work
-            dic["w_salary"] = i.w_salary
-            dic["w_reuire"] = i.w_reuire
-            dic["w_amount"] = i.w_amount
-            dic["ddl_time"] = str(i.ddl_time)
-            dic["ipub_time"] = str(i.ipub_time)
-            dic["com_number"] = i.com_number.com_number
-            dic["w_ps"] = i.w_ps
-            dic["ow_status"] = i.ow_status
-            if dic["ow_status"] == "报名结束":
-                dic["btn_color"] = "button-color5"
-            if dic["ow_status"] == "待评价":
-                dic["btn_color"] = "button-color4"
-            if dic["ow_status"] == "已打回":
-                dic["btn_color"] = "button-color3"
-            if dic["ow_status"] == "结果通知中":
-                dic["btn_color"] = "button-color2"
-            if dic["ow_status"] == "面试通知中":
-                dic["btn_color"] = "button-color1"
-            if dic["ow_status"] == "面试申请中":
-                dic["btn_color"] = "button-color8"
-            if dic["ow_status"] == "工作中":
-                dic["btn_color"] = "button-color7"
-            if dic["ow_status"] == "待审核":
-                dic["btn_color"] = "button-color6"
-            if dic["ow_status"] == "面试阶段":
-                dic["btn_color"] = "button-color9"
-            if dic["ow_status"] == "工作结束":
-                dic["btn_color"] = "button-color10"
-            if dic["ow_status"] == "已结束":
-                dic["btn_color"] = "button-color11"
-            if dic["ow_status"] == "报名中":
-                dic["btn_color"] = "button-color12"
-            outwork_list.append(dic)
-        return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
+        return HttpResponseRedirect('../outwork_list/')
     else:
         return render(request, 'wechat/manage_error.html')
 #校外兼职信息修改
@@ -639,50 +383,7 @@ def management_outWork_reset(request):
         w_ps = request.POST.get('W_ps')
         TboutWork.objects.filter(ow_number=ow_number).update(ow_post=ow_post, w_place_detail=w_place_detail, w_time=w_time, w_place=w_place, work=work,
                                        w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, ipub_time=ipub_time, w_ps=w_ps)
-        outwork_list = []
-        list = TboutWork.objects.all()
-        for i in list:
-            dic = {}
-            dic["ow_number"] = i.ow_number
-            dic["ow_post"] = i.ow_post
-            dic["w_time"] = i.w_time
-            dic["w_place"] = i.w_place
-            dic["w_place_detail"] = i.w_place_detail
-            dic["work"] = i.work
-            dic["w_salary"] = i.w_salary
-            dic["w_reuire"] = i.w_reuire
-            dic["w_amount"] = i.w_amount
-            dic["ddl_time"] = str(i.ddl_time)
-            dic["ipub_time"] = str(i.ipub_time)
-            dic["com_number"] = i.com_number.com_number
-            dic["w_ps"] = i.w_ps
-            dic["ow_status"] = i.ow_status
-            if dic["ow_status"] == "报名结束":
-                dic["btn_color"] = "button-color5"
-            if dic["ow_status"] == "待评价":
-                dic["btn_color"] = "button-color4"
-            if dic["ow_status"] == "已打回":
-                dic["btn_color"] = "button-color3"
-            if dic["ow_status"] == "结果通知中":
-                dic["btn_color"] = "button-color2"
-            if dic["ow_status"] == "面试通知中":
-                dic["btn_color"] = "button-color1"
-            if dic["ow_status"] == "面试申请中":
-                dic["btn_color"] = "button-color8"
-            if dic["ow_status"] == "工作中":
-                dic["btn_color"] = "button-color7"
-            if dic["ow_status"] == "待审核":
-                dic["btn_color"] = "button-color6"
-            if dic["ow_status"] == "面试阶段":
-                dic["btn_color"] = "button-color9"
-            if dic["ow_status"] == "工作结束":
-                dic["btn_color"] = "button-color10"
-            if dic["ow_status"] == "已结束":
-                dic["btn_color"] = "button-color11"
-            if dic["ow_status"] == "报名中":
-                dic["btn_color"] = "button-color12"
-            outwork_list.append(dic)
-        return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
+        return HttpResponseRedirect('../outwork_list/')
     else:
         return HttpResponse("请求错误")
 #校外兼职信息发布
@@ -704,50 +405,7 @@ def management_outWork_release(request):
         outWork=TboutWork.objects.create(ow_post=ow_post, w_place_detail=w_place_detail, w_time=w_time, w_place=w_place, work=work,
                                        w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, ipub_time=ipub_time, w_ps=w_ps, com_number=company)
         outWork.save()
-        outwork_list = []
-        list = TboutWork.objects.all()
-        for i in list:
-            dic = {}
-            dic["ow_number"] = i.ow_number
-            dic["ow_post"] = i.ow_post
-            dic["w_time"] = i.w_time
-            dic["w_place"] = i.w_place
-            dic["w_place_detail"] = i.w_place_detail
-            dic["work"] = i.work
-            dic["w_salary"] = i.w_salary
-            dic["w_reuire"] = i.w_reuire
-            dic["w_amount"] = i.w_amount
-            dic["ddl_time"] = str(i.ddl_time)
-            dic["ipub_time"] = str(i.ipub_time)
-            dic["com_number"] = i.com_number.com_number
-            dic["w_ps"] = i.w_ps
-            dic["ow_status"] = i.ow_status
-            if dic["ow_status"] == "报名结束":
-                dic["btn_color"] = "button-color5"
-            if dic["ow_status"] == "待评价":
-                dic["btn_color"] = "button-color4"
-            if dic["ow_status"] == "已打回":
-                dic["btn_color"] = "button-color3"
-            if dic["ow_status"] == "结果通知中":
-                dic["btn_color"] = "button-color2"
-            if dic["ow_status"] == "面试通知中":
-                dic["btn_color"] = "button-color1"
-            if dic["ow_status"] == "面试申请中":
-                dic["btn_color"] = "button-color8"
-            if dic["ow_status"] == "工作中":
-                dic["btn_color"] = "button-color7"
-            if dic["ow_status"] == "待审核":
-                dic["btn_color"] = "button-color6"
-            if dic["ow_status"] == "面试阶段":
-                dic["btn_color"] = "button-color9"
-            if dic["ow_status"] == "工作结束":
-                dic["btn_color"] = "button-color10"
-            if dic["ow_status"] == "已结束":
-                dic["btn_color"] = "button-color11"
-            if dic["ow_status"] == "报名中":
-                dic["btn_color"] = "button-color12"
-            outwork_list.append(dic)
-        return render(request, 'wechat/outWork_list.html', {'outWork_list': outwork_list})
+        return HttpResponseRedirect('../outwork_list/')
     else:
         return HttpResponse("请求错误")
 #校内兼职报名学生简历
@@ -858,35 +516,7 @@ def inwork_result_submit(request):
     if len(filterResult) > 0:
         Tbapplication.objects.filter(iw_number=iw_number).update(apply_status='已录用')
         TbinWork.objects.filter(iw_number=iw_number).update(In_status = "结果通知中")
-        inworking_list = []
-        list = TbinWork.objects.exclude(In_status="已结束").exclude(In_status="中止").exclude(In_status="工作中").exclude(
-            In_status="待评价").exclude(In_status="工作结束")
-        for i in list:
-            dictionary = {}
-            w_now = Tbapplication.objects.filter(iw_number=i.iw_number).count()
-            w_out = (timezone.now() - i.inpub_time).days
-            w_ddl = (i.ddl_time - timezone.now()).days
-            if w_ddl < 0:
-                dictionary["w_out"] = "已截止"
-                dictionary["w_ddl"] = "已截止"
-            else:
-                dictionary["w_out"] = str(w_out) + "天"
-                dictionary["w_ddl"] = str(w_ddl) + "天"
-            dictionary["w_now"] = w_now
-            dictionary["iw_number"] = i.iw_number
-            dictionary["iw_post"] = i.iw_post
-            dictionary["work"] = i.work
-            dictionary["w_amount"] = i.w_amount
-            dictionary["w_reuire"] = i.w_reuire
-            dictionary["In_status"] = i.In_status
-            if dictionary["In_status"] == "报名中":
-                dictionary["btn_color"] = "button-color3"
-            if dictionary["In_status"] == "报名结束":
-                dictionary["btn_color"] = "button-color5"
-            if dictionary["In_status"] == "结果通知中":
-                dictionary["btn_color"] = "button-color4"
-            inworking_list.append(dictionary)
-        return render(request, 'wechat/inworking_list.html', {'inworking_list': inworking_list})
+        return HttpResponseRedirect('../inworking_list/')
     else:
         return render(request, 'wechat/manage_error.html')
 #修改校内招聘结果通知

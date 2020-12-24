@@ -2,8 +2,7 @@ from django.shortcuts import HttpResponse,render
 from django.utils import timezone
 from .models import Tbcompany, Tbstudent,Tbresume, Tbqualify, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply, TbinterviewResult, TbinterviewNotice, TbfeedbackEr, TbfeedbackStu
 from django.db.models import Q
-from threading import Timer
-from django.http import JsonResponse
+from django.http import HttpResponseRedirect
 from . import views01
 import json
 
@@ -304,27 +303,7 @@ def interview_notice_send_send(request):
         Tbapplication.objects.filter(ow_number=ow_number).filter(stu=student).update(apply_status="面试中")
     TbinterviewNotice.objects.filter(i_number=i_number).update(s_sure=s_sure)
     TbinterviewApply.objects.filter(ia_number=interviewNotice.ia_number).update(apply_status="面试通知中")
-    #结果界面导入
-    interview_list = []
-    list = TbinterviewApply.objects.all()
-    for i in list:
-        outwork = i.ow_number
-        if outwork.ow_status == "面试申请中" or outwork.ow_status == "面试通知中" or outwork.ow_status == "面试阶段":
-            dictionary = {}
-            dictionary["ia_number"] = i.ia_number
-            dictionary["ow_number"] = outwork.ow_number
-            dictionary["ia_time"] = i.ia_time
-            dictionary["ia_name"] = i.ia_name
-            dictionary["phonenumber"] = i.phonenumber
-            dictionary["a_time"] = i.a_time
-            dictionary["apply_status"] = i.apply_status
-            if outwork.ow_status != "面试申请中":
-                interviewNotice = TbinterviewNotice.objects.get(ia_number=i.ia_number)
-                dictionary["c_sure"] = interviewNotice.c_sure
-            else:
-                dictionary["c_sure"] = "未开启"
-            interview_list.append(dictionary)
-    return render(request, 'wechat/interview_list.html', {'interview_list': interview_list})
+    return HttpResponseRedirect('../interview_list/')
 
 #面试信息打回界面
 def interview_back_reason(request):
@@ -358,27 +337,7 @@ def interview_back_reason_save(request):
 def interview_back_reason_send(request):
     ia_number = request.GET.get('submit_num')
     TbinterviewApply.objects.filter(ia_number=ia_number).update(apply_status="已打回")
-    # 结果界面导入
-    interview_list = []
-    list = TbinterviewApply.objects.all()
-    for i in list:
-        outwork = i.ow_number
-        if outwork.ow_status == "面试申请中" or outwork.ow_status == "面试通知中" or outwork.ow_status == "面试阶段":
-            dictionary = {}
-            dictionary["ia_number"] = i.ia_number
-            dictionary["ow_number"] = outwork.ow_number
-            dictionary["ia_time"] = i.ia_time
-            dictionary["ia_name"] = i.ia_name
-            dictionary["phonenumber"] = i.phonenumber
-            dictionary["a_time"] = i.a_time
-            dictionary["apply_status"] = i.apply_status
-            if outwork.ow_status != "面试申请中":
-                interviewNotice = TbinterviewNotice.objects.get(ia_number=i.ia_number)
-                dictionary["c_sure"] = interviewNotice.c_sure
-            else:
-                dictionary["c_sure"] = "未开启"
-            interview_list.append(dictionary)
-    return render(request, 'wechat/interview_list.html', {'interview_list': interview_list})
+    return HttpResponseRedirect('../interview_list/')
 
 #面试结果界面
 def interview_result(request):
@@ -549,91 +508,7 @@ def management_inWork_end(request):
     if inWork.In_status == "工作中":
         TbinWork.objects.filter(iw_number=iw_number).update(In_status="工作结束")
         Tbapplication.objects.filter(iw_number=inWork).filter(apply_status="已录用").update(apply_status="工作结束")
-        stu_feedback_list = []
-        list1 = TbinWork.objects.filter(
-            Q(In_status="已结束") | Q(In_status="工作中") | Q(In_status="待评价") | Q(In_status="工作结束"))
-        for i in list1:
-            inResult = TbinResult.objects.get(iw_number=i)
-            dictionary1 = {}
-            dictionary1["iw_number"] = i.iw_number
-            dictionary1["work"] = i.iw_post
-            dictionary1["inr_phonenum"] = inResult.inr_phonenum
-            dictionary1["stu_list"] = []
-            list2 = Tbapplication.objects.filter(iw_number=i)
-            dictionary1["name"] = list2[0].stu.name
-            dictionary1["stu_id"] = list2[0].stu.stu_id
-            if i.In_status == "工作中" or i.In_status == "工作结束":
-                dictionary1["stu_pingjia"] = "未开启"
-                dictionary1["pingjia"] = "未开启"
-                dictionary1["btn_color1"] = "button-color5"
-                dictionary1["btn_color2"] = "button-color5"
-            else:
-                dictionary1["stu_pingjia"] = list2[0].apply_status
-                fb_direction = "企业评价学生"
-                filterResult = TbfeedbackEr.objects.filter(stu=list2[0].stu).filter(iw_number=i).filter(
-                    fb_direction=fb_direction)
-                if len(filterResult) > 0:
-                    dictionary1["pingjia"] = "已评价"
-                    dictionary1["btn_color1"] = "button-color2"
-                else:
-                    dictionary1["pingjia"] = "请评价"
-                    dictionary1["btn_color1"] = "button-color6"
-            dictionary1["num"] = str(len(list2))
-            list3 = Tbapplication.objects.filter(iw_number=i).exclude(stu=list2[0].stu)
-            for j in list3:
-                dictionary2 = {}
-                dictionary2["name"] = j.stu.name
-                dictionary2["stu_id"] = j.stu.stu_id
-                if i.In_status == "工作中"or i.In_status == "工作结束":
-                    dictionary2["stu_pingjia"] = "未开启"
-                    dictionary2["pingjia"] = "未开启"
-                else:
-                    dictionary2["stu_pingjia"] = j.apply_status
-                    fb_direction = "企业评价学生"
-                    filterResult = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=i).filter(
-                        fb_direction=fb_direction)
-                    if len(filterResult) > 0:
-                        dictionary2["pingjia"] = "已评价"
-                    else:
-                        dictionary2["pingjia"] = "请评价"
-
-                if dictionary2["pingjia"] == "未开启":
-                    dictionary2["btn_color2"] = "button-color3"
-                if dictionary2["pingjia"] == "待评价":
-                    dictionary2["btn_color2"] = "button-color4"
-                if dictionary2["pingjia"] == "已评价":
-                    dictionary2["btn_color2"] = "button-color2"
-                if dictionary2["stu_pingjia"] == "未开启":
-                    dictionary2["btn_color1"] = "button-color3"
-                if dictionary2["stu_pingjia"] == "待评价":
-                    dictionary2["btn_color1"] = "button-color4"
-                if dictionary2["stu_pingjia"] == "已评价":
-                    dictionary2["btn_color1"] = "button-color2"
-                dictionary1["stu_list"].append(dictionary2)
-            dictionary1["in_status"] = i.In_status
-            if dictionary1["in_status"] == "已结束":
-                dictionary1["btn_color"] = "button-color5"
-            if dictionary1["in_status"] == "工作中":
-                dictionary1["btn_color"] = "button-color2"
-            if dictionary1["in_status"] == "待评价":
-                dictionary1["btn_color"] = "button-color3"
-            if dictionary1["in_status"] == "工作结束":
-                dictionary1["btn_color"] = "button-color4"
-
-            if dictionary1["pingjia"] == "未开启":
-                dictionary1["btn_color2"] = "button-color3"
-            if dictionary1["pingjia"] == "待评价":
-                dictionary1["btn_color2"] = "button-color4"
-            if dictionary1["pingjia"] == "已评价":
-                dictionary1["btn_color2"] = "button-color2"
-            if dictionary1["stu_pingjia"] == "未开启":
-                dictionary1["btn_color1"] = "button-color3"
-            if dictionary1["stu_pingjia"] == "待评价":
-                dictionary1["btn_color1"] = "button-color4"
-            if dictionary1["stu_pingjia"] == "已评价":
-                dictionary1["btn_color1"] = "button-color2"
-            stu_feedback_list.append(dictionary1)
-        return render(request, 'wechat/stu_feedback.html', {'stu_feedback_list': stu_feedback_list})
+        return HttpResponseRedirect('../stu_feedback_list/')
     else:
         return render(request, 'wechat/manage_error.html')
 
@@ -644,91 +519,7 @@ def management_inWork_paid(request):
     if inWork.In_status == "工作结束":
         TbinWork.objects.filter(iw_number=iw_number).update(In_status="待评价")
         Tbapplication.objects.filter(iw_number=inWork).filter(apply_status="工作结束").update(apply_status="待评价")
-        stu_feedback_list = []
-        list1 = TbinWork.objects.filter(
-            Q(In_status="已结束") | Q(In_status="工作中") | Q(In_status="待评价") | Q(In_status="工作结束"))
-        for i in list1:
-            inResult = TbinResult.objects.get(iw_number=i)
-            dictionary1 = {}
-            dictionary1["iw_number"] = i.iw_number
-            dictionary1["work"] = i.iw_post
-            dictionary1["inr_phonenum"] = inResult.inr_phonenum
-            dictionary1["stu_list"] = []
-            list2 = Tbapplication.objects.filter(iw_number=i)
-            dictionary1["name"] = list2[0].stu.name
-            dictionary1["stu_id"] = list2[0].stu.stu_id
-            if i.In_status == "工作中"  or i.In_status == "工作结束":
-                dictionary1["stu_pingjia"] = "未开启"
-                dictionary1["pingjia"] = "未开启"
-                dictionary1["btn_color1"] = "button-color5"
-                dictionary1["btn_color2"] = "button-color5"
-            else:
-                dictionary1["stu_pingjia"] = list2[0].apply_status
-                fb_direction = "企业评价学生"
-                filterResult = TbfeedbackEr.objects.filter(stu=list2[0].stu).filter(iw_number=i).filter(
-                    fb_direction=fb_direction)
-                if len(filterResult) > 0:
-                    dictionary1["pingjia"] = "已评价"
-                    dictionary1["btn_color1"] = "button-color2"
-                else:
-                    dictionary1["pingjia"] = "请评价"
-                    dictionary1["btn_color1"] = "button-color6"
-            dictionary1["num"] = str(len(list2))
-            list3 = Tbapplication.objects.filter(iw_number=i).exclude(stu=list2[0].stu)
-            for j in list3:
-                dictionary2 = {}
-                dictionary2["name"] = j.stu.name
-                dictionary2["stu_id"] = j.stu.stu_id
-                if i.In_status == "工作中"or i.In_status == "工作结束":
-                    dictionary2["stu_pingjia"] = "未开启"
-                    dictionary2["pingjia"] = "未开启"
-                else:
-                    dictionary2["stu_pingjia"] = j.apply_status
-                    fb_direction = "企业评价学生"
-                    filterResult = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=i).filter(
-                        fb_direction=fb_direction)
-                    if len(filterResult) > 0:
-                        dictionary2["pingjia"] = "已评价"
-                    else:
-                        dictionary2["pingjia"] = "请评价"
-
-                if dictionary2["pingjia"] == "未开启":
-                    dictionary2["btn_color2"] = "button-color3"
-                if dictionary2["pingjia"] == "待评价":
-                    dictionary2["btn_color2"] = "button-color4"
-                if dictionary2["pingjia"] == "已评价":
-                    dictionary2["btn_color2"] = "button-color2"
-                if dictionary2["stu_pingjia"] == "未开启":
-                    dictionary2["btn_color1"] = "button-color3"
-                if dictionary2["stu_pingjia"] == "待评价":
-                    dictionary2["btn_color1"] = "button-color4"
-                if dictionary2["stu_pingjia"] == "已评价":
-                    dictionary2["btn_color1"] = "button-color2"
-                dictionary1["stu_list"].append(dictionary2)
-            dictionary1["in_status"] = i.In_status
-            if dictionary1["in_status"] == "已结束":
-                dictionary1["btn_color"] = "button-color5"
-            if dictionary1["in_status"] == "工作中":
-                dictionary1["btn_color"] = "button-color2"
-            if dictionary1["in_status"] == "待评价":
-                dictionary1["btn_color"] = "button-color3"
-            if dictionary1["in_status"] == "工作结束":
-                dictionary1["btn_color"] = "button-color4"
-
-            if dictionary1["pingjia"] == "未开启":
-                dictionary1["btn_color2"] = "button-color3"
-            if dictionary1["pingjia"] == "待评价":
-                dictionary1["btn_color2"] = "button-color4"
-            if dictionary1["pingjia"] == "已评价":
-                dictionary1["btn_color2"] = "button-color2"
-            if dictionary1["stu_pingjia"] == "未开启":
-                dictionary1["btn_color1"] = "button-color3"
-            if dictionary1["stu_pingjia"] == "待评价":
-                dictionary1["btn_color1"] = "button-color4"
-            if dictionary1["stu_pingjia"] == "已评价":
-                dictionary1["btn_color1"] = "button-color2"
-            stu_feedback_list.append(dictionary1)
-        return render(request, 'wechat/stu_feedback.html', {'stu_feedback_list': stu_feedback_list})
+        return HttpResponseRedirect('../stu_feedback_list/')
     else:
         return render(request, 'wechat/manage_error.html')
 
@@ -804,94 +595,9 @@ def stu_feedback_edit_save(request):
                                              iw_number=inWork, stu=stu)
         views01.in_feedback_over(iw_number)
         result.save()
-        stu_feedback_list = []
-        list1 = TbinWork.objects.filter(
-            Q(In_status="已结束") | Q(In_status="工作中") | Q(In_status="待评价") | Q(In_status="工作结束"))
-        for i in list1:
-            inResult = TbinResult.objects.get(iw_number=i)
-            dictionary1 = {}
-            dictionary1["iw_number"] = i.iw_number
-            dictionary1["work"] = i.iw_post
-            dictionary1["inr_phonenum"] = inResult.inr_phonenum
-            dictionary1["stu_list"] = []
-            list2 = Tbapplication.objects.filter(iw_number=i)
-            dictionary1["name"] = list2[0].stu.name
-            dictionary1["stu_id"] = list2[0].stu.stu_id
-            if i.In_status == "工作中"  or i.In_status == "工作结束":
-                dictionary1["stu_pingjia"] = "未开启"
-                dictionary1["pingjia"] = "未开启"
-                dictionary1["btn_color1"] = "button-color5"
-                dictionary1["btn_color2"] = "button-color5"
-            else:
-                dictionary1["stu_pingjia"] = list2[0].apply_status
-                fb_direction = "企业评价学生"
-                filterResult = TbfeedbackEr.objects.filter(stu=list2[0].stu).filter(iw_number=i).filter(
-                    fb_direction=fb_direction)
-                if len(filterResult) > 0:
-                    dictionary1["pingjia"] = "已评价"
-                    dictionary1["btn_color1"] = "button-color2"
-                else:
-                    dictionary1["pingjia"] = "请评价"
-                    dictionary1["btn_color1"] = "button-color6"
-            dictionary1["num"] = str(len(list2))
-            list3 = Tbapplication.objects.filter(iw_number=i).exclude(stu=list2[0].stu)
-            for j in list3:
-                dictionary2 = {}
-                dictionary2["name"] = j.stu.name
-                dictionary2["stu_id"] = j.stu.stu_id
-                if i.In_status == "工作中"or i.In_status == "工作结束":
-                    dictionary2["stu_pingjia"] = "未开启"
-                    dictionary2["pingjia"] = "未开启"
-                else:
-                    dictionary2["stu_pingjia"] = j.apply_status
-                    fb_direction = "企业评价学生"
-                    filterResult = TbfeedbackEr.objects.filter(stu=j.stu).filter(iw_number=i).filter(
-                        fb_direction=fb_direction)
-                    if len(filterResult) > 0:
-                        dictionary2["pingjia"] = "已评价"
-                    else:
-                        dictionary2["pingjia"] = "请评价"
-
-                if dictionary2["pingjia"] == "未开启":
-                    dictionary2["btn_color2"] = "button-color3"
-                if dictionary2["pingjia"] == "待评价":
-                    dictionary2["btn_color2"] = "button-color4"
-                if dictionary2["pingjia"] == "已评价":
-                    dictionary2["btn_color2"] = "button-color2"
-                if dictionary2["stu_pingjia"] == "未开启":
-                    dictionary2["btn_color1"] = "button-color3"
-                if dictionary2["stu_pingjia"] == "待评价":
-                    dictionary2["btn_color1"] = "button-color4"
-                if dictionary2["stu_pingjia"] == "已评价":
-                    dictionary2["btn_color1"] = "button-color2"
-                dictionary1["stu_list"].append(dictionary2)
-            dictionary1["in_status"] = i.In_status
-            if dictionary1["in_status"] == "已结束":
-                dictionary1["btn_color"] = "button-color5"
-            if dictionary1["in_status"] == "工作中":
-                dictionary1["btn_color"] = "button-color2"
-            if dictionary1["in_status"] == "待评价":
-                dictionary1["btn_color"] = "button-color3"
-            if dictionary1["in_status"] == "工作结束":
-                dictionary1["btn_color"] = "button-color4"
-
-            if dictionary1["pingjia"] == "未开启":
-                dictionary1["btn_color2"] = "button-color3"
-            if dictionary1["pingjia"] == "待评价":
-                dictionary1["btn_color2"] = "button-color4"
-            if dictionary1["pingjia"] == "已评价":
-                dictionary1["btn_color2"] = "button-color2"
-            if dictionary1["stu_pingjia"] == "未开启":
-                dictionary1["btn_color1"] = "button-color3"
-            if dictionary1["stu_pingjia"] == "待评价":
-                dictionary1["btn_color1"] = "button-color4"
-            if dictionary1["stu_pingjia"] == "已评价":
-                dictionary1["btn_color1"] = "button-color2"
-            stu_feedback_list.append(dictionary1)
-        return render(request, 'wechat/stu_feedback.html', {'stu_feedback_list': stu_feedback_list})
+        return HttpResponseRedirect('../stu_feedback_list/')
     else:
         return HttpResponse("请求错误")
-
 
 
 #贫困生的兼职查看！！！！
