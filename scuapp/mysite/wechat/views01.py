@@ -1,4 +1,4 @@
-from django.shortcuts import HttpResponse,render
+from django.shortcuts import HttpResponse,render,HttpResponseRedirect
 from django.utils import timezone
 from .models import Tbcompany, Tbmanager, Tbstudent,TbinWork, TboutWork, TbinResult, Tbapplication,TbfeedbackEr,TbinterviewApply,TbinterviewNotice
 from django.db.models import Q
@@ -179,39 +179,7 @@ def management_inWork_release(request):
         inWork=TbinWork.objects.create(iw_post=iw_post, iw_depart=iw_depart, w_time=w_time, w_place=w_place, work=work,
                                        w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time, inpub_time=inpub_time, w_ps=w_ps)
         inWork.save()
-        inwork_list = []
-        list = TbinWork.objects.all()
-        for i in list:
-            dic = {}
-            dic["iw_number"] = i.iw_number
-            dic["iw_post"] = i.iw_post
-            dic["iw_depart"] = i.iw_depart
-            dic["w_time"] = i.w_time
-            dic["w_place"] = i.w_place
-            dic["work"] = i.work
-            dic["w_salary"] = i.w_salary
-            dic["w_reuire"] = i.w_reuire
-            dic["w_amount"] = i.w_amount
-            dic["ddl_time"] = str(i.ddl_time)
-            dic["inpub_time"] = str(i.inpub_time)
-            dic["w_ps"] = i.w_ps
-            dic["In_status"] = i.In_status
-            if dic["In_status"] == "待评价":
-                dic["btn_color"] = "button-color4"
-            if dic["In_status"] == "报名中":
-                dic["btn_color"] = "button-color3"
-            if dic["In_status"] == "工作中":
-                dic["btn_color"] = "button-color2"
-            if dic["In_status"] == "报名结束":
-                dic["btn_color"] = "button-color5"
-            if dic["In_status"] == "结果通知中":
-                dic["btn_color"] = "button-color1"
-            if dic["In_status"] == "工作结束":
-                dic["btn_color"] = "button-color6"
-            if dic["In_status"] == "已结束":
-                dic["btn_color"] = "button-color7"
-            inwork_list.append(dic)
-        return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+        return HttpResponseRedirect('inwork_list/')
     else:
         return HttpResponse("请求错误")
 #校内兼职信息修改
