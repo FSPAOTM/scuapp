@@ -72,7 +72,7 @@ def Part_time_post(request):
         w_amount = request.POST.get('num')
         ddl_time = request.POST.get('endingtime')
         ipub_time = timezone.now()
-        w_ps = request.POST.getlist('ps')
+        w_ps = request.POST.get('ps')
         User = Tbcompany.objects.get(phone_num=phone_num)
         outwork = TboutWork.objects.create(ow_post=ow_post,w_time=w_time,w_place=w_place,w_place_detail=w_place_detail,work=work,w_salary=w_salary,w_reuire=w_reuire,w_amount=w_amount,ddl_time=ddl_time,ipub_time=ipub_time,w_ps=w_ps,com_number=User,ow_status = '待审核')
         outwork.save()
@@ -156,7 +156,7 @@ def Modify_outwork_info(request):
         w_amount = request.POST.get('num')
         ddl_time = request.POST.get('endingtime')
         ipub_time = timezone.now()
-        w_ps = request.POST.getlist('ps')
+        w_ps = request.POST.get('ps')
         User = Tbcompany.objects.get(phone_num=phone_num)
         TboutWork.objects.filter(ow_number=ow_number).update(ow_post=ow_post, w_time=w_time, w_place= w_place, w_place_detail=w_place_detail,
                                                              work=work,w_salary=w_salary, w_reuire=w_reuire, w_amount=w_amount, ddl_time=ddl_time,
@@ -357,12 +357,30 @@ def Com_Insert_resume_show(request):
         name=resume.name
         age=resume.age
         sex=resume.sex
-        res_asses=resume.res_asses
-        res_edu=resume.res_edu
-        res_work=resume.res_work
-        res_proj=resume.res_proj
-        res_extra=resume.res_extra
-        res_per=resume.res_per
+        if resume.res_asses is not None:
+            res_asses=resume.res_asses
+        else:
+            res_asses =""
+        if resume.res_edu is not None:
+            res_edu=resume.res_edu
+        else:
+            res_edu=""
+        if resume.res_work is not None:
+            res_work=resume.res_work
+        else:
+            res_work =""
+        if resume.res_proj is not None:
+            res_proj=resume.res_proj
+        else:
+            res_proj =""
+        if resume.res_extra is not None:
+            res_extra=resume.res_extra
+        else:
+            res_extra=""
+        if resume.res_pers is not None:
+            res_per=resume.res_per
+        else:
+            res_per=""
         application = Tbapplication.objects.filter(stu=user).get(ow_number=outWork)
         reason = application.ap_reson
         return HttpResponse(json.dumps({
