@@ -38,7 +38,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.14.1",
-  "appid": "wx81aadab37047aa6a",
+  "appid": "wx3053fb4061987a73",
   "projectname": "miniprogram-com",
   "debugOptions": {
     "hidedInDevtools": []
@@ -59,6 +59,27 @@
     },
     "miniprogram": {
       "list": [
+        {
+          "id": -1,
+          "name": "pages/login/login",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/cxiaoxi/cxiaoxi",
+          "pathName": "pages/cxiaoxi/cxiaoxi",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/schatting/schatting",
+          "pathName": "pages/schatting/schatting",
+          "query": "",
+          "scene": null
+        },
         {
           "id": -1,
           "name": "pages/login/login",

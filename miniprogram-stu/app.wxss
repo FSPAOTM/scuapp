@@ -134,4 +134,19 @@ page{
   text-align: center; 
   font-size: 28rpx;
 }
-
+.item-avatar-lg .item-text,.item-avatar-md .item-text,.item-avatar-sm .item-text,.item-avatar-xs .item-text{
+  padding-left: 10px;
+}
+.item-avatar-md .item-time{
+  position: absolute;
+  right: 20rpx;
+}
+.clearfix{
+  overflow: hidden;
+}
+.icon::before{
+  font-size: 70rpx
+}
+.floatR{
+  float: right;
+}

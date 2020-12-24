@@ -65,6 +65,7 @@ App({
         }
       }
     })
+    
   },
 
   //第一种底部  
@@ -99,9 +100,9 @@ App({
     })
   },
 
-
   globalData: {
     url: 'http://127.0.0.1:8000/wechat',
+    chatSocket: null,
     userInfo: "",
     user: "",
     age: "",
@@ -116,20 +117,23 @@ App({
     jobType: "",
     ow_number: "",
     friendlist: ["17188385280", "show", "as先生", "22先生", "练习生"],
-    msgList: [{
-        from: 'server',
+    msgList:{
+      "17188385280":[{
+        from: '17188385280',
         to: 'text',
-        content: '你好',
+        content: '你好！',
         time: '2020.10.10',
-        isread: 1
+        isread: 0
       },
       {
-        from: 'cc先生',
+        from: '17188385280',
         to: 'text',
-        content: '欢迎咨询',
+        content: '欢迎咨询！',
         time: '2020.10.10',
-        isread: 1
-      }
-    ]
+        isread: 0
+      }],
+
+    },
+    
   }
 })

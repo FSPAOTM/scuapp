@@ -114,20 +114,23 @@ App({
     jobType: "",
     ow_number: "",
     friendlist: ["2018141093036", "show", "as先生", "22先生", "练习生"],
-    msgList: [{
-        from: 'server',
+    msgList:{
+      "2018141093036":[{
+        from: '2018141093036',
         to: 'text',
-        content: '你好',
+        content: '你好！',
         time: '2020.10.10',
-        isread: 1
+        isread: 0
       },
       {
-        from: '中公教育',
+        from: '2018141093036',
         to: 'text',
-        content: '如有疑问欢迎咨询',
+        content: '我要咨询！',
         time: '2020.10.10',
-        isread: 1
-      }
-    ]
+        isread: 0
+      }],
+
+    },
+    
   }
 })

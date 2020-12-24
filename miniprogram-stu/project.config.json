@@ -111,6 +111,20 @@
           "id": -1,
           "name": "pages/login/login",
           "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/sxiaoxi/sxiaoxi",
+          "pathName": "pages/sxiaoxi/sxiaoxi",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/schatting/schatting",
+          "pathName": "pages/schatting/schatting",
           "scene": null
         }
       ]

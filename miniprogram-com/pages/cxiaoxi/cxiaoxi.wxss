@@ -134,7 +134,7 @@ margin-right: 200rpx;
 .bdstk{
   width:100%;
   text-align: center;
-  line-height:60rpx;
+  line-height:45rpx;
   display: flex;
  }
 
@@ -148,9 +148,9 @@ margin-right: 200rpx;
 
  
 .image{
-  width: 45px;
-  height: 45px;
-  margin-top: 5rpx;
+  width: 40px;
+  height: 40px;
+  margin-top: 3rpx;
 }
 
 .standView{

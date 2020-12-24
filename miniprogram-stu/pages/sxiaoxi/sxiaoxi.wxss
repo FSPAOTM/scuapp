@@ -1,10 +1,11 @@
 /* pages/sxiaoxi/sxiaoxi.wxss */
 
-.message-list{
-  /* background-color:#f2f2f2; */
+/**.message-list{
+  /* background-color:#f2f2f2; 
   display: flex;
   flex-direction: column;
-}
+}*/
+
 .user{
   display: flex;
   flex-direction: row;
@@ -55,7 +56,7 @@ margin-right: 200rpx;
   flex-direction: row;
 }
 /*对话框消息内容*/
-.dialog{
+/*.dialog{
   width: 545rpx;
   font-size: 26rpx;
   color: #aeaeae;
@@ -64,9 +65,9 @@ margin-right: 200rpx;
 }
 
 /*对话框提示数目*/
-.dialog-nums{
+/*.dialog-nums{
  width: 100rpx;
-}
+}*/
 
 /*气泡样式*/
 .bubble2{
@@ -134,23 +135,23 @@ margin-right: 200rpx;
 .bdstk{
   width:100%;
   text-align: center;
-  line-height:60rpx;
+  line-height:45rpx;
   display: flex;
  }
 
 .text{
   font-size:27rpx;
   margin-top: 20rpx;
-  margin-left: 30rpx;
+  margin-left: 10rpx;
   text-align: center;
   color:#696969;
 }
 
  
 .image{
-  width: 45px;
-  height: 45px;
-  margin-top: 5rpx;
+  width: 40px;
+  height: 40px;
+  margin-top: 3rpx;
 }
 
 .standView{

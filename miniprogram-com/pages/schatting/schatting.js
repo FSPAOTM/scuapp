@@ -1,6 +1,6 @@
 // pages/contact/contact.js
 const app = getApp();
-
+var chat = require('../../utils/chat.js')
 var inputVal = '';
 var msgList = [];
 var windowWidth = wx.getSystemInfoSync().windowWidth;
@@ -38,21 +38,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (!(options.name in app.globalData.msgList)) {
+      app.globalData.msgList[options.name] = [];
+    }
     this.setData({
-      //to: options.stu_number,
-      //to_name:options.name,
-      to: options.name,
+      to:options.name,
       name: app.globalData.user,
-      msgList: app.globalData.msgList,
-    });
-    this.receivemsg();
+      msgList: app.globalData.msgList[options.name],
+    }); 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    chat.update_chatting_history(this.data.to);//将与当前聊天用户的记录均置为已读
+    wx.onSocketMessage((result) => {
+      console.log("我在chatting.js")
+      let msg = JSON.parse(result.data)["message"];
+      chat.update_globalData_msgList_chatting(msg,this.data.to)
+      this.setData({ //更新消息列表
+        msgList: app.globalData.msgList[this.data.to]
+      });
 
+    })
 
   },
 
@@ -119,30 +128,25 @@ Page({
 
   updatemsglist: function (message) {
     console.log("我在updatemsglist");
-    this.data.msgList.push(message);
+    app.globalData.msgList[this.data.to].push(message);
     inputVal = '';
     this.setData({ //更新消息列表
       inputVal,
-      msgList: this.data.msgList
+      msgList: app.globalData.msgList[this.data.to]
     });
   },
 
   receivemsg: function () {
     console.log("receivemsg");
-    wx.showToast({
-      title: '收到一条新消息',
-    })
     //接收消息后，添加到消息列表
     wx.onSocketMessage((result) => {
-      var that = this;
+      console.log("我在chatting.js")
       let msg = JSON.parse(result.data)["message"];
-      for (var i = 0; i < msg.length; i++) {
-        that.data.msgList.push(msg[i]);
-      }
-      console.log(that.data.msgList)
+      chat.update_globalData_msgList(msg,this.data.to)
       this.setData({ //更新消息列表
-        msgList: that.data.msgList
+        msgList: app.globalData.msgList[this.data.to]
       });
+
     })
   },
 

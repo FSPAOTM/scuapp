@@ -56,10 +56,21 @@ Page({
   },
 
   exitlogin(){
+    this.dislinkSocket();
     wx.redirectTo({
       url: '../login/login'
     })
   },
+
+  dislinkSocket() {
+    wx.disconnectSocket({
+      url: "ws://127.0.0.1:8000/ws/chat/"+this.data.no+"/",
+      header:{'content-type': 'application/json'},
+    });
+    wx.onSocketClose((result) => {
+      console.log('yijing close')
+    }) 
+},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
