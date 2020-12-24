@@ -377,7 +377,7 @@ def Com_Insert_resume_show(request):
             res_extra=resume.res_extra
         else:
             res_extra=""
-        if resume.res_pers is not None:
+        if resume.res_per is not None:
             res_per=resume.res_per
         else:
             res_per=""

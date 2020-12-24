@@ -157,6 +157,31 @@ def stu_manage_resume_list(request):
     str = request.GET.get('res_num')
     res_id =str[17:27]
     resume = Tbresume.objects.get(res_id=res_id)
+
+    if resume.res_asses is not None:
+        res_asses = resume.res_asses
+    else:
+        res_asses = ""
+    if resume.res_edu is not None:
+        res_edu = resume.res_edu
+    else:
+        res_edu = ""
+    if resume.res_work is not None:
+        res_work = resume.res_work
+    else:
+        res_work = ""
+    if resume.res_proj is not None:
+        res_proj = resume.res_proj
+    else:
+        res_proj = ""
+    if resume.res_extra is not None:
+        res_extra = resume.res_extra
+    else:
+        res_extra = ""
+    if resume.res_per is not None:
+        res_per = resume.res_per
+    else:
+        res_per = ""
     return render(request, 'wechat/stu_resume.html',{'resume': resume})
 #企业管理
 #企业列表界面
