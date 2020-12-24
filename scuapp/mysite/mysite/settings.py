@@ -54,6 +54,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mysite.urls'
 
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

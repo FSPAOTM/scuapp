@@ -1,6 +1,7 @@
 // pages/login/login.js
 
 var app = getApp()
+var chat = require('../../utils/chat.js')
 Page({
   /**
    * 页面的初始数据
@@ -53,6 +54,14 @@ Page({
     var self = this;
     this.linkSocket();
     console.log(e);
+    wx.onSocketMessage((result) => {
+      let msg = JSON.parse(result.data)["message"];
+      chat.update_globalData_msgList_default(msg);//更新消息列表
+      console.log("我在login.js");
+      wx.showToast({
+        title: '收到一条新消息',
+      })
+    })
     self.setData({
       disabled: true
     });
@@ -133,7 +142,7 @@ Page({
     });
 
     wx.onSocketOpen((result) => {
-      console.log('yijing open')
+      console.log('connect success')
     }) 
 },
 

@@ -45,7 +45,7 @@ input {
   line-height: 7vw;
   padding: 2vw 2.5vw;
   background-color: #96EB6A;
-  margin-right: -1.6vw;
+  margin-right: 10rpx;
   border-radius: 10rpx;
   z-index: 10;
 }
