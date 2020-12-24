@@ -161,6 +161,8 @@ def interview_list(request):
                 dictionary["btn_color"] = "button-color5"
             if dictionary["apply_status"] == "面试阶段":
                 dictionary["btn_color"] = "button-color6"
+            if dictionary["apply_status"] == "面试结束":
+                dictionary["btn_color"] = "button-color7"
             if outwork.ow_status != "面试申请中":
                 interviewNotice = TbinterviewNotice.objects.get(ia_number=i.ia_number)
                 dictionary["c_sure"] = interviewNotice.c_sure
@@ -174,6 +176,16 @@ def interview_list(request):
                 dictionary["btn_colors"] = "button-color2"
             interview_list.append(dictionary)
     return render(request, 'wechat/interview_list.html', {'interview_list': interview_list})
+
+#面试结束
+def interview_end(request):
+    ia_number = request.GET.get("end_num")
+    interviewApply = TbinterviewApply.objects.get(ia_number=ia_number)
+    if interviewApply.apply_status =="面试阶段":
+        TbinterviewApply.objects.filter(ia_number=ia_number).update(apply_status="面试结束")
+        return HttpResponseRedirect('../interview_list/')
+    else:
+        return render(request, 'wechat/manage_error.html')
 
 #校外应聘学生查看
 def stu_yingpin(request):

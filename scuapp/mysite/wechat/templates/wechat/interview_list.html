@@ -32,7 +32,7 @@
             </th>
             <th>申请编号</th>
             <th>校外岗位编号</th>
-            <th>面试时间</th>
+            <th>可面试时间</th>
             <th>负责人</th>
             <th>手机号</th>
             <th>申请时间</th>
@@ -40,6 +40,7 @@
             <th>企业确认</th>
             <th>申请状态</th>
             <th align="center">操作</th>
+            <th align="center">结束</th>
           </tr>
         </thead>
         <tbody>
@@ -65,6 +66,11 @@
               <a href="../interview_notice_send/?result_num={{ line.ia_number }}"><span class="button1 button-color3 button-mini">面试通知</span></a>
               <p><br><a href="../interview_back_reason/?ia_num={{ line.ia_number }}"><span class="button1 button-color5 button-mini">打回</span></a></td>
             <!--待修改-->
+            <td class="td-manage">
+              <a  href="../interview_end/?end_num={{ line.ia_number }}"  title="面试结束">
+                <i class="iconfont">&#xe6ce;</i>
+              </a>
+            </td>
         </tr>
         {% endfor %}
         </tbody>

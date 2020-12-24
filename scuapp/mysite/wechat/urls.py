@@ -59,6 +59,7 @@ urlpatterns = [
     path('Com_work_unemployed/',views_com.Com_work_unemployed, name='Com_work_unemployed'),
     path('Com_pingjia_me/',views_com.Com_pingjia_me, name='Com_pingjia_me'),
     path('Com_my_pingjia/',views_com.Com_my_pingjia, name='Com_my_pingjia'),
+
     #聊天室界面
     path('', views_chat.index, name='index'),
     path('chat/<str:room_name>/', views_chat.room, name='room'),
@@ -122,6 +123,8 @@ urlpatterns = [
     path('stu_feedback_edit/', views02.stu_feedback_edit, name='stu_feedback_edit'),
     path('stu_feedback_list/', views02.stu_feedback_list, name='stu_feedback_list'),
     path('stu_feedback_edit_save/', views02.stu_feedback_edit_save, name='stu_feedback_edit_save'),
+    path('interview_end/', views02.interview_end, name='interview_end'),
+
     #用户管理
     path('stu_manage_list/', views03.stu_manage_list, name='stu_manage_list'),
     path('stu_experience/', views03.stu_experience, name='stu_experience'),

@@ -157,7 +157,9 @@ def stu_manage_resume_list(request):
     str = request.GET.get('res_num')
     res_id =str[17:27]
     resume = Tbresume.objects.get(res_id=res_id)
-
+    name = resume.name
+    age = resume.age
+    sex = resume.sex
     if resume.res_asses is not None:
         res_asses = resume.res_asses
     else:
@@ -182,7 +184,15 @@ def stu_manage_resume_list(request):
         res_per = resume.res_per
     else:
         res_per = ""
-    return render(request, 'wechat/stu_resume.html',{'resume': resume})
+    return render(request, 'wechat/stu_resume.html',{"name": name,
+             "age": age,
+             "sex": sex,
+             "res_asses": res_asses,
+             "res_edu": res_edu,
+             "res_work": res_work,
+             "res_proj": res_proj,
+             "res_extra": res_extra,
+             "res_per": res_per})
 #企业管理
 #企业列表界面
 def company_manage_list(request):
