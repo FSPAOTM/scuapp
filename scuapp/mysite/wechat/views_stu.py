@@ -68,7 +68,7 @@ def Stu_result_show(request):
             inResult = TbinResult.objects.get(iw_number =i.iw_number)
             result = "您已被录用，请在" + inResult.r_time +"前联系负责人并按时报到"
             plays.append({'type':"校内兼职",'iw_number': i.iw_number.iw_number, 'post': i.iw_number.iw_post, 'result': result,
-                          'phonenum': inResult.inr_phonenum,'ps': inResult.r_ps,'success':"true",'fail':"false"})
+                          'phonenum': inResult.inr_phonenum,'ps': inResult.r_ps,'success':True,'fail':False})
         else:
             interviewApply = TbinterviewApply.objects.get(ow_number =i.ow_number)
             interviewNotice = TbinterviewNotice.objects.get(ia_number=interviewApply.ia_number)
@@ -76,12 +76,12 @@ def Stu_result_show(request):
             address = i.ow_number.w_place + i.ow_number.w_place_detail
             plays.append({'type': "校外兼职", 'ow_number': i.ow_number.ow_number, 'post': i.ow_number.ow_post,
                           'result': "您已被录用，请按时报到",
-                          'time': interviewResult.ir_rtime, 'address': address, 'ps': interviewResult.ir_ps,'success':"true",'fail':"false"})
+                          'time': interviewResult.ir_rtime, 'address': address, 'ps': interviewResult.ir_ps,'success':True,'fail':False})
     application2 = Tbapplication.objects.filter(stu=student).filter(Q(apply_status="未录用") | Q(apply_status="表筛未通过"))
     for j in application2:
         if j.ow_number.ow_status =="面试通知中" or j.ow_number.ow_status =="面试阶段"or j.ow_number.ow_status =="结果通知中":
             plays.append({'type': "校外兼职", 'ow_number': j.ow_number.ow_number, 'post': j.ow_number.ow_post,
-                          'result': "很遗憾，您未被录用,请继续加油",'success':"false",'fail':"true"})
+                          'result': "很遗憾，您未被录用，请继续加油！",'success':False,'fail':True})
     plays_json = json.dumps(plays, ensure_ascii=False)
     return HttpResponse(plays_json)
 
