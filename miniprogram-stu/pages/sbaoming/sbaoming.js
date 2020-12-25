@@ -135,7 +135,7 @@ spingjiashow(){
               })
               setTimeout(function () {
                 wx.switchTab({
-                  url: '../smyJob/smyJob?show=refresh',
+                  url: '../smyJob/smyJob?show=refresh&currentTab=0',
                 })
               }, 2000)
             }else if(res.data == "该学生已报名"){

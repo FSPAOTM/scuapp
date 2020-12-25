@@ -56,6 +56,11 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    if (options.currentTab != '') {
+      that.setData({
+        currentTab: options.currentTab
+      })
+    }
     that.setData({
       show: options.show
     })

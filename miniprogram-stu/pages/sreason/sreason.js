@@ -49,7 +49,7 @@ Page({
             })
             setTimeout(function () {
               wx.switchTab({
-                url: '../smyJob/smyJob',
+                url: '../smyJob/smyJob?currentTab=0',
               })
             }, 2000)
           } else if (res.data == "该学生已报名") {
@@ -60,7 +60,7 @@ Page({
             })
             setTimeout(function () {
               wx.switchTab({
-                url: '../smyJob/smyJob',
+                url: '../smyJob/smyJob?currentTab=0',
               })
             }, 2000)
           }

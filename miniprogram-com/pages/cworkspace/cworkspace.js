@@ -134,7 +134,7 @@ Page({
                       workinfo1: that.data.workinfo1
                     })
                     break;
-                  }else{
+                  } else {
                     count = count + 1
                   }
                 }
@@ -373,7 +373,25 @@ Page({
       },
       success: (res) => {
         if (res.statusCode == 200) {
-          if (res.data == "通知成功") {
+          if (res.data == "未面试，尚不能发送结果") {
+            wx.showToast({
+              title: '未面试，尚不能发送结果',
+              icon: 'none',
+              duration: 2000
+            })
+            setTimeout(function () {
+              this.onRefresh()
+            }, 2000)
+          } else if (res.data == "面试中，尚不能发送结果") {
+            wx.showToast({
+              title: '面试中，尚不能发送结果',
+              icon: 'none',
+              duration: 2000
+            })
+            setTimeout(function () {
+              this.onRefresh()
+            }, 2000)
+          } else if (res.data == "通知成功") {
             this.setData({
               mingdan: [],
               count: "",
@@ -383,7 +401,14 @@ Page({
             this.setData({
               hiddenmodalput: true
             });
-            this.onRefresh();
+            wx.showToast({
+              title: '通知成功',
+              icon: 'success',
+              duration: 2000
+            })
+            setTimeout(function () {
+              this.onRefresh()
+            }, 2000)
           }
         }
       }
@@ -403,10 +428,38 @@ Page({
       },
       success: (res) => {
         if (res.statusCode == 200) {
-          this.setData({
-            mingdan: []
-          })
-          this.onRefresh();
+          if (res.data == "未面试，尚不能发送结果") {
+            wx.showToast({
+              title: '未面试，尚不能发送结果',
+              icon: 'none',
+              duration: 2000
+            })
+            setTimeout(function () {
+              this.onRefresh()
+            }, 2000)
+          } else if (res.data == "面试中，尚不能发送结果") {
+            wx.showToast({
+              title: '面试中，尚不能发送结果',
+              icon: 'none',
+              duration: 2000
+            })
+            setTimeout(function () {
+              this.onRefresh()
+            }, 2000)
+          } else if (res.data == "通知成功") {
+            this.setData({
+              mingdan: [],
+              count: "",
+            })
+            wx.showToast({
+              title: '通知成功',
+              icon: 'none',
+              duration: 2000
+            })
+            setTimeout(function () {
+              this.onRefresh()
+            }, 2000)
+          }
         }
       }
     })
@@ -510,7 +563,7 @@ Page({
                       workinfo1: that.data.workinfo1
                     })
                     break;
-                  }else{
+                  } else {
                     count = count + 1
                   }
                 }

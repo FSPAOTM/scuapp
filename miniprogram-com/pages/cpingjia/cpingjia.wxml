@@ -28,12 +28,12 @@
           <view class='time'>
             <view class='time-num'>{{item.time}}</view>
           </view>
-          <view bindtap="toChange" data-show='isShow'>
-            <image class="title_icon" src="{{isShow ? 'up.png' : 'down.png'}}" />
+          <view bindtap="toChange" data-show='{{isShow1}}' data-index="{{index}}">
+            <image class="title_icon" src="{{isShow1[index] ? 'up.png' : 'down.png'}}" />
           </view>
         </view>
 
-        <view class="{{isShow?'db' : 'dn'}}">
+        <view class="{{isShow1[index]?'db' : 'dn'}}" data-index="index">
           <text class='dialog2'>评分：{{item.score}}</text>
           <text class='dialog2'>{{item.content}}</text>
         </view>
@@ -55,12 +55,12 @@
           <view class='time'>
             <view class='time-num'>{{item.time}}</view>
           </view>
-          <view bindtap="toChange" data-show='isShow'>
-            <image class="title_icon" src="{{isShow ? 'up.png' : 'down.png'}}" />
+          <view bindtap="toChange2" data-show='{{isShow2}}' data-index="{{index}}">
+            <image class="title_icon" src="{{isShow2[index]? 'up.png' : 'down.png'}}" />
           </view>
         </view>
 
-        <view class="{{isShow?'db' : 'dn'}}">
+        <view class="{{isShow2[index]?'db' : 'dn'}}">
           <text class='dialog2'>评分：{{item.score}}</text>
           <text class='dialog2'>{{item.content}}</text>
         </view>

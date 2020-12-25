@@ -152,7 +152,7 @@ Page({
           })
           setTimeout(function () {
             wx.reLaunch({
-              url: '../smyJob/smyJob?pingjia=1'
+              url: '../smyJob/smyJob?currentTab=3'
             })
           }, 1500)
         }
