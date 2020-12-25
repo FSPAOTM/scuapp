@@ -1,14 +1,11 @@
 import datetime
-from django.shortcuts import HttpResponse,render
-from django.template import loader
+from django.shortcuts import HttpResponse
 from .models import Tbcompany, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication,TbinterviewApply,TbinterviewNotice,TbfeedbackEr,TbinterviewResult
 from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
 from django.utils import timezone
 import json
 from . import views01
 
-from itertools import chain
 #以下是企业
 #ccenter返回企业名称
 def Show_company_name(request):
@@ -396,7 +393,6 @@ def Com_Insert_resume_show(request):
              "reason": reason}))
     else:
         return HttpResponse("请求错误")
-
 #cfabu 企业端结算工作 已结算按钮
 def Com_work_paid(request):
     if request.method == "POST":
@@ -407,7 +403,6 @@ def Com_work_paid(request):
         return HttpResponse("修改成功")
     else:
         return HttpResponse("请求错误")
-
 #cfeedback 企业评价学生
 def Com_feedbackEr(request):
     if request.method == "POST":
@@ -436,7 +431,6 @@ def Com_feedbackEr(request):
         return HttpResponse("评价成功")
     else:
         return HttpResponse("请求错误")
-
 #cworkspace 企业工作录取结果通知
 def Com_work_employed(request):
     if request.method == "POST":
@@ -478,7 +472,6 @@ def Com_work_employed(request):
         return HttpResponse("通知成功")
     else:
         return HttpResponse("请求错误")
-
 #cworkspace 企业工作未录取结果通知
 def Com_work_unemployed(request):
     if request.method == "POST":
@@ -514,7 +507,6 @@ def Com_work_unemployed(request):
         return HttpResponse("通知成功")
     else:
         return HttpResponse("请求错误")
-
 #cpingjia 评价企业展示
 def Com_pingjia_me(request):
     phone_num = request.GET.get('user')
@@ -537,7 +529,6 @@ def Com_pingjia_me(request):
             plays.append({'stu':"匿名用户",'ow_number': j.ow_number.ow_number, 'post': j.ow_number.ow_post, 'time': str(j.fb_time),'score': fb_content[0],'content': content})
     plays_json = json.dumps(plays, ensure_ascii=False)
     return HttpResponse(plays_json)
-
 #cpingjia 企业的评价展示
 def Com_my_pingjia(request):
     phone_num = request.GET.get('user')

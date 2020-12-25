@@ -1,12 +1,8 @@
-from django.shortcuts import HttpResponse,render
-from django.template import loader
-from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication,TbinterviewNotice,TbfeedbackEr
-from django.http import JsonResponse
+from django.shortcuts import HttpResponse
+from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication
 from django.utils import timezone
 import json
 from threading import Timer
-from itertools import chain
-from . import views01
 
 #####报名结束状态生成（定时器自动更新）
 def info_status():

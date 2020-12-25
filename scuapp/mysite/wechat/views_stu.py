@@ -1,11 +1,8 @@
-from django.shortcuts import HttpResponse,render
-from django.template import loader
-from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication,TbinterviewNotice,TbfeedbackEr,TbinterviewApply,TbinResult,TbinterviewResult
-from django.http import JsonResponse
+from django.shortcuts import HttpResponse
+from .models import Tbstudent,TbinWork,TboutWork,Tbapplication,TbinterviewNotice,TbfeedbackEr,TbinterviewApply,TbinResult,TbinterviewResult
 from django.utils import timezone
 import json
 from django.db.models import Q
-from itertools import chain
 from . import views01
 #小程序界面
 

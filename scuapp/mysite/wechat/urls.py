@@ -124,7 +124,6 @@ urlpatterns = [
     path('stu_feedback_list/', views02.stu_feedback_list, name='stu_feedback_list'),
     path('stu_feedback_edit_save/', views02.stu_feedback_edit_save, name='stu_feedback_edit_save'),
     path('interview_end/', views02.interview_end, name='interview_end'),
-
     #用户管理
     path('stu_manage_list/', views03.stu_manage_list, name='stu_manage_list'),
     path('stu_experience/', views03.stu_experience, name='stu_experience'),

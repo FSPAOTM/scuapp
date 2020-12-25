@@ -187,7 +187,10 @@ def management_inWork_release(request):
 def management_inWork_reset_show(request):
     iw_number=request.GET.get("re_num")
     inWork = TbinWork.objects.get(iw_number=iw_number)
-    return render(request, 'wechat/inwork_change.html', {'inWork': inWork})
+    if inWork.In_status== "报名中" or inWork.In_status == "报名结束" or inWork.In_status == "中止"or inWork.In_status == "结果通知中":
+        return render(request, 'wechat/inwork_change.html', {'inWork': inWork})
+    else:
+        return render(request, 'wechat/manage_error.html')
 
 def management_inWork_reset(request):
     if request.method == "POST":
@@ -226,7 +229,7 @@ def management_inWork_stop(request):
 def management_inWork_begin(request):
     iw_number = request.GET.get('begin_num')
     inWork = TbinWork.objects.get(iw_number=iw_number)
-    if inWork.In_status == "报名中" or inWork.In_status == "报名结束" or inWork.In_status == "中止":
+    if inWork.In_status == "报名结束" or inWork.In_status == "中止":
         TbinWork.objects.filter(iw_number=iw_number).update(In_status="报名中")  #批量启用
         return HttpResponseRedirect('../inwork_list/')
     else:
@@ -347,7 +350,7 @@ def management_outWork_delete(request):
 def management_outWork_stop(request):
     ow_number = request.GET.get('stop_num')
     outWork = TboutWork.objects.get(ow_number=ow_number)
-    if outWork.ow_status == "报名中" or outWork.ow_status == "待审核" or outWork.ow_status == "中止":
+    if outWork.ow_status == "报名中" or outWork.ow_status == "待审核" or outWork.ow_status == "中止"or outWork.ow_status == "已打回"or outWork.ow_status == "报名结束":
         TboutWork.objects.filter(ow_number=ow_number).update(ow_status="中止")  #批量中止
         return HttpResponseRedirect('../outwork_list/')
     else:
@@ -356,7 +359,7 @@ def management_outWork_stop(request):
 def management_outWork_begin(request):
     ow_number = request.GET.get('begin_num')
     outWork = TboutWork.objects.get(ow_number=ow_number)
-    if outWork.ow_status == "报名中" or outWork.ow_status == "待审核" or outWork.ow_status == "中止":
+    if outWork.ow_status == "中止":
         TboutWork.objects.filter(ow_number=ow_number).update(ow_status="待审核")  #批量启用
         return HttpResponseRedirect('../outwork_list/')
     else:
@@ -365,7 +368,11 @@ def management_outWork_begin(request):
 def management_outWork_reset_show(request):
     ow_number=request.GET.get("re_num")
     outWork = TboutWork.objects.get(ow_number=ow_number)
-    return render(request, 'wechat/outWork_change.html', {'outWork': outWork})
+    if outWork.ow_status == "报名中" or outWork.ow_status == "待审核" or outWork.ow_status == "中止"or outWork.ow_status == "已打回"or outWork.ow_status == "报名结束":
+        return render(request, 'wechat/outWork_change.html', {'outWork': outWork})
+
+    else:
+        return render(request, 'wechat/manage_error.html')
 
 def management_outWork_reset(request):
     if request.method == "POST":

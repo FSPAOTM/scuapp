@@ -1,10 +1,6 @@
 from django.shortcuts import HttpResponse,render
-from django.utils import timezone
-from .models import Tbcompany, Tbstudent,Tbresume, Tbqualify, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply, TbinterviewResult, TbinterviewNotice, TbfeedbackEr, TbfeedbackStu,Tbmanager
-from django.db.models import Q
-from threading import Timer
+from .models import Tbcompany, Tbstudent,Tbresume, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply, TbinterviewResult, TbinterviewNotice, TbfeedbackEr,Tbmanager
 from django.http import HttpResponseRedirect
-from . import views01
 import json
 
 #后台管理界面

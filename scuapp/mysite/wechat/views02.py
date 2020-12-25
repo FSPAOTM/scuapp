@@ -1,6 +1,6 @@
 from django.shortcuts import HttpResponse,render
 from django.utils import timezone
-from .models import Tbcompany, Tbstudent,Tbresume, Tbqualify, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply, TbinterviewResult, TbinterviewNotice, TbfeedbackEr, TbfeedbackStu
+from .models import  Tbstudent, TbinWork, TboutWork, TbinResult, Tbapplication, TbinterviewApply, TbinterviewResult, TbinterviewNotice, TbfeedbackEr
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from . import views01
@@ -275,7 +275,11 @@ def interview_notice_send(request):
             interviewNotice = TbinterviewNotice.objects.get(ia_number=ia_number)
             i_com = outwork.com_number.com_name
             i_num = str(k)+"人"
-            return render(request, 'wechat/notice_send.html',{'i_number':interviewNotice.i_number,'ia_number':interviewNotice.ia_number,'i_com':i_com,'i_num':i_num,'in_time':interviewNotice.in_time,'i_address':interviewNotice.i_address})
+            if interviewNotice.i_address is None:
+                i_address = ""
+            else:
+                i_address = interviewNotice.i_address
+            return render(request, 'wechat/notice_send.html',{'i_number':interviewNotice.i_number,'ia_number':interviewNotice.ia_number,'i_com':i_com,'i_num':i_num,'in_time':interviewNotice.in_time,'i_address':i_address})
     else:
         return render(request, 'wechat/manage_error.html')
 
