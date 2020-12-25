@@ -494,6 +494,12 @@ def Com_work_unemployed(request):
                 number.append(dictionary)
         for j in number:
             outwork = TboutWork.objects.get(ow_number=j["ow_number"])
+            interviewApply = TbinterviewApply.objects.filter(ow_number=outwork)
+            if not (len(interviewApply) > 0):
+                return HttpResponse("未面试，尚不能发送结果")
+            interviewApply = TbinterviewApply.objects.get(ow_number=outwork)
+            if interviewApply.apply_status != "面试结束":
+                return HttpResponse("面试中，尚不能发送结果")
             for i in mingdan:
                 if i["ow_number"] == j["ow_number"]:
                     stu=Tbstudent.objects.get(stu_id=i["stu_number"])
