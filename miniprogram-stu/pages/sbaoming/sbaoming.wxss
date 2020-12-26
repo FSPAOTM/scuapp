@@ -240,7 +240,7 @@ page {
  position:fixed; 
  width:100%;
  z-index:666;
- bottom:55rpx;
+ bottom:0rpx;
 }
 .btbdstk{
  width:100%;
@@ -286,4 +286,9 @@ page {
  height: 95rpx;
  text-align: center;
  line-height:95rpx;
+}
+
+.placeholder-view {
+  width: 100%;
+  height: 150rpx;
 }

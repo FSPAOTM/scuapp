@@ -90,17 +90,18 @@ button{
 .xinxi{
   padding-left:10rpx;
   font-size:12px;
-  color:#696969
+  color:#696969;
+  margin-top:5rpx;
 }
 
 .show1{
-  padding-left:50rpx;
+  padding-left:20rpx;
   font-size:15px;
   color:#2F4F4F;
 }
 
 .show2{
-  padding-left:150rpx;
+  padding-left:100rpx;
   font-size:15px;
   color:#2F4F4F;
 }

@@ -79,31 +79,31 @@
 }
 
 .end {
-  width: 80px !important;
+  width: 60px !important;
   height: 25px !important;
-  background-color: red !important;
-  font-size: 25rpx !important;
-  color: #eee !important;
+  color: white !important;
+  font-size: 23rpx !important;
+  background-color: #FF7178 !important;
   float: right !important;
   padding-left: 0px !important;
   padding-right: 0px !important;
-  padding-bottom: 2px;
+  padding-top: 6.75px !important;
   margin-right: 55px !important;
-  margin-bottom: 20rpx !important;
+  margin-bottom: 25rpx !important;
 }
 
 .end1 {
-  width: 80px !important;
+  width: 60px !important;
   height: 25px !important;
   background-color: grey !important;
-  font-size: 25rpx !important;
+  font-size: 23rpx !important;
   color: #eee !important;
   float: right !important;
   padding-left: 0px !important;
   padding-right: 0px !important;
-  padding-bottom: 2px;
+  padding-top: 6.75px !important;
   margin-right: 55px !important;
-  margin-bottom: 20rpx !important;
+  margin-bottom: 25rpx !important;
 }
 
 .btn-view {
@@ -155,3 +155,4 @@
   position: fixed;
   bottom: 0;
 }
+

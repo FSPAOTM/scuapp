@@ -34,7 +34,7 @@
     <view class="section">
       <view style="padding-left:30rpx;font-size:15px">
         <image class="zhuce2" src="简历2.png"></image>
-        <text class="class">技能自评：</text>
+        <text class="class">技能自评</text>
         <view class="xian"></view>
       </view>
      
@@ -44,7 +44,7 @@
     <view class="section">
       <view style="padding-left:30rpx;font-size:15px">
         <image class="zhuce2" src="简历2.png"></image>
-        <text class="class">工作经历：</text>
+        <text class="class">工作经历</text>
         <view class="xian"></view>
       </view>
 
@@ -54,7 +54,7 @@
     <view class="section">
       <view style="padding-left:30rpx;font-size:15px">
         <image class="zhuce2" src="简历2.png"></image>
-        <text class="class">项目经历：</text>
+        <text class="class">项目经历</text>
         <view class="xian"></view>
       </view>
     
@@ -64,7 +64,7 @@
     <view class="section">
       <view style="padding-left:30rpx;font-size:15px">
         <image class="zhuce2" src="简历2.png"></image>
-        <text class="class">课外实践：</text>
+        <text class="class">课外实践</text>
         <view class="xian"></view>
       </view>
   
@@ -75,7 +75,7 @@
     <view class="section">
       <view style="padding-left:30rpx;font-size:15px">
         <image class="zhuce2" src="简历2.png"></image>
-        <text class="class">个人作品：</text>
+        <text class="class">个人作品</text>
       </view>
   
       <view class="word">{{works}}</view>

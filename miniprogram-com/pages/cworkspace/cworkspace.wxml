@@ -16,7 +16,7 @@
   </scroll-view>
 </view>
 <view class="container">
-  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height: 1020rpx">
+  <swiper current="{{currentTab}}" class="swiper-box" duration="150" style="height: 1500rpx">
 
 
     <swiper-item>
@@ -82,11 +82,22 @@
         </view>
       </view>
 
-      <view class='btn-view'>
-        <button class='btn' bindtap="modalput">通过面试</button>
-        <button class='btn' bindtap="weitongguo">未通过面试</button>
-      </view>
+      <view class="placeholder-view"></view>
 
+      <view class="baise"></view>
+      <view class="anniu">
+        <button class="btbdstk" bindtap="modalput">
+          <view class="sqdzk">
+          <text>通过面试</text>
+        </view>
+        </button>
+        <button class="btbdstk" bindtap="weitongguo">
+          <view class="sqdzk">
+            <text>未通过面试</text>
+        </view>
+        </button>
+
+      </view>
       <!--弹窗-->
       <modal hidden="{{hiddenmodalput}}" title="报到时间通知" confirm-text="确认" cancel-text="取消" bindcancel="cancel"
         bindconfirm="confirm">
