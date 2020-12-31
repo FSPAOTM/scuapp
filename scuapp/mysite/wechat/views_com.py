@@ -84,17 +84,17 @@ def Get_outwork_info(request):
     plays = []
     for i in result:
         if i.ow_status =="工作结束":
-            plays.append({'ow_number':i.ow_number,'post':i.ow_post,'time':str(i.w_time),'location':i.w_place,'detail':i.w_place_detail,'description':i.work,'salary':i.w_salary,'ask':i.w_reuire,'num':i.w_amount,'ddl':str(i.ddl_time),'ps':i.w_ps,'status':i.ow_status,'show2': True,'show3': False})
+            plays.append({'ow_number':i.ow_number,'post':i.ow_post,'time':str(i.w_time),'location':i.w_place,'detail':i.w_place_detail,'description':i.work,'salary':i.w_salary,'ask':i.w_reuire,'num':i.w_amount,'ddl':i.ddl_time.strftime("%Y-%m-%d, %H:%M:%S"),'ps':i.w_ps,'status':i.ow_status,'show2': True,'show3': False})
         else:
             if i.ow_status =="待评价" or i.ow_status =="已结束":
                 plays.append({'ow_number': i.ow_number, 'post': i.ow_post, 'time': str(i.w_time), 'location': i.w_place,
                               'detail': i.w_place_detail, 'description': i.work, 'salary': i.w_salary,
-                              'ask': i.w_reuire, 'num': i.w_amount, 'ddl': str(i.ddl_time), 'ps': i.w_ps,
+                              'ask': i.w_reuire, 'num': i.w_amount, 'ddl': i.ddl_time.strftime("%Y-%m-%d, %H:%M:%S"), 'ps': i.w_ps,
                               'status': i.ow_status, 'show2': False, 'show3': True})
             else:
                 plays.append({'ow_number': i.ow_number, 'post': i.ow_post, 'time': str(i.w_time), 'location': i.w_place,
                               'detail': i.w_place_detail, 'description': i.work, 'salary': i.w_salary,
-                              'ask': i.w_reuire, 'num': i.w_amount, 'ddl': str(i.ddl_time), 'ps': i.w_ps,
+                              'ask': i.w_reuire, 'num': i.w_amount, 'ddl': i.ddl_time.strftime("%Y-%m-%d, %H:%M:%S"), 'ps': i.w_ps,
                               'status': i.ow_status})
     plays_json = json.dumps(plays,ensure_ascii=False)
     return HttpResponse(plays_json)

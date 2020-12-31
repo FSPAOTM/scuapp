@@ -39,8 +39,8 @@ def inwork_list(request):
         dic["w_salary"] = i.w_salary
         dic["w_reuire"] = i.w_reuire
         dic["w_amount"] = i.w_amount
-        dic["ddl_time"] = str(i.ddl_time)
-        dic["inpub_time"] = str(i.inpub_time)
+        dic["ddl_time"] = i.ddl_time.strftime("%Y-%m-%d, %H:%M:%S")
+        dic["inpub_time"] = i.inpub_time.strftime("%Y-%m-%d, %H:%M:%S")
         dic["w_ps"] = i.w_ps
         dic["In_status"] = i.In_status
         if dic["In_status"] == "待评价":
@@ -77,8 +77,8 @@ def outwork_list(request):
         dic["w_salary"] = i.w_salary
         dic["w_reuire"] = i.w_reuire
         dic["w_amount"] = i.w_amount
-        dic["ddl_time"] = str(i.ddl_time)
-        dic["ipub_time"] = str(i.ipub_time)
+        dic["ddl_time"] = i.ddl_time.strftime("%Y-%m-%d, %H:%M:%S")
+        dic["ipub_time"] = i.inpub_time.strftime("%Y-%m-%d, %H:%M:%S")
         dic["com_number"] = i.com_number.com_number
         dic["w_ps"] = i.w_ps
         dic["ow_status"] = i.ow_status
