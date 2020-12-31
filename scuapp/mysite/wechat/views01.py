@@ -6,6 +6,8 @@ from django.db.models import Q
 import json
 
 ######一些改状态的函数
+# Login=0
+# print(Login)
 #判断工作是否评价完毕（修改工作状态“待评价”到“已结束”）(校外)
 def out_feedback_over(k): #k为ow_number
     ow_number = TboutWork.objects.get(ow_number=k)
@@ -122,6 +124,8 @@ def management_login(request):
         except Tbmanager.DoesNotExist as e:
             error_msg = "用户名不存在"
             return render(request, 'wechat/login.html', {'error_msg': error_msg})
+        # global Login
+        # Login = 1
         return render(request, 'wechat/index.html')
     else:
         return HttpResponse("请求错误")

@@ -6,12 +6,22 @@ from django.http import HttpResponseRedirect
 from . import views01
 import json
 
-#后台管理界面
-
+#实现只能从登录界面登录进入
+# def isset(v):
+#    try :
+#      type (eval(v))
+#    except :
+#      return  0
+#    else :
+#      return  1
+# 后台管理界面
 #一大波界面导入
 #首页
 def index(request):
+    # if views01.Login == 1:
     return render(request, 'wechat/index.html')
+    # else:
+    #     return HttpResponseRedirect('../login/')
 #首页内框架页
 def manage(request):
     return render(request, 'wechat/manage.html')
@@ -59,6 +69,7 @@ def inwork_list(request):
             dic["btn_color"] = "button-color7"
         inwork_list.append(dic)
     return render(request, 'wechat/inwork_list.html', {'inwork_list': inwork_list})
+
 #校内兼职信息发布界面
 def inwork_add(request):
     return render(request, 'wechat/inwork_add.html')

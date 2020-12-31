@@ -7,9 +7,42 @@ import json
 
 #用户管理
 #学生管理
-#学生列表界面
+#学生列表界面（修改）
 def stu_manage_list(request):
-    stu_list = Tbstudent.objects.all()
+    list = Tbstudent.objects.all()
+    stu_list = []
+    for i in list:
+        dictionary = {}
+        dictionary["stu_id"] = i.stu_id
+        dictionary["name"] = i.name
+        dictionary["res_id"] = i.res_id
+        dictionary["nickname"] = i.nickname
+        dictionary["phonenumber_phonenumberphonenumber_phonenumber"] = i.phonenumber_phonenumberphonenumber_phonenumber
+        if i.sex is not None:
+            dictionary["sex"] = i.sex
+        else:
+            dictionary["sex"] = "未完善"
+        if i.age is not None:
+            dictionary["age"] = i.age
+        else:
+            dictionary["age"] = "未完善"
+        if i.e_mail is not None:
+            dictionary["e_mail"] = i.e_mail
+        else:
+            dictionary["e_mail"] = "未完善"
+        if i.grade is not None:
+            dictionary["grade"] = i.grade
+        else:
+            dictionary["grade"] = "未完善"
+        if i.major is not None:
+            dictionary["major"] = i.major
+        else:
+            dictionary["major"] = "未完善"
+        if i.pov_identity is not None:
+            dictionary["pov_identity"] = i.pov_identity
+        else:
+            dictionary["pov_identity"] = "未完善"
+        stu_list.append(dictionary)
     return render(request, 'wechat/stu_list.html', {'stu_list': stu_list})
 #学生工作经历详情界面
 def stu_experience(request):
@@ -154,32 +187,38 @@ def stu_manage_resume_list(request):
     res_id =str[17:27]
     resume = Tbresume.objects.get(res_id=res_id)
     name = resume.name
-    age = resume.age
-    sex = resume.sex
+    if resume.age is not None:
+        age = resume.age
+    else:
+        age = "未完善"
+    if resume.sex is not None:
+        sex = resume.sex
+    else:
+        sex = "未完善"
     if resume.res_asses is not None:
         res_asses = resume.res_asses
     else:
-        res_asses = ""
+        res_asses = "未完善"
     if resume.res_edu is not None:
         res_edu = resume.res_edu
     else:
-        res_edu = ""
+        res_edu = "未完善"
     if resume.res_work is not None:
         res_work = resume.res_work
     else:
-        res_work = ""
+        res_work = "未完善"
     if resume.res_proj is not None:
         res_proj = resume.res_proj
     else:
-        res_proj = ""
+        res_proj = "未完善"
     if resume.res_extra is not None:
         res_extra = resume.res_extra
     else:
-        res_extra = ""
+        res_extra = "未完善"
     if resume.res_per is not None:
         res_per = resume.res_per
     else:
-        res_per = ""
+        res_per = "未完善"
     return render(request, 'wechat/stu_resume.html',{"name": name,
              "age": age,
              "sex": sex,
@@ -199,12 +238,27 @@ def company_manage_list(request):
         dictionary["com_number"] = i.com_number
         dictionary["com_name"] = i.com_name
         dictionary["phone_num"] = i.phone_num
-        dictionary["com_leader"] = i.com_leader
-        dictionary["com_address"] = i.com_address
-        dictionary["e_mail"] = i.e_mail
         dictionary["com_License"] = i.com_License.com_license
-        dictionary["com_condition"] = i.com_License.com_condition
-        dictionary["com_business"] = i.com_License.com_business
+        if i.com_leader is not None:
+            dictionary["com_leader"] = i.com_leader
+        else:
+            dictionary["com_leader"] = "未完善"
+        if i.com_address is not None:
+            dictionary["com_address"] = i.com_address
+        else:
+            dictionary["com_address"] = "未完善"
+        if i.e_mail is not None:
+            dictionary["e_mail"] = i.e_mail
+        else:
+            dictionary["e_mail"] = "未完善"
+        if i.com_License.com_condition is not None:
+            dictionary["com_condition"] = i.com_License.com_condition
+        else:
+            dictionary["com_condition"] = "未完善"
+        if i.com_License.com_business is not None:
+            dictionary["com_business"] = i.com_License.com_business
+        else:
+            dictionary["com_business"] = "未完善"
         company_list.append(dictionary)
     return render(request, 'wechat/company_list.html', {'company_list': company_list})
 #企业所发布兼职列表

@@ -24,12 +24,27 @@ def Company_info_showmodiify(request):
         user = Tbcompany.objects.get(phone_num=phone_num)
         com_License = user.com_License.com_license
         com_name = user.com_name
-        com_leader = user.com_leader
-        e_mail = user.e_mail
-        com_address = user.com_address
+        if user.com_leader is not None:
+            com_leader = user.com_leader
+        else:
+            com_leader = ""
+        if user.e_mail is not None:
+            e_mail = user.e_mail
+        else:
+            e_mail = ""
+        if user.com_address is not None:
+            com_address = user.com_address
+        else:
+            com_address = ""
         qualify = Tbqualify.objects.get(com_license=com_License)
-        com_condition = qualify.com_condition
-        com_business = qualify.com_business
+        if qualify.com_condition is not None:
+            com_condition = qualify.com_condition
+        else:
+            com_condition = ""
+        if qualify.com_business is not None:
+            com_business = qualify.com_business
+        else:
+            com_business = ""
         return HttpResponse(json.dumps(
             {"cno": com_License,
              "company": com_name,
@@ -352,32 +367,38 @@ def Com_Insert_resume_show(request):
         res_id = user.res_id.res_id
         resume= Tbresume.objects.get(res_id=res_id)
         name=resume.name
-        age=resume.age
-        sex=resume.sex
+        if resume.age is not None:
+            age = resume.age
+        else:
+            age = "未完善"
+        if resume.sex is not None:
+            sex = resume.sex
+        else:
+            sex = "未完善"
         if resume.res_asses is not None:
             res_asses=resume.res_asses
         else:
-            res_asses =""
+            res_asses ="未完善"
         if resume.res_edu is not None:
             res_edu=resume.res_edu
         else:
-            res_edu=""
+            res_edu="未完善"
         if resume.res_work is not None:
             res_work=resume.res_work
         else:
-            res_work =""
+            res_work ="未完善"
         if resume.res_proj is not None:
             res_proj=resume.res_proj
         else:
-            res_proj =""
+            res_proj ="未完善"
         if resume.res_extra is not None:
             res_extra=resume.res_extra
         else:
-            res_extra=""
+            res_extra="未完善"
         if resume.res_per is not None:
             res_per=resume.res_per
         else:
-            res_per=""
+            res_per="未完善"
         application = Tbapplication.objects.filter(stu=user).get(ow_number=outWork)
         reason = application.ap_reson
         return HttpResponse(json.dumps({

@@ -123,10 +123,11 @@ def Company_register(request):
             if len(filterResult2) > 0:
                 return HttpResponse("电话号码已注册")
             else:
-                user = Tbcompany.objects.create(com_license=account_num, com_name=account_name, phone_num=account_phone, password=passwd_1)
-                user.save()
                 qualify = Tbqualify.objects.create(com_license=account_num)
                 qualify.save()
+                user = Tbcompany.objects.create(com_license=qualify, com_name=account_name, phone_num=account_phone,
+                                                password=passwd_1)
+                user.save()
                 return HttpResponse("注册成功")
     else:
         return HttpResponse("请求错误")
@@ -174,8 +175,14 @@ def Insert_resume_show(request):
         res_id = user.res_id.res_id
         resume= Tbresume.objects.get(res_id=res_id)
         name=resume.name
-        age=resume.age
-        sex=resume.sex
+        if resume.age is not None:
+            age = resume.age
+        else:
+            age = ""
+        if resume.sex is not None:
+            sex = resume.sex
+        else:
+            sex = ""
         if resume.res_asses is not None:
             res_asses = resume.res_asses
         else:
@@ -241,7 +248,10 @@ def Reset_show(request):
         name=user.name
         nickname=user.nickname
         phonenumber=user.phonenumber_phonenumberphonenumber_phonenumber
-        e_mail=user.e_mail
+        if user.e_mail is not None:
+            e_mail=user.e_mail
+        else:
+            e_mail = ""
         return HttpResponse(json.dumps(
             {"name":name ,
              "nickname": nickname,
@@ -256,7 +266,6 @@ def Reset_password(request):
         stu_id = request.POST.get('no')
         origin_password=request.POST.get('oldpwd')
         new_password=request.POST.get('newpwd')
-
         filterResult1 = Tbstudent.objects.filter(password=origin_password)
         if len(filterResult1) > 0:
             Tbstudent.objects.filter(stu_id=stu_id ).update(password=new_password)
