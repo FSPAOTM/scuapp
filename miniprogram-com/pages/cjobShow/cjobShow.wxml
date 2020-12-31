@@ -1,7 +1,7 @@
 <!--pages/cjobShow/cjobShow.wxml-->
 <view>
 
-  <view class="title">发 布 信 息 详 情</view>
+  <!-- <view class="title">发 布 信 息 详 情</view> -->
   <view class="line"></view>
 
   <form>

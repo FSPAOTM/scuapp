@@ -1,6 +1,6 @@
 <!--pages/infoFill/infoFill.wxml-->
 <view>
-  <view class="title">在 线 个 人 简 历</view>
+  <!-- <view class="title">在 线 个 人 简 历</view> -->
   <view class="line"></view>
 
   <form bindsubmit="formSubmit">

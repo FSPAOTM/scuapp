@@ -48,7 +48,7 @@
 
     <swiper-item>
       <view class="yijiesuan" wx:for="{{workinfo2}}" wx:for-item="item" wx:for-index="index">
-        <view class='jiesuan' bindtap="weitongguo" data-index="{{index}}">
+        <view class='jiesuan' data-index="{{index}}">
           <view class="postt">
             <view style="font-size:12px" class="jobb">岗位：{{item.post}}</view>
           </view>

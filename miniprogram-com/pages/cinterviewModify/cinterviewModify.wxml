@@ -1,5 +1,6 @@
 <!--pages/cinterviewModify/cinterviewModify.wxml-->
-<view class="title">面试时间申请</view>
+<!-- <view class="title">面试时间申请</view> -->
+
 <view class='a1'>
   <view class='detailView'>
     <text style="margin-left:20px; font-size:30rpx;">面试岗位：</text>

@@ -3,7 +3,7 @@
 
 <view>
 
-<view class="title" >简 历 审 核</view>
+<!-- <view class="title" >简 历 审 核</view> -->
 <view class="line"></view>
 
 <form>

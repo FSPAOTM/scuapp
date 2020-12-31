@@ -1,6 +1,6 @@
 <!--pages/infoShow/infoShow.wxml-->
 <view>
-  <view class="title">个 人 简 历</view>
+  <!-- <view class="title">个 人 简 历</view> -->
   <view class="line"></view>
 
   <form>

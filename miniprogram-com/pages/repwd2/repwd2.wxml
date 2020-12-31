@@ -1,6 +1,6 @@
 <!--pages/repwd/repwd.wxml-->
 <form bindsubmit='formSubmit'>
-  <view class="imply">密码更改</view>
+  <!-- <view class="imply">密码更改</view> -->
   <view class="line"></view>
 
 

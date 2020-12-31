@@ -2,7 +2,7 @@
 <!--企业信息完善表单-->
 
 <view>
-  <view class="title">企 业 信 息 完 善</view>
+  <!-- <view class="title">企 业 信 息 完 善</view> -->
   <view class="line"></view>
 
   <form bindsubmit="formSubmit">

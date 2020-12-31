@@ -1,5 +1,5 @@
 <!--pages/infoModify/infoModify.wxml-->
-<view class="title">基本信息</view>
+<!-- <view class="title">基本信息</view> -->
 <view>
 
   <view class='item'>

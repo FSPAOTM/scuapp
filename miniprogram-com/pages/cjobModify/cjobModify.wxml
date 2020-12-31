@@ -2,7 +2,7 @@
 <!--pages/cjobRelease/cjobRelease.wxml-->
 <view>
  
- <view class="title">兼 职 信 息 发 布</view>
+ <!-- <view class="title">兼 职 信 息 发 布</view> -->
  <view class="line"></view>
 
  <form>
