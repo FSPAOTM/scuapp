@@ -121,7 +121,7 @@ def Get_outwork_detail_info(request):
         description = result.work
         ask = result.w_reuire
         num = result.w_amount
-        ddl = str(result.ddl_time)
+        ddl = result.ddl_time.strftime("%Y-%m-%d, %H:%M:%S")
         ps = result.w_ps
         already = Tbapplication.objects.filter(ow_number=ow_number).count()
         return HttpResponse(json.dumps({
@@ -338,7 +338,7 @@ def Com_work_back_edit(request):
             'salary': outWork.w_salary,
             'ask': outWork.w_reuire,
             'num': outWork.w_amount,
-            'endingtime': str(outWork.ddl_time),
+            'endingtime': outWork.ddl_time.strftime("%Y-%m-%d, %H:%M:%S"),
             'ps': outWork.w_ps}))
     else:
         return HttpResponse("请求错误")
@@ -526,7 +526,7 @@ def Com_pingjia_me(request):
                 content = "无评价内容"
             else:
                 content = content[:-1]
-            plays.append({'stu':"匿名用户",'ow_number': j.ow_number.ow_number, 'post': j.ow_number.ow_post, 'time': str(j.fb_time),'score': fb_content[0],'content': content})
+            plays.append({'stu':"匿名用户",'ow_number': j.ow_number.ow_number, 'post': j.ow_number.ow_post, 'time': j.fb_time.strftime("%Y-%m-%d, %H:%M:%S"),'score': fb_content[0],'content': content})
     plays_json = json.dumps(plays, ensure_ascii=False)
     return HttpResponse(plays_json)
 #cpingjia 企业的评价展示
@@ -549,7 +549,7 @@ def Com_my_pingjia(request):
             else:
                 content = content[:-1]
             plays.append(
-                {'stu': j.stu.name, 'ow_number': j.ow_number.ow_number, 'post': j.ow_number.ow_post, 'time': str(j.fb_time),
+                {'stu': j.stu.name, 'ow_number': j.ow_number.ow_number, 'post': j.ow_number.ow_post, 'time': j.fb_time.strftime("%Y-%m-%d, %H:%M:%S"),
                  'score': fb_content[0], 'content': content})
     plays_json = json.dumps(plays, ensure_ascii=False)
     return HttpResponse(plays_json)

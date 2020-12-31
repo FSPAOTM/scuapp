@@ -78,7 +78,7 @@ def in_result_sure(k): #k为iw_number
     else:
         return ()
 ######后台管理界面
-#校内兼职报名处理界面
+#校内兼职报名处理界面(时间是否需要修改）
 def inworking_list(request):
     inworking_list = []
     list = TbinWork.objects.exclude(In_status ="已结束").exclude(In_status ="中止").exclude(In_status ="工作中").exclude(In_status ="待评价").exclude(In_status ="工作结束")
@@ -260,8 +260,8 @@ def management_inwork_search(request):
             dic["w_salary"] = i.w_salary
             dic["w_reuire"] = i.w_reuire
             dic["w_amount"] = i.w_amount
-            dic["ddl_time"] = str(i.ddl_time)
-            dic["inpub_time"] = str(i.inpub_time)
+            dic["ddl_time"] = i.ddl_time.strftime("%Y-%m-%d, %H:%M:%S")
+            dic["inpub_time"] = i.inpub_time.strftime("%Y-%m-%d, %H:%M:%S")
             dic["w_ps"] = i.w_ps
             dic["In_status"] = i.In_status
             if dic["In_status"] == "待评价":
@@ -308,7 +308,7 @@ def management_outwork_search(request):
             dic["w_salary"] = i.w_salary
             dic["w_reuire"] = i.w_reuire
             dic["w_amount"] = i.w_amount
-            dic["ddl_time"] = str(i.ddl_time)
+            dic["ddl_time"] = i.ddl_time.strftime("%Y-%m-%d, %H:%M:%S")
             dic["ipub_time"] = str(i.ipub_time)
             dic["com_number"] = i.com_number.com_number
             dic["w_ps"] = i.w_ps
@@ -447,7 +447,7 @@ def inwork_stu_ifo(request):
             dictionary["btn_color"] = "button-color3"
         inwork_stu_list.append(dictionary)
     return render(request, 'wechat/inwork_stu_ifo.html', {'inwork_stu_list': inwork_stu_list})
-#校内兼职结果搜索
+#校内兼职结果搜索（时间是否需要修改）
 def management_inworking_search(request):
     if request.method == "POST":
         s_iw_number = request.POST.get("s_iw_number")

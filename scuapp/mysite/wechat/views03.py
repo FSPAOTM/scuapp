@@ -36,7 +36,7 @@ def stu_experience(request):
                 if len(feedbackEr0) > 0:
                     feedbackEr1 = TbfeedbackEr.objects.filter(stu=stu).filter(iw_number=i.iw_number).get(
                         fb_direction="学生评价企业")
-                    dictionary["end_time"] = str(feedbackEr1.fb_time)
+                    dictionary["end_time"] = feedbackEr1.fb_time.strftime("%Y-%m-%d, %H:%M:%S")
                 else:
                     dictionary["end_time"] = "未结束"
             else:
@@ -93,7 +93,7 @@ def stu_experience(request):
                         if len(feedbackEr0) > 0:
                             feedbackEr1 = TbfeedbackEr.objects.filter(stu=stu).filter(ow_number=i.ow_number).get(
                                 fb_direction="学生评价企业")
-                            dictionary1["end_time"] = str(feedbackEr1.fb_time)
+                            dictionary1["end_time"] = feedbackEr1.fb_time.strftime("%Y-%m-%d, %H:%M:%S")
                         else:
                             dictionary1["end_time"] = "未结束"
                     else:
@@ -379,7 +379,7 @@ def outwork_feedback(request):
                 count = count + int(fb_content[0])
                 n=n+1
                 dictionary2["fb_content2"] = content
-                dictionary2["fb_time"] = k.fb_time
+                dictionary2["fb_time"] = k.fb_time.strftime("%Y-%m-%d, %H:%M:%S")
                 feed_content.append(dictionary2)
         dictionary1["feed_content"] = feed_content
         if count !=0:
@@ -419,7 +419,7 @@ def inwork_feedback(request):
                 count = count + int(fb_content[0])
                 n=n+1
                 dictionary2["fb_content2"] = content
-                dictionary2["fb_time"] = k.fb_time
+                dictionary2["fb_time"] = k.fb_time.strftime("%Y-%m-%d, %H:%M:%S")
                 feed_content.append(dictionary2)
         dictionary1["feed_content"] = feed_content
         if count !=0:
@@ -462,7 +462,7 @@ def stu_feedback_show(request):
                 count = count + int(fb_content[0])
                 n=n+1
                 dictionary2["fb_content2"] = content
-                dictionary2["fb_time"] = k.fb_time
+                dictionary2["fb_time"] = k.fb_time.strftime("%Y-%m-%d, %H:%M:%S")
                 feed_content.append(dictionary2)
             else:
                 dictionary2 = {}
@@ -483,7 +483,7 @@ def stu_feedback_show(request):
                 count = count + int(fb_content[0])
                 n = n + 1
                 dictionary2["fb_content2"] = content
-                dictionary2["fb_time"] = k.fb_time
+                dictionary2["fb_time"] = k.fb_time.strftime("%Y-%m-%d, %H:%M:%S")
                 feed_content.append(dictionary2)
         dictionary1["feed_content"] = feed_content
         if count !=0:

@@ -78,7 +78,7 @@ def outwork_list(request):
         dic["w_reuire"] = i.w_reuire
         dic["w_amount"] = i.w_amount
         dic["ddl_time"] = i.ddl_time.strftime("%Y-%m-%d, %H:%M:%S")
-        dic["ipub_time"] = i.inpub_time.strftime("%Y-%m-%d, %H:%M:%S")
+        dic["ipub_time"] = i.ipub_time.strftime("%Y-%m-%d, %H:%M:%S")
         dic["com_number"] = i.com_number.com_number
         dic["w_ps"] = i.w_ps
         dic["ow_status"] = i.ow_status
@@ -123,8 +123,8 @@ def work_examine(request):
         dic["w_salary"] = i.w_salary
         dic["w_reuire"] = i.w_reuire
         dic["w_amount"] = i.w_amount
-        dic["ddl_time"] = str(i.ddl_time)
-        dic["ipub_time"] = str(i.ipub_time)
+        dic["ddl_time"] = i.ddl_time.strftime("%Y-%m-%d, %H:%M:%S")
+        dic["ipub_time"] = i.ipub_time.strftime("%Y-%m-%d, %H:%M:%S")
         dic["com_number"] = i.com_number.com_number
         dic["w_ps"] = i.w_ps
         dic["ow_status"] = i.ow_status
@@ -566,7 +566,7 @@ def stu_feedback_edit(request):
         else:
             content = content[:-1]
         return render(request, 'wechat/stu_feedback_edit_show.html',
-                      {'stu_id': stu_id, 'name': stu.name, 'work': inWork.iw_post, "score" : fb_content[0] , "content" : content, "time":str(feedbackEr.fb_time)})
+                      {'stu_id': stu_id, 'name': stu.name, 'work': inWork.iw_post, "score" : fb_content[0] , "content" : content, "time":feedbackEr.fb_time.strftime("%Y-%m-%d, %H:%M:%S")})
     if pingjia =="未开启":
         return render(request, 'wechat/manage_feedback_error.html')
 

@@ -4,7 +4,7 @@ from django.utils import timezone
 import json
 from threading import Timer
 
-#####报名结束状态生成（定时器自动更新）
+#####报名结束状态生成（定时器自动更新）(时间是否需要修改）
 def info_status():
     inlist = TbinWork.objects.filter(In_status='报名中')
     for i in inlist:
@@ -348,7 +348,7 @@ def Show_outwork_detail(request):
         work = result.work
         w_reuire = result.w_reuire
         w_amount = result.w_amount
-        ddl_time = str(result.ddl_time)
+        ddl_time = result.ddl_time.strftime("%Y-%m-%d, %H:%M:%S")
         w_ps = result.w_ps
         num = Tbapplication.objects.filter(ow_number=ow_number).count()
         return HttpResponse(json.dumps(
@@ -377,7 +377,7 @@ def Show_inwork_detail(request):
         work = result.work
         w_reuire = result.w_reuire
         w_amount = result.w_amount
-        ddl_time = str(result.ddl_time)
+        ddl_time = result.ddl_time.strftime("%Y-%m-%d, %H:%M:%S")
         w_ps = result.w_ps
         num = Tbapplication.objects.filter(iw_number=iw_number).count()
         return HttpResponse(json.dumps(

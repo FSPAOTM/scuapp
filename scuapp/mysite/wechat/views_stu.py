@@ -74,10 +74,9 @@ def Stu_result_show(request):
             plays.append({'type': "校外兼职", 'ow_number': i.ow_number.ow_number, 'post': i.ow_number.ow_post,
                           'result': "您已被录用，请按时报到",
                           'time': interviewResult.ir_rtime, 'address': address, 'ps': interviewResult.ir_ps,'success':True,'fail':False})
-    application2 = Tbapplication.objects.filter(stu=student).filter(Q(apply_status="未录用") | Q(apply_status="表筛未通过"))
+    application2 = Tbapplication.objects.filter(stu=student).filter(Q(apply_status="未录用") | Q(apply_status="表筛未通过")).filter(s_sure="未确认")
     for j in application2:
-        if j.ow_number.ow_status =="面试通知中" or j.ow_number.ow_status =="面试阶段"or j.ow_number.ow_status =="结果通知中":
-            plays.append({'type': "校外兼职", 'ow_number': j.ow_number.ow_number, 'post': j.ow_number.ow_post,
+        plays.append({'type': "校外兼职", 'ow_number': j.ow_number.ow_number, 'post': j.ow_number.ow_post,
                           'result': "很遗憾，您未被录用，请继续加油！",'success':False,'fail':True})
     plays_json = json.dumps(plays, ensure_ascii=False)
     return HttpResponse(plays_json)
@@ -185,7 +184,7 @@ def outwork_feedback_detail(request):
             n=n+1
             dictionary2["score"] = fb_content[0]
             dictionary2["fb_content"] = content
-            dictionary2["fb_time"] = str(k.fb_time)
+            dictionary2["fb_time"] = k.fb_time.strftime("%Y-%m-%d, %H:%M:%S")
             feed_content.append(dictionary2)
     if n !=0:
         plays_json = json.dumps(feed_content, ensure_ascii=False)
