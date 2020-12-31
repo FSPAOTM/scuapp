@@ -29,7 +29,7 @@
             <view class='time-num'>{{item.time}}</view>
           </view>
           <view bindtap="toChange" data-show='{{isShow1}}' data-index="{{index}}">
-            <image class="title_icon" src="{{isShow1[index] ? 'up.png' : 'down.png'}}" />
+            <image class="title_icon" src="{{isShow1[index] ? '/images/up.png' : '/images/down.png'}}" />
           </view>
         </view>
 
@@ -56,7 +56,7 @@
             <view class='time-num'>{{item.time}}</view>
           </view>
           <view bindtap="toChange2" data-show='{{isShow2}}' data-index="{{index}}">
-            <image class="title_icon" src="{{isShow2[index]? 'up.png' : 'down.png'}}" />
+            <image class="title_icon" src="{{isShow2[index]? '/images/up.png' : '/images/down.png'}}" />
           </view>
         </view>
 

@@ -6,7 +6,7 @@
  <form bindsubmit="formSubmit">
    <!--简历-->
    <view class='item'>
-    <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
+    <image class="zhuce" src="/images/企业注册.png"></image>
      <text class='a1' style="padding-left:50rpx;font-size:15px;">兼职岗位</text>
      <input bindblur="blurname" placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='请填写兼职岗位' class="in"
        name="Name" value="{{Name}}" />
@@ -15,7 +15,7 @@
 
 
    <view class='item'>
-    <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
+    <image class="zhuce" src="/images/企业注册.png"></image>
      <text class='a1' style="padding-left:50rpx;font-size:15px">工作时间</text>
      <input bindblur="blurjobtime" placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='请填写工作时间' class="in"
        name="jobtime" value="{{jobtime}}" />
@@ -23,7 +23,7 @@
    </view>
 
    <view class='item'>
-    <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
+    <image class="zhuce" src="/images/企业注册.png"></image>
      <text class='a1' style="padding-left:50rpx;font-size:15px">工作所在地</text>
      <input bindblur="blurlocation" placeholder-class='placeholder' placeholder-style='font-size:12px;' maxlength='10' placeholder='请填写工作地点所在地区，如"武侯区"' class="in"
        name="location" value="{{location}}" />
@@ -31,7 +31,7 @@
    </view>
 
    <view class='item'>
-    <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
+    <image class="zhuce" src="/images/企业注册.png"></image>
      <text class='a1' style="padding-left:50rpx;font-size:15px">工作详细地址</text>
      <input bindblur="blurdetail" placeholder-class='placeholder' placeholder-style='font-size:12px;' maxlength='60' placeholder='请填写工作详细地址' class="in"
        name="location" value="{{detail}}" />
@@ -47,7 +47,7 @@
      </view>
 
      <view class='item'>
-      <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
+      <image class="zhuce" src="/images/企业注册.png"></image>
      <text class='a1' style="padding-left:50rpx;font-size:15px">薪酬</text>
      <input bindblur="blursalary" placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='请填写将会给出的薪酬' class="in"
        name="salary" value="{{salary}}" />
@@ -63,7 +63,7 @@
      </view>
 
      <view class='item2'>
-    <image class="zhuce2" src="/pages/regCompany/企业注册.png"></image>
+    <image class="zhuce2" src="/images/企业注册.png"></image>
      <text class='a' style="padding-left:50rpx;font-size:15px">招聘人数</text>
      <input type="number" bindblur="blurnum" placeholder-class='placeholder' placeholder-style='font-size:12px;' placeholder='请填写招聘人数' class="in2"
        name="num" value="{{num}}" />
@@ -72,7 +72,7 @@
 
 
    <view class='item'>
-    <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
+    <image class="zhuce" src="/images/企业注册.png"></image>
      <text class='a1' style="padding-left:50rpx;font-size:15px">报名截止时间</text>
      <picker  class="time" mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
     <view style="font-size:30rpx;">

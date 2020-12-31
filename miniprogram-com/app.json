@@ -20,7 +20,6 @@
     "pages/cinterview/cinterview",
     "pages/cworkspace/cworkspace",
     "pages/repwd1-1/repwd1-1",
-    "pages/cjobSelect/cjobSelect",
     "pages/cresumeReview/cresumeReview",
     "pages/regCompany/regCompany"
   ],
@@ -37,32 +36,32 @@
   "selectedColor": "#11cd6e",
   "borderStyle": "white",
   "list": [{
-    "selectedIconPath": "2.png",
-    "iconPath": "1.png",
+    "selectedIconPath": "/images/2.png",
+    "iconPath": "/images/1.png",
     "pagePath": "pages/cworkspace/cworkspace",
     "text": " 工作区",
     "class": "menu-item1",
     "active": false
   },
   {
-    "selectedIconPath": "4.png",
-    "iconPath": "3.png",
+    "selectedIconPath": "/images/4.png",
+    "iconPath": "/images/3.png",
     "pagePath": "pages/cfabu/cfabu",
     "text": "我的发布",
     "class": "menu-item1",
     "active": false
   },
   {
-    "selectedIconPath": "8.png",
-    "iconPath": "7.png",
+    "selectedIconPath": "/images/8.png",
+    "iconPath": "/images/7.png",
     "pagePath": "pages/cxiaoxi/cxiaoxi",
     "text": "我的消息",
     "class": "menu-item1",
     "active": false
   },
   {
-    "selectedIconPath": "6.png",
-    "iconPath": "5.png",
+    "selectedIconPath": "/images/6.png",
+    "iconPath": "/images/5.png",
     "pagePath": "pages/ccenter/ccenter",
     "text": "企业中心",
     "class": "menu-item1",

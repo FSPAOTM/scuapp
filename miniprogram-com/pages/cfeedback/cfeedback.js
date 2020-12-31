@@ -20,11 +20,11 @@ Page({
     code:1,
     code1:2,
     userStars: [
-      "sx2.png",
-      "sx2.png",
-      "sx2.png",
-      "sx2.png",
-      "sx2.png",
+      "/images/sx2.png",
+      "/images/sx2.png",
+      "/images/sx2.png",
+      "/images/sx2.png",
+      "/images/sx2.png",
     ],
     wjxScore: 5,
     // textarea
@@ -48,12 +48,12 @@ Page({
     var len = tempUserStars.length; // 获取星星数组的长度
     for (var i = 0; i < len; i++) {
       if (i <= index) { // 小于等于index的是满心
-        tempUserStars[i] = "sx2.png";
+        tempUserStars[i] = "/images/sx2.png";
         that.setData({
           wjxScore: i + 1,
         })
       } else { // 其他是空心
-        tempUserStars[i] = "kx2.png"
+        tempUserStars[i] = "/images/kx2.png"
       }
     }
     // 重新赋值就可以显示了

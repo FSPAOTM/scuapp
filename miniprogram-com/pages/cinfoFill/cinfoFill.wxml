@@ -25,14 +25,14 @@
 
 
     <view class='item'>
-      <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
+      <image class="zhuce" src="/images/企业注册.png"></image>
       <text style="padding-left:40rpx;font-size:30rpx;">负责人：</text>
       <input placeholder-class='placeholder' placeholder-style='font-size:28rpx; padding-left:35px;' placeholder='请填写负责人姓名' class='right' name="man" value="{{manname}}" bindblur="blurman" />
     </view>
     <view class="line2"></view>
 
     <view class='item'>
-      <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
+      <image class="zhuce" src="/images/企业注册.png"></image>
       <text style="padding-left:40rpx;font-size:30rpx;">邮箱：</text>
       <input placeholder-class='placeholder' placeholder-style='font-size:28rpx; padding-left:50px;' placeholder='请填写邮箱' class='right'  name="email" value="{{email}}" bindblur="bluremail" />
     </view>

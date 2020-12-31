@@ -7,7 +7,6 @@
     "pages/sjobShow/sjobShow",
     "pages/sxiaoxi/sxiaoxi",
     "pages/smianshitongzhi/smianshitongzhi",
-    "pages/spingjia/spingjia",
     "pages/sfeedback/sfeedback",
     "pages/smyJob/smyJob",
     "pages/login/login",
@@ -38,32 +37,32 @@
   "borderStyle": "white",
   "list": [
     {
-      "selectedIconPath": "2.png",
-      "iconPath": "1.png",
+      "selectedIconPath": "/images/2.png",
+      "iconPath": "/images/1.png",
       "pagePath":"pages/sallJob/sallJob",
       "text": " 全部兼职",
       "class": "menu-item",
       "active": false
     },
     {
-      "selectedIconPath": "4.png",
-      "iconPath": "3.png",
+      "selectedIconPath": "/images/4.png",
+      "iconPath": "/images/3.png",
       "pagePath": "pages/smyJob/smyJob",
       "text": "我的兼职",
       "class": "menu-item",
       "active": false
     },
     {
-      "selectedIconPath": "8.png",
-      "iconPath": "7.png",
+      "selectedIconPath": "/images/8.png",
+      "iconPath": "/images/7.png",
       "pagePath": "pages/sxiaoxi/sxiaoxi",
       "text": "我的消息",
       "class": "menu-item",
       "active": false
     },
     {
-      "selectedIconPath": "6.png",
-      "iconPath": "5.png",
+      "selectedIconPath": "/images/6.png",
+      "iconPath": "/images/5.png",
       "pagePath": "pages/scenter/scenter",
       "text": "个人中心",
       "class": "menu-item",

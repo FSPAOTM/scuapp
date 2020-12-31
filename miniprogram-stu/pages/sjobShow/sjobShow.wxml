@@ -6,7 +6,7 @@
 
   <form>
     <view class='item'>
-      <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
+      <image class="zhuce" src="/images/企业注册.png"></image>
       <text class='a1' style="padding-left:50rpx;font-size:15px">兼职岗位：</text>
       <text class='right'>{{post}}</text>
       <view class="xian"></view>
@@ -14,7 +14,7 @@
 
 
     <view class='item'>
-      <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
+      <image class="zhuce" src="/images/企业注册.png"></image>
       <text class='a1' style="padding-left:50rpx;font-size:15px">工作时间：</text>
       <text class='right'>{{time}}</text>
       <view class="xian"></view>
@@ -24,7 +24,7 @@
     <view class='item'>
       <view class="little">
         <view>
-          <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
+          <image class="zhuce" src="/images/企业注册.png"></image>
           <text class='a1' style="padding-left:50rpx;font-size:15px">工作地点:</text>
         </view>
         <text class='right1'>{{detail}}</text>
@@ -33,7 +33,7 @@
     </view>
 
     <view class='item'>
-      <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
+      <image class="zhuce" src="/images/企业注册.png"></image>
       <text class='a1' style="padding-left:50rpx; font-size:15px">薪酬：</text>
       <text class='right'>{{salary}}</text>
       <view class="xian"></view>
@@ -58,7 +58,7 @@
     </view>
 
     <view class='item'>
-      <image class="zhuce" src="/pages/regCompany/企业注册.png"></image>
+      <image class="zhuce" src="/images/企业注册.png"></image>
       <text class='a1' style="padding-left:50rpx;font-size:15px">招聘人数：</text>
       <text class='right'>{{num}}</text>
       <view class="xian"></view>

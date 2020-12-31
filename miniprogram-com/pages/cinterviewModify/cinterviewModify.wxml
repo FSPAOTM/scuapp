@@ -34,12 +34,12 @@
     </view>
   </picker>
   <view class="icon" wx:if="{{show01}}">
-    <image class="img" src="/jia.png" bindtap="time2"></image>
+    <image class="img" src="/images/jia.png" bindtap="time2"></image>
   </view>
 
   <view class='detail' wx:if="{{show1}}">
     <text style="margin-left:20px; font-size:30rpx;">或者</text>
-    <image class="img" src="/delete-grey.png" bindtap="delete2"></image>
+    <image class="img" src="/images/delete-grey.png" bindtap="delete2"></image>
   </view>
 
   <picker class="a2" mode="multiSelector" value="{{dateTime2}}" bindchange="changeDateTime2"
@@ -50,12 +50,12 @@
     </view>
   </picker>
   <view class="icon" wx:if="{{show02}}">
-    <image class="img" src="/jia.png" bindtap="time3"></image>
+    <image class="img" src="/images/jia.png" bindtap="time3"></image>
   </view>
 
   <view class='detail' wx:if="{{show2}}">
     <text style="margin-left:20px; font-size:30rpx;">或者</text>
-    <image class="img" src="/delete-grey.png" bindtap="delete3"></image>
+    <image class="img" src="/images/delete-grey.png" bindtap="delete3"></image>
   </view>
 
   <picker class="a2" mode="multiSelector" value="{{dateTime3}}" bindchange="changeDateTime3"
@@ -67,7 +67,7 @@
   </picker>
 
   <view class="icon" wx:if="{{show03}}">
-    <image class="img" src="/jia.png" bindtap="time2"></image>
+    <image class="img" src="/images/jia.png" bindtap="time2"></image>
   </view>
 
 

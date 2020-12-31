@@ -43,14 +43,6 @@
             </view>
           </view>
         </view>
-        <!--<view class='nav-class' bindtap="yibaoming" data-index="{{index}}">
-          <view class="postt">
-            <view style="font-size:12px" class="jobb">岗位：{{item.post}}</view>
-          </view>
-          <view class="baoming">
-            <view style="font-size:12px" class='xiangqing'>报名者：{{item.user}}</view>
-          </view>
-        </view>-->
       </view>
     </swiper-item>
 
@@ -71,7 +63,7 @@
 
       <view class="yijiesuan" wx:for="{{workinfo3}}" wx:for-item="item" wx:for-index="index">
         <view class='jiesuan'>
-          <image style="margin-top:2px;" class='select_icon' src="{{item.isSelected?'isselected.png':'unselected.png'}}"
+          <image style="margin-top:2px;" class='select_icon' src="{{item.isSelected?'/images/isselected.png':'/images/unselected.png'}}"
             bindtap='itemSelected' data-index="{{index}}"></image>
           <view class="postt">
             <view style="font-size:12px" class="jobb">岗位：{{item.post}}</view>

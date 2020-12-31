@@ -3,7 +3,7 @@
  <form bindsubmit="formsubmit">
     <view class="section">
   <view class="jieshang" >
-    <image src="reason.png" class="a1"/>
+    <image src="/images/reason.png" class="a1"/>
   <text>应 聘 理 由</text>
   </view>
   <view  class="xian"></view>

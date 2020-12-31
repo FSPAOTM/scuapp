@@ -237,7 +237,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   inputwatch: function (e) {
-    console.log(e);
     let item = e.currentTarget.dataset.model;
     this.setData({
       [item]: e.detail.value

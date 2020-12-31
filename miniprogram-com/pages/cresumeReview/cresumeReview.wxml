@@ -40,7 +40,7 @@
 
   <view class="section">
     <view style="padding-left:30rpx;font-size:15px">
-      <image class="zhuce" src="简历.png"></image>
+      <image class="zhuce" src="/images/简历.png"></image>
       <text class="class">技能自评：</text>
     <view class="xian"></view>
     <view style=" height: 150px;">
@@ -51,7 +51,7 @@
 
   <view class="section">
     <view style="padding-left:30rpx;font-size:15px">
-      <image class="zhuce" src="简历.png"></image>
+      <image class="zhuce" src="/images/简历.png"></image>
       <text class="class">工作经历：</text>
       <view class="xian"></view>
     <view style=" height: 150px;">
@@ -62,7 +62,7 @@
 
   <view class="section">
     <view style="padding-left:30rpx;font-size:15px">
-      <image class="zhuce" src="简历.png"></image>
+      <image class="zhuce" src="/images/简历.png"></image>
       <text class="class">项目经历：</text>
     <view class="xian"></view>
     <view style=" height: 150px;">
@@ -73,7 +73,7 @@
 
   <view class="section">
     <view style="padding-left:30rpx;font-size:15px">
-      <image class="zhuce" src="简历.png"></image>
+      <image class="zhuce" src="/images/简历.png"></image>
       <text class="class">课外实践：</text>
     <view class="xian"></view>
     <view style=" height: 150px;">
@@ -84,7 +84,7 @@
 
   <view class="section">
     <view style="padding-left:30rpx;font-size:15px">
-      <image class="zhuce" src="简历.png"></image>
+      <image class="zhuce" src="/images/简历.png"></image>
       <text class="class">个人作品：</text>
       <view class="xian"></view>
       <view style=" height: 150px;">
@@ -95,7 +95,7 @@
 
   <view class="section">
     <view style="padding-left:30rpx;font-size:15px">
-      <image class="zhuce" src="简历.png"></image>
+      <image class="zhuce" src="/images/简历.png"></image>
       <text class="class">应聘理由：</text>
     <view class="xian"></view>
     <view style=" height: 150px;">

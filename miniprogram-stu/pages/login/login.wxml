@@ -1,12 +1,12 @@
 <!--pages/login/login.wxml-->
 <view class="container"> 
   <view class="login-icon">  
-    <image class="login-img" src="/wx_login.png"></image>  
+    <image class="login-img" src="/images/wx_login.png"></image>  
   </view>  
   <view class="login-from">  
   <form bindsubmit="formSubmit" class='form'>
   <view class="userTotal">
-    <image class="lock-img" src="/yonghu.png"></image>
+    <image class="lock-img" src="/images/yonghu.png"></image>
     <view class="yhm">用户名</view>
     <view class="userno">
     <!-- 学号 -->
@@ -21,7 +21,7 @@
     </view>
   </view>
   <view class="pwdTotal">
-    <image class='lock-img' src="/lock.png"></image>
+    <image class='lock-img' src="/images/lock.png"></image>
     <view class="mm">
       <text decode="true">密&nbsp;&nbsp;&nbsp;码</text>
     </view>

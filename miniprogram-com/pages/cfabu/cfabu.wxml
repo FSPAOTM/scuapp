@@ -22,25 +22,20 @@
 
     <swiper-item>
       <view class="jobrelease_management" wx:for="{{jobinfo1}}" wx:key="key" wx:for-item="item" wx:for-index="index">
-        <!--<view class="jobrelease_management" wx:for="{{jobinfo1}}" wx:for-item="item" >-->
         <view class='nav-class' bindtap="cjobshow1" data-index="{{index}}">
-          <!--<navigator url='../cjobShow/cjobShow?jobinfo=JSON.stringify(jobinfo)' class='nav-class'>-->
           <view class='detailView' style="padding-left:45rpx;">
             <text class='zi'>岗位</text>
             <text class='title'>{{item.post}}</text>
             <text class="state">{{item.status}}</text>
           </view>
 
-          <!--{{item.status}}-->
-          <!--状态显示,如正在招聘、等待审核等-->
-          <!--</navigator>-->
         </view>
         <view class="line"></view>
       </view>
 
       <view class="round-click">
         <view bindtap="fabu">
-          <image class="addicon" src="add.png"></image>
+          <image class="addicon" src="/images/add.png"></image>
         </view>
       </view>
 
@@ -48,9 +43,7 @@
 
     <swiper-item>
       <view class="jobrelease_management" wx:for="{{jobinfo2}}" wx:key="key" wx:for-item="item" wx:for-index="index">
-        <!--<view class="jobrelease_management" wx:for="{{jobinfo1}}" wx:for-item="item" >-->
         <view class='nav-class' bindtap="cjobshow2" data-index="{{index}}">
-          <!--<navigator url='../cjobShow/cjobShow?jobinfo=JSON.stringify(jobinfo)' class='nav-class'>-->
           <view class='detailView' style="padding-left:45rpx;">
             <text class='zi'>岗位</text>
             <text class='title'>{{item.post}}</text>
@@ -62,7 +55,7 @@
 
       <view class="round-click">
         <view bindtap="fabu">
-          <image class="addicon" src="add.png"></image>
+          <image class="addicon" src="/images/add.png"></image>
         </view>
       </view>
     </swiper-item>
@@ -81,7 +74,7 @@
 
       <view class="round-click">
         <view bindtap="fabu">
-          <image class="addicon" src="add.png"></image>
+          <image class="addicon" src="/images/add.png"></image>
         </view>
       </view>
     </swiper-item>
@@ -100,7 +93,7 @@
 
       <view class="round-click">
         <view bindtap="fabu">
-          <image class="addicon" src="add.png"></image>
+          <image class="addicon" src="/images/add.png"></image>
         </view>
       </view>
     </swiper-item>
@@ -120,7 +113,7 @@
 
       <cover-view class="round-click">
         <cover-view bindtap="fabu">
-          <cover-image class="addicon" src="add.png">
+          <cover-image class="addicon" src="/images/add.png">
           </cover-image>
         </cover-view>
       </cover-view>
