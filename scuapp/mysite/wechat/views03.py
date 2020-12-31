@@ -220,7 +220,7 @@ def company_work(request):
         dictionary["w_time"] = i.w_time
         dictionary["w_place"] = i.w_place +i.w_place_detail
         dictionary["work"] = i.work
-        dictionary["ipub_time"] = str(i.ipub_time)
+        dictionary["ipub_time"] = i.ipub_time.strftime("%Y-%m-%d, %H:%M:%S")
         dictionary["ow_status"] = i.ow_status
         if dictionary["ow_status"] == "报名结束":
             dictionary["btn_color4"] = "button-color5"

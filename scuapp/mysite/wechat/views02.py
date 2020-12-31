@@ -151,7 +151,7 @@ def interview_list(request):
             dictionary["ia_time"] = i.ia_time
             dictionary["ia_name"] = i.ia_name
             dictionary["phonenumber"] = i.phonenumber
-            dictionary["a_time"] = i.a_time
+            dictionary["a_time"] = i.a_time.strftime("%Y-%m-%d, %H:%M:%S")
             dictionary["apply_status"] = i.apply_status
             if dictionary["apply_status"] == "待审核":
                 dictionary["btn_color"] = "button-color4"

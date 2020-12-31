@@ -309,7 +309,7 @@ def management_outwork_search(request):
             dic["w_reuire"] = i.w_reuire
             dic["w_amount"] = i.w_amount
             dic["ddl_time"] = i.ddl_time.strftime("%Y-%m-%d, %H:%M:%S")
-            dic["ipub_time"] = str(i.ipub_time)
+            dic["ipub_time"] = i.ipub_time.strftime("%Y-%m-%d, %H:%M:%S")
             dic["com_number"] = i.com_number.com_number
             dic["w_ps"] = i.w_ps
             dic["ow_status"] = i.ow_status
