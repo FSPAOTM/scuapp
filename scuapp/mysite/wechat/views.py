@@ -135,23 +135,37 @@ def Company_register(request):
 #repsw1 忘记密码验证身份页面
 def Reset_password_f1(request):
     if request.method == "POST":
-        stu_id = request.POST.get('user')
+        id = request.POST.get('user')
         phonenumber = request.POST.get('phone')
-        filterResult1 = Tbstudent.objects.filter(stu_id=stu_id)
-        filterResult2 = Tbstudent.objects.filter(phonenumber_phonenumberphonenumber_phonenumber=phonenumber)
-        if len(filterResult1) > 0 and len(filterResult2) > 0:
-            return HttpResponse("身份验证成功")
+        if len(id) == 13:
+            filterResult1 = Tbstudent.objects.filter(stu_id=id).filter(phonenumber_phonenumberphonenumber_phonenumber=phonenumber)
+            if len(filterResult1) > 0:
+                return HttpResponse("身份验证成功")
+            else:
+                return HttpResponse("身份验证失败")
         else:
-            return HttpResponse("身份验证失败")
+            if len(id) == 18:
+                qualify = Tbqualify.objects.filter(com_license=id)
+                filterResult1 = Tbcompany.objects.filter(com_License=qualify).filter(phone_num=phonenumber)
+                if len(filterResult1) > 0:
+                    return HttpResponse("身份验证成功")
+                else:
+                    return HttpResponse("身份验证失败")
+            else:
+                return HttpResponse("用户不存在")
     else:
         return HttpResponse("请求错误")
 
 #repsw1-1 忘记密码重置密码界面
 def Reset_password_f2(request):
     if request.method == "POST":
-        stu_id = request.POST.get('user')
+        id = request.POST.get('user')
         new_password=request.POST.get('newpwd')
-        Tbstudent.objects.filter(stu_id=stu_id ).update(password=new_password)
+        if len(id) == 13:
+            Tbstudent.objects.filter(stu_id=id ).update(password=new_password)
+        else:
+            if len(id) == 18:
+                Tbcompany.objects.filter(stu_id=id ).update(password=new_password)
         return HttpResponse("密码修改成功")
     else:
         return HttpResponse("请求错误")
