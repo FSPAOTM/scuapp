@@ -1,66 +1,68 @@
 /* pages/smyJob/smyJob.wxss */
-.tab-h{  
-  width: 100%;  
-  border-bottom: 2rpx solid #eee;  
-  text-align: center;  
+.tab-h {
+  width: 100%;
+  border-bottom: 2rpx solid #eee;
+  text-align: center;
   line-height: 80rpx;
-  background: #fff;  
+  background: #fff;
   position: fixed;
-  top: 0;  
+  top: 0;
   z-index: 999;
-  }  
+}
 
-.swiper-tab-list{  
-font-size: 24rpx;  
-display: inline-block;  
-width: 20%;  
-color: #666;  
-}  
-.swiper_tab_view{
+.swiper-tab-list {
+  font-size: 24rpx;
+  display: inline-block;
+  width: 20%;
+  color: #666;
+}
+
+.swiper_tab_view {
   width: 100%;
   text-align: center;
   line-height: 80rpx;
 }
 
-.on{ 
-color: #dd2727;  
-border-bottom: 5rpx solid #dd2727;
-}  
-
-.swiper-box{ 
-display: block; 
-width: 100%; 
-height: 100%;
-overflow: hidden; 
-}  
-
-
-.swiper-box view{
-  width:100%;
+.on {
+  color: #dd2727;
+  border-bottom: 5rpx solid #dd2727;
 }
 
-.container{
-  width:100%;
+.swiper-box {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+.swiper-box view {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
   padding-top: 100rpx;
 }
 
 
-.xiangqing_info{
+.xiangqing_info {
   width: 100%;
   padding-top: 15rpx;
   padding-bottom: 10rpx;
 }
 
-.xiangqing_info .zi{
+.xiangqing_info .zi {
   border: 2rpx #FA8D33 solid;
   color: #FA8D33;
-  padding:2rpx 10rpx;
+  padding: 2rpx 10rpx;
   font-size: 18rpx;
   margin-right: 22rpx;
   border-radius: 9rpx;
- 
+
 }
-.xiangqing_info .title{
+
+.xiangqing_info .title {
   font-weight: 600;
   line-height: 20rpx;
   font-size: 28rpx;
@@ -68,111 +70,112 @@ overflow: hidden;
   padding-top: 15rpx;
 }
 
-.xiangqing_info .gongsi2{
+.xiangqing_info .gongsi2 {
   line-height: 10rpx;
   font-size: 25rpx;
-  color:#A9A9A9;
+  color: #A9A9A9;
   float: right;
   padding-right: 40rpx;
   padding-top: 24rpx;
 }
 
-.lainjie{
-  display:flex;
+.lainjie {
+  display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-left:20rpx;
+  margin-left: 20rpx;
 }
 
-.lianjie{
-  display:flex;
+.lianjie {
+  display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-left:20rpx;
+  margin-left: 20rpx;
 }
 
-  .prix1{
-    color: #FA7C15;
-    font-size: 28rpx;
-    font-weight: 600;
-    margin-left:180px;
-  }
-  .prix2{
-    color: #FA7C15;
-    font-size: 28rpx;
-    font-weight: 600;
-    float: right;
-    margin-top: 15rpx;
-    margin-right: 64rpx;
-  }
-  
-  .pj{
-    font-size: 25rpx;
-    margin-left: 8rpx;
-    color:#FA7C15;
-  }
+.prix1 {
+  color: #FA7C15;
+  font-size: 28rpx;
+  font-weight: 600;
+  margin-left: 180px;
+}
 
-  .gongsi{
-    line-height: 10rpx;
-    font-size: 25rpx;
-    color:#A9A9A9;
-    margin-left:20px;
-    margin-top:60rpx;
-    margin-bottom:40rpx;
-  }
+.prix2 {
+  color: #FA7C15;
+  font-size: 28rpx;
+  font-weight: 600;
+  float: right;
+  margin-top: 15rpx;
+  margin-right: 64rpx;
+}
 
-  
+.pj {
+  font-size: 25rpx;
+  margin-left: 8rpx;
+  color: #FA7C15;
+}
 
-  
-  .quyu{
-    line-height: 10rpx;
-    font-size: 25rpx;
-    color:#A9A9A9;
-    margin-left:200px;
-  }
+.gongsi {
+  line-height: 10rpx;
+  font-size: 25rpx;
+  color: #A9A9A9;
+  margin-left: 20px;
+  margin-top: 60rpx;
+  margin-bottom: 40rpx;
+}
 
-  .quyu2{
-    line-height: 10rpx;
-    font-size: 25rpx;
-    color:#A9A9A9;
-    float: right;
-    margin-top:24rpx;
-    margin-right: 30rpx;
-  }
- 
 
-  .line{
-    height: 3rpx;
-    background: #FFE4E1;
-  }
 
-  .xiangxi{
-   margin-bottom:16rpx;
 
-  }
+.quyu {
+  line-height: 10rpx;
+  font-size: 25rpx;
+  color: #A9A9A9;
+  margin-left: 200px;
+}
 
-  .su{
-    font-size: 22rpx;
-    background-color:white;
-    color:#FA8D33;
-  } 
+.quyu2 {
+  line-height: 10rpx;
+  font-size: 25rpx;
+  color: #A9A9A9;
+  float: right;
+  margin-top: 24rpx;
+  margin-right: 30rpx;
+}
 
-  .su2{
-    padding-left: 0%;
-    padding-right: 0%;
-    font-size: 22rpx;
-    background-color:white;
-    color:#FA8D33;
-  }
-  
-  .plain {
-    border: none;
-    border-color: transparent;
-  }
 
-  
+.line {
+  height: 3rpx;
+  background: #FFE4E1;
+}
 
- .xq{
-  display:flex;
+.xiangxi {
+  margin-bottom: 16rpx;
+
+}
+
+.su {
+  font-size: 22rpx;
+  background-color: white;
+  color: #FA8D33;
+}
+
+.su2 {
+  padding-left: 0%;
+  padding-right: 0%;
+  font-size: 22rpx;
+  background-color: white;
+  color: #FA8D33;
+}
+
+.plain {
+  border: none;
+  border-color: transparent;
+}
+
+
+
+.xq {
+  display: flex;
   width: 100%;
- }
+}

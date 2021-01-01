@@ -97,11 +97,11 @@
           </view>
 
           <view>
-            <button bindtap="ms" style="width:160rpx;" class='su2' data-index="{{index}}">面试信息 ></button>
+            <button bindtap="ms" style="width:180rpx;" class='su2' data-index="{{index}}">面试信息 ></button>
           </view>
 
           <view>
-            <button bindtap="ms" style="width:160rpx;" class='su2' data-index="{{index}}">录用信息 ></button>
+            <button bindtap="ms" style="width:180rpx;" class='su2' data-index="{{index}}">录用信息 ></button>
           </view>
           <view wx:if="{{item.show}}">
             <button bindtap="pingjia" style="width:160px;" class='su2' data-index="{{index}}">评价 ></button>
