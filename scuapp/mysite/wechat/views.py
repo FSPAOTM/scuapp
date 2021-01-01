@@ -162,11 +162,11 @@ def Reset_password_f2(request):
         new_password=request.POST.get('newpwd')
         if len(id) == 13:
             Tbstudent.objects.filter(stu_id=id ).update(password=new_password)
+            return HttpResponse("密码修改成功")
         else:
-            if len(id) == 18:
-                qualify = Tbqualify.objects.get(com_license=id)
-                Tbcompany.objects.filter(com_License=qualify).update(password=new_password)
-        return HttpResponse("密码修改成功")
+            if len(id) == 11:
+                Tbcompany.objects.filter(phone_num=id).update(password=new_password)
+                return HttpResponse("密码修改成功")
     else:
         return HttpResponse("请求错误")
 
