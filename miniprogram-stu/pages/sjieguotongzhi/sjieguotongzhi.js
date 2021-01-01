@@ -153,7 +153,7 @@ Page({
     })
   },
 
-  sure2(ev) {
+  sure22(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
     var number = that.data.jieguotongzhi2[e].ow_number;

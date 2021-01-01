@@ -7,43 +7,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    newpwd:"",
-    newpwd2:"",
+    user: "",
+    newpwd: "",
+    newpwd2: "",
+    judge: 0
   },
 
-  new(e){
+  new(e) {
     this.setData({
-      newpwd:e.detail.value
+      newpwd: e.detail.value
     })
+    console.log(this.data.newpwd)
   },
 
-  again(e){
-    let myreg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$]{8,18}$/;
-    if (e.detail.value == "") {
-      wx.showToast({
-        title: '密码不能为空',
-        icon: 'none',
-        duration: 2000
-      })
-    } else if (!myreg.test(e.detail.value)) {
-      wx.showToast({
-        title: '密码必须包含数字与字母，可以包含或不包含特殊符号！',
-        icon: 'none',
-        duration: 2000
-      })
-    }
+  again(e) {
     this.setData({
-      newpwd2:e.detail.value
+      newpwd2: e.detail.value
     })
+    console.log(this.data.newpwd2)
+
+
   },
 
   formSubmit: function () {
-    // console.log(e);
-    this.setData({
-      newpwd:this.data.newpwd,
-      newpwd2:this.data.newpwd2,
-    })
-    // console.log(no);
+    let myreg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$]{8,18}$/;
     if (this.data.newpwd == '' || this.data.newpwd2 == '') {
       wx.showToast({
         title: '密码不能为空',
@@ -56,12 +43,18 @@ Page({
         icon: 'none',
         duration: 1000
       })
+    } else if (!myreg.test(this.data.newpwd) || !myreg.test(this.data.newpwd2)) {
+      wx.showToast({
+        title: '密码必须包含数字与字母，可以包含或不包含特殊符号！',
+        icon: 'none',
+        duration: 2000
+      })
     } else {
       wx.request({
-        url: app.globalData.url + '/Reset_password_f2/', 
+        url: app.globalData.url + '/Reset_password_f2/',
         method: 'POST',
         data: {
-          user:app.globalData.user,
+          user: this.data.user,
           newpwd: this.data.newpwd,
         },
         header: {
@@ -70,25 +63,29 @@ Page({
         success: (res) => {
           console.log(res.data);
           if (res.statusCode == 200) {
-            wx.showToast({
-              title: "修改成功！",
-              icon: 'success',
-              duration: 2000
-            })
-            wx.redirectTo({
-              url: '../login/login',
-            })
+            if (res.data == "密码修改成功") {
+              wx.showToast({
+                title: "修改成功，请重新登录",
+                duration: 2000
+              })
+              setTimeout(function () {
+                wx.redirectTo({
+                  url: '../login/login',
+                })
+              }, 2000)
+            }
           }
         }
       })
     }
-
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      user: options.user
+    })
   },
 
   /**
