@@ -72,16 +72,16 @@
   margin-top: 40rpx;
   background-color: #008bff;
   color: white;
-  margin-bottom: 15px;
+  margin-bottom: 30rpx;
 }
 
 .title{
   font-family:"KaiTi";
   font-weight: 900;
-  font-size: 18px;
+  font-size: 36rpx;
   text-align: center;
   background: #F0F8FF;
-  height: 50px;
+  height: 100rpx;
   display: flex;
   justify-content:center;
   align-items:center;
@@ -89,7 +89,7 @@
 }
 
 .a1{
-  line-height:35px;
+  line-height:70rpx;
   font-size: 30rpx;
 }
 
@@ -105,8 +105,8 @@ page{
 }
 
 .zhuce{
-  width: 20px;
-  height: 20px;
+  width: 40rpx;
+  height: 40rpx;
   margin-left: 60rpx;
  
 }

@@ -11,7 +11,7 @@
 }
 
 .swiper-tab-list {
-  font-size: 12px;
+  font-size: 24rpx;
   display: inline-block;
   width: 20%;
   color: #666;
@@ -52,16 +52,16 @@
 .nav-class {
   margin-top: 15rpx;
   margin-bottom: 15rpx;
-  margin-right: 10px;
-  border-radius: 40px;
-  border: 1px solid;
+  margin-right: 20rpx;
+  border-radius: 80rpx;
+  border: 2rpx solid;
   border-color: transparent;
   height: 100%;
 }
 
 /* 子选项的边框内部设定 */
 .detailView {
-  margin-left: 10px;
+  margin-left: 20rpx;
   width: 100%;
   padding-top: 15rpx;
   padding-bottom: 10rpx;
@@ -73,36 +73,36 @@
   font-size: 25rpx;
   color: #A9A9A9;
   float: right;
-  margin-right: 55px;
-  margin-top: 13px;
+  margin-right: 100rpx;
+  margin-top: 26rpx;
   margin-bottom: 25rpx;
 }
 
 .end {
-  width: 60px !important;
-  height: 25px !important;
+  width: 120rpx !important;
+  height: 50rpx !important;
   color: white !important;
   font-size: 23rpx !important;
   background-color: #FF7178 !important;
   float: right !important;
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-  padding-top: 6.75px !important;
-  margin-right: 55px !important;
+  padding-left: 0rpx !important;
+  padding-right: 0rpx !important;
+  padding-top: 13.5rpx !important;
+  margin-right: 110rpx !important;
   margin-bottom: 25rpx !important;
 }
 
 .end1 {
-  width: 60px !important;
-  height: 25px !important;
+  width: 120rpx !important;
+  height: 50rpx !important;
   background-color: grey !important;
   font-size: 23rpx !important;
   color: #eee !important;
   float: right !important;
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-  padding-top: 6.75px !important;
-  margin-right: 55px !important;
+  padding-left: 0rpx !important;
+  padding-right: 0rpx !important;
+  padding-top: 13.5rpx !important;
+  margin-right: 110rpx !important;
   margin-bottom: 25rpx !important;
 }
 
@@ -146,9 +146,9 @@
 }
 
 .addicon {
-  width: 48px;
-  height: 48px;
-  margin-left: 170px;
+  width: 96rpx;
+  height: 96rpx;
+  margin-left: 360rpx;
 }
 
 .round-click {

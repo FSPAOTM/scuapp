@@ -8,7 +8,7 @@
   <form>
     <view class='item'>
       <image class="zhuce" src="/images/企业注册.png"></image>
-      <text class='a1' style="padding-left:50rpx;font-size:15px">兼职岗位：</text>
+      <text class='a1' style="padding-left:50rpx;font-size:30rpx">兼职岗位：</text>
       <text class='right'>{{post}}</text>
       <view class="xian"></view>
     </view>
@@ -16,7 +16,7 @@
 
     <view class='item'>
       <image class="zhuce" src="/images/企业注册.png"></image>
-      <text class='a1' style="padding-left:50rpx;font-size:15px">工作时间：</text>
+      <text class='a1' style="padding-left:50rpx;font-size:30rpx">工作时间：</text>
       <text class='right'>{{time}}</text>
       <view class="xian"></view>
     </view>
@@ -26,7 +26,7 @@
       <view class="little">
         <view>
           <image class="zhuce" src="/images/企业注册.png"></image>
-          <text class='a1' style="padding-left:50rpx;font-size:15px">工作地点:</text>
+          <text class='a1' style="padding-left:50rpx;font-size:30rpx">工作地点:</text>
         </view>
         <text class='right1'>{{detail}}</text>
       </view>
@@ -35,24 +35,24 @@
 
     <view class='item'>
       <image class="zhuce" src="/images/企业注册.png"></image>
-      <text class='a1' style="padding-left:50rpx; font-size:15px">薪酬：</text>
+      <text class='a1' style="padding-left:50rpx; font-size:30rpx">薪酬：</text>
       <text class='right'>{{salary}}</text>
       <view class="xian"></view>
     </view>
 
     <view class="section">
-      <view class="jieshang" style="padding-left:30rpx;font-size:15px">职位描述</view>
+      <view class="jieshang" style="padding-left:30rpx;font-size:30rpx">职位描述</view>
       <view class="xian2"></view>
-      <view style=" height: 150px;">
+      <view style=" height: 300rpx;">
         <text style="font-size:30rpx; margin-left:30rpx;;" maxlength='200'>{{description}}</text>
       </view>
     </view>
 
 
     <view class="section">
-      <view class="jieshang" style="padding-left:30rpx;font-size:15px">招聘要求</view>
+      <view class="jieshang" style="padding-left:30rpx;font-size:30rpx">招聘要求</view>
       <view class="xian2"></view>
-      <view style=" height: 150px;">
+      <view style=" height: 300rpx;">
 
         <text style="font-size:30rpx;margin-left:30rpx" maxlength='200'>{{ask}}</text>
       </view>
@@ -62,26 +62,26 @@
 
     <view class='item'>
       <image class="zhuce" src="/images/企业注册.png"></image>
-      <text class='a1' style="padding-left:50rpx;font-size:15px">招聘人数：</text>
+      <text class='a1' style="padding-left:50rpx;font-size:30rpx">招聘人数：</text>
       <text class='right'>{{num}}</text>
       <view class="xian"></view>
     </view>
 
     <view class='item'>
       <image class="zhuce" src="/images/企业注册.png"></image>
-      <text class='a1' style="padding-left:50rpx;font-size:15px">报名截止时间：</text>
+      <text class='a1' style="padding-left:50rpx;font-size:30rpx">报名截止时间：</text>
       <text class='right'>{{ddl}}</text>
       <view class="xian"></view>
     </view>
 
     <view class='item'>
-      <text class='a1' style="padding-left:50rpx;font-size:15px">备注：</text>
+      <text class='a1' style="padding-left:50rpx;font-size:30rpx">备注：</text>
       <text class='right'>{{ps}}</text>
       <view class="xian"></view>
     </view>
 
     <view class='item'>
-      <text class='a1' style="padding-left:50rpx;font-size:15px">已报名人数：</text>
+      <text class='a1' style="padding-left:50rpx;font-size:30rpx">已报名人数：</text>
       <text class='right'>{{already}}</text>
     </view>
     <view class='placeholder-view'></view>

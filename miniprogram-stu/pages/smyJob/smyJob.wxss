@@ -1,7 +1,7 @@
 /* pages/smyJob/smyJob.wxss */
 .tab-h{  
   width: 100%;  
-  border-bottom: 1px solid #eee;  
+  border-bottom: 2rpx solid #eee;  
   text-align: center;  
   line-height: 80rpx;
   background: #fff;  
@@ -11,7 +11,7 @@
   }  
 
 .swiper-tab-list{  
-font-size: 12px;  
+font-size: 24rpx;  
 display: inline-block;  
 width: 20%;  
 color: #666;  
@@ -73,22 +73,22 @@ overflow: hidden;
   font-size: 25rpx;
   color:#A9A9A9;
   float: right;
-  padding-right: 20px;
-  padding-top: 12px;
+  padding-right: 40rpx;
+  padding-top: 24rpx;
 }
 
 .lainjie{
   display:flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-left:10px;
+  margin-left:20rpx;
 }
 
 .lianjie{
   display:flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-left:10px;
+  margin-left:20rpx;
 }
 
   .prix1{
@@ -103,7 +103,7 @@ overflow: hidden;
     font-weight: 600;
     float: right;
     margin-top: 15rpx;
-    margin-right: 32px;
+    margin-right: 64rpx;
   }
   
   .pj{
@@ -117,8 +117,8 @@ overflow: hidden;
     font-size: 25rpx;
     color:#A9A9A9;
     margin-left:20px;
-    margin-top:30px;
-    margin-bottom:20px;
+    margin-top:60rpx;
+    margin-bottom:40rpx;
   }
 
   
@@ -136,8 +136,8 @@ overflow: hidden;
     font-size: 25rpx;
     color:#A9A9A9;
     float: right;
-    margin-top:12px;
-    margin-right: 15px;
+    margin-top:24rpx;
+    margin-right: 30rpx;
   }
  
 
@@ -147,7 +147,7 @@ overflow: hidden;
   }
 
   .xiangxi{
-   margin-bottom:8px;
+   margin-bottom:16rpx;
 
   }
 

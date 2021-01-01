@@ -2,10 +2,10 @@
 .title {
   font-family:"KaiTi";
   font-weight: 900;
-  font-size: 18px;
+  font-size: 36rpx;
   text-align: center;
   background: #F0F8FF;
-  height: 50px;
+  height: 100rpx;
   display: flex;
   justify-content:center;
   align-items:center;
@@ -26,10 +26,10 @@
 .in {
   width: 70%;
   padding-left: 30rpx;
-  margin-left: 5px;
-  margin-top: 1px;
+  margin-left: 10rpx;
+  margin-top: 2rpx;
   font-family: "微软雅黑";
-  line-height: 10px;
+  line-height: 20rpx;
 }
 
 .section{
@@ -116,32 +116,32 @@ button {
   color: #fff;
   width: 80%;
   font-size: 34rpx;
-  margin-bottom: 20px;
+  margin-bottom: 40rpx;
 }
 
 .a1 {
-  line-height: 20px;
+  line-height: 40rpx;
 }
 
 .a2 {
-  line-height: 30px;
+  line-height: 60rpx;
 }
 
 .a3 {
-  line-height: 35px;
+  line-height: 70rpx;
 }
 
 .zhuce {
-  width: 18px;
-  height: 18px;
+  width: 36rpx;
+  height: 36rpx;
   margin-left: 20rpx;
   margin-top: 15rpx;
 
 }
 
 .zhuce2 {
-  width: 20px;
-  height: 20px;
+  width: 40rpx;
+  height: 40rpx;
   margin-left: 20rpx;
   margin-right: 20rpx;
   margin-top: 35rpx;

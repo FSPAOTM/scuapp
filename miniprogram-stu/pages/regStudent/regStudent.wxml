@@ -62,7 +62,7 @@
     </view>
   </view>
 
-    <button style="margin-bottom:15px" class="submit" form-type="submit" bindtap="formSubmit" disabled="{{disabled}}">注册</button>
+    <button style="margin-bottom:30rpx" class="submit" form-type="submit" bindtap="formSubmit" disabled="{{disabled}}">注册</button>
   </form>
 </view>
 </view>

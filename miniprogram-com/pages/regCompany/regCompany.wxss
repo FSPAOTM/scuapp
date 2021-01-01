@@ -40,7 +40,7 @@
   width: 80%;
   height: 100rpx;
   margin: 0 auto;
-  border: 1px solid gainsboro;
+  border: 2rpx solid gainsboro;
   border-radius: 10rpx;
   margin-bottom: 20rpx;
   display: flex;
@@ -54,11 +54,11 @@
 }
 
 .blur {
-  border: 1px solid gainsboro;
+  border: 2rpx solid gainsboro;
 }
 
 .error {
-  border: 1px solid red;
+  border: 2rpx solid red;
 }
 
 .getVerificationCode {
@@ -80,7 +80,7 @@
   font-size: 18px;
   text-align: center;
   background: #F0F8FF;
-  height: 50px;
+  height: 100rpx;
   display: flex;
   justify-content:center;
   align-items:center;
@@ -88,7 +88,7 @@
 }
 
 .a1{
-  line-height:35px;
+  line-height:70rpx;
   font-size: 30rpx;
 }
 
@@ -104,8 +104,8 @@ page{
 }
 
 .zhuce{
-    width: 15px;
-    height: 15px;
+    width: 30rpx;
+    height: 30rpx;
     margin-left: 60rpx;
    
 }

@@ -1,95 +1,95 @@
 <!--pages/cjobShow/cjobShow.wxml-->
 <view>
 
-  <!-- <view class="title">发 布 信 息 详 情</view> -->
-  <view class="line"></view>
+<!-- <view class="title">发 布 信 息 详 情</view> -->
+<view class="line"></view>
 
-  <form>
-    <view class='item'>
-      <image class="zhuce" src="/images/企业注册.png"></image>
-      <text class='a1' style="padding-left:50rpx;font-size:15px">兼职岗位：</text>
-      <text class='right' style="padding-left:20rpx;font-size:12px">{{post}}</text>
-      <view class="xian"></view>
-    </view>
-
-    <view class='item'>
-      <image class="zhuce" src="/images/企业注册.png"></image>
-      <text class='a1' style="padding-left:50rpx;font-size:15px">工作时间：</text>
-      <text class='right' style="padding-left:20rpx;font-size:12px">{{time}}</text>
-      <view class="xian"></view>
-    </view>
-
-    <view class='item'>
-      <image class="zhuce" src="/images/企业注册.png"></image>
-      <text class='a1' style="padding-left:50rpx;font-size:15px">工作地点:</text>
-      <text class='right' style="padding-left:20rpx;font-size:12px">{{detail}}</text>
-      <view class="xian"></view>
-    </view>
-
-    <view class='item'>
-      <image class="zhuce" src="/images/企业注册.png"></image>
-      <text class='a1' style="padding-left:50rpx; font-size:15px">薪酬：</text>
-      <text class='right' style="padding-left:20rpx;font-size:12px">{{salary}}</text>
-      <view class="xian"></view>
-    </view>
-
-    <view class="section">
-      <view class="jieshang" style="padding-left:30rpx;font-size:15px">职位描述</view>
-      <view class="xian2"></view>
-      <view style=" height: 150px;">
-
-        <text style="font-size:15px; margin-left:30rpx;;" maxlength='200'>{{description}}</text>
-      </view>
-    </view>
-
-
-    <view class="section">
-      <view class="jieshang" style="padding-left:30rpx;font-size:15px">招聘要求</view>
-      <view class="xian2"></view>
-      <view style=" height: 150px;">
-        <text style="font-size:15px;margin-left:30rpx" maxlength='200'>{{ask}}</text>
-      </view>
-    </view>
-
-
-
-    <view class='item'>
-      <image class="zhuce" src="/images/企业注册.png"></image>
-      <text class='a1' style="padding-left:50rpx;font-size:15px">招聘人数：</text>
-      <text class='right' style="padding-left:20rpx;font-size:12px">{{num}}</text>
-      <view class="xian"></view>
-    </view>
-
-    <view class='item'>
-      <image class="zhuce" src="/images/企业注册.png"></image>
-      <text class='a1' style="padding-left:50rpx;font-size:15px">报名截止时间：</text>
-      <text class='right' style="padding-left:20rpx;font-size:12px">{{ddl}}</text>
-      <view class="xian"></view>
-    </view>
-
-    <view class='item'>
-      <text class='a1' style="padding-left:50rpx;font-size:15px">备注：</text>
-      <text class='right' style="padding-left:20rpx;font-size:12px">{{ps}}</text>
-      <view class="xian"></view>
-    </view>
-
-    <view class='item'>
-      <text class='a1' style="padding-left:50rpx;font-size:15px">已报名人数：</text>
-      <text class='right' style="padding-left:20rpx;font-size:12px">{{already}}</text>
-
-    </view>
-
-  </form>
-  <view wx:if="{{show1}}">
-  <button bindtap="cjobrelease1" style="margin-top:50rpx;margin-bottom:15px" form-type="submit"
-    hover-class='button-hover'>修改</button>
+<form>
+  <view class='item'>
+    <image class="zhuce" src="/images/企业注册.png"></image>
+    <text class='a1' style="padding-left:50rpx;font-size:30rpx">兼职岗位：</text>
+    <text class='right' style="padding-left:20rpx;font-size:24rpx">{{post}}</text>
+    <view class="xian"></view>
   </view>
-  <view wx:if="{{show2}}">
-  <button bindtap="cinterview" style="margin-top:50rpx;margin-bottom:15px" form-type="submit"
-    hover-class='button-hover'>申请面试时间</button>
+
+  <view class='item'>
+    <image class="zhuce" src="/images/企业注册.png"></image>
+    <text class='a1' style="padding-left:50rpx;font-size:30rpx">工作时间：</text>
+    <text class='right' style="padding-left:20rpx;font-size:24rpx">{{time}}</text>
+    <view class="xian"></view>
   </view>
-    <view wx:if="{{show3}}">
-  <button bindtap="cjobrelease2" style="margin-top:50rpx;margin-bottom:15px" form-type="submit"
-    hover-class='button-hover'>再次发布</button>
+
+  <view class='item'>
+    <image class="zhuce" src="/images/企业注册.png"></image>
+    <text class='a1' style="padding-left:50rpx;font-size:30rpx">工作地点:</text>
+    <text class='right' style="padding-left:20rpx;font-size:24rpx">{{detail}}</text>
+    <view class="xian"></view>
   </view>
+
+  <view class='item'>
+    <image class="zhuce" src="/images/企业注册.png"></image>
+    <text class='a1' style="padding-left:50rpx; font-size:30rpx">薪酬：</text>
+    <text class='right' style="padding-left:20rpx;font-size:24rpx">{{salary}}</text>
+    <view class="xian"></view>
+  </view>
+
+  <view class="section">
+    <view class="jieshang" style="padding-left:30rpx;font-size:30rpx">职位描述</view>
+    <view class="xian2"></view>
+    <view style=" height: 300rpx;">
+
+      <text style="font-size:30rpx; margin-left:30rpx;;" maxlength='200'>{{description}}</text>
+    </view>
+  </view>
+
+
+  <view class="section">
+    <view class="jieshang" style="padding-left:30rpx;font-size:30rpx">招聘要求</view>
+    <view class="xian2"></view>
+    <view style=" height: 300rpx;">
+      <text style="font-size:30rpx;margin-left:30rpx" maxlength='200'>{{ask}}</text>
+    </view>
+  </view>
+
+
+
+  <view class='item'>
+    <image class="zhuce" src="/images/企业注册.png"></image>
+    <text class='a1' style="padding-left:50rpx;font-size:30rpx">招聘人数：</text>
+    <text class='right' style="padding-left:20rpx;font-size:24rpx">{{num}}</text>
+    <view class="xian"></view>
+  </view>
+
+  <view class='item'>
+    <image class="zhuce" src="/images/企业注册.png"></image>
+    <text class='a1' style="padding-left:50rpx;font-size:30rpx">报名截止时间：</text>
+    <text class='right' style="padding-left:20rpx;font-size:24rpx">{{ddl}}</text>
+    <view class="xian"></view>
+  </view>
+
+  <view class='item'>
+    <text class='a1' style="padding-left:50rpx;font-size:30rpx">备注：</text>
+    <text class='right' style="padding-left:20rpx;font-size:24rpx">{{ps}}</text>
+    <view class="xian"></view>
+  </view>
+
+  <view class='item'>
+    <text class='a1' style="padding-left:50rpx;font-size:30rpx">已报名人数：</text>
+    <text class='right' style="padding-left:20rpx;font-size:24rpx">{{already}}</text>
+
+  </view>
+
+</form>
+<view wx:if="{{show1}}">
+<button bindtap="cjobrelease1" style="margin-top:50rpx;margin-bottom:30rpx" form-type="submit"
+  hover-class='button-hover'>修改</button>
+</view>
+<view wx:if="{{show2}}">
+<button bindtap="cinterview" style="margin-top:50rpx;margin-bottom:30rpx" form-type="submit"
+  hover-class='button-hover'>申请面试时间</button>
+</view>
+  <view wx:if="{{show3}}">
+<button bindtap="cjobrelease2" style="margin-top:50rpx;margin-bottom:30rpx" form-type="submit"
+  hover-class='button-hover'>再次发布</button>
+</view>
 </view>

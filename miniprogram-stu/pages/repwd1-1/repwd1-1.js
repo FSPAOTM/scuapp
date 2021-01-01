@@ -60,7 +60,6 @@ Page({
             if (res.data == "密码修改成功") {
               wx.showToast({
                 title: "修改成功，请重新登录",
-                icon: 'success',
                 duration: 2000
               })
               setTimeout(function () {

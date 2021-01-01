@@ -23,7 +23,7 @@
   clear: both;
   font-size: 0;
   line-height: 0;
-  border-width: 13px;
+  border-width: 26rpx;
   border-color: #d9002f;
   border-bottom-width: 0;
   border-style: dashed;
@@ -146,7 +146,7 @@ textarea {
 
 
 .a1 {
-  line-height: 45px;
+  line-height: 90rpx;
 }
 
 .section_gap {
@@ -157,10 +157,10 @@ textarea {
 .title {
   font-family: "KaiTi";
   font-weight: 900;
-  font-size: 18px;
+  font-size: 35rpx;
   text-align: center;
   background: #F0F8FF;
-  height: 50px;
+  height: 100rpx;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -180,17 +180,17 @@ page {
 }
 
 .arrow {
-  width: 7px;
-  height: 7px;
+  width: 14rpx;
+  height: 14rpx;
   border-width: 1px 1px 0 0;
   border-color: #464646;
   border-style: solid;
   transform: rotate(45deg);
-  margin-left: 325px;
+  margin-left: 650rpx;
 }
 
 .right1{
-  padding-left:25px ;
+  padding-left:50rpx ;
 }
 
 .little{
@@ -212,8 +212,8 @@ page {
 }
 
 .zhuce {
-  width: 18px;
-  height: 18px;
+  width: 36rpx;
+  height: 36rpx;
   margin-left: 60rpx;
 }
 

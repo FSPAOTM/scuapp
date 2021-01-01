@@ -13,13 +13,13 @@
   width: 32%;  
   float: left;  
   text-align: center;  
-  padding-top: 8px;  
+  padding-top: 16rpx;  
 }  
 .menu-item1{  
   width: 32%;  
   float: left;  
   text-align: center;  
-  padding-top: 8px;  
+  padding-top: 16rpx;  
 }  
 .clear{  
   clear: both;  
@@ -31,7 +31,7 @@
 }  
  
 .button{
-  margin: 130px;
+  margin: 260rpx;
 }
 
 
@@ -59,7 +59,7 @@ page{
 .graySpace{
   padding-left: 40rpx;
   background: #eee;
-  font-size: 12px;
+  font-size: 24rpx;
   min-height: 30rpx;
 }
 .item-avatar .text_box,.item-avatar-lg .text_box{

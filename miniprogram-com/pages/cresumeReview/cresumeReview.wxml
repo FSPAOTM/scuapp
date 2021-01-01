@@ -39,66 +39,66 @@
 </view>
 
   <view class="section">
-    <view style="padding-left:30rpx;font-size:15px">
+    <view style="padding-left:30rpx;font-size:30rpx">
       <image class="zhuce" src="/images/简历.png"></image>
       <text class="class">技能自评：</text>
     <view class="xian"></view>
-    <view style=" height: 150px;">
+    <view style=" height: 300rpx;">
       <text style="font-size:30rpx; margin-left:30rpx;;" maxlength='150'>{{tech}}</text>
     </view>
   </view>
 </view>
 
   <view class="section">
-    <view style="padding-left:30rpx;font-size:15px">
+    <view style="padding-left:30rpx;font-size:30rpx">
       <image class="zhuce" src="/images/简历.png"></image>
       <text class="class">工作经历：</text>
       <view class="xian"></view>
-    <view style=" height: 150px;">
+    <view style=" height: 300rpx;">
       <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{job}}</text>
     </view>
   </view>
 </view>
 
   <view class="section">
-    <view style="padding-left:30rpx;font-size:15px">
+    <view style="padding-left:30rpx;font-size:30rpx">
       <image class="zhuce" src="/images/简历.png"></image>
       <text class="class">项目经历：</text>
     <view class="xian"></view>
-    <view style=" height: 150px;">
+    <view style=" height: 300rpx;">
       <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{project}}</text>
     </view>
   </view>
 </view>
 
   <view class="section">
-    <view style="padding-left:30rpx;font-size:15px">
+    <view style="padding-left:30rpx;font-size:30rpx">
       <image class="zhuce" src="/images/简历.png"></image>
       <text class="class">课外实践：</text>
     <view class="xian"></view>
-    <view style=" height: 150px;">
+    <view style=" height: 300rpx;">
       <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{practice}}</text>
     </view>
   </view>
 </view>
 
   <view class="section">
-    <view style="padding-left:30rpx;font-size:15px">
+    <view style="padding-left:30rpx;font-size:30rpx">
       <image class="zhuce" src="/images/简历.png"></image>
       <text class="class">个人作品：</text>
       <view class="xian"></view>
-      <view style=" height: 150px;">
+      <view style=" height: 300rpx;">
       <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{works}}</text>
     </view>
   </view>
 </view>
 
   <view class="section">
-    <view style="padding-left:30rpx;font-size:15px">
+    <view style="padding-left:30rpx;font-size:30rpx">
       <image class="zhuce" src="/images/简历.png"></image>
       <text class="class">应聘理由：</text>
     <view class="xian"></view>
-    <view style=" height: 150px;">
+    <view style=" height: 300rpx;">
       <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{reason}}</text>
     </view>
   </view>

@@ -35,7 +35,7 @@
 .xian2 {
   width: 90%;
   background: #FFE4E1;
-  height: 3px;
+  height: 6rpx;
   margin-left: 25rpx;
   margin-bottom: 20rpx;
 }
@@ -57,7 +57,7 @@
   font-size: 32rpx;
   text-align: center;
   background: #F0F8FF;
-  height: 50px;
+  height: 100rpx;
   display: flex;
   justify-content: center;
   align-items: center;

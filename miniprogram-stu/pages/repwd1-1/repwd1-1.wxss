@@ -16,7 +16,7 @@
   font-weight: 900;
   text-align: center;
   background: #F0F8FF;
-  height: 50px;
+  height: 100rpx;
   display: flex;
   justify-content:center;
   align-items:center;
@@ -37,8 +37,8 @@ button{
 }
 
 .zhuce{
-  width: 20px;
-  height: 20px;
+  width: 40rpx;
+  height: 40rpx;
   margin-left: 40rpx;
 }
 

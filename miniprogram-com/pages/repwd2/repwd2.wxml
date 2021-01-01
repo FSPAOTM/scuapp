@@ -25,5 +25,5 @@
   <view class="xian"></view>
 </view>
 
-<button style="margin-top:80px" type='primary' form-type='submit'>提交</button>
+<button style="margin-top:160rpx" type='primary' form-type='submit'>提交</button>
 </form>

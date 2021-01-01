@@ -26,9 +26,9 @@
 
 .in {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 20rpx;
   font-family: "黑体";
-  line-height: 20px;
+  line-height: 40rpx;
   text-align: center;
 }
 
@@ -74,7 +74,7 @@
   flex: 1;
   color: #333;
   font-size: 32rpx;
-  margin-left: 10px;
+  margin-left: 20rpx;
 }
 
 .fb-type .type-icon {
@@ -87,20 +87,20 @@ button {
   color: #fff;
   width: 80%;
   font-size: 34rpx;
-  margin-bottom: 20px;
+  margin-bottom: 40rpx;
 }
 
 .a1 {
-  line-height: 20px;
+  line-height: 40rpx;
   
 }
 
 .a2 {
-  line-height: 30px;
+  line-height: 60rpx;
 }
 
 .a3 {
-  line-height: 35px;
+  line-height: 70rpx;
 }
 
 
@@ -119,8 +119,8 @@ button {
 }
 
 .zhuce{
-  width: 20px;
-  height: 20px;
+  width: 40rpx;
+  height: 40rpx;
   margin-left: 60rpx;
 }
 
@@ -130,22 +130,22 @@ button {
 
 .item2{
   display:flex;
-  margin-bottom: 10px;
+  margin-bottom: 20rpx;
 }
 
 .a{
   margin-top: 10rpx;
-  width: 120px;
+  width: 240rpx;
 }
 
 .zhuce2{
-  width: 20px;
-  height: 20px;
+  width: 40rpx;
+  height: 40rpx;
   margin-left: 60rpx;
 }
 
 .textarea{
-  height: 30px;
+  height: 60rpx;
   text-align: center;
   margin-top: 15rpx;
 }
@@ -155,14 +155,14 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top:10px;   
-  margin-bottom:10px; 
+  margin-top:20rpx;   
+  margin-bottom:20rpx; 
 
 }
 
 .in2{
-  margin-top: 8px;
-  line-height: 20px;
-  font-size:12px;
+  margin-top: 16rpx;
+  line-height: 40rpx;
+  font-size:24rpx;
 
 }

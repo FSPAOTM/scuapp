@@ -2,7 +2,7 @@
 .section {
   background: #fff;
   border: 5rpx solid #FFE4E1;
-  border-radius: 10px;
+  border-radius: 20rpx;
   padding: 10rpx;
   margin: 30rpx;
   background-color: rgb(252, 249, 249);
@@ -57,7 +57,7 @@
   font-size: 32rpx;
   text-align: center;
   background: #F0F8FF;
-  height: 50px;
+  height: 100rpx;
   display: flex;
   justify-content: center;
   align-items: center;

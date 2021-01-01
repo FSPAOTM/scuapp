@@ -66,24 +66,6 @@
         </view>
       </view>
       <view class='linecut'></view>
-        <!--<view class="content" wx:for="{{stupingjia}}" wx:key="key" wx:for-item="item" wx:for-index="index">
-          <view class='linecut'></view>
-          <view class='user-content' data-index="{{index}}">
-            <view class='firstline'>
-              <view class='apart'>
-                <text>匿名用户</text>
-              </view>
-              <view class='time'>
-                <view class='time-num'>{{item.time}}</view>
-              </view>
-            </view>
-            <view class='secondline'>
-              <view class='dialog'>
-                <text>{{item.content}}</text>
-              </view>
-            </view>
-          </view>
-        </view>-->
       </scroll-view>
     </swiper-item>
   </swiper>

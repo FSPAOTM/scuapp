@@ -125,7 +125,7 @@ button{
   color: #fff;
   width: 80%;
   font-size: 34rpx;
-  margin-bottom: 20px;
+  margin-bottom: 40rpx;
 }
 
 
@@ -148,7 +148,7 @@ button{
   font-size: 32rpx;
   text-align: center;
   background: #F0F8FF;
-  height: 50px;
+  height: 100rpx;
   display: flex;
   justify-content:center;
   align-items:center;

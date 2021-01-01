@@ -21,7 +21,7 @@
     clear:both;  
     font-size: 0;  
     line-height: 0;  
-    border-width: 13px;  
+    border-width: 26rpx;  
     border-color:  #d9002f;  
     border-bottom-width: 0;  
     border-style: dashed;  
@@ -100,9 +100,9 @@
 }
 
 .section{
-  margin-top:20px;
-  margin-left:25px;
-  margin-right:25px;
+  margin-top:40rpx;
+  margin-left:50rpx;
+  margin-right:50rpx;
   display:flex;
   flex-direction: column;
   background: #fff;
@@ -135,10 +135,10 @@ textarea{
   .title{
     font-family:"KaiTi";
     font-weight: 900;
-    font-size: 18px;
+    font-size: 36rpx;
     text-align: center;
     background: #F0F8FF;
-    height: 50px;
+    height: 100rpx;
     display: flex;
     justify-content:center;
     align-items:center;
@@ -164,7 +164,7 @@ textarea{
   .all{
     display:flex;
     flex-direction: row;
-    margin-left:30px;
+    margin-left:60rpx;
   }
   .line{
     height: 10rpx;
@@ -180,7 +180,7 @@ textarea{
   
   .show1{
     padding-left:20rpx;
-    font-size:15px;
+    font-size:30rpx;
     color:#2F4F4F;
   }
   
@@ -195,14 +195,14 @@ textarea{
   }
 
   .item{
-    margin-top:20px;
+    margin-top:40rpx;
     display:flex;
     flex-direction: row;
   }
   
   .zhuce{
-  width: 15px;
-  height: 15px;
+  width: 30rpx;
+  height: 30rpx;
   margin-left: 10rpx;
   margin-right: 20rpx;
   margin-top: 22rpx;

@@ -8,18 +8,18 @@
       <text>结 果 通 知</text>
     </view>
     <view class="xian2"></view>
-    <view class="content" style=" height: 200px;" wx:if="{{item.success}}">
-      <text style="font-size:15px; margin-top:10px; margin-left:30rpx;;" maxlength='300'>岗位：{{item.post}}</text>
-      <text style="font-size:15px; margin-top:10px; margin-left:30rpx;;" maxlength='300'>结果：{{item.result}}</text>
-      <text style="font-size:15px; margin-top:20px; margin-left:30rpx;;" maxlength='300'>负责人电话：{{item.phonenum}}</text>
-      <text style="font-size:15px; margin-top:10px; margin-left:30rpx;;" maxlength='300'>备注：{{item.ps}}</text>
+    <view class="content" style=" height: 400rpx;" wx:if="{{item.success}}">
+      <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>岗位：{{item.post}}</text>
+      <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>结果：{{item.result}}</text>
+      <text style="font-size:30rpx; margin-top:40rpx; margin-left:30rpx;;" maxlength='300'>负责人电话：{{item.phonenum}}</text>
+      <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>备注：{{item.ps}}</text>
     </view>
-    <view class="content" style=" height: 200px;" wx:if="{{item.fail}}">
-      <text style="font-size:15px; margin-top:10px; margin-left:30rpx;;" maxlength='300'>岗位：{{item.post}}</text>
-      <text style="font-size:15px; margin-top:10px; margin-left:30rpx;;" maxlength='300'>结果：{{item.result}}</text>
+    <view class="content" style=" height:400rpx;" wx:if="{{item.fail}}">
+      <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>岗位：{{item.post}}</text>
+      <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>结果：{{item.result}}</text>
     </view>
-    <button wx:if="{{item.success}}" bindtap="sure1" data-index="{{index}}" size='mini' style="font-size: 28rpx;margin-left:260px;">确 认</button>
-    <button wx:if="{{item.fail}}" bindtap="sure11" data-index="{{index}}" size='mini' style="font-size: 28rpx;margin-left:260px;">确 认</button>
+    <button wx:if="{{item.success}}" bindtap="sure1" data-index="{{index}}" size='mini' style="font-size: 28rpx;margin-left:520rpx;">确 认</button>
+    <button wx:if="{{item.fail}}" bindtap="sure11" data-index="{{index}}" size='mini' style="font-size: 28rpx;margin-left:520rpx;">确 认</button>
   </view>
 
   <view class="section"  wx:for="{{jieguotongzhi2}}" wx:key="key" wx:for-item="item" wx:for-index="index">
@@ -28,19 +28,19 @@
     </view>
     <view class="xian2"></view>
     <view class="content" style=" height: 200px;" wx:if="{{item.success}}">
-      <text style="font-size:15px; margin-top:10px; margin-left:30rpx;;" maxlength='300'>岗位：{{item.post}}</text>
-      <text style="font-size:15px; margin-top:10px; margin-left:30rpx;;" maxlength='300'>结果：{{item.result}}</text>
-      <text style="font-size:15px; margin-top:20px; margin-left:30rpx;;" maxlength='300'>报到时间：{{item.time}}</text>
-      <text style="font-size:15px; margin-top:10px; margin-left:30rpx;;" maxlength='300'>报到地点：{{item.address}}</text>
-      <text style="font-size:15px; margin-top:10px; margin-left:30rpx;;" maxlength='300'>备注：{{item.ps}}</text>
+      <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>岗位：{{item.post}}</text>
+      <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>结果：{{item.result}}</text>
+      <text style="font-size:30rpx; margin-top:40rpx; margin-left:30rpx;;" maxlength='300'>报到时间：{{item.time}}</text>
+      <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>报到地点：{{item.address}}</text>
+      <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>备注：{{item.ps}}</text>
     </view>
-    <view class="content" style=" height: 200px;" wx:if="{{item.fail}}">
-      <text style="font-size:15px; margin-top:10px; margin-left:30rpx;;" maxlength='300'>岗位：{{item.post}}</text>
+    <view class="content" style=" height:400rpx;" wx:if="{{item.fail}}">
+      <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>岗位：{{item.post}}</text>
       <text></text>
-      <text style="font-size:15px; margin-top:10px; margin-left:30rpx;;" maxlength='300'>结果：{{item.result}}</text>
+      <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>结果：{{item.result}}</text>
     </view>
-    <button wx:if="{{item.success}}" bindtap="sure2" data-index="{{index}}" size='mini' style="font-size: 28rpx;margin-left:260px;">确 认</button>
-    <button wx:if="{{item.fail}}" bindtap="sure22" data-index="{{index}}" size='mini' style="font-size: 28rpx;margin-left:260px;">确 认</button>
+    <button wx:if="{{item.success}}" bindtap="sure2" data-index="{{index}}" size='mini' style="font-size: 28rpx;margin-left:520rpx;">确 认</button>
+    <button wx:if="{{item.fail}}" bindtap="sure22" data-index="{{index}}" size='mini' style="font-size: 28rpx;margin-left:520rpx;">确 认</button>
   </view>
 
   <view class="after" wx:if="{{isShow}}">

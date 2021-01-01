@@ -30,16 +30,6 @@
         </view>
         <view class="line"></view>
       </view>
-
-      <!--<view class='xiangqing' wx:for="{{oworkinfo}}"  wx:key="key" bindtap="navigateTo">
-    <view class='xiangqing_info' style="padding-left:40rpx;">
-      <text class='zi' >{{item.type}}</text>
-      <text class='title'>{{item.title}}</text>
-      <view class='prix'>
-        <text class='prix1'>{{item.depart}}</text>   
-      </view>      
-    </view>
-  </view>-->
     </swiper-item>
 
     <swiper-item>
@@ -76,49 +66,23 @@
         </view>
         <view class="lainjie">
           <view>
-            <button bindtap="xq3" style="width:100px;" class='su' data-index="{{index}}">详情 ></button>
+            <button bindtap="xq3" style="width:200rpx;" class='su' data-index="{{index}}">详情 ></button>
           </view>
 
           <view>
-            <button bindtap="ms" style="width:110px;" class='su' data-index="{{index}}">面试信息 ></button>
+            <button bindtap="ms" style="width:220rpx;" class='su' data-index="{{index}}">面试信息 ></button>
           </view>
 
           <view>
-            <button bindtap="ms" style="width:110px;" class='su' data-index="{{index}}">录用信息 ></button>
+            <button bindtap="ms" style="width:220rpx;" class='su' data-index="{{index}}">录用信息 ></button>
           </view>
         </view>
         <view class="line"></view>
       </view>
     </swiper-item>
 
-    <!--<swiper-item>
-      <view class='xiangqing' wx:for="{{workinfo4}}" wx:key="key" wx:for-item="item" wx:for-index="index">
-        <view class="xq">
-          <view class='xiangqing_info' style="padding-left:40rpx;">
-            <text class='zi'>{{item.type}}</text>
-            <text class='title'>{{item.title}}</text>
-            <text class='gongsi2'>{{item.depart}}</text>
-          </view>
-        </view>
-        <view class="lainjie">
-          <view>
-            <button bindtap="xq4" style="width:100px;" class='su' data-index="{{index}}">详情 ></button>
-          </view>
-
-          <view>
-            <button bindtap="ms" style="width:110px;" class='su' data-index="{{index}}">面试信息 ></button>
-          </view>
-
-          <view>
-            <button bindtap="ms" style="width:110px;" class='su' data-index="{{index}}">录用信息 ></button>
-          </view>
-        </view>
-        <view class="line"></view>
-      </view>
-    </swiper-item>-->
 
     <swiper-item>
-
       <view class='xiangqing' wx:for="{{workinfo5}}" wx:key="key" wx:for-item="item" wx:for-index="index">
         <view class="xq">
           <view class='xiangqing_info' style="padding-left:40rpx;">
@@ -129,18 +93,18 @@
         </view>
         <view class="lianjie">
           <view>
-            <button bindtap="xq5" style="width:80px;" class='su2' data-index="{{index}}">详情 ></button>
+            <button bindtap="xq5" style="width:160rpx;" class='su2' data-index="{{index}}">详情 ></button>
           </view>
 
           <view>
-            <button bindtap="ms" style="width:90px;" class='su2' data-index="{{index}}">面试信息 ></button>
+            <button bindtap="ms" style="width:160rpx;" class='su2' data-index="{{index}}">面试信息 ></button>
           </view>
 
           <view>
-            <button bindtap="ms" style="width:90px;" class='su2' data-index="{{index}}">录用信息 ></button>
+            <button bindtap="ms" style="width:160rpx;" class='su2' data-index="{{index}}">录用信息 ></button>
           </view>
           <view wx:if="{{item.show}}">
-            <button bindtap="pingjia" style="width:80px;" class='su2' data-index="{{index}}">评价 ></button>
+            <button bindtap="pingjia" style="width:160px;" class='su2' data-index="{{index}}">评价 ></button>
           </view>
         </view>
         <view class="line"></view>

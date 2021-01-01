@@ -1,7 +1,5 @@
 /* pages/cinfoFill/cinfoFill.wxss */
 
-
-
 .nav{
   background-color: #fff;
 }
@@ -44,7 +42,7 @@ font-size: 13px;
   font-size: 20px;
   text-align: center;
   background: #F0F8FF;
-  height: 50px;
+  height: 100rpx;
   display: flex;
   justify-content:center;
   align-items:center;
@@ -72,8 +70,8 @@ font-size: 13px;
 }
 
 .zhuce{
-  width: 20px;
-  height: 20px;
+  width: 40rpx;
+  height: 40rpx;
   margin-left: 60rpx;
 }
 
@@ -82,7 +80,7 @@ button {
   color: #fff;
   width: 80%;
   font-size: 34rpx;
-  margin-bottom: 20px;
+  margin-bottom: 40rpx;
 }
 
 .co{

@@ -19,62 +19,62 @@ page{
 /*登录图片*/
 .login-icon{
   flex: none;
-  margin-left: 85px;
+  margin-left: 170rpx;
   margin-top: 130rpx;
 }
 .login-img{
-  width: 140px;
-  height:140px;
+  width: 280rpx;
+  height:280rpx;
 
 }
  
 /*表单内容*/
 .login-from {
-  margin-top: 75px;
+  margin-top: 150rpx;
   flex: column;
   height:100%;
 }
 
  /*提示语*/
 .weui-input{
-  font-size: 12px;
+  font-size: 24rpx;
   text-align: center;
 }
 
 /* 输入框 */
 .userno{
   width: 60%;
-  height: 35px;
+  height: 70rpx;
   margin: 0 auto;
   border:1px solid #9E9E9E;
   border-radius: 50rpx;
-  padding-top:10px;
+  padding-top:20rpx;
 }
 
 .userpwd{
   width: 60%;
-  height: 35px;
+  height: 70rpx;
   margin: 0 auto;
   border:1px solid #9E9E9E;
   border-radius: 50rpx;
-  padding-top:10px;
+  padding-top:20rpx;
 }
 
 .lock-img{
-  margin-top: 8px;
-  width: 25px;
-  height: 25px;
+  margin-top: 16rpx;
+  width: 50rpx;
+  height: 50rpx;
   margin-right: 30rpx;
 }
 
 .yhm{
-  margin-top: 10px;
-  font-size: 15px;
+  margin-top: 20rpx;
+  font-size: 30rpx;
 }
 
 .mm{
-  margin-top: 13px;
-  font-size: 15px;
+  margin-top: 26rpx;
+  font-size: 30rpx;
 }
 
 .userTotal{
@@ -85,7 +85,7 @@ page{
 .pwdTotal{
   display:flex;
   flex-direction: row;
-  margin-top: 20px;
+  margin-top: 40rpx;
 }
 
 /*按钮*/
@@ -98,7 +98,7 @@ page{
 .loginBtn {
   width: 90%;
   height: 80rpx;
-  margin-top: 30px;
+  margin-top: 60rpx;
   color: #fff;
   background-color:#7e8ef0;
   border: 0.1rpx solid #ccc;
@@ -111,7 +111,7 @@ page{
 
 .registerBt{
   width: 100%;
-  margin-top: 10px;
+  margin-top: 20rpx;
   font-size: x-small;
   color:#000000;
   text-align: right;
@@ -120,8 +120,8 @@ page{
 .forgetPwd{
   width: 100%;
   font-size: x-small;
-  margin-top: 10px;
-  margin-left: 52px;
+  margin-top: 20rpx;
+  margin-left: 104rpx;
   color:#000000;
   text-align: left;
 }
@@ -129,5 +129,5 @@ page{
 .registerBtView{
   display:flex;
   flex-direction: row;
-  margin-right: 52px;
+  margin-right: 104rpx;
 }

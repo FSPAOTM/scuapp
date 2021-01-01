@@ -76,7 +76,7 @@
 
   .prix2 {
     color: #FA7C15;
-    font-size: 14px;
+    font-size: 28rpx;
     font-weight: 600;
     margin-left:30rpx;
   }
@@ -115,6 +115,6 @@
 /*昵称*/
 .summary .nickname {
   color: black;
-  font-size: 18px;
+  font-size: 36rpx;
   font-family: 'Segoe UI'
 }

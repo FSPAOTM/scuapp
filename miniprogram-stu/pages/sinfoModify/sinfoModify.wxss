@@ -28,14 +28,14 @@
   flex-grow: 1;
   color: #ccc;
   margin-right: 20rpx;
-  padding-right: 15px;
+  padding-right: 30rpx;
 }
 
 .arrow {
-  width: 10px;
-  height: 10px;
-  border-top: 2px solid #999;
-  border-right: 2px solid #999;
+  width: 20rpx;
+  height: 20rpx;
+  border-top: 4rpx solid #999;
+  border-right: 4rpx solid #999;
   position: absolute;
   right: 20rpx;
   transform: rotate(45deg);
@@ -47,14 +47,14 @@ button {
   color: #fff;
   width: 80%;
   font-size: 34rpx;
-  margin-bottom: 20px;
+  margin-bottom: 40rpx;
 }
 
 .title {
   font-family: "黑体";
   font-weight: 1000;
-  font-size: 18px;
+  font-size: 36rpx;
   text-align: center;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
 }

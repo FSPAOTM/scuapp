@@ -37,7 +37,7 @@
             <view wx:for="{{item.baominger}}" wx:for-item="i" wx:for-index="id">
               <view class="llist" bindtap="yibaoming" data-index="id" data-name1="{{i.ow_number}}"
                 data-name2="{{i.stu_number}}">
-                <text style="font-size:16px">报名者：{{i.user}}</text>
+                <text style="font-size:32rpx">报名者：{{i.user}}</text>
                 <text class='arrow' style="font-size:16px">></text>
               </view>
             </view>
@@ -50,10 +50,10 @@
       <view class="yijiesuan" wx:for="{{workinfo2}}" wx:for-item="item" wx:for-index="index">
         <view class='jiesuan' data-index="{{index}}">
           <view class="postt">
-            <view style="font-size:12px" class="jobb">岗位：{{item.post}}</view>
+            <view style="font-size:24rpx" class="jobb">岗位：{{item.post}}</view>
           </view>
           <view class="baoming">
-            <view style="font-size:12px" class='xiangqing'>报名者：{{item.user}}</view>
+            <view style="font-size:24rpx" class='xiangqing'>报名者：{{item.user}}</view>
           </view>
         </view>
       </view>
@@ -63,13 +63,13 @@
 
       <view class="yijiesuan" wx:for="{{workinfo3}}" wx:for-item="item" wx:for-index="index">
         <view class='jiesuan'>
-          <image style="margin-top:2px;" class='select_icon' src="{{item.isSelected?'/images/isselected.png':'/images/unselected.png'}}"
+          <image style="margin-top:4rpx;" class='select_icon' src="{{item.isSelected?'/images/isselected.png':'/images/unselected.png'}}"
             bindtap='itemSelected' data-index="{{index}}"></image>
           <view class="postt">
-            <view style="font-size:12px" class="jobb">岗位：{{item.post}}</view>
+            <view style="font-size:24rpx" class="jobb">岗位：{{item.post}}</view>
           </view>
           <view class="baoming">
-            <view style="font-size:12px" class='xiangqing'>报名者：{{item.user}}</view>
+            <view style="font-size:24rpx" class='xiangqing'>报名者：{{item.user}}</view>
           </view>
         </view>
       </view>
@@ -94,7 +94,7 @@
       <modal hidden="{{hiddenmodalput}}" title="报到时间通知" confirm-text="确认" cancel-text="取消" bindcancel="cancel"
         bindconfirm="confirm">
         <view>
-          <text class='a1' style="font-size:15px;color:black">选择岗位首次报道时间</text>
+          <text class='a1' style="font-size:30rpx;color:black">选择岗位首次报道时间</text>
           <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1"
             bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
             <view class="time" style="font-size:13px;">
@@ -131,10 +131,10 @@
       <view class="yijiesuan" wx:for="{{workinfo5}}" wx:for-item="item" wx:for-index="index">
           <view class="jiesuan">
             <view class="postt">
-              <view style="font-size:12px" class="jobb">岗位：{{item.post}}</view>
+              <view style="font-size:24rpx" class="jobb">岗位：{{item.post}}</view>
             </view>
             <view class="baoming">
-              <view style="font-size:12px" class='xiangqing'>报名者：{{item.user}}</view>
+              <view style="font-size:24rpx" class='xiangqing'>报名者：{{item.user}}</view>
             </view>
             <view class="prix1" bindtap="feedback" data-index="{{index}}" wx:if="{{item.pingjia}}" >评价 ></view>
           </view>

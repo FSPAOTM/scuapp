@@ -1,6 +1,6 @@
 /* pages/scenter/scenter.wxss */
 .bg {
-  height: 150px;
+  height: 300rpx;
   background-color: #d53e37;
 }
 
@@ -17,14 +17,14 @@
 .login {
   display: flex;
   color: #fff;
-  font-size: 15px;
+  font-size: 30rpx;
   margin-top: 15rpx;
   justify-content: center;
 }
 
 .button {
-  margin: 10px;
-  font-size: 14px;
+  margin: 20rpx;
+  font-size: 28rpx;
 }
 
 .head image {
@@ -33,7 +33,7 @@
 
 .hr {
   width: 100%;
-  height: 15px;
+  height: 30rpx;
   background-color: #f4f5f6;
 }
 
@@ -49,23 +49,23 @@
 
 
 .title {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 15px;
-  font-size: 15px;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  padding-left: 30rpx;
+  font-size: 30rpx;
 }
 
 .detail2 {
-  font-size: 15px;
+  font-size: 30rpx;
   position: absolute;
-  right: 10px;
-  height: 50px;
-  line-height: 50px;
+  right: 20rpx;
+  height: 100rpx;
+  line-height: 100rpx;
   color: #888;
 }
 
 .line {
-  border: 1px solid #ccc;
+  border: 2rpx solid #ccc;
   opacity: 0.2;
 }
 
@@ -73,40 +73,40 @@
 
 
 Page {
-  font-size: 14px;
+  font-size: 28rpx;
 }
 
 .top {
   width: 100%;
-  height: 180px;
+  height: 360rpx;
   background: #23EBB9;
-  padding-top: 15px;
+  padding-top: 30rpx;
   position: relative;
 }
 
 .center {
   width: 95%;
-  height: 150px;
+  height: 300rpx;
   background: white;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  border-radius: 5px;
+  border-radius: 10rpx;
 }
 
 .center_top {
   display: flex;
   flex-direction: row;
   width: 80%;
-  height: 80px;
+  height: 160rpx;
   margin: 0 auto;
   margin-top: 20rpx;
-  border-bottom: 1px solid #EEEEEE;
+  border-bottom: 2rpx solid #EEEEEE;
 }
 
 .center_img {
-  width: 66px;
-  height: 66px;
+  width: 132rpx;
+  height: 132rpx;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -126,11 +126,11 @@ Page {
   display: flex;
   flex-direction: column;
   margin-top: 10rpx;
-  margin-left: 30px;
+  margin-left: 60rpx;
 }
 
 .center_name {
-  font-size: 20px;
+  font-size: 40rpx;
 }
 
 .center_phone {
@@ -141,40 +141,40 @@ Page {
   display: flex;
   flex-direction: row;
   width: 80%;
-  height: 35px;
+  height: 70rpx;
   margin: 0 auto;
   margin-top: 20rpx;
 }
 
 .center_rank {
   width: 50%;
-  height: 35px;
+  height: 70rpx;
   display: flex;
   flex-direction: row;
 }
 
 .rank_text {
-  height: 35px;
-  line-height: 35px;
+  height: 70rpx;
+  line-height: 70rpx;
   margin-left: 10rpx;
   color: #AAAAAA;
 }
 
 .center_rank image {
-  width: 35px;
+  width: 70rpx;
   height: 35px;
 }
 
 .center_score {
   width: 50%;
-  height: 35px;
+  height: 70rpx;
   display: flex;
   flex-direction: row;
 }
 
 .center_score image {
-  width: 35px;
-  height: 35px;
+  width: 70rpx;
+  height: 70rpx;
 }
 
 .gif-wave {
@@ -197,20 +197,20 @@ Page {
 
 /*头像*/
 .summary .avatar {
-  width: 80px;
-  height: 80px;
-  margin: 20px;
+  width: 160rpx;
+  height: 160rpx;
+  margin: 40rpx;
 }
 
 /*昵称*/
 .summary .nickname {
   color: rgb(8, 8, 8);
-  font-size: 22px;
+  font-size: 44rpx;
 }
 .a1 {
-  width: 20px;
-  height: 20px;
-  margin: 20px;
+  width: 40rpx;
+  height: 40rpx;
+  margin: 40rpx;
 }
 
 .round-click{
@@ -218,7 +218,7 @@ Page {
 }
 
 .addicon{
-  width:20px;
-  height:20px;
+  width:40rpx;
+  height:40rpx;
 }
 
