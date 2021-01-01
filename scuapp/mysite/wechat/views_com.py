@@ -65,8 +65,9 @@ def Company_info_modiify(request):
         com_address = request.POST.get('address')
         com_business = request.POST.get('contents')
         com_condition = request.POST.get('condition')
-        Tbcompany.objects.filter(com_License=com_License).update(phone_num=phone_num, com_leader=com_leader, e_mail=e_mail, com_address=com_address)
         Tbqualify.objects.filter(com_license=com_License).update(com_business=com_business, com_condition=com_condition)
+        qualify = Tbqualify.objects.get(com_license=com_License)
+        Tbcompany.objects.filter(com_License=qualify).update(phone_num=phone_num, com_leader=com_leader, e_mail=e_mail, com_address=com_address)
         return HttpResponse("填写完成")
     else:
         return HttpResponse("请求错误")
