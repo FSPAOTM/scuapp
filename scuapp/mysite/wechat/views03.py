@@ -9,6 +9,9 @@ import json
 #学生管理
 #学生列表界面（修改）
 def stu_manage_list(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     list = Tbstudent.objects.all()
     stu_list = []
     for i in list:
@@ -46,6 +49,9 @@ def stu_manage_list(request):
     return render(request, 'wechat/stu_list.html', {'stu_list': stu_list})
 #学生工作经历详情界面
 def stu_experience(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     stu_id = request.GET.get('stu_num')
     stu = Tbstudent.objects.get(stu_id=stu_id)
     list = Tbapplication.objects.filter(stu=stu)
@@ -183,6 +189,9 @@ def stu_experience(request):
     return render(request, 'wechat/stu_work.html', {'stu_inwork': stu_inwork, 'stu_outwork': stu_outwork})
 #学生简历查看界面（界面 emmm)
 def stu_manage_resume_list(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     str = request.GET.get('res_num')
     res_id =str[17:27]
     resume = Tbresume.objects.get(res_id=res_id)
@@ -231,6 +240,9 @@ def stu_manage_resume_list(request):
 #企业管理
 #企业列表界面
 def company_manage_list(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     company = Tbcompany.objects.all()
     company_list=[]
     for i in company:
@@ -263,6 +275,9 @@ def company_manage_list(request):
     return render(request, 'wechat/company_list.html', {'company_list': company_list})
 #企业所发布兼职列表
 def company_work(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     com_num = request.GET.get('com_num')
     company = Tbcompany.objects.get(com_number = com_num)
     outwork = TboutWork.objects.filter(com_number = company)
@@ -304,6 +319,9 @@ def company_work(request):
     return render(request, 'wechat/company_work.html', {'company_work': company_work})
 #企业兼职录取与招聘情况
 def company_employed(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     ow_number = request.GET.get('ow_number')
     outwork = TboutWork.objects.get(ow_number = ow_number)
     list = Tbapplication.objects.filter(ow_number = outwork)
@@ -335,6 +353,9 @@ def company_employed(request):
 #管理员管理
 #管理员列表总界面
 def manager_manage_list(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     manager = Tbmanager.objects.all()
     manager_list=[]
     for i in manager:
@@ -367,6 +388,9 @@ def manager_manage_list(request):
     return render(request, 'wechat/manager_list.html', {'manager_list': manager_list})
 #管理员信息完善界面
 def manager_ifo(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     manager_id = request.GET.get('manager_id')
     manager0 = Tbmanager.objects.get(manager_id=manager_id)
     manager = []
@@ -390,6 +414,9 @@ def manager_ifo(request):
     return render(request, 'wechat/manager_infomation.html', {'manager': manager})
 #管理员信息完善界面(提交按钮）
 def manager_ifo_submit(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     if request.method == "POST":
         manager_id = request.POST.get('manager_id')
         name = request.POST.get('name')
@@ -404,6 +431,9 @@ def manager_ifo_submit(request):
 #评价管理
 #校外兼职评价展示界面
 def outwork_feedback(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     list0 = Tbcompany.objects.all()
     out_feed = []
     for i in list0:
@@ -444,6 +474,9 @@ def outwork_feedback(request):
     return render(request, 'wechat/outwork_feedback.html', {'out_feed': out_feed})
 #校内兼职评价展示界面
 def inwork_feedback(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     list0 =["教务处","党政办","纪委办","资产处","志愿队","校工会","学工部","出国培训部","科研院","安保处","后勤部","学院","教师","其他"]
     in_feed = []
     number=3000000000
@@ -486,6 +519,9 @@ def inwork_feedback(request):
     return render(request, 'wechat/inwork_feedback.html', {'in_feed': in_feed})
 #学生评价展示界面
 def stu_feedback_show(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     list0 = Tbstudent.objects.all()
     stu_feed = []
     for i in list0:

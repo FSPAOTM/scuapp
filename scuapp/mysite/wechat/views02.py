@@ -18,12 +18,17 @@ import json
 #一大波界面导入
 #首页
 def index(request):
-    # if views01.Login == 1:
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     return render(request, 'wechat/index.html')
     # else:
     #     return HttpResponseRedirect('../login/')
 #首页内框架页
 def manage(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     return render(request, 'wechat/manage.html')
 #登录界面
 def login(request):
@@ -36,6 +41,9 @@ def inwork_foregetpwd(request):
     return render(request, 'wechat/inwork_foregetpwd.html')
 #校内兼职信息展示界面
 def inwork_list(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     inwork_list = []
     list = TbinWork.objects.all()
     for i in list:
@@ -72,9 +80,15 @@ def inwork_list(request):
 
 #校内兼职信息发布界面
 def inwork_add(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     return render(request, 'wechat/inwork_add.html')
 #校外兼职信息展示界面
 def outwork_list(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     outwork_list = []
     list = TboutWork.objects.all()
     for i in list:
@@ -121,6 +135,9 @@ def outwork_list(request):
     return render(request, 'wechat/outwork_list.html', {'outwork_list': outwork_list})
 #校外兼职发布审核界面
 def work_examine(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     list = TboutWork.objects.filter(Q(ow_status="待审核") | Q(ow_status="已打回"))
     outwork_list = []
     for i in list:
@@ -147,10 +164,16 @@ def work_examine(request):
     return render(request, 'wechat/work_examine.html', {'outwork_list': outwork_list})
 #校外兼职信息发布界面
 def outwork_add(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     return render(request, 'wechat/outwork_add.html')
 #校外
 #面试申请总界面
 def interview_list(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     interview_list = []
     list = TbinterviewApply.objects.all()
     for i in list:
@@ -190,6 +213,9 @@ def interview_list(request):
 
 #面试结束
 def interview_end(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     ia_number = request.GET.get("end_num")
     interviewApply = TbinterviewApply.objects.get(ia_number=ia_number)
     if interviewApply.apply_status =="面试阶段":
@@ -200,6 +226,9 @@ def interview_end(request):
 
 #校外应聘学生查看
 def stu_yingpin(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     ia_number = request.GET.get("yp_num")
     interviewApply = TbinterviewApply.objects.get(ia_number=ia_number)
     outwork = interviewApply.ow_number
@@ -252,6 +281,9 @@ def stu_yingpin(request):
 
 #面试信息通知界面
 def interview_notice_send(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     ia_number = request.GET.get("result_num")
     interviewApply = TbinterviewApply.objects.get(ia_number=ia_number)
     outwork = interviewApply.ow_number
@@ -296,6 +328,9 @@ def interview_notice_send(request):
 
 #面试信息通知界面(保存按钮）
 def interview_notice_send_save(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     if request.method == "POST":
         i_number = request.POST.get('i_number')
         in_time = request.POST.get('in_time')
@@ -316,6 +351,9 @@ def interview_notice_send_save(request):
 
 #面试信息通知界面(发送按钮）
 def interview_notice_send_send(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     i_number = request.GET.get('send_num')
     interviewNotice = TbinterviewNotice.objects.get(i_number=i_number)
     interviewApply = TbinterviewApply.objects.get(ia_number=interviewNotice.ia_number)
@@ -334,6 +372,9 @@ def interview_notice_send_send(request):
 
 #面试信息打回界面
 def interview_back_reason(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     ia_number = request.GET.get('ia_num')
     interviewApply = TbinterviewApply.objects.get(ia_number=ia_number)
     outwork = interviewApply.ow_number
@@ -349,6 +390,9 @@ def interview_back_reason(request):
 
 #校外兼职打回理由生成(保存按钮）
 def interview_back_reason_save(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     if request.method == "POST":
         ia_number = request.POST.get('ia_number')
         back_reason = request.POST.get('back_reason')
@@ -362,12 +406,18 @@ def interview_back_reason_save(request):
 
 # 校外兼职打回理由生成(发送按钮）
 def interview_back_reason_send(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     ia_number = request.GET.get('submit_num')
     TbinterviewApply.objects.filter(ia_number=ia_number).update(apply_status="已打回")
     return HttpResponseRedirect('../interview_list/')
 
 #面试结果界面
 def interview_result(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     interview_result=[]
     list = TbinterviewResult.objects.all()
     for i in list:
@@ -402,6 +452,9 @@ def interview_result(request):
 
 #面试录用详情界面
 def interview_stu_result(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     i_number = request.GET.get('i_num')
     interviewNotice = TbinterviewNotice.objects.get(i_number=i_number)
     interviewApply = TbinterviewApply.objects.get(ia_number=interviewNotice.ia_number)
@@ -445,6 +498,9 @@ def interview_stu_result(request):
 #校内兼职学生评价
 #评价学生管理总列表
 def stu_feedback_list(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     stu_feedback_list = []
     list1 = TbinWork.objects.filter(Q(In_status="已结束") | Q(In_status="工作中") | Q(In_status="待评价")| Q(In_status="工作结束"))
     for i in list1:
@@ -530,6 +586,9 @@ def stu_feedback_list(request):
 
 #校内工作结束
 def management_inWork_end(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     iw_number = request.GET.get('finish_num')
     inWork=TbinWork.objects.get(iw_number=iw_number)
     if inWork.In_status == "工作中":
@@ -541,6 +600,9 @@ def management_inWork_end(request):
 
 #校内工作结算
 def management_inWork_paid(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     iw_number = request.GET.get('finish_num')
     inWork=TbinWork.objects.get(iw_number=iw_number)
     if inWork.In_status == "工作结束":
@@ -552,6 +614,9 @@ def management_inWork_paid(request):
 
 #校内编辑学生评价
 def stu_feedback_edit(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     fd_list = request.GET.get('fd_list')
     local1 =fd_list.rfind(",")+1
     local2 = fd_list.rfind(",",0,15)+1
@@ -583,6 +648,9 @@ def stu_feedback_edit(request):
 
 #校内编辑学生评价提交
 def stu_feedback_edit_save(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     if request.method == "POST":
         stu_id = request.POST.get('stu_id')
         iw_number = request.POST.get('iw_number')

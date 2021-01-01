@@ -6,8 +6,6 @@ from django.db.models import Q
 import json
 
 ######一些改状态的函数
-# Login=0
-# print(Login)
 #判断工作是否评价完毕（修改工作状态“待评价”到“已结束”）(校外)
 def out_feedback_over(k): #k为ow_number
     ow_number = TboutWork.objects.get(ow_number=k)
@@ -82,6 +80,9 @@ def in_result_sure(k): #k为iw_number
 ######后台管理界面
 #校内兼职报名处理界面(时间是否需要修改）
 def inworking_list(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     inworking_list = []
     list = TbinWork.objects.exclude(In_status ="已结束").exclude(In_status ="中止").exclude(In_status ="工作中").exclude(In_status ="待评价").exclude(In_status ="工作结束")
     for i in list:
@@ -124,9 +125,10 @@ def management_login(request):
         except Tbmanager.DoesNotExist as e:
             error_msg = "用户名不存在"
             return render(request, 'wechat/login.html', {'error_msg': error_msg})
-        # global Login
-        # Login = 1
-        return render(request, 'wechat/index.html')
+        username = 1
+        response = HttpResponseRedirect('../index/')
+        response.set_cookie('username', username)
+        return response
     else:
         return HttpResponse("请求错误")
 #注册管理者
@@ -169,6 +171,9 @@ def management_forgetpwd(request):
         return HttpResponse("请求错误")
 #校内兼职信息发布
 def management_inWork_release(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     if request.method == "POST":
         iw_post=request.POST.get("IW_post")
         iw_depart=request.POST.get("IW_depart")
@@ -189,6 +194,9 @@ def management_inWork_release(request):
         return HttpResponse("请求错误")
 #校内兼职信息修改
 def management_inWork_reset_show(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     iw_number=request.GET.get("re_num")
     inWork = TbinWork.objects.get(iw_number=iw_number)
     if inWork.In_status== "报名中" or inWork.In_status == "报名结束" or inWork.In_status == "中止"or inWork.In_status == "结果通知中":
@@ -197,6 +205,9 @@ def management_inWork_reset_show(request):
         return render(request, 'wechat/manage_error.html')
 
 def management_inWork_reset(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     if request.method == "POST":
         iw_number = request.POST.get('IW_number')
         iw_post = request.POST.get('IW_post')
@@ -217,11 +228,17 @@ def management_inWork_reset(request):
         return HttpResponse("请求错误")
 #校内兼职信息删除
 def management_inWork_delete(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     iw_number = request.GET.get('delete_num')
     TbinWork.objects.filter(iw_number=iw_number).delete()  #批量删除
     return HttpResponseRedirect('../inwork_list/')
 #校内兼职中止
 def management_inWork_stop(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     iw_number = request.GET.get('stop_num')
     inWork=TbinWork.objects.get(iw_number=iw_number)
     if inWork.In_status == "报名中" or inWork.In_status == "报名结束" or inWork.In_status == "中止":
@@ -231,6 +248,9 @@ def management_inWork_stop(request):
         return render(request, 'wechat/manage_error.html')
 #校内兼职启用
 def management_inWork_begin(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     iw_number = request.GET.get('begin_num')
     inWork = TbinWork.objects.get(iw_number=iw_number)
     if inWork.In_status == "报名结束" or inWork.In_status == "中止":
@@ -241,6 +261,9 @@ def management_inWork_begin(request):
 #校内兼职信息搜索
 #存在问题：必须满足 %sab%的形式 中间有字检索不成功！！！！,时间无法检索！！应该为格式问题
 def management_inwork_search(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     if request.method == "POST":
         s_iw_number = request.POST.get("s_iw_number")
         s_iw_post = request.POST.get("s_iw_post")
@@ -289,6 +312,9 @@ def management_inwork_search(request):
 #校外兼职信息搜索
 #存在问题：必须满足 %sab%的形式 中间有字检索不成功！！！！,时间无法检索！！应该为格式问题, com_number无法检索,因为是对象！！！
 def management_outwork_search(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     if request.method == "POST":
         s_ow_number = request.POST.get("s_ow_number")
         s_ow_post = request.POST.get("s_ow_post")
@@ -347,11 +373,17 @@ def management_outwork_search(request):
         return HttpResponse("请求错误")
 #校外兼职信息删除
 def management_outWork_delete(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     ow_number = request.GET.get('delete_num')
     TboutWork.objects.filter(ow_number=ow_number).delete()  #批量删除
     return HttpResponseRedirect('../outwork_list/')
 #校外兼职中止
 def management_outWork_stop(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     ow_number = request.GET.get('stop_num')
     outWork = TboutWork.objects.get(ow_number=ow_number)
     if outWork.ow_status == "报名中" or outWork.ow_status == "待审核" or outWork.ow_status == "中止"or outWork.ow_status == "已打回"or outWork.ow_status == "报名结束":
@@ -361,6 +393,9 @@ def management_outWork_stop(request):
         return render(request, 'wechat/manage_error.html')
 #校外兼职启用
 def management_outWork_begin(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     ow_number = request.GET.get('begin_num')
     outWork = TboutWork.objects.get(ow_number=ow_number)
     if outWork.ow_status == "中止":
@@ -370,6 +405,9 @@ def management_outWork_begin(request):
         return render(request, 'wechat/manage_error.html')
 #校外兼职信息修改
 def management_outWork_reset_show(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     ow_number=request.GET.get("re_num")
     outWork = TboutWork.objects.get(ow_number=ow_number)
     if outWork.ow_status == "报名中" or outWork.ow_status == "待审核" or outWork.ow_status == "中止"or outWork.ow_status == "已打回"or outWork.ow_status == "报名结束":
@@ -379,6 +417,9 @@ def management_outWork_reset_show(request):
         return render(request, 'wechat/manage_error.html')
 
 def management_outWork_reset(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
         ow_post = request.POST.get('ow_post')
@@ -399,6 +440,9 @@ def management_outWork_reset(request):
         return HttpResponse("请求错误")
 #校外兼职信息发布
 def management_outWork_release(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     if request.method == "POST":
         ow_post = request.POST.get('ow_post')
         w_place_detail = request.POST.get('w_place_detail')
@@ -421,6 +465,9 @@ def management_outWork_release(request):
         return HttpResponse("请求错误")
 #校内兼职报名学生简历
 def inwork_stu_ifo(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     iw_number = request.GET.get("stu_ifo_num")
     list=Tbapplication.objects.filter(iw_number=iw_number)
     inWork = TbinWork.objects.get(iw_number=iw_number)
@@ -453,6 +500,9 @@ def inwork_stu_ifo(request):
     return render(request, 'wechat/inwork_stu_ifo.html', {'inwork_stu_list': inwork_stu_list})
 #校内兼职结果搜索（时间是否需要修改）
 def management_inworking_search(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     if request.method == "POST":
         s_iw_number = request.POST.get("s_iw_number")
         s_iw_post = request.POST.get("s_iw_post")
@@ -487,6 +537,9 @@ def management_inworking_search(request):
         return HttpResponse("请求错误")
 #招聘结果发送
 def inwork_result(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     iw_number = request.GET.get("result_num")
     inwork = TbinWork.objects.get(iw_number=iw_number)
     if inwork.In_status == "报名结束" or inwork.In_status == "结果通知中":
@@ -500,6 +553,9 @@ def inwork_result(request):
         return render(request, 'wechat/manage_error.html')
 #应该多表和学生相连(保存按钮）
 def management_inWork_result(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     if request.method == "POST":
         iw_number = request.POST.get('iw_number')
         inr_phonenum = request.POST.get('inr_phonenum')
@@ -522,6 +578,9 @@ def management_inWork_result(request):
         return HttpResponse("请求错误")
 #提交按钮
 def inwork_result_submit(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     iw_number = request.GET.get("submit_num")
     filterResult = TbinResult.objects.filter(iw_number=iw_number)
     if len(filterResult) > 0:
@@ -532,6 +591,9 @@ def inwork_result_submit(request):
         return render(request, 'wechat/manage_error.html')
 #修改校内招聘结果通知
 def management_inWork_result_change(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     if request.method == "POST":
         iw_number = request.POST.get('iw_number')
         inr_phonenum = request.POST.get('inr_phonenum')
@@ -548,6 +610,9 @@ def management_inWork_result_change(request):
         return HttpResponse("请求错误")
 #校外兼职通过
 def management_outWork_pass(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     ow_number = request.GET.get('pass_num')
     outWork = TboutWork.objects.get(ow_number=ow_number)
     if outWork.ow_status == "待审核":
@@ -558,6 +623,9 @@ def management_outWork_pass(request):
         return render(request, 'wechat/manage_error.html')
 #校外兼职打回界面
 def management_outWork_reject(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     ow_number = request.GET.get('reject_num')
     outWork = TboutWork.objects.get(ow_number=ow_number)
     if outWork.ow_status == "待审核" or outWork.ow_status == "已打回" :
@@ -571,6 +639,9 @@ def management_outWork_reject(request):
         return render(request, 'wechat/manage_error.html')
 #校外兼职打回理由生成(保存按钮）
 def outWork_reject_result(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     if request.method == "POST":
         ow_number = request.POST.get('ow_number')
         back_reason = request.POST.get('back_reason')
@@ -584,6 +655,9 @@ def outWork_reject_result(request):
         return HttpResponse("请求错误")
 # 校外兼职打回理由生成(发送按钮）
 def outWork_reject_result_send(request):
+    username = request.COOKIES.get('username', '')
+    if not username:
+        return HttpResponseRedirect('../login/')
     ow_number = request.GET.get('submit_num')
     TboutWork.objects.filter(ow_number=ow_number).update(ow_status="已打回")
     outwork_list = TboutWork.objects.filter(Q(ow_status="待审核") | Q(ow_status="已打回"))
