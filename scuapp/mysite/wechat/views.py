@@ -95,7 +95,6 @@ def Student_register(request):
         nickname = request.POST.get('NickName')
         account_phone=request.POST.get('phoneNum')
         passwd_1 = request.POST.get('password')
-
         filterResult =Tbstudent.objects.filter(stu_id=account_num)
         if len(filterResult) > 0:
             return HttpResponse("用户已存在")
@@ -115,7 +114,7 @@ def Company_register(request):
         account_phone=request.POST.get('phoneNum')
         account_num =request.POST.get('ComLicense')
         passwd_1 = request.POST.get('password')
-        filterResult1 = Tbcompany.objects.filter(com_license=account_num)
+        filterResult1 = Tbqualify.objects.filter(com_license=account_num)
         filterResult2 = Tbcompany.objects.filter(phone_num=account_phone)
         if len(filterResult1) > 0:
             return HttpResponse("统一信用代码已注册")
@@ -145,7 +144,7 @@ def Reset_password_f1(request):
                 return HttpResponse("身份验证失败")
         else:
             if len(id) == 18:
-                qualify = Tbqualify.objects.filter(com_license=id)
+                qualify = Tbqualify.objects.get(com_license=id)
                 filterResult1 = Tbcompany.objects.filter(com_License=qualify).filter(phone_num=phonenumber)
                 if len(filterResult1) > 0:
                     return HttpResponse("身份验证成功")
@@ -165,7 +164,8 @@ def Reset_password_f2(request):
             Tbstudent.objects.filter(stu_id=id ).update(password=new_password)
         else:
             if len(id) == 18:
-                Tbcompany.objects.filter(stu_id=id ).update(password=new_password)
+                qualify = Tbqualify.objects.get(com_license=id)
+                Tbcompany.objects.filter(com_License=qualify).update(password=new_password)
         return HttpResponse("密码修改成功")
     else:
         return HttpResponse("请求错误")
