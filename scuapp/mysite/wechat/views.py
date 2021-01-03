@@ -83,9 +83,10 @@ def Student_register(request):
             if len(filterResult) > 0:
                 return HttpResponse("用户已存在")
             else:
-                resume=Tbresume.objects.create(name=account_name)
+                id0 = student.objects.filter(stu_id=account_num).get(name=account_name)
+                resume=Tbresume.objects.create(name=account_name,sex=id0.sex)
                 resume.save()
-                user = Tbstudent.objects.create(stu_id=account_num, name=account_name, nickname=nickname, phonenumber_phonenumberphonenumber_phonenumber=account_phone, password=passwd_1, res_id=resume)
+                user = Tbstudent.objects.create(stu_id=account_num, name=account_name, nickname=nickname, phonenumber_phonenumberphonenumber_phonenumber=account_phone, password=passwd_1, res_id=resume,pov_identity=id0.pov_identity,sex=id0.sex,grade=id0.grade)
                 user.save()
                 return HttpResponse("注册成功")
         else:

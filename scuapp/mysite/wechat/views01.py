@@ -138,15 +138,16 @@ def management_inwork_register(request):
         name = request.POST.get("name")
         phonenumber = request.POST.get("phonenumber")
         password = request.POST.get("password")
-        filterResult1 = teacher.objects.filter(manager_id=manager_id).filter(name=name)
+        filterResult1 =teacher.objects.filter(manager_id=manager_id).filter(name=name)
         if len(filterResult1) > 0:
             filterResult = Tbmanager.objects.filter(manager_id=manager_id)
             if len(filterResult) > 0:
                 error_msg = "用户已存在"
                 return render(request, 'wechat/register.html', {'error_msg': error_msg})
             else:
+                id0 = teacher.objects.filter(manager_id=manager_id).get(name=name)
                 user = Tbmanager.objects.create(manager_id=manager_id, name=name, phonenumber=phonenumber,
-                                                password=password)
+                                                password=password,school=id0.school,sex=id0.sex)
                 user.save()
                 return render(request, 'wechat/register_success.html')
         else:
