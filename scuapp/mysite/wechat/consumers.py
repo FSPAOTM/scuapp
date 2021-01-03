@@ -20,27 +20,27 @@ class ChatConsumer(AsyncWebsocketConsumer):
         print(user_name)
 
         #检查是否有历史未读消息，若有，则发送给用户(还可以从数据库读取）
-        message = []
-        filterresult = Tbquery.objects.filter(To_name=user_name)
-        #print(filterresult)
-        if len(filterresult)>0:
-             for item in filterresult:
-                 #如果历史消息里这条记录是发送给刚登录的用户的，添加进用户历史信息列表
-                 if item.Isread==0:
-                     message.append(item.q_content)
-        # 如果message长度大于零，表示有历史记录，缺少逻辑匹配对方id
-        if len(message)>0:
-             # for item in message:
-             #     self.history.remove(item)
-             print(self.channel_name)
-             await self.send(
-                 text_data=json.dumps({
-                     'message': message
-                 }))
-             print("发送成功")
-             for item in filterresult:
-                 item.Isread = 1
-                 Tbquery.objects.update(Isread=item.Isread)
+        # message = []
+        # filterresult = Tbquery.objects.filter(To_name=user_name)
+        # #print(filterresult)
+        # if len(filterresult)>0:
+        #      for item in filterresult:
+        #          #如果历史消息里这条记录是发送给刚登录的用户的，添加进用户历史信息列表
+        #          if item.Isread==0:
+        #              message.append(item.q_content)
+        # # 如果message长度大于零，表示有历史记录，缺少逻辑匹配对方id
+        # if len(message)>0:
+        #      # for item in message:
+        #      #     self.history.remove(item)
+        #      print(self.channel_name)
+        #      await self.send(
+        #          text_data=json.dumps({
+        #              'message': message
+        #          }))
+        #      print("发送成功")
+        #      for item in filterresult:
+        #          item.Isread = 1
+        #          Tbquery.objects.update(Isread=item.Isread)
 
 
 
