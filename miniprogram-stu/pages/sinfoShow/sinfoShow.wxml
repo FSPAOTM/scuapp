@@ -8,25 +8,21 @@
     <view class="all">
     <view class='xixixi'>
       <view class='item'>
-        <text class="show1" >姓名：</text>
-        <text class="xinxi">{{name}}</text>
+        <text class="show1" >姓名：{{name}}</text>
       </view>
       <view class='item'>
-        <text class="show1" >性别：</text>
-        <text class="xinxi">{{gender}}</text>
+        <text class="show1" >性别：{{gender}}</text>
       </view>
       
     </view>
 
     <view class='xixixi'>
       <view class='item'>
-        <text class="show2">年龄：</text>
-        <text class="xinxi">{{age}}</text>
+        <text class="show2">年龄：{{age}}</text>
       </view>
 
       <view class='item'>
-        <text class="show2">教育背景：</text>
-        <text class="xinxi">{{edu}}</text>
+        <text class="show2">教育背景：{{edu}}</text>
       </view>
     </view>
   </view>

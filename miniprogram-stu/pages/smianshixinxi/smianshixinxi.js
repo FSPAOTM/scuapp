@@ -26,6 +26,7 @@ Page({
         'Content-Type': 'application/json'
       },
       data: {
+        stu_number:app.globalData.user,
         ow_number:this.data.ow_number
       },
       success: function (res) {

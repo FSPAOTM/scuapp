@@ -47,7 +47,7 @@
           <view>
             <text class='gongsi'>{{item.depart}}</text>
           </view>
-          <view wx:if="{{item.show}}">
+          <view wx:if="{{item.show1}}">
             <button bindtap="ms" style="width:110px;" class='su'  data-index="{{index}}">面试信息 ></button>
           </view>
         </view>
@@ -69,7 +69,7 @@
             <button bindtap="xq3" style="width:200rpx;" class='su' data-index="{{index}}">详情 ></button>
           </view>
 
-          <view wx:if="{{item.show}}">
+          <view wx:if="{{item.show1}}">
             <button bindtap="ms3" style="width:220rpx;" class='su' data-index="{{index}}">面试信息 ></button>
           </view>
 

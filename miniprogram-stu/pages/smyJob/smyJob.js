@@ -205,12 +205,20 @@ Page({
   ly(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
-    var ow_number = that.data.workinfo3[e].ow_number;
-    console.log(ow_number);
-    console.log("++++++", ev, that)
-    wx.navigateTo({
-      url: "../sluyongxinxi/sluyongxinxi?ow_number=" + ow_number
-    })
+    if (that.data.workinfo3[e].iw_number != "NULL") {
+      var iw_number = that.data.workinfo3[e].iw_number;
+      console.log("++++++", ev, that)
+      wx.navigateTo({
+        url: "../sluyongxinxi/sluyongxinxi?iw_number=" + iw_number+"&ow_number=''"
+      })
+    } else {
+      var ow_number = that.data.workinfo3[e].ow_number;
+      console.log(ow_number);
+      console.log("++++++", ev, that)
+      wx.navigateTo({
+        url: "../sluyongxinxi/sluyongxinxi?ow_number=" + ow_number+"&iw_number=''"
+      })
+    }
   },
 
   xq3(ev) {

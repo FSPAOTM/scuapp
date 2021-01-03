@@ -8,6 +8,7 @@ Page({
   data: {
     isShow: false,
     ow_number:"",
+    iw_number:"",
     luyongxinxi: []
   },
 
@@ -17,6 +18,7 @@ Page({
   onLoad: function (options) {
     let that = this;
     this.setData({
+      iw_number:options.iw_number,
       ow_number:options.ow_number
     })
     wx.request({
@@ -26,7 +28,9 @@ Page({
         'Content-Type': 'application/json'
       },
       data: {
-        ow_number:this.data.ow_number
+        stu_number:app.globalData.user,
+        ow_number:this.data.ow_number,
+        iw_number:this.data.iw_number
       },
       success: function (res) {
         console.log(res);

@@ -173,7 +173,7 @@ textarea{
 
   .xinxi{
     padding-left:10rpx;
-    font-size:12px;
+    font-size:13px;
     color:#696969;
     margin-top:5rpx;
   }
@@ -186,7 +186,7 @@ textarea{
   
   .show2{
     padding-left:100rpx;
-    font-size:15px;
+    font-size:30rpx;
     color:#2F4F4F;
   }
 

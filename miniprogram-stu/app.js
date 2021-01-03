@@ -83,7 +83,7 @@ App({
   linkSocket() {
     var that = this
     wx.connectSocket({
-      url: "ws://127.0.0.1:8000/ws/chat/17188385280/",
+      url: "ws://49.235.199.231:8002/ws/chat/17188385280/",
       header: {
         'content-type': 'application/json'
       },

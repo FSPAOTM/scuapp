@@ -96,7 +96,7 @@ button{
 
 .show1{
   padding-left:20rpx;
-  font-size:15px;
+  font-size:30rpx;
   color:#2F4F4F;
 }
 
