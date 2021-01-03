@@ -20,7 +20,7 @@
   <view class="pwdTotal">
     <image class='lock-img' src="/images/lock.png"></image>
     <view class="mm">
-      <text decode="true">密&nbsp;&nbsp;&nbsp;码</text>
+      <text decode="true">密&nbsp;码</text>
     </view>
     <view class="userpwd">
       <!-- 密码 -->

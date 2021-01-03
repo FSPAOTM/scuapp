@@ -2,7 +2,7 @@
 <view>
 
 <view class="content">
-  <image class='background' src="/images/背景stu.JPG" mode="aspectFill"></image>
+  <image class='background' src="/images/背景stu.png" mode="aspectFill"></image>
 </view>
 
   <!-- <view class="title">学生注册</view> -->

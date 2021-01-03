@@ -81,7 +81,6 @@
       </view>
     </swiper-item>
 
-
     <swiper-item>
       <view class='xiangqing' wx:for="{{workinfo5}}" wx:key="key" wx:for-item="item" wx:for-index="index">
         <view class="xq">
@@ -97,14 +96,14 @@
           </view>
 
           <view>
-            <button bindtap="ms" style="width:180rpx;" class='su2' data-index="{{index}}">面试信息 ></button>
+            <button bindtap="ms" style="width:160rpx;" class='su2' data-index="{{index}}">面试信息 ></button>
           </view>
 
           <view>
-            <button bindtap="ms" style="width:180rpx;" class='su2' data-index="{{index}}">录用信息 ></button>
+            <button bindtap="ms" style="width:160rpx;" class='su2' data-index="{{index}}">录用信息 ></button>
           </view>
           <view wx:if="{{item.show}}">
-            <button bindtap="pingjia" style="width:160px;" class='su2' data-index="{{index}}">评价 ></button>
+            <button bindtap="pingjia" style="width:160rpx;" class='su2' data-index="{{index}}">评价 ></button>
           </view>
         </view>
         <view class="line"></view>

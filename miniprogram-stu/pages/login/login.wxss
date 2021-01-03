@@ -19,7 +19,9 @@ page{
 /*登录图片*/
 .login-icon{
   flex: none;
-  margin-left: 170rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 130rpx;
 }
 .login-img{
@@ -80,12 +82,14 @@ page{
 .userTotal{
   display:flex;
   flex-direction: row;
+  margin-left: 20rpx;
 }
 
 .pwdTotal{
   display:flex;
   flex-direction: row;
   margin-top: 40rpx;
+  margin-left: 20rpx;
 }
 
 /*按钮*/
