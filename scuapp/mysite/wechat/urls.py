@@ -34,6 +34,8 @@ urlpatterns = [
     path('Stu_feedbackEr/', views_stu.Stu_feedbackEr, name='Stu_feedbackEr'),
     path('outwork_feedback_com/', views_stu.outwork_feedback_com, name='outwork_feedback_com'),
     path('outwork_feedback_detail/', views_stu.outwork_feedback_detail, name='outwork_feedback_detail'),
+    path('Stu_interview_information_show/', views_stu.Stu_interview_information_show, name='Stu_interview_information_show'),
+    path('Stu_result_information_show/', views_stu.Stu_result_information_show, name='Stu_result_information_show'),
     #企业
     path('Show_company_name/', views_com.Show_company_name, name='Show_company_name'),
     path('Company_info_showmodiify/', views_com.Company_info_showmodiify, name='Company_info_showmodiify'),

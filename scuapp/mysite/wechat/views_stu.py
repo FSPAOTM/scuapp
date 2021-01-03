@@ -54,6 +54,29 @@ def Stu_interview_notice_sure(request):
     else:
         return HttpResponse("请求错误")
 
+#smianshixinxi 学生面试信息显示
+def Stu_interview_information_show(request):
+    stu_id = request.GET.get('stu_number')
+    number = request.GET.get('ow_number')
+    ow_number = TboutWork.objects.get(ow_number=number)
+    interviewApply = TbinterviewApply.objects.get(ow_number=ow_number)
+    interviewNotice = TbinterviewNotice.objects.get(ia_number=interviewApply.ia_number)
+    stu = interviewNotice.stu.replace("'", '"')
+    stu = json.loads(stu)
+    sure = interviewNotice.s_sure.replace("'", '"')
+    sure = json.loads(sure)
+    plays = []
+    k = 0
+    for j in stu:
+        if j == stu_id:
+            if sure[k] == "已确认":
+                plays.append(
+                    {'ow_number': number, 'post': ow_number.ow_post, 'time': interviewNotice.in_time,
+                     'place': interviewNotice.i_address})
+            k = k + 1
+    plays_json = json.dumps(plays, ensure_ascii=False)
+    return HttpResponse(plays_json)
+
 #sjieguotongzhi 学生结果通知显示
 def Stu_result_show(request):
     stu_id = request.GET.get('user')
@@ -78,6 +101,33 @@ def Stu_result_show(request):
     for j in application2:
         plays.append({'type': "校外兼职", 'ow_number': j.ow_number.ow_number, 'post': j.ow_number.ow_post,
                           'result': "很遗憾，您未被录用，请继续加油！",'success':False,'fail':True})
+    plays_json = json.dumps(plays, ensure_ascii=False)
+    return HttpResponse(plays_json)
+
+#sluyongxinxi 学生录用信息显示
+def Stu_result_information_show(request):
+    ow_number = request.GET.get('ow_number')
+    iw_number = request.GET.get('iw_number')
+    stu_id = request.GET.get('user')
+    student = Tbstudent.objects.get(stu_id=stu_id)
+    plays = []
+    if iw_number =="":
+        ow_number = TboutWork.objects.get(ow_number=ow_number)
+        i = Tbapplication.objects.filter(stu=student).filter(ow_number=ow_number).filter(apply_status="已录用").filter(s_sure="已确认")
+        interviewApply = TbinterviewApply.objects.get(ow_number=i.ow_number)
+        interviewNotice = TbinterviewNotice.objects.get(ia_number=interviewApply.ia_number)
+        interviewResult = TbinterviewResult.objects.get(i_number=interviewNotice)
+        address = i.ow_number.w_place + i.ow_number.w_place_detail
+        plays.append({'type': "校外兼职", 'ow_number': i.ow_number.ow_number, 'post': i.ow_number.ow_post,
+                      'time': interviewResult.ir_rtime, 'address': address, 'ps': interviewResult.ir_ps,
+                      'success': True, 'fail': False})
+    else:
+        iw_number = TbinWork.objects.get(iw_number=iw_number)
+        i = Tbapplication.objects.filter(stu=student).filter(iw_number=iw_number).filter(apply_status="已录用").filter(
+            s_sure="已确认")
+        inResult = TbinResult.objects.get(iw_number =i.iw_number)
+        plays.append({'type':"校内兼职",'iw_number': i.iw_number.iw_number, 'post': i.iw_number.iw_post,
+                          'phonenum': inResult.inr_phonenum,'ps': inResult.r_ps,'success':True,'fail':False})
     plays_json = json.dumps(plays, ensure_ascii=False)
     return HttpResponse(plays_json)
 

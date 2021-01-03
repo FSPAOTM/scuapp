@@ -466,10 +466,10 @@ def Show_myjob(request):
                 for i in result:
                     if apply_status == "已评价":
                         plays.append({'type': '校内', 'title': i.iw_post, 'depart': i.iw_depart, 'status': apply_status,
-                                  'place': i.w_place, 'salary': i.w_salary, 'iw_number': i.iw_number, 'show': False})
+                                  'place': i.w_place, 'salary': i.w_salary, 'iw_number': i.iw_number, 'show': False,'show1':False})
                     else:
                         plays.append({'type': '校内', 'title': i.iw_post, 'depart': i.iw_depart, 'status': apply_status,
-                                  'place': i.w_place, 'salary': i.w_salary, 'iw_number': i.iw_number, 'show': True})
+                                  'place': i.w_place, 'salary': i.w_salary, 'iw_number': i.iw_number, 'show': True,'show1':False})
                 plays_json = json.dumps(plays, ensure_ascii=False)
             else:
                 result = TboutWork.objects.filter(ow_number=item.ow_number.ow_number)
@@ -480,11 +480,11 @@ def Show_myjob(request):
                     if apply_status == "已评价":
                         plays.append({'type': '校外', 'title': i.ow_post, 'depart': com_name, 'status': apply_status,
                                       'place': i.w_place, 'salary': i.w_salary, 'iw_number': "NULL",
-                                      'ow_number': i.ow_number, 'show': False})
+                                      'ow_number': i.ow_number, 'show': False,'show1':True})
                     else:
                         plays.append({'type': '校外', 'title': i.ow_post, 'depart': com_name, 'status': apply_status,
                                       'place': i.w_place, 'salary': i.w_salary, 'iw_number': "NULL",
-                                      'ow_number': i.ow_number, 'show': True})
+                                      'ow_number': i.ow_number, 'show': True,'show1':True})
                 plays_json = json.dumps(plays, ensure_ascii=False)
         return HttpResponse(plays_json)
     else:
