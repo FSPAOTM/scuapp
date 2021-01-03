@@ -212,10 +212,9 @@ Page({
                     url: '../login/login',
                   })
                 }, 2000)
-              } else {
+              } else if(res.data=="您不是我校学生，不能注册"){
                 wx.showToast({
-                  title: '请求错误',
-                  icon: 'none',
+                  title: '您不是我校学生，不能注册',
                   duration: 2000
                 })
               };

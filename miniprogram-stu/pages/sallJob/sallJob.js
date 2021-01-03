@@ -85,6 +85,7 @@ Page({
       url: app.globalData.url + '/Show_work/',
       method: "GET",
       data:{
+        stu_number:app.globalData.user,
         type:this.data.leixing_txt,
         order:this.data.paixu_txt,
         area:this.data.area_txt
@@ -112,6 +113,7 @@ Page({
       url: app.globalData.url + '/Show_work/',
       method: "GET",
       data:{
+        stu_number:app.globalData.user,
         type:this.data.leixing_txt,
         order:this.data.paixu_txt,
         area:this.data.area_txt
@@ -169,16 +171,6 @@ Page({
 
   },
 
-  /*sojobinfo: function (ev) {
-    var that = this;
-    var e = ev.currentTarget.dataset.id;
-    var ow_number=that.data.oworkinfo[e].ow_number;
-    var type=that.data.oworkinfo[e].type;
-    console.log("++++++", ev, that)
-    wx.setStorageSync("ow_number", ow_number),wx.setStorageSync('type', type), wx.navigateTo({
-      url: "../sbaoming/sbaoming"
-    })
-  },*/
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -249,6 +241,7 @@ Page({
       url: app.globalData.url + '/Show_work/',
       method: "GET",
       data:{
+        stu_number:app.globalData.user,
         type:this.data.leixing_txt,
         order:this.data.paixu_txt,
         area:this.data.area_txt

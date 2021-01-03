@@ -21,8 +21,6 @@
   <text class="{{paixu_id==0?'active':''}}" data-id="0" data-index="1" data-txt="综合排序" bindtap="filter">综合排序</text>
 
   <text class="{{paixu_id==1?'active':''}}" data-id="1" data-index="1" data-txt="最新发布" bindtap="filter">最新发布</text>
-
-  <text class="{{paixu_id==2?'active':''}}" data-id="2" data-index="1" data-txt="距离排序" bindtap="filter">距离排序</text>
 </view>
 
 <!-- <view class="tabLayer" hidden="{{tab[2]}}">
