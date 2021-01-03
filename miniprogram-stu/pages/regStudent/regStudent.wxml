@@ -50,7 +50,7 @@
     <image class="zhuce" src="/images/学生注册.png"></image>
     <text class="a1" style="padding-left:30rpx">密码：</text>
     <view class="password input_view {{focusPassword?'focus':'blur'}}">
-      <input type="password" data-model="password" placeholder="请输入8-18位密码" bindfocus="focusPassword" bindblur="blurPassword" bindinput="inputwatch"></input>
+      <input type="password" data-model="password" placeholder="请输入8-18位同时包含字母和数字的密码" bindfocus="focusPassword" bindblur="blurPassword" bindinput="inputwatch"></input>
     </view>
   </view>
 

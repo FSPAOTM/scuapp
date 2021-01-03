@@ -57,9 +57,7 @@ Page({
           paixu_id: id,
           paixu_txt: txt
         });
-        console.log(this.data.leixing_txt)
-        console.log(this.data.paixu_txt)
-        console.log(this.data.area_txt)
+        self.onRefresh();
         break;
         case '2':
           tabTxt[2] = txt;
@@ -69,39 +67,9 @@ Page({
             area_id: id,
             area_txt: txt
           });
-          console.log(this.data.leixing_txt)
-        console.log(this.data.paixu_txt)
-        console.log(this.data.area_txt)
+          self.onRefresh();
           break;
-
     }
-    //数据筛选
-    self.getDataList();
-  },
-
-  //加载数据
-  getDataList: function () {
-    wx.request({
-      url: app.globalData.url + '/Show_work/',
-      method: "GET",
-      data:{
-        stu_number:app.globalData.user,
-        type:this.data.leixing_txt,
-        order:this.data.paixu_txt,
-        area:this.data.area_txt
-      },
-      header: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        console.log(res);
-        if (res.statusCode == 200) {
-          self.setData({
-            workinfo: res.data
-          })
-        }
-      }
-    })
   },
 
   /**
@@ -130,23 +98,6 @@ Page({
         }
       }
     })
-
-    /*wx.request({
-      url: app.globalData.url + '/Show_outwork/',
-      method: "GET",
-      header: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        console.log(res);
-        if (res.statusCode == 200) {
-          self.setData({
-            oworkinfo: res.data
-          })
-        }
-      }
-    
-    })*/
   },
 
   sjobinfo: function (ev) {

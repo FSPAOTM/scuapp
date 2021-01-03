@@ -56,7 +56,7 @@ Page({
   blurPhoneNum: function (e) {
     this.setData({
       focusPhoneNum: false,
-      phoneNum:e.detail.value
+      phoneNum: e.detail.value
     })
     let myreg = /^1[3456789]\d{9}$/;
     if (e.detail.value == "") {
@@ -77,7 +77,7 @@ Page({
   blurStuNumber: function (e) {
     this.setData({
       focusStuNumber: false,
-      StuNumber:e.detail.value
+      StuNumber: e.detail.value
     })
     let myreg = /^(20)\d{11}$/;
     if (e.detail.value == "") {
@@ -100,7 +100,7 @@ Page({
   blurName: function (e) {
     this.setData({
       focusName: false,
-      Name:e.detail.value
+      Name: e.detail.value
     })
     if (e.detail.value == "") {
       wx.showToast({
@@ -114,7 +114,7 @@ Page({
   blurNickName: function (e) {
     this.setData({
       focusNickName: false,
-      NickName:e.detail.value
+      NickName: e.detail.value
     })
     if (e.detail.value == "") {
       wx.showToast({
@@ -128,7 +128,7 @@ Page({
   blurPassword: function (e) {
     this.setData({
       focusPassword: false,
-      password:e.detail.value
+      password: e.detail.value
     })
     let myreg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$]{8,18}$/;
     if (e.detail.value == "") {
@@ -150,7 +150,7 @@ Page({
     console.log(this.data.password);
     this.setData({
       focusRePassword: false,
-      rePassword:e.detail.value
+      rePassword: e.detail.value
     })
     if (e.detail.value == "") {
       wx.showToast({
@@ -200,25 +200,24 @@ Page({
                   url: '../login/login',
                 })
               }, 2000)
-            } else {
-              if (res.data == "注册成功") {
-                wx.showToast({
-                  title: '注册成功',
-                  icon: 'success',
-                  duration: 2000
+            } else if (res.data == "注册成功") {
+              wx.showToast({
+                title: '注册成功',
+                icon: 'success',
+                duration: 2000
+              })
+              setTimeout(function () {
+                wx.redirectTo({
+                  url: '../login/login',
                 })
-                setTimeout(function () {
-                  wx.redirectTo({
-                    url: '../login/login',
-                  })
-                }, 2000)
-              } else if(res.data=="您不是我校学生，不能注册"){
-                wx.showToast({
-                  title: '您不是我校学生，不能注册',
-                  duration: 2000
-                })
-              };
-            }
+              }, 2000)
+            } else if (res.data == "您不是我校学生，不能注册") {
+              wx.showToast({
+                title: '您不是我校学生，不能注册',
+                icon:'none',
+                duration: 2000
+              })
+            };
           }
         }
       })
