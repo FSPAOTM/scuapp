@@ -9,11 +9,13 @@
 </view>
 <!--筛选项-->
 <view class="tabLayer" hidden="{{tab[0]}}">
-  <text class="{{pinpai_id==0?'active':''}}" data-id="0" data-index="0" data-txt="类型" bindtap="filter">不限</text>
+  <text class="{{pinpai_id==0?'active':''}}" data-id="0" data-index="0" data-txt="不限" bindtap="filter">不限</text>
 
-  <text class="{{pinpai_id==item.id?'active':''}}" wx:for="{{pinpaiList}}" wx:key="pp" wx:for-item="item"
-    data-id="{{item.id}}" data-index="0" data-txt="{{item.title}}" bindtap="filter">{{item.title}}</text>
+  <text class="{{paixu_id==1?'active':''}}" data-id="1" data-index="0" data-txt="校内" bindtap="filter">校内</text>
+
+<text class="{{paixu_id==2?'active':''}}" data-id="2" data-index="0" data-txt="校外" bindtap="filter">校外</text>
 </view>
+
 
 <view class="tabLayer" hidden="{{tab[1]}}">
   <text class="{{paixu_id==0?'active':''}}" data-id="0" data-index="1" data-txt="综合排序" bindtap="filter">综合排序</text>
@@ -31,11 +33,16 @@
 
 </view> -->
 <view class="tabLayer" hidden="{{tab[2]}}">
-  <text class="{{xiaoliang_id==0?'active':''}}" data-id="0" data-index="2" data-txt="区域" bindtap="filter">不限</text>
-  <text class="{{xiaoliang_id==1?'active':''}}" data-id="1" data-index="2" data-txt="锦江" bindtap="filter">锦江</text>
-  <text class="{{xiaoliang_id==2?'active':''}}" data-id="2" data-index="2" data-txt="武侯" bindtap="filter">武侯</text>
-  <text class="{{xiaoliang_id==2?'active':''}}" data-id="2" data-index="2" data-txt="青羊" bindtap="filter">青羊</text>
-  <text class="{{xiaoliang_id==2?'active':''}}" data-id="2" data-index="2" data-txt="龙泉驿" bindtap="filter">龙泉驿</text>
+  <text class="{{area_id==0?'active':''}}" data-id="0" data-index="2" data-txt="不限" bindtap="filter">不限</text>
+  <text class="{{area_id==1?'active':''}}" data-id="1" data-index="2" data-txt="锦江区" bindtap="filter">锦江区</text>
+  <text class="{{area_id==2?'active':''}}" data-id="2" data-index="2" data-txt="武侯区" bindtap="filter">武侯区</text>
+  <text class="{{area_id==3?'active':''}}" data-id="3" data-index="2" data-txt="青羊区" bindtap="filter">青羊区</text>
+  <text class="{{area_id==4?'active':''}}" data-id="4" data-index="2" data-txt="龙泉驿区" bindtap="filter">龙泉驿区</text>
+  <text class="{{area_id==5?'active':''}}" data-id="5" data-index="2" data-txt="金牛区" bindtap="filter">金牛区</text>
+  <text class="{{area_id==6?'active':''}}" data-id="6" data-index="2" data-txt="成华区" bindtap="filter">成华区</text>
+  <text class="{{area_id==7?'active':''}}" data-id="7" data-index="2" data-txt="青白江区" bindtap="filter">青白江区</text>
+  <text class="{{area_id==8?'active':''}}" data-id="8" data-index="2" data-txt="新都区" bindtap="filter">新都区</text>
+  <text class="{{area_id==9?'active':''}}" data-id="9" data-index="2" data-txt="温江区" bindtap="filter">温江区</text>
 
 </view>
 

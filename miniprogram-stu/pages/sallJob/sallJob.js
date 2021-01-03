@@ -8,66 +8,8 @@ Page({
   data: {
     tabTxt: ['类型', '综合排序', '区域'], //分类
     tab: [true, true, true],
-    pinpaiList: [{
-        'id': '1',
-        'title': '家教'
-      },
-      {
-        'id': '2',
-        'title': '调研'
-      },
-      {
-        'id': '3',
-        'title': '服务员'
-      },
-      {
-        'id': '4',
-        'title': '实习'
-      },
-      {
-        'id': '5',
-        'title': '客服'
-      },
-      {
-        'id': '6',
-        'title': '安保'
-      },
-      {
-        'id': '7',
-        'title': '会展活动'
-      },
-      {
-        'id': '8',
-        'title': '代理'
-      },
-      {
-        'id': '9',
-        'title': '演出'
-      },
-      {
-        'id': '10',
-        'title': '送餐'
-      },
-      {
-        'id': '11',
-        'title': '摄影剪辑'
-      },
-      {
-        'id': '12',
-        'title': '翻译'
-      },
-      {
-        'id': '13',
-        'title': '设计'
-      },
-      {
-        'id': '14',
-        'title': '文案编辑'
-      }
-    ],
-    areaList:[],
-    pinpai_id: 0, //类型
-    pinpai_txt: '',
+    leixing_id: 0, //类型
+    leixing_txt: '',
     paixu_id: 0, //排序
     paixu_txt: '',
     area_id: 0, //筛选
@@ -102,6 +44,10 @@ Page({
           leixing_id: id,
           leixing_txt: txt
         });
+        console.log(this.data.leixing_txt)
+        console.log(this.data.paixu_txt)
+        console.log(this.data.area_txt)
+        self.onRefresh();
         break;
       case '1':
         tabTxt[1] = txt;
@@ -111,7 +57,22 @@ Page({
           paixu_id: id,
           paixu_txt: txt
         });
+        console.log(this.data.leixing_txt)
+        console.log(this.data.paixu_txt)
+        console.log(this.data.area_txt)
         break;
+        case '2':
+          tabTxt[2] = txt;
+          self.setData({
+            tab: [true, true, true],
+            tabTxt: tabTxt,
+            area_id: id,
+            area_txt: txt
+          });
+          console.log(this.data.leixing_txt)
+        console.log(this.data.paixu_txt)
+        console.log(this.data.area_txt)
+          break;
 
     }
     //数据筛选
@@ -120,7 +81,26 @@ Page({
 
   //加载数据
   getDataList: function () {
-    //调用数据接口，获取数据
+    wx.request({
+      url: app.globalData.url + '/Show_work/',
+      method: "GET",
+      data:{
+        type:this.data.leixing_txt,
+        order:this.data.paixu_txt,
+        area:this.data.area_txt
+      },
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          self.setData({
+            workinfo: res.data
+          })
+        }
+      }
+    })
   },
 
   /**
@@ -129,30 +109,13 @@ Page({
   onLoad: function (options) {
     let self = this;
     wx.request({
-      url: 'https://lbs.amap.com/api/webservice/guide/api/district',//待修改
-      method: "GET",
-      header: {
-        'Content-Type': 'application/json'
-      },
-      data:{
-        key:"80d1a82ecf4305a0cdd243289f293711",
-        keywords:"510100",
-        subdistrict:"1",
-        extensions:"base",
-        filter:"510100",
-      },
-      success: function (res) {
-        console.log(res);
-        if (res.status == 1) {
-          self.setData({
-            areaList: res.data.districts.district
-          })
-        }
-      }
-    })
-    wx.request({
       url: app.globalData.url + '/Show_work/',
       method: "GET",
+      data:{
+        type:this.data.leixing_txt,
+        order:this.data.paixu_txt,
+        area:this.data.area_txt
+      },
       header: {
         'Content-Type': 'application/json'
       },
@@ -286,6 +249,11 @@ Page({
       url: app.globalData.url + '/Show_work/',
       /*待修改*/
       method: "GET",
+      data:{
+        type:this.data.leixing_txt,
+        order:this.data.paixu_txt,
+        area:this.data.area_txt
+      },
       header: {
         'Content-Type': 'application/json'
       },
