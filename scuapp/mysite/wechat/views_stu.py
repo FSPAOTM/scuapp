@@ -1,5 +1,5 @@
 from django.shortcuts import HttpResponse
-from .models import Tbstudent,TbinWork,TboutWork,Tbapplication,TbinterviewNotice,TbfeedbackEr,TbinterviewApply,TbinResult,TbinterviewResult
+from .models import Tbstudent,TbinWork,TboutWork,Tbapplication,TbinterviewNotice,TbfeedbackEr,TbinterviewApply,TbinResult,TbinterviewResult,Tbcompany
 from django.utils import timezone
 import json
 from django.db.models import Q
@@ -79,7 +79,7 @@ def Stu_interview_information_show(request):
 
 #sjieguotongzhi 学生结果通知显示
 def Stu_result_show(request):
-    stu_id = request.GET.get('user')
+    stu_id = request.GET.get('stu_id')
     student = Tbstudent.objects.get(stu_id=stu_id)
     application1 = Tbapplication.objects.filter(stu=student).filter(apply_status="已录用").filter(s_sure="未确认")
     plays = []
@@ -108,12 +108,12 @@ def Stu_result_show(request):
 def Stu_result_information_show(request):
     ow_number = request.GET.get('ow_number')
     iw_number = request.GET.get('iw_number')
-    stu_id = request.GET.get('user')
+    stu_id = request.GET.get('stu_number')
     student = Tbstudent.objects.get(stu_id=stu_id)
     plays = []
-    if iw_number =="":
+    if iw_number =="null":
         ow_number = TboutWork.objects.get(ow_number=ow_number)
-        i = Tbapplication.objects.filter(stu=student).filter(ow_number=ow_number).filter(apply_status="已录用").filter(s_sure="已确认")
+        i = Tbapplication.objects.filter(stu=student).filter(ow_number=ow_number).filter(apply_status="已录用").get(s_sure="已确认")
         interviewApply = TbinterviewApply.objects.get(ow_number=i.ow_number)
         interviewNotice = TbinterviewNotice.objects.get(ia_number=interviewApply.ia_number)
         interviewResult = TbinterviewResult.objects.get(i_number=interviewNotice)
@@ -123,7 +123,7 @@ def Stu_result_information_show(request):
                       'success': True, 'fail': False})
     else:
         iw_number = TbinWork.objects.get(iw_number=iw_number)
-        i = Tbapplication.objects.filter(stu=student).filter(iw_number=iw_number).filter(apply_status="已录用").filter(
+        i = Tbapplication.objects.filter(stu=student).filter(iw_number=iw_number).filter(apply_status="已录用").get(
             s_sure="已确认")
         inResult = TbinResult.objects.get(iw_number =i.iw_number)
         plays.append({'type':"校内兼职",'iw_number': i.iw_number.iw_number, 'post': i.iw_number.iw_post,
@@ -241,3 +241,84 @@ def outwork_feedback_detail(request):
         return HttpResponse(plays_json)
     else:
         return HttpResponse("该公司暂无评价")
+
+#Salljob 校内外兼职信息展示界面
+def Show_work(request):
+    type = request.GET.get('type')
+    order = request.GET.get('order')
+    area = request.GET.get('area')
+    plays = []
+    if area=="不限":
+        area=""
+    if type=="校内":
+        if order=="综合排序":
+            result2 = TbinWork.objects.filter(In_status='报名中')
+            for i in result2:
+                plays.append(
+                    {'type': '校内', 'title': i.iw_post, 'amount': i.w_amount, 'place': i.w_place, 'salary': i.w_salary,
+                     'depart': i.iw_depart, 'iw_number': i.iw_number})
+        else:
+            result2 = TbinWork.objects.filter(In_status='报名中').order_by('inpub_time')
+            for i in result2:
+                plays.append(
+                    {'type': '校内', 'title': i.iw_post, 'amount': i.w_amount, 'place': i.w_place, 'salary': i.w_salary,
+                     'depart': i.iw_depart, 'iw_number': i.iw_number})
+    else:
+        if type=="不限":
+            if order == "综合排序":
+                result1 = TboutWork.objects.filter(ow_status='报名中').filter(w_place=area)
+                result2 = TbinWork.objects.filter(In_status='报名中')
+                for i in result1:
+                    user = TboutWork.objects.get(ow_number=i.ow_number)
+                    com_number = user.com_number.com_number
+                    com_name = Tbcompany.objects.get(com_number=com_number).com_name
+                    plays.append(
+                        {'type': '校外', 'title': i.ow_post, 'amount': i.w_amount, 'place': i.w_place, 'salary': i.w_salary,
+                            'depart': com_name, 'iw_number': 'NULL', 'ow_number': i.ow_number})
+                for i in result2:
+                    plays.append(
+                        {'type': '校内', 'title': i.iw_post, 'amount': i.w_amount, 'place': i.w_place,
+                         'salary': i.w_salary,
+                         'depart': i.iw_depart, 'iw_number': i.iw_number})
+            else:
+                result1 = TboutWork.objects.filter(ow_status='报名中').filter(w_place=area).order_by('ipub_time')
+                result2 = TbinWork.objects.filter(In_status='报名中').order_by('inpub_time')
+                for i in result1:
+                    user = TboutWork.objects.get(ow_number=i.ow_number)
+                    com_number = user.com_number.com_number
+                    com_name = Tbcompany.objects.get(com_number=com_number).com_name
+                    plays.append(
+                        {'type': '校外', 'title': i.ow_post, 'amount': i.w_amount, 'place': i.w_place, 'salary': i.w_salary,
+                            'depart': com_name, 'iw_number': 'NULL', 'ow_number': i.ow_number})
+                for i in result2:
+                    plays.append(
+                        {'type': '校内', 'title': i.iw_post, 'amount': i.w_amount, 'place': i.w_place,
+                         'salary': i.w_salary,
+                         'depart': i.iw_depart, 'iw_number': i.iw_number})
+        else:
+            if order == "综合排序":
+                result1 = TboutWork.objects.filter(ow_status='报名中').filter(w_place=area)
+                for i in result1:
+                    user = TboutWork.objects.get(ow_number=i.ow_number)
+                    com_number = user.com_number.com_number
+                    com_name = Tbcompany.objects.get(com_number=com_number).com_name
+                    plays.append(
+                        {'type': '校外', 'title': i.ow_post, 'amount': i.w_amount, 'place': i.w_place, 'salary': i.w_salary,
+                            'depart': com_name, 'iw_number': 'NULL', 'ow_number': i.ow_number})
+            else:
+                result1 = TboutWork.objects.filter(ow_status='报名中').filter(w_place=area).order_by('ipub_time')
+                for i in result1:
+                    user = TboutWork.objects.get(ow_number=i.ow_number)
+                    com_number = user.com_number.com_number
+                    com_name = Tbcompany.objects.get(com_number=com_number).com_name
+                    plays.append(
+                        {'type': '校外', 'title': i.ow_post, 'amount': i.w_amount, 'place': i.w_place, 'salary': i.w_salary,
+                            'depart': com_name, 'iw_number': 'NULL', 'ow_number': i.ow_number})
+    plays_json = json.dumps(plays,ensure_ascii=False)
+    return HttpResponse(plays_json)
+
+#Salljob 查询类型功能
+
+#Salljob 查询距离功能
+
+#Salljob 查询区域

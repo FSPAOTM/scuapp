@@ -337,27 +337,6 @@ def Reset_myinfo_e_mail(request):
     else:
         return HttpResponse("请求错误")
 
-#Salljob 校内外兼职信息展示界面
-def Show_work(request):
-    result1 = TboutWork.objects.filter(ow_status='报名中')
-    result2 = TbinWork.objects.filter(In_status='报名中')
-    plays = []
-    for i in result1:
-            user = TboutWork.objects.get(ow_number=i.ow_number)
-            com_number = user.com_number.com_number
-            com_name = Tbcompany.objects.get(com_number=com_number).com_name
-            plays.append({'type':'校外','title':i.ow_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':com_name,'iw_number':'NULL','ow_number':i.ow_number})
-    for i in result2:
-        plays.append({'type':'校内','title':i.iw_post,'amount':i.w_amount,'place':i.w_place,'salary':i.w_salary,'depart':i.iw_depart,'iw_number':i.iw_number})
-    plays_json = json.dumps(plays,ensure_ascii=False)
-    return HttpResponse(plays_json)
-
-#Salljob 查询类型功能
-
-#Salljob 查询距离功能
-
-#Salljob 查询区域
-
 #Sbaoming 兼职详情展示
 def Show_outwork_detail(request):
     if request.method == "POST":
