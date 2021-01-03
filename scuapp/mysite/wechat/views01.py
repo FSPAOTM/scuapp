@@ -1,7 +1,7 @@
 from django.shortcuts import HttpResponse,render
 from django.utils import timezone
 from django.http import HttpResponseRedirect
-from .models import Tbcompany, Tbmanager, Tbstudent,TbinWork, TboutWork, TbinResult, Tbapplication,TbfeedbackEr,TbinterviewApply,TbinterviewNotice
+from .models import Tbcompany, Tbmanager, Tbstudent,TbinWork, TboutWork, TbinResult, Tbapplication,TbfeedbackEr,TbinterviewApply,TbinterviewNotice,teacher
 from django.db.models import Q
 import json
 
@@ -138,15 +138,19 @@ def management_inwork_register(request):
         name = request.POST.get("name")
         phonenumber = request.POST.get("phonenumber")
         password = request.POST.get("password")
-        filterResult = Tbmanager.objects.filter(manager_id=manager_id)
-        if len(filterResult) > 0:
-            error_msg = "用户已存在"
-            return render(request, 'wechat/register.html', {'error_msg': error_msg})
+        filterResult1 = teacher.objects.filter(manager_id=manager_id).filter(name=name)
+        if len(filterResult1) > 0:
+            filterResult = Tbmanager.objects.filter(manager_id=manager_id)
+            if len(filterResult) > 0:
+                error_msg = "用户已存在"
+                return render(request, 'wechat/register.html', {'error_msg': error_msg})
+            else:
+                user = Tbmanager.objects.create(manager_id=manager_id, name=name, phonenumber=phonenumber,
+                                                password=password)
+                user.save()
+                return render(request, 'wechat/register_success.html')
         else:
-            user = Tbmanager.objects.create(manager_id=manager_id, name=name, phonenumber=phonenumber,
-                                            password=password)
-            user.save()
-            return render(request, 'wechat/register_success.html')
+            return render(request, 'wechat/register_shibai.html')
     else:
         return HttpResponse("请求错误")
 #忘记密码

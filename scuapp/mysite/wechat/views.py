@@ -69,24 +69,6 @@ def dengluzhuce_login(request):
     else:
         return HttpResponse("请求错误")
 
-#regManager 注册功能
-def Manage_register(request):
-    #curtime=time.strftime("%Y-%m-%d %H:%M:%S",time.localtime());注册时间？
-    if request.method == "POST":
-        account_num = request.POST.get('ManNumber')
-        account_name = request.POST.get('Name')
-        account_phone=request.POST.get('phoneNum')
-        passwd_1 = request.POST.get('password')
-        filterResult =Tbmanager.objects.filter(manager_id=account_num)
-        if len(filterResult) > 0:
-            return HttpResponse("用户已存在")
-        else:
-            user = Tbmanager.objects.create(manager_id=account_num, name=account_name, phonenumber=account_phone, password=passwd_1)
-            user.save()
-            return HttpResponse("注册成功")
-    else:
-        return HttpResponse("请求错误")
-
 #regstudent 学生注册
 def Student_register(request):
     if request.method == "POST":
@@ -95,15 +77,19 @@ def Student_register(request):
         nickname = request.POST.get('NickName')
         account_phone=request.POST.get('phoneNum')
         passwd_1 = request.POST.get('password')
-        filterResult =Tbstudent.objects.filter(stu_id=account_num)
-        if len(filterResult) > 0:
-            return HttpResponse("用户已存在")
+        filterResult1 = student.objects.filter(stu_id=account_num).filter(name=account_name)
+        if len(filterResult1) > 0:
+            filterResult =Tbstudent.objects.filter(stu_id=account_num)
+            if len(filterResult) > 0:
+                return HttpResponse("用户已存在")
+            else:
+                resume=Tbresume.objects.create(name=account_name)
+                resume.save()
+                user = Tbstudent.objects.create(stu_id=account_num, name=account_name, nickname=nickname, phonenumber_phonenumberphonenumber_phonenumber=account_phone, password=passwd_1, res_id=resume)
+                user.save()
+                return HttpResponse("注册成功")
         else:
-            resume=Tbresume.objects.create(name=account_name)
-            resume.save()
-            user = Tbstudent.objects.create(stu_id=account_num, name=account_name, nickname=nickname, phonenumber_phonenumberphonenumber_phonenumber=account_phone, password=passwd_1, res_id=resume)
-            user.save()
-            return HttpResponse("注册成功")
+            return HttpResponse("您不是我校学生，不能注册")
     else:
         return HttpResponse("请求错误")
 
