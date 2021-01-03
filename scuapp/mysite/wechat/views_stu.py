@@ -258,7 +258,7 @@ def Show_work(request):
                     {'type': '校内', 'title': i.iw_post, 'amount': i.w_amount, 'place': i.w_place, 'salary': i.w_salary,
                      'depart': i.iw_depart, 'iw_number': i.iw_number})
         else:
-            result2 = TbinWork.objects.filter(In_status='报名中').order_by('inpub_time')
+            result2 = TbinWork.objects.filter(In_status='报名中').order_by('-inpub_time')
             for i in result2:
                 plays.append(
                     {'type': '校内', 'title': i.iw_post, 'amount': i.w_amount, 'place': i.w_place, 'salary': i.w_salary,
@@ -266,7 +266,7 @@ def Show_work(request):
     else:
         if type=="不限":
             if order == "综合排序":
-                result1 = TboutWork.objects.filter(ow_status='报名中').filter(w_place=area)
+                result1 = TboutWork.objects.filter(ow_status='报名中').filter(w_place__contains=area)
                 result2 = TbinWork.objects.filter(In_status='报名中')
                 for i in result1:
                     user = TboutWork.objects.get(ow_number=i.ow_number)
@@ -281,8 +281,8 @@ def Show_work(request):
                          'salary': i.w_salary,
                          'depart': i.iw_depart, 'iw_number': i.iw_number})
             else:
-                result1 = TboutWork.objects.filter(ow_status='报名中').filter(w_place=area).order_by('ipub_time')
-                result2 = TbinWork.objects.filter(In_status='报名中').order_by('inpub_time')
+                result1 = TboutWork.objects.filter(ow_status='报名中').filter(w_place__contains=area).order_by('-ipub_time')
+                result2 = TbinWork.objects.filter(In_status='报名中').order_by('-inpub_time')
                 for i in result1:
                     user = TboutWork.objects.get(ow_number=i.ow_number)
                     com_number = user.com_number.com_number
@@ -297,7 +297,7 @@ def Show_work(request):
                          'depart': i.iw_depart, 'iw_number': i.iw_number})
         else:
             if order == "综合排序":
-                result1 = TboutWork.objects.filter(ow_status='报名中').filter(w_place=area)
+                result1 = TboutWork.objects.filter(ow_status='报名中').filter(w_place__contains=area)
                 for i in result1:
                     user = TboutWork.objects.get(ow_number=i.ow_number)
                     com_number = user.com_number.com_number
@@ -306,7 +306,7 @@ def Show_work(request):
                         {'type': '校外', 'title': i.ow_post, 'amount': i.w_amount, 'place': i.w_place, 'salary': i.w_salary,
                             'depart': com_name, 'iw_number': 'NULL', 'ow_number': i.ow_number})
             else:
-                result1 = TboutWork.objects.filter(ow_status='报名中').filter(w_place=area).order_by('ipub_time')
+                result1 = TboutWork.objects.filter(ow_status='报名中').filter(w_place__contains=area).order_by('-ipub_time')
                 for i in result1:
                     user = TboutWork.objects.get(ow_number=i.ow_number)
                     com_number = user.com_number.com_number
