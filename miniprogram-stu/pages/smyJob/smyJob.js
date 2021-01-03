@@ -180,6 +180,39 @@ Page({
     }
   },
 
+  ms(ev) {
+    var that = this;
+    var e = ev.currentTarget.dataset.index;
+    var ow_number = that.data.workinfo2[e].ow_number;
+    console.log(ow_number);
+    console.log("++++++", ev, that)
+    wx.navigateTo({
+      url: "../smianshixinxi/smianshixinxi?ow_number=" + ow_number
+    })
+  },
+
+  ms3(ev) {
+    var that = this;
+    var e = ev.currentTarget.dataset.index;
+    var ow_number = that.data.workinfo3[e].ow_number;
+    console.log(ow_number);
+    console.log("++++++", ev, that)
+    wx.navigateTo({
+      url: "../smianshixinxi/smianshixinxi?ow_number=" + ow_number
+    })
+  },
+
+  ly(ev) {
+    var that = this;
+    var e = ev.currentTarget.dataset.index;
+    var ow_number = that.data.workinfo3[e].ow_number;
+    console.log(ow_number);
+    console.log("++++++", ev, that)
+    wx.navigateTo({
+      url: "../sluyongxinxi/sluyongxinxi?ow_number=" + ow_number
+    })
+  },
+
   xq3(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
@@ -200,25 +233,7 @@ Page({
     }
   },
 
-  /*xq4(ev) {
-    var that = this;
-    var e = ev.currentTarget.dataset.index;
-    var type = that.data.workinfo4[e].type;
-    if (that.data.workinfo4[e].iw_number != "NULL") {
-      var iw_number = that.data.workinfo4[e].iw_number;
-      console.log("++++++", ev, that)
-      wx.setStorageSync("iw_number", iw_number), wx.setStorageSync('type', type), wx.navigateTo({
-        url: "../sjobShow/sjobShow"
-      })
-    } else {
-      var ow_number = that.data.workinfo4[e].ow_number;
-      console.log(ow_number);
-      console.log("++++++", ev, that)
-      wx.setStorageSync("ow_number", ow_number), wx.setStorageSync('type', type), wx.navigateTo({
-        url: "../sjobShow/sjobShow"
-      })
-    }
-  },*/
+  
 
   xq5(ev) {
     var that = this;
@@ -293,6 +308,7 @@ Page({
     //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
     wx.showLoading({
       title: '刷新中...',
+      duration: 2000
     })
     this.getData();
   },

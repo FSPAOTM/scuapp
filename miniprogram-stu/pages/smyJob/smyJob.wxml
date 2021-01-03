@@ -47,8 +47,8 @@
           <view>
             <text class='gongsi'>{{item.depart}}</text>
           </view>
-          <view>
-            <button bindtap="ms" style="width:110px;" class='su'>面试信息 ></button>
+          <view wx:if="{{item.show}}">
+            <button bindtap="ms" style="width:110px;" class='su'  data-index="{{index}}">面试信息 ></button>
           </view>
         </view>
         <view class="line"></view>
@@ -69,12 +69,12 @@
             <button bindtap="xq3" style="width:200rpx;" class='su' data-index="{{index}}">详情 ></button>
           </view>
 
-          <view>
-            <button bindtap="ms" style="width:220rpx;" class='su' data-index="{{index}}">面试信息 ></button>
+          <view wx:if="{{item.show}}">
+            <button bindtap="ms3" style="width:220rpx;" class='su' data-index="{{index}}">面试信息 ></button>
           </view>
 
           <view>
-            <button bindtap="ms" style="width:220rpx;" class='su' data-index="{{index}}">录用信息 ></button>
+            <button bindtap="ly" style="width:220rpx;" class='su' data-index="{{index}}">录用信息 ></button>
           </view>
         </view>
         <view class="line"></view>

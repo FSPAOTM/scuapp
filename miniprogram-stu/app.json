@@ -1,5 +1,7 @@
 {
   "pages":[
+    "pages/sluyongxinxi/sluyongxinxi",
+    "pages/smianshixinxi/smianshixinxi",
     "pages/spingjiashow/spingjiashow",
     "pages/index/index",
     "pages/logs/logs",
