@@ -138,5 +138,7 @@ urlpatterns = [
     path('outwork_feedback/', views03.outwork_feedback, name='outwork_feedback'),
     path('inwork_feedback/', views03.inwork_feedback, name='inwork_feedback'),
     path('stu_feedback_show/', views03.stu_feedback_show, name='stu_feedback_show'),
+    #测试
+    path('test/', views.test, name='test'),
 
 ]

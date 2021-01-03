@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'school.apps.SchoolConfig',
 ]
 
 MIDDLEWARE = [
@@ -99,9 +100,26 @@ DATABASES = {
         'TEST': {
                     'NAME': 'mytestdatabase',
                 },
+    },
+'default2': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'scu_qzzx',
+        'USER':'lhy',
+        "PASSWORD":'lhy123456',
+        "HOST":"49.235.199.231",
+        "PORT":3306,
+        'TEST': {
+                    'NAME': 'outdatabase',
+                },
     }
 }
 
+DATABASE_ROUTERS = ['mysite.DatabaseAppRouter.DatabaseAppsRouter']
+#两个应用对应不同的数据库
+DATABASE_APPS_MAPPING = {
+        'wechat': 'default',
+        'school': 'default2',
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

@@ -1,5 +1,5 @@
 from django.shortcuts import HttpResponse
-from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication
+from .models import Tbcompany, Tbmanager, Tbstudent,Tbresume, Tbqualify,TbinWork,TboutWork,Tbapplication,student
 from django.utils import timezone
 import json
 from threading import Timer
@@ -490,6 +490,14 @@ def Show_myjob(request):
     else:
         return HttpResponse("请求错误")
 
+#test
+def test(request):
+    result1 = student.objects.all()
+    plays = []
+    for i in result1:
+        plays.append({'type': '校外', 'title': i.stu_id})
+    plays_json = json.dumps(plays, ensure_ascii=False)
+    return HttpResponse(plays_json)
 
 
 

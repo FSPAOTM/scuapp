@@ -233,3 +233,34 @@ class Tbstudent(models.Model):
     class Meta:
         managed = False
         db_table = 'tbstudent'
+
+
+class student(models.Model):
+    stu_id = models.CharField(db_column='Stu_ID', primary_key=True, max_length=13)
+    name = models.CharField(db_column='Name', max_length=20)
+    pov_identity = models.CharField(db_column='Pov_Identity', max_length=2)
+    sex = models.CharField(db_column='sex', max_length=2, blank=True)
+    grade = models.CharField(db_column='Grade', max_length=6)
+    address = models.CharField(db_column='address', max_length=60)
+    party = models.CharField(db_column='party', max_length=2)
+
+    class Meta:
+        app_label = 'school'
+        managed = False
+        db_table = 'student'
+
+
+class teacher(models.Model):
+    manager_id = models.CharField(db_column='Manager_ID', primary_key=True, max_length=8)
+    name = models.CharField(db_column='Name', max_length=20)
+    phonenumber = models.CharField(db_column='PhoneNumber', max_length=11)
+    school = models.CharField(db_column='School', max_length=60)
+    sex = models.CharField(db_column='Sex', max_length=2)
+    title = models.CharField(db_column='title', max_length=60)
+    type = models.CharField(db_column='type', max_length=60)
+    married = models.CharField(db_column='married', max_length=2)
+
+    class Meta:
+        app_label = 'school'
+        managed = False
+        db_table = 'teacher'
