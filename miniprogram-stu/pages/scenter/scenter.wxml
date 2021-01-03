@@ -1,14 +1,13 @@
 <!--pages/scenter/scenter.wxml-->
 <import src="template\tabbar.wxml" />
 <template is="tabBar" data="{{tabBar}}" />
-<view class="summary">
-  <image src="/images/scenter7.png" class="avatar" />
-  <view class="nickname">{{name}}</view>
-  <view class="round-click" bindtap="exitlogin">
-    <image class="addicon" src="/images/zhuxiao.png"></image>
-  </view>
-</view>
-
+<view class="header">
+        <view class="thumb">
+          <open-data type="userAvatarUrl"></open-data>
+        </view>
+          <view class="nickname">{{name}}</view>
+          
+    </view>
 
 
 <view class="hr"></view>
@@ -40,3 +39,6 @@
   </view>
 </view>
 <view class="line"></view>
+<view class="round-click" bindtap="exitlogin">
+    <image class="addicon" src="/images/zhuxiao.png"></image>
+    </view>

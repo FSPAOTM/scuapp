@@ -99,7 +99,7 @@ App({
 
   globalData: {
     list: [],
-    url: 'http://49.235.199.231/wechat',
+    url: 'http://127.0.0.1:8000/wechat',
     userInfo: "",
     user: "",
     age: "",

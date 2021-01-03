@@ -78,105 +78,22 @@ Page({
 
   // 选项卡
   filterTab: function (e) {
-    var self = this;
     var data = [true, true, true],
-      id = e.currentTarget.dataset.id;
-    data[id] = !this.data.tab[id];
+      index = e.currentTarget.dataset.index;
+    data[index] = !this.data.tab[index];
     this.setData({
       tab: data
     })
-    /*wx.request({
-      url: 'https://lbs.amap.com/api/webservice/guide/api/district',
-      method: "GET",
-      header: {
-        'Content-Type': 'application/json'
-      },
-      data:{
-        key:"80d1a82ecf4305a0cdd243289f293711",
-        keywords:"510100",
-        subdistrict:"1",
-        extensions:"base",
-        filter:"510100",
-      },
-      success: function (res) {
-        console.log(res);
-        if (res.status == 1) {
-          self.setData({
-            areaList: res.data.districts.district
-          })
-        }
-      }
-    })*/
   },
 
 
-  //筛选项点击操作//待完善
-  filter1: function (e) {
+  //筛选项点击操作
+  filter: function (e) {
     var self = this,
       id = e.currentTarget.dataset.id,
       txt = e.currentTarget.dataset.txt,
       tabTxt = this.data.tabTxt;
-    switch (e.currentTarget.dataset.id) {
-      case '0':
-        tabTxt[0] = txt;
-        self.setData({
-          tab: [true, true, true],
-          tabTxt: tabTxt,
-          leixing_id: id,
-          leixing_txt: txt
-        });
-        break;
-      case '1':
-        tabTxt[1] = txt;
-        self.setData({
-          tab: [true, true, true],
-          tabTxt: tabTxt,
-          paixu_id: id,
-          paixu_txt: txt
-        });
-        break;
-
-    }
-    //数据筛选
-    self.getDataList();
-  },
-
-  filter2: function (e) {
-    var self = this,
-      id = e.currentTarget.dataset.id,
-      txt = e.currentTarget.dataset.txt,
-      tabTxt = this.data.tabTxt;
-    switch (e.currentTarget.dataset.id) {
-      case '0':
-        tabTxt[0] = txt;
-        self.setData({
-          tab: [true, true, true],
-          tabTxt: tabTxt,
-          leixing_id: id,
-          leixing_txt: txt
-        });
-        break;
-      case '1':
-        tabTxt[1] = txt;
-        self.setData({
-          tab: [true, true, true],
-          tabTxt: tabTxt,
-          paixu_id: id,
-          paixu_txt: txt
-        });
-        break;
-
-    }
-    //数据筛选
-    self.getDataList();
-  },
-
-  filter3: function (e) {
-    var self = this,
-      id = e.currentTarget.dataset.id,
-      txt = e.currentTarget.dataset.txt,
-      tabTxt = this.data.tabTxt;
-    switch (e.currentTarget.dataset.id) {
+    switch (e.currentTarget.dataset.index) {
       case '0':
         tabTxt[0] = txt;
         self.setData({

@@ -41,7 +41,7 @@
   <view class="section">
     <view style="padding-left:30rpx;font-size:30rpx">
       <image class="zhuce" src="/images/简历.png"></image>
-      <text class="class">技能自评：</text>
+      <text class="class">技能自评</text>
     <view class="xian"></view>
     <view style=" height: 300rpx;">
       <text style="font-size:30rpx; margin-left:30rpx;;" maxlength='150'>{{tech}}</text>
@@ -52,7 +52,7 @@
   <view class="section">
     <view style="padding-left:30rpx;font-size:30rpx">
       <image class="zhuce" src="/images/简历.png"></image>
-      <text class="class">工作经历：</text>
+      <text class="class">工作经历</text>
       <view class="xian"></view>
     <view style=" height: 300rpx;">
       <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{job}}</text>
@@ -63,7 +63,7 @@
   <view class="section">
     <view style="padding-left:30rpx;font-size:30rpx">
       <image class="zhuce" src="/images/简历.png"></image>
-      <text class="class">项目经历：</text>
+      <text class="class">项目经历</text>
     <view class="xian"></view>
     <view style=" height: 300rpx;">
       <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{project}}</text>
@@ -74,7 +74,7 @@
   <view class="section">
     <view style="padding-left:30rpx;font-size:30rpx">
       <image class="zhuce" src="/images/简历.png"></image>
-      <text class="class">课外实践：</text>
+      <text class="class">课外实践</text>
     <view class="xian"></view>
     <view style=" height: 300rpx;">
       <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{practice}}</text>
@@ -85,7 +85,7 @@
   <view class="section">
     <view style="padding-left:30rpx;font-size:30rpx">
       <image class="zhuce" src="/images/简历.png"></image>
-      <text class="class">个人作品：</text>
+      <text class="class">个人作品</text>
       <view class="xian"></view>
       <view style=" height: 300rpx;">
       <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{works}}</text>
@@ -96,7 +96,7 @@
   <view class="section">
     <view style="padding-left:30rpx;font-size:30rpx">
       <image class="zhuce" src="/images/简历.png"></image>
-      <text class="class">应聘理由：</text>
+      <text class="class">应聘理由</text>
     <view class="xian"></view>
     <view style=" height: 300rpx;">
       <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{reason}}</text>

@@ -88,7 +88,7 @@ Page({
               duration: 2000
             })
             setTimeout(function () {
-              wx.navigateTo({
+              wx.redirectTo({
                 url: '../login/login',
               })
             }, 2000)

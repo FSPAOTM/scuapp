@@ -50,12 +50,6 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
     "plugin": {
       "list": []
     },
@@ -127,6 +121,12 @@
           "id": -1,
           "name": "pages/schatting/schatting",
           "pathName": "pages/schatting/schatting",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/scenter/scenter",
+          "pathName": "pages/scenter/scenter",
           "scene": null
         }
       ]
