@@ -1,6 +1,4 @@
 <!--pages/scenter/scenter.wxml-->
-<import src="template\tabbar.wxml" />
-<template is="tabBar" data="{{tabBar}}" />
 <view class="header">
         <view class="thumb">
           <open-data type="userAvatarUrl"></open-data>

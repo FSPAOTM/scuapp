@@ -1,5 +1,4 @@
 <!--pages/sxiaoxi/sxiaoxi.wxml-->
-
 <view class="standView">
   <!--背景层-->
   <view class="baise"></view>

@@ -247,7 +247,6 @@ Page({
     let self = this;
     wx.request({
       url: app.globalData.url + '/Show_work/',
-      /*待修改*/
       method: "GET",
       data:{
         type:this.data.leixing_txt,
