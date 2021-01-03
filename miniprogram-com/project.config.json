@@ -97,6 +97,12 @@
         {
           "name": "pages/cinterview/cinterview",
           "pathName": "pages/cinterview/cinterview",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cworkspace/cworkspace",
+          "pathName": "pages/cworkspace/cworkspace",
           "scene": null
         }
       ]
