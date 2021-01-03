@@ -101,6 +101,8 @@ Page({
     })
   },
 
+  
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -239,36 +241,36 @@ Page({
         count: 2,
         avatar: "../../images/head.png",
         text: "",
-        updated: "2020.11.02"
+        updated: "2021.1.4"
       },
-      "show": {
+      "18310086086": {
         id: "002",
         count: 0,
-        avatar: "../../images/head.png",
+        avatar: "../../images/head2.png",
         text: "",
-        updated: "2020.11.02"
+        updated: "2021.1.1"
       },
-      "as先生": {
+      "13350508078": {
         id: "003",
         count: 0,
-        avatar: "../../images/head.png",
+        avatar: "../../images/head3.png",
         text: "",
-        updated: "2020.11.02"
+        updated: "2020.12.30"
       },
-      "练习生": {
+      "13228217783": {
         id: "004",
         count: 0,
-        avatar: "../../images/head.png",
+        avatar: "../../images/head4.png",
         text: "",
-        updated: "2020.11.02"
+        updated: "2020.12.9"
       },
-      "练习生o": {
+      "17809874566": {
         id: "005",
         count: 0,
-        avatar: "../../images/head.png",
+        avatar: "../../images/head5.png",
         text: "",
         updated: "2020.11.02"
-      },
+      }
     }
     this.setData({
       list: list

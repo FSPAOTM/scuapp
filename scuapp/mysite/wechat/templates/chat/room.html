@@ -14,7 +14,8 @@
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
         const chatSocket = new WebSocket(
-            'ws://49.235.199.231:8002'
+            'ws://'
+            + window.location.host
             + '/ws/chat/'
             + roomName
             + '/'

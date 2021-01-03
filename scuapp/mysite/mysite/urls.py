@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf.urls import include, url
+from django.contrib import admin
+from django.urls import path
 
 urlpatterns = [
     path('wechat/', include('wechat.urls')),

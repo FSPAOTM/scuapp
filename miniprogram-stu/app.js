@@ -83,7 +83,7 @@ App({
   linkSocket() {
     var that = this
     wx.connectSocket({
-      url: "ws://49.235.199.231:8002/ws/chat/17188385280/",
+      url: "ws://localhost/ws/chat/17188385280/",
       header: {
         'content-type': 'application/json'
       },
@@ -116,20 +116,20 @@ App({
     stuNumber: "",
     jobType: "",
     ow_number: "",
-    friendlist: ["17188385280", "show", "as先生", "22先生", "练习生"],
+    friendlist: ["17188385280", "18310086086", "13350508078", "13228217783","17809874566"],
     msgList:{
       "17188385280":[{
         from: '17188385280',
         to: 'text',
         content: '你好！',
-        time: '2020.10.10',
+        time: '2021.1.4',
         isread: 0
       },
       {
         from: '17188385280',
         to: 'text',
         content: '欢迎咨询！',
-        time: '2020.10.10',
+        time: '2021.1.4',
         isread: 0
       }],
 

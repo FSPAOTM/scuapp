@@ -230,35 +230,35 @@ Page({
       "2018141093036": {
         id: "001",
         count: 2,
-        avatar: "../../images/head.png",
+        avatar: "../../images/head.jpg",
         text: "",
-        updated: "2020.11.02"
+        updated: "2021.1.04"
       },
-      "show": {
+      "2018141093032": {
         id: "002",
         count: 0,
-        avatar: "../../images/head.png",
+        avatar: "../../images/head1.jpg",
         text: "",
-        updated: "2020.11.02"
+        updated: "2020.11.09"
       },
-      "as先生": {
+      "2018141093042": {
         id: "003",
         count: 0,
-        avatar: "../../images/head.png",
+        avatar: "../../images/head2.jpg",
         text: "",
         updated: "2020.11.02"
       },
-      "练习生": {
+      "2018141093001": {
         id: "004",
         count: 0,
-        avatar: "../../images/head.png",
+        avatar: "../../images/head3.jpg",
         text: "",
-        updated: "2020.11.02"
+        updated: "2020.11.0"
       },
-      "练习生o": {
+      "2018141093040": {
         id: "005",
         count: 0,
-        avatar: "../../images/head.png",
+        avatar: "../../images/head4.jpg",
         text: "",
         updated: "2020.11.02"
       },
