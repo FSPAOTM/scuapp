@@ -1,0 +1,26 @@
+<!--pages/sluyongxinxi/sluyongxinxi.wxml-->
+<!--pages/sjieguotongzhi/sjieguotongzhi.wxml-->
+
+
+<view class="line"></view>
+
+<view class="section"  wx:for="{{luyongxinxi}}" >
+    <view class="tongzhi" >
+      <text>录 用 信 息</text>
+    </view>
+    <view class="xian2"></view>
+    <view class="content" style=" height: 400rpx;">
+      <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>岗位：{{item.post}}</text>
+      <text style="font-size:30rpx; margin-top:40rpx; margin-left:30rpx;;" maxlength='300'>负责人电话：{{item.phonenum}}</text>
+      <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>备注：{{item.ps}}</text>
+    </view>
+  </view>
+
+
+  <view class="after" wx:if="{{isShow}}">
+  <text>暂无已确认的录用信息</text>
+</view>
+
+
+
+
