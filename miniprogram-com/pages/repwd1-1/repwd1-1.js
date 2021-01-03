@@ -17,14 +17,12 @@ Page({
     this.setData({
       newpwd: e.detail.value
     })
-    console.log(this.data.newpwd)
   },
 
   again(e) {
     this.setData({
       newpwd2: e.detail.value
     })
-    console.log(this.data.newpwd2)
 
 
   },

@@ -87,11 +87,6 @@ Page({
               icon: 'none',
               duration: 2000
             })
-            setTimeout(function () {
-              wx.redirectTo({
-                url: '../login/login',
-              })
-            }, 2000)
           } else {
             if (res.data == "用户名不存在") {
               wx.showToast({
