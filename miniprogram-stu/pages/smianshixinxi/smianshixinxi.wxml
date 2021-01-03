@@ -9,8 +9,7 @@
   <view class="xian2"></view>
   <view class="content" style=" height:400rpx;">
     <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>面试岗位：{{item.post}}</text>
-    <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>面试时间：</text>
-    <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>{{item.time}}</text>
+    <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>面试时间：{{item.time}}</text>
     <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>面试地点：{{item.place}}</text>
   </view>
 </view>

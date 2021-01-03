@@ -20,7 +20,7 @@ Page({
       ow_number:options.ow_number
     })
     wx.request({
-      url: app.globalData.url + '/Stu_interview_notice_show/', //待修改
+      url: app.globalData.url + '/Stu_interview_information_show/', 
       method: "GET",
       header: {
         'Content-Type': 'application/json'

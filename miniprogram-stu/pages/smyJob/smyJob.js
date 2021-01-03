@@ -209,14 +209,14 @@ Page({
       var iw_number = that.data.workinfo3[e].iw_number;
       console.log("++++++", ev, that)
       wx.navigateTo({
-        url: "../sluyongxinxi/sluyongxinxi?iw_number=" + iw_number+"&ow_number=''"
+        url: "../sluyongxinxi/sluyongxinxi?iw_number=" + iw_number+"&ow_number=null"
       })
     } else {
       var ow_number = that.data.workinfo3[e].ow_number;
       console.log(ow_number);
       console.log("++++++", ev, that)
       wx.navigateTo({
-        url: "../sluyongxinxi/sluyongxinxi?ow_number=" + ow_number+"&iw_number=''"
+        url: "../sluyongxinxi/sluyongxinxi?ow_number=" + ow_number+"&iw_number=null"
       })
     }
   },

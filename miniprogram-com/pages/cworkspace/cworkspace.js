@@ -407,7 +407,9 @@ Page({
               duration: 2000
             })
             setTimeout(function () {
-              this.onRefresh()
+              wx.switchTab({
+                url: '../cworkspace/cworkspace?currentTab=3',
+              })
             }, 2000)
           }
         }
@@ -500,18 +502,6 @@ Page({
   onShow: function () {
     app.editTabBar();
   },
-  /*userlist(e) {
-    var index = e.currentTarget.dataset.index;
-    if (this.data.selectedFlag[index]){
-      this.data.selectedFlag[index] = false;
-    }else{
-      this.data.selectedFlag[index] = true;
-    }
-
-    this.setData({
-      selectedFlag: this.data.selectedFlag
-    })
-  },*/
 
   onRefresh() {
     //在当前页面显示导航条加载动画

@@ -11,7 +11,7 @@
     <view class="xian2"></view>
     <view class="content" style=" height: 400rpx;">
       <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>岗位：{{item.post}}</text>
-      <text style="font-size:30rpx; margin-top:40rpx; margin-left:30rpx;;" maxlength='300'>负责人电话：{{item.phonenum}}</text>
+      <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>负责人电话：{{item.phonenum}}</text>
       <text style="font-size:30rpx; margin-top:20rpx; margin-left:30rpx;;" maxlength='300'>备注：{{item.ps}}</text>
     </view>
   </view>
