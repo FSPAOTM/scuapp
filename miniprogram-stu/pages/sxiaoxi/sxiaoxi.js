@@ -82,7 +82,7 @@ Page({
         'Content-Type': 'application/json'
       },
       data: {
-        user: app.globalData.user
+        stu_id: app.globalData.user
       },
       success: function (res) {
         console.log(res);
@@ -189,7 +189,7 @@ Page({
         'Content-Type': 'application/json'
       },
       data: {
-        user: app.globalData.user
+        stu_id: app.globalData.user
       },
       success: function (res) {
         console.log(res);
