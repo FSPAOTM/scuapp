@@ -101,7 +101,7 @@ App({
   },
 
   globalData: {
-    url: 'http://127.0.0.1:8000/wechat',
+    url: 'http://49.235.199.231:8000/wechat',
     chatSocket: null,
     userInfo: "",
     user: "",
