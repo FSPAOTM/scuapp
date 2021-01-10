@@ -1,32 +1,30 @@
 /* pages/cinterviewModify/cinterviewModify.wxss */
 .detailView {
-  margin-left:10px;
-  color:#323232;
-  display:flex;
-  margin-top:40rpx;
+  margin-left: 10px;
+  color: #323232;
+  display: flex;
+  margin-top: 40rpx;
   width: 100%;
 }
-
 
 .detail {
-  margin-left:10px;
-  color:#323232;
-  display:flex;
+  margin-left: 10px;
+  color: #323232;
+  display: flex;
   flex-direction: row;
-  margin-top:40rpx;
+  margin-top: 40rpx;
   width: 100%;
 }
 
-
-.detail .img{
+.detail .img {
   margin-top: 6rpx;
   margin-left: 10rpx;
   width: 24rpx;
   height: 24rpx;
 }
 
-.title{
-  font-family:"黑体" ;
+.title {
+  font-family: "黑体";
   font-weight: 1000;
   font-size: 34rpx;
   text-align: center;
@@ -34,7 +32,7 @@
   margin-bottom: 30rpx;
 }
 
-.icon .img{
+.icon .img {
   display: flex;
   margin-left: auto;
   margin-right: auto;
@@ -43,18 +41,17 @@
   height: 40rpx;
 }
 
-.a1{
-height: 100%;
-width: 100%;
+.a1 {
+  height: 100%;
+  width: 100%;
 }
 
-.a2{
+.a2 {
   color: #888;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top:10rpx; 
-  
+  margin-top: 10rpx;
 }
 
 .btn-view {
@@ -68,5 +65,5 @@ width: 100%;
 
 .btn {
   width: 90%;
-  font-size:32rpx;
+  font-size: 32rpx;
 }

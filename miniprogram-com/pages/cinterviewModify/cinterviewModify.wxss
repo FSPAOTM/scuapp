@@ -7,7 +7,6 @@
   width: 100%;
 }
 
-
 .detail {
   margin-left:20rpx;
   color:#323232;
@@ -16,7 +15,6 @@
   margin-top:40rpx;
   width: 100%;
 }
-
 
 .detail .img{
   margin-top: 6rpx;
@@ -54,7 +52,6 @@ width: 100%;
   align-items: center;
   justify-content: center;
   margin-top:10rpx; 
-  
 }
 
 .btn-view {

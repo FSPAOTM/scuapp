@@ -19,6 +19,7 @@
 </view>
 <view class="container">
   <swiper current="{{currentTab}}" class="swiper-box" duration="150" style="height: 1500rpx">
+    <!-- 待审核 -->
     <swiper-item>
       <view class="fold__panel" wx:for="{{workinfo1}}" wx:for-item="item" wx:for-index="index">
         <view class="fold__items">
@@ -45,7 +46,7 @@
         </view>
       </view>
     </swiper-item>
-
+    <!-- 未通过 -->
     <swiper-item>
       <view class="yijiesuan" wx:for="{{workinfo2}}" wx:for-item="item" wx:for-index="index">
         <view class='jiesuan' data-index="{{index}}">
@@ -58,9 +59,8 @@
         </view>
       </view>
     </swiper-item>
-
+    <!-- 已通过 -->
     <swiper-item>
-
       <view class="yijiesuan" wx:for="{{workinfo3}}" wx:for-item="item" wx:for-index="index">
         <view class='jiesuan'>
           <image style="margin-top:4rpx;" class='select_icon'
@@ -75,7 +75,6 @@
         </view>
       </view>
 
-      
       <view class="anniu">
         <button class="btbdstk" bindtap="modalput">
           <view class="sqdzk">
@@ -87,7 +86,6 @@
             <text>未通过面试</text>
           </view>
         </button>
-
       </view>
       <!--弹窗-->
       <modal hidden="{{hiddenmodalput}}" title="报到时间通知" confirm-text="确认" cancel-text="取消" bindcancel="cancel"
@@ -110,9 +108,7 @@
 
       </modal>
     </swiper-item>
-
-
-
+    <!-- 已录用 -->
     <swiper-item>
       <view class="yijiesuan" wx:for="{{workinfo4}}" wx:for-item="item" wx:for-index="index">
         <view class='jiesuan' bindtap="yiluyong" data-index="{{index}}">
@@ -125,7 +121,7 @@
         </view>
       </view>
     </swiper-item>
-
+    <!-- 已结算 -->
     <swiper-item>
       <view class="yijiesuan" wx:for="{{workinfo5}}" wx:for-item="item" wx:for-index="index">
         <view class="jiesuan">

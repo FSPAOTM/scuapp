@@ -1,16 +1,17 @@
 /* pages/repwd1-1/repwd1-1.wxss */
+.new {
+  height: 150rpx;
+  background-color: #fff;
+  margin: 20rpx;
+}
 
-.new{
+.ok {
   height: 150rpx;
   background-color: #fff;
   margin: 20rpx;
 }
-.ok{
-  height: 150rpx;
-  background-color: #fff;
-  margin: 20rpx;
-}
-.imply{
+
+.imply {
   height: 150rpx;
   font-size: large;
   font-weight: 900;
@@ -18,31 +19,34 @@
   background: #F0F8FF;
   height: 100rpx;
   display: flex;
-  justify-content:center;
-  align-items:center;
-  color:#999;
+  justify-content: center;
+  align-items: center;
+  color: #999;
 }
-text{
+
+text {
   /* margin-top: 50rpx; */
   margin-left: 20rpx;
 }
-input{
+
+input {
   margin-top: 30rpx;
   margin-left: 30rpx;
- 
+
 }
-button{
+
+button {
   margin: 20rpx;
   margin-top: 30rpx;
 }
 
-.zhuce{
+.zhuce {
   width: 40rpx;
   height: 40rpx;
   margin-left: 40rpx;
 }
 
-.line{
+.line {
   height: 10rpx;
   background: #FFE4E1;
 }

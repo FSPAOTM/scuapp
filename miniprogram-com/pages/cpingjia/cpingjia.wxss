@@ -1,29 +1,30 @@
 /* pages/pj/pj.wxss */
-/* pages/pingjia/pingjia.wxss */
 
-.message-list{
-  /* background-color:#f2f2f2; */
+.message-list {
   display: flex;
   flex-direction: column;
 }
 
-.user-content{
+.user-content {
   margin-left: 40rpx;
   display: flex;
   flex-direction: column;
 }
-.header-icon{
+
+.header-icon {
   width: 90rpx;
   height: 90rpx;
   border-radius: 80rpx;
   margin-left: 20rpx;
   margin-top: 26rpx;
 }
-.firstline{
+
+.firstline {
   display: flex;
   flex-direction: row;
 }
-.apart{
+
+.apart {
   margin-left: 30rpx;
   display: flex;
   flex-direction: row;
@@ -34,7 +35,7 @@
   color: #aeaeae;
 }
 
-.time{
+.time {
   display: flex;
   width: 60rpx;
   font-size: 24rpx;
@@ -43,17 +44,18 @@
   margin-left: 140rpx;
 }
 
-.time-num{
-margin-right: 20rpx; 
+.time-num {
+  margin-right: 20rpx;
 }
 
 /*内容第二行*/
-.secondline{
+.secondline {
   display: flex;
   flex-direction: row;
 }
+
 /*对话框消息内容*/
-.dialog{
+.dialog {
   width: 545rpx;
   font-size: 28rpx;
   margin-left: 30rpx;
@@ -61,7 +63,7 @@ margin-right: 20rpx;
 }
 
 
-.dialog2{
+.dialog2 {
   width: 545rpx;
   font-size: 28rpx;
   margin-left: 70rpx;
@@ -69,91 +71,82 @@ margin-right: 20rpx;
 }
 
 /*分割线*/
-.linecut{
+.linecut {
   width: 100%;
   height: 2rpx;
   background-color: #F2F2F2;
   margin-top: 26rpx;
 }
 
-
-
-
-
-
-
-.tab-h{  
-  width: 100%;  
-  border-bottom: 1px solid #eee;  
-  text-align: center;  
+.tab-h {
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  text-align: center;
   line-height: 80rpx;
-  background: #fff;  
+  background: #fff;
   position: fixed;
-  top: 0;  
+  top: 0;
   z-index: 999;
-  }  
+}
 
-.swiper-tab-list{  
-font-size: 12px;  
-display: inline-block;  
-width: 20%;  
-color: #666;  
-}  
-.swiper_tab_view{
+.swiper-tab-list {
+  font-size: 12px;
+  display: inline-block;
+  width: 20%;
+  color: #666;
+}
+
+.swiper_tab_view {
   width: 100%;
   text-align: center;
   line-height: 80rpx;
 }
 
-.on{ 
-  color: #dd2727;  
+.on {
+  color: #dd2727;
   border-bottom: 5rpx solid #dd2727;
-  }  
-  
-  .swiper-box{ 
-  display: block; 
-  width: 100%; 
-  height: 100%;
-  overflow: hidden; 
-  }  
-  
-  
-  .swiper-box view{
-    width:100%;
-  }
-
-  
-  .container{
-    width:100%;
-    height:100%;
-    padding-top: 80rpx;
-  }
-
-.nav-class{
-  margin-top:15rpx;
-  margin-bottom:15rpx;
-  margin-right:20rpx;
-  border-radius: 80rpx;
-  border:2rpx solid;
-  border-color: transparent;
-  height:100%;
 }
 
+.swiper-box {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
-.db{
-  display:flex;
+.swiper-box view {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding-top: 80rpx;
+}
+
+.nav-class {
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+  margin-right: 20rpx;
+  border-radius: 80rpx;
+  border: 2rpx solid;
+  border-color: transparent;
+  height: 100%;
+}
+
+.db {
+  display: flex;
   flex-direction: column;
 }
-.dn{
-  display:none;
+
+.dn {
+  display: none;
 }
 
-.title_icon{
+.title_icon {
   float: right;
   margin-top: 36rpx;
   margin-right: 40rpx;
   width: 40rpx;
-  height:40rpx ;
+  height: 40rpx;
 }
-
-

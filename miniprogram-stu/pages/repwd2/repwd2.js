@@ -1,6 +1,5 @@
 // pages/repwd/repwd.js重置密码
 const app = getApp();
-// pages/password/password.js
 Page({
   data: {
     oldpwd: "",

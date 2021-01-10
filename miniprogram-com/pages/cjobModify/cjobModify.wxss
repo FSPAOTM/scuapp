@@ -1,20 +1,17 @@
 /* pages/cjobModify/cjobModify.wxss */
-/* pages/cjobRelease/cjobRelease.wxss */
 
 .title {
-  font-family:"KaiTi";
+  font-family: "KaiTi";
   font-weight: 900;
   font-size: 20px;
   text-align: center;
   background: #F0F8FF;
   height: 50px;
   display: flex;
-  justify-content:center;
-  align-items:center;
-  color:#999;
+  justify-content: center;
+  align-items: center;
+  color: #999;
 }
-
-
 
 .item {
   margin-top: 20rpx;
@@ -31,7 +28,7 @@
   font-family: "黑体";
   line-height: 20px;
   text-align: center;
-  font-size:24rpx;
+  font-size: 24rpx;
 }
 
 .section_gap {
@@ -39,12 +36,12 @@
   flex-direction: row;
 }
 
-.section{
+.section {
   background: #fff;
   border: 5rpx solid #FFE4E1;
   border-radius: 10rpx;
   padding: 10rpx;
-  margin:30rpx; 
+  margin: 30rpx;
 }
 
 
@@ -55,7 +52,7 @@
   margin-top: 20rpx;
   margin-bottom: 20rpx;
   background: #FFE4E1;
- 
+
 }
 
 .jieshang {
@@ -106,16 +103,16 @@ button {
   line-height: 70rpx;
 }
 
-.line{
+.line {
   height: 10rpx;
   background: #FFE4E1;
 }
 
-.placeholder{
+.placeholder {
   text-align: center;
 }
 
-.line2{
+.line2 {
   width: 25%;
   background: #FFE4E1;
   height: 3rpx;
@@ -123,7 +120,7 @@ button {
   margin-bottom: 20rpx;
 }
 
-.zhuce{
+.zhuce {
   width: 40rpx;
   height: 40rpx;
   margin-left: 60rpx;

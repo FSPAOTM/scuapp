@@ -1,50 +1,47 @@
 <!--pages/cjobRelease/cjobRelease.wxml-->
 <view>
-
-
-
-<form bindsubmit="formSubmit">
-  <!--简历-->
-  <view class='item'>
-   <image class="zhuce" src="/images/企业注册.png"></image>
-    <text class='a1' style="padding-left:50rpx;font-size:30rpx;">兼职岗位</text>
-    <input bindblur="blurname" placeholder-class='placeholder' placeholder-style='font-size:24rpx;' placeholder='请填写兼职岗位' class="in"
-      name="Name" value="{{Name}}" />
-    <view class="xian"></view>
-  </view>
-
-
-  <view class='item'>
-   <image class="zhuce" src="/images/企业注册.png"></image>
-    <text class='a1' style="padding-left:50rpx;font-size:30rpx">工作时间</text>
-    <input bindblur="blurjobtime" placeholder-class='placeholder' placeholder-style='font-size:24rpx;' placeholder='请填写工作时间' class="in"
-      name="jobtime" value="{{jobtime}}" />
-    <view class="xian"></view>
-  </view>
-
-  <view class='item'>
-   <image class="zhuce" src="/images/企业注册.png"></image>
-    <text class='a1' style="padding-left:50rpx;font-size:30rpx">工作所在地</text>
-    <input bindblur="blurlocation" placeholder-class='placeholder' placeholder-style='font-size:24rpx;' maxlength='10' placeholder='请填写工作地点所在地区，如"武侯区"' class="in"
-      name="location" value="{{location}}" />
-    <view class="xian"></view>
-  </view>
-
-  <view class='item'>
-   <image class="zhuce" src="/images/企业注册.png"></image>
-    <text class='a1' style="padding-left:50rpx;font-size:30rpx">工作详细地址</text>
-    <input bindblur="blurdetail" placeholder-class='placeholder' placeholder-style='font-size:24rpx;' maxlength='60' placeholder='请填写工作详细地址' class="in"
-      name="location" value="{{detail}}" />
-    <view class="xian"></view>
-  </view>
-
-
-  <view class="section">
-    <view class="jieshang">职位描述</view>
-    <view class="line2"></view>
-    <textarea bindblur="blurdescription" placeholder-style='font-size:12px;' style="font-size:24rpx;margin-left:50rpx" minlength='20' maxlength='200'
-      placeholder="请输入相关工作内容等细节(200字以内)" name="description" value="{{description}}" />
+  <form bindsubmit="formSubmit">
+    <!--简历-->
+    <view class='item'>
+      <image class="zhuce" src="/images/企业注册.png"></image>
+      <text class='a1' style="padding-left:50rpx;font-size:30rpx;">兼职岗位</text>
+      <input bindblur="blurname" placeholder-class='placeholder' placeholder-style='font-size:24rpx;'
+        placeholder='请填写兼职岗位' class="in" name="Name" value="{{Name}}" />
+      <view class="xian"></view>
     </view>
+
+
+    <view class='item'>
+      <image class="zhuce" src="/images/企业注册.png"></image>
+      <text class='a1' style="padding-left:50rpx;font-size:30rpx">工作时间</text>
+      <input bindblur="blurjobtime" placeholder-class='placeholder' placeholder-style='font-size:24rpx;'
+        placeholder='请填写工作时间' class="in" name="jobtime" value="{{jobtime}}" />
+      <view class="xian"></view>
+    </view>
+
+    <view class='item'>
+      <image class="zhuce" src="/images/企业注册.png"></image>
+      <text class='a1' style="padding-left:50rpx;font-size:30rpx">工作所在地</text>
+      <input bindblur="blurlocation" placeholder-class='placeholder' placeholder-style='font-size:24rpx;' maxlength='10'
+        placeholder='请填写工作地点所在地区，如"武侯区"' class="in" name="location" value="{{location}}" />
+      <view class="xian"></view>
+    </view>
+
+    <view class='item'>
+      <image class="zhuce" src="/images/企业注册.png"></image>
+      <text class='a1' style="padding-left:50rpx;font-size:30rpx">工作详细地址</text>
+      <input bindblur="blurdetail" placeholder-class='placeholder' placeholder-style='font-size:24rpx;' maxlength='60'
+        placeholder='请填写工作详细地址' class="in" name="location" value="{{detail}}" />
+      <view class="xian"></view>
+    </view>
+
+
+    <view class="section">
+      <view class="jieshang">职位描述</view>
+      <view class="line2"></view>
+      <textarea bindblur="blurdescription" placeholder-style='font-size:12px;' style="font-size:24rpx;margin-left:50rpx"
+        minlength='20' maxlength='200' placeholder="请输入相关工作内容等细节(200字以内)" name="description" value="{{description}}" />
+      </view>
 
     <view class='item'>
      <image class="zhuce" src="/images/企业注册.png"></image>
@@ -94,6 +91,3 @@
 
 </form>
 </view>
-
-
-

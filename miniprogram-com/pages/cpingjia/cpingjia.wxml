@@ -7,8 +7,6 @@
     <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">我的评价</view>
 
     <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">评价我</view>
-
-
   </scroll-view>
 </view>
 
@@ -16,9 +14,8 @@
 <view class="container">
   <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height: 1200rpx">
 
-
+    <!-- 我的评价 -->
     <swiper-item>
-
       <view class='user-content' wx:for="{{mypingjia}}" wx:key="key" wx:for-item="item" wx:for-index="index">
         <view class='firstline'>
           <view class='apart'>
@@ -42,30 +39,29 @@
 
     </swiper-item>
 
-
+    <!-- 评价我的 -->
     <swiper-item>
       <scroll-view scroll-y="true" class="message-list" style="margin-top:{{navH+47}}px;height:1200rpx">
-        <!--示例用户1-->
         <view class='user-content' wx:for="{{stupingjia}}" wx:key="key" wx:for-item="item" wx:for-index="index"
-        data-index="{{index}}">
-        <view class='firstline'>
-          <view class='apart'>
-            <text>匿名用户</text>
+          data-index="{{index}}">
+          <view class='firstline'>
+            <view class='apart'>
+              <text>匿名用户</text>
+            </view>
+            <view class='time'>
+              <view class='time-num'>{{item.time}}</view>
+            </view>
+            <view bindtap="toChange2" data-show='{{isShow2}}' data-index="{{index}}">
+              <image class="title_icon" src="{{isShow2[index]? '/images/up.png' : '/images/down.png'}}" />
+            </view>
           </view>
-          <view class='time'>
-            <view class='time-num'>{{item.time}}</view>
-          </view>
-          <view bindtap="toChange2" data-show='{{isShow2}}' data-index="{{index}}">
-            <image class="title_icon" src="{{isShow2[index]? '/images/up.png' : '/images/down.png'}}" />
-          </view>
-        </view>
 
-        <view class="{{isShow2[index]?'db' : 'dn'}}">
-          <text class='dialog2'>评分：{{item.score}}</text>
-          <text class='dialog2'>{{item.content}}</text>
+          <view class="{{isShow2[index]?'db' : 'dn'}}">
+            <text class='dialog2'>评分：{{item.score}}</text>
+            <text class='dialog2'>{{item.content}}</text>
+          </view>
         </view>
-      </view>
-      <view class='linecut'></view>
+        <view class='linecut'></view>
       </scroll-view>
     </swiper-item>
   </swiper>

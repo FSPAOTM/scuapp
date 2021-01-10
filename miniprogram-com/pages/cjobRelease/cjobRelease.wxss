@@ -1,16 +1,16 @@
 /* pages/cjobRelease/cjobRelease.wxss */
 
-.title{
-  font-family:"KaiTi";
+.title {
+  font-family: "KaiTi";
   font-weight: 900;
   font-size: 18px;
   text-align: center;
   background: #F0F8FF;
   height: 50px;
   display: flex;
-  justify-content:center;
-  align-items:center;
-  color:#999;
+  justify-content: center;
+  align-items: center;
+  color: #999;
 }
 
 
@@ -37,12 +37,12 @@
   flex-direction: row;
 }
 
-.section{
+.section {
   background: #fff;
   border: 5rpx solid #FFE4E1;
   border-radius: 10rpx;
   padding: 10rpx;
-  margin:30rpx; 
+  margin: 30rpx;
 }
 
 
@@ -60,28 +60,6 @@
   font-size: 30rpx;
 }
 
-.fb-type {
-  height: 60rpx;
-  width: 100%;
-  background: #fff;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.fb-type .type-label {
-  height: 36rpx;
-  flex: 1;
-  color: #333;
-  font-size: 32rpx;
-  margin-left: 20rpx;
-}
-
-.fb-type .type-icon {
-  height: 36rpx;
-  width: 36rpx;
-}
-
 button {
   background: #7e8ef0;
   color: #fff;
@@ -92,7 +70,6 @@ button {
 
 .a1 {
   line-height: 40rpx;
-  
 }
 
 .a2 {
@@ -103,14 +80,12 @@ button {
   line-height: 70rpx;
 }
 
-
-
-.line{
+.line {
   height: 10rpx;
   background: #FFE4E1;
 }
 
-.line2{
+.line2 {
   width: 25%;
   background: #FFE4E1;
   height: 3rpx;
@@ -118,51 +93,49 @@ button {
   margin-bottom: 20rpx;
 }
 
-.zhuce{
+.zhuce {
   width: 40rpx;
   height: 40rpx;
   margin-left: 60rpx;
 }
 
-.placeholder{
+.placeholder {
   text-align: center;
 }
 
-.item2{
-  display:flex;
+.item2 {
+  display: flex;
   margin-bottom: 20rpx;
 }
 
-.a{
+.a {
   margin-top: 10rpx;
   width: 240rpx;
 }
 
-.zhuce2{
+.zhuce2 {
   width: 40rpx;
   height: 40rpx;
   margin-left: 60rpx;
 }
 
-.textarea{
+.textarea {
   height: 60rpx;
   text-align: center;
   margin-top: 15rpx;
 }
 
-.time{
+.time {
   color: #888;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top:20rpx;   
-  margin-bottom:20rpx; 
-
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
 }
 
-.in2{
+.in2 {
   margin-top: 16rpx;
   line-height: 40rpx;
-  font-size:24rpx;
-
+  font-size: 24rpx;
 }

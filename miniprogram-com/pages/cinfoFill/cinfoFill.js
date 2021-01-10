@@ -1,10 +1,6 @@
-// pages/cinfoFill/cinfoFill.js
+// pages/cinfoFill/cinfoFill.js 企业详细信息完善
 var app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     cno: "",
     phone: "",
@@ -17,9 +13,7 @@ Page({
     result: "",
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  // 已有基本信息展示
   onLoad: function () {
     console.log(app.globalData.user);
     wx.request({
@@ -112,6 +106,7 @@ Page({
     }
   },
 
+  // 提交填写信息并验证
   formSubmit: function (e) {
     let that = this;
     //console.log(e.detail.value);
@@ -185,7 +180,7 @@ Page({
             })
             if (res.data = "填写完成") {
               wx.showToast({
-                title: '提交成功！', //这里打印出登录成功
+                title: '提交成功！',
                 icon: 'success',
                 duration: 1000
               })
@@ -205,54 +200,5 @@ Page({
         }
       })
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

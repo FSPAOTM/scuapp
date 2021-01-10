@@ -1,25 +1,17 @@
-// pages/cworkspace/cworkspace.js
+// pages/cworkspace/cworkspace.js企业对学生的简历的多项操作
 const app = getApp();
 var dateTimePicker = require('outer3.js');
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     showIndex: "",
     show: false,
     //tap切换自定义宽高
     winWidth: 0,
     winHeight: 0,
-    // tab切换，方法一
-
+    // tab切换
     scrollleft: 0,
     currentTab: 0,
-
-    idArr: [
-
-    ],
+    idArr: [],
     hiddenmodalput: true,
     dateTimeArray: null,
     dateTime: null,
@@ -55,7 +47,6 @@ Page({
       })
     }
   },
-
   checkCor: function () {
     if (this.data.currentTab > 4) {
       this.setData({
@@ -80,10 +71,7 @@ Page({
     }
   },
 
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  // 显示简历列表
   onLoad: function (options) {
     var that = this;
     if (options.currentTab != '') {
@@ -91,9 +79,6 @@ Page({
         currentTab: options.currentTab
       })
     }
-    /** 
-     * 获取系统信息,系统宽高
-     */
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
@@ -119,6 +104,7 @@ Page({
         for (i = 0; i < res.data.length; i++) {
           if (res.statusCode == 200) {
             if (res.data[i].status == "待审核") {
+              // 利用新建子对象和子数组将所得数据按照岗位归类
               var baoming = {}
               var person = {}
               var count = 0
@@ -227,7 +213,6 @@ Page({
   changeDateTimeColumn1(e) {
     var arr = this.data.dateTime1,
       dateArr = this.data.dateTimeArray1;
-
     arr[e.detail.column] = e.detail.value;
     dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
 
@@ -243,7 +228,18 @@ Page({
       beizhu: e.detail.value
     })
   },
+  // 【待审核】学生简历审核入口
+  yibaoming: function (ev) {
+    var that = this;
+    var ow_number = ev.currentTarget.dataset.name1;
+    var stu_number = ev.currentTarget.dataset.name2;
+    console.log("++++++", ev, that)
+    wx.setStorageSync("ow_number", ow_number), wx.setStorageSync("stu_number", stu_number), wx.navigateTo({
+      url: "../cresumeReview/cresumeReview"
+    })
+  },
 
+  // 【面试中】多选选中学生执行批量操作
   itemSelected: function (e) {
     var index = e.currentTarget.dataset.index;
     var item = this.data.workinfo3[index];
@@ -251,7 +247,7 @@ Page({
     this.setData({
       workinfo3: this.data.workinfo3
     })
-
+    // 实现多选效果，并计算去重后的选中工作数
     //获取选中学生数
     var content = {}
     content.ow_number = item.ow_number;
@@ -332,32 +328,24 @@ Page({
     })
   },
 
-  /**
-   * 弹窗
-   */
+  // 弹窗
   showDialogBtn: function () {
     this.setData({
       hiddenmodalput: !this.data.hiddenmodalput
     })
   },
 
-  /**
-   * 弹出框蒙层截断touchmove事件
-   */
+  // 弹出框蒙层截断touchmove事件
   preventTouchMove: function () {},
 
-
-  /**
-   * 对话框取消按钮点击事件
-   */
+  // 对话框取消按钮点击事件
   cancel: function () {
     this.setData({
       hiddenmodalput: true
     });
   },
-  /**
-   * 对话框确认按钮点击事件
-   */
+
+  // 对话框确认按钮点击事件，并填写报道信息
   confirm: function () {
     wx.request({
       url: app.globalData.url + '/Com_work_employed/', //已通过名单
@@ -467,17 +455,7 @@ Page({
     })
   },
 
-
-  yibaoming: function (ev) {
-    var that = this;
-    var ow_number = ev.currentTarget.dataset.name1;
-    var stu_number = ev.currentTarget.dataset.name2;
-    console.log("++++++", ev, that)
-    wx.setStorageSync("ow_number", ow_number), wx.setStorageSync("stu_number", stu_number), wx.navigateTo({
-      url: "../cresumeReview/cresumeReview"
-    })
-  },
-
+  // 【已结算】评价学生入口
   feedback(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
@@ -487,13 +465,6 @@ Page({
     wx.navigateTo({
       url: "../cfeedback/cfeedback?ow_number=" + ow_number + '&stu_number=' + stu_number
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
   },
 
   /**
@@ -635,21 +606,6 @@ Page({
         wx.stopPullDownRefresh();
       }
     });
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
   },
 
   /**
@@ -657,19 +613,5 @@ Page({
    */
   onPullDownRefresh: function () {
     this.onRefresh();
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

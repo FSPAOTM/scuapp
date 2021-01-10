@@ -1,32 +1,26 @@
-// pages/cxiaoxi/cxiaoxi.js
+// pages/cxiaoxi/cxiaoxi.js企业查看面试、结果通知以及历史聊天记录
 const app = getApp()
 var chat = require('../../utils/chat.js')
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    mianshitongzhi:[],
-    dahuitongzhi:[],
-    count1:"",
-    count2:"",
-    show1:true,
-    show2:true,
+    mianshitongzhi: [],
+    dahuitongzhi: [],
+    count1: "",
+    count2: "",
+    show1: true,
+    show2: true,
     name: '',
     list: {}
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-
+  // 未确认的面试信息通知入口
   tongzhi() {
     wx.navigateTo({
       url: '../cmianshitongzhi/cmianshitongzhi?user=' + app.globalData.user,
     })
   },
 
+  // 未确认的打回申请入口
   dahui() {
     wx.navigateTo({
       url: '../cmianshidahui/cmianshidahui?user=' + app.globalData.user,
@@ -41,10 +35,10 @@ Page({
       list: newlist
     })
     wx.navigateTo({
-      url: '../schatting/schatting?name=' + e.currentTarget.dataset.name  /**?? */
+      url: '../schatting/schatting?name=' + e.currentTarget.dataset.name /**?? */
     })
   },
-
+  // 加载未读消息数目
   onLoad: function (options) {
     this.setData({
       name: app.globalData.user
@@ -52,7 +46,7 @@ Page({
     this.initlist();
     let that = this;
     wx.request({
-      url: app.globalData.url + '/Com_interview_notice_show/', 
+      url: app.globalData.url + '/Com_interview_notice_show/',
       method: "GET",
       header: {
         'Content-Type': 'application/json'
@@ -65,11 +59,11 @@ Page({
         if (res.statusCode == 200) {
           that.setData({
             mianshitongzhi: res.data,
-            count1:res.data.length
+            count1: res.data.length
           })
-          if(that.data.count1==0){
+          if (that.data.count1 == 0) {
             that.setData({
-              show1:false
+              show1: false
             })
           }
         }
@@ -90,11 +84,11 @@ Page({
         if (res.statusCode == 200) {
           that.setData({
             dahuitongzhi: res.data,
-            count2:res.data.length
+            count2: res.data.length
           })
-          if(that.data.count2==0){
+          if (that.data.count2 == 0) {
             that.setData({
-              show2:false
+              show2: false
             })
           }
         }
@@ -102,6 +96,7 @@ Page({
     })
   },
 
+  // 刷新
   onRefresh() {
     //在当前页面显示导航条加载动画
     wx.showNavigationBarLoading();
@@ -111,7 +106,7 @@ Page({
   getData() {
     let that = this;
     wx.request({
-      url: app.globalData.url + '/Com_interview_notice_show/', 
+      url: app.globalData.url + '/Com_interview_notice_show/',
       method: "GET",
       header: {
         'Content-Type': 'application/json'
@@ -124,11 +119,11 @@ Page({
         if (res.statusCode == 200) {
           that.setData({
             mianshitongzhi: res.data,
-            count1:res.data.length
+            count1: res.data.length
           })
-          if(that.data.count1==0){
+          if (that.data.count1 == 0) {
             that.setData({
-              show1:false
+              show1: false
             })
           }
         }
@@ -136,7 +131,7 @@ Page({
     })
 
     wx.request({
-      url: app.globalData.url + '/Com_interview_back_show/', 
+      url: app.globalData.url + '/Com_interview_back_show/',
       method: "GET",
       header: {
         'Content-Type': 'application/json'
@@ -149,11 +144,11 @@ Page({
         if (res.statusCode == 200) {
           that.setData({
             dahuitongzhi: res.data,
-            count2:res.data.length
+            count2: res.data.length
           })
-          if(that.data.count2==0){
+          if (that.data.count2 == 0) {
             that.setData({
-              show2:false
+              show2: false
             })
           }
         }
@@ -165,13 +160,6 @@ Page({
         wx.stopPullDownRefresh();
       }
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
   },
 
   /**
@@ -191,40 +179,12 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
     this.onRefresh();
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-  initlist: function () {//初始化聊天列表
+  initlist: function () { //初始化聊天列表
     console.log("init list")
     var list = {
       "2018141093036": {
@@ -269,9 +229,9 @@ Page({
   },
   updatelist: function () { //收到新消息后更新聊天列表
     for (let i in app.globalData.msgList) {
-      if(app.globalData.msgList[i].length==0)//与此用户的聊天记录长度为0，就直接处理与下一个人的
-      continue;
-      var count=0;//用来统计和每个人有多少条聊天记录
+      if (app.globalData.msgList[i].length == 0) //与此用户的聊天记录长度为0，就直接处理与下一个人的
+        continue;
+      var count = 0; //用来统计和每个人有多少条聊天记录
       let length = app.globalData.msgList[i].length;
       if (!(i in this.data.list)) { //未存在新先建一项
         this.data.list[i] = {};
@@ -284,11 +244,11 @@ Page({
         this.data.list[i]["updated"] = app.globalData.msgList[i][length - 1]["time"];
       }
       for (let j = 0; j < app.globalData.msgList[i].length; j++) { //查看有多少条未读消息
-        if (app.globalData.msgList[i][j]["to"] == app.globalData.user && app.globalData.msgList[i][j]["isread"] == 0) {//当是发给我的消息并且未读时，未读数量加一（加第一个条件判断是为了防止我发出的消息还是未读的情况被统计进去，因为正常情况下未读消息肯定是对方发来的而我们未读的，不考虑我们发的而对方未读的）
+        if (app.globalData.msgList[i][j]["to"] == app.globalData.user && app.globalData.msgList[i][j]["isread"] == 0) { //当是发给我的消息并且未读时，未读数量加一（加第一个条件判断是为了防止我发出的消息还是未读的情况被统计进去，因为正常情况下未读消息肯定是对方发来的而我们未读的，不考虑我们发的而对方未读的）
           count++;
         }
       }
-      this.data.list[i]["count"]=count;
+      this.data.list[i]["count"] = count;
     }
     this.setData({ //更新消息列表
       list: this.data.list

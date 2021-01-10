@@ -1,8 +1,8 @@
 //app.js
-var app=getApp()
+var app = getApp()
 App({
   onLaunch: function () {
-    var that=this;
+    var that = this;
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -24,8 +24,8 @@ App({
             success: res => {
               if (res.statusCode == 200) {
                 wx.request({
-                  url: that.globalData.url + "Login/setuser",//待修改
-                  method:"POST",
+                  url: that.globalData.url + "Login/setuser", //待修改
+                  method: "POST",
                   data: {
                     openid: res.data.openid
                   },
@@ -114,16 +114,14 @@ App({
     jobType: "",
     ow_number: "",
     friendlist: ["2018141093036", "2018141093032", "2018141093042", "2018141093001", "2018141093040"],
-    msgList:{
-      "2018141093036":[{
+    msgList: {
+      "2018141093036": [{
         from: '2018141093036',
         to: 'text',
         content: '你好！',
         time: '2020.10.10',
         isread: 0
       }],
-
     },
-    
   }
 })

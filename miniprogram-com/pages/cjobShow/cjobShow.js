@@ -1,11 +1,6 @@
-// pages/cjobShow/cjobShow.js
-//还有已报名人数
+// pages/cjobShow/cjobShow.js企业查看已发布兼职详细信息
 const app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     show1: true,
     show2: true,
@@ -24,12 +19,7 @@ Page({
     already: "",
   },
 
-  //点击按钮痰喘指定的hiddenmodalput弹出框
-
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  // 显示兼职详细信息
   onLoad: function (options) {
     var ow_number = wx.getStorageSync("ow_number");
     this.setData({
@@ -38,23 +28,6 @@ Page({
       show2: (options.show2 == 'true') ? true : false,
       show3: (options.show3 == 'true') ? true : false
     })
-    console.log(this.data.show2)
-    /*console.log("接收到的参数是post=" + options.jobinfo)
-    this.setData({
-      jobinfo: JSON.parse(options.jobinfo),
-      ow_number:JSON.parse(options.ow_number),
-      post: JSON.parse(options.post),
-      time: JSON.parse(options.time),
-      location:JSON.parse(options.location),
-      detail: JSON.parse(options.detail),
-      salary: JSON.parse(options.salary),
-      description: JSON.parse(options.description),
-      ask: JSON.parse(options.ask),
-      num: JSON.parse(options.num),
-      ddl: JSON.parse(options.ddl),
-      ps: JSON.parse(options.ps),
-      already: JSON.parse(options.already),
-    })*/
     wx.request({
       url: app.globalData.url + '/Get_outwork_detail_info/',
       method: "POST",
@@ -65,7 +38,6 @@ Page({
         ow_number: ow_number,
       },
       success: (res) => {
-        /*console.log(res.data);*/
         if (res.statusCode == 200) {
           this.setData({
             post: res.data.post,
@@ -85,7 +57,8 @@ Page({
     })
   },
 
-
+  // 根据工作状态不同判断下一步操作
+  // 修改兼职申请入口
   cjobrelease1() {
     let that = this;
     wx.navigateTo({
@@ -93,6 +66,7 @@ Page({
     })
   },
 
+  // 再次发布
   cjobrelease2() {
     let that = this;
     wx.navigateTo({
@@ -100,58 +74,10 @@ Page({
     })
   },
 
-  cinterview(){
+  // 申请面试时间
+  cinterview() {
     wx.navigateTo({
-      url: "../cinterview/cinterview?ow_number=" + this.data.ow_number+ '&user=' + app.globalData.user+'&post=' + this.data.post
+      url: "../cinterview/cinterview?ow_number=" + this.data.ow_number + '&user=' + app.globalData.user + '&post=' + this.data.post
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

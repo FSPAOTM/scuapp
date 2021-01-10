@@ -1,5 +1,4 @@
 <!--pages/cinterview/cinterview.wxml-->
-<!-- <view class="title">面试时间申请</view> -->
 <view class='a1'>
   <view class='detailView'>
     <text style="margin-left:20px; font-size:30rpx;">面试岗位：</text>
@@ -23,8 +22,7 @@
   <view class='detailView'>
     <text style="margin-left:20px; font-size:30rpx;">请选择供学生挑选的面试时间</text>
   </view>
-
-
+<!-- 时间选择器1 -->
   <picker class="a2" mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1"
     bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
     <view style="font-size:30rpx;">
@@ -40,10 +38,9 @@
     <text style="margin-left:20px; font-size:30rpx;">或者</text>
     <image class="img" src="/images/delete-grey.png" bindtap="delete2"></image>
   </view>
-
-
+<!-- 时间选择器2 -->
   <picker class="a2" mode="multiSelector" value="{{dateTime2}}" bindchange="changeDateTime2"
-    bindcolumnchange="changeDateTimeColumn2" range="{{dateTimeArray2}}"  wx:if="{{show1}}">
+    bindcolumnchange="changeDateTimeColumn2" range="{{dateTimeArray2}}" wx:if="{{show1}}">
     <view style="font-size:30rpx;">
       {{dateTimeArray2[0][dateTime2[0]]}}-{{dateTimeArray2[1][dateTime2[1]]}}-{{dateTimeArray2[2][dateTime2[2]]}}
       {{dateTimeArray2[3][dateTime2[3]]}}:{{dateTimeArray2[4][dateTime2[4]]}}
@@ -58,11 +55,9 @@
     <text style="margin-left:20px; font-size:30rpx;">或者</text>
     <image class="img" src="/images/delete-grey.png" bindtap="delete3"></image>
   </view>
-
-
-
+<!-- 时间选择器3 -->
   <picker class="a2" mode="multiSelector" value="{{dateTime3}}" bindchange="changeDateTime3"
-    bindcolumnchange="changeDateTimeColumn3" range="{{dateTimeArray3}}"  wx:if="{{show2}}">
+    bindcolumnchange="changeDateTimeColumn3" range="{{dateTimeArray3}}" wx:if="{{show2}}">
     <view style=" font-size:30rpx;">
       {{dateTimeArray3[0][dateTime3[0]]}}-{{dateTimeArray3[1][dateTime3[1]]}}-{{dateTimeArray3[2][dateTime3[2]]}}
       {{dateTimeArray3[3][dateTime3[3]]}}:{{dateTimeArray3[4][dateTime3[4]]}}
@@ -72,10 +67,7 @@
   <view class="icon" wx:if="{{show03}}">
     <image class="img" src="/images/jia.png" bindtap="time4"></image>
   </view>
-
 </view>
-
-
 
 <view class='btn-view'>
   <button class='btn' bindtap="formSubmit">申请</button>

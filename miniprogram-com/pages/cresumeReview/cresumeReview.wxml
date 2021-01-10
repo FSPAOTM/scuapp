@@ -1,137 +1,129 @@
 <!--pages/cresumeDecide/cresumeDecide.wxml-->
 <!--企业管理者对报名者简历的审核，可以查看报名者的简历，进而决定是接受或者拒绝-->
-
 <view>
+  <view class="line"></view>
 
-<!-- <view class="title" >简 历 审 核</view>-->
-<view class="line"></view>
+  <form>
+    <view class="all">
+      <view class='xixixi'>
+        <view class='item'>
+          <text class="show1">姓名：{{name}}</text>
+        </view>
 
-<form>
-  <view class="all">
+        <view class='item'>
+          <text class="show1">年龄：{{age}}</text>
+        </view>
+      </view>
 
-  <view class='xixixi'>
+      <view class='xixixi'>
+        <view class='item'>
+          <text class="show2">性别：{{gender}}</text>
+        </view>
 
-  <view class='item'>
-    <text class="show1">姓名：{{name}}</text>
-  </view>
-
-  <view class='item'>
-    <text class="show1">年龄：{{age}}</text>
-  </view>
-
-</view>
-
-<view class='xixixi'>
-
-<view class='item'>
-    <text class="show2">性别：{{gender}}</text>
-  </view>
-
-  <view class='item'>
-    <text class="show2">教育背景：{{edu}}</text>
-  </view>
-</view>
-
-</view>
-
-  <view class="section">
-    <view style="padding-left:30rpx;font-size:30rpx">
-      <image class="zhuce" src="/images/简历.png"></image>
-      <text class="class">技能自评</text>
-    <view class="xian"></view>
-    <view style=" height:300rpx; margin-top:30rpx;">
-      <text style="font-size:30rpx; margin-left:30rpx;;" maxlength='150'>{{tech}}</text>
+        <view class='item'>
+          <text class="show2">教育背景：{{edu}}</text>
+        </view>
+      </view>
     </view>
-  </view>
-</view>
 
-  <view class="section">
-    <view style="padding-left:30rpx;font-size:30rpx">
-      <image class="zhuce" src="/images/简历.png"></image>
-      <text class="class">工作经历</text>
-      <view class="xian"></view>
-    <view style=" height: 300rpx; margin-top:30rpx;">
-      <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{job}}</text>
+    <view class="section">
+      <view style="padding-left:30rpx;font-size:30rpx">
+        <image class="zhuce" src="/images/简历.png"></image>
+        <text class="class">技能自评</text>
+        <view class="xian"></view>
+        <view style=" height:300rpx; margin-top:30rpx;">
+          <text style="font-size:30rpx; margin-left:30rpx;;" maxlength='150'>{{tech}}</text>
+        </view>
+      </view>
     </view>
-  </view>
-</view>
 
-  <view class="section">
-    <view style="padding-left:30rpx;font-size:30rpx">
-      <image class="zhuce" src="/images/简历.png"></image>
-      <text class="class">项目经历</text>
-    <view class="xian"></view>
-    <view style=" height: 300rpx; margin-top:30rpx;">
-      <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{project}}</text>
+    <view class="section">
+      <view style="padding-left:30rpx;font-size:30rpx">
+        <image class="zhuce" src="/images/简历.png"></image>
+        <text class="class">工作经历</text>
+        <view class="xian"></view>
+        <view style=" height: 300rpx; margin-top:30rpx;">
+          <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{job}}</text>
+        </view>
+      </view>
     </view>
-  </view>
-</view>
 
-  <view class="section">
-    <view style="padding-left:30rpx;font-size:30rpx">
-      <image class="zhuce" src="/images/简历.png"></image>
-      <text class="class">课外实践</text>
-    <view class="xian"></view>
-    <view style=" height: 300rpx; margin-top:30rpx;">
-      <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{practice}}</text>
+    <view class="section">
+      <view style="padding-left:30rpx;font-size:30rpx">
+        <image class="zhuce" src="/images/简历.png"></image>
+        <text class="class">项目经历</text>
+        <view class="xian"></view>
+        <view style=" height: 300rpx; margin-top:30rpx;">
+          <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{project}}</text>
+        </view>
+      </view>
     </view>
-  </view>
-</view>
 
-  <view class="section">
-    <view style="padding-left:30rpx;font-size:30rpx">
-      <image class="zhuce" src="/images/简历.png"></image>
-      <text class="class">个人作品</text>
-      <view class="xian"></view>
-      <view style=" height: 300rpx; margin-top:30rpx;">
-      <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{works}}</text>
+    <view class="section">
+      <view style="padding-left:30rpx;font-size:30rpx">
+        <image class="zhuce" src="/images/简历.png"></image>
+        <text class="class">课外实践</text>
+        <view class="xian"></view>
+        <view style=" height: 300rpx; margin-top:30rpx;">
+          <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{practice}}</text>
+        </view>
+      </view>
     </view>
-  </view>
-</view>
 
-  <view class="section">
-    <view style="padding-left:30rpx;font-size:30rpx">
-      <image class="zhuce" src="/images/简历.png"></image>
-      <text class="class">应聘理由</text>
-    <view class="xian"></view>
-    <view style=" height: 300rpx; margin-top:30rpx;">
-      <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{reason}}</text>
+    <view class="section">
+      <view style="padding-left:30rpx;font-size:30rpx">
+        <image class="zhuce" src="/images/简历.png"></image>
+        <text class="class">个人作品</text>
+        <view class="xian"></view>
+        <view style=" height: 300rpx; margin-top:30rpx;">
+          <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{works}}</text>
+        </view>
+      </view>
     </view>
-  </view>
-</view>
 
-<view class="placeholder-view"></view>
+    <view class="section">
+      <view style="padding-left:30rpx;font-size:30rpx">
+        <image class="zhuce" src="/images/简历.png"></image>
+        <text class="class">应聘理由</text>
+        <view class="xian"></view>
+        <view style=" height: 300rpx; margin-top:30rpx;">
+          <text style="font-size:30rpx;margin-left:30rpx" maxlength='150'>{{reason}}</text>
+        </view>
+      </view>
+    </view>
 
-  <view class="btn1">
-    <input type="button" id="leftButton" onclick="login()" />
-  </view>
-  <view class="btn2">
-    <input type="button" id="rightButton" onclick="cancle()" />
-  </view>
+    <view class="placeholder-view"></view>
 
-  <view class="baise"></view>
-  <view class="anniu">
-  <button  bindtap="modalinput"  disabled="{{disabled}}" class="btbdstk">
-    <view class="sqdzk">
-  <text>接 受</text>
- </view>
-  </button>
+    <view class="btn1">
+      <input type="button" id="leftButton" onclick="login()" />
+    </view>
+    <view class="btn2">
+      <input type="button" id="rightButton" onclick="cancle()" />
+    </view>
 
-  <button  bindtap="modalinput2"  disabled="{{disabled}}" class="btbdstk">
-    <view class="sqdzk">
-  <text>拒 绝</text>
- </view>
- </button>
-</view>
+    <view class="baise"></view>
+    <view class="anniu">
+      <button bindtap="modalinput" disabled="{{disabled}}" class="btbdstk">
+        <view class="sqdzk">
+          <text>接 受</text>
+        </view>
+      </button>
 
-  <modal id="modal" hidden="{{hiddenmodalput}}" title="请确定是否接受该报名者" confirm-text="确定" cancel-text="取消"
-    bindcancel="cancel" bindconfirm="confirm1">
-  </modal>
+      <button bindtap="modalinput2" disabled="{{disabled}}" class="btbdstk">
+        <view class="sqdzk">
+          <text>拒 绝</text>
+        </view>
+      </button>
+    </view>
 
-  <modal id="modal2" hidden="{{hiddenmodalput2}}" title="请确定是否拒绝该报名者" confirm-text="确定" cancel-text="取消"
-    bindcancel="cancel" bindconfirm="confirm2">
-  </modal>
+    <modal id="modal" hidden="{{hiddenmodalput}}" title="请确定是否接受该报名者" confirm-text="确定" cancel-text="取消"
+      bindcancel="cancel" bindconfirm="confirm1">
+    </modal>
+
+    <modal id="modal2" hidden="{{hiddenmodalput2}}" title="请确定是否拒绝该报名者" confirm-text="确定" cancel-text="取消"
+      bindcancel="cancel" bindconfirm="confirm2">
+    </modal>
 
 
-</form>
+  </form>
 </view>

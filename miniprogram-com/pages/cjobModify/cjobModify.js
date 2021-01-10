@@ -1,16 +1,12 @@
-// pages/cjobModify/cjobModify.js
+// pages/cjobModify/cjobModify.js打回后企业重新申请兼职信息
 const app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     show01: false,
     show02: false,
-    operation:"",
+    operation: "",
     ow_number: "",
-    company:"",
+    company: "",
     Name: "",
     jobtime: "",
     location: "",
@@ -26,7 +22,7 @@ Page({
   onLoad: function (options) {
     let that = this
     that.setData({
-      ow_number:options.ow_number,
+      ow_number: options.ow_number,
       operation: options.operation,
       show02: (options.show02 == 'true') ? true : false,
     })
@@ -254,14 +250,13 @@ Page({
           ps: that.data.ps,
         },
         success: (res) => {
-          /*console.log(res.data);*/
           if (res.statusCode == 200) {
             this.setData({
               result: res.data
             })
             if (res.data == "修改成功") {
               wx.showToast({
-                title: '修改成功！', //这里打印出登录成功
+                title: '修改成功！',
                 icon: 'success',
                 duration: 1000
               })
@@ -374,7 +369,7 @@ Page({
           "Content-Type": "application/x-www-form-urlencoded"
         },
         data: {
-          ow_number:that.data.ow_number,
+          ow_number: that.data.ow_number,
           company: app.globalData.user,
           Name: that.data.Name,
           jobtime: that.data.jobtime,
@@ -388,14 +383,13 @@ Page({
           ps: that.data.ps,
         },
         success: (res) => {
-          /*console.log(res.data);*/
           if (res.statusCode == 200) {
             this.setData({
               result: res.data
             })
             if (res.data == "修改成功") {
               wx.showToast({
-                title: '提交成功！！！', //这里打印出登录成功
+                title: '提交成功！！！',
                 icon: 'success',
                 duration: 1000
               })
@@ -415,54 +409,5 @@ Page({
         }
       })
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

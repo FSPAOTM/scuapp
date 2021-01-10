@@ -1,5 +1,5 @@
 /* pages/repwd1/repwd1.wxss */
-.imply{
+.imply {
   height: 150rpx;
   font-size: large;
   font-weight: 900;
@@ -7,46 +7,46 @@
   background: #F0F8FF;
   height: 100rpx;
   display: flex;
-  justify-content:center;
-  align-items:center;
-  color:#999;
-}
-.user{
- 
-  height: 150rpx;
-  background-color: #fff;
-  margin: 20rpx;
-}
-.phoneNum{
-  height: 150rpx;
-  background-color: #fff;
-  margin: 20rpx;
-}
-.ok{
-  height: 150rpx;
-  background-color: #fff;
-  margin: 20rpx;
-}
-text{
-  /* margin-top: 50rpx; */
-  margin-left: 20rpx;
-}
-input{
-  margin-top: 30rpx;
-  margin-left: 30rpx;
- 
+  justify-content: center;
+  align-items: center;
+  color: #999;
 }
 
-.zhuce{
+.user {
+  height: 150rpx;
+  background-color: #fff;
+  margin: 20rpx;
+}
+
+.phoneNum {
+  height: 150rpx;
+  background-color: #fff;
+  margin: 20rpx;
+}
+
+.ok {
+  height: 150rpx;
+  background-color: #fff;
+  margin: 20rpx;
+}
+
+text {
+  margin-left: 20rpx;
+}
+
+input {
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+}
+
+.zhuce {
   width: 52rpx;
   height: 52rpx;
   margin-left: 40rpx;
- 
 }
 
 
-
-.line{
+.line {
   height: 10rpx;
   background: #FFE4E1;
 }

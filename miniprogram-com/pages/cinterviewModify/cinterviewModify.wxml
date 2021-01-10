@@ -1,6 +1,4 @@
 <!--pages/cinterviewModify/cinterviewModify.wxml-->
-<!-- <view class="title">面试时间申请</view> -->
-
 <view class='a1'>
   <view class='detailView'>
     <text style="margin-left:40rpx; font-size:30rpx;">面试岗位：</text>
@@ -25,8 +23,7 @@
     <text style="margin-left:40rpx; font-size:30rpx;">请重新选择供学生挑选的面试时间</text>
   </view>
 
-
-
+  <!-- 时间选择器1 -->
   <picker class="a2" mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1"
     bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
     <view style="font-size:30rpx;">
@@ -42,7 +39,7 @@
     <text style="margin-left:20px; font-size:30rpx;">或者</text>
     <image class="img" src="/images/delete-grey.png" bindtap="delete2"></image>
   </view>
-
+  <!-- 时间选择器2 -->
   <picker class="a2" mode="multiSelector" value="{{dateTime2}}" bindchange="changeDateTime2"
     bindcolumnchange="changeDateTimeColumn2" range="{{dateTimeArray2}}">
     <view style="font-size:30rpx;" wx:if="{{show1}}">
@@ -58,7 +55,7 @@
     <text style="margin-left:20px; font-size:30rpx;">或者</text>
     <image class="img" src="/images/delete-grey.png" bindtap="delete3"></image>
   </view>
-
+  <!-- 时间选择器3 -->
   <picker class="a2" mode="multiSelector" value="{{dateTime3}}" bindchange="changeDateTime3"
     bindcolumnchange="changeDateTimeColumn3" range="{{dateTimeArray3}}">
     <view style=" font-size:30rpx;" wx:if="{{show2}}">
@@ -70,7 +67,6 @@
   <view class="icon" wx:if="{{show03}}">
     <image class="img" src="/images/jia.png" bindtap="time2"></image>
   </view>
-
 
 </view>
 <view class='btn-view'>

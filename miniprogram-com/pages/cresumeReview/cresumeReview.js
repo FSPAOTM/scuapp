@@ -1,15 +1,11 @@
-// pages/cresumeDecide/cresumeDecide.js
+// pages/cresumeReview/cresumeReview.js学生简历审核（表筛）
 const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     myinfo: null,
     hiddenmodalput: true,
     hiddenmodalput2: true,
-    status:"",
+    status: "",
     ow_number: "",
     stu_number: "",
     name: "",
@@ -21,12 +17,10 @@ Page({
     project: "",
     practice: "",
     works: "",
-    reason:""
+    reason: ""
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  // 显示列表页所点击学生简历
   onLoad: function (options) {
     var ow_number = -1
     var ow_number = wx.getStorageSync("ow_number");
@@ -46,14 +40,14 @@ Page({
     console.log(this.data.stu_number)
 
     wx.request({
-      url: app.globalData.url + '/Com_Insert_resume_show/', 
+      url: app.globalData.url + '/Com_Insert_resume_show/',
       method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
         stuNumber: this.data.stu_number,
-        ow_number:this.data.ow_number
+        ow_number: this.data.ow_number
       },
       success: (res) => {
         /*console.log(res.data);*/
@@ -69,7 +63,7 @@ Page({
             project: res.data.res_proj,
             practice: res.data.res_extra,
             works: res.data.res_per,
-            reason:res.data.reason
+            reason: res.data.reason
           })
         }
       }
@@ -81,19 +75,14 @@ Page({
   modalinput: function () {
 
     this.setData({
-
       hiddenmodalput: !this.data.hiddenmodalput,
-
     })
-
   },
 
   modalinput2: function () {
 
     this.setData({
-
       hiddenmodalput2: !this.data.hiddenmodalput2,
-
     })
 
   },
@@ -103,24 +92,22 @@ Page({
   cancel: function () {
 
     this.setData({
-
       hiddenmodalput: true,
       hiddenmodalput2: true,
     });
 
   },
 
-  //确认
-
+  //确认，通过
   confirm1: function () {
     wx.request({
-      url: app.globalData.url + '/Modify_applystatus/', 
+      url: app.globalData.url + '/Modify_applystatus/',
       method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        status:"已通过",
+        status: "已通过",
         ow_number: this.data.ow_number,
         stu_number: this.data.stu_number,
       },
@@ -130,25 +117,24 @@ Page({
             url: '../cworkspace/cworkspace?currentTab=2',
           })
           this.setData({
-
             hiddenmodalput: true,
             hiddenmodalput2: true,
-      
           })
         }
       }
     })
   },
 
+  // 确认，未通过
   confirm2: function () {
     wx.request({
-      url: app.globalData.url + '/Modify_applystatus/', 
+      url: app.globalData.url + '/Modify_applystatus/',
       method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        status:"未通过",
+        status: "未通过",
         ow_number: this.data.ow_number,
         stu_number: this.data.stu_number,
       },
@@ -158,63 +144,11 @@ Page({
             url: '../cworkspace/cworkspace?currentTab=1',
           })
           this.setData({
-
             hiddenmodalput: true,
             hiddenmodalput2: true,
-      
           })
         }
       }
     })
-  },
-
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

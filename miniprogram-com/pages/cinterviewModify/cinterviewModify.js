@@ -1,4 +1,4 @@
-// pages/cinterviewModify/cinterviewModify.js
+// pages/cinterviewModify/cinterviewModify.js打回后再次面试申请
 var dateTimePicker = require('outer.js');
 const app = getApp()
 Page({
@@ -84,7 +84,7 @@ Page({
       dateTime3: obj3.dateTime,
     });
   },
-
+  // 通过当前页面时间组件的显示状态判断动态增减时间选择器操作
   time2() {
     if (this.data.show2 == false) {
       this.setData({
@@ -156,6 +156,7 @@ Page({
     }
   },
 
+  // 获取改变时间值
   changeDateTimeColumn1(e) {
     var arr = this.data.dateTime1,
       dateArr = this.data.dateTimeArray1;
@@ -278,7 +279,7 @@ Page({
             })
             if (res.data == "修改成功") {
               wx.showToast({
-                title: '申请修改成功！', //这里打印出登录成功
+                title: '申请修改成功！',
                 icon: 'success',
                 duration: 1000
               })
@@ -298,54 +299,5 @@ Page({
         }
       })
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

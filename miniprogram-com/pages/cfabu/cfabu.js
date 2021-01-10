@@ -1,10 +1,6 @@
-// pages/cfabu/cfabu.js
+// pages/cfabu/cfabu.js企业查看历史发布兼职及状态
 const app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     show1: false,
     show: "",
@@ -18,12 +14,14 @@ Page({
     currentTab: 0,
   },
 
+  // 发布新的兼职入口
   fabu() {
     wx.navigateTo({
       url: '../cjobRelease/cjobRelease',
     })
   },
 
+  // 【工作中】结束工作按钮
   jieshu(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
@@ -50,6 +48,7 @@ Page({
     })
   },
 
+  // 【已结束】已结算按钮
   jiesuan(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
@@ -77,9 +76,30 @@ Page({
       },
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
+  swichNav: function (e) {
+    var that = this;
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: e.target.dataset.current
+      })
+    }
+  },
+  // 切换tab
+  checkCor: function () {
+    if (this.data.currentTab > 5) {
+      this.setData({
+        scrollleft: 300
+      })
+    } else {
+      this.setData({
+        scrollleft: 0
+      })
+    }
+  },
+  // 显示企业发布兼职列表
   onLoad: function (options) {
     let that = this;
     if (options.currentTab != '') {
@@ -102,6 +122,7 @@ Page({
       show: options.show
     })
     console.log(that.data.show)
+
     if (that.data.show == "refresh") {
       that.onRefresh();
     } else {
@@ -182,7 +203,7 @@ Page({
     }
   },
 
-
+  // 查看发布兼职详情
   cjobshow1: function (ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
@@ -213,62 +234,6 @@ Page({
     })
   },
 
-  cjobshow4: function (ev) {
-    var that = this;
-    var e = ev.currentTarget.dataset.index;
-    var ow_number = that.data.jobinfo4[e].ow_number;
-    console.log("++++++", ev, that)
-    wx.setStorageSync("ow_number", ow_number), wx.navigateTo({
-      url: "../cjobShow/cjobShow?show1=false&show2=false&show3=false"
-    })
-  },
-
-
-  cjobshow5: function (ev) {
-    var that = this;
-    var e = ev.currentTarget.dataset.index;
-    var ow_number = that.data.jobinfo5[e].ow_number;
-    console.log("++++++", ev, that)
-    wx.setStorageSync("ow_number", ow_number), wx.navigateTo({
-      url: "../cjobShow/cjobShow?show1=false&show2=false&show3=true"
-    })
-  },
-
-
-
-  swichNav: function (e) {
-    var that = this;
-    if (this.data.currentTab === e.target.dataset.current) {
-      return false;
-    } else {
-      that.setData({
-        currentTab: e.target.dataset.current
-      })
-    }
-  },
-
-  checkCor: function () {
-    if (this.data.currentTab > 5) {
-      this.setData({
-        scrollleft: 300
-      })
-    } else {
-      this.setData({
-        scrollleft: 0
-      })
-    }
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     app.editTabBar();
   },
@@ -369,38 +334,10 @@ Page({
     })
   },
   /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
     //调用刷新时将执行的方法
     this.onRefresh();
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

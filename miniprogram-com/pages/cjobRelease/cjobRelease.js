@@ -1,11 +1,7 @@
-// pages/cjobRelease/cjobRelease.js
+// pages/cjobRelease/cjobRelease.js企业发布新的兼职
 var dateTimePicker = require('outer3.js');
 const app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     judge: "",
     company: "",
@@ -44,7 +40,7 @@ Page({
     });
   },
 
-  
+
   changeDateTimeColumn1(e) {
     var arr = this.data.dateTime1,
       dateArr = this.data.dateTimeArray1;
@@ -55,7 +51,7 @@ Page({
     this.setData({
       dateTimeArray1: dateArr,
       dateTime1: arr,
-      endingtime:(2020+arr[0]) +"-"+ (1+arr[1]) +"-"+ (1+arr[2]) +" "+ arr[3] +":"+ arr[4]
+      endingtime: (2020 + arr[0]) + "-" + (1 + arr[1]) + "-" + (1 + arr[2]) + " " + arr[3] + ":" + arr[4]
     });
   },
 
@@ -114,7 +110,7 @@ Page({
     this.setData({
       ps: e.detail.value
     })
-    var ps=this.data.ps
+    var ps = this.data.ps
   },
 
   formSubmit: function (e) {
@@ -221,14 +217,13 @@ Page({
           ps: that.data.ps,
         },
         success: (res) => {
-          /*console.log(res.data);*/
           if (res.statusCode == 200) {
             this.setData({
               result: res.data
             })
             if (res.data == "发布成功") {
               wx.showToast({
-                title: '提交成功！', //这里打印出登录成功
+                title: '提交成功！',
                 icon: 'success',
                 duration: 1000
               })
@@ -248,54 +243,5 @@ Page({
         }
       })
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

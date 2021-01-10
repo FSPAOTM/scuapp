@@ -19,7 +19,7 @@
 
 <view class="container">
   <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height: 1020rpx">
-
+<!-- 报名中 -->
     <swiper-item>
       <view class="jobrelease_management" wx:for="{{jobinfo1}}" wx:key="key" wx:for-item="item" wx:for-index="index">
         <view class='nav-class' bindtap="cjobshow1" data-index="{{index}}">
@@ -40,7 +40,7 @@
       </view>
 
     </swiper-item>
-
+<!-- 报名结束 -->
     <swiper-item>
       <view class="jobrelease_management" wx:for="{{jobinfo2}}" wx:key="key" wx:for-item="item" wx:for-index="index">
         <view class='nav-class' bindtap="cjobshow2" data-index="{{index}}">
@@ -59,7 +59,7 @@
         </view>
       </view>
     </swiper-item>
-
+<!-- 面试中 -->
     <swiper-item>
       <view class="jobrelease_management" wx:for="{{jobinfo3}}" wx:key="key" wx:for-item="item" wx:for-index="index">
         <view class='nav-class' bindtap="cjobshow3" data-index="{{index}}">
@@ -78,10 +78,10 @@
         </view>
       </view>
     </swiper-item>
-
+<!-- 工作中 -->
     <swiper-item>
       <view class="jobrelease_management" wx:for="{{jobinfo4}}" wx:key="key" wx:for-item="item" wx:for-index="index">
-        <view class='nav-class' ><!-- bindtap="cjobshow4"-->
+        <view class='nav-class'>
           <view class='detailView' style="padding-left:45rpx;">
             <text class='zi'>岗位</text>
             <text class='title'>{{item.post}}</text>
@@ -97,15 +97,15 @@
         </view>
       </view>
     </swiper-item>
-
+<!-- 已结束 -->
     <swiper-item>
       <view class="jobrelease_management" wx:for="{{jobinfo5}}" wx:key="key" wx:for-item="item" wx:for-index="index">
-        <view class='nav-class'  data-index="{{index}}"><!--bindtap="cjobshow5"-->
+        <view class='nav-class' data-index="{{index}}">
           <view class='detailView' style="padding-left:45rpx;">
             <text class='zi'>岗位</text>
             <text class='title'>{{item.post}}</text>
             <button class="end" bindtap="jiesuan" data-index="{{index}}" wx:if="{{item.show2}}">已结算</button>
-            <button class="end1"  wx:if="{{item.show3}}">待评价</button>
+            <button class="end1" wx:if="{{item.show3}}">待评价</button>
           </view>
         </view>
         <view class="line"></view>

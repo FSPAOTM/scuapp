@@ -1,9 +1,9 @@
-// pages/sfeedback/sfeedback.js
+// pages/sfeedback/sfeedback.js企业在点击已结算后对学生进行评价
 const app = getApp();
 Page({
   data: {
     ow_number: "",
-    stu_number:"",
+    stu_number: "",
     staticImg: app.globalData.staticImg,
     current: 0,
     attitude: true,
@@ -16,9 +16,9 @@ Page({
     timely: "",
     labor: "",
     ability: "",
-    more:"",
-    code:1,
-    code1:2,
+    more: "",
+    code: 1,
+    code1: 2,
     userStars: [
       "/images/sx2.png",
       "/images/sx2.png",
@@ -28,15 +28,16 @@ Page({
     ],
     wjxScore: 5,
     // textarea
-    min: 10,//最少字数
+    min: 10, //最少字数
     max: 200, //最多字数 (根据自己需求改变)
     pics: [],
   },
 
+  // 获取上一页面所点击对象的兼职号和兼职者
   onLoad: function (options) {
     this.setData({
-      stu_number:options.stu_number,
-      ow_number:options.ow_number
+      stu_number: options.stu_number,
+      ow_number: options.ow_number
     })
   },
 
@@ -111,7 +112,7 @@ Page({
     var len = parseInt(value.length);
     //最多字数限制
     if (len > this.data.max)
-    return;
+      return;
     // 当输入框内容的长度大于最大长度限制（max)时，终止setData()的执行
     this.setData({
       currentWordNumber: len, //当前字数
@@ -119,6 +120,7 @@ Page({
     });
   },
   
+// 提交评价
   change() {
     let that = this;
     wx.request({
@@ -128,8 +130,8 @@ Page({
       },
       method: "POST",
       data: {
-        com:app.globalData.user,
-        stuNumber:that.data.stu_number,
+        com: app.globalData.user,
+        stuNumber: that.data.stu_number,
         ow_number: that.data.ow_number,
         score: that.data.wjxScore,
         serious: that.data.serious,

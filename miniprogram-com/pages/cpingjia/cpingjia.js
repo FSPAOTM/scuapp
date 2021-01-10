@@ -1,10 +1,6 @@
-// pages/pingjia/pingjia.js
+// pages/pingjia/pingjia.js企业查看我的和评价我的历史评价
 const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     stupingjia: [],
     mypingjia: [],
@@ -12,12 +8,12 @@ Page({
     winHeight: 0,
     isShow1: [],
     isShow2: [],
-    //isShow: false,
     currentTab: 0,
     count1: 0,
     count2: 0
   },
 
+  // 切换子tab
   swichNav: function (e) {
     var that = this;
     if (this.data.currentTab === e.target.dataset.current) {
@@ -41,9 +37,7 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  // 显示评价
   onLoad: function (options) {
     var that = this;
     /** 
@@ -95,13 +89,13 @@ Page({
     })
   },
 
+  // 折叠列表的收缩与展开1
   toChange(e) {
     let that = this;
-    var j =that.data.count1+1
+    var j = that.data.count1 + 1
     that.setData({
       count1: j
     })
-    //let name = e.currentTarget.dataset.show;
     let id = e.currentTarget.dataset.index
     if (that.data.count1 == 1) {
       var i;
@@ -120,21 +114,15 @@ Page({
         isShow1: middle1
       })
     }
-    //that.data.isShow[id] = !that.data.isShow[id]
-    //let param = {};
-    //param[name] = !that.data[name];
-    // that.setData({
-    //...param
-    //})
   },
 
+  // 折叠列表的收缩与展开2
   toChange2(e) {
     let that = this;
-    var j =that.data.count2+1
+    var j = that.data.count2 + 1
     that.setData({
       count2: j
     })
-    //let name = e.currentTarget.dataset.show;
     let id = e.currentTarget.dataset.index
     if (that.data.count2 == 1) {
       var i;
@@ -153,54 +141,5 @@ Page({
         isShow2: middle1
       })
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

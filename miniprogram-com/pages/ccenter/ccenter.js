@@ -1,32 +1,31 @@
-// pages/ccenter/ccenter.js
+// pages/ccenter/ccenter.js企业端个人中心
 const app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     name: "",
     phone: "",
   },
 
+  // 企业详细信息完善入口
   infofill() {
     wx.navigateTo({
       url: '../cinfoFill/cinfoFill'
     })
   },
 
-cpingjia(){
-  wx.navigateTo({
-    url: '../cpingjia/cpingjia'
-  })
-},
+  // 查看我的历史评价和评价我的
+  cpingjia() {
+    wx.navigateTo({
+      url: '../cpingjia/cpingjia'
+    })
+  },
 
-exitlogin(){
-  wx.redirectTo({
-    url: '../index/index'
-  })
-},
+  // 退出登录
+  exitlogin() {
+    wx.redirectTo({
+      url: '../index/index'
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -53,51 +52,9 @@ exitlogin(){
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    app.editTabBar();  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    app.editTabBar();
   }
 })

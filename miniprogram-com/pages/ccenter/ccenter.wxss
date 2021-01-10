@@ -1,7 +1,4 @@
 /* pages/ccenter/ccenter.wxss */
-
-
-
 .item {
   display: flex;
   flex-direction: row;
@@ -37,129 +34,8 @@
   opacity: 1;
 }
 
-
-
-
 Page {
   font-size: 28rpx;
-}
-
-.top {
-  width: 100%;
-  height: 360rpx;
-  background: #23EBB9;
-  padding-top: 15px;
-  position: relative;
-}
-
-.center {
-  width: 95%;
-  height: 300rpx;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  border-radius: 10rpx;
-}
-
-.center_top {
-  display: flex;
-  flex-direction: row;
-  width: 80%;
-  height: 160rpx;
-  margin: 0 auto;
-  margin-top: 20rpx;
-  border-bottom: 2rpx solid #EEEEEE;
-}
-
-.center_img {
-  width: 132rpx;
-  height: 132rpx;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.center_img image {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-}
-
-.center_img .user_head {
-  width: 100%;
-  height: 100%;
-}
-
-.center_info {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10rpx;
-  margin-left: 60rpx;
-}
-
-.center_name {
-  font-size: 40rpx;
-}
-
-.center_phone {
-  color: #BEBEBE;
-}
-
-.center_down {
-  display: flex;
-  flex-direction: row;
-  width: 80%;
-  height: 70rpx;
-  margin: 0 auto;
-  margin-top: 20rpx;
-}
-
-.center_rank {
-  width: 50%;
-  height: 70rpx;
-  display: flex;
-  flex-direction: row;
-}
-
-.rank_text {
-  height: 70rpx;
-  line-height: 70rpx;
-  margin-left: 10rpx;
-  color: #AAAAAA;
-}
-
-.center_rank image {
-  width: 70rpx;
-  height: 70rpx;
-}
-
-.center_score {
-  width: 50%;
-  height: 70rpx;
-  display: flex;
-  flex-direction: row;
-}
-
-.center_score image {
-  width: 70rpx;
-  height: 70rpx;
-}
-
-.gif-wave {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  z-index: 99;
-  mix-blend-mode: screen;
-  height: 100rpx;
-}
-
-.summary {
-  background: #77B3E3;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 }
 
 /*头像*/
@@ -175,23 +51,25 @@ Page {
   font-size: 36rpx;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .a1 {
   width: 40rpx;
   height: 40rpx;
   margin: 40rpx;
 }
 
-.header{
+.header {
   position: relative;
   height: 220rpx;
   line-height: 120rpx;
-  padding:30rpx 30rpx 30rpx 180rpx;
+  padding: 30rpx 30rpx 30rpx 180rpx;
   box-sizing: border-box;
   background: #FFF5EE;
   font-size: 35rpx;
   color: rgb(138, 138, 138);
 }
-.header .thumb{
+
+.header .thumb {
   position: absolute;
   left: 30rpx;
   top: 30rpx;
@@ -200,17 +78,18 @@ Page {
   border-radius: 50%;
   overflow: hidden;
 }
-.header .about{
+
+.header .about {
   float: right;
 }
 
-.round-click{
-  float:right;
+.round-click {
+  float: right;
   margin-right: 30rpx;
   margin-top: 20rpx;
 }
 
-.addicon{
-  width:50rpx;
-  height:50rpx;
+.addicon {
+  width: 50rpx;
+  height: 50rpx;
 }
