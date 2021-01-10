@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'school.apps.SchoolConfig',
+    'scu.apps.ScuConfig',
 ]
 
 MIDDLEWARE = [
@@ -118,7 +118,7 @@ DATABASE_ROUTERS = ['mysite.DatabaseAppRouter.DatabaseAppsRouter']
 #两个应用对应不同的数据库
 DATABASE_APPS_MAPPING = {
         'wechat': 'default',
-        'school': 'default2',
+        'scu': 'default2',
 }
 
 # Password validation

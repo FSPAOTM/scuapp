@@ -245,7 +245,7 @@ class student(models.Model):
     party = models.CharField(db_column='party', max_length=2)
 
     class Meta:
-        app_label = 'school'
+        app_label = 'scu'
         managed = False
         db_table = 'student'
 
@@ -261,6 +261,6 @@ class teacher(models.Model):
     married = models.CharField(db_column='married', max_length=2)
 
     class Meta:
-        app_label = 'school'
+        app_label = 'scu'
         managed = False
         db_table = 'teacher'
