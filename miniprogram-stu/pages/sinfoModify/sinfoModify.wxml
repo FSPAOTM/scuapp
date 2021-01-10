@@ -1,64 +1,64 @@
 <!--pages/infoModify/infoModify.wxml-->
-<!-- <view class="title">基本信息</view> -->
 <view>
 
-<view class='item'>
-  <text style="padding-left:30rpx">学号：</text>
-  <text class='right'>{{stuNumber}}</text>
-</view>
+  <view class='item'>
+    <text style="padding-left:30rpx">学号：</text>
+    <text class='right'>{{stuNumber}}</text>
+  </view>
 
-<view class='item'>
-  <text style="padding-left:30rpx">姓名：</text>
-  <text class='right'>{{name}}</text>
-  <view class='arrow'  bindtap="modalinput1"></view>
+  <view class='item'>
+    <text style="padding-left:30rpx">姓名：</text>
+    <text class='right'>{{name}}</text>
+    <view class='arrow' bindtap="modalinput1"></view>
 
-</view>
-
-
-<view class='item'>
-  <text style="padding-left:30rpx"> 昵称：</text>
-  <text class='right'>{{nickName}}</text>
-  <view class='arrow'  bindtap="modalinput2"></view>
-</view>
+  </view>
 
 
-<view class='item'>
-  <text style="padding-left:30rpx">手机号码：</text>
-  <text class='right'>{{phoneNum}}</text>
-  <view class='arrow'  bindtap="modalinput3"></view>
-</view>
+  <view class='item'>
+    <text style="padding-left:30rpx"> 昵称：</text>
+    <text class='right'>{{nickName}}</text>
+    <view class='arrow' bindtap="modalinput2"></view>
+  </view>
 
 
-<view class='item'>
-  <text style="padding-left:30rpx"> 邮箱：</text>
-  <text class='right'>{{eMail}}</text>
-  <view class='arrow'  bindtap="modalinput4"></view>
-</view>
+  <view class='item'>
+    <text style="padding-left:30rpx">手机号码：</text>
+    <text class='right'>{{phoneNum}}</text>
+    <view class='arrow' bindtap="modalinput3"></view>
+  </view>
 
-<modal id="modal" hidden="{{hiddenmodalput1}}" title="信息完善及修改" confirm-text="提交" cancel-text="取消" bindcancel="cancel"
-  bindconfirm="confirm1">
-  <input bindblur="mName" type='text' placeholder="请填写修改后的姓名" auto-focus>{{name}}</input>
-</modal>
 
-<modal id="modal" hidden="{{hiddenmodalput2}}" title="信息完善及修改" confirm-text="提交" cancel-text="取消" bindcancel="cancel"
-  bindconfirm="confirm2">
-  <input bindblur="mNick" type='text' placeholder="请填写修改后的昵称" auto-focus>{{nickName}}</input>
-</modal>
+  <view class='item'>
+    <text style="padding-left:30rpx"> 邮箱：</text>
+    <text class='right'>{{eMail}}</text>
+    <view class='arrow' bindtap="modalinput4"></view>
+  </view>
 
-<modal id="modal" hidden="{{hiddenmodalput3}}" title="信息完善及修改" confirm-text="提交" cancel-text="取消" bindcancel="cancel"
-  bindconfirm="confirm3">
-  <input bindblur="mPhone" type='text' placeholder="请填写修改后的手机号码" auto-focus>{{phoneNum}}</input>
-</modal>
+  <modal id="modal" hidden="{{hiddenmodalput1}}" title="信息完善及修改" confirm-text="提交" cancel-text="取消" bindcancel="cancel"
+    bindconfirm="confirm1">
+    <input bindblur="mName" type='text' placeholder="请填写修改后的姓名" auto-focus>{{name}}</input>
+  </modal>
 
-<modal id="modal" hidden="{{hiddenmodalput4}}" title="信息完善及修改" confirm-text="提交" cancel-text="取消" bindcancel="cancel"
-  bindconfirm="confirm4">
-  <input bindblur="mEmail" type='text' placeholder="请填写绑定邮箱" auto-focus>{{eMail}}</input>
-</modal>
+  <modal id="modal" hidden="{{hiddenmodalput2}}" title="信息完善及修改" confirm-text="提交" cancel-text="取消" bindcancel="cancel"
+    bindconfirm="confirm2">
+    <input bindblur="mNick" type='text' placeholder="请填写修改后的昵称" auto-focus>{{nickName}}</input>
+  </modal>
 
-<view class='item' bindtap='exit'>
-  <text style="padding-left:30rpx">退出：</text><text class='right'>>>></text>
-</view>
+  <modal id="modal" hidden="{{hiddenmodalput3}}" title="信息完善及修改" confirm-text="提交" cancel-text="取消" bindcancel="cancel"
+    bindconfirm="confirm3">
+    <input bindblur="mPhone" type='text' placeholder="请填写修改后的手机号码" auto-focus>{{phoneNum}}</input>
+  </modal>
 
-<button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su' bindtap='repwd'>密码重置</button>
+  <modal id="modal" hidden="{{hiddenmodalput4}}" title="信息完善及修改" confirm-text="提交" cancel-text="取消" bindcancel="cancel"
+    bindconfirm="confirm4">
+    <input bindblur="mEmail" type='text' placeholder="请填写绑定邮箱" auto-focus>{{eMail}}</input>
+  </modal>
+
+  <view class='item' bindtap='exit'>
+    <text style="padding-left:30rpx">退出：</text><text class='right'>>>></text>
+  </view>
+
+  <button style="margin-top:50rpx;" form-type="submit" hover-class='button-hover' class='su'
+    bindtap='repwd'>密码重置</button>
 
 </view>

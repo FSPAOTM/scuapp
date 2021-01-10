@@ -1,10 +1,6 @@
-// pages/sbaoming/sbaoming.js
+// pages/sbaoming/sbaoming.js工作详情界面，可看评价可报名
 var app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     type: "",
     iw_number: "",
@@ -23,7 +19,7 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 加载工作信息
    */
   onLoad: function (options) {
     var ow_number = -1
@@ -75,7 +71,7 @@ Page({
           }
         }
       })
-    } else /* if(this.data.iw_number!=null)*/ {
+    } else {
       wx.request({
         url: app.globalData.url + '/Show_inwork_detail/',
         method: "POST",
@@ -86,7 +82,6 @@ Page({
           iw_number: iw_number,
         },
         success: (res) => {
-          /*console.log(res.data);*/
           if (res.statusCode == 200) {
             this.setData({
               post: res.data.post,
@@ -106,12 +101,14 @@ Page({
     }
   },
 
-spingjiashow(){
-  wx.navigateTo({
-    url: '../spingjiashow/spingjiashow?ow_number='+this.data.ow_number,
-  })
-},
+  // 点击查看公司历史评价
+  spingjiashow() {
+    wx.navigateTo({
+      url: '../spingjiashow/spingjiashow?ow_number=' + this.data.ow_number,
+    })
+  },
 
+  // 点击报名
   reason() {
     if (this.data.type == "校内") {
       wx.request({
@@ -125,7 +122,6 @@ spingjiashow(){
           user: app.globalData.user,
         },
         success: (res) => {
-          /*console.log(res.data);*/
           if (res.statusCode == 200) {
             if (res.data == "报名成功") {
               wx.showToast({
@@ -138,7 +134,7 @@ spingjiashow(){
                   url: '../smyJob/smyJob?show=refresh&currentTab=0',
                 })
               }, 2000)
-            }else if(res.data == "该学生已报名"){
+            } else if (res.data == "该学生已报名") {
               wx.showToast({
                 title: '请勿重复报名',
                 icon: 'none',
@@ -153,53 +149,5 @@ spingjiashow(){
         url: '../sreason/sreason',
       })
     }
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

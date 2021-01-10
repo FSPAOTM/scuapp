@@ -1,8 +1,6 @@
 <!--pages/sjobShow/sjobShow.wxml-->
 <view>
-  <!-- <view class="title">兼 职 详 情</view> -->
   <view class="line"></view>
-
 
   <form>
     <view class='item'>
@@ -71,4 +69,4 @@
     </view>
 
   </form>
-  </view>
+</view>

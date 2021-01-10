@@ -181,8 +181,8 @@ Page({
                   duration: 2000
                 })
                 setTimeout(function () {
-                  wx.navigateTo({
-                    url: '../login/login',
+                  wx.redirectTo({
+                    url: '../index/index',
                   })
                 }, 2000)
               } else {
@@ -194,7 +194,7 @@ Page({
                   })
                   setTimeout(function () {
                     wx.redirectTo({
-                      url: '../login/login',
+                      url: '../index/index',
                     })
                   }, 2000)
                 } else {

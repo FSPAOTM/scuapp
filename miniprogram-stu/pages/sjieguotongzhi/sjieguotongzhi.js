@@ -1,19 +1,13 @@
-// pages/sjieguotongzhi/sjieguotongzhi.js
-const app=getApp()
+// pages/sjieguotongzhi/sjieguotongzhi.js学生确认录用结果
+const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     isShow: false,
-    jieguotongzhi1:[],
-    jieguotongzhi2:[]
+    jieguotongzhi1: [],
+    jieguotongzhi2: []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  // 加载待确认的录用结果
   onLoad: function (options) {
     let that = this;
     wx.request({
@@ -54,6 +48,7 @@ Page({
     })
   },
 
+  // 校内录用确认
   sure1(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
@@ -61,14 +56,14 @@ Page({
     var type = that.data.jieguotongzhi1[e].type;
     console.log("++++++", ev, that)
     wx.request({
-      url: app.globalData.url + '/Stu_result_sure/', 
+      url: app.globalData.url + '/Stu_result_sure/',
       method: "POST",
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       data: {
         user: app.globalData.user,
-        type:type,
+        type: type,
         number: number
       },
       success: function (res) {
@@ -87,6 +82,7 @@ Page({
     })
   },
 
+  // 校内未录用确认
   sure11(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
@@ -94,14 +90,14 @@ Page({
     var type = that.data.jieguotongzhi1[e].type;
     console.log("++++++", ev, that)
     wx.request({
-      url: app.globalData.url + '/Stu_result_sure/', 
+      url: app.globalData.url + '/Stu_result_sure/',
       method: "POST",
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       data: {
         user: app.globalData.user,
-        type:type,
+        type: type,
         number: number
       },
       success: function (res) {
@@ -120,6 +116,7 @@ Page({
     })
   },
 
+  // 校外录用确认
   sure2(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
@@ -134,7 +131,7 @@ Page({
       },
       data: {
         user: app.globalData.user,
-        type:type,
+        type: type,
         number: number
       },
       success: function (res) {
@@ -153,6 +150,7 @@ Page({
     })
   },
 
+  // 校外未录用确认
   sure22(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
@@ -167,7 +165,7 @@ Page({
       },
       data: {
         user: app.globalData.user,
-        type:type,
+        type: type,
         number: number
       },
       success: function (res) {
@@ -186,6 +184,7 @@ Page({
     })
   },
 
+  // 刷新
   onRefresh() {
     //在当前页面显示导航条加载动画
     wx.showNavigationBarLoading();
@@ -195,8 +194,8 @@ Page({
   getData() {
     let that = this;
     that.setData({
-      jieguotongzhi1:[],
-      jieguotongzhi2:[]
+      jieguotongzhi1: [],
+      jieguotongzhi2: []
     })
     wx.request({
       url: app.globalData.url + '/Stu_result_show/',
@@ -243,51 +242,9 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
     this.onRefresh();
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

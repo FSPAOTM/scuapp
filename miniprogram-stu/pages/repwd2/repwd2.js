@@ -1,11 +1,7 @@
-// pages/repwd/repwd.js
+// pages/repwd/repwd.js重置密码
 const app = getApp();
 // pages/password/password.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     oldpwd: "",
     newpwd: "",
@@ -13,6 +9,7 @@ Page({
     no: "",
   },
 
+  // 表单值获取
   old(e) {
     this.setData({
       oldpwd: e.detail.value
@@ -46,7 +43,6 @@ Page({
   },
 
   formSubmit: function (e) {
-    // console.log(e);
     if (this.data.oldpwd == '' || this.data.newpwd == '' || this.data.newpwd2 == '') {
       wx.showToast({
         title: '密码不能为空',
@@ -61,7 +57,7 @@ Page({
       })
     } else {
       wx.request({
-        url: app.globalData.url + '/Reset_password/', 
+        url: app.globalData.url + '/Reset_password/',
         method: 'POST',
         data: {
           no: app.globalData.user,
@@ -102,61 +98,5 @@ Page({
         }
       })
     }
-
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

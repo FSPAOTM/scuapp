@@ -1,51 +1,53 @@
 /* pages/sreason/sreason.wxss */
 
-.tishi{
-  width:100%;
-  font-size:26rpx;
+.tishi {
+  width: 100%;
+  font-size: 26rpx;
   text-align: right;
   padding: 20rpx 0;
   color: #999;
   padding-right: 10rpx;
- }
- .section{
-   background: #fff;
-   margin-left: 25rpx;
- }
- 
- .jieshang{
-   padding: 20rpx 0;
-   font-size: 32rpx;
-   display: flex;
-   flex-direction: row;
-   text-align: center;
-   justify-content:center;
-   align-items:center;
- }
- .xian{
-   width: 90%;
-   background: #FFE4E1;
-   height: 4rpx;
-   margin-left: 30rpx;
-   margin-bottom: 20rpx;
- }
- textarea{
-   width: 100%;
-   margin-left:80rpx;
- }
- 
- button{
-   background: #ADD8E6;
-   color: #fff;
-   width: 80%;
-   font-size: 34rpx;
- }
- 
- .a1 {
-   width: 40rpx;
-   height: 40rpx;
-   margin-right: 30rpx;
-   margin-top: 30rpx;
-   margin-bottom: 30rpx;
- }
- 
+}
+
+.section {
+  background: #fff;
+  margin-left: 25rpx;
+}
+
+.jieshang {
+  padding: 20rpx 0;
+  font-size: 32rpx;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.xian {
+  width: 90%;
+  background: #FFE4E1;
+  height: 4rpx;
+  margin-left: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+textarea {
+  width: 100%;
+  margin-left: 80rpx;
+}
+
+button {
+  background: #ADD8E6;
+  color: #fff;
+  width: 80%;
+  font-size: 34rpx;
+}
+
+.a1 {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 30rpx;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}

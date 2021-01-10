@@ -1,25 +1,3 @@
-/* *index.wxss*
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
-} */
-
 /* pages/login/login.wxss */
 page{
   height: 80% !important;
@@ -35,7 +13,6 @@ page{
   display: block;
   padding: 0;
   box-sizing: border-box;
-  /* background-color: #f2f2f2;*/
 } 
  
 /*登录图片*/
@@ -130,9 +107,6 @@ page{
   border-radius: 10rpx;
 }
 
-/*.info{
-  text-align: center;
-}*/
 
 .registerBt{
   width: 100%;

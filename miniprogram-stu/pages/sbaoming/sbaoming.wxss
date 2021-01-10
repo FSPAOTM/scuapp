@@ -121,9 +121,7 @@
 }
 
 .xian {
-  width: 90%;
-  background: #ccc;
-  height: 2rpx;
+  
 }
 
 .jieshang {
@@ -136,14 +134,15 @@
 .xian {
   margin-left: 25rpx;
   margin-bottom: 20rpx;
+  width: 90%;
+  background: #ccc;
+  height: 2rpx;
 }
 
 textarea {
   width: 100%;
   margin-left: 20rpx;
 }
-
-
 
 .a1 {
   line-height: 45px;

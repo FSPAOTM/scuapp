@@ -15,7 +15,7 @@
     <view class='apart'>
       <text class='apart1'>匿名用户</text>
       <text class='apart1'>（{{item.work}}）</text>
-      <text class="prix1" >{{item.score}}.0 分</text>
+      <text class="prix1">{{item.score}}.0 分</text>
     </view>
     <view class='time'>
       <view class='time-num'>{{item.fb_time}}</view>
@@ -26,7 +26,7 @@
       <text>{{item.fb_content}}</text>
     </view>
   </view>
-<view class='linecut'></view>
+  <view class='linecut'></view>
 </view>
 
 <view class="after" wx:if="{{isShow}}">

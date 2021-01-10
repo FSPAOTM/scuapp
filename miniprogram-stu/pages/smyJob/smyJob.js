@@ -1,11 +1,7 @@
-// pages/smyJob/smyJob.js//这一页只能显示3个工作【高度不对】
+// pages/smyJob/smyJob.js查看自己所报名的所有兼职
 const app = getApp()
 var openid = wx.getStorageSync("openid");
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     show: "",
     isShow: true,
@@ -17,8 +13,7 @@ Page({
     //tap切换自定义宽高
     winWidth: 0,
     winHeight: 0,
-    // tab切换，方法一
-
+    // tab切换
     scrollleft: 0,
     currentTab: 0,
 
@@ -26,7 +21,7 @@ Page({
 
 
   /** 
-   * 点击tab切换 方法一
+   * 点击tab切换
    */
   swichNav: function (e) {
     var that = this;
@@ -52,7 +47,7 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 加载兼职列表
    */
   onLoad: function (options) {
     var that = this;
@@ -140,6 +135,7 @@ Page({
     }
   },
 
+  // 点击查看【已报名】兼职的详情
   xq1(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
@@ -160,6 +156,7 @@ Page({
     }
   },
 
+  // 点击查看【面试中】兼职的详情
   xq2(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
@@ -180,6 +177,7 @@ Page({
     }
   },
 
+  // 点击查看【已报名】兼职的已确认的面试信息
   ms(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
@@ -191,6 +189,7 @@ Page({
     })
   },
 
+  // 点击查看【已录用】兼职的面试信息
   ms3(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
@@ -202,6 +201,7 @@ Page({
     })
   },
 
+  // 点击查看【已录用】兼职的录用信息（报道信息）
   ly(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
@@ -209,18 +209,19 @@ Page({
       var iw_number = that.data.workinfo3[e].iw_number;
       console.log("++++++", ev, that)
       wx.navigateTo({
-        url: "../sluyongxinxi/sluyongxinxi?iw_number=" + iw_number+"&ow_number=null"
+        url: "../sluyongxinxi/sluyongxinxi?iw_number=" + iw_number + "&ow_number=null"
       })
     } else {
       var ow_number = that.data.workinfo3[e].ow_number;
       console.log(ow_number);
       console.log("++++++", ev, that)
       wx.navigateTo({
-        url: "../sluyongxinxi/sluyongxinxi?ow_number=" + ow_number+"&iw_number=null"
+        url: "../sluyongxinxi/sluyongxinxi?ow_number=" + ow_number + "&iw_number=null"
       })
     }
   },
 
+  // 点击查看【已录用】兼职的详情
   xq3(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
@@ -241,8 +242,7 @@ Page({
     }
   },
 
-  
-
+  // 点击查看【已结算】兼职的详情
   xq5(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
@@ -263,6 +263,7 @@ Page({
     }
   },
 
+  // 点击评价【已结算】兼职
   pingjia(ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
@@ -283,31 +284,10 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
     app.editTabBar();
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
   },
 
   onRefresh() {
@@ -397,19 +377,5 @@ Page({
   onPullDownRefresh: function () {
     //调用刷新时将执行的方法
     this.onRefresh();
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

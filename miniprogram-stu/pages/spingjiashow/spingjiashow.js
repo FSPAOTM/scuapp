@@ -1,16 +1,12 @@
-// pages/spingjiashow/spingjiashow.js
-const app=getApp()
+// pages/spingjiashow/spingjiashow.js查看发布兼职企业历史被评价信息
+const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     pingjia: [],
     com_name: "",
     score: "",
     show: true,
-    isShow:false
+    isShow: false
   },
 
   /**
@@ -39,7 +35,7 @@ Page({
           } else {
             that.setData({
               show: false,
-              isShow:true
+              isShow: true
             })
           }
         }
@@ -59,66 +55,17 @@ Page({
         console.log(res);
         if (res.statusCode == 200) {
           if (res.data != "该公司暂无评价") {
-          that.setData({
-            pingjia: res.data
-          })
-        }else{
-          that.setData({
-            show: false,
-            isShow:true
-          })
+            that.setData({
+              pingjia: res.data
+            })
+          } else {
+            that.setData({
+              show: false,
+              isShow: true
+            })
+          }
         }
       }
-      }
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

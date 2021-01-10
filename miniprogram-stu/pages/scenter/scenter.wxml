@@ -1,11 +1,10 @@
 <!--pages/scenter/scenter.wxml-->
 <view class="header">
-        <view class="thumb">
-          <open-data type="userAvatarUrl"></open-data>
-        </view>
-          <view class="nickname">{{name}}</view>
-          
-    </view>
+  <view class="thumb">
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <view class="nickname">{{name}}</view>
+</view>
 
 
 <view class="hr"></view>
@@ -26,8 +25,6 @@
   </view>
 </view>
 
-
-
 <view class="line"></view>
 <view class="item">
   <image src="/images/scenter11.png" class="a1" />
@@ -38,5 +35,5 @@
 </view>
 <view class="line"></view>
 <view class="round-click" bindtap="exitlogin">
-    <image class="addicon" src="/images/zhuxiao.png"></image>
-    </view>
+  <image class="addicon" src="/images/zhuxiao.png"></image>
+</view>

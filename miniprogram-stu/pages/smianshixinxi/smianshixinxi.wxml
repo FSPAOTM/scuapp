@@ -1,7 +1,6 @@
 <!--pages/smianshixinxi/smianshixinxi.wxml-->
 <view class="line"></view>
 
-
 <view class="section" wx:for="{{mianshixinxi}}">
   <view class="tongzhi">
     <text>面 试 信 息</text>
@@ -17,4 +16,3 @@
 <view class="after" wx:if="{{isShow}}">
   <text>暂无已确认的面试通知</text>
 </view>
-

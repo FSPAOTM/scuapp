@@ -1,8 +1,8 @@
 //app.js
-var app=getApp()
+var app = getApp()
 App({
   onLaunch: function () {
-    var that=this;
+    var that = this;
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -24,8 +24,8 @@ App({
             success: res => {
               if (res.statusCode == 200) {
                 wx.request({
-                  url: that.globalData.url + "Login/setuser",//待修改
-                  method:"POST",
+                  url: that.globalData.url + "Login/setuser", //待修改
+                  method: "POST",
                   data: {
                     openid: res.data.openid
                   },
@@ -65,7 +65,7 @@ App({
         }
       }
     })
-    
+
   },
 
   //第一种底部  
@@ -79,7 +79,7 @@ App({
 
   },
 
-  
+
   linkSocket() {
     var that = this
     wx.connectSocket({
@@ -116,24 +116,23 @@ App({
     stuNumber: "",
     jobType: "",
     ow_number: "",
-    friendlist: ["17188385280", "18310086086", "13350508078", "13228217783","17809874566"],
-    msgList:{
-      "17188385280":[{
-        from: '17188385280',
-        to: 'text',
-        content: '你好！',
-        time: '2021.1.4',
-        isread: 0
-      },
-      {
-        from: '17188385280',
-        to: 'text',
-        content: '欢迎咨询！',
-        time: '2021.1.4',
-        isread: 0
-      }],
-
+    friendlist: ["17188385280", "18310086086", "13350508078", "13228217783", "17809874566"],
+    msgList: {
+      "17188385280": [{
+          from: '17188385280',
+          to: 'text',
+          content: '你好！',
+          time: '2021.1.4',
+          isread: 0
+        },
+        {
+          from: '17188385280',
+          to: 'text',
+          content: '欢迎咨询！',
+          time: '2021.1.4',
+          isread: 0
+        }
+      ],
     },
-    
   }
 })

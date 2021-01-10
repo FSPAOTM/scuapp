@@ -1,10 +1,6 @@
-// pages/sallJob/sallJob.js
+// pages/sallJob/sallJob.js学生查看所有可报名工作
 const app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     tabTxt: ['类型', '综合排序', '区域'], //分类
     tab: [true, true, true],
@@ -59,16 +55,16 @@ Page({
         });
         self.onRefresh();
         break;
-        case '2':
-          tabTxt[2] = txt;
-          self.setData({
-            tab: [true, true, true],
-            tabTxt: tabTxt,
-            area_id: id,
-            area_txt: txt
-          });
-          self.onRefresh();
-          break;
+      case '2':
+        tabTxt[2] = txt;
+        self.setData({
+          tab: [true, true, true],
+          tabTxt: tabTxt,
+          area_id: id,
+          area_txt: txt
+        });
+        self.onRefresh();
+        break;
     }
   },
 
@@ -80,11 +76,11 @@ Page({
     wx.request({
       url: app.globalData.url + '/Show_work/',
       method: "GET",
-      data:{
-        stu_number:app.globalData.user,
-        type:this.data.leixing_txt,
-        order:this.data.paixu_txt,
-        area:this.data.area_txt
+      data: {
+        stu_number: app.globalData.user,
+        type: this.data.leixing_txt,
+        order: this.data.paixu_txt,
+        area: this.data.area_txt
       },
       header: {
         'Content-Type': 'application/json'
@@ -100,6 +96,7 @@ Page({
     })
   },
 
+  // 点击进入工作详情页
   sjobinfo: function (ev) {
     var that = this;
     var e = ev.currentTarget.dataset.index;
@@ -118,8 +115,6 @@ Page({
         url: "../sbaoming/sbaoming"
       })
     }
-
-
   },
 
   /**
@@ -161,20 +156,7 @@ Page({
     app.editTabBar();
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
+// 刷新动作
   onRefresh() {
     //在当前页面显示导航条加载动画
     wx.showNavigationBarLoading();
@@ -191,11 +173,11 @@ Page({
     wx.request({
       url: app.globalData.url + '/Show_work/',
       method: "GET",
-      data:{
-        stu_number:app.globalData.user,
-        type:this.data.leixing_txt,
-        order:this.data.paixu_txt,
-        area:this.data.area_txt
+      data: {
+        stu_number: app.globalData.user,
+        type: this.data.leixing_txt,
+        order: this.data.paixu_txt,
+        area: this.data.area_txt
       },
       header: {
         'Content-Type': 'application/json'
@@ -222,19 +204,5 @@ Page({
   onPullDownRefresh: function () {
     //调用刷新时将执行的方法
     this.onRefresh();
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

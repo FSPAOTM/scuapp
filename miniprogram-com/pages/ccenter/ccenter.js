@@ -24,7 +24,7 @@ cpingjia(){
 
 exitlogin(){
   wx.redirectTo({
-    url: '../login/login'
+    url: '../index/index'
   })
 },
 

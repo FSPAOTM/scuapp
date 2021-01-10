@@ -1,7 +1,6 @@
 <!--pages/smianshitongzhi/smianshitongzhi.wxml-->
 <view class="line"></view>
 
-
 <view class="section" wx:for="{{mianshitongzhi}}" wx:key="key" wx:for-item="item" wx:for-index="index">
   <view class="tongzhi">
     <text>面 试 通 知</text>

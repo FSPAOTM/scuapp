@@ -105,13 +105,6 @@
         },
         {
           "id": -1,
-          "name": "pages/login/login",
-          "pathName": "pages/login/login",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
           "name": "pages/sxiaoxi/sxiaoxi",
           "pathName": "pages/sxiaoxi/sxiaoxi",
           "query": "",
@@ -127,6 +120,12 @@
         {
           "name": "pages/scenter/scenter",
           "pathName": "pages/scenter/scenter",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
           "scene": null
         }
       ]

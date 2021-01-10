@@ -8,7 +8,7 @@ from . import views01
 
 #smianshitongzhi 学生面试通知显示
 def Stu_interview_notice_show(request):
-    stu_id = request.GET.get('user')
+    stu_id = request.GET.get('stu_number')
     student = Tbstudent.objects.get(stu_id=stu_id)
     application = Tbapplication.objects.filter(stu=student).filter(apply_status="面试中")
     plays = []
@@ -33,7 +33,7 @@ def Stu_interview_notice_show(request):
 #smianshitongzhi 学生面试通知确认
 def Stu_interview_notice_sure(request):
     if request.method == "POST":
-        stu_id = request.POST.get('user')
+        stu_id = request.POST.get('stu_number')
         number = request.POST.get('ow_number')
         ow_number = TboutWork.objects.get(ow_number=number)
         interviewApply = TbinterviewApply.objects.get(ow_number=ow_number)

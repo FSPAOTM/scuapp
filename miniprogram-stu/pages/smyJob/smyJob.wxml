@@ -16,8 +16,8 @@
 
 <view class="container">
   <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:1500rpx">
+    <!-- 已报名 -->
     <swiper-item>
-
       <view class='xiangqing' wx:for="{{workinfo1}}" wx:key="key" wx:for-item="item" wx:for-index="index">
         <view class='xiangqing_info' bindtap="xq1" data-index="{{index}}" style="padding-left:40rpx;">
           <text class='zi'>{{item.type}}</text>
@@ -31,7 +31,7 @@
         <view class="line"></view>
       </view>
     </swiper-item>
-
+<!-- 面试中 -->
     <swiper-item>
       <view class='xiangqing' wx:for="{{workinfo2}}" wx:key="key" wx:for-item="item" wx:for-index="index">
         <view class="xq">
@@ -48,13 +48,13 @@
             <text class='gongsi'>{{item.depart}}</text>
           </view>
           <view wx:if="{{item.show1}}">
-            <button bindtap="ms" style="width:110px;" class='su'  data-index="{{index}}">面试信息 ></button>
+            <button bindtap="ms" style="width:110px;" class='su' data-index="{{index}}">面试信息 ></button>
           </view>
         </view>
         <view class="line"></view>
       </view>
     </swiper-item>
-
+<!-- 已录用 -->
     <swiper-item>
       <view class='xiangqing' wx:for="{{workinfo3}}" wx:key="key" wx:for-item="item" wx:for-index="index">
         <view class="xq">
@@ -80,7 +80,7 @@
         <view class="line"></view>
       </view>
     </swiper-item>
-
+<!-- 已结算 -->
     <swiper-item>
       <view class='xiangqing' wx:for="{{workinfo5}}" wx:key="key" wx:for-item="item" wx:for-index="index">
         <view class="xq">
@@ -108,7 +108,7 @@
         </view>
         <view class="line"></view>
       </view>
-   </swiper-item>
+    </swiper-item>
 
   </swiper>
 </view>

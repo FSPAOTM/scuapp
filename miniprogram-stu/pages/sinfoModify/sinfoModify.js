@@ -1,10 +1,6 @@
-// pages/infoModify/infoModify.js
+// pages/infoModify/infoModify.js学生个人基础信息修改
 var app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     hiddenmodalput1: true,
     hiddenmodalput2: true,
@@ -17,6 +13,7 @@ Page({
     eMail: "",
   },
 
+  // 基础信息显示
   onLoad: function (e) {
     wx.request({
       url: app.globalData.url + '/Reset_show/',
@@ -43,6 +40,7 @@ Page({
     })
   },
 
+  // 修改信息获取
   mName(e) {
     this.setData({
       name: e.detail.value
@@ -67,6 +65,7 @@ Page({
     })
   },
 
+  // 弹窗确认修改提交
   confirm1: function (e) {
     wx.request({
       url: app.globalData.url + '/Reset_myinfo_name/',
@@ -171,23 +170,6 @@ Page({
     })
   },
 
-  exit: function (e) {
-    wx.showModal({
-      title: '提示',
-      content: '是否确认退出',
-      success: function (res) {
-        if (res.confirm) {
-          // console.log('用户点击确定')
-          //页面跳转
-          wx.switchTab({
-            url: '../scenter/scenter',
-          })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
-      }
-    })
-  },
 
   //点击按钮痰喘指定的hiddenmodalput弹出框
 
@@ -241,10 +223,28 @@ Page({
 
   },
 
+
+  exit: function (e) {
+    wx.showModal({
+      title: '提示',
+      content: '是否确认退出',
+      success: function (res) {
+        if (res.confirm) {
+          // console.log('用户点击确定')
+          //页面跳转
+          wx.switchTab({
+            url: '../scenter/scenter',
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
+
   repwd: function () {
     wx.navigateTo({
       url: '../repwd2/repwd2',
     })
   }
-
 })

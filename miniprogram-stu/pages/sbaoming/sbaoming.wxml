@@ -1,10 +1,6 @@
 <!--pages/sbaoming/sbaoming.wxml-->
-
 <view>
-  <!-- <view class="title">兼 职 详 情</view> -->
   <view class="line"></view>
-
-
   <form>
     <view class='item'>
       <image class="zhuce" src="/images/企业注册.png"></image>
@@ -89,26 +85,25 @@
 
   <!--底部按钮的背景层-->
   <view class="baise"></view>
- <!--底部按钮-->
- <view class="anniu">
-  <button formType="submit" class="btbdstk" bindtap="spingjiashow" >
-    <image class="image" src="/images/pj.png"></image>
-   <view class="bdstk" >
-    <text >评价</text> 
-   </view>
-  </button>
-  <button formType="submit" class="btbdstk" bindtap="resetSalaryBtnClick" >
-    <image class="image2" src="/images/lx.png"></image>
-   <view class="bdstk2" >
-    <text >联系企业</text> 
-   </view>
-  </button>
-  <button formType="submit" disabled="{{disabled}}" bindtap="reason" class="btbdstk" >
-   <view class="sqdzk">
-    <text>报 名</text>
-   </view>
-  </button>
+  <!--底部按钮-->
+  <view class="anniu">
+    <button formType="submit" class="btbdstk" bindtap="spingjiashow">
+      <image class="image" src="/images/pj.png"></image>
+      <view class="bdstk">
+        <text>评价</text>
+      </view>
+    </button>
+    <button formType="submit" class="btbdstk" bindtap="resetSalaryBtnClick">
+      <image class="image2" src="/images/lx.png"></image>
+      <view class="bdstk2">
+        <text>联系企业</text>
+      </view>
+    </button>
+    <button formType="submit" disabled="{{disabled}}" bindtap="reason" class="btbdstk">
+      <view class="sqdzk">
+        <text>报 名</text>
+      </view>
+    </button>
   </view>
-
 
 </view>

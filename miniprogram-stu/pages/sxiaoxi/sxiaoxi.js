@@ -1,11 +1,7 @@
-// pages/sxiaoxi/sxiaoxi.js
+// pages/sxiaoxi/sxiaoxi.js学生查看面试、结果通知以及历史聊天记录
 const app = getApp()
 var chat = require('../../utils/chat.js')
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     mianshitongzhi: [],
     jieguotongzhi: [],
@@ -17,12 +13,13 @@ Page({
     list: {}
   },
 
+  // 面试通知入口
   mianshi() {
     wx.navigateTo({
       url: '../smianshitongzhi/smianshitongzhi?user=' + app.globalData.user,
     })
   },
-
+  // 结果通知入口
   jieguo() {
     wx.navigateTo({
       url: '../sjieguotongzhi/sjieguotongzhi?user=' + app.globalData.user,
@@ -41,9 +38,7 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  // 加载未读消息数目
   onLoad: function (options) {
     this.setData({
       name: app.globalData.user
@@ -101,15 +96,6 @@ Page({
     })
   },
 
-  
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
   /**
    * 生命周期函数--监听页面显示
    */
@@ -126,19 +112,6 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
   onRefresh() {
     //在当前页面显示导航条加载动画
     wx.showNavigationBarLoading();
@@ -220,19 +193,6 @@ Page({
     this.onRefresh();
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   initlist: function () { //初始化聊天列表
     console.log("init list")
     var list = {

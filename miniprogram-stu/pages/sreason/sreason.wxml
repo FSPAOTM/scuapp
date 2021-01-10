@@ -1,16 +1,15 @@
 <!--pages/sreason/sreason.wxml-->
 <view>
- <form bindsubmit="formsubmit">
+  <form bindsubmit="formsubmit">
     <view class="section">
-  <view class="jieshang" >
-    <image src="/images/reason.png" class="a1"/>
-  <text>应 聘 理 由</text>
-  </view>
-  <view  class="xian"></view>
-
-            <textarea bindinput="reasoninput" placeholder-style='font-size:28rpx;' style="font-size:30rpx" maxlength='150' placeholder="请简述自己的应聘理由(150字以内)" name="digest" value="{{digest}}"/>
-        </view>
-  
+      <view class="jieshang">
+        <image src="/images/reason.png" class="a1" />
+        <text>应 聘 理 由</text>
+      </view>
+      <view class="xian"></view>
+      <textarea bindinput="reasoninput" placeholder-style='font-size:28rpx;' style="font-size:30rpx" maxlength='150'
+        placeholder="请简述自己的应聘理由(150字以内)" name="digest" value="{{digest}}" />
+      </view>
 
 <view class="tishi">
 <text style="margin-right:20rpx">认真填写哦</text>  
@@ -20,5 +19,3 @@
 
    </form>
 </view>
-
-

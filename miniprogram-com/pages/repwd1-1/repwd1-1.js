@@ -69,7 +69,7 @@ Page({
               })
               setTimeout(function () {
                 wx.redirectTo({
-                  url: '../login/login',
+                  url: '../index/index',
                 })
               }, 2000)
             }

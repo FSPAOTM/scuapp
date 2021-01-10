@@ -8,7 +8,7 @@
       <view class="bdstk">
         <image class="image" src="/images/mianshi.png"></image>
         <text class="text">面试通知</text>
-        <view class='bubble2'  wx:if="{{show1}}">
+        <view class='bubble2' wx:if="{{show1}}">
           <view class='num'>{{count1}}</view>
         </view>
       </view>
@@ -17,7 +17,7 @@
       <view class="bdstk">
         <image class="image" src="/images/jieguo.png"></image>
         <text class="text">结果通知</text>
-        <view class='bubble2'  wx:if="{{show2}}">
+        <view class='bubble2' wx:if="{{show2}}">
           <view class='num'>{{count2}}</view>
         </view>
       </view>
@@ -25,24 +25,26 @@
   </view>
 </view>
 
-<scroll-view scroll-y="true" class = "top">
-  <view class="item-avatar-md" wx:for="{{list}}" wx:key="index" wx:for-item="i" wx:for-index="index" data-index="{{index}}" data-name="{{index}}" data-id="{{i.id}}" bindtap="goPage" >
-          <view class="marks" wx:if="{{i.count}}">
-            <text>{{i.count}}</text>
-          </view>
-          <image src="{{i.avatar}}"></image>
-          <view class="item-text">
-            <view class="text_box">
-              <view class="flex">
-                <text class="title">{{index}}</text>
-              </view>
-              <view class="flex">
-                <text class="message">{{i.text}}</text>
-              </view>
-            </view>
-          </view>
-           <view class="item-time padding_half">
-            <text class="messagetime">{{i.updated}}</text>
-          </view>  
+<!-- 历史聊天记录列表 -->
+<scroll-view scroll-y="true" class="top">
+  <view class="item-avatar-md" wx:for="{{list}}" wx:key="index" wx:for-item="i" wx:for-index="index"
+    data-index="{{index}}" data-name="{{index}}" data-id="{{i.id}}" bindtap="goPage">
+    <view class="marks" wx:if="{{i.count}}">
+      <text>{{i.count}}</text>
+    </view>
+    <image src="{{i.avatar}}"></image>
+    <view class="item-text">
+      <view class="text_box">
+        <view class="flex">
+          <text class="title">{{index}}</text>
+        </view>
+        <view class="flex">
+          <text class="message">{{i.text}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="item-time padding_half">
+      <text class="messagetime">{{i.updated}}</text>
+    </view>
   </view>
 </scroll-view>

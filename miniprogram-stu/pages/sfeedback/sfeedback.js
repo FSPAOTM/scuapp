@@ -1,4 +1,4 @@
-// pages/sfeedback/sfeedback.js
+// pages/sfeedback/sfeedback.js学生在结算后对工作评价
 const app = getApp();
 Page({
   data: {
@@ -16,7 +16,7 @@ Page({
     flexible: "",
     salary: "",
     meaning: "",
-    more:"",
+    more: "",
     code: 1,
     code1: 2,
     userStars: [
@@ -105,6 +105,7 @@ Page({
     });
   },
 
+  // 提交评价
   change() {
     let that = this;
     var ow_number = -1
@@ -122,10 +123,8 @@ Page({
       iw_number: iw_number
     })
 
-
-
     wx.request({
-      url: app.globalData.url + '/Stu_feedbackEr/', 
+      url: app.globalData.url + '/Stu_feedbackEr/',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },

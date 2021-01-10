@@ -1,19 +1,20 @@
 <!--pages/sallJob/sallJob.wxml-->
-<import src="template\tabbar.wxml"/> 
-<template is="tabBar" data="{{tabBar}}"/>
+<import src="template\tabbar.wxml" />
+<template is="tabBar" data="{{tabBar}}" />
 <view class="tabTit box">
   <view class="flex1{{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="type" data-index="{{index}}"
     bindtap="filterTab">
     <text>{{item}}</text>
   </view>
 </view>
+
 <!--筛选项-->
 <view class="tabLayer" hidden="{{tab[0]}}">
   <text class="{{pinpai_id==0?'active':''}}" data-id="0" data-index="0" data-txt="不限" bindtap="filter">不限</text>
 
   <text class="{{paixu_id==1?'active':''}}" data-id="1" data-index="0" data-txt="校内" bindtap="filter">校内</text>
 
-<text class="{{paixu_id==2?'active':''}}" data-id="2" data-index="0" data-txt="校外" bindtap="filter">校外</text>
+  <text class="{{paixu_id==2?'active':''}}" data-id="2" data-index="0" data-txt="校外" bindtap="filter">校外</text>
 </view>
 
 
@@ -23,13 +24,7 @@
   <text class="{{paixu_id==1?'active':''}}" data-id="1" data-index="1" data-txt="最新发布" bindtap="filter">最新发布</text>
 </view>
 
-<!-- <view class="tabLayer" hidden="{{tab[2]}}">
-  <text class="{{area_id==0?'active':''}}" data-id="0" data-index="2" data-txt="区域" bindtap="filter">不限</text>
 
-  <text class="{{arae_id==item.id?'active':''}}" wx:for="{{areaList}}" wx:key="pp" wx:for-item="item"
-    data-id="{{item.id}}" data-index="0" data-txt="{{item.title}}" bindtap="filter">{{item.name}}</text>
-
-</view> -->
 <view class="tabLayer" hidden="{{tab[2]}}">
   <text class="{{area_id==0?'active':''}}" data-id="0" data-index="2" data-txt="不限" bindtap="filter">不限</text>
   <text class="{{area_id==1?'active':''}}" data-id="1" data-index="2" data-txt="锦江区" bindtap="filter">锦江区</text>
@@ -46,7 +41,7 @@
 
 
 
-<!-- 下面列表 -->
+<!-- 下面工作列表 -->
 <view class="container">
   <view class='xiangqing' wx:for="{{workinfo}}" wx:for-item="item" wx:for-index="index" bindtap="navigateTo">
     <view class='nav-class' bindtap="sjobinfo" data-index="{{index}}">

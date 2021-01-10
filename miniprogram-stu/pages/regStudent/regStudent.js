@@ -1,4 +1,4 @@
-// pages/regStudent/regStudent.js
+// pages/regStudent/regStudent.js学生注册
 var app = getApp();
 Page({
   /**
@@ -21,6 +21,7 @@ Page({
     result: ''
   },
 
+  // 表单各值获取及验证
   focusPhoneNum: function () {
     this.setData({
       focusPhoneNum: true
@@ -196,8 +197,8 @@ Page({
                 duration: 2000
               })
               setTimeout(function () {
-                wx.navigateTo({
-                  url: '../login/login',
+                wx.redirectTo({
+                  url: '../index/index',
                 })
               }, 2000)
             } else if (res.data == "注册成功") {
@@ -208,7 +209,7 @@ Page({
               })
               setTimeout(function () {
                 wx.redirectTo({
-                  url: '../login/login',
+                  url: '../index/index',
                 })
               }, 2000)
             } else if (res.data == "您不是我校学生，不能注册") {
@@ -248,54 +249,5 @@ Page({
         disabled: true
       })
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

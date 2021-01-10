@@ -1,17 +1,5 @@
-<!-- index.wxml
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-</view> -->
-<!--pages/login/login.wxml-->
+<!--pages/index/index.wxml-->
+<!-- 用户登录界面及注册入口 -->
 <view class="container">
   <view class="login-icon">
     <image class="login-img" src="/images/wx_login.png"></image>
@@ -24,9 +12,6 @@
         <view class="userno">
           <!-- 学号 -->
           <view class="weui-cell weui-cell_input">
-            <!-- <view class="weui-cell__hd">
-              <view class="weui-label">学号</view>
-          </view> -->
             <view class="weui-cell__bd">
               <input class="weui-input" name="no" bindinput="noinput" value='{{no}}' placeholder="请输入学号" maxlength="13"
                 value='{{no}}' />
@@ -42,13 +27,9 @@
         <view class="userpwd">
           <!-- 密码 -->
           <view class="weui-cell weui-cell_input">
-            <!-- <view class="weui-cell__hd">
-              <view class="weui-label">密码</view>
-          </view> -->
             <view class="weui-cell__bd">
               <input class="weui-input" type="password" name="pwd" bindinput="pwdinput" placeholder="请输入8-18位密码"
                 minlength="8" maxlength="18" value='{{pwd}}' />
-              <!--为什么最大最小长度此处设置无效-->
             </view>
           </view>
         </view>

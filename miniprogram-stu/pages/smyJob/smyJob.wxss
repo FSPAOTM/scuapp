@@ -151,7 +151,6 @@
 
 .xiangxi {
   margin-bottom: 16rpx;
-
 }
 
 .su {
@@ -172,8 +171,6 @@
   border: none;
   border-color: transparent;
 }
-
-
 
 .xq {
   display: flex;

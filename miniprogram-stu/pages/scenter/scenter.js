@@ -1,14 +1,9 @@
-// pages/scenter/scenter.js
+// pages/scenter/scenter.js学生个人中心
 //获取应用实例
 const app = getApp()
-//var openid = wx.getStorageSync("openid");
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-    //hasUserInfo: openid == "",
     sno: "",
     name: "",
   },
@@ -37,36 +32,26 @@ Page({
     })
   },
 
+  // 点击修改个人信息
   infoModify() {
     wx.navigateTo({
       url: '../sinfoModify/sinfoModify'
     })
   },
 
+  // 点击填写在线简历
   infoFill() {
     wx.navigateTo({
       url: '../sinfoShow/sinfoShow'
     })
   },
 
-  spingjia() {
-    wx.navigateTo({
-      url: '../spingjia/spingjia'
-    })
-  },
-
-  exitlogin(){
+  // 点击退出登录
+  exitlogin() {
     this.dislinkSocket();
     wx.redirectTo({
-      url: '../login/login'
+      url: '../index/index'
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
   },
 
   /**
@@ -74,40 +59,5 @@ Page({
    */
   onShow: function () {
     app.editTabBar();
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

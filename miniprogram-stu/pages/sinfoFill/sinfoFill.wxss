@@ -1,20 +1,20 @@
 /* pages/infoFill/infoFill.wxss */
 .title {
-  font-family:"KaiTi";
+  font-family: "KaiTi";
   font-weight: 900;
   font-size: 36rpx;
   text-align: center;
   background: #F0F8FF;
   height: 100rpx;
   display: flex;
-  justify-content:center;
-  align-items:center;
-  color:#999;
+  justify-content: center;
+  align-items: center;
+  color: #999;
 }
 
 .item {
   margin-top: 50rpx;
-  display:flex; 
+  display: flex;
   margin-left: 50rpx;
 }
 
@@ -32,18 +32,18 @@
   line-height: 20rpx;
 }
 
-.section{
-  margin-left:25rpx;
+.section {
+  margin-left: 25rpx;
 }
 
-.section2{
-  margin-left:40rpx;
+.section2 {
+  margin-left: 40rpx;
   background: #fff;
   border: 5rpx solid #FFE4E1;
   border-radius: 10rpx;
   padding: 10rpx;
-  margin-right:50rpx;
-  margin-top:35rpx;
+  margin-right: 50rpx;
+  margin-top: 35rpx;
 }
 
 .section_gap {
@@ -68,7 +68,8 @@
   margin-top: 15rpx;
   margin-bottom: 20rpx;
 }
-.xian2{
+
+.xian2 {
   width: 30%;
   background: #FFE4E1;
   height: 3rpx;
@@ -76,7 +77,7 @@
   margin-bottom: 20rpx;
 }
 
-.placeholder{
+.placeholder {
   margin-top: 5rpx;
 }
 
@@ -108,7 +109,6 @@
   padding-top: 18px;
   height: 36rpx;
   width: 36rpx;
-
 }
 
 button {
@@ -136,7 +136,6 @@ button {
   height: 36rpx;
   margin-left: 20rpx;
   margin-top: 15rpx;
-
 }
 
 .zhuce2 {
@@ -147,11 +146,11 @@ button {
   margin-top: 35rpx;
 }
 
-.line{
+.line {
   height: 10rpx;
   background: #FFE4E1;
 }
 
-.shopstore{
-  margin-left:25rpx;
+.shopstore {
+  margin-left: 25rpx;
 }

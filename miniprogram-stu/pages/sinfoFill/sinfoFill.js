@@ -1,4 +1,4 @@
-// pages/infoFill/infoFill.js
+// pages/infoFill/infoFill.js学生在线填写个人简历
 const app = getApp();
 Page({
   data: {
@@ -32,10 +32,11 @@ Page({
     works: "",
     stuNumber: "",
     result: "",
-    checked1:false,
-    checked2:false
+    checked1: false,
+    checked2: false
   },
 
+  // 加载简历已有信息
   onLoad: function (e) {
     wx.request({
       url: app.globalData.url + '/Insert_resume_show/',
@@ -63,13 +64,13 @@ Page({
             works: res.data.res_per,
           })
           app.globalData.age = this.data.age;
-          if(this.data.gender=="男"){
+          if (this.data.gender == "男") {
             this.setData({
-              checked1:true
+              checked1: true
             })
-          }else{
+          } else {
             this.setData({
-              checked2:true
+              checked2: true
             })
           }
         }
@@ -151,8 +152,6 @@ Page({
 
 
   formSubmit: function (e) {
-    let that = this;
-    //console.log(e.detail.value);
     app.globalData.age = this.data.age;
     app.globalData.gender = this.data.gender;
     app.globalData.tech = this.data.tech;
@@ -215,7 +214,7 @@ Page({
             })
             if (res.data == "填写完成") {
               wx.showToast({
-                title: '提交成功！！！', //这里打印出登录成功
+                title: '提交成功！！',
                 icon: 'success',
                 duration: 1000
               })
@@ -235,104 +234,5 @@ Page({
         }
       })
     }
-  },
-
-
-
-
-  // 上传图片
-  /*logo: function () {
-    var self = this
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-        console.log('chooseImage success, temp path is', res.tempFilePaths)
-        var imageSrc = res.tempFilePaths[0];
-
-        wx.uploadFile({
-          url: uploadFileUrl,
-          filePath: imageSrc,
-          name: 'data',
-          success: function (res) {
-            console.log('uploadImage success, res is:', res)
-
-            wx.showToast({
-              title: '上传成功',
-              icon: 'success',
-              duration: 1000
-            })
-
-            self.setData({
-              logo: imageSrc,
-              uplogo: res.data
-            })
-          },
-          fail: function ({
-            errMsg
-          }) {
-            console.log('uploadImage fail, errMsg is', errMsg)
-          }
-        })
-
-      },
-      fail: function ({
-        errMsg
-      }) {
-        console.log('chooseImage fail, err is', errMsg)
-      }
-    })
-  },*/
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
-
-
 })

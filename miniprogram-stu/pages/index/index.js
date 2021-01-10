@@ -1,19 +1,16 @@
-// 
-// pages/login/login.js
+// pages/index/index.js
 const app = getApp();
 var chat = require('../../utils/chat.js')
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
-    /*disabled:false,*/
     no: '',
     pwd: '',
     noinput: false,
     pwdinput: false,
     result: '',
   },
+
+  // 用户名取值
   noinput: function (e) {
     this.setData({
       no: e.detail.value
@@ -26,8 +23,9 @@ Page({
         disabled: false
       });
     }
-
   },
+
+  // 登录密码取值
   pwdinput: function (e) {
     this.setData({
       pwd: e.detail.value
@@ -39,17 +37,16 @@ Page({
       if (this.data.noinput == true && this.data.pwdinput == true) {
         this.setData({
           disabled: false
-        }); //这一句什么意思
+        });
       }
-    /*else{
-          this.setData({ disabled: true });
-        }*/
     if (this.data.pwd.length < 8) {
       this.setData({
         disabled: true
       });
-    } //为何直接用else语句不能多次检测字符串长度并执行条件语句
+    } 
   },
+
+
   formSubmit: function (e) {
     var self = this;
     this.linkSocket();
@@ -88,11 +85,6 @@ Page({
               icon: 'none',
               duration: 2000
             })
-            setTimeout(function () {
-              wx.redirectTo({
-                url: '../login/login',
-              })
-            }, 2000)
           } else {
             if (res.data == "用户名不存在") {
               wx.showToast({
@@ -102,7 +94,7 @@ Page({
               })
               setTimeout(function () {
                 wx.redirectTo({
-                  url: '../login/login',
+                  url: '../index/index',
                 })
               }, 2000)
             } else {
@@ -114,7 +106,6 @@ Page({
                   duration: 1000
                 })
                 if (self.data.no.length == 13) {
-                  /*逻辑待修改*/
                   setTimeout(function () {
                     wx.switchTab({
                       url: '../sallJob/sallJob',
@@ -149,22 +140,6 @@ Page({
 },
 
   /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-      /*this.setData({
-        no: app.globalData.userInfo
-      })*/
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
@@ -178,40 +153,4 @@ Page({
       });
     }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
