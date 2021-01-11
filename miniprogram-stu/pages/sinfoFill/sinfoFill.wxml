@@ -5,7 +5,7 @@
   <form bindsubmit="formSubmit">
     <!--简历-->
     <view class='item' style="display:flex;">
-      <image class="zhuce" src="/images/简历3.png"></image>
+      <image class="zhuce" src="http://49.235.199.231:8080/stu/简历3.png"></image>
       <text class='a1' style="padding-left:30rpx;font-size:30rpx; margin-top:8rpx;">姓名:</text>
       <input bindblur="blurname" placeholder-class='placeholder' placeholder-style='font-size:13px;'
         placeholder='请填写真实姓名' class="in" name="name" value="{{name}}" />
@@ -13,7 +13,7 @@
     <view class="xian"></view>
 
     <view class='item' style="display:flex;">
-      <image class="zhuce" src="/images/简历3.png"></image>
+      <image class="zhuce" src="http://49.235.199.231:8080/stu/简历3.png"></image>
       <text class='a1' style="padding-left:30rpx;font-size:30rpx;margin-top:8rpx;">年龄:</text>
       <input type="number" bindblur="blurage" placeholder-class='placeholder' placeholder-style='font-size:26rpx;'
         placeholder='请填写真实年龄' class="in" name="age" value="{{age}}" />
@@ -22,7 +22,7 @@
 
 
     <view class="section section_gap" style="margin:50rpx">
-      <image class="zhuce" src="/images/简历3.png"></image>
+      <image class="zhuce" src="http://49.235.199.231:8080/stu/简历3.png"></image>
       <view class="section__title" style="padding-left:30rpx;font-size:30rpx;margin-top:8rpx;">性别:</view>
       <view class='form-group'>
         <radio-group name="gender" bindchange="genderchange">
@@ -38,7 +38,7 @@
 
 
     <view class='item1' style="margin-left:50rpx">
-      <image class="zhuce" src="/images/简历3.png"></image>
+      <image class="zhuce" src="http://49.235.199.231:8080/stu/简历3.png"></image>
       <text class='a2' style="padding-left:30rpx;margin-top:20rpx;font-size:15px">教育背景：</text>
       <picker class='a3' bindchange="bindPickerChange" name="edu" value="{{edu}}" range="{{array}}">
         <view class="fb-type">
@@ -54,7 +54,7 @@
 
     <view class="section2">
       <view class="jieshang">
-        <image class="zhuce2" src="/images/简历1.png"></image>
+        <image class="zhuce2" src="http://49.235.199.231:8080/stu/简历1.png"></image>
         <text>技能自评</text>
       </view>
       <view class="xian2"></view>
@@ -64,7 +64,7 @@
 
     <view class="section2" >
       <view class="jieshang" >
-        <image class="zhuce2" src="/images/简历1.png"></image>
+        <image class="zhuce2" src="http://49.235.199.231:8080/stu/简历1.png"></image>
         <text>工作经历</text>
       </view>
       <view  class="xian2"></view>
@@ -73,7 +73,7 @@
 
     <view class="section2">
       <view class="jieshang" >
-        <image class="zhuce2" src="/images/简历1.png"></image>
+        <image class="zhuce2" src="http://49.235.199.231:8080/stu/简历1.png"></image>
         <text>项目经历</text>
       </view>
       <view  class="xian2"></view>
@@ -82,7 +82,7 @@
 
     <view class="section2" >
       <view class="jieshang" >
-        <image class="zhuce2" src="/images/简历1.png"></image>
+        <image class="zhuce2" src="http://49.235.199.231:8080/stu/简历1.png"></image>
         <text>课外实践</text>
       </view>
       <view class="xian2"></view>
@@ -92,7 +92,7 @@
 
     <view class="shopstore" >
       <view class="jieshang">
-        <image class="zhuce2" src="/images/简历3.png"></image>
+        <image class="zhuce2" src="http://49.235.199.231:8080/stu/简历3.png"></image>
         <text>个人作品</text>
       </view>
         <view  class="xian2"></view>

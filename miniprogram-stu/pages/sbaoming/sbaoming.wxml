@@ -3,7 +3,7 @@
   <view class="line"></view>
   <form>
     <view class='item'>
-      <image class="zhuce" src="/images/企业注册.png"></image>
+      <image class="zhuce" src="http://49.235.199.231:8080/stu/企业注册.png"></image>
       <text class='a1' style="padding-left:50rpx;font-size:30rpx">兼职岗位：</text>
       <text class='right'>{{post}}</text>
       <view class="xian"></view>
@@ -11,7 +11,7 @@
 
 
     <view class='item'>
-      <image class="zhuce" src="/images/企业注册.png"></image>
+      <image class="zhuce" src="http://49.235.199.231:8080/stu/企业注册.png"></image>
       <text class='a1' style="padding-left:50rpx;font-size:30rpx">工作时间：</text>
       <text class='right'>{{time}}</text>
       <view class="xian"></view>
@@ -21,7 +21,7 @@
     <view class='item'>
       <view class="little">
         <view>
-          <image class="zhuce" src="/images/企业注册.png"></image>
+          <image class="zhuce" src="http://49.235.199.231:8080/stu/企业注册.png"></image>
           <text class='a1' style="padding-left:50rpx;font-size:30rpx">工作地点:</text>
         </view>
         <text class='right1'>{{detail}}</text>
@@ -30,7 +30,7 @@
     </view>
 
     <view class='item'>
-      <image class="zhuce" src="/images/企业注册.png"></image>
+      <image class="zhuce" src="http://49.235.199.231:8080/stu/企业注册.png"></image>
       <text class='a1' style="padding-left:50rpx; font-size:30rpx">薪酬：</text>
       <text class='right'>{{salary}}</text>
       <view class="xian"></view>
@@ -57,14 +57,14 @@
 
 
     <view class='item'>
-      <image class="zhuce" src="/images/企业注册.png"></image>
+      <image class="zhuce" src="http://49.235.199.231:8080/stu/企业注册.png"></image>
       <text class='a1' style="padding-left:50rpx;font-size:30rpx">招聘人数：</text>
       <text class='right'>{{num}}</text>
       <view class="xian"></view>
     </view>
 
     <view class='item'>
-      <image class="zhuce" src="/images/企业注册.png"></image>
+      <image class="zhuce" src="http://49.235.199.231:8080/stu/企业注册.png"></image>
       <text class='a1' style="padding-left:50rpx;font-size:30rpx">报名截止时间：</text>
       <text class='right'>{{ddl}}</text>
       <view class="xian"></view>

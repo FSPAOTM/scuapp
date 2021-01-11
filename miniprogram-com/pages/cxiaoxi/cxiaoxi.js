@@ -190,35 +190,35 @@ Page({
       "2018141093036": {
         id: "001",
         count: 2,
-        avatar: "../../images/head.jpg",
+        avatar: "http://49.235.199.231:8080/com/head.jpg",
         text: "",
         updated: "2021.1.04"
       },
       "2018141093032": {
         id: "002",
         count: 0,
-        avatar: "../../images/head1.jpg",
+        avatar: "http://49.235.199.231:8080/com/head1.jpg",
         text: "",
         updated: "2020.11.09"
       },
       "2018141093042": {
         id: "003",
         count: 0,
-        avatar: "../../images/head2.jpg",
+        avatar: "http://49.235.199.231:8080/com/head2.jpg",
         text: "",
         updated: "2020.11.02"
       },
       "2018141093001": {
         id: "004",
         count: 0,
-        avatar: "../../images/head3.jpg",
+        avatar: "http://49.235.199.231:8080/com/head3.jpg",
         text: "",
         updated: "2020.11.0"
       },
       "2018141093040": {
         id: "005",
         count: 0,
-        avatar: "../../images/head4.jpg",
+        avatar: "http://49.235.199.231:8080/com/head4.jpg",
         text: "",
         updated: "2020.11.02"
       },

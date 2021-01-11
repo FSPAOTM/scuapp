@@ -2,7 +2,7 @@
 <view>
 
   <view class="content">
-    <image class='background' src="/images/背景stu.png" mode="aspectFill"></image>
+    <image class='background' src="http://49.235.199.231:8080/stu/背景stu.png" mode="aspectFill"></image>
   </view>
   <view class="line"></view>
 
@@ -10,7 +10,7 @@
     <form bindsubmit="formSubmit">
 
       <view class="item">
-        <image class="zhuce" src="/images/学生注册.png"></image>
+        <image class="zhuce" src="http://49.235.199.231:8080/stu/学生注册.png"></image>
         <text class="a1" style="padding-left:30rpx">学号：</text>
         <view class="stu_number input_view {{focusStuNumber?'focus':'blur'}}">
           <input type="number" data-model="stuNumber" placeholder="请输入学号" focus="focus" bindfocus="focusStuNumber"
@@ -19,7 +19,7 @@
       </view>
 
       <view class="item">
-        <image class="zhuce" src="/images/学生注册.png"></image>
+        <image class="zhuce" src="http://49.235.199.231:8080/stu/学生注册.png"></image>
         <text class="a1" style="padding-left:30rpx">姓名：</text>
         <view class="phone_num input_view {{focusName?'focus':'blur'}}">
           <input placeholder="请输入姓名" data-model="Name" bindfocus="focusName" bindblur="blurName"
@@ -28,7 +28,7 @@
       </view>
 
       <view class="item">
-        <image class="zhuce" src="/images/学生注册.png"></image>
+        <image class="zhuce" src="http://49.235.199.231:8080/stu/学生注册.png"></image>
         <text class="a1" style="padding-left:30rpx">昵称：</text>
         <view class="phone_num input_view {{focusNickName?'focus':'blur'}}">
           <input placeholder="请输入昵称" data-model="NickName" bindfocus="focusNickName" bindblur="blurNickName"
@@ -37,7 +37,7 @@
       </view>
 
       <view class="item">
-        <image class="zhuce" src="/images/学生注册.png"></image>
+        <image class="zhuce" src="http://49.235.199.231:8080/stu/学生注册.png"></image>
         <text class="a1" style="padding-left:30rpx">手机号：</text>
         <view class="phone_num input_view {{focusPhoneNum?'focus':'blur'}}">
           <input type="number" data-model="phoneNum" placeholder="请输入手机号" bindfocus="focusPhoneNum"
@@ -47,7 +47,7 @@
 
 
       <view class="item">
-        <image class="zhuce" src="/images/学生注册.png"></image>
+        <image class="zhuce" src="http://49.235.199.231:8080/stu/学生注册.png"></image>
         <text class="a1" style="padding-left:30rpx">密码：</text>
         <view class="password input_view {{focusPassword?'focus':'blur'}}">
           <input type="password" data-model="password" placeholder="请输入8-18位同时包含字母和数字的密码" bindfocus="focusPassword"
@@ -56,7 +56,7 @@
       </view>
 
       <view class="item">
-        <image class="zhuce" src="/images/学生注册.png"></image>
+        <image class="zhuce" src="http://49.235.199.231:8080/stu/学生注册.png"></image>
         <text class="a1" style="padding-left:30rpx">确认密码：</text>
         <view class="repassword input_view {{focusRePassword?'focus':'blur'}}">
           <input type="password" data-model="rePassword" placeholder="确认密码" bindfocus="focusRePassword"

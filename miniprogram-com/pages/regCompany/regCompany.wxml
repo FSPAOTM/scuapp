@@ -1,7 +1,7 @@
 <!--pages/regCompany/regCompany.wxml-->
 <view>
   <view class="content">
-    <image class='background' src="/images/背景com.png" mode="aspectFill"></image>
+    <image class='background' src="http://49.235.199.231:8080/com/背景com.png" mode="aspectFill"></image>
   </view>
   <view class="line"></view>
 
@@ -9,7 +9,7 @@
     <form bindsubmit="formSubmit">
 
       <view class="item">
-        <image class="zhuce" src="/images/企业注册.png"></image>
+        <image class="zhuce" src="http://49.235.199.231:8080/com/企业注册.png"></image>
         <text class="a1" style="padding-left:20rpx">企业名称：</text>
         <view class="com_name input_view {{focusComName?'focus':'blur'}}">
           <input placeholder="请输入完整的企业名称" data-model="ComName" bindfocus="focusComName" bindblur="blurComName"
@@ -18,7 +18,7 @@
       </view>
 
       <view class="item">
-        <image class="zhuce" src="/images/企业注册.png"></image>
+        <image class="zhuce" src="http://49.235.199.231:8080/com/企业注册.png"></image>
         <text class="a1" style="padding-left:20rpx">联系电话：</text>
         <view class="phone_num input_view {{focusPhoneNum?'focus':'blur'}}">
           <input type="number" data-model="phoneNum" placeholder="请输入联系电话" bindfocus="focusPhoneNum"
@@ -28,7 +28,7 @@
 
 
       <view class="item">
-        <image class="zhuce" src="/images/企业注册.png"></image>
+        <image class="zhuce" src="http://49.235.199.231:8080/com/企业注册.png"></image>
         <text class="a1" style="padding-left:20rpx">统一信用代码：</text>
         <view class="com_license input_view {{focusComLicense?'focus':'blur'}}">
           <input data-model="ComLicense" placeholder="请输入统一信用代码" bindfocus="focusComLicense" bindblur="blurComLicense"
@@ -37,7 +37,7 @@
       </view>
 
       <view class="item">
-        <image class="zhuce" src="/images/企业注册.png"></image>
+        <image class="zhuce" src="http://49.235.199.231:8080/com/企业注册.png"></image>
         <text class="a1" style="padding-left:20rpx">密码：</text>
         <view class="password input_view {{focusPassword?'focus':'blur'}}">
           <input type="password" data-model="password" placeholder="请输入8-18位同时包含字母和数字的密码" bindfocus="focusPassword"
@@ -47,7 +47,7 @@
 
 
       <view class="item">
-        <image class="zhuce" src="/images/企业注册.png"></image>
+        <image class="zhuce" src="http://49.235.199.231:8080/com/企业注册.png"></image>
         <text class="a1" style="padding-left:20rpx">确认密码：</text>
         <view class="repassword input_view {{focusRePassword?'focus':'blur'}}">
           <input type="password" data-model="rePassword" placeholder="确认密码" bindfocus="focusRePassword"

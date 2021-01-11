@@ -199,35 +199,35 @@ Page({
       "17188385280": {
         id: "001",
         count: 2,
-        avatar: "../../images/head.png",
+        avatar: "http://49.235.199.231:8080/stu/head.png",
         text: "",
         updated: "2021.1.4"
       },
       "18310086086": {
         id: "002",
         count: 0,
-        avatar: "../../images/head2.png",
+        avatar: "http://49.235.199.231:8080/stu/head2.png",
         text: "",
         updated: "2021.1.1"
       },
       "13350508078": {
         id: "003",
         count: 0,
-        avatar: "../../images/head3.png",
+        avatar: "http://49.235.199.231:8080/stu/head3.png",
         text: "",
         updated: "2020.12.30"
       },
       "13228217783": {
         id: "004",
         count: 0,
-        avatar: "../../images/head4.png",
+        avatar: "http://49.235.199.231:8080/stu/head4.png",
         text: "",
         updated: "2020.12.9"
       },
       "17809874566": {
         id: "005",
         count: 0,
-        avatar: "../../images/head5.png",
+        avatar: "http://49.235.199.231:8080/stu/head5.png",
         text: "",
         updated: "2020.11.02"
       }
