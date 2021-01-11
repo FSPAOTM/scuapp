@@ -29,7 +29,7 @@
   </scroll-view>
 
   <view class='inputRoom' style='bottom: {{inputBottom}}'>
-    <image style='width: 7vw; margin-left: 3.2vw;' src='http://49.235.199.231:8080/stu/smiley_001.png' mode='widthFix'></image>
+    <image style='width: 7vw; margin-left: 3.2vw;' src='/images/smiley_001.png' mode='widthFix'></image>
     <input bindconfirm='sendClick' adjust-position='{{false}}' value='{{inputVal}}' confirm-type='send'
       bindfocus='focus' bindblur='blur'></input>
   </view>
