@@ -32,15 +32,15 @@
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
-    "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
+    "userConfirmedBundleSwitch": false,
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.14.1",
   "appid": "wx41d6d63bcb8cf34d",
-  "projectname": "miniprogram-com",
+  "projectname": "%E4%BC%81%E4%B8%9A%E7%AB%AF%E6%B3%A8%E9%87%8A",
   "debugOptions": {
     "hidedInDevtools": []
   },
@@ -96,6 +96,12 @@
         {
           "name": "pages/cworkspace/cworkspace",
           "pathName": "pages/cworkspace/cworkspace",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
           "scene": null
         }
       ]

@@ -48,7 +48,7 @@ Page({
 
   // 点击退出登录
   exitlogin() {
-    this.dislinkSocket();
+    // this.dislinkSocket();
     wx.redirectTo({
       url: '../index/index'
     })

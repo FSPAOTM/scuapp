@@ -127,7 +127,7 @@ Page({
       }
     })
   },
-
+//登陆时链接websocket
   linkSocket() {
     wx.connectSocket({
       url: "ws://127.0.0.1:8000/ws/chat/"+this.data.no+"/",

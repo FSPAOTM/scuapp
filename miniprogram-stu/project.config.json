@@ -28,20 +28,20 @@
       "disablePlugins": [],
       "outputPath": ""
     },
-    "enableEngineNative": false,
+    "bundle": false,
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
-    "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true,
-    "bundle": false
+    "enableEngineNative": false,
+    "userConfirmedBundleSwitch": false,
+    "minifyWXSS": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.14.1",
   "appid": "wx41d6d63bcb8cf34d",
-  "projectname": "miniprogram-stutry",
+  "projectname": "%E5%AD%A6%E7%94%9F%E7%AB%AF%E6%B3%A8%E9%87%8A",
   "debugOptions": {
     "hidedInDevtools": []
   },

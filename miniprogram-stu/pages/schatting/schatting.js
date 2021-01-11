@@ -1,4 +1,4 @@
-// pages/contact/contact.js
+// pages/contact/contact.js聊天界面
 const app = getApp();
 var chat = require('../../utils/chat.js')
 var inputVal = '';
@@ -7,24 +7,7 @@ var windowWidth = wx.getSystemInfoSync().windowWidth;
 var windowHeight = wx.getSystemInfoSync().windowHeight;
 var keyHeight = 0;
 
-/**
- * 初始化数据
- */
-// function initData(that) {
-//   inputVal = '';
-
-
-//   that.setData({
-//     msglist,
-//     inputVal
-//   })
-// }
-
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     scrollHeight: '100vh',
     inputBottom: 0,
@@ -42,41 +25,25 @@ Page({
       app.globalData.msgList[options.name] = [];
     }
     this.setData({
-      to:options.name,
+      to: options.name,
       name: app.globalData.user,
       msgList: app.globalData.msgList[options.name],
-    }); 
+    });
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    chat.update_chatting_history(this.data.to);//将与当前聊天用户的记录均置为已读
+    chat.update_chatting_history(this.data.to); //将与当前聊天用户的记录均置为已读
     wx.onSocketMessage((result) => {
       console.log("我在chatting.js")
       let msg = JSON.parse(result.data)["message"];
-      chat.update_globalData_msgList_chatting(msg,this.data.to)
+      chat.update_globalData_msgList_chatting(msg, this.data.to)
       this.setData({ //更新消息列表
         msgList: app.globalData.msgList[this.data.to]
       });
-
     })
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
   },
 
   /**
@@ -142,11 +109,10 @@ Page({
     wx.onSocketMessage((result) => {
       console.log("我在chatting.js")
       let msg = JSON.parse(result.data)["message"];
-      chat.update_globalData_msgList(msg,this.data.to)
+      chat.update_globalData_msgList(msg, this.data.to)
       this.setData({ //更新消息列表
         msgList: app.globalData.msgList[this.data.to]
       });
-
     })
   },
 
@@ -156,5 +122,4 @@ Page({
   toBackClick: function () {
     wx.navigateBack({})
   }
-
 })

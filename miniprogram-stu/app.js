@@ -80,28 +80,8 @@ App({
   },
 
 
-  linkSocket() {
-    var that = this
-    wx.connectSocket({
-      url: "ws://localhost/ws/chat/17188385280/",
-      header: {
-        'content-type': 'application/json'
-      },
-    });
-
-    wx.onSocketOpen((result) => {
-      console.log('yijing open')
-    })
-
-    wx.onSocketMessage((result) => {
-      let msg = JSON.parse(result.data);
-      console.log("我在app.js");
-      this.globalData.msgList.push(msg);
-    })
-  },
-
   globalData: {
-    url: 'http://49.235.199.231:8000/wechat',
+    url: 'http://49.235.199.231:8003/wechat',
     chatSocket: null,
     userInfo: "",
     user: "",

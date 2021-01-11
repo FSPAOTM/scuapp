@@ -128,7 +128,7 @@ Page({
     this.setData({
       name: app.globalData.user
     })
-    this.initlist();
+    this.initlist(); //调用初始化列表函数
     let that = this;
     wx.request({
       url: app.globalData.url + '/Stu_interview_notice_show/',
